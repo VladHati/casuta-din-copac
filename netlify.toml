@@ -1,9 +1,7 @@
-# Netlify publica direct continutul repo-ului (site static).
-# PDF-urile sunt regenerate in GitHub Actions inainte de deploy (vezi .github/workflows/deploy.yml),
-# deci aici nu rulam build — doar setam ce se publica.
+# Site static — Netlify publica direct continutul repo-ului (HTML + PDF), fara build.
+# PDF-urile sunt commit-uite in repo (generate local cu build_pdfs.py).
 [build]
   publish = "."
-  command = "echo 'Site static — PDF-urile vin gata din CI.'"
 
 [[headers]]
   for = "/PDF/*"

@@ -1,5 +1,5 @@
-# PDF-urile sunt artefacte generate (le face build_pdfs.py / CI). Nu le tinem in Git.
-PDF/
+# PDF-urile (PDF/) sunt commit-uite in repo — Netlify le publica direct, fara build.
+# Le regenerezi local cu: python3 build_pdfs.py
 
 # resturi de build / sistem
 .~lock.*#

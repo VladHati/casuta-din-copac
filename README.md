@@ -2,65 +2,36 @@
 
 Site static (HTML + PDF) pentru proiectul casutei din copac. Live: **https://casuta-din-copac.netlify.app**
 
-PDF-urile (`PDF/`) sunt **generate** din paginile HTML cu `build_pdfs.py` — nu se editeaza de mana.
+Repo: **github.com/VladHati/casuta-din-copac** → conectat la Netlify (deploy automat la fiecare push pe `main`).
+
+PDF-urile din `PDF/` sunt **generate** din paginile HTML cu `build_pdfs.py` si commit-uite in repo (Netlify le serveste direct, fara build).
 
 ---
 
-## Cum lucrezi „live" (CI/CD)
-
-Odata legat (vezi setup-ul de mai jos), fluxul e:
+## Cum lucrezi „live"
 
 1. Modifici o pagina HTML sau dosarul `.md`.
-2. `git commit` + `git push`.
-3. GitHub Actions regenereaza automat PDF-urile si publica pe Netlify.
-4. In ~1-2 min, **casuta-din-copac.netlify.app** e la zi.
-
-Fara push manual, fara regenerat PDF de mana.
+2. Daca s-a schimbat continut care apare in PDF: `python3 build_pdfs.py` (regenereaza `PDF/`).
+3. `git add -A && git commit -m "..." && git push`.
+4. Netlify publica automat in ~1 min pe **casuta-din-copac.netlify.app**.
 
 ---
 
-## Setup o singura data (≈5 min)
+## Setup (deja facut)
 
-Pasii astia ii faci tu — cer autentificare GitHub/Netlify pe care un asistent nu o poate face.
+- Repo creat si push-uit pe GitHub.
+- Netlify (site `casuta-din-copac`) legat de repo, cu: build command = gol, publish directory = `.`.
 
-### 1. Creezi repo-ul si dai push
-Din folderul proiectului (repo-ul local e deja initializat cu un commit):
-
-```bash
-# varianta cu GitHub CLI (cea mai rapida)
-gh repo create casuta-din-copac --private --source=. --push
-
-# SAU manual: creezi repo gol pe github.com, apoi:
-git remote add origin https://github.com/<user>/casuta-din-copac.git
-git push -u origin main
-```
-
-### 2. Iei un token Netlify
-Netlify → **User settings → Applications → Personal access tokens → New access token**. Copiaza-l.
-
-### 3. Adaugi 2 secrete in GitHub
-Repo → **Settings → Secrets and variables → Actions → New repository secret**:
-
-| Nume | Valoare |
-|---|---|
-| `NETLIFY_AUTH_TOKEN` | token-ul de la pasul 2 |
-| `NETLIFY_SITE_ID` | `a0af6853-169f-449b-8577-13e4aeea0253` |
-
-### 4. Gata
-Urmatorul `git push` pe `main` declanseaza workflow-ul (`.github/workflows/deploy.yml`):
-build PDF → deploy pe Netlify. Vezi progresul in tab-ul **Actions** din repo.
+Nu sunt necesare token-uri sau secrete — Netlify publica fisierele statice direct din repo.
 
 ---
 
-## Build local (optional)
-
-Daca vrei sa vezi PDF-urile fara CI:
+## Build local PDF (cand schimbi continut)
 
 ```bash
-pip install -r requirements.txt           # weasyprint, markdown, pypdf
-# pe Ubuntu/Debian, pentru weasyprint:
-# sudo apt-get install libpango-1.0-0 libpangocairo-1.0-0 libcairo2 libgdk-pixbuf-2.0-0
-python3 build_pdfs.py                      # scrie in ./PDF/
+pip install weasyprint markdown pypdf
+# pe macOS, pentru weasyprint: brew install pango
+python3 build_pdfs.py        # scrie in ./PDF/
 ```
 
 ---
@@ -83,6 +54,7 @@ audit.html              audit tehnic & design
 CASUTA-DIN-COPAC.md     dosarul proiectului
 Tracker_materiale_casuta.xlsx   buget + comanda Hornbach (cu coduri piesa)
 build_pdfs.py           genereaza PDF-urile (-> PDF/)
-PDF/                    artefacte generate (ignorate de Git)
+PDF/                    PDF-urile (commit-uite, servite de Netlify)
 POZE/                   fotografii de pe teren
+netlify.toml            config publicare
 ```
