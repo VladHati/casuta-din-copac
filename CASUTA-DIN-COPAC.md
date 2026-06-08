@@ -23,7 +23,7 @@ Vlad nu e inginer constructor. E un parinte priceput la multe, dar aici are nevo
 - Cadrul celor 4 stalpi: **2100 mm** (latime) × **1780 mm** (adancime).
 - Ambele diagonale: **2750 mm** — adica un dreptunghi perfect, cu colturi drepte.
 - Fundatiile de beton si ancorele metalice sunt deja turnate in pamant.
-- Copacul (corcodus): trunchi de **Ø160 mm** (circumferinta 500 mm), la **200 mm** in fata stalpilor din fata, deplasat spre coltul **S3** (fata-dreapta), cu centrul la **~500 mm** de S3 pe latime (~1600 mm de S4). Scara + poarta pe partea S4 (fata-stanga) ca sa nu se bata cu masa. Asezare joiste (de la S4): 120 / 550 / 980 / 1380 / [gaura] / 1820 / 2000 mm — trunchiul cade intre joistele de la 1380 si 1820, niciuna nu-l atinge.
+- Copacul (corcodus): trunchi de **Ø160 mm** (circumferinta 500 mm), la **200 mm** in fata stalpilor din fata, deplasat spre coltul **S4** (fata-stanga), cu centrul la **~500 mm** de S4 pe latime (~1600 mm de S3). Scara + poarta pe partea S3 (fata-dreapta) ca sa nu se bata cu masa. Asezare joiste (de la S4): 100 / 280 / [gaura] / 720 / 1120 / 1550 / 1980 mm — trunchiul cade intre joistele de la 280 si 720, niciuna nu-l atinge.
 
 ---
 
@@ -71,7 +71,7 @@ Acoperis intr-o singura apa (o singura panta), doar peste casuta. Coama (partea 
 
 ## Copacul-masa
 
-Corcodusul e spre coltul S3 (fata-dreapta), nu centrat. Gaura prin care trece in podea trebuie **incadrata cu trimmeri** — adica joistele se dubleaza si se pun traverse in jurul gaurii, astfel incat nicio joista sa nu treaca prin trunchi. Corcodusul se reteaza la inaltimea blatului. Important: **blatul mesei se fixeaza de podea, prin cadrul lui propriu, NU de copac.** Un trunchi retezat e lemn mort si putrezeste in cativa ani; daca masa s-ar sprijini pe el, s-ar clatina. Trunchiul trece doar decorativ prin mijloc. Capatul taiat se teseste si se acopera, ca sa scurga apa.
+Corcodusul e spre coltul S4 (fata-stanga), nu centrat. Gaura prin care trece in podea trebuie **incadrata cu trimmeri** — adica joistele se dubleaza si se pun traverse in jurul gaurii, astfel incat nicio joista sa nu treaca prin trunchi. Corcodusul se reteaza la inaltimea blatului. Important: **blatul mesei se fixeaza de podea, prin cadrul lui propriu, NU de copac.** Un trunchi retezat e lemn mort si putrezeste in cativa ani; daca masa s-ar sprijini pe el, s-ar clatina. Trunchiul trece doar decorativ prin mijloc. Capatul taiat se teseste si se acopera, ca sa scurga apa.
 
 ---
 

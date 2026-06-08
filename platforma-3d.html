@@ -108,7 +108,7 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
   const frontPostH=beamTop-beamH;
   const backBeamZ=D-(PS/2+beamD/2), frontBeamZ=0;
   const jBack=D-PS/2, jFront=-0.7, jCz=(jBack+jFront)/2;
-  const jx=[0.12,0.55,0.98,1.38,1.82,2.0]; // copac la x=1.6 cade intre 1.38 si 1.82
+  const jx=[0.10,0.28,0.72,1.12,1.55,1.98]; // copac la x=0.5 (S4/stanga) cade intre 0.28 si 0.72
   const wallZ=D-1.1, RTOP=FLOOR+1.0;
   const tableY=FLOOR+0.58;
 
@@ -136,8 +136,8 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
   // joists + headers gaura copac
   const jLen=jBack-jFront;
   jx.forEach(x=>box(0.1,jH,jLen,M.joist,x,jCy,jCz,G.joists));
-  box(0.34,jH,0.06,M.joist,1.6,jCy,-0.05,G.joists);
-  box(0.34,jH,0.06,M.joist,1.6,jCy,-0.35,G.joists);
+  box(0.34,jH,0.06,M.joist,0.5,jCy,-0.05,G.joists);
+  box(0.34,jH,0.06,M.joist,0.5,jCy,-0.35,G.joists);
 
   // === podea: scanduri reale, cu gaura pt copac ===
   const deckY=FLOOR-deckThk/2, pw=0.12, pitch=0.14;
@@ -168,7 +168,7 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
     sbox(bw,jH,0.08,M.joist,cx,jCy,backBeamZ,G.fix);
     sbox(bw,jH,0.08,M.joist,cx,jCy,frontBeamZ,G.fix);}
 
-  // === balustrada 1000 + poarta la scara (S4) ===
+  // === balustrada 1000 + poarta la scara (S3) ===
   const infillMat=new THREE.MeshStandardMaterial({color:0xE9DCC4,roughness:0.9,transparent:true,opacity:0.32});
   function railSeg(x1,z1,x2,z2){
     const mx=(x1+x2)/2,mz=(z1+z2)/2,lx=Math.abs(x2-x1),lz=Math.abs(z2-z1),h=lx>lz;
@@ -178,18 +178,18 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
     sbox(0.06,1.0,0.06,M.rail,x2,FLOOR+0.5,z2,G.rail);
   }
   railSeg(0,-0.7,W,-0.7);     // fata
-  railSeg(W,-0.7,W,wallZ);    // dreapta (plina) — aici e copacul
-  railSeg(0,-0.7,0,-0.05);    // stanga, pana la poarta
-  railSeg(0,0.30,0,wallZ);    // stanga, dupa poarta
-  label('poarta',-0.16,RTOP+0.04,0.12,G.rail,'#C2693A');
+  railSeg(0,-0.7,0,wallZ);    // stanga (plina) — aici e copacul
+  railSeg(W,-0.7,W,-0.05);    // dreapta, pana la poarta
+  railSeg(W,0.30,W,wallZ);    // dreapta, dupa poarta
+  label('poarta',W+0.16,RTOP+0.04,0.12,G.rail,'#C2693A');
   label('balustrada 1000',W/2,RTOP+0.12,-0.74,G.rail,'#5C574E');
 
   // === copac + masa ===
   const trunk=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.09,tableY,18),M.trunk);
-  trunk.position.set(1.6,tableY/2,-0.2); G.tree.add(trunk);
+  trunk.position.set(0.5,tableY/2,-0.2); G.tree.add(trunk);
   const tdisc=new THREE.Mesh(new THREE.CylinderGeometry(0.26,0.26,0.03,24),mat(0xCDA877));
-  tdisc.position.set(1.6,tableY+0.015,-0.2); G.tree.add(tdisc);
-  label('copac',1.6,tableY+0.2,-0.2,G.tree,'#7A5A3C');
+  tdisc.position.set(0.5,tableY+0.015,-0.2); G.tree.add(tdisc);
+  label('copac',0.5,tableY+0.2,-0.2,G.tree,'#7A5A3C');
 
   // === etichete fixe ===
   label('S1',-0.18,3.5,D,G.labels);

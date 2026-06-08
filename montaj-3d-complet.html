@@ -119,8 +119,8 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
   const fCut=beamTop-beamH;            // 1.872 : inaltimea de taiere a stalpilor fata
   const backBeamZ=D-(PS/2+beamD/2), frontBeamZ=0;
   const jBack=D-PS/2,jFront=-0.7,jCz=(jBack+jFront)/2,jLen=jBack-jFront;
-  const jx=[0.12,0.55,0.98,1.38,1.82,2.0];
-  const wallZ=D-1.1,RTOP=FLOOR+1.0,tableY=FLOOR+0.58,trunkX=1.6,trunkZ=-0.2;
+  const jx=[0.10,0.28,0.72,1.12,1.55,1.98];
+  const wallZ=D-1.1,RTOP=FLOOR+1.0,tableY=FLOOR+0.58,trunkX=0.5,trunkZ=-0.2;
 
   // sol + ancore (step1)
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(9,9),COL.ground);ground.rotation.x=-Math.PI/2;ground.userData={step:1};G.sol.add(ground);
@@ -179,7 +179,7 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
   strut(0,1.1,0.05,0,jCy-0.06,-0.55,0.07,COL.brace,'brace',7); strut(W,1.1,0.05,W,jCy-0.06,-0.55,0.07,COL.brace,'brace',7);
 
   // DUSUMEA (step8)
-  const deckY=FLOOR-deckThk/2,hx=[1.45,1.75],hz=[-0.36,-0.04];
+  const deckY=FLOOR-deckThk/2,hx=[0.35,0.65],hz=[-0.36,-0.04];
   for(let z=jFront+0.075;z<=jBack-0.02;z+=0.15){
     if(z>hz[0]&&z<hz[1]){box(hx[0],deckThk,0.145,COL.deck,hx[0]/2,deckY,z,'deck',8);box(W-hx[1],deckThk,0.145,COL.deck,(W+hx[1])/2,deckY,z,'deck',8);}
     else box(W,deckThk,0.145,COL.deck,W/2,deckY,z,'deck',8);}
@@ -191,8 +191,8 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
     box(h?lx+0.06:0.06,0.06,h?0.06:lz+0.06,COL.rail,mx,RTOP,mz,'rail',9);
     box(h?lx:0.02,0.94,h?0.02:lz,infill,mx,FLOOR+0.49,mz,'rail',9);
     box(0.06,1.0,0.06,COL.rail,x1,FLOOR+0.5,z1,'rail',9);box(0.06,1.0,0.06,COL.rail,x2,FLOOR+0.5,z2,'rail',9);}
-  railSeg(0,-0.7,W,-0.7);railSeg(W,-0.7,W,wallZ);railSeg(0,-0.7,0,-0.05);railSeg(0,0.30,0,wallZ);
-  lbl('poarta',-0.16,RTOP+0.05,0.12,'rail',9,undefined,'#C2693A');
+  railSeg(0,-0.7,W,-0.7);railSeg(0,-0.7,0,wallZ);railSeg(W,-0.7,W,-0.05);railSeg(W,0.30,W,wallZ);
+  lbl('poarta',W+0.16,RTOP+0.05,0.12,'rail',9,undefined,'#C2693A');
 
   // ===== etape (instructiuni complete) =====
   const steps=[
@@ -203,9 +203,9 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
    {t:"Grinzile principale",tools:"2 persoane · bormasina · coltare C1 · suruburi H1",crit:1,
     b:["Grinda fata (<b>GR</b>) se aseaza <b>PE varful</b> stalpilor S3/S4, fixata cu coltare C1 + H1.","Grinda spate se reazema pe o <b>POLITA din lemn</b> (bloc 100×100) bulonata in stalpii S1/S2 cu <b>2 buloane M12</b>; grinda sta PE polita.","<b>Polita duce greutatea</b>; coltarele/suruburile doar tin grinda lipita. (Asta e corectia din audit.)","Verifica: ambele grinzi <b>perfect orizontale</b>, fata de sus la 2072 mm."],c:["GR ×2","polita ×2"],f:["C1 ×4","M12 ×4","H1"]},
    {t:"Joistele",tools:"coltare C2 · suruburi H2 · metru",crit:1,
-    b:["Aseaza <b>6 joiste (JO)</b> peste cele doua grinzi, din fata in spate.","Pozitii masurate <b>de la S4: 120 · 550 · 980 · 1380 · 1820 · 2000 mm</b>.","Capetele din fata ies <b>700 mm in consola</b> (balconul).","La fiecare reazem, <b>coltar C2</b> — tine joista si la <b>ridicare</b> (consola).","Joistele dintr-o singura bucata (continue)."],c:["JO ×6"],f:["C2 ×12","H2"]},
+    b:["Aseaza <b>6 joiste (JO)</b> peste cele doua grinzi, din fata in spate.","Pozitii masurate <b>de la S4: 100 · 280 · 720 · 1120 · 1550 · 1980 mm</b>.","Capetele din fata ies <b>700 mm in consola</b> (balconul).","La fiecare reazem, <b>coltar C2</b> — tine joista si la <b>ridicare</b> (consola).","Joistele dintr-o singura bucata (continue)."],c:["JO ×6"],f:["C2 ×12","H2"]},
    {t:"Gaura copacului + masa",tools:"fierastrau · daltita",crit:0,
-    b:["Intre joistele de la <b>1380 si 1820</b>, pune <b>2 traverse</b> (sus + jos) = rama gaurii.","Corcodusul (spre <b>S3</b>) trece prin gaura; il <b>retezi la inaltimea blatului</b> (~+2780 mm).","Lasa <b>joc 3–5 cm</b> jur-imprejurul trunchiului.","Blatul mesei se va fixa de <b>podea</b>, nu de copac."],c:["traverse ×2"],f:[]},
+    b:["Intre joistele de la <b>280 si 720</b> (spre S4), pune <b>2 traverse</b> (sus + jos) = rama gaurii.","Corcodusul (spre <b>S4</b>) trece prin gaura; il <b>retezi la inaltimea blatului</b> (~+2780 mm).","Lasa <b>joc 3–5 cm</b> jur-imprejurul trunchiului.","Blatul mesei se va fixa de <b>podea</b>, nu de copac."],c:["traverse ×2"],f:[]},
    {t:"Blocaje intre joiste",tools:"suruburi H3",crit:0,
     b:["Bucati scurte (<b>BL</b>), din capete de offcut, intre joiste, <b>peste fiecare grinda</b>.","Prinse cu <b>H3</b> oblic. Opresc rasucirea joistelor — podea ferma, fara balans."],c:["BL"],f:["H3"]},
    {t:"Contravantuiri",tools:"bormasina · suruburi H1",crit:1,
@@ -213,7 +213,7 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
    {t:"Dusumea larice",tools:"masina insurubat · distantier (cui) · ulei",crit:0,
     b:["Scanduri larice (<b>DL</b>) peste joiste, perpendicular.","<b>2 suruburi inox (H4)</b> pe fiecare joista; <b>gol 5 mm</b> intre scanduri (un cui ca distantier).","La copac, taie scandurile in jurul gaurii, cu joc.","Da cu <b>ulei</b> dupa montaj."],c:["DL ×17"],f:["H4"]},
    {t:"Balustrada + poarta",tools:"bormasina · buloane",crit:1,
-    b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b>.","<b>Poarta pe partea S4</b> (opusa mesei-copac), unde urca scara.","Stalpisorii balustradei <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
+    b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b>.","<b>Poarta pe partea S3</b> (opusa mesei-copac), unde urca scara.","Stalpisorii balustradei <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
   ];
 
   let cur=1;const N=9;
