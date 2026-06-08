@@ -1,0 +1,13 @@
+# PDF-urile sunt artefacte generate (le face build_pdfs.py / CI). Nu le tinem in Git.
+PDF/
+
+# resturi de build / sistem
+.~lock.*#
+node_modules/
+.npm/
+deploy-*.zip
+**/_verif*.png
+.DS_Store
+__pycache__/
+*.pyc
+.venv/

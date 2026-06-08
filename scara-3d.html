@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scara 3D — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F1EA;--ink:#26241F;--soft:#5C574E;--faint:#938D80;--line:#E2DACB;--acc:#C2693A;--card:#FFFFFF;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 20px 50px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw,36px);margin:0 0 4px}
+.lead{color:var(--soft);margin:0 0 16px;font-size:15px;max-width:700px}
+.stage{position:relative;width:100%;height:min(64vh,540px);background:linear-gradient(#FBFAF6,#EFEBE1);border:1px solid var(--line);border-radius:18px;overflow:hidden;touch-action:none}
+#cv{display:block;width:100%;height:100%}
+.hint{position:absolute;left:14px;bottom:12px;font-family:'Space Mono',monospace;font-size:11px;color:var(--soft);background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:8px;padding:5px 9px}
+.views{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.views button{font-size:11px;border:1px solid var(--line);background:rgba(255,255,255,.92);border-radius:999px;padding:5px 10px;cursor:pointer}
+.layers{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-size:12px}
+.layers label{display:flex;align-items:center;gap:7px;padding:2px 0;cursor:pointer;white-space:nowrap}
+.layers .sw{width:11px;height:11px;border-radius:3px;border:1px solid rgba(0,0,0,.2)}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-top:18px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+.cols h2{font-family:'Fraunces',serif;font-size:20px;margin:0 0 8px}
+ol{margin:0;padding-left:20px;color:var(--soft);font-size:14.5px}
+ol li{margin:6px 0}ol li b{color:var(--ink)}
+.facts div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0;font-size:14px}
+.facts .v{font-family:'Space Mono',monospace;color:var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:7px;padding:3px 9px}
+.back{display:inline-block;margin-top:6px;font-family:'Space Mono',monospace;font-size:12px;color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Scara, in 3D</h1>
+  <p class="lead">Scara de acces la balcon (partea S4), la scara reala. Trage = roteste, scroll/pinch = zoom. Layere si vederi rapide in colturi. Pasii de montaj si cotele sunt dedesubt.</p>
+  <div class="stage">
+    <canvas id="cv"></canvas>
+    <div class="views"><button data-v="iso">3/4</button><button data-v="lat">Lateral</button><button data-v="fata">Fata</button></div>
+    <div class="layers" id="layerList"></div>
+    <div class="hint">trage = roteste · scroll = zoom</div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h2>Pas cu pas</h2>
+      <ol>
+        <li>Taie cele <b>2 coarde</b> la unghi (~49°), capetele drepte sus (pe platforma) si jos (pe dala).</li>
+        <li>Marcheaza si prinde <b>sipci-suport</b> pe coarde, la fiecare treapta (pe verticala, din 200 in 200 mm).</li>
+        <li>Prinde coardele <b>de platforma sus</b> (coltar + 2 buloane M10) si aseaza-le pe o <b>dala</b> la baza.</li>
+        <li>Monteaza cele <b>10 trepte</b> pe sipci (2 suruburi pe fiecare capat).</li>
+        <li>Monteaza <b>mana curenta pe ambele parti</b> (stalpisori + rigla), la ~900 mm deasupra treptelor.</li>
+        <li><b>Poarta</b> in balustrada la capul scarii (partea S4).</li>
+      </ol>
+      <div class="chips">
+        <span class="chip">Coarde KVH 60×140 ×2</span><span class="chip">Trepte larice ×10</span><span class="chip">Mana curenta + stalpisori</span><span class="chip">Coltar + Heco + M10</span><span class="chip">Dala baza</span>
+      </div>
+      <a class="back" href="index.html">← inapoi la manual</a>
+    </div>
+    <div>
+      <h2>Cote</h2>
+      <div class="facts">
+        <div><span>Inaltime totala</span><span class="v">2200 mm</span></div>
+        <div><span>Numar trepte</span><span class="v">11 (10 trepte + podea)</span></div>
+        <div><span>Treapta (riser)</span><span class="v">200 mm</span></div>
+        <div><span>Calcai (going)</span><span class="v">190 mm</span></div>
+        <div><span>Latime scara</span><span class="v">600 mm</span></div>
+        <div><span>Lungime orizontala</span><span class="v">1900 mm</span></div>
+        <div><span>Unghi</span><span class="v">~49°</span></div>
+        <div><span>Mana curenta</span><span class="v">~900 mm</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const cv=document.getElementById('cv'),stage=cv.parentElement;
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(44,1,0.05,60);
+  scene.add(new THREE.HemisphereLight(0xffffff,0xb7ad97,1.0));
+  const d1=new THREE.DirectionalLight(0xffffff,0.55);d1.position.set(3,5,4);scene.add(d1);
+  const d2=new THREE.DirectionalLight(0xffffff,0.22);d2.position.set(-3,2,-3);scene.add(d2);
+  const root=new THREE.Group();scene.add(root);
+  const edgeMat=new THREE.LineBasicMaterial({color:0x3a342b,transparent:true,opacity:0.36});
+  function mat(c,m=0,r=0.85){return new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});}
+  const COL={tread:mat(0xE0C795),stringer:mat(0xCDB07E),rail:mat(0xCBA372),plat:mat(0xD7B488),ground:mat(0xE3E1D2,0,1),metal:mat(0x9499A1,0.5,0.4)};
+  const G={};['trepte','coarde','rail','plat','labels'].forEach(k=>{G[k]=new THREE.Group();root.add(G[k]);});
+  const layerOn={trepte:true,coarde:true,rail:true,plat:true,labels:true};
+
+  function box(w,h,d,material,x,y,z,layer){const g=new THREE.BoxGeometry(w,h,d);const m=new THREE.Mesh(g,material);m.position.set(x,y,z);G[layer].add(m);
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeMat);e.position.set(x,y,z);G[layer].add(e);}
+  function strut(ax,ay,az,bx,by,bz,sec,material,layer){const a=new THREE.Vector3(ax,ay,az),b=new THREE.Vector3(bx,by,bz);const dir=new THREE.Vector3().subVectors(b,a);const len=dir.length();
+    const m=new THREE.Mesh(new THREE.BoxGeometry(sec,len,sec),material);m.position.copy(a).addScaledVector(dir,0.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.clone().normalize());G[layer].add(m);
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),edgeMat);e.position.copy(m.position);e.quaternion.copy(m.quaternion);G[layer].add(e);}
+  function lbl(t,x,y,z,color){const c=document.createElement('canvas');c.width=220;c.height=100;const ctx=c.getContext('2d');
+    ctx.fillStyle='rgba(255,255,255,0.93)';rr(ctx,5,26,210,46,12);ctx.fill();ctx.strokeStyle=color||'#26241F';ctx.lineWidth=3;rr(ctx,5,26,210,46,12);ctx.stroke();
+    ctx.fillStyle=color||'#26241F';ctx.font='bold 30px "Space Mono",monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t,110,49);
+    const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));sp.position.set(x,y,z);sp.scale.set(0.5,0.227,1);G.labels.add(sp);}
+  function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+  // ===== geometrie scara (m) =====
+  const H=2.2, RUN=1.9, Wd=0.6, N=11; // 11 risers
+  // ground + platforma
+  const gr=new THREE.Mesh(new THREE.PlaneGeometry(8,8),COL.ground);gr.rotation.x=-Math.PI/2;G.plat.add(gr);
+  box(0.9,0.04,0.7,COL.plat,0.3,H-0.02,-0.35,'plat'); // bucata de balcon sus
+  // coarde (stringers) — de la baza (z=RUN) la platforma (z=0)
+  [0.03,0.57].forEach(xs=>strut(xs,0.0,RUN, xs,H,0.0, 0.08, COL.stringer,'coarde'));
+  // trepte
+  for(let i=1;i<=10;i++){const y=i*0.2; const z=RUN*(1-(i*0.2)/H);
+    box(Wd,0.04,0.28,COL.tread,0.3,y-0.02,z,'trepte');}
+  // mana curenta ambele parti (rigla inclinata)
+  [0.03,0.57].forEach(xs=>strut(xs,0.9,RUN, xs,H+0.9,0.0, 0.045, COL.rail,'rail'));
+  // stalpisori (vertical, leaga coarda de rigla) la 3 puncte
+  [[RUN*0.97,0.0],[RUN*0.5,0.0],[RUN*0.07,0.0]].forEach(pz=>{
+    const z=pz[0]; const ystr=H*(1-z/RUN);
+    [0.03,0.57].forEach(xs=>strut(xs,ystr,z, xs,ystr+0.9,z, 0.04, COL.rail,'rail'));
+  });
+  // dala la baza
+  box(0.8,0.06,0.5,COL.metal,0.3,-0.03,RUN,'plat');
+  // mica balustrada + poarta pe platforma (gol = poarta deasupra scarii)
+  box(0.06,0.94,0.06,COL.rail,-0.02,H+0.47,-0.02,'rail');
+  box(0.06,0.94,0.06,COL.rail,0.62,H+0.47,-0.02,'rail');
+
+  // etichete cote
+  lbl('+2200',-0.35,H,0.0,'#C2693A');
+  lbl('treapta 200',0.92,0.6,RUN*(1-0.6/H),'#C2693A');
+  lbl('calcai 190',0.3,0.08,RUN*0.55,'#5C574E');
+  lbl('latime 600',0.3,H+0.05,0.0,'#5C574E');
+  lbl('~49°',0.75,0.18,RUN*0.95,'#C2693A');
+  lbl('poarta',0.3,H+1.0,-0.02,'#C2693A');
+
+  // layer panel
+  const lm=[['trepte','Trepte','#E0C795'],['coarde','Coarde','#CDB07E'],['rail','Mana curenta + poarta','#CBA372'],['plat','Platforma + baza','#D7B488'],['labels','Cote','#C2693A']];
+  const listEl=document.getElementById('layerList');
+  lm.forEach(([k,n,c])=>{const lab=document.createElement('label');lab.innerHTML='<input type="checkbox" checked><span class="sw" style="background:'+c+'"></span>'+n;lab.querySelector('input').onchange=e=>{G[k].visible=e.target.checked;};listEl.appendChild(lab);});
+
+  // orbit
+  const target=new THREE.Vector3(0.3,1.05,0.9);
+  let az=0.9,pol=1.15,dist=3.4;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  function update(){pol=clamp(pol,0.1,1.7);dist=clamp(dist,1.4,9);camera.position.set(target.x+dist*Math.sin(pol)*Math.sin(az),target.y+dist*Math.cos(pol),target.z+dist*Math.sin(pol)*Math.cos(az));camera.lookAt(target);}
+  let drag=false,px=0,py=0;
+  cv.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointerup',()=>drag=false);
+  cv.addEventListener('pointermove',e=>{if(!drag)return;az-=(e.clientX-px)*0.007;pol-=(e.clientY-py)*0.007;px=e.clientX;py=e.clientY;update();});
+  cv.addEventListener('wheel',e=>{e.preventDefault();dist*=(1+e.deltaY*0.0012);update();},{passive:false});
+  let pinch=0;
+  cv.addEventListener('touchmove',e=>{if(e.touches.length===2){const dx=e.touches[0].clientX-e.touches[1].clientX,dy=e.touches[0].clientY-e.touches[1].clientY,dd=Math.hypot(dx,dy);if(pinch){dist*=(1+(pinch-dd)*0.004);update();}pinch=dd;e.preventDefault();}},{passive:false});
+  cv.addEventListener('touchend',()=>pinch=0);
+  const views={iso:[0.9,1.15,3.4],lat:[Math.PI/2,1.2,3.2],fata:[0,1.25,3.2]};
+  document.querySelectorAll('.views button').forEach(b=>b.onclick=()=>{const v=views[b.dataset.v];az=v[0];pol=v[1];dist=v[2];update();});
+  function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  window.addEventListener('resize',resize);resize();update();
+  (function loop(){requestAnimationFrame(loop);renderer.render(scene,camera);})();
+})();
+</script>
+</body>
+</html>

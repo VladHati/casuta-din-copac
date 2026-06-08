@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghid imbinari + audit — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#111111;--soft:#555;--faint:#888;--line:#E2E2E2;--metal:#E6E6E6;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+h1,h2{font-weight:700;margin:0;letter-spacing:-.01em}
+.mono{font-family:'Space Mono',monospace}
+.hero{padding:54px 0 24px;border-bottom:3px solid var(--ink)}
+.hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.hero h1{font-size:clamp(30px,5.5vw,50px);margin:8px 0 10px}
+.hero p{color:var(--soft);max-width:620px;margin:0;font-size:15px}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.head .n{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;border:2px solid var(--ink);border-radius:50%;width:34px;height:34px;display:grid;place-items:center}
+.head h2{font-size:clamp(20px,3.2vw,28px)}
+/* parts grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+.cell{border:1px solid var(--line);margin:-1px 0 0 -1px;padding:14px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cell svg{width:100%;height:70px;margin-bottom:6px}
+.code{font-family:'Space Mono',monospace;font-weight:700;font-size:14px;border:2px solid var(--ink);border-radius:7px;padding:1px 8px;margin-bottom:6px}
+.cell .nm{font-size:12.5px;font-weight:600;line-height:1.25}
+.cell .qt{font-family:'Space Mono',monospace;font-size:11px;color:var(--soft);margin-top:3px}
+/* joints */
+.joint{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;padding:22px 0;border-bottom:1px dashed var(--line)}
+@media(max-width:760px){.joint{grid-template-columns:1fr}}
+.joint:last-child{border-bottom:none}
+.joint .draw{border:1px solid var(--line);border-radius:12px;padding:8px}
+.joint svg{width:100%;height:auto;display:block}
+.step{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.step .b{font-family:'Space Mono',monospace;font-weight:700;color:#fff;background:var(--ink);width:32px;height:32px;border-radius:8px;display:grid;place-items:center}
+.joint h3{font-size:18px;margin:0}
+.joint ul{margin:6px 0 0;padding-left:18px;color:var(--soft);font-size:14px}
+.joint ul li{margin:4px 0}
+.uses{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.uses .u{font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:6px;padding:2px 8px}
+/* audit */
+.audit{border:2px solid var(--ink);border-radius:12px;overflow:hidden}
+.arow{display:grid;grid-template-columns:34px 1fr 90px;gap:0;border-top:1px solid var(--line);align-items:center}
+.arow:first-child{border-top:none}
+.arow .ic{font-family:'Space Mono',monospace;font-weight:700;text-align:center;padding:12px 0;border-right:1px solid var(--line)}
+.arow .tx{padding:11px 14px;font-size:14px}
+.arow .tx b{font-weight:600}
+.arow .vd{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-align:center;border-left:1px solid var(--line);padding:11px 4px}
+.vd.ok{background:#111;color:#fff}
+.vd.cond{background:#fff;color:#111;border:2px dashed #111}
+footer{padding:30px 0 70px;color:var(--faint);font-size:12.5px;text-align:center}
+@media print{.hero{padding:14px 0}.joint{break-inside:avoid}.cell{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kick">Ghid de montaj · imbinari · audit</div>
+    <h1>Piese, coduri<br>si imbinari</h1>
+    <p>Fiecare piesa are un cod. Fiecare imbinare arata exact ce piese si ce suruburi intra, in ce ordine. La final, un audit tehnic care confirma ca structura e corecta.</p>
+  </header>
+
+  <!-- 01 PIESE -->
+  <section>
+    <div class="head"><span class="n">1</span><h2>Piese de lemn</h2></div>
+    <div class="grid">
+      <div class="cell"><div class="code">ST</div>
+        <svg viewBox="0 0 110 70"><rect x="46" y="6" width="18" height="58" fill="#fff" stroke="#111" stroke-width="2"/><line x1="50" y1="6" x2="50" y2="64" stroke="#111" stroke-width=".6"/><line x1="60" y1="6" x2="60" y2="64" stroke="#111" stroke-width=".6"/></svg>
+        <div class="nm">Stalp 100×100</div><div class="qt">KVH · ×4 (ai)</div></div>
+      <div class="cell"><div class="code">GR</div>
+        <svg viewBox="0 0 110 70"><rect x="10" y="24" width="90" height="26" fill="#fff" stroke="#111" stroke-width="2"/><line x1="10" y1="32" x2="100" y2="32" stroke="#111" stroke-width=".7"/><line x1="10" y1="38" x2="100" y2="38" stroke="#111" stroke-width=".7"/><line x1="10" y1="44" x2="100" y2="44" stroke="#111" stroke-width=".7"/></svg>
+        <div class="nm">Grinda glulam 90×200</div><div class="qt">×2 · de cumparat</div></div>
+      <div class="cell"><div class="code">JO</div>
+        <svg viewBox="0 0 110 70"><rect x="44" y="6" width="22" height="58" fill="#fff" stroke="#111" stroke-width="2"/><line x1="55" y1="6" x2="55" y2="64" stroke="#111" stroke-width=".6"/></svg>
+        <div class="nm">Joista 100×100</div><div class="qt">×6 (4 ai + 2)</div></div>
+      <div class="cell"><div class="code">DL</div>
+        <svg viewBox="0 0 110 70"><rect x="8" y="28" width="94" height="16" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><line x1="8" y1="36" x2="102" y2="36" stroke="#111" stroke-width=".6"/></svg>
+        <div class="nm">Dusumea larice 28×145</div><div class="qt">×17 · de cumparat</div></div>
+      <div class="cell"><div class="code">BL</div>
+        <svg viewBox="0 0 110 70"><rect x="38" y="26" width="34" height="20" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Blocaj (din offcut)</div><div class="qt">×10 · gratis</div></div>
+      <div class="cell"><div class="code">CF</div>
+        <svg viewBox="0 0 110 70"><polygon points="20,58 34,58 90,14 76,14" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Contrafisa (diagonala)</div><div class="qt">×6 · offcut/nou</div></div>
+      <div class="cell"><div class="code">PO</div>
+        <svg viewBox="0 0 110 70"><rect x="40" y="26" width="30" height="22" fill="#fff" stroke="#111" stroke-width="2"/><line x1="40" y1="34" x2="70" y2="34" stroke="#111" stroke-width=".6"/><line x1="40" y1="41" x2="70" y2="41" stroke="#111" stroke-width=".6"/></svg>
+        <div class="nm">Polita lemn 100×100 (sub grinda spate)</div><div class="qt">×2 · offcut/nou</div></div>
+    </div>
+  </section>
+
+  <!-- 02 FERONERIE -->
+  <section>
+    <div class="head"><span class="n">2</span><h2>Feronerie</h2></div>
+    <div class="grid">
+      <div class="cell"><div class="code">C1</div>
+        <svg viewBox="0 0 110 70"><path d="M40 14 v44 h34" fill="none" stroke="#111" stroke-width="8"/><path d="M44 18 L44 54 L72 54" fill="none" stroke="#111" stroke-width="1.4"/><path d="M44 54 L44 34 L62 54 Z" fill="#E6E6E6" stroke="#111" stroke-width="1.4"/><circle cx="40" cy="26" r="2.4" fill="#111"/><circle cx="40" cy="46" r="2.4" fill="#111"/><circle cx="58" cy="58" r="2.4" fill="#111"/></svg>
+        <div class="nm">Coltar rigidizat 100×100×90</div><div class="qt">Alberts · ×4 (grinda fata)</div></div>
+      <div class="cell"><div class="code">C2</div>
+        <svg viewBox="0 0 110 70"><path d="M44 16 v40 h30" fill="none" stroke="#111" stroke-width="7"/><path d="M48 20 L48 52 L68 52" fill="none" stroke="#111" stroke-width="1.3"/><path d="M48 52 L48 36 L62 52 Z" fill="#E6E6E6" stroke="#111" stroke-width="1.2"/><circle cx="44" cy="28" r="2" fill="#111"/><circle cx="60" cy="56" r="2" fill="#111"/></svg>
+        <div class="nm">Coltar rigidizat 90×90×65</div><div class="qt">Alberts · ×12</div></div>
+      <div class="cell"><div class="code">H1</div>
+        <svg viewBox="0 0 110 70"><circle cx="26" cy="35" r="9" fill="#fff" stroke="#111" stroke-width="2"/><path d="M26 31 l3 4 -3 4 -3-4z" fill="#111"/><rect x="35" y="33" width="62" height="4" fill="#111"/><g stroke="#111" stroke-width="1.6"><line x1="40" y1="30" x2="40" y2="40"/><line x1="48" y1="30" x2="48" y2="40"/><line x1="56" y1="31" x2="56" y2="39"/><line x1="64" y1="31" x2="64" y2="39"/><line x1="72" y1="32" x2="72" y2="38"/><line x1="80" y1="32" x2="80" y2="38"/><line x1="88" y1="33" x2="88" y2="37"/></g></svg>
+        <div class="nm">Surub Heco 8×200 Torx</div><div class="qt">100 buc · structural</div></div>
+      <div class="cell"><div class="code">H2</div>
+        <svg viewBox="0 0 110 70"><circle cx="30" cy="35" r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M30 31 l3 4 -3 4 -3-4z" fill="#111"/><rect x="38" y="33" width="44" height="4" fill="#111"/><g stroke="#111" stroke-width="1.6"><line x1="43" y1="31" x2="43" y2="39"/><line x1="51" y1="31" x2="51" y2="39"/><line x1="59" y1="32" x2="59" y2="38"/><line x1="67" y1="32" x2="67" y2="38"/><line x1="75" y1="32" x2="75" y2="38"/></g></svg>
+        <div class="nm">Surub Heco 6×100</div><div class="qt">100 buc · conectori</div></div>
+      <div class="cell"><div class="code">H3</div>
+        <svg viewBox="0 0 110 70"><circle cx="34" cy="35" r="7" fill="#fff" stroke="#111" stroke-width="2"/><path d="M34 32 l2.5 3 -2.5 3 -2.5-3z" fill="#111"/><rect x="41" y="33" width="32" height="4" fill="#111"/><g stroke="#111" stroke-width="1.5"><line x1="46" y1="32" x2="46" y2="38"/><line x1="54" y1="32" x2="54" y2="38"/><line x1="62" y1="32" x2="62" y2="38"/></g></svg>
+        <div class="nm">Surub Heco 6×80</div><div class="qt">100 buc · blocaje</div></div>
+      <div class="cell"><div class="code">H4</div>
+        <svg viewBox="0 0 110 70"><circle cx="36" cy="35" r="6" fill="#fff" stroke="#111" stroke-width="2" stroke-dasharray="2 1.5"/><rect x="42" y="33" width="30" height="3.5" fill="#fff" stroke="#111" stroke-width="1"/><g stroke="#111" stroke-width="1"><line x1="47" y1="32" x2="47" y2="38"/><line x1="55" y1="32" x2="55" y2="38"/><line x1="63" y1="32" x2="63" y2="38"/></g></svg>
+        <div class="nm">Surub inox A2 5×60</div><div class="qt">200 buc · dusumea</div></div>
+      <div class="cell"><div class="code">B1</div>
+        <svg viewBox="0 0 110 70"><rect x="20" y="30" width="9" height="10" fill="#111"/><rect x="29" y="33" width="60" height="4" fill="#111"/><g stroke="#111" stroke-width="1.6"><line x1="34" y1="31" x2="34" y2="39"/><line x1="50" y1="31" x2="50" y2="39"/><line x1="66" y1="31" x2="66" y2="39"/><line x1="82" y1="32" x2="82" y2="38"/></g></svg>
+        <div class="nm">Bulon M12 POLITA — lung ~200 + piulita + saiba</div><div class="qt">×4 (2/polita) · de comandat</div></div>
+      <div class="cell"><div class="code">B2</div>
+        <svg viewBox="0 0 110 70"><rect x="34" y="30" width="9" height="10" fill="#111"/><rect x="43" y="33" width="34" height="4" fill="#111"/><g stroke="#111" stroke-width="1.6"><line x1="48" y1="31" x2="48" y2="39"/><line x1="62" y1="32" x2="62" y2="38"/></g></svg>
+        <div class="nm">Bulon M12×120 BAZA papuc + piulita + saiba</div><div class="qt">×8 (2/stalp)</div></div>
+    </div>
+    <p class="mono" style="font-size:12px;color:#666;margin-top:12px">Codurile de mai sus se folosesc in toate desenele de imbinare.</p>
+  </section>
+
+  <!-- 03 IMBINARI -->
+  <section>
+    <div class="head"><span class="n">3</span><h2>Imbinarile, pas cu pas</h2></div>
+
+    <!-- step 1 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">1</span><h3>Grinda fata pe varful stalpului</h3></div>
+        <ul>
+          <li><b>GR</b> sta pe varful lui <b>ST</b> (sprijin direct, fara excentricitate).</li>
+          <li><b>C1</b> pe fiecare fata, fixat cu <b>H1</b> in stalp si in grinda.</li>
+        </ul>
+        <div class="uses"><span class="u">GR ×1</span><span class="u">ST ×1</span><span class="u">C1 ×2</span><span class="u">H1 ×4</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Exploded: grinda pe stalp">
+          <!-- post -->
+          <rect x="190" y="150" width="60" height="120" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="200" y1="150" x2="200" y2="270" stroke="#111" stroke-width=".6"/><line x1="240" y1="150" x2="240" y2="270" stroke="#111" stroke-width=".6"/>
+          <text x="220" y="262" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">ST</text>
+          <!-- beam exploded above -->
+          <rect x="120" y="58" width="200" height="46" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="120" y1="70" x2="320" y2="70" stroke="#111" stroke-width=".8"/><line x1="120" y1="80" x2="320" y2="80" stroke="#111" stroke-width=".8"/><line x1="120" y1="90" x2="320" y2="90" stroke="#111" stroke-width=".8"/>
+          <text x="220" y="50" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">GR</text>
+          <!-- assembly arrow -->
+          <path d="M220 112 v28" stroke="#111" stroke-width="2.5" marker-end="url(#ar)"/>
+          <defs><marker id="ar" markerWidth="12" markerHeight="12" refX="5" refY="9" orient="auto"><path d="M0 0 L5 9 L10 0 z" fill="#111"/></marker></defs>
+          <!-- brackets -->
+          <path d="M178 150 L190 150 L190 196 L178 196 Z" fill="#E6E6E6" stroke="#111" stroke-width="2"/>
+          <path d="M250 150 L262 150 L262 196 L250 196 Z" fill="#E6E6E6" stroke="#111" stroke-width="2"/>
+          <!-- fastener callouts -->
+          <circle cx="150" cy="130" r="13" fill="#111"/><text x="150" y="135" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700" fill="#fff">H1</text>
+          <text x="150" y="158" text-anchor="middle" font-family="Space Mono" font-size="10">×4</text>
+          <line x1="163" y1="130" x2="184" y2="160" stroke="#111" stroke-width=".8"/>
+          <circle cx="300" cy="130" r="13" fill="#fff" stroke="#111" stroke-width="2"/><text x="300" y="135" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">C1</text>
+          <text x="300" y="158" text-anchor="middle" font-family="Space Mono" font-size="10">×2</text>
+          <line x1="287" y1="132" x2="258" y2="166" stroke="#111" stroke-width=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- step 2 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">2</span><h3>Grinda spate pe POLITA din lemn</h3></div>
+        <ul>
+          <li><b>ST</b> continua in sus. <b>GR</b> se reazema pe o <b>polita din lemn (PO)</b> bulonata in stalp.</li>
+          <li><b>2 buloane M12 (B1)</b> tin polita; polita <b>duce greutatea</b>. <b>H1</b> tin grinda lipita de stalp.</li>
+          <li>Corectie din audit: aici NU coltare metalice, ci polita de lemn + buloane.</li>
+        </ul>
+        <div class="uses"><span class="u">GR ×1</span><span class="u">ST ×1</span><span class="u">PO ×1</span><span class="u">B1 ×2</span><span class="u">H1 ×2</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Exploded: grinda pe polita de lemn bulonata in stalp">
+          <rect x="120" y="20" width="56" height="250" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="130" y1="20" x2="130" y2="270" stroke="#111" stroke-width=".6"/>
+          <text x="148" y="40" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">ST</text>
+          <rect x="200" y="120" width="190" height="46" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="200" y1="132" x2="390" y2="132" stroke="#111" stroke-width=".8"/><line x1="200" y1="142" x2="390" y2="142" stroke="#111" stroke-width=".8"/><line x1="200" y1="152" x2="390" y2="152" stroke="#111" stroke-width=".8"/>
+          <text x="295" y="112" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">GR</text>
+          <path d="M196 143 h-14" stroke="#111" stroke-width="2.5" marker-end="url(#ar)"/>
+          <!-- POLITA din lemn (sub grinda, prinsa de stalp) -->
+          <rect x="176" y="166" width="46" height="34" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="176" y1="177" x2="222" y2="177" stroke="#111" stroke-width=".6"/><line x1="176" y1="189" x2="222" y2="189" stroke="#111" stroke-width=".6"/>
+          <!-- buloane M12 prin polita in stalp -->
+          <circle cx="186" cy="176" r="4" fill="#111"/><circle cx="186" cy="190" r="4" fill="#111"/>
+          <!-- H1 prin grinda in stalp -->
+          <circle cx="210" cy="134" r="3.2" fill="#111"/><circle cx="210" cy="150" r="3.2" fill="#111"/>
+          <circle cx="120" cy="200" r="13" fill="#fff" stroke="#111" stroke-width="2"/><text x="120" y="205" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700">PO</text>
+          <line x1="133" y1="198" x2="176" y2="186" stroke="#111" stroke-width=".8"/>
+          <circle cx="120" cy="240" r="13" fill="#111"/><text x="120" y="245" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#fff">B1</text>
+          <text x="146" y="244" font-family="Space Mono" font-size="10">×2</text>
+          <line x1="133" y1="236" x2="182" y2="192" stroke="#111" stroke-width=".8"/>
+          <circle cx="320" cy="120" r="13" fill="#111"/><text x="320" y="125" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#fff">H1</text>
+          <text x="346" y="124" font-family="Space Mono" font-size="10">×2</text>
+          <line x1="307" y1="124" x2="214" y2="142" stroke="#111" stroke-width=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- step 3 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">3</span><h3>Joista pe grinda — anti-ridicare</h3></div>
+        <ul>
+          <li><b>JO</b> sta peste <b>GR</b>. <b>C2</b> pe lateral o leaga si o tine sa nu se ridice la consola.</li>
+        </ul>
+        <div class="uses"><span class="u">JO ×1</span><span class="u">GR</span><span class="u">C2 ×1</span><span class="u">H2 ×4</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Exploded: joista pe grinda cu coltar">
+          <rect x="60" y="170" width="320" height="46" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="60" y1="182" x2="380" y2="182" stroke="#111" stroke-width=".8"/><line x1="60" y1="192" x2="380" y2="192" stroke="#111" stroke-width=".8"/>
+          <text x="90" y="162" font-family="Space Mono" font-size="11" font-weight="700">GR</text>
+          <rect x="185" y="96" width="62" height="50" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <line x1="216" y1="96" x2="216" y2="146" stroke="#111" stroke-width=".6"/>
+          <text x="216" y="88" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">JO</text>
+          <path d="M216 152 v14" stroke="#111" stroke-width="2.5" marker-end="url(#ar)"/>
+          <path d="M247 150 L263 150 L263 170 L247 170" fill="#E6E6E6" stroke="#111" stroke-width="2"/>
+          <path d="M247 150 L247 166 L261 170 Z" fill="#E6E6E6" stroke="#111" stroke-width="1.2"/>
+          <path d="M216 78 v-18" stroke="#111" stroke-width="2.5" marker-end="url(#up2)"/>
+          <defs><marker id="up2" markerWidth="12" markerHeight="12" refX="5" refY="2" orient="auto"><path d="M0 10 L5 1 L10 10 z" fill="#fff" stroke="#111"/></marker></defs>
+          <text x="216" y="52" text-anchor="middle" font-family="Space Mono" font-size="9">ridicare</text>
+          <circle cx="320" cy="120" r="13" fill="#fff" stroke="#111" stroke-width="2"/><text x="320" y="125" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">C2</text>
+          <line x1="307" y1="124" x2="265" y2="156" stroke="#111" stroke-width=".8"/>
+          <circle cx="360" cy="120" r="13" fill="#111"/><text x="360" y="125" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#fff">H2</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- step 4 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">4</span><h3>Blocaje intre joiste</h3></div>
+        <ul>
+          <li><b>BL</b> intre joiste, peste fiecare grinda. Prins cu <b>H3</b> oblic, prin fata joistei.</li>
+          <li>Opreste joistele sa se rasuceasca, podea ferma.</li>
+        </ul>
+        <div class="uses"><span class="u">BL ×n</span><span class="u">H3 ×2/capat</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Blocaje intre joiste">
+          <rect x="120" y="40" width="40" height="200" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <rect x="280" y="40" width="40" height="200" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="140" y="32" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">JO</text>
+          <text x="300" y="32" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">JO</text>
+          <rect x="160" y="120" width="120" height="40" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="220" y="144" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">BL</text>
+          <circle cx="156" cy="128" r="3.2" fill="#111"/><circle cx="156" cy="152" r="3.2" fill="#111"/>
+          <circle cx="284" cy="128" r="3.2" fill="#111"/><circle cx="284" cy="152" r="3.2" fill="#111"/>
+          <circle cx="220" cy="210" r="13" fill="#111"/><text x="220" y="215" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#fff">H3</text>
+          <line x1="210" y1="200" x2="160" y2="150" stroke="#111" stroke-width=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- step 5 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">5</span><h3>Contravantuirea (diagonala)</h3></div>
+        <ul>
+          <li><b>CF</b> taiata pe masura la capete, prinsa direct cu <b>H1</b> in stalp/grinda. Fara coltar.</li>
+        </ul>
+        <div class="uses"><span class="u">CF ×1</span><span class="u">H1 ×3/capat</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Contravantuire prinsa cu suruburi">
+          <rect x="120" y="40" width="42" height="210" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="141" y="32" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">ST</text>
+          <polygon points="162,150 188,150 320,238 294,238" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="250" y="206" font-family="Space Mono" font-size="11" font-weight="700" transform="rotate(34 250 206)">CF</text>
+          <circle cx="176" cy="160" r="3.4" fill="#111"/><circle cx="183" cy="174" r="3.4" fill="#111"/><circle cx="190" cy="188" r="3.4" fill="#111"/>
+          <circle cx="230" cy="140" r="13" fill="#111"/><text x="230" y="145" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#fff">H1</text>
+          <text x="230" y="124" text-anchor="middle" font-family="Space Mono" font-size="10">×3</text>
+          <line x1="220" y1="150" x2="190" y2="178" stroke="#111" stroke-width=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- step 6 -->
+    <div class="joint">
+      <div class="txt">
+        <div class="step"><span class="b">6</span><h3>Dusumea larice pe joiste</h3></div>
+        <ul>
+          <li><b>DL</b> peste joiste; <b>2× H4</b> (inox) pe fiecare joista.</li>
+          <li>Spatiu <b>5 mm</b> intre scanduri — distantier un cui.</li>
+        </ul>
+        <div class="uses"><span class="u">DL</span><span class="u">H4 ×2/joista</span></div>
+      </div>
+      <div class="draw">
+        <svg viewBox="0 0 440 280" aria-label="Dusumea pe joiste cu suruburi inox si gol de 5mm">
+          <rect x="60" y="170" width="320" height="40" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="90" y="196" font-family="Space Mono" font-size="11" font-weight="700">JO</text>
+          <rect x="70" y="118" width="130" height="32" rx="3" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <rect x="214" y="118" width="130" height="32" rx="3" fill="#fff" stroke="#111" stroke-width="2.5"/>
+          <text x="135" y="108" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">DL</text>
+          <text x="279" y="108" text-anchor="middle" font-family="Space Mono" font-size="11" font-weight="700">DL</text>
+          <circle cx="100" cy="134" r="3.4" fill="none" stroke="#111" stroke-width="1.6"/><circle cx="170" cy="134" r="3.4" fill="none" stroke="#111" stroke-width="1.6"/>
+          <circle cx="244" cy="134" r="3.4" fill="none" stroke="#111" stroke-width="1.6"/><circle cx="314" cy="134" r="3.4" fill="none" stroke="#111" stroke-width="1.6"/>
+          <line x1="200" y1="112" x2="214" y2="112" stroke="#111" stroke-width="2"/>
+          <text x="207" y="104" text-anchor="middle" font-family="Space Mono" font-size="9">5mm</text>
+          <circle cx="380" cy="134" r="13" fill="#fff" stroke="#111" stroke-width="2" stroke-dasharray="2.5 2"/><text x="380" y="139" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700">H4</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 AUDIT -->
+  <section>
+    <div class="head"><span class="n">4</span><h2>Audit tehnic</h2></div>
+    <p style="color:#555;font-size:14px;margin:0 0 16px">Verificare punct cu punct. <b>OK</b> = corect prin proiectare. <b>CONDITIE</b> = corect doar daca se executa exact cum scrie.</p>
+    <div class="audit">
+      <div class="arow"><div class="ic">01</div><div class="tx"><b>Grinzi (GR) peste 2100 mm.</b> Glulam 90×200 — sectiune mult peste necesar pentru greutatea casutei + copii. Sageata neglijabila.</div><div class="vd ok">OK</div></div>
+      <div class="arow"><div class="ic">02</div><div class="tx"><b>Joiste (JO) 100×100, deschidere 1780 + consola 700.</b> In regula pentru o podea de joaca. Consola = 39% din deschidere (sub limita de 50%).</div><div class="vd ok">OK</div></div>
+      <div class="arow"><div class="ic">03</div><div class="tx"><b>Ridicarea la consola.</b> Capatul din spate al joistei trebuie tinut jos cu <b>C2</b> — altfel pivoteaza.</div><div class="vd cond">CONDITIE</div></div>
+      <div class="arow"><div class="ic">04</div><div class="tx"><b>Stalpi inalti (ST spate).</b> Suficienti la compresiune; stabilitatea lor depinde de <b>peretii casutei imbracati in placaj</b> (panou rigid).</div><div class="vd cond">CONDITIE</div></div>
+      <div class="arow"><div class="ic">05</div><div class="tx"><b>Stabilitate laterala.</b> Diagonale (CF) in planul stang, drept si fata + peretele din spate. Bulonate/insurubate la ambele capete.</div><div class="vd cond">CONDITIE</div></div>
+      <div class="arow"><div class="ic">06</div><div class="tx"><b>Imbinari grinda→stalp.</b> FATA: grinda pe varful stalpului + C1. SPATE: grinda pe <b>polita lemn (PO) + 2 buloane M12</b> — polita duce greutatea (corectie audit, nu doar coltare).</div><div class="vd ok">OK</div></div>
+      <div class="arow"><div class="ic">07</div><div class="tx"><b>Distanta intre joiste vs dusumea.</b> Larice 28 mm peste interax ≤525 mm — fara flexare.</div><div class="vd ok">OK</div></div>
+      <div class="arow"><div class="ic">08</div><div class="tx"><b>Gaura copacului.</b> Cade intre joistele de la 1380 si 1820 — nicio joista taiata; rama din traverse.</div><div class="vd ok">OK</div></div>
+      <div class="arow"><div class="ic">09</div><div class="tx"><b>Ancore in beton (50–70 cm).</b> Suficiente, dar prinderea stalpului trebuie sa tina si la <b>smulgere</b> (rasturnare la vant).</div><div class="vd cond">CONDITIE</div></div>
+      <div class="arow"><div class="ic">10</div><div class="tx"><b>Balustrada 1 m + poarta la scara.</b> Goluri &lt;90 mm; stalpisorii bulonati de cadru, nu de dusumea.</div><div class="vd cond">CONDITIE</div></div>
+      <div class="arow"><div class="ic">11</div><div class="tx"><b>Durabilitate.</b> Larice + glulam + inox + ulei. Capetele de lemn (trunchi retezat, stalpi) tesite si protejate.</div><div class="vd ok">OK</div></div>
+    </div>
+    <p style="color:#555;font-size:13.5px;margin-top:14px">Concluzie: structura e <b>corecta si robusta</b>. Cele 5 conditii nu sunt slabiciuni de proiect, ci pasi de executie care nu se sar: <b>C2 la consola, placaj pe pereti, diagonale bulonate, anti-smulgere la ancore, balustrada prinsa de cadru.</b></p>
+  </section>
+
+  <!-- 05 SCULE -->
+  <section>
+    <div class="head"><span class="n">5</span><h2>Scule si unelte</h2></div>
+    <div class="grid">
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><rect x="30" y="28" width="34" height="16" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><rect x="64" y="31" width="16" height="10" fill="#111"/><rect x="36" y="44" width="10" height="14" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Masina de insurubat (impact) + biti TX40 si TX30</div><div class="qt">ESENTIAL — pentru Heco</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><circle cx="50" cy="38" r="16" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="50" cy="38" r="3" fill="#111"/><rect x="60" y="20" width="26" height="12" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Fierastrau circular</div><div class="qt">INCHIRIAZA pt weekend</div></div>
+      <div class="cell"><div class="code">·</div>
+        <svg viewBox="0 0 110 70"><rect x="34" y="24" width="20" height="22" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><rect x="42" y="46" width="4" height="16" fill="#111"/></svg>
+        <div class="nm">Fierastrau pendular (decupaj gaura copac)</div><div class="qt">OPTIONAL</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><rect x="30" y="33" width="36" height="6" fill="#111"/><circle cx="68" cy="36" r="9" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Cheie clichet + tubulara 17/19 (buloane M12)</div><div class="qt">ESENTIAL</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><rect x="22" y="32" width="66" height="10" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="55" cy="37" r="2.5" fill="#111"/></svg>
+        <div class="nm">Nivela laser (sau nivela lunga 1–2 m)</div><div class="qt">ESENTIAL — transfer nivel</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><rect x="34" y="28" width="28" height="20" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><path d="M62 38 h18" stroke="#111" stroke-width="2"/><line x1="40" y1="48" x2="40" y2="44" stroke="#111"/></svg>
+        <div class="nm">Ruleta 5 m + creion + sfoara de trasat</div><div class="qt">ESENTIAL</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><path d="M36 24 V50 H70" fill="none" stroke="#111" stroke-width="3"/></svg>
+        <div class="nm">Echer mare (taieturi drepte 90°)</div><div class="qt">ESENTIAL</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><rect x="34" y="28" width="20" height="16" rx="3" fill="#fff" stroke="#111" stroke-width="2"/><g stroke="#111" stroke-width="2"><line x1="54" y1="36" x2="78" y2="36"/></g></svg>
+        <div class="nm">Bormasina + burghie lemn (pregaurit buloane M12)</div><div class="qt">ESENTIAL — doar la buloane</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><path d="M34 26 V50 M34 50 H58" fill="none" stroke="#111" stroke-width="3"/><rect x="30" y="22" width="10" height="8" fill="#111"/><rect x="54" y="46" width="10" height="8" fill="#111"/></svg>
+        <div class="nm">Cleme/menghine (clamps) — tin piesele la insurubat</div><div class="qt">ESENTIAL (2–4 buc)</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><g stroke="#111" stroke-width="2.5" fill="none"><line x1="40" y1="20" x2="40" y2="58"/><line x1="64" y1="20" x2="64" y2="58"/><line x1="40" y1="28" x2="64" y2="28"/><line x1="40" y1="40" x2="64" y2="40"/><line x1="40" y1="52" x2="64" y2="52"/></g></svg>
+        <div class="nm">Scara / schela mica (lucru la ~2 m)</div><div class="qt">ESENTIAL</div></div>
+      <div class="cell"><div class="code">E</div>
+        <svg viewBox="0 0 110 70"><circle cx="44" cy="34" r="10" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="62" cy="34" r="10" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Protectie: ochelari, manusi, antifoane</div><div class="qt">ESENTIAL</div></div>
+      <div class="cell"><div class="code">·</div>
+        <svg viewBox="0 0 110 70"><rect x="44" y="22" width="8" height="22" fill="#111"/><rect x="40" y="44" width="16" height="14" fill="#fff" stroke="#111" stroke-width="2"/></svg>
+        <div class="nm">Pensula/trafalet (ulei larice) + distantier 5 mm</div><div class="qt">la finisaj</div></div>
+    </div>
+    <p class="mono" style="font-size:11.5px;color:#666;margin-top:12px">E = esential · INCHIRIAZA = doar pentru weekendul de constructie · OPTIONAL = util, nu obligatoriu. Heco NU cer pregaurire; pregauresti DOAR la buloanele M12.</p>
+  </section>
+
+  <footer>
+    Coduri: ST GR JO DL BL CF PO (lemn) · C1 C2 H1 H2 H3 H4 B1 B2 (feronerie) · vezi catalogul complet de piese + paritate · Faza platforma · produse Hornbach
+  </footer>
+
+</div>
+</body>
+</html>

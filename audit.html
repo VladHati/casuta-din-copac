@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit tehnic & design — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FAF6EF;--ink:#26241F;--soft:#5C574E;--faint:#938D80;--line:#E7DFD1;--acc:#C2693A;--card:#FFFFFF;--green:#3F6B4E;--amber:#B5852A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+a{color:var(--acc)}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;line-height:1.06}
+.mono{font-family:'Space Mono',monospace}
+.hero{padding:64px 0 26px}
+.hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.hero h1{font-size:clamp(30px,5.5vw,50px);margin:10px 0 12px}
+.hero p{color:var(--soft);max-width:620px;margin:0;font-size:15px}
+.verdict{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:14px;padding:18px 20px;margin:22px 0}
+.verdict .m{font-family:'Space Mono',monospace;font-weight:700;color:var(--green)}
+.verdict p{margin:4px 0 0;font-size:14.5px;color:var(--soft)}
+section{padding:30px 0;border-top:1px solid var(--line)}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.shead .n{font-family:'Space Mono',monospace;color:var(--acc);font-size:13px}
+.shead h2{font-size:clamp(19px,3vw,26px)}
+.row{display:grid;grid-template-columns:1fr 104px;gap:0;border:1px solid var(--line);border-bottom:none;align-items:center;background:var(--card)}
+.row:first-of-type{border-radius:12px 12px 0 0}
+.row:last-of-type{border-bottom:1px solid var(--line);border-radius:0 0 12px 12px}
+.row .tx{padding:13px 16px;font-size:14px}
+.row .tx b{font-weight:600}
+.row .bd{justify-self:center;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:7px;letter-spacing:.03em;text-align:center}
+.bd.ok{background:#111;color:#fff}
+.bd.cond{background:#fff;color:#111;border:2px dashed #111}
+.bd.fix{background:var(--green);color:#fff}
+.bd.dec{background:var(--amber);color:#fff}
+.bd.note{background:#eee;color:#555}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--soft);margin:10px 0 0}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:24px;height:14px;border-radius:5px;display:inline-block}
+footer{padding:30px 0 70px;color:var(--faint);font-size:13px;text-align:center}
+.back{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kick">Audit tehnic &amp; design</div>
+    <h1>Verificarea proiectului</h1>
+    <p>Trecere completa: structura, design, consecventa intre fisiere si ce a ramas deschis. Verdict pe fiecare punct.</p>
+    <a class="back" href="index.html">← inapoi la manual</a>
+  </header>
+
+  <div class="verdict">
+    <span class="m">VERDICT</span>
+    <p><b>Proiectul e corect si robust.</b> Toate neconcordantele de cifre dintre fisiere au fost reparate. Structura e verificata cu calcul; raman <b>conditii de executie</b> (nu slabiciuni de proiect) si cateva <b>decizii de design</b> (umbra balcon, masa-copac) + Faza 2 (pereti, acoperis, scara).</p>
+  </div>
+
+  <div class="legend">
+    <span><i class="bd ok" style="height:14px"></i> OK — corect prin proiectare</span>
+    <span><i class="bd cond"></i> CONDITIE — corect daca se executa exact</span>
+    <span><i class="bd fix"></i> REZOLVAT — corectat in audit</span>
+    <span><i class="bd dec"></i> DE DECIS</span>
+  </div>
+
+  <!-- TEHNIC -->
+  <section>
+    <div class="shead"><span class="n">01</span><h2>Audit tehnic (structura)</h2></div>
+    <div>
+      <div class="row"><div class="tx"><b>Grinzi glulam 90×200 / deschidere 2100.</b> Efort ~2,6 N/mm² din 24 disponibili — folosesti ~10% din capacitate. Zero balans.</div><div class="bd ok">OK</div></div>
+      <div class="row"><div class="tx"><b>Joiste 100×100 / 1780 + consola 700.</b> In regula pentru podea de joaca; consola = 39% (sub limita 50%).</div><div class="bd ok">OK</div></div>
+      <div class="row"><div class="tx"><b>Grinda spate pe POLITA din lemn + 2× M12</b> (nu doar coltare). Era subdimensionat — corectat acum in toate fisierele.</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx"><b>Ridicarea la consola.</b> Capatul din spate al joistei tinut jos cu coltar <b>C2</b>.</div><div class="bd cond">CONDITIE</div></div>
+      <div class="row"><div class="tx"><b>Stalpi inalti din spate.</b> Pana la peretii din Faza 2, varfurile se tin cu <b>proptele temporare</b> (de la varf la podea). Rigiditatea finala vine din peretii imbracati in placaj.</div><div class="bd cond">CONDITIE</div></div>
+      <div class="row"><div class="tx"><b>Stabilitate laterala.</b> Diagonale in 3 plane + diafragma de podea; bulonate la ambele capete.</div><div class="bd cond">CONDITIE</div></div>
+      <div class="row"><div class="tx"><b>Baza stalpilor: papuc reazem U (101×100, otel 4 mm)</b> in beton 50–70 cm. Stalpul fixat cu <b>buloane M12 prin aripi</b> = tine la smulgere. Baza articulata + structura bracata = corect.</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx"><b>Acoperisul casutei sa ramana usor</b> (policarbonat). Peretele frontal al casutei sta pe joiste, nu pe stalpi.</div><div class="bd cond">CONDITIE</div></div>
+      <div class="row"><div class="tx"><b>Dusumea larice 28 mm / interax ≤440 mm.</b> Fara flexare.</div><div class="bd ok">OK</div></div>
+      <div class="row"><div class="tx"><b>Gaura copacului</b> intre joistele 1380 si 1820 — nicio joista taiata, rama din traverse.</div><div class="bd ok">OK</div></div>
+      <div class="row"><div class="tx"><b>Balustrada 1 m + poarta la S4;</b> stalpisorii bulonati de cadru, nu de dusumea.</div><div class="bd cond">CONDITIE</div></div>
+      <div class="row"><div class="tx"><b>Durabilitate.</b> Larice + glulam + inox + ulei; capetele de lemn tesite si protejate.</div><div class="bd ok">OK</div></div>
+    </div>
+  </section>
+
+  <!-- DESIGN -->
+  <section>
+    <div class="shead"><span class="n">02</span><h2>Audit de design</h2></div>
+    <div>
+      <div class="row"><div class="tx"><b>Forma.</b> Cutie inchisa in spate + balcon in consola in fata + acoperis intr-o apa = volum citibil, onest, fara kitsch.</div><div class="bd ok">OK</div></div>
+      <div class="row"><div class="tx"><b>Umbra balconului.</b> Retezand corcodusul, ai scos umbra de pe cel mai folosit loc. Merita o solutie (panza/pergola sau pastrezi mai mult din copac).</div><div class="bd dec">DE DECIS</div></div>
+      <div class="row"><div class="tx"><b>Masa-copac.</b> Trunchi mort = farmec acum, dar termen de expirare. Blatul se fixeaza de podea, nu de copac.</div><div class="bd dec">DE DECIS</div></div>
+      <div class="row"><div class="tx"><b>Perete casuta 1300 mm.</b> Bun pentru Tudor acum; il va depasi in cativa ani. Compromis constient.</div><div class="bd note">NOTAT</div></div>
+      <div class="row"><div class="tx"><b>Documentatia.</b> Manual unic, modele 3D, ghid printabil, coduri consecvente, tracker. Coerent si usor de urmarit.</div><div class="bd ok">OK</div></div>
+    </div>
+  </section>
+
+  <!-- CONSECVENTA -->
+  <section>
+    <div class="shead"><span class="n">03</span><h2>Consecventa intre fisiere</h2></div>
+    <p style="color:var(--soft);font-size:14px;margin:0 0 14px">Un agent a verificat toate paginile fata de valorile canonice. Neconcordantele gasite (cifre vechi ramase) — toate reparate:</p>
+    <div>
+      <div class="row"><div class="tx">Sectiune grinzi <b>80×140 → glulam 90×200</b> (in dosar, ghid-montaj, platforma-3d).</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx"><b>Polita la grinda spate</b> adaugata in platforma-3d si in dosar (lipsea).</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx">Consola <b>500 → 700 mm</b> (o linie ramasa in pagina vizuala).</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx">Numar joiste <b>5 → 6</b> (4 Leroy + 2 noi) in dosar.</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx">Comentariu cod <b>S3 → S4</b> (poarta) in platforma-3d.</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx">Restul fisierelor (montaj-3d, imbinari-ghid, imbinari, imbinare-3d, imbinari-3d-ghid) — deja aliniate. Link-uri OK, fara erori de cod.</div><div class="bd ok">OK</div></div>
+    </div>
+  </section>
+
+  <!-- DESCHIS -->
+  <section>
+    <div class="shead"><span class="n">04</span><h2>Ce a ramas deschis</h2></div>
+    <div>
+      <div class="row"><div class="tx"><b>Geometria scarii</b> — proiectata: 11 trepte (riser 200, calcai 190, ~49°, latime 600), mana curenta pe ambele parti, poarta la S4. Vezi scara-3d.html.</div><div class="bd fix">REZOLVAT</div></div>
+      <div class="row"><div class="tx"><b>Invelitoarea acoperisului</b> (policarbonat vs sindrila) + un mic <b>jgheab/streasin</b> ca apa sa nu pice pe balcon.</div><div class="bd dec">DE DECIS</div></div>
+      <div class="row"><div class="tx"><b>Umbra balconului</b> si <b>soarta cioatei</b> de corcodus (vie = lastari / moarta = putrezeste).</div><div class="bd dec">DE DECIS</div></div>
+      <div class="row"><div class="tx"><b>Faza 2:</b> pereti imbracati, acoperis, scara, masa — proiectare separata dupa platforma.</div><div class="bd note">URMEAZA</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mono">Audit · faza platforma · 2026</p>
+    <p>Cele 5 conditii de executie nu sunt slabiciuni — sunt pasii care nu se sar: C2 la consola · polita + M12 la grinda spate · placaj pe pereti · diagonale bulonate · anti-smulgere la ancore · balustrada prinsa de cadru.</p>
+    <a class="back" href="index.html">← inapoi la manual</a>
+  </footer>
+</div>
+</body>
+</html>

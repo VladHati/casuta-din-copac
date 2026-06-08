@@ -1,0 +1,44 @@
+name: Build PDF + Deploy pe Netlify
+
+# La fiecare push pe main: regenereaza PDF-urile din HTML, apoi publica pe Netlify.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # buton manual de rulare in tab-ul Actions
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Dependinte sistem pentru WeasyPrint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpango-1.0-0 libpangocairo-1.0-0 libcairo2 \
+            libgdk-pixbuf-2.0-0 libffi-dev fonts-dejavu-core
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instaleaza pachetele Python
+        run: pip install -r requirements.txt
+
+      - name: Regenereaza PDF-urile
+        run: python3 build_pdfs.py
+
+      - name: Deploy pe Netlify (productie)
+        run: |
+          npx --yes netlify-cli@latest deploy \
+            --prod \
+            --dir="." \
+            --site="$NETLIFY_SITE_ID" \
+            --auth="$NETLIFY_AUTH_TOKEN" \
+            --message="CI: ${{ github.event.head_commit.message }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

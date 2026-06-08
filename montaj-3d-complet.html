@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Montaj 3D complet — platforma pas cu pas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F1EA;--ink:#26241F;--soft:#5C574E;--faint:#938D80;--line:#E2DACB;--acc:#C2693A;--card:#FFFFFF;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif}
+.wrap{max-width:1060px;margin:0 auto;padding:22px 20px 50px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw,36px);margin:0 0 4px}
+.lead{color:var(--soft);margin:0 0 16px;font-size:15px;max-width:720px}
+.stage{position:relative;width:100%;height:min(66vh,540px);background:linear-gradient(#FBFAF6,#EFEBE1);border:1px solid var(--line);border-radius:18px 18px 0 0;overflow:hidden;touch-action:none}
+#cv{display:block;width:100%;height:100%}
+.hint{position:absolute;left:14px;bottom:12px;font-family:'Space Mono',monospace;font-size:11px;color:var(--soft);background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:8px;padding:5px 9px}
+.views{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.views button{font-size:11px;border:1px solid var(--line);background:rgba(255,255,255,.9);border-radius:999px;padding:5px 10px;cursor:pointer}
+.layers{position:absolute;right:12px;top:12px;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12px;max-height:88%;overflow:auto;backdrop-filter:blur(4px)}
+.layers h3{font-family:'Space Mono',monospace;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 7px}
+.layers label{display:flex;align-items:center;gap:7px;padding:2.5px 0;cursor:pointer;white-space:nowrap}
+.layers .sw{width:11px;height:11px;border-radius:3px;border:1px solid rgba(0,0,0,.2);flex:0 0 auto}
+.bar{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-top:none;border-radius:0 0 18px 18px;padding:16px 18px}
+.bar .nav{font-size:14px;cursor:pointer;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 16px;font-weight:600}
+.bar .nav:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:7px;flex:1;flex-wrap:wrap}
+.dot{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);font-family:'Space Mono',monospace;font-size:11px;display:grid;place-items:center;cursor:pointer;background:#fff}
+.dot.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dot.done{border-color:var(--acc);color:var(--acc)}
+.inst{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px}
+.inst .num{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:11px;background:var(--ink);color:#fff;font-family:'Space Mono',monospace;font-weight:700;font-size:18px;margin-bottom:10px}
+.inst h2{font-family:'Fraunces',serif;font-size:23px;margin:0 0 4px}
+.inst .tools{font-family:'Space Mono',monospace;font-size:11px;color:var(--faint);margin-bottom:10px}
+.inst ol{margin:0;padding-left:20px;color:var(--soft);font-size:15px}
+.inst ol li{margin:6px 0}
+.inst ol li b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:7px;padding:3px 9px}
+.chip.f{border-style:dashed;color:var(--acc);border-color:var(--acc)}
+.crit{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;color:#fff;background:var(--acc);border-radius:6px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+.codes{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--faint);margin-top:16px;text-align:center}
+@media(max-width:640px){.layers{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Montajul platformei, in 3D — pas cu pas</h1>
+  <p class="lead">Apasa <b>Inainte / Inapoi</b> ca sa construiesti etapa cu etapa. Modelul ramane rotabil (trage = roteste, scroll/pinch = zoom). Din <b>Layere</b> (dreapta) aprinzi/stingi categorii independent. Pasii rosii sunt critici.</p>
+
+  <div class="stage">
+    <canvas id="cv"></canvas>
+    <div class="views">
+      <button data-v="iso">3/4</button><button data-v="fata">Fata</button><button data-v="lat">Lateral</button><button data-v="sus">Sus</button>
+    </div>
+    <div class="layers"><h3>Layere</h3><div id="layerList"></div></div>
+    <div class="hint">trage = roteste · scroll = zoom</div>
+  </div>
+  <div class="bar">
+    <button class="nav" id="prev">◀ Inapoi</button>
+    <div class="dots" id="dots"></div>
+    <button class="nav" id="next">Inainte ▶</button>
+  </div>
+
+  <div class="inst" id="inst"></div>
+  <div class="codes">ST stalp · GR grinda glulam · JO joista · BL blocaj · CF contrafisa · DL dusumea larice · C1/C2 coltare · H1/H4 suruburi · detaliul nodului: imbinare-3d.html</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const cv=document.getElementById('cv'),stage=cv.parentElement;
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(44,1,0.1,100);
+  scene.add(new THREE.HemisphereLight(0xffffff,0xb7ad97,1.0));
+  const d1=new THREE.DirectionalLight(0xffffff,0.55);d1.position.set(4,7,5);scene.add(d1);
+  const d2=new THREE.DirectionalLight(0xffffff,0.22);d2.position.set(-5,3,-4);scene.add(d2);
+  const root=new THREE.Group();scene.add(root);
+  const edgeMat=new THREE.LineBasicMaterial({color:0x3a342b,transparent:true,opacity:0.34});
+  function mat(c,m=0,r=0.85){return new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});}
+  const COL={post:mat(0xB98A55),fpost:mat(0xE0C293),offcut:mat(0xEAD9BC),beam:mat(0xCDB07E),joist:mat(0xD7B488),
+    deck:mat(0xE0CDA6),brace:mat(0xA8623A),metal:mat(0xB7BBC2,0.5,0.4),trunk:mat(0x7A5A3C),
+    rail:mat(0xCBA372),anchor:mat(0x6f6f6f),temp:mat(0x9b958a),ground:new THREE.MeshStandardMaterial({color:0xE3E1D2,roughness:1})};
+
+  // layer groups
+  const LAYERS=['sol','posts','beams','joists','metal','block','brace','temp','temptop','deck','rail','tree','labels'];
+  const G={};LAYERS.forEach(k=>{G[k]=new THREE.Group();root.add(G[k]);});
+  const layerOn={};LAYERS.forEach(k=>layerOn[k]=true);
+
+  function box(w,h,d,material,x,y,z,layer,step,maxStep){
+    const g=new THREE.BoxGeometry(w,h,d);const m=new THREE.Mesh(g,material);m.position.set(x,y,z);
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeMat);e.position.set(x,y,z);
+    [m,e].forEach(o=>{o.userData={step,max:maxStep};G[layer].add(o);});
+  }
+  function cyl(r1,r2,h,material,x,y,z,layer,step){const m=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,18),material);m.position.set(x,y,z);m.userData={step};G[layer].add(m);}
+  function strut(ax,ay,az,bx,by,bz,sec,material,layer,step){
+    const a=new THREE.Vector3(ax,ay,az),b=new THREE.Vector3(bx,by,bz);const dir=new THREE.Vector3().subVectors(b,a);const len=dir.length();
+    const m=new THREE.Mesh(new THREE.BoxGeometry(sec,len,sec),material);
+    m.position.copy(a).addScaledVector(dir,0.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.clone().normalize());
+    m.userData={step};G[layer].add(m);
+  }
+  function lbl(t,x,y,z,layer,step,maxStep,color){
+    const c=document.createElement('canvas');c.width=220;c.height=104;const ctx=c.getContext('2d');
+    ctx.fillStyle='rgba(255,255,255,0.93)';rr(ctx,6,28,208,48,12);ctx.fill();
+    ctx.strokeStyle=color||'#26241F';ctx.lineWidth=3;rr(ctx,6,28,208,48,12);ctx.stroke();
+    ctx.fillStyle=color||'#26241F';ctx.font='bold 32px "Space Mono",monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t,110,52);
+    const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));
+    sp.position.set(x,y,z);sp.scale.set(0.44,0.21,1);sp.userData={step,max:maxStep};G[layer].add(sp);
+  }
+  function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+  // ===== geometrie (m) =====
+  const W=2.1,D=1.78,FLOOR=2.2,PS=0.1;
+  const deckThk=0.028,jH=0.1,beamH=0.20,beamD=0.09;
+  const beamTop=FLOOR-deckThk-jH, beamCy=beamTop-beamH/2, jCy=beamTop+jH/2;
+  const fCut=beamTop-beamH;            // 1.872 : inaltimea de taiere a stalpilor fata
+  const backBeamZ=D-(PS/2+beamD/2), frontBeamZ=0;
+  const jBack=D-PS/2,jFront=-0.7,jCz=(jBack+jFront)/2,jLen=jBack-jFront;
+  const jx=[0.12,0.55,0.98,1.38,1.82,2.0];
+  const wallZ=D-1.1,RTOP=FLOOR+1.0,tableY=FLOOR+0.58,trunkX=1.6,trunkZ=-0.2;
+
+  // sol + ancore (step1)
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(9,9),COL.ground);ground.rotation.x=-Math.PI/2;ground.userData={step:1};G.sol.add(ground);
+  [[0,0],[W,0],[0,D],[W,D]].forEach(p=>box(0.16,0.2,0.16,COL.anchor,p[0],-0.06,p[1],'sol',1));
+
+  // STALPI: spate (intregi), fata baza (0..1.872) + offcut (1.872..3.7, dispare la pasul 2)
+  box(PS,3.7,PS,COL.post,0,1.85,D,'posts',1); box(PS,3.7,PS,COL.post,W,1.85,D,'posts',1);
+  box(PS,fCut,PS,COL.fpost,0,fCut/2,0,'posts',1); box(PS,fCut,PS,COL.fpost,W,fCut/2,0,'posts',1);
+  box(PS,3.7-fCut,PS,COL.offcut,0,(fCut+3.7)/2,0,'posts',1,1); box(PS,3.7-fCut,PS,COL.offcut,W,(fCut+3.7)/2,0,'posts',1,1);
+  lbl('S1',-0.16,3.4,D,'labels',1); lbl('S2',W+0.18,3.4,D,'labels',1);
+  lbl('S3',W+0.18,fCut+0.12,0,'labels',1); lbl('S4',-0.18,fCut+0.12,0,'labels',1);
+  // marker taiere (doar pasul 2)
+  lbl('taie 1872',-0.2,fCut,0,'labels',2,2,'#C2693A'); lbl('taie 1872',W+0.22,fCut,0,'labels',2,2,'#C2693A');
+
+  // proptele provizorii (step1..6)
+  strut(0,0.9,D,-0.5,0.02,D,0.05,COL.temp,'temp',1); strut(W,0.9,D,W+0.5,0.02,D,0.05,COL.temp,'temp',1);
+  strut(0,0.9,0,-0.5,0.02,0,0.05,COL.temp,'temp',1); strut(W,0.9,0,W+0.5,0.02,0,0.05,COL.temp,'temp',1);
+
+  // GRINZI (step3) + C1
+  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,backBeamZ,'beams',3);
+  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,frontBeamZ,'beams',3);
+  // grinda FATA: pe varful stalpilor + coltare C1
+  function C1(px,pz){box(0.09,0.006,0.08,COL.metal,px+0.06,beamCy-beamH/2+0.003,pz,'metal',3);box(0.006,0.09,0.08,COL.metal,px+0.052,beamCy-beamH/2-0.045,pz,'metal',3);}
+  C1(0,frontBeamZ);C1(W,frontBeamZ);
+  // grinda SPATE: pe POLITA din lemn bulonata in stalp (M12) — corectie audit
+  function POL(px){
+    box(0.12,0.10,0.10,COL.beam, px, beamCy-beamH/2-0.05, backBeamZ, 'beams',3);
+    box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.028, backBeamZ+0.01, 'metal',3);
+    box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.072, backBeamZ+0.01, 'metal',3);
+  }
+  POL(0);POL(W);
+  lbl('GR',W/2,beamCy+0.18,frontBeamZ-0.05,'labels',3);
+  lbl('polita',0,beamCy-beamH/2-0.05,backBeamZ-0.14,'labels',3,undefined,'#7A5A3C');
+  // proptele TEMPORARE la varful stalpilor inalti — raman pana la peretii din Faza 2
+  strut(0,3.4,D, 0,FLOOR,D-0.7, 0.05, COL.temp,'temptop',3);
+  strut(W,3.4,D, W,FLOOR,D-0.7, 0.05, COL.temp,'temptop',3);
+  lbl('proptea temp',0,3.5,D-0.35,'temptop',3,undefined,'#8a857c');
+
+  // JOISTE (step4) + C2
+  jx.forEach(x=>box(0.1,jH,jLen,COL.joist,x,jCy,jCz,'joists',4));
+  jx.forEach(x=>{box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,frontBeamZ+0.05,'metal',4);box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,backBeamZ-0.05,'metal',4);});
+  lbl('JO',jx[1],jCy+0.16,jCz,'labels',4);
+
+  // GAURA + COPAC (step5)
+  box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.05,'joists',5); box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.35,'joists',5);
+  cyl(0.08,0.09,tableY,COL.trunk,trunkX,tableY/2,trunkZ,'tree',5);
+  cyl(0.26,0.26,0.03,mat(0xCDA877),trunkX,tableY+0.015,trunkZ,'tree',5);
+  lbl('copac',trunkX,tableY+0.2,trunkZ,'tree',5,undefined,'#7A5A3C');
+
+  // BLOCAJE (step6)
+  for(let i=0;i<jx.length-1;i++){const cx=(jx[i]+jx[i+1])/2,bw=(jx[i+1]-jx[i])-0.1;box(bw,jH,0.08,COL.joist,cx,jCy,backBeamZ,'block',6);box(bw,jH,0.08,COL.joist,cx,jCy,frontBeamZ,'block',6);}
+
+  // CONTRAVANTUIRI (step7)
+  strut(0,1.05,jBack,0,fCut,0.05,0.08,COL.brace,'brace',7); strut(W,1.05,jBack,W,fCut,0.05,0.08,COL.brace,'brace',7);
+  strut(0.05,1.05,0,0.95,fCut,0,0.08,COL.brace,'brace',7); strut(W-0.05,1.05,0,W-0.95,fCut,0,0.08,COL.brace,'brace',7);
+  strut(0,1.1,0.05,0,jCy-0.06,-0.55,0.07,COL.brace,'brace',7); strut(W,1.1,0.05,W,jCy-0.06,-0.55,0.07,COL.brace,'brace',7);
+
+  // DUSUMEA (step8)
+  const deckY=FLOOR-deckThk/2,hx=[1.45,1.75],hz=[-0.36,-0.04];
+  for(let z=jFront+0.075;z<=jBack-0.02;z+=0.15){
+    if(z>hz[0]&&z<hz[1]){box(hx[0],deckThk,0.145,COL.deck,hx[0]/2,deckY,z,'deck',8);box(W-hx[1],deckThk,0.145,COL.deck,(W+hx[1])/2,deckY,z,'deck',8);}
+    else box(W,deckThk,0.145,COL.deck,W/2,deckY,z,'deck',8);}
+  lbl('DL',0.4,deckY+0.05,jFront+0.2,'deck',8);
+
+  // BALUSTRADA (step9)
+  const infill=new THREE.MeshStandardMaterial({color:0xE9DCC4,roughness:0.9,transparent:true,opacity:0.3});
+  function railSeg(x1,z1,x2,z2){const mx=(x1+x2)/2,mz=(z1+z2)/2,lx=Math.abs(x2-x1),lz=Math.abs(z2-z1),h=lx>lz;
+    box(h?lx+0.06:0.06,0.06,h?0.06:lz+0.06,COL.rail,mx,RTOP,mz,'rail',9);
+    box(h?lx:0.02,0.94,h?0.02:lz,infill,mx,FLOOR+0.49,mz,'rail',9);
+    box(0.06,1.0,0.06,COL.rail,x1,FLOOR+0.5,z1,'rail',9);box(0.06,1.0,0.06,COL.rail,x2,FLOOR+0.5,z2,'rail',9);}
+  railSeg(0,-0.7,W,-0.7);railSeg(W,-0.7,W,wallZ);railSeg(0,-0.7,0,-0.05);railSeg(0,0.30,0,wallZ);
+  lbl('poarta',-0.16,RTOP+0.05,0.12,'rail',9,undefined,'#C2693A');
+
+  // ===== etape (instructiuni complete) =====
+  const steps=[
+   {t:"Stalpii in ancore",tools:"nivela · bormasina/cheie · proptele din resturi",crit:1,
+    b:["Aseaza toti <b>4 stalpii (ST)</b> in ancorele din beton. Lasa-i la lungime mare — <b>NU ii tai inca</b>.","Prinde-i in ancora doar <b>slab</b> (suruburile puse, nestranse).","Adu fiecare stalp <b>perfect vertical</b> (la plumb) pe doua fete vecine, cu nivela.","Sprijina fiecare cu <b>2 proptele provizorii</b> batute in pamant.","Nu strange definitiv pana nu termini pasul 2."],c:["ST ×4"],f:["proptele"]},
+   {t:"Marcheaza nivelul si taie stalpii din fata",tools:"nivela lunga / laser / furtun cu apa · fierastrau · echer",crit:1,
+    b:["Alege un punct de referinta pe un stalp si <b>transfera linia pe toti 4</b> cu nivela lunga pe o scandura dreapta (sau laser). <b>NU masura separat</b> pe fiecare — erorile se aduna.","Taie <b>S3 si S4 (fata) la 1872 mm</b> de la sol. Acolo se aseaza grinda PE varful lor.","<b>1872 = 2200 (podea) − 28 (dusumea) − 100 (joista) − 200 (grinda).</b>","<b>S1 si S2 (spate) NU se taie</b> — raman inalti pentru casuta; grinda spate se prinde pe fata lor.","Taie drept cu echerul; teseste muchia de sus. Acum poti strange definitiv ancorele."],c:["taiere 1872"],f:[]},
+   {t:"Grinzile principale",tools:"2 persoane · bormasina · coltare C1 · suruburi H1",crit:1,
+    b:["Grinda fata (<b>GR</b>) se aseaza <b>PE varful</b> stalpilor S3/S4, fixata cu coltare C1 + H1.","Grinda spate se reazema pe o <b>POLITA din lemn</b> (bloc 100×100) bulonata in stalpii S1/S2 cu <b>2 buloane M12</b>; grinda sta PE polita.","<b>Polita duce greutatea</b>; coltarele/suruburile doar tin grinda lipita. (Asta e corectia din audit.)","Verifica: ambele grinzi <b>perfect orizontale</b>, fata de sus la 2072 mm."],c:["GR ×2","polita ×2"],f:["C1 ×4","M12 ×4","H1"]},
+   {t:"Joistele",tools:"coltare C2 · suruburi H2 · metru",crit:1,
+    b:["Aseaza <b>6 joiste (JO)</b> peste cele doua grinzi, din fata in spate.","Pozitii masurate <b>de la S4: 120 · 550 · 980 · 1380 · 1820 · 2000 mm</b>.","Capetele din fata ies <b>700 mm in consola</b> (balconul).","La fiecare reazem, <b>coltar C2</b> — tine joista si la <b>ridicare</b> (consola).","Joistele dintr-o singura bucata (continue)."],c:["JO ×6"],f:["C2 ×12","H2"]},
+   {t:"Gaura copacului + masa",tools:"fierastrau · daltita",crit:0,
+    b:["Intre joistele de la <b>1380 si 1820</b>, pune <b>2 traverse</b> (sus + jos) = rama gaurii.","Corcodusul (spre <b>S3</b>) trece prin gaura; il <b>retezi la inaltimea blatului</b> (~+2780 mm).","Lasa <b>joc 3–5 cm</b> jur-imprejurul trunchiului.","Blatul mesei se va fixa de <b>podea</b>, nu de copac."],c:["traverse ×2"],f:[]},
+   {t:"Blocaje intre joiste",tools:"suruburi H3",crit:0,
+    b:["Bucati scurte (<b>BL</b>), din capete de offcut, intre joiste, <b>peste fiecare grinda</b>.","Prinse cu <b>H3</b> oblic. Opresc rasucirea joistelor — podea ferma, fara balans."],c:["BL"],f:["H3"]},
+   {t:"Contravantuiri",tools:"bormasina · suruburi H1",crit:1,
+    b:["Monteaza diagonalele (<b>CF</b>): in planul <b>stang, drept si fata</b>, plus 2 sub nasul consolei.","Prinse la <b>ambele capete</b> (H1). Acum platforma e rigida.","Scoate proptelele de la <b>baza</b>. <b>Proptelele de la VARFUL stalpilor inalti RAMAN</b> pana monteaza peretii casutei (Faza 2) — altfel varfurile se leagana."],c:["CF ×6"],f:["H1"]},
+   {t:"Dusumea larice",tools:"masina insurubat · distantier (cui) · ulei",crit:0,
+    b:["Scanduri larice (<b>DL</b>) peste joiste, perpendicular.","<b>2 suruburi inox (H4)</b> pe fiecare joista; <b>gol 5 mm</b> intre scanduri (un cui ca distantier).","La copac, taie scandurile in jurul gaurii, cu joc.","Da cu <b>ulei</b> dupa montaj."],c:["DL ×17"],f:["H4"]},
+   {t:"Balustrada + poarta",tools:"bormasina · buloane",crit:1,
+    b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b>.","<b>Poarta pe partea S4</b> (opusa mesei-copac), unde urca scara.","Stalpisorii balustradei <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
+  ];
+
+  let cur=1;const N=9;
+  const instEl=document.getElementById('inst'),dotsEl=document.getElementById('dots'),listEl=document.getElementById('layerList');
+  for(let i=1;i<=N;i++){const d=document.createElement('div');d.className='dot';d.textContent=i;d.onclick=()=>go(i);dotsEl.appendChild(d);}
+
+  // layer panel
+  const layerMeta=[['posts','Stalpi','#B98A55'],['beams','Grinzi','#CDB07E'],['joists','Joiste','#D7B488'],['metal','Coltare','#B7BBC2'],['block','Blocaje','#C9A06A'],['brace','Contravantuiri','#A8623A'],['temp','Proptele','#9b958a'],['deck','Dusumea','#E0CDA6'],['rail','Balustrada','#CBA372'],['tree','Copac+masa','#7A5A3C'],['temptop','Proptele varf','#9b958a'],['sol','Sol+ancore','#C7C0B2'],['labels','Etichete','#938D80']];
+  layerMeta.forEach(([k,n,c])=>{const lab=document.createElement('label');lab.innerHTML='<input type="checkbox" checked><span class="sw" style="background:'+c+'"></span>'+n;lab.querySelector('input').addEventListener('change',e=>{layerOn[k]=e.target.checked;render();});listEl.appendChild(lab);});
+
+  function render(){
+    LAYERS.forEach(k=>{const on=layerOn[k];G[k].children.forEach(ch=>{const u=ch.userData||{};ch.visible=on&&(u.step===undefined||u.step<=cur)&&(u.max===undefined||cur<=u.max);});});
+    // proptele dispar de la pasul 7
+    G.temp.children.forEach(ch=>{if(cur>=7)ch.visible=false;});
+    const s=steps[cur-1];
+    instEl.innerHTML='<div class="num">'+cur+'</div><h2>'+s.t+(s.crit?'<span class="crit">CRITIC</span>':'')+'</h2><div class="tools">SCULE: '+s.tools+'</div><ol>'+s.b.map(x=>'<li>'+x+'</li>').join('')+'</ol><div class="chips">'+s.c.map(x=>'<span class="chip">'+x+'</span>').join('')+s.f.map(x=>'<span class="chip f">'+x+'</span>').join('')+'</div>';
+    [...dotsEl.children].forEach((d,i)=>{d.classList.toggle('on',i+1===cur);d.classList.toggle('done',i+1<cur);});
+    document.getElementById('prev').disabled=(cur===1);document.getElementById('next').disabled=(cur===N);
+  }
+  function go(i){cur=Math.max(1,Math.min(N,i));render();}
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  document.getElementById('next').onclick=()=>go(cur+1);
+
+  // orbit
+  const target=new THREE.Vector3(W/2,1.4,jCz);
+  let az=0.8,pol=1.05,dist=6.8;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  function update(){pol=clamp(pol,0.12,1.55);dist=clamp(dist,3,18);camera.position.set(target.x+dist*Math.sin(pol)*Math.sin(az),target.y+dist*Math.cos(pol),target.z+dist*Math.sin(pol)*Math.cos(az));camera.lookAt(target);}
+  let drag=false,px=0,py=0;
+  cv.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointerup',()=>drag=false);
+  cv.addEventListener('pointermove',e=>{if(!drag)return;az-=(e.clientX-px)*0.006;pol-=(e.clientY-py)*0.006;px=e.clientX;py=e.clientY;update();});
+  cv.addEventListener('wheel',e=>{e.preventDefault();dist*=(1+e.deltaY*0.0012);update();},{passive:false});
+  let pinch=0;
+  cv.addEventListener('touchmove',e=>{if(e.touches.length===2){const dx=e.touches[0].clientX-e.touches[1].clientX,dy=e.touches[0].clientY-e.touches[1].clientY,dd=Math.hypot(dx,dy);if(pinch){dist*=(1+(pinch-dd)*0.004);update();}pinch=dd;e.preventDefault();}},{passive:false});
+  cv.addEventListener('touchend',()=>pinch=0);
+  const views={iso:[0.8,1.05,6.8],fata:[Math.PI,1.28,6.4],lat:[Math.PI/2,1.22,6.6],sus:[0.8,0.2,7.8]};
+  document.querySelectorAll('.views button').forEach(b=>b.onclick=()=>{const v=views[b.dataset.v];az=v[0];pol=v[1];dist=v[2];update();});
+  function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  window.addEventListener('resize',resize);resize();update();render();
+  (function loop(){requestAnimationFrame(loop);renderer.render(scene,camera);})();
+})();
+</script>
+</body>
+</html>

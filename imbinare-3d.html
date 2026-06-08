@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbinare 3D — nodul stalp / grinda / joista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F1EA;--ink:#26241F;--soft:#5C574E;--faint:#938D80;--line:#E2DACB;--acc:#C2693A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 20px 50px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw,36px);margin:0 0 4px}
+.lead{color:var(--soft);margin:0 0 16px;font-size:15px;max-width:680px}
+.stage{position:relative;width:100%;height:min(72vh,580px);background:linear-gradient(#FBFAF6,#EFEBE1);border:1px solid var(--line);border-radius:18px;overflow:hidden;touch-action:none}
+#cv{display:block;width:100%;height:100%}
+.hint{position:absolute;left:14px;bottom:12px;font-family:'Space Mono',monospace;font-size:11px;color:var(--soft);background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:8px;padding:5px 9px}
+.layers{position:absolute;right:14px;top:14px;background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:12.5px}
+.layers h3{font-family:'Space Mono',monospace;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+.layers label{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;white-space:nowrap}
+.layers .sw{width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.2)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.btn{font-size:13px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 15px;transition:.15s}
+.btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.codes{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 22px;margin-top:18px;font-size:13px}
+@media(max-width:640px){.codes{grid-template-columns:1fr}.layers{font-size:11px;right:8px;top:8px}}
+.codes div{display:flex;gap:8px}
+.codes .c{font-family:'Space Mono',monospace;font-weight:700;min-width:26px}
+.codes .s{color:var(--soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Imbinarea, in 3D</h1>
+  <p class="lead"><b>Nodul din FATA</b>: stalp taiat + grinda glulam <b>pe varful lui</b> + joista + dusumea, cu coltarele (C1/C2) si suruburile la scara. (Nodul din SPATE e diferit: grinda pe o <b>polita din lemn + 2 buloane M12</b> — vezi imbinari-ghid.html / montaj-3d-complet.html.) Trage ca sa rotesti, scroll/pinch zoom. Stinge layere ca sa vezi pe rand lemnul, coltarele, suruburile.</p>
+
+  <div class="stage">
+    <canvas id="cv"></canvas>
+    <div class="layers"><h3>Layere</h3><div id="layerList"></div></div>
+    <div class="hint">trage = roteste · scroll = zoom</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" data-v="iso">3/4</button>
+    <button class="btn" data-v="fata">Fata</button>
+    <button class="btn" data-v="lat">Lateral</button>
+    <button class="btn" data-v="sus">Sus</button>
+    <button class="btn" data-v="jos">De dedesubt</button>
+    <button class="btn" id="reset">Reset</button>
+  </div>
+
+  <div class="codes">
+    <div><span class="c">ST</span><span class="s">stalp 100×100</span></div>
+    <div><span class="c">C1</span><span class="s">coltar 100×100×90 (grinda→stalp), 2 buc</span></div>
+    <div><span class="c">GR</span><span class="s">grinda glulam 90×200, pe varful stalpului</span></div>
+    <div><span class="c">C2</span><span class="s">coltar 90×90 (joista→grinda), anti-ridicare</span></div>
+    <div><span class="c">JO</span><span class="s">joista 100×100, peste grinda</span></div>
+    <div><span class="c">H1</span><span class="s">Heco 8×200 — in stalp si in grinda</span></div>
+    <div><span class="c">DL</span><span class="s">dusumea larice 28×145, gol 5 mm</span></div>
+    <div><span class="c">H4</span><span class="s">surub inox 5×60 — dusumea (2/joista)</span></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const cv=document.getElementById('cv'),stage=cv.parentElement;
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(42,1,0.01,50);
+  scene.add(new THREE.HemisphereLight(0xffffff,0xb7ad97,1.0));
+  const d1=new THREE.DirectionalLight(0xffffff,0.6);d1.position.set(1.5,2.5,2);scene.add(d1);
+  const d2=new THREE.DirectionalLight(0xffffff,0.25);d2.position.set(-2,1.5,-1.5);scene.add(d2);
+  const root=new THREE.Group();scene.add(root);
+  const edgeMat=new THREE.LineBasicMaterial({color:0x3a342b,transparent:true,opacity:0.4});
+
+  const G={};['wood','brackets','screws','deck','labels'].forEach(k=>{G[k]=new THREE.Group();root.add(G[k]);});
+  function mat(c,m=0,r=0.85){return new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});}
+  const COL={st:mat(0xE6D2A8),gr:mat(0xDCC393),jo:mat(0xE6D2A8),dl:mat(0xE0C795),
+    metal:mat(0xB7BBC2,0.6,0.4),screw:mat(0x33312c,0.5,0.5),inox:mat(0xCfD3D8,0.7,0.4)};
+
+  function wbox(w,h,d,x,y,z,material,group){
+    const g=new THREE.BoxGeometry(w,h,d);
+    const m=new THREE.Mesh(g,material);m.position.set(x,y,z);group.add(m);
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeMat);e.position.set(x,y,z);group.add(e);
+    return m;
+  }
+  // screw along a unit direction
+  function screw(x,y,z,dx,dy,dz,len,material,group){
+    const dir=new THREE.Vector3(dx,dy,dz).normalize();
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.004,0.004,len,8),material);
+    const head=new THREE.Mesh(new THREE.CylinderGeometry(0.009,0.009,0.006,10),material);
+    const q=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),dir);
+    const base=new THREE.Vector3(x,y,z);
+    shaft.position.copy(base).addScaledVector(dir,len/2);shaft.quaternion.copy(q);
+    head.position.copy(base).addScaledVector(dir,0.003);head.quaternion.copy(q);
+    group.add(shaft);group.add(head);
+  }
+  function label(t,x,y,z,group,color){
+    const c=document.createElement('canvas');c.width=200;c.height=110;const ctx=c.getContext('2d');
+    ctx.fillStyle='rgba(255,255,255,0.94)';rr(ctx,6,30,188,50,13);ctx.fill();
+    ctx.strokeStyle=color||'#26241F';ctx.lineWidth=3;rr(ctx,6,30,188,50,13);ctx.stroke();
+    ctx.fillStyle=color||'#26241F';ctx.font='bold 38px "Space Mono",monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t,100,56);
+    const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));
+    sp.position.set(x,y,z);sp.scale.set(0.11,0.06,1);group.add(sp);
+  }
+  function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+
+  // ===== geometrie nod (m) =====
+  // ST stalp 100x100, varf la y=0.5
+  const postTop=0.5;
+  wbox(0.10,0.50,0.10, 0,0.25,0, COL.st, G.wood);
+  // GR grinda glulam 90x200 pe varf (de-a lungul X)
+  wbox(0.60,0.20,0.09, 0, postTop+0.10, 0, COL.gr, G.wood);
+  // JO joista 100x100 peste grinda, offset pe X
+  const jx=0.18, beamTop=postTop+0.20;
+  wbox(0.10,0.10,0.50, jx, beamTop+0.05, 0, COL.jo, G.wood);
+
+  // ===== C1 coltare grinda->stalp, pe ±x, leg vertical pe stalp + leg orizontal sub grinda =====
+  function C1(side){
+    const t=0.004;
+    // vertical leg pe fata laterala a stalpului
+    wbox(t,0.10,0.085, side*(0.05+t/2), postTop-0.05, 0, COL.metal, G.brackets);
+    // orizontal leg sub grinda
+    wbox(0.085,t,0.085, side*(0.05+0.045), postTop+t/2, 0, COL.metal, G.brackets);
+    // H1 screws: 2 in stalp (orizontal), 2 in grinda (vertical)
+    screw(side*0.05, postTop-0.03, 0.025, side, 0,0, 0.06, COL.screw, G.screws);
+    screw(side*0.05, postTop-0.07,-0.025, side, 0,0, 0.06, COL.screw, G.screws);
+    screw(side*0.08, postTop, 0.025, 0,1,0, 0.06, COL.screw, G.screws);
+    screw(side*0.08, postTop,-0.025, 0,1,0, 0.06, COL.screw, G.screws);
+  }
+  C1(1); C1(-1);
+
+  // ===== C2 coltar joista->grinda (pe fata -x a joistei) =====
+  (function(){
+    const t=0.004;
+    wbox(t,0.085,0.085, jx-0.05-t/2, beamTop+0.045, 0, COL.metal, G.brackets); // vertical leg pe joista
+    wbox(0.06,t,0.085, jx-0.05-0.03, beamTop+t/2, 0, COL.metal, G.brackets);    // orizontal leg pe grinda
+    screw(jx-0.05, beamTop+0.06, 0.025, -1,0,0, 0.05, COL.screw, G.screws);      // in joista
+    screw(jx-0.05, beamTop+0.02,-0.025, -1,0,0, 0.05, COL.screw, G.screws);
+    screw(jx-0.08, beamTop, 0.025, 0,-1,0, 0.05, COL.screw, G.screws);          // in grinda
+  })();
+
+  // ===== DL dusumea: 2 scanduri larice peste joista, gol 5mm =====
+  const deckBottom=beamTop+0.10; // pe varful joistei
+  wbox(0.50,0.028,0.145, jx, deckBottom+0.014, -0.0775, COL.dl, G.deck);
+  wbox(0.50,0.028,0.145, jx, deckBottom+0.014,  0.0775, COL.dl, G.deck);
+  // H4 inox: 2/joista per scandura (la incrucisare x=jx)
+  screw(jx, deckBottom+0.028, -0.0775, 0,-1,0, 0.05, COL.inox, G.screws);
+  screw(jx, deckBottom+0.028,  0.0775, 0,-1,0, 0.05, COL.inox, G.screws);
+
+  // ===== etichete =====
+  label('ST', 0, 0.16, 0.09, G.labels);
+  label('GR', -0.26, postTop+0.10, 0.07, G.labels);
+  label('JO', jx, beamTop+0.16, 0.07, G.labels);
+  label('C1', 0.14, postTop-0.02, 0.10, G.labels, '#7E838C');
+  label('C2', jx-0.12, beamTop+0.05, 0.10, G.labels, '#7E838C');
+  label('H1', 0.02, postTop+0.12,-0.06, G.labels, '#C2693A');
+  label('DL', jx+0.22, deckBottom+0.03, 0.10, G.labels);
+  label('H4', jx, deckBottom+0.10, 0, G.labels, '#9499A1');
+
+  // ===== layer panel =====
+  const layers=[
+    {n:'Lemn (ST·GR·JO)',c:'#E0C99B',g:'wood'},
+    {n:'Coltare (C1·C2)',c:'#B7BBC2',g:'brackets'},
+    {n:'Suruburi (H1·H4)',c:'#33312c',g:'screws'},
+    {n:'Dusumea (DL)',c:'#E0C795',g:'deck'},
+    {n:'Etichete',c:'#938D80',g:'labels'},
+  ];
+  const list=document.getElementById('layerList');
+  layers.forEach(L=>{G[L.g].visible=true;
+    const lab=document.createElement('label');
+    lab.innerHTML='<input type="checkbox" checked><span class="sw" style="background:'+L.c+'"></span>'+L.n;
+    lab.querySelector('input').addEventListener('change',e=>{G[L.g].visible=e.target.checked;});
+    list.appendChild(lab);});
+
+  // ===== orbit =====
+  const target=new THREE.Vector3(0.05,0.5,0);
+  let az=0.7,pol=1.05,dist=1.5;
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  function update(){pol=clamp(pol,0.05,2.0);dist=clamp(dist,0.6,4);
+    camera.position.set(target.x+dist*Math.sin(pol)*Math.sin(az),target.y+dist*Math.cos(pol),target.z+dist*Math.sin(pol)*Math.cos(az));
+    camera.lookAt(target);}
+  let drag=false,px=0,py=0;
+  cv.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointerup',()=>drag=false);
+  cv.addEventListener('pointermove',e=>{if(!drag)return;az-=(e.clientX-px)*0.007;pol-=(e.clientY-py)*0.007;px=e.clientX;py=e.clientY;update();});
+  cv.addEventListener('wheel',e=>{e.preventDefault();dist*=(1+e.deltaY*0.0012);update();},{passive:false});
+  let pinch=0;
+  cv.addEventListener('touchmove',e=>{if(e.touches.length===2){const dx=e.touches[0].clientX-e.touches[1].clientX,dy=e.touches[0].clientY-e.touches[1].clientY,dd=Math.hypot(dx,dy);if(pinch){dist*=(1+(pinch-dd)*0.004);update();}pinch=dd;e.preventDefault();}},{passive:false});
+  cv.addEventListener('touchend',()=>pinch=0);
+  const views={iso:[0.7,1.05,1.5],fata:[0,1.2,1.4],lat:[Math.PI/2,1.1,1.5],sus:[0.7,0.18,1.6],jos:[0.7,1.95,1.7]};
+  document.querySelectorAll('.btn[data-v]').forEach(b=>b.addEventListener('click',()=>{const v=views[b.dataset.v];az=v[0];pol=v[1];dist=v[2];update();}));
+  document.getElementById('reset').addEventListener('click',()=>{az=0.7;pol=1.05;dist=1.5;update();});
+  function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  window.addEventListener('resize',resize);resize();update();
+  (function loop(){requestAnimationFrame(loop);renderer.render(scene,camera);})();
+})();
+</script>
+</body>
+</html>

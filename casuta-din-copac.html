@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casuta din copac — Tudor & tata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF6EF; --paper2:#F3EDE2; --card:#FFFFFF;
+  --ink:#26241F; --soft:#5C574E; --faint:#938D80; --line:#E7DFD1;
+  --acc:#C2693A; --acc-soft:#F2E0D3;
+  --leaf:#6E8A5E; --leaf-soft:#E4EBDB;
+  --wood:#D7B488; --wood-line:#9A744A;
+  --sky:#CFE0E6;
+  --r:16px; --shadow:0 1px 2px rgba(38,36,31,.04), 0 10px 30px rgba(38,36,31,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Space Grotesk',system-ui,sans-serif; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px; margin:0 auto; padding:0 22px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif; font-weight:600; line-height:1.05; margin:0}
+.mono{font-family:'Space Mono',monospace}
+.num{font-family:'Space Mono',monospace; color:var(--acc)}
+.eyebrow{font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--acc)}
+section{padding:62px 0; border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+
+/* HERO */
+.hero{position:relative; overflow:hidden; padding:90px 0 70px;
+  background:radial-gradient(1200px 460px at 78% -8%, var(--leaf-soft) 0%, transparent 60%),
+             radial-gradient(900px 420px at 6% 0%, var(--acc-soft) 0%, transparent 55%);}
+.hero h1{font-size:clamp(42px,8vw,84px); letter-spacing:-.02em}
+.hero .lead{font-size:clamp(17px,2.4vw,21px); color:var(--soft); max-width:560px; margin-top:18px}
+.hero .tag{display:inline-flex; gap:8px; align-items:center; margin-bottom:22px;
+  background:var(--card); border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:13px; box-shadow:var(--shadow)}
+.hero .tag b{color:var(--acc)}
+.leaf{position:absolute; opacity:.5; animation:drift 9s ease-in-out infinite}
+.leaf.l2{animation-duration:12s; animation-delay:-3s; opacity:.38}
+.leaf.l3{animation-duration:14s; animation-delay:-6s; opacity:.3}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(8deg)}}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1; transform:none}
+
+.head{display:flex; align-items:baseline; gap:14px; margin-bottom:8px}
+.head h2{font-size:clamp(26px,4vw,38px); letter-spacing:-.01em}
+.head .n{font-family:'Space Mono',monospace; color:var(--acc); font-size:14px}
+.sub{color:var(--soft); max-width:680px; margin:0 0 30px}
+
+/* cards / grids */
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.g3,.g4{grid-template-columns:repeat(2,1fr)} .g2{grid-template-columns:1fr}}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:20px; box-shadow:var(--shadow)}
+.stat .k{font-family:'Space Mono',monospace; font-size:clamp(26px,4vw,34px); color:var(--ink)}
+.stat .k em{font-style:normal; color:var(--acc)}
+.stat .l{font-size:13px; color:var(--faint); margin-top:4px}
+
+/* figure */
+.figure{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; box-shadow:var(--shadow)}
+.figure svg{width:100%; height:auto; display:block}
+.figbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px}
+.figbar .t{font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint)}
+.btn{font-family:'Space Grotesk',sans-serif; font-size:13px; cursor:pointer; border:1px solid var(--line);
+  background:var(--paper2); color:var(--ink); border-radius:999px; padding:7px 14px; transition:.2s}
+.btn:hover{background:var(--acc); color:#fff; border-color:var(--acc)}
+
+/* steps */
+.steps{counter-reset:s; display:grid; gap:12px}
+.step{display:grid; grid-template-columns:46px 1fr; gap:16px; align-items:start; background:var(--card);
+  border:1px solid var(--line); border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow)}
+.step .b{counter-increment:s; font-family:'Space Mono',monospace; font-weight:700; color:#fff; background:var(--ink);
+  width:38px; height:38px; border-radius:11px; display:grid; place-items:center}
+.step.crit .b{background:var(--acc)}
+.step h3{font-size:17px; margin-bottom:3px}
+.step p{margin:0; color:var(--soft); font-size:14px}
+.step .b::before{content:counter(s,decimal-leading-zero)}
+.flag{display:inline-block; font-family:'Space Mono',monospace; font-size:11px; color:var(--acc);
+  border:1px solid var(--acc); border-radius:6px; padding:1px 7px; margin-left:8px; vertical-align:middle}
+
+/* chips */
+.chips{display:flex; flex-wrap:wrap; gap:10px}
+.chip{display:inline-flex; align-items:center; gap:9px; background:var(--card); border:1px solid var(--line);
+  border-radius:999px; padding:8px 14px; font-size:14px; box-shadow:var(--shadow)}
+.dot{width:9px; height:9px; border-radius:50%}
+.dot.ok{background:var(--leaf)} .dot.buy{background:var(--acc)} .dot.maybe{background:var(--faint)}
+.legend{display:flex; gap:18px; flex-wrap:wrap; font-size:13px; color:var(--soft); margin-bottom:18px}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+
+/* safety */
+.safe{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media(max-width:760px){.safe{grid-template-columns:1fr}}
+.safe .row{display:flex; gap:12px; align-items:flex-start; background:var(--leaf-soft); border:1px solid #DCE6D2;
+  border-radius:12px; padding:14px 16px}
+.safe .row .m{font-family:'Space Mono',monospace; color:var(--leaf); font-weight:700}
+.safe .row p{margin:0; font-size:14px; color:#3c4a35}
+
+footer{padding:40px 0 70px; color:var(--faint); font-size:13px; text-align:center}
+footer .mono{color:var(--soft)}
+
+/* build animation (elevation) */
+.elev .bs{opacity:0; transform-box:fill-box; transform-origin:center}
+.elev.play .bs{animation:rise .55s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:calc(var(--i,0)*.42s)}
+@keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none} .elev .bs{opacity:1!important; animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="leaf" style="top:60px;right:9%" width="46" height="46" viewBox="0 0 24 24" fill="none"><path d="M5 19C5 9 12 4 21 3c0 11-7 16-16 16Z" fill="#6E8A5E"/><path d="M5 19C8 14 13 9 20 5" stroke="#fff" stroke-width="1.2" opacity=".5"/></svg>
+  <svg class="leaf l2" style="top:150px;right:20%" width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 19C5 9 12 4 21 3c0 11-7 16-16 16Z" fill="#C2693A"/></svg>
+  <svg class="leaf l3" style="top:40px;left:8%" width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 19C5 9 12 4 21 3c0 11-7 16-16 16Z" fill="#6E8A5E"/></svg>
+  <div class="wrap">
+    <span class="tag mono">PROIECT IN DOI · <b>Tudor (11)</b> & tata</span>
+    <h1>Casuta<br>din copac</h1>
+    <p class="lead">O casuta ridicata pe patru stalpi, cu un balcon in fata si copacul nostru transformat in masa. Asa o construim — pas cu pas.</p>
+  </div>
+</header>
+
+<!-- 01 CE CONSTRUIM -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">01</span><h2>Ce construim</h2></div>
+    <p class="sub">Casuta nu se sprijina pe copac — copacul e prea subtire. Sta pe patru stalpi de lemn infipti in fundatiile de beton pe care le avem deja. Asa e sigura. Copacul ramane in fata, trece prin podeaua balconului si il retezam ca sa fie masa noastra.</p>
+    <div class="grid g3">
+      <div class="card"><span class="eyebrow">spate</span><h3 style="font-size:20px;margin-top:8px">Casuta</h3><p style="color:var(--soft);font-size:14px;margin:8px 0 0">Langa gard. Inchisa, cu perete si acoperis. Aici stam la adapost.</p></div>
+      <div class="card"><span class="eyebrow">fata</span><h3 style="font-size:20px;margin-top:8px">Balconul</h3><p style="color:var(--soft);font-size:14px;margin:8px 0 0">Deschis, cu balustrada. Iese 70 cm peste stalpi ca sa cuprinda copacul.</p></div>
+      <div class="card"><span class="eyebrow">mijloc</span><h3 style="font-size:20px;margin-top:8px">Masa-copac</h3><p style="color:var(--soft);font-size:14px;margin:8px 0 0">Corcodusul retezat devine piciorul mesei. Blatul se prinde de podea, nu de copac.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 COTELE -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">02</span><h2>Cotele importante</h2></div>
+    <p class="sub">Toate masurate si confirmate pe teren. Cadrul e un dreptunghi perfect — ambele diagonale ies la 2750 mm.</p>
+    <div class="grid g4">
+      <div class="card stat"><div class="k"><em>2200</em></div><div class="l">inaltime podea (mm)</div></div>
+      <div class="card stat"><div class="k">2100×1780</div><div class="l">cadru stalpi (mm)</div></div>
+      <div class="card stat"><div class="k"><em>+700</em></div><div class="l">balcon in consola (mm)</div></div>
+      <div class="card stat"><div class="k">1300</div><div class="l">perete casuta (mm)</div></div>
+      <div class="card stat"><div class="k">1000</div><div class="l">balustrada (mm)</div></div>
+      <div class="card stat"><div class="k">Ø160</div><div class="l">trunchi corcodus (mm)</div></div>
+      <div class="card stat"><div class="k">2750</div><div class="l">diagonala ×2 (mm)</div></div>
+      <div class="card stat"><div class="k"><em>2480</em></div><div class="l">adancime totala (mm)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PLAN -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">03</span><h2>Vedere de sus</h2></div>
+    <p class="sub">Asa arata privind de sus: casuta langa gard, balconul in fata, copacul cu masa la mijloc.</p>
+    <div class="figure">
+      <div class="figbar"><span class="t">Plan · stalpi & balcon</span><span class="t">cote in mm</span></div>
+      <svg viewBox="235 150 495 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan de sus al casutei din copac">
+        <!-- gard -->
+        <g stroke="#C9C0AF" stroke-width="1.4">
+          <line x1="320" y1="192" x2="650" y2="192"/>
+          <line x1="328" y1="186" x2="320" y2="198"/><line x1="352" y1="186" x2="344" y2="198"/><line x1="376" y1="186" x2="368" y2="198"/><line x1="400" y1="186" x2="392" y2="198"/><line x1="424" y1="186" x2="416" y2="198"/><line x1="448" y1="186" x2="440" y2="198"/><line x1="472" y1="186" x2="464" y2="198"/><line x1="496" y1="186" x2="488" y2="198"/><line x1="520" y1="186" x2="512" y2="198"/><line x1="544" y1="186" x2="536" y2="198"/><line x1="568" y1="186" x2="560" y2="198"/><line x1="592" y1="186" x2="584" y2="198"/><line x1="616" y1="186" x2="608" y2="198"/><line x1="640" y1="186" x2="632" y2="198"/>
+        </g>
+        <text x="650" y="180" text-anchor="end" font-family="Space Mono,monospace" font-size="11" fill="#938D80">gard (spate)</text>
+        <!-- footprint -->
+        <rect x="320" y="200" width="330" height="280" fill="none" stroke="#26241F" stroke-width="2"/>
+        <rect x="320" y="200" width="330" height="173" fill="#D7B488" opacity="0.22"/>
+        <text x="485" y="280" text-anchor="middle" font-family="Fraunces,serif" font-size="16" fill="#26241F">CASUTA</text>
+        <text x="485" y="300" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="#938D80">2100 × 1100</text>
+        <rect x="320" y="373" width="330" height="107" fill="#6E8A5E" opacity="0.12"/>
+        <line x1="320" y1="373" x2="650" y2="373" stroke="#26241F" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+        <rect x="320" y="480" width="330" height="110" fill="#6E8A5E" opacity="0.18"/>
+        <rect x="320" y="480" width="330" height="110" fill="none" stroke="#6E8A5E" stroke-width="1.3" stroke-dasharray="5 3"/>
+        <text x="378" y="432" text-anchor="middle" font-family="Fraunces,serif" font-size="16" fill="#5b7350">BALCON</text>
+        <text x="600" y="540" text-anchor="middle" font-family="Space Mono,monospace" font-size="9.5" fill="#5b7350">consola 700</text>
+        <!-- diagonals -->
+        <line x1="320" y1="200" x2="650" y2="480" stroke="#C2693A" stroke-width="1" stroke-dasharray="5 4" opacity="0.45"/>
+        <line x1="650" y1="200" x2="320" y2="480" stroke="#C2693A" stroke-width="1" stroke-dasharray="5 4" opacity="0.45"/>
+        <!-- posts -->
+        <g>
+          <rect x="311" y="191" width="18" height="18" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.4"/>
+          <rect x="641" y="191" width="18" height="18" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.4"/>
+          <rect x="641" y="471" width="18" height="18" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.4"/>
+          <rect x="311" y="471" width="18" height="18" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.4"/>
+        </g>
+        <text x="300" y="188" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">S1</text>
+        <text x="670" y="188" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">S2</text>
+        <text x="670" y="494" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">S3</text>
+        <text x="300" y="494" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">S4</text>
+        <!-- tree + table -->
+        <circle cx="571" cy="511" r="40" fill="#D7B488" opacity="0.25" stroke="#6E8A5E" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <circle cx="571" cy="511" r="20" fill="none" stroke="#26241F" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+        <circle cx="571" cy="511" r="13" fill="#9A744A" stroke="#26241F" stroke-width="1.2"/>
+        <text x="569" y="568" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11" fill="#5C574E">corcodus → masa (spre S3)</text>
+        <text x="569" y="582" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#938D80">trunchi Ø160 · blat ~Ø500</text>
+        <!-- dims -->
+        <line x1="320" y1="170" x2="650" y2="170" stroke="#26241F" stroke-width="1"/>
+        <line x1="320" y1="165" x2="320" y2="175" stroke="#26241F" stroke-width="1"/><line x1="650" y1="165" x2="650" y2="175" stroke="#26241F" stroke-width="1"/>
+        <rect x="461" y="161" width="48" height="17" fill="#FAF6EF"/>
+        <text x="485" y="174" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#C2693A">2100</text>
+        <line x1="690" y1="200" x2="690" y2="480" stroke="#26241F" stroke-width="1"/>
+        <line x1="685" y1="200" x2="695" y2="200" stroke="#26241F" stroke-width="1"/><line x1="685" y1="480" x2="695" y2="480" stroke="#26241F" stroke-width="1"/>
+        <text x="705" y="340" font-family="Space Mono,monospace" font-size="11" fill="#C2693A" transform="rotate(90 705 340)" text-anchor="middle">1780</text>
+        <line x1="690" y1="480" x2="690" y2="590" stroke="#C2693A" stroke-width="1"/>
+        <line x1="685" y1="480" x2="695" y2="480" stroke="#C2693A" stroke-width="1"/><line x1="685" y1="590" x2="695" y2="590" stroke="#C2693A" stroke-width="1"/>
+        <text x="705" y="535" font-family="Space Mono,monospace" font-size="10" fill="#C2693A" transform="rotate(90 705 535)" text-anchor="middle">700</text>
+        <!-- stairs -->
+        <g stroke="#26241F" stroke-width="1.3" fill="none">
+          <rect x="246" y="420" width="66" height="42" rx="3" fill="#D7B488" opacity="0.3"/><rect x="246" y="420" width="66" height="42" rx="3" fill="none"/>
+          <line x1="246" y1="431" x2="312" y2="431"/><line x1="246" y1="441" x2="312" y2="441"/><line x1="246" y1="451" x2="312" y2="451"/>
+        </g>
+        <text x="279" y="414" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10" fill="#938D80">scara (pe S4)</text>
+        <text x="485" y="604" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11" fill="#5C574E">↓  spre gradina</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ELEVATION (animated build) -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">04</span><h2>Cum se ridica</h2></div>
+    <p class="sub">Vedere din lateral. Apasa <b>Reia constructia</b> ca sa vezi casuta crescand piesa cu piesa — de la stalpi pana la masa.</p>
+    <div class="figure">
+      <div class="figbar"><span class="t">Vedere laterala · gard ← → fata</span><button class="btn" id="replay">▸ Reia constructia</button></div>
+      <svg class="elev" id="elev" viewBox="150 430 700 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vedere laterala animata a constructiei">
+        <!-- 0 ground -->
+        <g class="bs" style="--i:0">
+          <line x1="180" y1="1000" x2="820" y2="1000" stroke="#26241F" stroke-width="2"/>
+          <g stroke="#B8B1A2" stroke-width="1">
+            <line x1="200" y1="1000" x2="192" y2="1010"/><line x1="232" y1="1000" x2="224" y2="1010"/><line x1="264" y1="1000" x2="256" y2="1010"/><line x1="296" y1="1000" x2="288" y2="1010"/><line x1="328" y1="1000" x2="320" y2="1010"/><line x1="360" y1="1000" x2="352" y2="1010"/><line x1="392" y1="1000" x2="384" y2="1010"/><line x1="424" y1="1000" x2="416" y2="1010"/><line x1="456" y1="1000" x2="448" y2="1010"/><line x1="488" y1="1000" x2="480" y2="1010"/><line x1="520" y1="1000" x2="512" y2="1010"/><line x1="552" y1="1000" x2="544" y2="1010"/><line x1="584" y1="1000" x2="576" y2="1010"/><line x1="616" y1="1000" x2="608" y2="1010"/><line x1="648" y1="1000" x2="640" y2="1010"/><line x1="680" y1="1000" x2="672" y2="1010"/><line x1="712" y1="1000" x2="704" y2="1010"/><line x1="744" y1="1000" x2="736" y2="1010"/><line x1="776" y1="1000" x2="768" y2="1010"/>
+          </g>
+          <text x="190" y="1024" font-family="Space Grotesk,sans-serif" font-size="11" fill="#938D80">sol — strat moale dedesubt (scoarta / nisip)</text>
+        </g>
+        <!-- 1 posts -->
+        <g class="bs" style="--i:1">
+          <rect x="294" y="455" width="14" height="545" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.3"/>
+          <rect x="553" y="670" width="14" height="330" rx="2" fill="#D7B488" stroke="#26241F" stroke-width="1.3"/>
+          <text x="301" y="1042" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#938D80">S1/S2 · 4m, continui</text>
+          <text x="560" y="1042" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#938D80">S3/S4 · taiat la podea</text>
+        </g>
+        <!-- 2 floor + cantilever + brace -->
+        <g class="bs" style="--i:2">
+          <line x1="288" y1="670" x2="665" y2="670" stroke="#26241F" stroke-width="3.4"/>
+          <line x1="566" y1="772" x2="663" y2="672" stroke="#9A744A" stroke-width="2"/>
+          <text x="603" y="730" font-family="Space Grotesk,sans-serif" font-size="9.5" fill="#938D80" transform="rotate(-55 603 730)">contrafisa</text>
+        </g>
+        <!-- 3 walls -->
+        <g class="bs" style="--i:3">
+          <rect x="294" y="475" width="166" height="195" fill="#D7B488" opacity="0.4"/>
+          <rect x="294" y="475" width="166" height="195" fill="none" stroke="#26241F" stroke-width="1.3"/>
+          <rect x="312" y="520" width="50" height="50" rx="3" fill="#CFE0E6" stroke="#26241F" stroke-width="1"/>
+          <text x="337" y="549" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E">geam</text>
+          <text x="377" y="642" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" fill="#5C574E">casuta · perete 1300</text>
+          <line x1="460" y1="670" x2="460" y2="505" stroke="#26241F" stroke-width="1.3"/>
+        </g>
+        <!-- 4 roof -->
+        <g class="bs" style="--i:4">
+          <polygon points="278,453 468,503 468,519 278,469" fill="#C2693A" opacity="0.5"/>
+          <line x1="278" y1="453" x2="468" y2="503" stroke="#26241F" stroke-width="2.2"/>
+          <line x1="278" y1="469" x2="468" y2="519" stroke="#26241F" stroke-width="1.5"/>
+          <text x="296" y="447" font-family="Space Grotesk,sans-serif" font-size="10.5" fill="#5C574E">acoperis intr-o apa</text>
+        </g>
+        <!-- 5 railing -->
+        <g class="bs" style="--i:5">
+          <line x1="460" y1="520" x2="665" y2="520" stroke="#26241F" stroke-width="1.8"/>
+          <line x1="665" y1="520" x2="665" y2="670" stroke="#26241F" stroke-width="1.8"/>
+          <g stroke="#26241F" stroke-width="1" opacity="0.85">
+            <line x1="478" y1="670" x2="478" y2="520"/><line x1="498" y1="670" x2="498" y2="520"/><line x1="518" y1="670" x2="518" y2="520"/><line x1="538" y1="670" x2="538" y2="520"/><line x1="648" y1="670" x2="648" y2="520"/></g>
+          <text x="503" y="700" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="10" fill="#5C574E">balcon · balustrada 1000, goluri &lt; 9 cm</text>
+        </g>
+        <!-- 6 tree -->
+        <g class="bs" style="--i:6">
+          <rect x="579" y="583" width="24" height="417" fill="#9A744A" stroke="#26241F" stroke-width="1.3"/>
+          <text x="640" y="612" font-family="Space Grotesk,sans-serif" font-size="10.5" fill="#5C574E">corcodus</text>
+        </g>
+        <!-- 7 table -->
+        <g class="bs" style="--i:7">
+          <rect x="560" y="572" width="68" height="8" rx="3" fill="#D7B488" stroke="#26241F" stroke-width="1.3"/>
+          <line x1="579" y1="566" x2="603" y2="566" stroke="#C2693A" stroke-width="1.6"/>
+          <text x="640" y="576" font-family="Space Grotesk,sans-serif" font-size="10.5" fill="#5C574E">masa (blat)</text>
+          <text x="640" y="590" font-family="Space Mono,monospace" font-size="8.5" fill="#C2693A">trunchi retezat</text>
+        </g>
+        <!-- 8 stairs -->
+        <g class="bs" style="--i:8">
+          <g stroke="#26241F" stroke-width="1.4">
+            <line x1="505" y1="1000" x2="455" y2="670"/><line x1="523" y1="1000" x2="473" y2="670"/>
+            <line x1="500" y1="970" x2="517" y2="970"/><line x1="494" y1="938" x2="511" y2="938"/><line x1="488" y1="906" x2="505" y2="906"/><line x1="482" y1="874" x2="499" y2="874"/><line x1="476" y1="842" x2="493" y2="842"/><line x1="470" y1="810" x2="487" y2="810"/><line x1="464" y1="778" x2="481" y2="778"/><line x1="458" y1="746" x2="475" y2="746"/><line x1="452" y1="714" x2="469" y2="714"/></g>
+          <text x="446" y="862" text-anchor="end" font-family="Space Grotesk,sans-serif" font-size="10" fill="#938D80">scara</text>
+        </g>
+        <!-- 9 dimensions -->
+        <g class="bs" style="--i:9">
+          <line x1="210" y1="1000" x2="210" y2="450" stroke="#B8B1A2" stroke-width="1"/>
+          <line x1="205" y1="1000" x2="215" y2="1000" stroke="#B8B1A2" stroke-width="1"/>
+          <text x="198" y="1004" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="#938D80">0</text>
+          <line x1="205" y1="670" x2="288" y2="670" stroke="#C2693A" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <text x="198" y="667" text-anchor="end" font-family="Space Mono,monospace" font-size="11" fill="#C2693A">+2200</text>
+          <text x="198" y="681" text-anchor="end" font-family="Space Mono,monospace" font-size="8.5" fill="#938D80">podea</text>
+          <line x1="205" y1="566" x2="558" y2="566" stroke="#C2693A" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.7"/>
+          <text x="198" y="563" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="#C2693A">+2780</text>
+          <text x="198" y="577" text-anchor="end" font-family="Space Mono,monospace" font-size="8.5" fill="#938D80">blat masa</text>
+          <line x1="205" y1="520" x2="460" y2="520" stroke="#C2693A" stroke-width="0.9" stroke-dasharray="3 3"/>
+          <text x="198" y="517" text-anchor="end" font-family="Space Mono,monospace" font-size="11" fill="#C2693A">+3200</text>
+          <text x="198" y="531" text-anchor="end" font-family="Space Mono,monospace" font-size="8.5" fill="#938D80">balustrada</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 05 DETALIU IMBINARE -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">05</span><h2>Detaliu: stalp, grinda si contrafisa</h2></div>
+    <p class="sub">Patru desene simple, fiecare cu un singur lucru.</p>
+    <div class="grid g2">
+
+      <div class="figure">
+        <div class="figbar"><span class="t">a · talpa in ancora</span></div>
+        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stalpul in ancora de beton">
+          <rect x="95" y="170" width="110" height="72" fill="#C7C0B2"/>
+          <g stroke="#A89F8E" stroke-width="1.2"><line x1="103" y1="242" x2="150" y2="170"/><line x1="140" y1="242" x2="187" y2="170"/></g>
+          <g fill="#9a958c" stroke="#5C574E" stroke-width="1.2"><rect x="110" y="112" width="10" height="58"/><rect x="180" y="112" width="10" height="58"/><rect x="100" y="164" width="100" height="8"/></g>
+          <rect x="120" y="35" width="60" height="123" fill="#D7B488" stroke="#26241F" stroke-width="2"/>
+          <circle cx="150" cy="128" r="3.5" fill="#5C574E"/><circle cx="150" cy="146" r="3.5" fill="#5C574E"/>
+          <text x="150" y="28" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" fill="#26241F">stalp</text>
+          <text x="232" y="140" font-family="Space Grotesk,sans-serif" font-size="12" fill="#5C574E">ancora</text>
+          <line x1="230" y1="136" x2="192" y2="138" stroke="#938D80" stroke-width="1"/>
+          <text x="150" y="213" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">beton 50–70 cm</text>
+        </svg>
+        <p style="font-size:13px;color:var(--soft);margin:6px 4px 0">Stalpul sta intr-o ancora de metal prinsa in beton, ridicat putin ca apa sa nu-l putrezeasca.</p>
+      </div>
+
+      <div class="figure">
+        <div class="figbar"><span class="t">b · grinda pe polita</span></div>
+        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grinda asezata pe polita, prinsa cu bulon">
+          <rect x="55" y="25" width="52" height="200" fill="#D7B488" stroke="#26241F" stroke-width="2"/>
+          <rect x="107" y="108" width="160" height="32" fill="#E3C9A6" stroke="#26241F" stroke-width="2"/>
+          <rect x="107" y="140" width="56" height="26" fill="#C49A66" stroke="#26241F" stroke-width="2"/>
+          <circle cx="124" cy="153" r="3" fill="#5C574E"/><circle cx="150" cy="153" r="3" fill="#5C574E"/>
+          <circle cx="68" cy="122" r="5" fill="#26241F"/><line x1="68" y1="122" x2="150" y2="122" stroke="#26241F" stroke-width="2.5"/><rect x="146" y="117" width="9" height="10" fill="#26241F"/>
+          <text x="81" y="250" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="12" fill="#26241F">stalp</text>
+          <text x="200" y="100" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" fill="#26241F">grinda</text>
+          <text x="165" y="190" font-family="Space Grotesk,sans-serif" font-size="12" fill="#26241F">polita</text>
+          <text x="165" y="205" font-family="Space Mono,monospace" font-size="9.5" fill="#938D80">tine greutatea</text>
+          <line x1="163" y1="186" x2="140" y2="166" stroke="#938D80" stroke-width="1"/>
+          <text x="92" y="112" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">bulon</text>
+        </svg>
+        <p style="font-size:13px;color:var(--soft);margin:6px 4px 0">Grinda se aseaza pe o polita care duce greutatea. Bulonul doar o tine lipita.</p>
+      </div>
+
+      <div class="figure">
+        <div class="figbar"><span class="t">c · contrafisa = triunghi</span></div>
+        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contrafisa diagonala care formeaza un triunghi rigid">
+          <polygon points="104,88 104,182 200,88" fill="#C2693A" opacity="0.12"/>
+          <rect x="70" y="30" width="34" height="192" fill="#D7B488" stroke="#26241F" stroke-width="2"/>
+          <rect x="70" y="56" width="172" height="32" fill="#E3C9A6" stroke="#26241F" stroke-width="2"/>
+          <polygon points="104,186 124,186 206,92 186,92" fill="#C49A66" stroke="#26241F" stroke-width="2"/>
+          <circle cx="114" cy="180" r="3" fill="#5C574E"/><circle cx="196" cy="98" r="3" fill="#5C574E"/>
+          <text x="150" y="240" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="13" fill="#26241F">contrafisa</text>
+          <text x="150" y="150" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="#C2693A">triunghiul nu se misca</text>
+        </svg>
+        <p style="font-size:13px;color:var(--soft);margin:6px 4px 0">O diagonala face un triunghi din colt — iar triunghiul nu se deformeaza. Asa nu se clatina.</p>
+      </div>
+
+      <div class="figure">
+        <div class="figbar"><span class="t">d · cei doi stalpi</span></div>
+        <svg viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stalpii din spate raman inalti, cei din fata se taie la podea">
+          <line x1="30" y1="212" x2="280" y2="212" stroke="#cfc7b8" stroke-width="1.6"/>
+          <rect x="70" y="40" width="20" height="172" fill="#D7B488" stroke="#26241F" stroke-width="1.6"/>
+          <rect x="200" y="120" width="20" height="92" fill="#D7B488" stroke="#26241F" stroke-width="1.6"/>
+          <rect x="60" y="112" width="170" height="9" fill="#E3C9A6" stroke="#26241F" stroke-width="1.4"/>
+          <rect x="62" y="66" width="78" height="46" fill="#D7B488" opacity="0.5" stroke="#26241F" stroke-width="1.2"/>
+          <line x1="62" y1="66" x2="140" y2="52" stroke="#26241F" stroke-width="1.6"/><line x1="140" y1="52" x2="140" y2="66" stroke="#26241F" stroke-width="1.2"/>
+          <text x="80" y="234" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">spate · 4m</text>
+          <text x="210" y="234" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">fata · taiat</text>
+          <text x="240" y="108" font-family="Space Mono,monospace" font-size="9.5" fill="#C2693A">podea</text>
+        </svg>
+        <p style="font-size:13px;color:var(--soft);margin:6px 4px 0">Stalpii din spate raman de 4 m si tin casuta. Cei din fata se taie la nivelul podelei.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 06 MATERIALE -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">06</span><h2>Materiale</h2></div>
+    <p class="sub">Cumparam de la Hornbach, Leroy Merlin si Dedeman. Detaliile complete cu preturi sunt in fisierul Excel din folder.</p>
+    <h3 style="font-size:17px;margin-bottom:12px;color:var(--leaf)">Ce avem deja</h3>
+    <div class="grid g2" style="margin-bottom:26px">
+      <div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>4 × Stalpi KVH 100×100×4000</b><span class="num">149 lei/buc</span></div><p style="color:var(--soft);font-size:13px;margin:6px 0 0">Hornbach · stalpii principali, rindeluiti</p></div>
+      <div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>4 × Grinzi 100×100×4000</b><span class="num">87 lei/buc</span></div><p style="color:var(--soft);font-size:13px;margin:6px 0 0">Leroy Merlin · nerindeluite → substructura / consola</p></div>
+    </div>
+    <h3 style="font-size:17px;margin-bottom:12px;color:var(--acc)">Ce mai luam</h3>
+    <div class="legend">
+      <span><i class="dot buy"></i> de cumparat</span>
+      <span><i class="dot maybe"></i> de decis</span>
+    </div>
+    <div class="chips">
+      <span class="chip"><i class="dot buy"></i> Grinzi cadru (podea +2200)</span>
+      <span class="chip"><i class="dot buy"></i> Solute podea (traverse)</span>
+      <span class="chip"><i class="dot buy"></i> Dusumea balcon + casuta</span>
+      <span class="chip"><i class="dot buy"></i> Stalpisori + sipci balustrada</span>
+      <span class="chip"><i class="dot buy"></i> Scanduri pereti</span>
+      <span class="chip"><i class="dot buy"></i> Capriori acoperis</span>
+      <span class="chip"><i class="dot maybe"></i> Invelitoare (policarbonat / sindrila)</span>
+      <span class="chip"><i class="dot buy"></i> Scara cu balustrada</span>
+      <span class="chip"><i class="dot buy"></i> Suruburi, coltare, buloane</span>
+      <span class="chip"><i class="dot buy"></i> Vopsea + grund exterior</span>
+      <span class="chip"><i class="dot buy"></i> Blat masa + cadru fixare</span>
+      <span class="chip"><i class="dot buy"></i> Sol moale dedesubt</span>
+      <span class="chip"><i class="dot maybe"></i> Tobogan / franghie</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ETAPE -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">07</span><h2>Etapele de constructie</h2></div>
+    <p class="sub">In ordine. Pasii cu eticheta <span class="flag">CRITIC</span> sunt cei care strica tot daca-i grabim — la ei ne oprim si verificam de doua ori.</p>
+    <div class="steps">
+      <div class="step crit"><div class="b"></div><div><h3>Prindem stalpii de fundatii<span class="flag">CRITIC</span></h3><p>Ancore metalice pe betoane. Fiecare stalp perfect vertical, verificat cu nivela. Daca stalpii sunt stramb, tot restul iese stramb.</p></div></div>
+      <div class="step crit"><div class="b"></div><div><h3>Montam grinzile principale la +2200<span class="flag">CRITIC</span></h3><p>Intre stalpi, bulonate. Perfect orizontale — verificam cu nivela lunga sau laser pe ambele directii.</p></div></div>
+      <div class="step crit"><div class="b"></div><div><h3>Asezam grinzile podelei<span class="flag">CRITIC</span></h3><p>Continue din spate pana in fata, cu consola de 700 mm peste grinda frontala. Plus contrafisa sub nas — altfel balconul sare sub picioare.</p></div></div>
+      <div class="step"><div class="b"></div><div><h3>Batem dusumeaua</h3><p>Lasam o gaura pentru copac, cu 3-5 cm joc jur-imprejur ca trunchiul sa nu fie strans.</p></div></div>
+      <div class="step"><div class="b"></div><div><h3>Ridicam peretii si acoperisul</h3><p>Perete casuta 1300 mm, acoperis intr-o apa cu panta spre gradina (apa de ploaie curge in curtea noastra, nu la vecin).</p></div></div>
+      <div class="step crit"><div class="b"></div><div><h3>Montam balustrada<span class="flag">CRITIC</span></h3><p>1000 mm inaltime, jur-imprejurul balconului — inclusiv pe nasul consolei. Goluri sub 9 cm ca sa nu treaca un cap de copil.</p></div></div>
+      <div class="step"><div class="b"></div><div><h3>Retezam corcodusul, facem masa</h3><p>Taiem trunchiul la inaltimea blatului. Blatul se prinde de podea, nu de copac. Capatul retezat se teseste si se acopera sa scurga apa.</p></div></div>
+      <div class="step"><div class="b"></div><div><h3>Montam scara cu balustrada</h3><p>Trepte solide si mana curenta — niciodata franghie pentru urcat.</p></div></div>
+      <div class="step crit"><div class="b"></div><div><h3>Finisaje + sol moale<span class="flag">CRITIC</span></h3><p>Slefuim, grunduim, vopsim. Sub platforma punem strat moale (scoarta sau nisip) — amortizeaza o cadere.</p></div></div>
+      <div class="step"><div class="b"></div><div><h3>Extra de joaca</h3><p>Tobogan, franghie de catarat sau scripete cu galeata — partea cea mai distractiva.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 SIGURANTA -->
+<section class="reveal">
+  <div class="wrap">
+    <div class="head"><span class="n">08</span><h2>Regulile de siguranta</h2></div>
+    <p class="sub">Casuta e sus la 2,2 m. Astea nu sunt optionale.</p>
+    <div class="safe">
+      <div class="row"><span class="m">01</span><p>Balustrada de 1 m jur-imprejur, goluri sub 9 cm. Si pe nasul consolei.</p></div>
+      <div class="row"><span class="m">02</span><p>Sol moale sub platforma — scoarta, nisip sau iarba groasa. Niciodata beton sau piatra.</p></div>
+      <div class="row"><span class="m">03</span><p>Scara cu trepte fixe si mana curenta. Fara franghie pentru urcat.</p></div>
+      <div class="row"><span class="m">04</span><p>Niciun surub sau cui iesit. Verificam imbinarile la inceput de fiecare vara.</p></div>
+      <div class="row"><span class="m">05</span><p>Masa se sprijina pe cadrul ei, nu pe copac — trunchiul retezat putrezeste in timp.</p></div>
+      <div class="row"><span class="m">06</span><p>Lemnul vopsit cu protectie de exterior, ca sa tina multi ani.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">CASUTA DIN COPAC · v4 · proiect Tudor &amp; tata · 2026</p>
+    <p>Schita de lucru — cotele se pot schimba pe masura ce construim.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.id === 'elev') e.target.classList.add('play');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  var elev = document.getElementById('elev');
+  if(elev) io.observe(elev);
+  var btn = document.getElementById('replay');
+  if(btn && elev){
+    btn.addEventListener('click', function(){
+      elev.classList.remove('play');
+      void elev.getBoundingClientRect();
+      elev.classList.add('play');
+    });
+  }
+})();
+</script>
+</body>
+</html>
