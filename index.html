@@ -60,6 +60,12 @@ section{padding:30px 0;border-top:1px solid var(--line)}
 .dlrow a:hover{background:var(--acc);color:#fff}
 
 footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
+.prog{display:flex;align-items:center;gap:12px;margin-top:18px;max-width:540px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px;transition:border-color .12s}
+.prog:hover{border-color:var(--acc)}
+.prog .pl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.prog .track{flex:1;height:9px;background:#efece6;border-radius:999px;overflow:hidden}
+.prog .track i{display:block;height:100%;background:linear-gradient(90deg,#1d7a44,#3a9c63);width:0;transition:width .5s}
+.prog .pp{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:var(--ink);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -73,6 +79,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       <a class="btn" href="PDF/Manual-Faza-1-complet.pdf" download>↓ Descarca manualul complet (PDF · 36 pag)</a>
       <a class="btn ghost" href="ghid-montaj.html">Construieste pas cu pas →</a>
     </div>
+    <a class="prog" href="timeline.html"><span class="pl">Stadiu proiect</span><span class="track"><i id="heroFill"></i></span><span class="pp" id="heroPct">vezi →</span></a>
   </div>
 </header>
 
@@ -82,6 +89,12 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
     <div class="shead"><span class="n">A</span><h2>Incepe aici</h2></div>
     <p class="sdesc">Imaginea de ansamblu si dosarul cu toate datele blocate ale proiectului.</p>
     <div class="grid">
+      <a class="card full primary" href="timeline.html">
+        <span class="chip">STADIU · timeline + checklist</span>
+        <h3>In ce stadiu suntem</h3>
+        <p>Fazele proiectului cu status si un checklist de constructie bifabil. Vezi cat ai facut si ce urmeaza — progresul se salveaza in browser.</p>
+        <div class="actions"><span class="act open">Deschide →</span></div>
+      </a>
       <a class="card" href="casuta-din-copac.html">
         <span class="chip leaf">PENTRU TUDOR</span>
         <h3>Prezentarea vizuala</h3>
@@ -249,5 +262,10 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
   </div>
 </footer>
 
+<script>(function(){var K='casuta-progres-v1';var s;try{s=JSON.parse(localStorage.getItem(K))}catch(e){}if(!s)s={prep_comanda:true};
+var ids=['prep_comanda','prep_livrare','p1','p2','p3','p4','p5','p6','p7','p8','p9','f_pereti','f_acoperis','f_scara','f_masa','fin_grund','fin_topcoat','fin_sol','fin_joaca'];
+var d=ids.filter(function(i){return s[i]}).length,p=Math.round(d/ids.length*100);
+var f=document.getElementById('heroFill');if(f)f.style.width=p+'%';
+var e=document.getElementById('heroPct');if(e)e.textContent=p+'% facut';})();</script>
 </body>
 </html>

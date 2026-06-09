@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stadiul proiectului — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#141312;--soft:#5C574E;--faint:#938D80;--line:#E7E4DE;--acc:#C2693A;--ok:#1d7a44;--card:#fff;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;margin:0;font-size:clamp(30px,5vw,50px);line-height:1.03}
+h2{font-family:'Fraunces',serif;font-weight:600;margin:0}
+.mono{font-family:'Space Mono',monospace}
+a{color:var(--acc);text-decoration:none}
+.hero{padding:54px 0 22px;border-bottom:3px solid var(--ink)}
+.hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.hero p{color:var(--soft);max-width:640px;margin:12px 0 0;font-size:15px}
+.back{display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:12px}
+/* big progress */
+.bigprog{margin:22px 0 4px;border:2px solid var(--ink);border-radius:16px;padding:18px 20px}
+.bigprog .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.bigprog .now{font-family:'Space Mono',monospace;font-size:13px;color:var(--acc)}
+.bigprog .pct{font-family:'Fraunces',serif;font-size:30px;font-weight:600}
+.track{height:12px;background:#efece6;border-radius:999px;margin-top:12px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--ok),#3a9c63);border-radius:999px;width:0;transition:width .5s ease}
+.sub{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--faint);margin-top:8px}
+section{padding:30px 0}
+.shead{font-family:'Fraunces',serif;font-size:22px;font-weight:600;border-bottom:2px solid var(--acc);padding-bottom:3px;margin-bottom:18px;display:inline-block}
+/* phase timeline */
+.tl{position:relative;margin-left:8px;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ph{position:relative;padding:0 0 22px}
+.ph .d{position:absolute;left:-26px;top:1px;width:15px;height:15px;border-radius:50%;background:#fff;border:2.5px solid var(--line)}
+.ph.done .d{background:var(--ok);border-color:var(--ok)}
+.ph.now .d{background:var(--acc);border-color:var(--acc);box-shadow:0 0 0 5px rgba(194,105,58,.18)}
+.ph .nm{font-weight:600;font-size:16px}
+.ph .st{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.05em;border-radius:999px;padding:1px 8px;border:1.5px solid;margin-left:8px;vertical-align:middle}
+.ph.done .st{color:var(--ok);border-color:var(--ok)}
+.ph.now .st{color:var(--acc);border-color:var(--acc)}
+.ph.next .st{color:var(--faint);border-color:var(--line)}
+.ph .meta{font-size:13px;color:var(--soft);margin-top:2px}
+.ph.next .nm{color:var(--soft)}
+/* checklist */
+.grp{margin-bottom:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.grp .gh{display:flex;justify-content:space-between;align-items:center;background:#faf8f4;padding:11px 16px;border-bottom:1px solid var(--line)}
+.grp .gh b{font-size:14px}
+.grp .gh .gc{font-family:'Space Mono',monospace;font-size:12px;color:var(--faint)}
+.it{display:flex;align-items:flex-start;gap:11px;padding:11px 16px;border-top:1px solid var(--line);cursor:pointer;user-select:none}
+.it:first-child{border-top:none}
+.it .bx{flex:0 0 auto;width:21px;height:21px;border-radius:6px;border:2px solid var(--line);display:grid;place-items:center;margin-top:1px;transition:.15s}
+.it .bx svg{width:13px;height:13px;opacity:0;transform:scale(.6);transition:.15s}
+.it.on .bx{background:var(--ok);border-color:var(--ok)}
+.it.on .bx svg{opacity:1;transform:scale(1)}
+.it .lb{font-size:14.5px}
+.it.on .lb{color:var(--faint);text-decoration:line-through}
+.it .lb small{display:block;color:var(--faint);font-size:12px;text-decoration:none;margin-top:1px}
+.tools{display:flex;gap:10px;margin-top:8px;align-items:center}
+.btn{font-family:'Space Mono',monospace;font-size:12px;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;color:var(--soft)}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+footer{padding:26px 0 70px;color:var(--faint);font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kick">Stadiul proiectului · unde suntem</div>
+    <h1>In ce stadiu suntem</h1>
+    <p>Fazele proiectului cu status, plus un checklist de constructie pe care il bifezi pe masura ce avansati. Progresul se salveaza in browserul tau.</p>
+    <a class="back" href="index.html">← inapoi la manual</a>
+  </header>
+
+  <div class="bigprog">
+    <div class="top">
+      <div class="now" id="nowLbl">—</div>
+      <div class="pct"><span id="pctNum">0</span>%</div>
+    </div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="sub"><span id="doneCount">0</span> din <span id="totCount">0</span> etape bifate · azi: <span id="today"></span></div>
+  </div>
+
+  <section>
+    <div class="shead">Fazele proiectului</div>
+    <div class="tl" id="phases"></div>
+  </section>
+
+  <section>
+    <div class="shead">Checklist de constructie</div>
+    <p style="color:var(--soft);font-size:14px;margin:-8px 0 16px">Bifeaza pe masura ce terminati. Se salveaza automat.</p>
+    <div id="checklist"></div>
+    <div class="tools">
+      <button class="btn" id="resetBtn">Reseteaza tot</button>
+      <button class="btn" id="markDeliv">Marcheaza livrarea primita</button>
+    </div>
+  </section>
+
+  <footer class="mono">Casuta din copac · stadiul proiectului · progres salvat local in browser</footer>
+</div>
+
+<script>
+const KEY='casuta-progres-v1';
+// items: id, label, sub, grup, defaultDone
+const ITEMS=[
+ {id:'prep_comanda',g:'Pregatire',l:'Materiale comandate (Hornbach)',s:'Comanda DV9048520886 · 4.101,24 lei',d:true},
+ {id:'prep_livrare',g:'Pregatire',l:'Livrare materiale primita',s:'Estimat 12–16 iunie 2026'},
+ {id:'p1',g:'Platforma (Faza 1)',l:'1 · Stalpii in ancore (verticali, prinsi slab)'},
+ {id:'p2',g:'Platforma (Faza 1)',l:'2 · Nivel +2200 + taiere stalpi fata la 1872'},
+ {id:'p3',g:'Platforma (Faza 1)',l:'3 · Polite pe stalpii din spate (+1872)'},
+ {id:'p4',g:'Platforma (Faza 1)',l:'4 · Grinda din spate pe polite (M12)'},
+ {id:'p5',g:'Platforma (Faza 1)',l:'5 · Grinda din fata pe varf + coltare C1'},
+ {id:'p6',g:'Platforma (Faza 1)',l:'6 · Joiste (6) + coltare C2 + blocaje'},
+ {id:'p7',g:'Platforma (Faza 1)',l:'7 · Contravantuiri + scoate proptelele de baza'},
+ {id:'p8',g:'Platforma (Faza 1)',l:'8 · Dusumea larice + ulei'},
+ {id:'p9',g:'Platforma (Faza 1)',l:'9 · Balustrada 1 m + poarta (S3)'},
+ {id:'f_pereti',g:'Faza 2 — inchidere',l:'Pereti imbracati in placaj (bracaj)'},
+ {id:'f_acoperis',g:'Faza 2 — inchidere',l:'Acoperis intr-o apa + invelitoare + picurator'},
+ {id:'f_scara',g:'Faza 2 — inchidere',l:'Scara cu mana curenta (unghi de revizuit)'},
+ {id:'f_masa',g:'Faza 2 — inchidere',l:'Masa-copac (retezat corcodus, blat pe cadru)'},
+ {id:'fin_grund',g:'Finisaje & joaca',l:'Grund (Köber) pe lemnul de structura'},
+ {id:'fin_topcoat',g:'Finisaje & joaca',l:'Topcoat colorat exterior'},
+ {id:'fin_sol',g:'Finisaje & joaca',l:'Sol moale sub platforma (scoarta/nisip)'},
+ {id:'fin_joaca',g:'Finisaje & joaca',l:'Extra joaca (tobogan / franghie / scripete)'},
+];
+// faze pt timeline: nume, lista de id-uri, nota, staticDone
+const PHASES=[
+ {nm:'Proiectare & dosar',ids:[],note:'planuri, scheme 3D, audituri',staticDone:true},
+ {nm:'Comanda materiale',ids:['prep_comanda'],note:'Hornbach · 4.101,24 lei'},
+ {nm:'Livrare materiale',ids:['prep_livrare'],note:'estimat 12–16 iunie 2026'},
+ {nm:'Constructie platforma (Faza 1)',ids:['p1','p2','p3','p4','p5','p6','p7','p8','p9'],note:'8 pasi + balustrada'},
+ {nm:'Faza 2 — inchidere',ids:['f_pereti','f_acoperis','f_scara','f_masa'],note:'pereti, acoperis, scara, masa'},
+ {nm:'Finisaje & joaca',ids:['fin_grund','fin_topcoat','fin_sol','fin_joaca'],note:'protectie + extra'},
+];
+
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+let state=load();
+// initializeaza default-urile o singura data
+if(!localStorage.getItem(KEY)){ITEMS.forEach(i=>{if(i.d)state[i.id]=true});save(state)}
+
+const tick='<svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5 6.5 12 13 4.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+function render(){
+  // checklist grupat
+  const cl=document.getElementById('checklist');cl.innerHTML='';
+  const groups=[...new Set(ITEMS.map(i=>i.g))];
+  groups.forEach(g=>{
+    const items=ITEMS.filter(i=>i.g===g);
+    const done=items.filter(i=>state[i.id]).length;
+    const box=document.createElement('div');box.className='grp';
+    box.innerHTML='<div class="gh"><b>'+g+'</b><span class="gc">'+done+'/'+items.length+'</span></div>'+
+      items.map(i=>'<div class="it'+(state[i.id]?' on':'')+'" data-id="'+i.id+'"><div class="bx">'+tick+'</div><div class="lb">'+i.l+(i.s?'<small>'+i.s+'</small>':'')+'</div></div>').join('');
+    cl.appendChild(box);
+  });
+  cl.querySelectorAll('.it').forEach(el=>el.onclick=()=>{const id=el.dataset.id;state[id]=!state[id];save(state);render()});
+
+  // progres global
+  const tot=ITEMS.length, done=ITEMS.filter(i=>state[i.id]).length;
+  const pct=Math.round(done/tot*100);
+  document.getElementById('pctNum').textContent=pct;
+  document.getElementById('fill').style.width=pct+'%';
+  document.getElementById('doneCount').textContent=done;
+  document.getElementById('totCount').textContent=tot;
+
+  // faze + status
+  const ph=document.getElementById('phases');ph.innerHTML='';
+  let currentSet=false;
+  const phStatus=PHASES.map(p=>{
+    if(p.staticDone)return 'done';
+    const d=p.ids.filter(id=>state[id]).length;
+    if(p.ids.length>0 && d===p.ids.length)return 'done';
+    return 'pending';
+  });
+  // prima faza pending = now
+  let nowName='Gata — proiect complet! 🎉';
+  PHASES.forEach((p,i)=>{
+    let cls=phStatus[i];
+    if(cls==='pending' && !currentSet){cls='now';currentSet=true;
+      // numele urmatorului pas nebifat din faza curenta
+      const next=p.ids.find(id=>!state[id]);
+      const ni=ITEMS.find(x=>x.id===next);
+      nowName=(p.nm)+(ni?' · '+ni.l.replace(/^[0-9]+ · /,''):'');
+    } else if(cls==='pending'){cls='next'}
+    const el=document.createElement('div');el.className='ph '+cls;
+    const label=cls==='done'?'GATA':(cls==='now'?'ACUM':'URMEAZA');
+    el.innerHTML='<div class="d"></div><div class="nm">'+p.nm+'<span class="st">'+label+'</span></div><div class="meta">'+p.note+'</div>';
+    ph.appendChild(el);
+  });
+  document.getElementById('nowLbl').textContent='ACUM: '+nowName;
+}
+
+document.getElementById('today').textContent=new Date().toLocaleDateString('ro-RO',{day:'numeric',month:'long',year:'numeric'});
+document.getElementById('resetBtn').onclick=()=>{if(confirm('Stergi tot progresul bifat?')){state={};ITEMS.forEach(i=>{if(i.d)state[i.id]=true});save(state);render()}};
+document.getElementById('markDeliv').onclick=()=>{state['prep_livrare']=true;save(state);render()};
+render();
+</script>
+</body>
+</html>
