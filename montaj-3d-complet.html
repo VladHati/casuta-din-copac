@@ -42,6 +42,11 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
 .crit{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;color:#fff;background:var(--acc);border-radius:6px;padding:2px 8px;margin-left:8px;vertical-align:middle}
 .codes{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--faint);margin-top:16px;text-align:center}
 @media(max-width:640px){.layers{font-size:11px}}
+/* mod embed (incorporat in ghid, blocat pe o etapa) */
+body.embed{background:transparent}
+body.embed .wrap{padding:0;max-width:none}
+body.embed h1,body.embed .lead,body.embed .bar,body.embed .inst,body.embed .codes,body.embed .layers{display:none!important}
+body.embed .stage{height:100vh;border-radius:0;border:none}
 </style>
 </head>
 <body>
@@ -216,7 +221,9 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
     b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b>.","<b>Poarta pe partea S3</b> (opusa mesei-copac), unde urca scara.","Stalpisorii balustradei <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
   ];
 
-  let cur=1;const N=9;
+  const _q=new URLSearchParams(location.search);const _embed=_q.get('embed')==='1';const _et=parseInt(_q.get('et')||'1');
+  if(_embed)document.body.classList.add('embed');
+  let cur=(_et>=1&&_et<=9)?_et:1;const N=9;
   const instEl=document.getElementById('inst'),dotsEl=document.getElementById('dots'),listEl=document.getElementById('layerList');
   for(let i=1;i<=N;i++){const d=document.createElement('div');d.className='dot';d.textContent=i;d.onclick=()=>go(i);dotsEl.appendChild(d);}
 

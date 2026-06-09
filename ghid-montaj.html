@@ -67,6 +67,10 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
 .pt{display:flex;flex-direction:column;align-items:center;gap:3px;width:58px}
 .pt img{width:56px;height:46px;object-fit:contain;mix-blend-mode:multiply;border:1px solid var(--line);border-radius:8px;background:#faf8f4;padding:3px}
 .pt i{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;font-style:normal;color:var(--acc)}
+.s3d{margin-top:12px}
+.s3d .d3lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:5px}
+.step3d{width:100%;height:300px;border:1px solid var(--line);border-radius:14px;background:#f7f7f6;display:block}
+@media print{.s3d{display:none}}
 </style>
 </head>
 <body>
@@ -116,7 +120,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">2 persoane</span><span class="pill">PT · proptele din resturi</span><span class="pill">B2 · M12 baza papuc</span></div>
       <div class="note"><span class="ic"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M8 1.5 15 12.5H1z" fill="none" stroke="#C2693A" stroke-width="1.4"/><path d="M8 6v3" stroke="#C2693A" stroke-width="1.4"/><circle cx="8" cy="10.7" r="0.7" fill="#C2693A"/></svg></span><p>Nu strange suruburile pana stalpii nu sunt perfect drepti (pasul 2).</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>ST</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PT</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>ST ×4</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PT ×8</i></span><span class="pt"><img src="POZE/COD_6834285.png" alt=""><i>B2 ×8</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Patru stalpi pusi in ancore, sprijiniti cu proptele">
@@ -137,6 +141,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <circle cx="126" cy="160" r="4" fill="none" stroke="#C2693A" stroke-width="2"/>
         <text x="150" y="164" font-family="Space Mono,monospace" font-size="11" fill="#C2693A">slab</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=1" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -153,7 +158,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">nivela / laser</span><span class="pill">creion</span></div>
       <div class="note"><span class="ic"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M8 1.5 15 12.5H1z" fill="none" stroke="#C2693A" stroke-width="1.4"/><path d="M8 6v3" stroke="#C2693A" stroke-width="1.4"/><circle cx="8" cy="10.7" r="0.7" fill="#C2693A"/></svg></span><p>Nu masura 2200 separat pe fiecare stalp — erorile se aduna si podeaua iese in panta.</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>ST</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>ST ×4</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Transferul aceleiasi inaltimi de la un stalp la celalalt cu nivela">
@@ -172,6 +177,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <text x="99" y="52" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">ST</text>
         <text x="321" y="52" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">ST</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=2" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -186,7 +192,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <li>Polita va duce greutatea grinzii.</li>
       </ul>
       <div class="hw"><span class="pill">PO · polite din lemn</span><span class="pill">B1 · buloane M12</span></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PO</i></span><span class="pt"><img src="POZE/COD_12130958.png" alt=""><i>B1</i></span><span class="pt"><img src="POZE/COD_3830642.png" alt=""><i>B4</i></span><span class="pt"><img src="POZE/COD_3840897.png" alt=""><i>B3</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PO ×2</i></span><span class="pt"><img src="POZE/COD_12130958.png" alt=""><i>B1 ×4</i></span><span class="pt"><img src="POZE/COD_3830642.png" alt=""><i>B4 ×4</i></span><span class="pt"><img src="POZE/COD_3840897.png" alt=""><i>B3 ×8</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Polita bulonata pe stalp sub linia de inaltime">
@@ -201,6 +207,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <path d="M300 115 L262 115" stroke="#C2693A" stroke-width="2" marker-end="url(#a)"/>
         <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#C2693A"/></marker></defs>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=3" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -215,7 +222,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">2 persoane</span><span class="pill">B1 · buloane M12 ×4</span></div>
       <div class="note tip"><span class="ic"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5 6 10.5 11.5 4" fill="none" stroke="#4d7a4d" stroke-width="2"/></svg></span><p>Grinda e grea — ridicati-o in doi. Sta pe polita, deci nu o tineti voi tot timpul.</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_5483835.png" alt=""><i>GR</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PO</i></span><span class="pt"><img src="POZE/COD_12130958.png" alt=""><i>B1</i></span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>ST</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_5483835.png" alt=""><i>GR ×1</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PO ×2</i></span><span class="pt"><img src="POZE/COD_12130958.png" alt=""><i>B1 ×4</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Grinda din spate asezata pe polite si bulonata">
@@ -237,6 +244,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <text x="94" y="200" text-anchor="end" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">ST</text>
         <text x="326" y="200" text-anchor="start" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">ST</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=3" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -252,7 +260,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">fierastrau</span><span class="pill">C1 · coltar ×2</span><span class="pill">H1 · suruburi</span></div>
       <div class="note"><span class="ic"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M8 1.5 15 12.5H1z" fill="none" stroke="#C2693A" stroke-width="1.4"/><path d="M8 6v3" stroke="#C2693A" stroke-width="1.4"/><circle cx="8" cy="10.7" r="0.7" fill="#C2693A"/></svg></span><p>Taietura e portanta si definitiva — taie la 1872, nu la 2200. Daca tai la 2200, podeaua iese cu 328 mm prea sus.</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_5483835.png" alt=""><i>GR</i></span><span class="pt"><img src="POZE/COD_738965.png" alt=""><i>C1</i></span><span class="pt"><img src="POZE/COD_10434633.png" alt=""><i>H1</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_5483835.png" alt=""><i>GR ×1</i></span><span class="pt"><img src="POZE/COD_738965.png" alt=""><i>C1 ×4</i></span><span class="pt"><img src="POZE/COD_10434633.png" alt=""><i>H1</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Taierea stalpului din fata la nivelul grinzii">
@@ -269,6 +277,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <text x="201" y="34" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">ST</text>
         <text x="270" y="116" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#1C1C1C">GR</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=3" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -284,7 +293,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <li>Pune <b>blocaje (BL)</b> intre joiste, peste fiecare grinda — prinse cu <b>H3</b> oblic. Opresc joistele sa se rasuceasca si fac podeaua ferma.</li>
       </ul>
       <div class="hw"><span class="pill">C2 · coltare ×12</span><span class="pill">H2 · suruburi</span></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>JO</i></span><span class="pt"><img src="POZE/COD_738910.png" alt=""><i>C2</i></span><span class="pt"><img src="POZE/COD_10434398.png" alt=""><i>H2</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>BL</i></span><span class="pt"><img src="POZE/COD_10434139.png" alt=""><i>H3</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_7337253.png" alt=""><i>JO ×6</i></span><span class="pt"><img src="POZE/COD_738910.png" alt=""><i>C2 ×12</i></span><span class="pt"><img src="POZE/COD_10434398.png" alt=""><i>H2</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>BL ×10</i></span><span class="pt"><img src="POZE/COD_10434139.png" alt=""><i>H3</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Vedere de sus: cele 6 joiste si gaura copacului">
@@ -320,6 +329,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <text x="285" y="20" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="#938D80">1550</text>
         <text x="350" y="20" text-anchor="middle" font-family="Space Mono,monospace" font-size="8" fill="#938D80">1980</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=6" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -334,7 +344,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">CF · contrafise</span><span class="pill">H1 · suruburi</span></div>
       <div class="note"><span class="ic"><svg width="16" height="14" viewBox="0 0 16 14"><path d="M8 1.5 15 12.5H1z" fill="none" stroke="#C2693A" stroke-width="1.4"/><path d="M8 6v3" stroke="#C2693A" stroke-width="1.4"/><circle cx="8" cy="10.7" r="0.7" fill="#C2693A"/></svg></span><p>Nu scoate proptelele inainte de contrafise — structura se clatina fara ele.</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/lemn.png" alt=""><i>CF</i></span><span class="pt"><img src="POZE/COD_10434633.png" alt=""><i>H1</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PT</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/lemn.png" alt=""><i>CF ×6</i></span><span class="pt"><img src="POZE/COD_10434633.png" alt=""><i>H1</i></span><span class="pt"><img src="POZE/lemn.png" alt=""><i>PT</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Contrafisa montata, propteaua provizorie scoasa">
@@ -353,6 +363,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <line x1="156" y1="150" x2="128" y2="178" stroke="#C2693A" stroke-width="2.5"/>
         <text x="96" y="200" text-anchor="end" font-family="Space Mono,monospace" font-size="9" fill="#938D80">PT · scoate</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=7" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
@@ -368,7 +379,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </ul>
       <div class="hw"><span class="pill">DL · scanduri larice</span><span class="pill">H4 · suruburi 5×60</span></div>
       <div class="note tip"><span class="ic"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5 6 10.5 11.5 4" fill="none" stroke="#4d7a4d" stroke-width="2"/></svg></span><p>Foloseste un cui sau un betisor ca distantier, ca toate spatiile sa iasa egale.</p></div>
-      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_6224073.png" alt=""><i>DL</i></span><span class="pt"><img src="POZE/COD_10528829.png" alt=""><i>H4</i></span></div>
+      <div class="pstrip"><span class="pl">Piese</span><span class="pt"><img src="POZE/COD_6224073.png" alt=""><i>DL ×17</i></span><span class="pt"><img src="POZE/COD_10528829.png" alt=""><i>H4</i></span></div>
     </div>
     <div class="draw">
       <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Dusumeaua batuta peste joiste, cu gaura pentru copac">
@@ -391,6 +402,7 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
         <text x="72" y="162" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#C2693A">JO</text>
         <text x="110" y="71" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#1C1C1C">DL</text>
       </svg>
+      <div class="s3d"><div class="d3lbl">▶ 3D · trage = roteste</div><iframe class="step3d" src="montaj-3d-complet.html?embed=1&amp;et=8" loading="lazy" title="Pasul in 3D"></iframe></div>
     </div>
   </article>
 
