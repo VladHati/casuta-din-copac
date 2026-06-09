@@ -136,7 +136,7 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
   // STALPI: spate (intregi), fata baza (0..1.872) + offcut (1.872..3.7, dispare la pasul 2)
   box(PS,3.7,PS,COL.post,0,1.85,D,'posts',1); box(PS,3.7,PS,COL.post,W,1.85,D,'posts',1);
   box(PS,fCut,PS,COL.fpost,0,fCut/2,0,'posts',1); box(PS,fCut,PS,COL.fpost,W,fCut/2,0,'posts',1);
-  box(PS,3.7-fCut,PS,COL.offcut,0,(fCut+3.7)/2,0,'posts',1,1); box(PS,3.7-fCut,PS,COL.offcut,W,(fCut+3.7)/2,0,'posts',1,1);
+  box(PS,3.7-fCut,PS,COL.offcut,0,(fCut+3.7)/2,0,'posts',1,2); box(PS,3.7-fCut,PS,COL.offcut,W,(fCut+3.7)/2,0,'posts',1,2);
   lbl('S1',-0.16,3.4,D,'labels',1); lbl('S2',W+0.18,3.4,D,'labels',1);
   lbl('S3',W+0.18,fCut+0.12,0,'labels',1); lbl('S4',-0.18,fCut+0.12,0,'labels',1);
   // marker taiere (doar pasul 2)
@@ -146,86 +146,90 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
   strut(0,0.9,D,-0.5,0.02,D,0.05,COL.temp,'temp',1); strut(W,0.9,D,W+0.5,0.02,D,0.05,COL.temp,'temp',1);
   strut(0,0.9,0,-0.5,0.02,0,0.05,COL.temp,'temp',1); strut(W,0.9,0,W+0.5,0.02,0,0.05,COL.temp,'temp',1);
 
-  // GRINZI (step3) + C1
-  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,backBeamZ,'beams',3);
-  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,frontBeamZ,'beams',3);
-  // grinda FATA: pe varful stalpilor + coltare C1
-  function C1(px,pz){box(0.09,0.006,0.08,COL.metal,px+0.06,beamCy-beamH/2+0.003,pz,'metal',3);box(0.006,0.09,0.08,COL.metal,px+0.052,beamCy-beamH/2-0.045,pz,'metal',3);}
-  C1(0,frontBeamZ);C1(W,frontBeamZ);
-  // grinda SPATE: pe POLITA din lemn bulonata in stalp (M12) — corectie audit
+  // POLITA spate bulonata in stalpii inalti (step3) + 2 M12
   function POL(px){
     box(0.12,0.10,0.10,COL.beam, px, beamCy-beamH/2-0.05, backBeamZ, 'beams',3);
     box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.028, backBeamZ+0.01, 'metal',3);
     box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.072, backBeamZ+0.01, 'metal',3);
   }
   POL(0);POL(W);
-  lbl('GR',W/2,beamCy+0.18,frontBeamZ-0.05,'labels',3);
   lbl('polita',0,beamCy-beamH/2-0.05,backBeamZ-0.14,'labels',3,undefined,'#7A5A3C');
-  // proptele TEMPORARE la varful stalpilor inalti — raman pana la peretii din Faza 2
-  strut(0,3.4,D, 0,FLOOR,D-0.7, 0.05, COL.temp,'temptop',3);
-  strut(W,3.4,D, W,FLOOR,D-0.7, 0.05, COL.temp,'temptop',3);
-  lbl('proptea temp',0,3.5,D-0.35,'temptop',3,undefined,'#8a857c');
+  // GRINDA SPATE pe polita (step4)
+  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,backBeamZ,'beams',4);
+  // GRINDA FATA pe varful stalpilor fata (step5) + coltare C1
+  box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,frontBeamZ,'beams',5);
+  function C1(px,pz){box(0.09,0.006,0.08,COL.metal,px+0.06,beamCy-beamH/2+0.003,pz,'metal',5);box(0.006,0.09,0.08,COL.metal,px+0.052,beamCy-beamH/2-0.045,pz,'metal',5);}
+  C1(0,frontBeamZ);C1(W,frontBeamZ);
+  lbl('GR',W/2,beamCy+0.18,frontBeamZ-0.05,'labels',5);
+  // proptele de VARF la stalpii inalti (spate) — montate de la PASUL 1, spre exterior/sol, raman pana la peretii din Faza 2
+  strut(0,3.2,D, 0,0.05,D+0.6, 0.05, COL.temp,'temptop',1);
+  strut(W,3.2,D, W,0.05,D+0.6, 0.05, COL.temp,'temptop',1);
+  lbl('proptea varf',0,3.45,D+0.22,'temptop',1,undefined,'#8a857c');
 
-  // JOISTE (step4) + C2
-  jx.forEach(x=>box(0.1,jH,jLen,COL.joist,x,jCy,jCz,'joists',4));
-  jx.forEach(x=>{box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,frontBeamZ+0.05,'metal',4);box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,backBeamZ-0.05,'metal',4);});
-  lbl('JO',jx[1],jCy+0.16,jCz,'labels',4);
+  // JOISTE (step6) + C2
+  jx.forEach(x=>box(0.1,jH,jLen,COL.joist,x,jCy,jCz,'joists',6));
+  jx.forEach(x=>{box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,frontBeamZ+0.05,'metal',6);box(0.05,0.07,0.006,COL.metal,x+0.055,jCy-0.015,backBeamZ-0.05,'metal',6);});
+  lbl('JO',jx[1],jCy+0.16,jCz,'labels',6);
 
-  // GAURA + COPAC (step5)
-  box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.05,'joists',5); box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.35,'joists',5);
-  cyl(0.08,0.09,tableY,COL.trunk,trunkX,tableY/2,trunkZ,'tree',5);
-  cyl(0.26,0.26,0.03,mat(0xCDA877),trunkX,tableY+0.015,trunkZ,'tree',5);
-  lbl('copac',trunkX,tableY+0.2,trunkZ,'tree',5,undefined,'#7A5A3C');
+  // GAURA + COPAC (step7)
+  box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.05,'joists',7); box(0.34,jH,0.06,COL.joist,trunkX,jCy,-0.35,'joists',7);
+  cyl(0.08,0.09,tableY,COL.trunk,trunkX,tableY/2,trunkZ,'tree',7);
+  cyl(0.26,0.26,0.03,mat(0xCDA877),trunkX,tableY+0.015,trunkZ,'tree',7);
+  lbl('copac',trunkX,tableY+0.2,trunkZ,'tree',7,undefined,'#7A5A3C');
 
   // BLOCAJE (step6)
-  for(let i=0;i<jx.length-1;i++){const cx=(jx[i]+jx[i+1])/2,bw=(jx[i+1]-jx[i])-0.1;box(bw,jH,0.08,COL.joist,cx,jCy,backBeamZ,'block',6);box(bw,jH,0.08,COL.joist,cx,jCy,frontBeamZ,'block',6);}
+  for(let i=0;i<jx.length-1;i++){const cx=(jx[i]+jx[i+1])/2,bw=(jx[i+1]-jx[i])-0.1;box(bw,jH,0.08,COL.joist,cx,jCy,backBeamZ,'block',8);box(bw,jH,0.08,COL.joist,cx,jCy,frontBeamZ,'block',8);}
 
   // CONTRAVANTUIRI (step7)
-  strut(0,1.05,jBack,0,fCut,0.05,0.08,COL.brace,'brace',7); strut(W,1.05,jBack,W,fCut,0.05,0.08,COL.brace,'brace',7);
-  strut(0.05,1.05,0,0.95,fCut,0,0.08,COL.brace,'brace',7); strut(W-0.05,1.05,0,W-0.95,fCut,0,0.08,COL.brace,'brace',7);
-  strut(0,1.1,0.05,0,jCy-0.06,-0.55,0.07,COL.brace,'brace',7); strut(W,1.1,0.05,W,jCy-0.06,-0.55,0.07,COL.brace,'brace',7);
+  strut(0,1.05,jBack,0,fCut,0.05,0.08,COL.brace,'brace',9); strut(W,1.05,jBack,W,fCut,0.05,0.08,COL.brace,'brace',9);
+  strut(0.05,1.05,0,0.95,fCut,0,0.08,COL.brace,'brace',9); strut(W-0.05,1.05,0,W-0.95,fCut,0,0.08,COL.brace,'brace',9);
+  strut(0,1.1,0.05,0,jCy-0.06,-0.55,0.07,COL.brace,'brace',9); strut(W,1.1,0.05,W,jCy-0.06,-0.55,0.07,COL.brace,'brace',9);
 
   // DUSUMEA (step8)
   const deckY=FLOOR-deckThk/2,hx=[0.35,0.65],hz=[-0.36,-0.04];
   for(let z=jFront+0.075;z<=jBack-0.02;z+=0.15){
-    if(z>hz[0]&&z<hz[1]){box(hx[0],deckThk,0.145,COL.deck,hx[0]/2,deckY,z,'deck',8);box(W-hx[1],deckThk,0.145,COL.deck,(W+hx[1])/2,deckY,z,'deck',8);}
-    else box(W,deckThk,0.145,COL.deck,W/2,deckY,z,'deck',8);}
-  lbl('DL',0.4,deckY+0.05,jFront+0.2,'deck',8);
+    if(z>hz[0]&&z<hz[1]){box(hx[0],deckThk,0.145,COL.deck,hx[0]/2,deckY,z,'deck',10);box(W-hx[1],deckThk,0.145,COL.deck,(W+hx[1])/2,deckY,z,'deck',10);}
+    else box(W,deckThk,0.145,COL.deck,W/2,deckY,z,'deck',10);}
+  lbl('DL',0.4,deckY+0.05,jFront+0.2,'deck',10);
 
   // BALUSTRADA (step9)
   const infill=new THREE.MeshStandardMaterial({color:0xE9DCC4,roughness:0.9,transparent:true,opacity:0.3});
   function railSeg(x1,z1,x2,z2){const mx=(x1+x2)/2,mz=(z1+z2)/2,lx=Math.abs(x2-x1),lz=Math.abs(z2-z1),h=lx>lz;
-    box(h?lx+0.06:0.06,0.06,h?0.06:lz+0.06,COL.rail,mx,RTOP,mz,'rail',9);
-    box(h?lx:0.02,0.94,h?0.02:lz,infill,mx,FLOOR+0.49,mz,'rail',9);
-    box(0.06,1.0,0.06,COL.rail,x1,FLOOR+0.5,z1,'rail',9);box(0.06,1.0,0.06,COL.rail,x2,FLOOR+0.5,z2,'rail',9);}
+    box(h?lx+0.06:0.06,0.06,h?0.06:lz+0.06,COL.rail,mx,RTOP,mz,'rail',11);
+    box(h?lx:0.02,0.94,h?0.02:lz,infill,mx,FLOOR+0.49,mz,'rail',11);
+    box(0.06,1.0,0.06,COL.rail,x1,FLOOR+0.5,z1,'rail',11);box(0.06,1.0,0.06,COL.rail,x2,FLOOR+0.5,z2,'rail',11);}
   railSeg(0,-0.7,W,-0.7);railSeg(0,-0.7,0,wallZ);railSeg(W,-0.7,W,-0.05);railSeg(W,0.30,W,wallZ);
-  lbl('poarta',W+0.16,RTOP+0.05,0.12,'rail',9,undefined,'#C2693A');
+  lbl('poarta',W+0.16,RTOP+0.05,0.12,'rail',11,undefined,'#C2693A');
 
   // ===== etape (instructiuni complete) =====
   const steps=[
    {t:"Stalpii in ancore",tools:"nivela · bormasina/cheie · proptele din resturi",crit:1,
-    b:["Aseaza toti <b>4 stalpii (ST)</b> in ancorele din beton. Lasa-i la lungime mare — <b>NU ii tai inca</b>.","Prinde-i in ancora doar <b>slab</b> (suruburile puse, nestranse).","Adu fiecare stalp <b>perfect vertical</b> (la plumb) pe doua fete vecine, cu nivela.","Sprijina fiecare cu <b>2 proptele provizorii</b> batute in pamant.","Nu strange definitiv pana nu termini pasul 2."],c:["ST ×4"],f:["proptele"]},
-   {t:"Marcheaza nivelul si taie stalpii din fata",tools:"nivela lunga / laser / furtun cu apa · fierastrau · echer",crit:1,
-    b:["Alege un punct de referinta pe un stalp si <b>transfera linia pe toti 4</b> cu nivela lunga pe o scandura dreapta (sau laser). <b>NU masura separat</b> pe fiecare — erorile se aduna.","Taie <b>S3 si S4 (fata) la 1872 mm</b> de la sol. Acolo se aseaza grinda PE varful lor.","<b>1872 = 2200 (podea) − 28 (dusumea) − 100 (joista) − 200 (grinda).</b>","<b>S1 si S2 (spate) NU se taie</b> — raman inalti pentru casuta; grinda spate se prinde pe fata lor.","Taie drept cu echerul; teseste muchia de sus. Acum poti strange definitiv ancorele."],c:["taiere 1872"],f:[]},
-   {t:"Grinzile principale",tools:"2 persoane · bormasina · coltare C1 · suruburi H1",crit:1,
-    b:["Grinda fata (<b>GR</b>) se aseaza <b>PE varful</b> stalpilor S3/S4, fixata cu coltare C1 + H1.","Grinda spate se reazema pe o <b>POLITA din lemn</b> (bloc 100×100) bulonata in stalpii S1/S2 cu <b>2 buloane M12</b>; grinda sta PE polita.","<b>Polita duce greutatea</b>; coltarele/suruburile doar tin grinda lipita. (Asta e corectia din audit.)","Verifica: ambele grinzi <b>perfect orizontale</b>, fata de sus la 2072 mm."],c:["GR ×2","polita ×2"],f:["C1 ×4","M12 ×4","H1"]},
+    b:["Aseaza toti <b>4 stalpii</b> in ancorele din beton, <b>la lungime mare</b> — NU ii tai inca.","Prinde-i in ancora doar <b>slab</b> (suruburi puse, nestranse).","Adu fiecare stalp <b>perfect vertical</b> (la plumb) pe doua fete vecine.","Pune <b>2 proptele la baza</b> fiecarui stalp. La cei <b>2 stalpi inalti din spate</b> adauga si cate o <b>proptea de varf</b> spre exterior — altfel varful se leagana.","Strangerea finala vine abia dupa pasul 2."],c:["ST ×4"],f:["proptele baza","proptele varf"]},
+   {t:"Trasare nivel + taiere stalpi fata",tools:"nivela lunga / laser · fierastrau · echer",crit:1,
+    b:["Transfera <b>+2200</b> (fata podelei) pe toti 4 stalpii, cu nivela pe o scandura dreapta. NU masura separat.","Sub ea marcheaza linia de sprijin a grinzii la <b>+1872</b> (cu 328 mai jos: grinda 200 + joista 100 + dusumea 28).","Taie <b>doar S3 si S4 (fata)</b> la +1872 — pe varful lor sta grinda din fata.","<b>S1 si S2 (spate) NU se taie</b> — raman inalti pentru casuta.","Teseste muchia de sus; acum strange definitiv ancorele."],c:["taiere 1872"],f:[]},
+   {t:"Polita pe stalpii din spate",tools:"bormasina · cheie · 2× bulon M12",crit:1,
+    b:["Pe fata fiecarui stalp <b>din spate</b> (S1, S2), prinde un <b>bloc de lemn 100×100 — polita</b>.","Fixeaz-o cu <b>2 buloane M12</b> prin polita in stalp, cu fata de sus la <b>+1872</b>.","<b>Polita duce greutatea</b> grinzii din spate; e cea mai sigura prindere."],c:["polita ×2"],f:["M12 ×4"]},
+   {t:"Grinda din spate pe polita",tools:"2 persoane · bormasina · suruburi H1",crit:1,
+    b:["Ridicati in doi <b>grinda din spate</b> (glulam) si aseaz-o <b>pe cele doua polite</b>.","Sta pe polita — nu o tineti voi tot timpul. Prinde-o de stalpi cu <b>H1</b> (o tin lipita).","Verifica fata de sus la <b>+2072</b> (1872 + 200)."],c:["GR spate ×1"],f:["H1"]},
+   {t:"Grinda din fata pe varful stalpilor",tools:"2 persoane · coltare C1 · suruburi H1",crit:1,
+    b:["Aseaza <b>grinda din fata</b> (glulam) <b>PE varful</b> stalpilor S3/S4 (taiati la 1872) — sprijin direct.","Fixeaz-o cu cate un <b>coltar C1</b> pe fiecare fata + suruburi <b>H1</b>.","Verifica: ambele grinzi <b>perfect orizontale</b>, varful la +2072."],c:["GR fata ×1"],f:["C1 ×4","H1"]},
    {t:"Joistele",tools:"coltare C2 · suruburi H2 · metru",crit:1,
-    b:["Aseaza <b>6 joiste (JO)</b> peste cele doua grinzi, din fata in spate.","Pozitii masurate <b>de la S4: 100 · 280 · 720 · 1120 · 1550 · 1980 mm</b>.","Capetele din fata ies <b>700 mm in consola</b> (balconul).","La fiecare reazem, <b>coltar C2</b> — tine joista si la <b>ridicare</b> (consola).","Joistele dintr-o singura bucata (continue)."],c:["JO ×6"],f:["C2 ×12","H2"]},
-   {t:"Gaura copacului + masa",tools:"fierastrau · daltita",crit:0,
-    b:["Intre joistele de la <b>280 si 720</b> (spre S4), pune <b>2 traverse</b> (sus + jos) = rama gaurii.","Corcodusul (spre <b>S4</b>) trece prin gaura; il <b>retezi la inaltimea blatului</b> (~+2780 mm).","Lasa <b>joc 3–5 cm</b> jur-imprejurul trunchiului.","Blatul mesei se va fixa de <b>podea</b>, nu de copac."],c:["traverse ×2"],f:[]},
+    b:["Aseaza <b>6 joiste</b> peste cele doua grinzi, din fata in spate, <b>dintr-o singura bucata</b>.","Pozitii de la S4: <b>100 · 280 · 720 · 1120 · 1550 · 1980 mm</b>.","Capetele din fata ies <b>700 mm in consola</b> (balconul).","La fiecare reazem, <b>coltar C2</b> — tine joista jos la consola (anti-ridicare)."],c:["JO ×6"],f:["C2 ×12","H2"]},
+   {t:"Gaura copacului + masa",tools:"fierastrau · dalta",crit:0,
+    b:["Intre joistele de la <b>280 si 720</b> (spre S4) pune <b>2 traverse</b> = rama gaurii.","Corcodusul trece prin gaura, in zona <b>balconului</b> (consola); il retezi la <b>~+2780</b>.","Lasa <b>joc 3–5 cm</b> jur-imprejurul trunchiului.","Blatul mesei se fixeaza de <b>podea</b>, prin cadrul lui, NU de copac."],c:["traverse ×2","blat masa"],f:[]},
    {t:"Blocaje intre joiste",tools:"suruburi H3",crit:0,
-    b:["Bucati scurte (<b>BL</b>), din capete de offcut, intre joiste, <b>peste fiecare grinda</b>.","Prinse cu <b>H3</b> oblic. Opresc rasucirea joistelor — podea ferma, fara balans."],c:["BL"],f:["H3"]},
-   {t:"Contravantuiri",tools:"bormasina · suruburi H1",crit:1,
-    b:["Monteaza diagonalele (<b>CF</b>): in planul <b>stang, drept si fata</b>, plus 2 sub nasul consolei.","Prinse la <b>ambele capete</b> (H1). Acum platforma e rigida.","Scoate proptelele de la <b>baza</b>. <b>Proptelele de la VARFUL stalpilor inalti RAMAN</b> pana monteaza peretii casutei (Faza 2) — altfel varfurile se leagana."],c:["CF ×6"],f:["H1"]},
-   {t:"Dusumea larice",tools:"masina insurubat · distantier (cui) · ulei",crit:0,
-    b:["Scanduri larice (<b>DL</b>) peste joiste, perpendicular.","<b>2 suruburi inox (H4)</b> pe fiecare joista; <b>gol 5 mm</b> intre scanduri (un cui ca distantier).","La copac, taie scandurile in jurul gaurii, cu joc.","Da cu <b>ulei</b> dupa montaj."],c:["DL ×17"],f:["H4"]},
+    b:["Bucati scurte (<b>blocaje</b>), din offcut, intre joiste, <b>peste fiecare grinda</b>.","Prinse cu <b>H3</b> oblic. Opresc rasucirea joistelor — podea ferma."],c:["BL ×10"],f:["H3"]},
+   {t:"Contravantuiri + scoatem proptelele de baza",tools:"bormasina · suruburi H1",crit:1,
+    b:["Monteaza <b>contravantuirile</b> (diagonale) in planul stang, drept si fata + sub nasul consolei.","Prinse la <b>ambele capete</b> cu H1 — acum platforma e rigida.","<b>Scoate proptelele de la baza.</b> Cele de la <b>varful stalpilor inalti RAMAN</b> pana la peretii din Faza 2."],c:["CF ×6"],f:["H1"]},
+   {t:"Dusumea larice",tools:"masina insurubat · distantier · ulei",crit:0,
+    b:["Scanduri larice peste joiste, perpendicular.","<b>2 suruburi inox H4</b> pe fiecare joista; <b>gol 5 mm</b> intre scanduri (un cui ca distantier).","La copac, taie scandurile in jurul gaurii, cu joc.","Da cu <b>ulei</b> dupa montaj."],c:["DL ×17"],f:["H4"]},
    {t:"Balustrada + poarta",tools:"bormasina · buloane",crit:1,
-    b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b>.","<b>Poarta pe partea S3</b> (opusa mesei-copac), unde urca scara.","Stalpisorii balustradei <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
+    b:["Balustrada <b>1 m</b> jur-imprejurul balconului, goluri <b>&lt;9 cm</b> (inclusiv pe nasul consolei).","<b>Poarta pe partea S3</b> (opusa mesei-copac), unde urca scara.","Stalpisorii <b>bulonati de cadru</b> (joiste/grinda), nu de dusumea."],c:["balustrada"],f:["poarta"]},
   ];
 
   const _q=new URLSearchParams(location.search);const _embed=_q.get('embed')==='1';const _et=parseInt(_q.get('et')||'1');
   if(_embed)document.body.classList.add('embed');
-  let cur=(_et>=1&&_et<=9)?_et:1;const N=9;
+  let cur=(_et>=1&&_et<=11)?_et:1;const N=11;
   const instEl=document.getElementById('inst'),dotsEl=document.getElementById('dots'),listEl=document.getElementById('layerList');
   for(let i=1;i<=N;i++){const d=document.createElement('div');d.className='dot';d.textContent=i;d.onclick=()=>go(i);dotsEl.appendChild(d);}
 
@@ -236,7 +240,7 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
   function render(){
     LAYERS.forEach(k=>{const on=layerOn[k];G[k].children.forEach(ch=>{const u=ch.userData||{};ch.visible=on&&(u.step===undefined||u.step<=cur)&&(u.max===undefined||cur<=u.max);});});
     // proptele dispar de la pasul 7
-    G.temp.children.forEach(ch=>{if(cur>=7)ch.visible=false;});
+    G.temp.children.forEach(ch=>{if(cur>=9)ch.visible=false;});
     const s=steps[cur-1];
     instEl.innerHTML='<div class="num">'+cur+'</div><h2>'+s.t+(s.crit?'<span class="crit">CRITIC</span>':'')+'</h2><div class="tools">SCULE: '+s.tools+'</div><ol>'+s.b.map(x=>'<li>'+x+'</li>').join('')+'</ol><div class="chips">'+s.c.map(x=>'<span class="chip">'+x+'</span>').join('')+s.f.map(x=>'<span class="chip f">'+x+'</span>').join('')+'</div>';
     [...dotsEl.children].forEach((d,i)=>{d.classList.toggle('on',i+1===cur);d.classList.toggle('done',i+1<cur);});
