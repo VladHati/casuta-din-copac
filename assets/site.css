@@ -1,0 +1,49 @@
+/* ============================================================
+   Casuta din copac — upgrade vizual (animatii + tranzitii + poze)
+   Reguli: NU modifica continutul. Totul e enhancement.
+   Sigur pentru PDF / no-JS: clasa .rv e adaugata DOAR de JS, deci
+   fara JavaScript (weasyprint, print, reduced-motion) totul ramane
+   complet vizibil si neanimat.
+   ============================================================ */
+
+html{scroll-behavior:smooth}
+
+/* --- scroll reveal (clasa .rv pusa de site.js doar pe blocuri de sub fold) --- */
+.rv{opacity:0;transform:translateY(18px);
+    transition:opacity .65s cubic-bezier(.2,.7,.2,1), transform .65s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* --- micro-interactiuni (pur CSS, enhancement) --- */
+a,button,.btn,.act,.card,.dot,.pcard,.cell,.dlrow,.tg,.chip,.pill{
+  transition:transform .16s ease, box-shadow .22s ease, border-color .16s ease, background .16s ease, color .16s ease}
+.btn:active,.act:active{transform:translateY(0) scale(.985)}
+
+/* poze: zoom fin la hover + incadrare curata (in containere cu .ph / .figframe) */
+.ph,.figframe{overflow:hidden}
+.ph img,.figframe img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img,.figframe:hover img{transform:scale(1.04)}
+
+/* --- componente foto santier (folosite pe homepage) --- */
+.shotband{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line,#EAEAEA);margin:8px 0 0;
+  box-shadow:0 1px 2px rgba(38,36,31,.05),0 14px 40px rgba(38,36,31,.10)}
+.shotband img{display:block;width:100%;height:clamp(220px,38vw,420px);object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.shotband:hover img{transform:scale(1.03)}
+.shotband .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;color:#fff;
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.04em;
+  background:linear-gradient(transparent,rgba(20,18,15,.62))}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:680px){.gallery{grid-template-columns:1fr 1fr}}
+.gshot{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line,#EAEAEA);aspect-ratio:3/4;background:#f3efe8}
+.gshot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.gshot:hover img{transform:scale(1.05)}
+
+/* --- accesibilitate / siguranta --- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .ph img,.figframe img,.shotband img,.gshot img{transition:none!important}
+}
+@media print{
+  .rv{opacity:1!important;transform:none!important}
+  .shotband,.gallery,.gshot{box-shadow:none}
+}
