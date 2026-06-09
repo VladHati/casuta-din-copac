@@ -115,6 +115,7 @@ Lista completa de cumparat, preturile si planul de taiere (debitare) sunt in fis
 - Dimensiunea finala a scandurilor (dusumea, sipci, placaj) — confirmam cantitatile la magazin.
 - Tipul invelitorii acoperisului (policarbonat vs sindrila).
 - Cioata corcodusului: o lasam vie (scoate lastari) sau o tratam (putrezeste mai repede).
+- **Scara (Faza 2) e abrupta.** La 1900 mm orizontal iese ~49° (formula de confort 2×riser+calcai = 590, sub zona buna 600–660). Pentru un copil care urca des: daca avem loc, lungim baza la ~2400–2600 mm (~40–42°, calcai 230–260); daca raman 1900, punem trepte mai late (nas de treapta) + banda antiderapanta + mana curenta pe ambele parti. De decis la proiectarea scarii.
 
 ---
 
