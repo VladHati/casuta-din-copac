@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materiale — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#141312;--soft:#5C574E;--faint:#938D80;--line:#E7E4DE;--acc:#C2693A;--ok:#1d7a44;--blue:#2b5d8a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;margin:0;font-size:clamp(30px,5vw,52px);line-height:1.03}
+.mono{font-family:'Space Mono',monospace}
+a{color:var(--acc);text-decoration:none}
+.hero{padding:54px 0 22px;border-bottom:3px solid var(--ink)}
+.hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.hero p{color:var(--soft);max-width:680px;margin:12px 0 0;font-size:15px}
+.back{display:inline-block;margin-top:14px;font-family:'Space Mono',monospace;font-size:12px}
+section{padding:32px 0 6px}
+.head .n{font-family:'Fraunces',serif;font-size:23px;font-weight:600;border-bottom:2px solid var(--acc);padding-bottom:3px}
+.sdesc{color:var(--soft);font-size:14px;margin:10px 0 18px;max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+@media(max-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,19,18,.04),0 8px 20px rgba(20,19,18,.05)}
+.ph{background:#faf8f4;display:grid;place-items:center;padding:12px;border-bottom:1px solid var(--line);height:130px}
+.ph img{max-width:100%;max-height:106px;object-fit:contain;mix-blend-mode:multiply}
+.ph.noimg span{font-family:'Space Mono',monospace;font-weight:700;font-size:30px;color:#d9d2c6}
+.body{padding:12px 13px 14px;display:flex;flex-direction:column;flex:1}
+.codes{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px}
+.piesa{font-family:'Space Mono',monospace;font-weight:700;font-size:14px;background:var(--ink);color:#fff;border-radius:6px;padding:1px 9px}
+.status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.04em;border-radius:999px;padding:2px 7px;border:1.5px solid}
+.status.ai{color:var(--ok);border-color:var(--ok);background:#eef6f0}
+.status.cmd{color:var(--blue);border-color:var(--blue);background:#eaf1f7}
+.status.off{color:var(--soft);border-color:var(--line);border-style:dashed;background:#fff}
+.status.todo{color:var(--acc);border-color:var(--acc);background:#fbeee4}
+.nm{font-size:13px;font-weight:600;line-height:1.25;min-height:32px}
+.meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:7px;border-top:1px dashed var(--line);padding-top:7px}
+.qt{font-family:'Space Mono',monospace;font-size:12px;color:var(--soft)}
+.pr{font-family:'Space Mono',monospace;font-weight:700;font-size:13px}
+.rol{margin-top:8px;font-size:12px;color:var(--soft);line-height:1.4;flex:1}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-family:'Space Mono',monospace;font-size:11px}
+.legend span{border-radius:999px;padding:2px 9px;border:1.5px solid}
+footer{padding:28px 0 70px;color:var(--faint);font-size:12.5px;text-align:center}
+@media print{.card{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kick">Toate materialele · cu poze + status</div>
+    <h1>Materiale — ce ai,<br>ce-ai comandat, ce mai trebuie</h1>
+    <p>Fiecare piesa cu poza, codul din proiect (ST, GR, JO...), statusul si unde se foloseste la montaj. Pozele apar si in fiecare etapa din <a href="ghid-montaj.html">ghidul de montaj</a>.</p>
+    <div class="legend">
+      <span class="status ai">LE AI</span>
+      <span class="status cmd">IN COMANDA</span>
+      <span class="status off">DIN OFFCUT</span>
+      <span class="status todo">DE LUAT / DE ALES</span>
+    </div>
+    <a class="back" href="index.html">← inapoi la manual</a>
+  </header>
+  <section>
+    <div class="head"><span class="n">Le ai deja</span></div>
+    <p class="sdesc">Materiale detinute / cumparate mai demult — nu sunt in comanda Hornbach de azi.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_7337253.png" alt="Stalpi KVH 100×100×4000" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">ST</span><span class="status ai">LE AI</span></div>
+          <div class="nm">Stalpi KVH 100×100×4000</div>
+          <div class="meta"><span class="qt">4 buc</span></div>
+          <div class="rol">Pasul 1 · cei 4 stalpi ai structurii (spate continui, fata taiati la 1872)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/lemn.png" alt="Barne Leroy 100×100×4000 (nerindeluite)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">JO</span><span class="status ai">LE AI</span></div>
+          <div class="nm">Barne Leroy 100×100×4000 (nerindeluite)</div>
+          <div class="meta"><span class="qt">4 buc</span></div>
+          <div class="rol">Pasul 6 · 4 din cele 6 joiste podea</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/papuc.svg" alt="Papuc reazem U 101×100, otel 4 mm" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">—</span><span class="status ai">LE AI</span></div>
+          <div class="nm">Papuc reazem U 101×100, otel 4 mm</div>
+          <div class="meta"><span class="qt">4 buc</span></div>
+          <div class="rol">Baza stalpilor — deja turnat in beton</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/kober.jpg" alt="Köber Grund impregnare 4 L (pe baza de apa)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">F2</span><span class="status ai">LE AI</span></div>
+          <div class="nm">Köber Grund impregnare 4 L (pe baza de apa)</div>
+          <div class="meta"><span class="qt">1 buc</span></div>
+          <div class="rol">Finisaj · stratul de baza pe lemnul de structura</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="head"><span class="n">In comanda Hornbach</span></div>
+    <p class="sdesc">Comanda DV9048520886 din 09.06.2026 · subtotal 3.886,24 + livrare 215 = 4.101,24 lei.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_7337253.png" alt="KVH 100×100×4000 (joiste completare)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">JO</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">KVH 100×100×4000 (joiste completare)</div>
+          <div class="meta"><span class="qt">2 buc</span><span class="pr">298,00 lei</span></div>
+          <div class="rol">Pasul 6 · completare la 6 joiste</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_5483835.png" alt="Grinda glulam 90×200×4000" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">GR</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Grinda glulam 90×200×4000</div>
+          <div class="meta"><span class="qt">2 buc</span><span class="pr">958,00 lei</span></div>
+          <div class="rol">Pasii 4–5 · cele 2 grinzi principale</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_6224073.png" alt="Dusumea larice Konsta 28×145×3000" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">DL</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Dusumea larice Konsta 28×145×3000</div>
+          <div class="meta"><span class="qt">17 buc</span><span class="pr">1.358,30 lei</span></div>
+          <div class="rol">Pasul 8 · dusumeaua (casuta + balcon)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_738965.png" alt="Coltar rigidizat 100×100×90×3" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">C1</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Coltar rigidizat 100×100×90×3</div>
+          <div class="meta"><span class="qt">4 buc</span><span class="pr">37,40 lei</span></div>
+          <div class="rol">Pasul 5 · grinda fata pe varful stalpului</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_738910.png" alt="Coltar rigidizat 90×90×65×2,5" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">C2</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Coltar rigidizat 90×90×65×2,5</div>
+          <div class="meta"><span class="qt">12 buc</span><span class="pr">57,96 lei</span></div>
+          <div class="rol">Pasul 6 · joiste → grinda, anti-ridicare (2/joista)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_10434633.png" alt="Heco Topix-Plus 8×200 (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">H1</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Heco Topix-Plus 8×200 (100 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">369,10 lei</span></div>
+          <div class="rol">Pasii 5,7 · suruburi structurale + contrafise</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_10434398.png" alt="Heco Topix-Plus 6×100 (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">H2</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Heco Topix-Plus 6×100 (100 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">94,87 lei</span></div>
+          <div class="rol">Pasul 6 · coltare joiste</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_10434139.png" alt="Heco Topix-Plus 6×80 (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">H3</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Heco Topix-Plus 6×80 (100 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">72,80 lei</span></div>
+          <div class="rol">Blocaje intre joiste</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_10528829.png" alt="Suruburi inox A2 5×60 (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">H4</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Suruburi inox A2 5×60 (100 buc)</div>
+          <div class="meta"><span class="qt">2 pac</span><span class="pr">111,64 lei</span></div>
+          <div class="rol">Pasul 8 · prindere dusumea larice</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_6834285.png" alt="Surub hexagonal M12×120 inox A2 (25 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">B2</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Surub hexagonal M12×120 inox A2 (25 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">161,67 lei</span></div>
+          <div class="rol">Baza stalpilor in papuc (2/stalp)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_12130958.png" alt="Tija filetata M12 1m DIN975 8.8" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">B1</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Tija filetata M12 1m DIN975 8.8</div>
+          <div class="meta"><span class="qt">1 buc</span><span class="pr">13,40 lei</span></div>
+          <div class="rol">Pasii 3–4 · polita grinda spate (taie 4× ~220)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_3830642.png" alt="Piulite M12 DIN934 zincat (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">B4</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Piulite M12 DIN934 zincat (100 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">39,00 lei</span></div>
+          <div class="rol">Piulite pt tija polita + baza</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_3840897.png" alt="Saibe late M12 13×30 (100 buc)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">B3</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Saibe late M12 13×30 (100 buc)</div>
+          <div class="meta"><span class="qt">1 pac</span><span class="pr">25,32 lei</span></div>
+          <div class="rol">Sub capul/piulita buloanelor M12</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/COD_5509678.png" alt="Ulei lemn tec Hornbach Plus 2,5 l" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">F1</span><span class="status cmd">IN COMANDA</span></div>
+          <div class="nm">Ulei lemn tec Hornbach Plus 2,5 l</div>
+          <div class="meta"><span class="qt">2 buc</span><span class="pr">288,78 lei</span></div>
+          <div class="rol">Finisaj · dusumea larice + lemn expus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="head"><span class="n">De luat / de decis</span></div>
+    <p class="sdesc">Din offcut (gratis) sau de procurat separat — niciuna nu opreste startul.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ph"><img src="POZE/lemn.png" alt="Polita lemn 100×100 (sub grinda spate)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">PO</span><span class="status off">DIN OFFCUT</span></div>
+          <div class="nm">Polita lemn 100×100 (sub grinda spate)</div>
+          <div class="meta"><span class="qt">2 buc</span><span class="pr">gratis</span></div>
+          <div class="rol">Pasul 3 · sub grinda din spate</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/lemn.png" alt="Blocaje intre joiste" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">BL</span><span class="status off">DIN OFFCUT</span></div>
+          <div class="nm">Blocaje intre joiste</div>
+          <div class="meta"><span class="qt">~10</span><span class="pr">gratis</span></div>
+          <div class="rol">Peste grinzi, opresc joistele sa se rasuceasca</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/lemn.png" alt="Contrafise (diagonale)" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">CF</span><span class="status off">OFFCUT / VERIFICA</span></div>
+          <div class="nm">Contrafise (diagonale)</div>
+          <div class="meta"><span class="qt">6 buc</span><span class="pr">gratis</span></div>
+          <div class="rol">Pasul 7 · rigidizare diagonala la stalpi + sub consola</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="POZE/lemn.png" alt="Proptele temporare" loading="lazy"></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">PT</span><span class="status off">DIN RESTURI</span></div>
+          <div class="nm">Proptele temporare</div>
+          <div class="meta"><span class="qt">~6</span><span class="pr">gratis</span></div>
+          <div class="rol">Pasii 1,7 · sprijin provizoriu pana la contrafise</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph noimg"><span>?</span></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">—</span><span class="status todo">DE LUAT</span></div>
+          <div class="nm">Sol moale sub platforma (scoarta/nisip)</div>
+          <div class="meta"><span class="qt">~5 m²</span></div>
+          <div class="rol">Siguranta · amortizare cadere sub casuta</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph noimg"><span>F3</span></div>
+        <div class="body">
+          <div class="codes"><span class="piesa">F3</span><span class="status todo">DE ALES</span></div>
+          <div class="nm">Topcoat colorat exterior</div>
+          <div class="meta"><span class="qt">1</span></div>
+          <div class="rol">Finisaj final peste grund (culoarea ta)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="mono">Casuta din copac · materiale Faza 1 platforma · poze reale Hornbach + foto teren</footer>
+</div>
+</body>
+</html>
