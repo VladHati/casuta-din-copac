@@ -24,6 +24,7 @@ PAGES = [
     ("ghid-montaj.html",      "02-Ghid-montaj-pas-cu-pas.pdf"),
     ("imbinari-ghid.html",    "03-Imbinari-si-audit.pdf"),
     ("audit.html",            "04-Audit-tehnic.pdf"),
+    ("materiale.html",        "06-Materiale.pdf"),
 ]
 
 DOSSIER_CSS = """<style>
