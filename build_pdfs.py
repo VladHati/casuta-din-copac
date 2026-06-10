@@ -56,18 +56,8 @@ def main():
         print(f"OK {src:30s} -> PDF/{out} ({time.time()-t:.1f}s)")
     build_dossier()
     print("OK dosar -> PDF/05-Dosar-proiect.pdf")
-
-    # Manual combinat
-    order = ["00-Prezentare.pdf",
-             "02-Ghid-montaj-pas-cu-pas.pdf", "06-Materiale.pdf",
-             "03-Imbinari.pdf", "04-Audit-tehnic.pdf",
-             "05-Dosar-proiect.pdf"]
-    w = PdfWriter()
-    for f in order:
-        w.append(os.path.join(OUT, f))
-    with open(os.path.join(OUT, "Manual-Faza-1-complet.pdf"), "wb") as fh:
-        w.write(fh)
-    print("OK manual combinat -> PDF/Manual-Faza-1-complet.pdf")
+    # NB: Manualul combinat (Manual-Faza-1-complet.pdf) e generat de tools-fise/book.py
+    # ca brosura unica (un singur sistem). build_pdfs face doar PDF-urile de sectiune.
 
 if __name__ == "__main__":
     main()

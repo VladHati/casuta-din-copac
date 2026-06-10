@@ -31,10 +31,10 @@ CSS='''<style>
 .fkey{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 18px;padding:13px 15px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}
 .fk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
 .fnote{flex-basis:100%;margin-top:4px;font-size:12.5px;color:var(--soft)}.fnote b{color:#161413}
-.step{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
+.step{padding:20px 0;border-top:1px solid var(--line)}.step .h{display:flex;gap:16px;align-items:flex-start}
 .step:first-child{border-top:none}
-.bn{width:46px;height:46px;min-width:46px;align-self:start;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
-.step .tx{font-size:16.5px;line-height:1.5;max-width:640px}
+.bn{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
+.step .tx{font-size:16.5px;line-height:1.5}.step .drawbox,.step .zoombox,.step .warn{margin-left:62px}
 .drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}.drawbox svg{width:100%;height:auto;display:block}
 .zoombox{margin-top:14px;display:block;border:1.5px dashed var(--acc);border-radius:14px;background:#fff;padding:12px 14px;max-width:620px}
 .zoombox .zl{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;font-weight:700}
@@ -79,7 +79,7 @@ def emit(s,prev,nxt):
         big=f'<div class="drawbox">{st["svg"]}</div>' if st.get('svg') else ''
         zoom=f'<div class="zoombox"><div class="zl">zoom &middot; cum se prinde</div>{st["zoom"]}</div>' if st.get('zoom') else ''
         warn='<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div>' if st.get('warn') else ''
-        steps+=f'<div class="step"><div class="bn">{i}</div><div><div class="tx">{st["t"]}</div>{big}{zoom}{warn}</div></div>'
+        steps+=f'<div class="step"><div class="h"><div class="bn">{i}</div><div class="tx">{st["t"]}</div></div>{big}{zoom}{warn}</div>'
     checks=''.join(f'<li><span class="bx"></span><span>{c}</span></li>' for c in s['check'])
     mtags=f'<span class="mtag">~{s["time"]}</span><span class="mtag {("crit" if crit else "")}">{s["diff"]}</span>'+('<span class="mtag">2 persoane</span>' if s['ppl'] else '')
     pv=f'<a href="{prev}">&larr; Fisa anterioara</a>' if prev else '<a class="dis">&larr;</a>'

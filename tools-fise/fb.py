@@ -13,8 +13,11 @@ def N(mat,x,y,z,dx,dy,dz,ex=None):
     return d
 
 def posts_full(stage):
-    fh=2600 if stage==1 else FT
-    return [g('post',0,0,0,PS,fh,PS),g('post',W-PS,0,0,PS,fh,PS),g('post',0,0,D-PS,PS,BT,PS),g('post',W-PS,0,D-PS,PS,BT,PS)]
+    if stage==1:
+        hf=hb=1500
+    else:
+        hf=1450; hb=1700   # fata mai jos (taiata), spate mai sus (schematic; cota reala in text)
+    return [g('post',0,0,0,PS,hf,PS),g('post',W-PS,0,0,PS,hf,PS),g('post',0,0,D-PS,PS,hb,PS),g('post',W-PS,0,D-PS,PS,hb,PS)]
 def posts_stub():
     s=420
     return [g('post',0,BEAMB-s,0,PS,s,PS),g('post',W-PS,BEAMB-s,0,PS,s,PS),g('post',0,BEAMB-s,D-PS,PS,s,PS),g('post',W-PS,BEAMB-s,D-PS,PS,s,PS)]
@@ -101,9 +104,9 @@ props=[{'p1':(50,820,50),'p2':(-470,0,50),'thick':12,'col':BR},
 
 def stage1():
     A=anchors()
-    s1=F(A+[N('post',0,0,D-PS,PS,BT,PS,ex=(0,950,0))],ground=GROUND,W=620)
-    s2=F(A+[N('post',0,0,D-PS,PS,BT,PS),N('post',W-PS,0,D-PS,PS,BT,PS),N('post',0,0,0,PS,2600,PS),N('post',W-PS,0,0,PS,2600,PS)],ground=GROUND,W=620)
-    s3=F(posts_full(1),ground=GROUND,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,2200,-PS),'t':'PLUMB'}],labels=[{'t':'boloboc pe 2 fete','at':(0,2520,-PS),'color':'#C2693A'}])
+    s1=F(A+[N('post',0,0,D-PS,PS,1500,PS,ex=(0,650,0))],ground=GROUND,W=620)
+    s2=F(A+[N('post',0,0,D-PS,PS,1500,PS),N('post',W-PS,0,D-PS,PS,1500,PS),N('post',0,0,0,PS,1500,PS),N('post',W-PS,0,0,PS,1500,PS)],ground=GROUND,W=620)
+    s3=F(posts_full(1),ground=GROUND,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,1500,-PS),'t':'PLUMB'}],labels=[{'t':'boloboc pe 2 fete','at':(0,1700,-PS),'color':'#C2693A'},{'t':'stalpi de 4 m (raman lungi)','at':(W,1700,50),'color':'#5C574E'}])
     s4=F(posts_full(1),struts=props,ground=GROUND,W=640,labels=[{'t':'proptele PT','at':(W+250,500,50),'color':BR}])
     return [dict(t='Aseaza primul stalp (spate) in papucul lui din beton. Coboara-l drept in U.',svg=s1,warn=False),
             dict(t='Pune toti 4 stalpii in papucii lor. Cei 2 din spate raman LUNGI (4 m).',svg=s2,warn=False),
@@ -112,10 +115,10 @@ def stage1():
             dict(t='Prinde suruburile B2 in papuc DOAR slab (2 / stalp) — sa poti inca corecta. Le strangi la fisa 2.',svg=None,zoom=DETS['B2'],warn=False)]
 def stage2():
     P=posts_full(2)
-    s1=F(P,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,2200,-PS),'t':'+2200 podea'}])
-    s2=F(P,W=620,dims=[{'p1':(0,1872,-PS),'p2':(0,2200,-PS),'t':'328'}],labels=[{'t':'+1872 sprijin','at':(0,1872,-PS-280),'color':'#C2693A'}])
-    off=[N('post',0,1872,0,PS,728,PS,ex=(0,900,0)),N('post',W-PS,1872,0,PS,728,PS,ex=(0,900,0))]
-    s3=F(P+off,W=640,labels=[{'t':'taie la +1872','at':(W/2,1700,-200),'color':'#C2693A'}])
+    s1=F(P,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,1450,-PS),'t':'+2200 podea'}])
+    s2=F(P,W=620,dims=[{'p1':(0,1150,-PS),'p2':(0,1450,-PS),'t':'328'}],labels=[{'t':'+1872 sprijin','at':(0,1150,-PS-300),'color':'#C2693A'}])
+    off=[N('post',0,1450,0,PS,300,PS,ex=(0,420,0)),N('post',W-PS,1450,0,PS,300,PS,ex=(0,420,0))]
+    s3=F(P+off,W=660,labels=[{'t':'taie la +1872','at':(W/2,1500,-220),'color':'#C2693A'},{'t':'offcut pt polite','at':(W/2,2050,0),'color':'#5C574E'}])
     return [dict(t='Marcheaza +2200 (fata podelei) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat.',svg=s1,warn=False),
             dict(t='Coboara 328 mm si marcheaza +1872 (grinda 200 + joista 100 + dusumea 28). Acolo se sprijina podeaua.',svg=s2,warn=True),
             dict(t='Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite. Stalpii din spate raman INTREGI.',svg=s3,warn=True),
