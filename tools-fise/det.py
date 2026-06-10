@@ -1,133 +1,109 @@
 # -*- coding: utf-8 -*-
-# Detalii de prindere, 2 vederi, simboluri clare (gandit ca IKEA).
+# Detalii de prindere, 2 vederi, text DOAR scurt in interior; descrierea in caption (fara taieri).
 INK='#161413'; ACC='#C2693A'
 C={'post':'#E8973C','beam':'#3F8FA6','joist':'#7BAE52','deck':'#E9C277','polita':'#B083C6','metal':'#AAB2BB','brace':'#E2663B','tree':'#A56B41'}
-def rect(x,y,w,h,fill,r=3):
-    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r}" fill="{fill}" stroke="{INK}" stroke-width="2.4"/>'
-def txt(x,y,s,col='#5C574E',sz=10,anc='middle',w=400):
-    return f'<text x="{x}" y="{y}" text-anchor="{anc}" font-family="Space Mono,monospace" font-size="{sz}" fill="{col}" font-weight="{w}">{s}</text>'
-def cap(cx,cy):  # cap surub vizibil
-    return f'<circle cx="{cx}" cy="{cy}" r="5.6" fill="{INK}"/><line x1="{cx-3.4}" y1="{cy}" x2="{cx+3.4}" y2="{cy}" stroke="#fff" stroke-width="1.4"/>'
-def hidden(cx,cy):  # surub din spate / ascuns
-    return f'<circle cx="{cx}" cy="{cy}" r="5.6" fill="#fff" stroke="{INK}" stroke-width="2" stroke-dasharray="2.4 2"/>'
-def arrow(x1,y1,x2,y2,col=ACC,w=2.6):
-    import math; a=math.atan2(y2-y1,x2-x1)
-    h=''.join(f'<line x1="{x2}" y1="{y2}" x2="{x2-11*math.cos(a+d)}" y2="{y2-11*math.sin(a+d)}" stroke="{col}" stroke-width="{w}"/>' for d in (2.5,-2.5))
-    return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{col}" stroke-width="{w}"/>'+h
-def badge(cx,cy,s):
-    wbed=12+len(s)*7.4
-    return f'<rect x="{cx-wbed/2}" y="{cy-9}" width="{wbed}" height="18" rx="5" fill="{INK}"/>'+txt(cx,cy+4,s,'#fff',11,'middle',700)
+def rect(x,y,w,h,fill,r=3): return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r}" fill="{fill}" stroke="{INK}" stroke-width="2.4"/>'
+def cap(cx,cy): return f'<circle cx="{cx}" cy="{cy}" r="5.4" fill="{INK}"/><line x1="{cx-3.2}" y1="{cy}" x2="{cx+3.2}" y2="{cy}" stroke="#fff" stroke-width="1.4"/>'
+def hidden(cx,cy): return f'<circle cx="{cx}" cy="{cy}" r="5.4" fill="#fff" stroke="{INK}" stroke-width="2" stroke-dasharray="2.4 2"/>'
+def tag(cx,cy,s,col=ACC): # eticheta mica, centrata (text scurt!)
+    return f'<text x="{cx}" y="{cy}" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="{col}">{s}</text>'
+def lbl(cx,cy,s,col='#5C574E'):
+    return f'<text x="{cx}" y="{cy}" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="{col}">{s}</text>'
+import math
+def arr(x1,y1,x2,y2,col=ACC,w=2.6):
+    a=math.atan2(y2-y1,x2-x1)
+    return (f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{col}" stroke-width="{w}"/>'
+            +''.join(f'<line x1="{x2}" y1="{y2}" x2="{x2-10*math.cos(a+d)}" y2="{y2-10*math.sin(a+d)}" stroke="{col}" stroke-width="{w}"/>' for d in (2.5,-2.5)))
 
+# panou: 2 vederi (208x170) + caption full-width jos. Tot textul intern e scurt si in interior.
 def panel(left,right,caption):
-    # left/right = (title, body_svg) cu coord locale 0..176 x, 0..150 y
     def view(ox,title,body):
-        return (f'<g transform="translate({ox},26)">'
-                f'<rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/>'
-                f'{txt(88,-8,title,ACC,10.5,"middle",700)}{body}</g>')
-    return (f'<svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">'
-            f'{view(6,left[0],left[1])}{view(198,right[0],right[1])}'
-            f'<rect x="6" y="192" width="368" height="24" rx="7" fill="#fff" stroke="{ACC}" stroke-width="1.4"/>'
-            f'{txt(190,208,caption,ACC,11.5,"middle",700)}</svg>')
+        return (f'<g transform="translate({ox},30)">'
+                f'<rect x="0" y="0" width="208" height="170" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/>'
+                f'<text x="104" y="-9" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="{ACC}">{title}</text>'
+                f'{body}</g>')
+    return (f'<svg viewBox="0 0 460 252" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">'
+            f'{view(12,left[0],left[1])}{view(240,right[0],right[1])}'
+            f'<rect x="12" y="222" width="436" height="24" rx="7" fill="#fff" stroke="{ACC}" stroke-width="1.4"/>'
+            f'<text x="230" y="238" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="{ACC}">{caption}</text></svg>')
 
-# --- B2 baza stalp ---
-B2=panel(
- ('VEDERE DIN FATA',
-  rect(74,16,34,118,C['post'])+
-  f'<path d="M64 134 v16 h48 v-16" fill="none" stroke="{INK}" stroke-width="3"/>'+rect(64,150,48,10,C['metal'])+
-  cap(70,70)+cap(112,70)+arrow(40,70,62,70)+arrow(136,70,114,70)+txt(88,178,'papuc U',  '#5C574E',9)),
+B2=panel(('DIN FATA',
+   rect(86,18,36,118,C['post'])+f'<path d="M76 136 v18 h56 v-18" fill="none" stroke="{INK}" stroke-width="3"/>'+rect(76,150,56,12,C['metal'])
+   +cap(82,72)+cap(126,72)+arr(54,72,72,72)+arr(154,72,136,72)+lbl(104,182,'papuc U')),
  ('DE SUS',
-  rect(66,46,46,46,C['post'])+f'<path d="M58 40 h62 v62 h-62" fill="none" stroke="{INK}" stroke-width="3"/>'+
-  cap(62,69)+cap(116,69)+txt(88,120,'bulon prin aripi',  '#5C574E',9)),
- 'B2 x2 / stalp · M12 · strange cu cheia 19')
+   rect(80,52,48,48,C['post'])+f'<path d="M70 44 h68 v68 h-68" fill="none" stroke="{INK}" stroke-width="3"/>'+cap(74,76)+cap(134,76)+tag(104,150,'M12')),
+ 'B2  x2 / stalp  ·  strange cu cheia 19')
 
-# --- B1 polita ---
-B1=panel(
- ('LATERAL',
-  rect(30,16,40,130,C['post'])+rect(70,60,52,46,C['polita'])+
-  cap(60,76)+cap(60,100)+hidden(36,76)+hidden(36,100)+
-  txt(96,128,'polita',  '#5C574E',9)+txt(150,70,'cap',ACC,9)+txt(150,150,'piulita spate',ACC,9)),
+B1=panel(('LATERAL',
+   rect(46,16,40,150,C['post'])+rect(86,66,52,46,C['polita'])+cap(74,82)+cap(74,106)+hidden(52,82)+hidden(52,106)+lbl(112,134,'polita')),
  ('DE SUS',
-  rect(40,54,46,46,C['post'])+rect(86,62,40,30,C['polita'])+cap(64,77)+hidden(120,77)+
-  txt(88,120,'prin polita -> stalp',  '#5C574E',9)),
- 'B1 x2 / polita · cap pe fata, piulita pe spate')
+   rect(60,56,48,48,C['post'])+rect(108,64,40,32,C['polita'])+cap(86,80)+hidden(140,80)+lbl(104,150,'prin polita')),
+ 'B1  x2 / polita  ·  cap pe fata, piulita pe spate')
 
-# --- H1 grinda spate (oblic/toe) ---
-H1B=panel(
- ('LATERAL',
-  rect(28,30,40,116,C['post'])+rect(64,40,60,30,C['beam'])+rect(64,70,30,26,C['polita'])+
-  arrow(108,52,86,86,ACC)+cap(86,86)+
-  f'<path d="M96 70 a18 18 0 0 0 -10 16" fill="none" stroke="{ACC}" stroke-width="1.4"/>'+txt(120,64,'~30 grade',ACC,9,'start')+
-  txt(150,150,'OBLIC (toe)',ACC,9)),
+H1B=panel(('LATERAL',
+   rect(40,34,40,118,C['post'])+rect(76,44,72,30,C['beam'])+rect(76,74,30,26,C['polita'])
+   +arr(126,56,98,90)+cap(98,90)+tag(182,52,'~30')),
  ('DE SUS',
-  rect(40,30,96,40,C['beam'])+rect(40,30,40,40,C['post'])+cap(70,46)+cap(70,58)+
-  txt(100,120,'2 suruburi',  '#5C574E',9)),
- 'H1 oblic in stalp · 2 buc · tin grinda lipita')
+   rect(60,40,108,40,C['beam'])+rect(60,40,44,40,C['post'])+cap(92,50)+cap(92,64)+cap(92,78)+tag(150,120,'x3')),
+ 'H1 oblic in stalp  ·  x3  ·  tine grinda lipita')
 
-# --- C1 grinda fata pe varf ---
-C1=panel(
- ('FATA A',
-  rect(64,70,46,76,C['post'])+rect(40,30,94,40,C['beam'])+rect(54,52,16,70,C['metal'])+
-  cap(62,64)+cap(62,50)+cap(62,96)+cap(62,118)+
-  txt(150,56,'2 in grinda',ACC,9,'start')+txt(150,108,'2 in stalp',ACC,9,'start')),
+C1=panel(('FATA A',
+   rect(78,72,46,82,C['post'])+rect(54,34,108,38,C['beam'])+rect(66,54,18,74,C['metal'])
+   +cap(75,50)+cap(75,64)+cap(75,100)+cap(75,124)),
  ('FATA B (opus)',
-  rect(64,70,46,76,C['post'])+rect(40,30,94,40,C['beam'])+rect(104,52,16,70,C['metal'])+
-  cap(112,64)+cap(112,50)+cap(112,96)+cap(112,118)+txt(88,138,'inca un coltar',  '#5C574E',9)),
- 'C1 x2 / stalp · 2 suruburi in stalp + 2 in grinda, fiecare')
+   rect(78,72,46,82,C['post'])+rect(54,34,108,38,C['beam'])+rect(124,54,18,74,C['metal'])
+   +cap(133,50)+cap(133,64)+cap(133,100)+cap(133,124)),
+ 'C1: 2 coltare / stalp  ·  fiecare cu 2 in stalp + 2 in grinda')
 
-# --- C2 joista anti-lift ---
-C2=panel(
- ('LATERAL',
-  rect(34,86,120,40,C['beam'])+rect(78,30,40,56,C['joist'])+rect(118,60,14,52,C['metal'])+
-  cap(126,72)+cap(126,86)+cap(126,104)+arrow(98,28,98,12,ACC)+txt(98,150,'',  '#5C574E',9)+
-  txt(150,150,'ridicare',ACC,9)),
+C2=panel(('LATERAL',
+   rect(40,96,128,38,C['beam'])+rect(86,40,44,56,C['joist'])+rect(130,64,16,54,C['metal'])
+   +cap(138,76)+cap(138,92)+cap(138,108)+arr(108,38,108,20)+tag(150,160,'ridicare')),
  ('DE SUS',
-  rect(30,60,120,30,C['beam'])+rect(76,40,40,70,C['joist'])+cap(120,66)+cap(120,84)+
-  txt(88,128,'coltar pe lateral',  '#5C574E',9)),
- 'C2 x2 / joista (fata + spate) · TOTAL 12')
+   rect(36,64,136,32,C['beam'])+rect(86,44,40,72,C['joist'])+cap(132,72)+cap(132,88)+lbl(104,150,'pe lateral')),
+ 'C2  x2 / joista (fata + spate)  ·  TOTAL 12')
 
-# --- H3 blocaj ---
-H3=panel(
- ('LATERAL',
-  rect(28,30,40,120,C['joist'])+rect(120,30,40,120,C['joist'])+rect(60,70,62,40,'#CBA24B')+
-  arrow(74,56,62,84,ACC)+cap(62,84)+arrow(108,56,120,84,ACC)+cap(120,84)+txt(91,128,'BL',INK,11,'middle',700)),
- ('SUS',
-  rect(40,40,30,90,C['joist'])+rect(116,40,30,90,C['joist'])+rect(70,70,46,30,'#CBA24B')+cap(78,85)+cap(108,85)+
-  txt(93,150,'peste grinda',  '#5C574E',9)),
- 'H3 oblic, cate 1-2 / capat')
-
-# --- CF contrafisa ---
-CF=panel(
- ('CAPAT pe stalp',
-  rect(40,20,34,130,C['post'])+f'<polygon points="74,70 100,70 150,150 124,150" fill="{C["brace"]}" stroke="{INK}" stroke-width="2.4"/>'+
-  cap(86,84)+cap(94,98)+cap(102,112)+txt(150,60,'3 suruburi',ACC,9,'start')),
- ('directie',
-  f'<polygon points="40,40 64,40 150,150 126,150" fill="{C["brace"]}" stroke="{INK}" stroke-width="2.4"/>'+
-  arrow(60,60,84,92,ACC)+cap(52,52)+cap(64,68)+cap(76,84)+txt(96,150,'taie pe potriveala',  '#5C574E',9)),
- 'H1 x3 / fiecare capat · fara coltar')
-
-# --- H4 dusumea ---
-H4=panel(
+H3=panel(('LATERAL',
+   rect(36,30,40,124,C['joist'])+rect(132,30,40,124,C['joist'])+rect(72,72,64,40,'#CBA24B')
+   +arr(86,58,74,86)+cap(74,86)+arr(122,58,134,86)+cap(134,86)+tag(104,98,'BL',INK)),
  ('DE SUS',
-  rect(20,30,40,130,C['joist'])+rect(116,30,40,130,C['joist'])+
-  rect(8,64,160,30,C['deck'])+cap(40,79)+cap(136,79)+txt(88,150,'2 / joista',  '#5C574E',9)),
- ('LATERAL',
-  rect(30,96,116,30,C['joist'])+rect(34,66,52,28,C['deck'])+rect(92,66,52,28,C['deck'])+
-  cap(60,80)+cap(118,80)+f'<line x1="86" y1="60" x2="92" y2="60" stroke="{ACC}" stroke-width="2.6"/>'+txt(89,52,'5 mm',ACC,9)),
- 'H4 x2 / joista · INOX · cui doar ca distantier')
+   rect(46,40,32,96,C['joist'])+rect(130,40,32,96,C['joist'])+rect(78,72,52,32,'#CBA24B')+cap(86,88)+cap(122,88)+lbl(104,156,'peste grinda')),
+ 'H3 oblic  ·  cate 1-2 / capat')
 
-# --- RAIL balustrada ---
-RAIL=panel(
- ('LATERAL',
-  rect(20,150,150,16,C['deck'])+rect(30,128,140,18,C['joist'])+rect(70,30,26,116,C['post'])+
-  cap(76,118)+cap(76,138)+txt(150,60,'in CADRU',ACC,9,'start')+txt(96,184,'nu in dusumea!',ACC,9)),
- ('',
-  f'<line x1="40" y1="40" x2="40" y2="150" stroke="{C["post"]}" stroke-width="12" stroke-linecap="round"/>'+
-  f'<line x1="136" y1="40" x2="136" y2="150" stroke="{C["post"]}" stroke-width="12" stroke-linecap="round"/>'+
-  f'<line x1="40" y1="46" x2="136" y2="46" stroke="{C["post"]}" stroke-width="9" stroke-linecap="round"/>'+
-  ''.join(f'<line x1="{x}" y1="50" x2="{x}" y2="150" stroke="{INK}" stroke-width="2"/>' for x in (64,84,104))+
-  txt(88,150,'gol < 9 cm',ACC,9)),
- 'Stalpisor bulonat de cadru · gol intre sipci < 9 cm')
+CF=panel(('CAPAT pe stalp',
+   rect(44,20,34,140,C['post'])+f'<polygon points="78,74 104,74 160,160 134,160" fill="{C["brace"]}" stroke="{INK}" stroke-width="2.4"/>'
+   +cap(90,88)+cap(98,102)+cap(106,116)+tag(150,60,'x3')),
+ ('DIRECTIE',
+   f'<polygon points="44,44 70,44 168,160 142,160" fill="{C["brace"]}" stroke="{INK}" stroke-width="2.4"/>'
+   +lbl(66,150,'taie pe masura')),
+ 'H1  x3 / fiecare capat  ·  fara coltar')
 
-DETS={'B2':B2,'B1':B1,'H1B':H1B,'C1':C1,'C2':C2,'H3':H3,'CF':CF,'H4':H4,'RAIL':RAIL}
+H4=panel(('DE SUS',
+   rect(24,30,40,128,C['joist'])+rect(140,30,40,128,C['joist'])+rect(14,66,184,30,C['deck'])+cap(44,81)+cap(160,81)),
+ ('LATERAL',
+   rect(34,100,140,30,C['joist'])+rect(40,68,56,28,C['deck'])+rect(104,68,56,28,C['deck'])+cap(64,82)+cap(128,82)
+   +f'<line x1="96" y1="60" x2="104" y2="60" stroke="{ACC}" stroke-width="2.6"/>'+tag(100,52,'5 mm')),
+ 'H4  x2 / joista  ·  INOX  ·  gol de 5 mm')
+
+RAIL=panel(('LATERAL',
+   rect(20,150,168,14,C['deck'])+rect(30,128,148,18,C['joist'])+rect(78,30,26,116,C['post'])
+   +cap(84,116)+cap(84,138)+tag(150,70,'in cadru')),
+ ('FATA',
+   f'<line x1="40" y1="40" x2="40" y2="150" stroke="{C["post"]}" stroke-width="12" stroke-linecap="round"/>'
+   +f'<line x1="160" y1="40" x2="160" y2="150" stroke="{C["post"]}" stroke-width="12" stroke-linecap="round"/>'
+   +f'<line x1="40" y1="46" x2="160" y2="46" stroke="{C["post"]}" stroke-width="9" stroke-linecap="round"/>'
+   +''.join(f'<line x1="{x}" y1="50" x2="{x}" y2="150" stroke="{INK}" stroke-width="2"/>' for x in (72,96,120))+tag(104,120,'<9 cm')),
+ 'Stalpisor bulonat de CADRU  ·  goluri sub 9 cm')
+
+TABLE=panel(('LATERAL',
+   rect(20,118,168,14,C['deck'])+rect(92,28,24,104,C['tree'])
+   +f'<ellipse cx="104" cy="40" rx="44" ry="9" fill="#C99A5E" stroke="{INK}" stroke-width="2.2"/>'
+   +f'<line x1="84" y1="118" x2="84" y2="132" stroke="{ACC}" stroke-width="2.4"/><line x1="116" y1="118" x2="116" y2="132" stroke="{ACC}" stroke-width="2.4"/>'
+   +tag(104,150,'joc 3-5 cm')),
+ ('REGULA',
+   rect(40,120,128,14,C['deck'])+rect(70,70,68,50,C['deck'])+cap(104,96)
+   +lbl(104,150,'blat pe cadru')+tag(104,58,'NU pe copac')),
+ 'Blatul pe cadrul lui propriu  ·  NICIODATA pe copac')
+
+DETS={'B2':B2,'B1':B1,'H1B':H1B,'C1':C1,'C2':C2,'H3':H3,'CF':CF,'H4':H4,'RAIL':RAIL,'TABLE':TABLE}
 import pickle; pickle.dump(DETS,open('dets.pkl','wb'))
-print('detalii prinderi:', list(DETS))
+print('det rescris:', list(DETS))

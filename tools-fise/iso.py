@@ -148,5 +148,13 @@ def render(boxes, struts=None, screws=None, dims=None, arrows=None, labels=None,
             out.append(f'<circle cx="{q[0]:.1f}" cy="{q[1]:.1f}" r="2.6" fill="{col}"/>')
         out.append(f'<rect x="{p[0]-wbed/2:.1f}" y="{p[1]-9:.1f}" width="{wbed:.1f}" height="17" rx="4" fill="#fff" stroke="{col}" stroke-width="1.2"/>')
         out.append(f'<text x="{p[0]:.1f}" y="{p[1]+3.5:.1f}" fill="{col}" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">{t}</text>')
+    # cod piesa (badge pe piesele care au 'code')
+    for b in draw_boxes:
+        if b.get('code'):
+            cx=b['x']+b['dx']/2; cy=b['y']+b['dy']; cz=b['z']+b['dz']/2
+            P=TP((cx,cy,cz)); s=str(b['code']); wb=14+len(s)*8.6
+            out.append(f'<line x1="{P[0]:.1f}" y1="{P[1]-9:.1f}" x2="{P[0]:.1f}" y2="{P[1]+2:.1f}" stroke="{INK}" stroke-width="1.3"/>')
+            out.append(f'<rect x="{P[0]-wb/2:.1f}" y="{P[1]-28:.1f}" width="{wb:.1f}" height="19" rx="5" fill="{INK}"/>')
+            out.append(f'<text x="{P[0]:.1f}" y="{P[1]-14.5:.1f}" fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">{s}</text>')
     out.append('</svg>')
     return '\n'.join(out)

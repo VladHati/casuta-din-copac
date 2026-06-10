@@ -26,16 +26,16 @@ CSS='''<style>
 .pc .bd{padding:9px 11px;display:flex;flex-direction:column;gap:3px}.pc .row1{display:flex;justify-content:space-between;align-items:center}
 .pc .code{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:var(--ink);color:#fff;border-radius:6px;padding:1px 8px}
 .pc .qt{font-family:'Space Mono',monospace;font-weight:700;font-size:14px}.pc .nm{font-size:12px;font-weight:600;line-height:1.2}.pc .nt{font-size:11px;color:var(--soft)}
-.legend{display:flex;flex-wrap:wrap;gap:14px;padding:14px 0 0}.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.lg i{width:16px;height:16px;border-radius:4px;border:2px solid #161413;display:inline-block}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding:14px 0 0}.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.lg i{width:16px;height:16px;border-radius:4px;border:2px solid #161413;display:inline-block}.lg b{color:#161413;font-family:'Space Mono',monospace}
 .tools{display:flex;flex-wrap:wrap;gap:8px}.tool{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);background:var(--wash);border-radius:8px;padding:7px 12px;color:var(--soft)}
 .fkey{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 18px;padding:13px 15px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}
 .fk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
 .fnote{flex-basis:100%;margin-top:4px;font-size:12.5px;color:var(--soft)}.fnote b{color:#161413}
 .step{padding:20px 0;border-top:1px solid var(--line)}.step .h{display:flex;gap:16px;align-items:flex-start}
 .step:first-child{border-top:none}
-.bn{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
+.bn{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
 .step .tx{font-size:16.5px;line-height:1.5}.step .drawbox,.step .zoombox,.step .warn{margin-left:62px}
-.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}.drawbox svg{width:100%;height:auto;display:block}
+.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px;text-align:center}.drawbox svg{max-height:360px;max-width:100%;width:auto;height:auto;display:inline-block}
 .zoombox{margin-top:14px;display:block;border:1.5px dashed var(--acc);border-radius:14px;background:#fff;padding:12px 14px;max-width:620px}
 .zoombox .zl{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;font-weight:700}
 .zoombox svg{width:100%;height:auto;display:block}
@@ -49,13 +49,13 @@ CSS='''<style>
 @media print{.topnav,.tn-crumb,.fnav{display:none!important}.sec,.step,.pc{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>'''
 LEG=('<div class="legend">'
- '<span class="lg"><i style="background:#E8973C"></i>stalp</span>'
- '<span class="lg"><i style="background:#3F8FA6"></i>grinda</span>'
- '<span class="lg"><i style="background:#7BAE52"></i>joista</span>'
- '<span class="lg"><i style="background:#E9C277"></i>dusumea</span>'
- '<span class="lg"><i style="background:#B083C6"></i>polita</span>'
- '<span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span>'
- '<span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span>'
+ '<span class="lg"><i style="background:#E8973C"></i><b>ST</b>&nbsp;stalp</span>'
+ '<span class="lg"><i style="background:#3F8FA6"></i><b>GR</b>&nbsp;grinda</span>'
+ '<span class="lg"><i style="background:#7BAE52"></i><b>JO</b>&nbsp;joista</span>'
+ '<span class="lg"><i style="background:#E9C277"></i><b>DL</b>&nbsp;dusumea</span>'
+ '<span class="lg"><i style="background:#B083C6"></i><b>PO</b>&nbsp;polita</span>'
+ '<span class="lg"><i style="background:#AAB2BB"></i><b>C1/C2</b>&nbsp;coltar</span>'
+ '<span class="lg"><i style="background:#E2663B"></i><b>CF</b>&nbsp;diagonala</span>'
  '</div>')
 FKEY=('<div class="fkey">'
  '<span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (fata vazuta)</span>'

@@ -7,9 +7,10 @@ FT=1872; BT=2300; BEAMB=1872; BEAMTOP=2072; JOB=2072; JOT=2172; DECKB=2172
 JX=[100,280,720,1120,1550,1980]
 
 def g(mat,x,y,z,dx,dy,dz): return {'x':x,'y':y,'z':z,'dx':dx,'dy':dy,'dz':dz,'mat':mat,'built':True}
-def N(mat,x,y,z,dx,dy,dz,ex=None):
+def N(mat,x,y,z,dx,dy,dz,ex=None,code=None):
     d={'x':x,'y':y,'z':z,'dx':dx,'dy':dy,'dz':dz,'mat':mat,'hl':True}
     if ex:d['ex']=ex
+    if code:d['code']=code
     return d
 
 def posts_full(stage):
@@ -30,7 +31,7 @@ def deck_g(n):
     for i in range(n): out.append(g('deck',-20,DECKB,z,W+40,28,140)); z+=150
     return out
 def anchors(): return [g('anchor',x-12,0,z-12,PS+24,130,PS+24) for (x,z) in [(0,0),(W-PS,0),(0,D-PS),(W-PS,D-PS)]]
-GROUND=(-820,W+220,-820,D+220)
+GROUND=(-220,W+220,-220,D+220)
 BR=PAL['brace']; WD=PAL['post']
 def F(boxes,**kw): return render(boxes,W=kw.pop('W',660),**kw)
 
@@ -104,12 +105,10 @@ props=[{'p1':(50,820,50),'p2':(-470,0,50),'thick':12,'col':BR},
 
 def stage1():
     A=anchors()
-    s1=F(A+[N('post',0,0,D-PS,PS,1500,PS,ex=(0,650,0))],ground=GROUND,W=620)
-    s2=F(A+[N('post',0,0,D-PS,PS,1500,PS),N('post',W-PS,0,D-PS,PS,1500,PS),N('post',0,0,0,PS,1500,PS),N('post',W-PS,0,0,PS,1500,PS)],ground=GROUND,W=620)
-    s3=F(posts_full(1),ground=GROUND,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,1500,-PS),'t':'PLUMB'}],labels=[{'t':'boloboc pe 2 fete','at':(0,1700,-PS),'color':'#C2693A'},{'t':'stalpi de 4 m (raman lungi)','at':(W,1700,50),'color':'#5C574E'}])
+    s12=F(A+[N('post',0,0,D-PS,PS,1500,PS,ex=(0,600,0),code='ST'),N('post',W-PS,0,D-PS,PS,1500,PS),N('post',0,0,0,PS,1500,PS),N('post',W-PS,0,0,PS,1500,PS)],ground=GROUND,W=640)
+    s3=F(posts_full(1),ground=GROUND,W=620,dims=[{'p1':(0,0,-PS),'p2':(0,1500,-PS),'t':'PLUMB'}],labels=[{'t':'stalpi 4 m','at':(W,1650,50),'color':'#5C574E'}])
     s4=F(posts_full(1),struts=props,ground=GROUND,W=640,labels=[{'t':'proptele PT','at':(W+250,500,50),'color':BR}])
-    return [dict(t='Aseaza primul stalp (spate) in papucul lui din beton. Coboara-l drept in U.',svg=s1,warn=False),
-            dict(t='Pune toti 4 stalpii in papucii lor. Cei 2 din spate raman LUNGI (4 m).',svg=s2,warn=False),
+    return [dict(t='Aseaza toti 4 stalpii in papucii lor din beton, coborati drept in U. Cei 2 din spate raman LUNGI (4 m).',svg=s12,warn=False),
             dict(t='Adu fiecare stalp perfect vertical (la plumb), verificat pe doua fete cu bolobocul.',svg=s3,warn=False),
             dict(t='Sprijina fiecare stalp cu 2 proptele la baza. La cei 2 stalpi inalti din spate, pune si cate o proptea spre varf.',svg=s4,warn=True),
             dict(t='Prinde suruburile B2 in papuc DOAR slab (2 / stalp) — sa poti inca corecta. Le strangi la fisa 2.',svg=None,zoom=DETS['B2'],warn=False)]
@@ -120,35 +119,35 @@ def stage2():
     off=[N('post',0,1450,0,PS,300,PS,ex=(0,420,0)),N('post',W-PS,1450,0,PS,300,PS,ex=(0,420,0))]
     s3=F(P+off,W=660,labels=[{'t':'taie la +1872','at':(W/2,1500,-220),'color':'#C2693A'},{'t':'offcut pt polite','at':(W/2,2050,0),'color':'#5C574E'}])
     return [dict(t='Marcheaza +2200 (fata podelei) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat.',svg=s1,warn=False),
-            dict(t='Coboara 328 mm si marcheaza +1872 (grinda 200 + joista 100 + dusumea 28). Acolo se sprijina podeaua.',svg=s2,warn=True),
+            dict(t='Coboara 328 mm si marcheaza +1872 — aici sta talpa GRINZII pe polite. Grinda 200 + joista 100 + dusumea 28 = 328, asa ajungi la +2200, fata podelei.',svg=s2,warn=True),
             dict(t='Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite. Stalpii din spate raman INTREGI.',svg=s3,warn=True),
             dict(t='Teseste muchia taiata. Abia acum strange definitiv suruburile B2 de la baza.',svg=None,zoom=DETS['B2'],warn=False)]
 def stage3():
     base=posts_stub()
-    s1=F(base+[N('polita',0,BEAMB-100,D-PS-90,PS,100,90,ex=(0,0,-650))],W=600,dims=[{'p1':(0,BEAMB,D-PS-90),'p2':(0,BEAMB,D-PS),'t':'sus +1872'}])
+    s1=F(base+[N('polita',0,BEAMB-100,D-PS-90,PS,100,90,ex=(0,0,-650),code='PO')],W=600,dims=[{'p1':(0,BEAMB,D-PS-90),'p2':(0,BEAMB,D-PS),'t':'sus +1872'}])
     s3=F(base+polite_g(),W=600,screws=[{'at':(40,BEAMB-45,D-PS-90),'dir':(0,0,1),'code':'B1','n':2,'len':150},{'at':(W-PS+55,BEAMB-45,D-PS-90),'dir':(0,0,1),'code':'B1','n':2,'len':150}])
-    return [dict(t='Aseaza polita (bloc 100x100 din offcut) pe fata interioara a stalpului din spate, cu fata de sus la +1872.',svg=s1,zoom=DETS['B1'],warn=False),
-            dict(t='Gaureste prin polita in stalp: 2 gauri de 13 mm.',svg=None,zoom=DETS['B1'],warn=False),
+    return [dict(t='Aseaza polita (bloc 100x100 din offcut) pe fata interioara a stalpului din spate, cu fata de sus la +1872.',svg=s1,warn=False),
+            dict(t='Gaureste prin polita in stalp: 2 gauri de 13 mm.',svg=None,warn=False),
             dict(t='Bate 2 buloane M12 (B1) cu saiba (B3) prin polita in stalp; strange cu piulita (B4) pe spate. Repeta la al doilea stalp.',svg=s3,zoom=DETS['B1'],warn=True)]
 def stage4():
     base=posts_stub()+polite_g()
-    s1=F(base+[N('beam',0,BEAMB,D-90,W,200,90,ex=(0,700,0))],W=660)
+    s1=F(base+[N('beam',0,BEAMB,D-90,W,200,90,ex=(0,700,0),code='GR')],W=660)
     s2=F(base+[N('beam',0,BEAMB,D-90,W,200,90)],W=660,dims=[{'p1':(W,BEAMB+200,D-45),'p2':(W,BEAMB,D-45),'t':'sus +2072'}],screws=[{'at':(60,BEAMB+150,D-95),'dir':(0,0,-1),'code':'H1','len':150}])
     return [dict(t='Ridicati in DOI grinda din spate si asezati-o pe cele doua polite. Sta pe polita — nu o tineti voi.',svg=s1,warn=True),
             dict(t='Verifica fata de sus la +2072 si orizontalitatea pe toata lungimea.',svg=s2,warn=False),
             dict(t='Prinde grinda de fiecare stalp cu 3 suruburi H1 oblice PLUS un coltar metalic in stalp si in grinda (anti-smulgere). Grinda nu trebuie sa se poata ridica de pe polita.',svg=None,zoom=DETS['H1B'],warn=True)]
 def stage5():
     base=posts_stub()+polite_g()+[beam_back_g()]
-    s1=F(base+[N('beam',0,BEAMB,0,W,200,90,ex=(0,700,0))],W=660)
-    C1=[N('metal',0,BEAMB,-12,130,40,114),N('metal',W-130,BEAMB,-12,130,40,114)]
+    s1=F(base+[N('beam',0,BEAMB,0,W,200,90,ex=(0,700,0),code='GR')],W=660)
+    C1=[N('metal',0,BEAMB,-12,130,40,114,code='C1'),N('metal',W-130,BEAMB,-12,130,40,114)]
     s2=F(base+[beam_front_g()]+C1,W=660,screws=[{'at':(60,BEAMB+120,5),'dir':(0,-1,0),'code':'H1','len':150}],dims=[{'p1':(W,BEAMTOP,45),'p2':(W,BEAMTOP,D-45),'t':'ambele +2072'}])
     return [dict(t='Asezati grinda din fata PE varful stalpilor S3/S4 (taiati). Sprijin direct pe lemn.',svg=s1,warn=True),
             dict(t='Prinde cu cate un coltar C1 pe fiecare fata (2/stalp) + suruburi H1 in stalp si in grinda.',svg=s2,zoom=DETS['C1'],warn=False),
             dict(t='Verifica: ambele grinzi orizontale, varful la +2072. Ai cadrul de baza.',svg=None,warn=False)]
 def stage6():
     base=posts_stub()+polite_g()+[beam_back_g(),beam_front_g()]
-    s1=F(base,W=680,labels=[{'t':str(x),'at':(x,BEAMB+300+(0 if i%2==0 else 120),0),'to':(x,BEAMB+200,0),'color':'#C2693A'} for i,x in enumerate([100,280,720,1120,1550,1980])])
-    s2=F(base+joists_g([280,720,1120,1550,1980])+[N('joist',100,JOB,-700,PS,PS,D+700,ex=(0,560,0))],W=680,dims=[{'p1':(100,JOB,-700),'p2':(100,JOB,0),'t':'700 consola'}])
+    s1=F(base,W=700,labels=[{'t':str(x),'at':(x,BEAMB+340+(i%3)*210,0),'to':(x,BEAMB+200,0),'color':'#C2693A'} for i,x in enumerate([100,280,720,1120,1550,1980])])
+    s2=F(base+joists_g([280,720,1120,1550,1980])+[N('joist',100,JOB,-700,PS,PS,D+700,ex=(0,560,0),code='JO')],W=680,dims=[{'p1':(100,JOB,-700),'p2':(100,JOB,0),'t':'700 consola'}])
     s3=F(base+joists_g(),W=680)
     s4=F(base+joists_g(),W=680,screws=[{'at':(150,JOT,5),'dir':(0,-1,0),'code':'C2','n':2,'len':150}])
     return [dict(t='Marcheaza pe ambele grinzi pozitiile celor 6 joiste, de la coltul S4: 100 / 280 / 720 / 1120 / 1550 / 1980 mm.',svg=s1,warn=False),
@@ -157,18 +156,18 @@ def stage6():
             dict(t='La FIECARE reazem (fata + spate) prinde un coltar C2 pe lateral — 12 in total. Tine joista jos la consola.',svg=s4,zoom=DETS['C2'],warn=True)]
 def stage7():
     base=posts_stub()+polite_g()+[beam_back_g(),beam_front_g()]+joists_g()
-    ram=[N('joist',280,JOB,-300,440,PS,PS),N('joist',280,JOB,-120,440,PS,PS)]
+    ram=[N('joist',280,JOB,-300,440,PS,PS,code='RM'),N('joist',280,JOB,-120,440,PS,PS)]
     s1=F(base+ram,W=680,dims=[{'p1':(280,JOB,-210),'p2':(720,JOB,-210),'t':'gaura copac'}])
-    tree=[N('tree',450,1280,-300,160,1500,160)]
+    tree=[N('tree',450,1280,-300,160,1500,160,code='copac')]
     s2=F(base+tree,W=680,labels=[{'t':'reteaza la +2780','at':(530,2820,-220),'color':'#C2693A'}])
-    return [dict(t='Intre joistele de la 280 si 720, monteaza 2 traverse scurte = rama gaurii copacului.',svg=s1,warn=False),
+    return [dict(t='Intre joistele de la 280 si 720 — trunchiul cade chiar intre ele, fara sa le atinga — monteaza 2 traverse scurte (RM) care inchid rama gaurii.',svg=s1,warn=False),
             dict(t='Reteaza corcodusul la ~+2780 (deasupra podelei). Lasa joc de 3-5 cm jur-imprejurul trunchiului.',svg=s2,warn=True),
-            dict(t='Blatul mesei se fixeaza de podea, prin cadrul lui — NICIODATA de copac.',svg=None,zoom=Z_TABLE,warn=True)]
+            dict(t='Blatul mesei se fixeaza de podea, prin cadrul lui — NICIODATA de copac.',svg=None,zoom=DETS['TABLE'],warn=True)]
 def stage8():
     base=posts_stub()+polite_g()+[beam_back_g(),beam_front_g()]+joists_g()
-    bl=[N('block',JX[i]+PS,JOB,-40,JX[i+1]-JX[i]-PS,PS,90) for i in range(len(JX)-1)]
+    bl=[N('block',JX[i]+PS,JOB,-40,JX[i+1]-JX[i]-PS,PS,90,code=('BL' if i==0 else None)) for i in range(len(JX)-1)]
     s2=F(base+bl,W=680)
-    return [dict(t='Taie bucati scurte de lemn (blocaje, BL) cat distanta dintre joiste.',svg=None,zoom=DETS['H3'],warn=False),
+    return [dict(t='Taie bucati scurte de lemn (blocaje, BL) cat distanta dintre joiste.',svg=None,warn=False),
             dict(t='Pune cate un blocaj intre joiste, PESTE fiecare grinda (fata si spate).',svg=s2,warn=False),
             dict(t='Prinde fiecare blocaj cu suruburi H3 oblic. Opresc joistele sa se rasuceasca — podeaua devine ferma.',svg=None,zoom=DETS['H3'],warn=False)]
 def stage9():
@@ -177,7 +176,7 @@ def stage9():
         {'p1':(W-55,BEAMB+170,30),'p2':(W-55,BEAMB-360,560),'thick':13,'col':BR},
         {'p1':(40,BEAMB+170,8),'p2':(560,BEAMB-360,8),'thick':13,'col':BR},
         {'p1':(300,JOB-10,-660),'p2':(300,BEAMB-200,-30),'thick':13,'col':BR}]
-    s2=F(base,struts=br,W=680,labels=[{'t':'diagonale CF','at':(W+250,500,300),'color':BR}])
+    s2=F(base,struts=br,W=680,labels=[{'t':'contrafise CF','at':(W+250,500,300),'color':BR}])
     s4=F(posts_stub(),struts=[{'p1':(50,1750,D-50),'p2':(50,900,D+470),'thick':12,'col':BR},{'p1':(W-50,1750,D-50),'p2':(W-50,900,D+470),'thick':12,'col':BR}],W=600,labels=[{'t':'doar la varf RAMAN','at':(W/2,1820,D+520),'color':'#C2693A'}])
     return [dict(t='Masoara si taie capatul fiecarei contrafise (diagonala) pe potriveala.',svg=None,zoom=DETS['CF'],warn=False),
             dict(t='Monteaza contravantuirile in planul stang, drept, fata si sub nasul consolei. La contrafisa de sub nas prinde-o pe LATERAL sau adauga un coltar — acolo lucreaza si la intindere. Platforma devine rigida.',svg=s2,warn=True),
@@ -185,10 +184,10 @@ def stage9():
             dict(t='SCOATE proptelele de la baza. Cele de la varful stalpilor inalti din spate RAMAN pana la peretii din Faza 2.',svg=s4,warn=True)]
 def stage10():
     base=posts_stub()+polite_g()+[beam_back_g(),beam_front_g()]+joists_g()
-    s1=F(base+[N('deck',-20,DECKB,-700,W+40,28,140,ex=(0,420,0))],W=680,screws=[{'at':(120,DECKB+28,-630),'dir':(0,-1,0),'code':'H4','n':2,'len':140}])
+    s1=F(base+[N('deck',-20,DECKB,-700,W+40,28,140,ex=(0,420,0),code='DL')],W=680,screws=[{'at':(120,DECKB+28,-630),'dir':(0,-1,0),'code':'H4','n':2,'len':140}])
     s3=F(base+deck_g(15),W=680,labels=[{'t':'decupaj la copac','at':(530,DECKB+260,-220),'color':'#C2693A'}])
     return [dict(t='Aseaza prima scandura la marginea din fata, perpendicular pe joiste. 2 suruburi inox (H4) pe fiecare joista.',svg=s1,zoom=DETS['H4'],warn=False),
-            dict(t='Lasa 5 mm intre scanduri (pune un cui ca distantier). Apa se scurge, lemnul respira.',svg=None,zoom=DETS['H4'],warn=True),
+            dict(t='Lasa 5 mm intre scanduri (pune un cui ca distantier). Apa se scurge, lemnul respira.',svg=None,warn=True),
             dict(t='Continua pana acoperi tot. La copac, taie scandurile in jurul gaurii, cu joc.',svg=s3,warn=False),
             dict(t='Dupa montaj, da cu ulei (F1) pe toata dusumeaua de larice.',svg=None,warn=False)]
 def stage11():
@@ -199,22 +198,22 @@ def stage11():
     rail=rp+[{'p1':(20,top+980,-680),'p2':(W-20,top+980,-680),'thick':11,'col':WD},{'p1':(20,top+980,D-20),'p2':(W-20,top+980,D-20),'thick':11,'col':WD},{'p1':(20,top+980,-680),'p2':(20,top+980,D-20),'thick':11,'col':WD},{'p1':(W-20,top+980,-680),'p2':(W-20,top+980,D-20),'thick':11,'col':WD}]
     s2=F(base,struts=rail,W=680,dims=[{'p1':(20,top,-680),'p2':(20,top+1000,-680),'t':'1 m'}])
     return [dict(t='Monteaza stalpisorii balustradei, bulonati de CADRU (joiste/grinda), nu de dusumea. Jur-imprejur, inclusiv pe nasul consolei.',svg=s1,zoom=DETS['RAIL'],warn=True),
-            dict(t='Pune mana curenta sus, la 1 m inaltime, pe tot conturul.',svg=s2,zoom=Z_RAIL,warn=True),
-            dict(t='Umple cu sipci, cu goluri sub 9 cm (un copil nu trebuie sa incapa sau sa se catere usor).',svg=None,zoom=Z_RAIL,warn=True),
+            dict(t='Pune mana curenta sus, la 1 m inaltime, pe tot conturul.',svg=s2,zoom=DETS['RAIL'],warn=True),
+            dict(t='Umple cu sipci, cu goluri sub 9 cm (un copil nu trebuie sa incapa sau sa se catere usor).',svg=None,zoom=DETS['RAIL'],warn=True),
             dict(t='Lasa o poarta pe partea S3 (opusa mesei-copac), unde urca scara. Testeaza balustrada impingand cu putere.',svg=None,warn=True)]
 
 META=[
- (1,'fisa-01','FISA 1 / 11','Stalpii in ancore','2-3 ore',True,'Mediu',[('ST','4','la lungime mare, NU taia'),('PAP','4','deja in beton'),('B2','8','2 / stalp'),('PT','~6','proptele')],['Cheie 19 (M12)','Boloboc','Bormasina','2 persoane'],['Toti 4 stalpii verticali pe 2 fete','Proptele la fiecare stalp','Suruburi inca slabe']),
+ (1,'fisa-01','FISA 1 / 11','Stalpii in papuci','2-3 ore',True,'Mediu',[('ST','4','la lungime mare, NU taia'),('PAP','4','deja in beton'),('B2','8','2 / stalp'),('PT','~6','proptele')],['Cheie 19 (M12)','Boloboc','Bormasina','2 persoane'],['Toti 4 stalpii verticali pe 2 fete','Proptele la fiecare stalp','Suruburi inca slabe']),
  (2,'fisa-02','FISA 2 / 11','Nivel +2200 si taiere stalpi fata','1-2 ore',False,'CRITIC',[('ST','—','doar cei 2 din fata se taie')],['Nivela cu furtun / laser','Creion','Fierastrau','Echer'],['Linia +1872 identica pe toti','Doar stalpii fata taiati','Stalpii spate INTREGI','Suruburi baza stranse']),
  (3,'fisa-03','FISA 3 / 11','Polite pe stalpii din spate','1 ora',False,'CRITIC',[('PO','2','offcut 100x100'),('B1','4','tija ~220'),('B3','8','2 / bulon: cap + piulita'),('B4','4','piulite')],['Bormasina + burghiu 13','Cheie 19','Bomfaier'],['Ambele polite sus la +1872','2 buloane stranse / polita','Polita nu se misca']),
- (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','~6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Grinda pe ambele polite','Fata sus la +2072','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
+ (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Grinda pe ambele polite','Fata sus la +2072','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
  (5,'fisa-05','FISA 5 / 11','Grinda din fata pe varful stalpilor','1 ora',True,'CRITIC',[('GR','1','grinda fata'),('C1','4','2 / stalp'),('H1','~12','in coltare')],['2 persoane','Bormasina','Nivela'],['Grinda pe varful stalpilor','2 coltare C1 / stalp','Ambele grinzi la +2072']),
  (6,'fisa-06','FISA 6 / 11','Cele 6 joiste','2 ore',True,'CRITIC',[('JO','6','dintr-o bucata'),('C2','12','2 / joista'),('H2','~60','in coltare')],['Bormasina','Ruleta','Creion','Echer'],['6 joiste la pozitii','Consola 700 mm','12 coltare C2']),
- (7,'fisa-07','FISA 7 / 11','Gaura copacului si masa','1-2 ore',False,'Atentie',[('BL','2','traverse = rama'),('H3','~6','prindere')],['Fierastrau','Bormasina','Ruleta'],['Rama intre joistele 280-720','Joc 3-5 cm in jurul trunchiului','Blatul NU pe copac']),
+ (7,'fisa-07','FISA 7 / 11','Gaura copacului si masa','1-2 ore',False,'Atentie',[('RM','2','traverse = rama gaurii'),('H3','~6','prindere')],['Fierastrau','Bormasina','Ruleta'],['Rama intre joistele 280-720','Joc 3-5 cm in jurul trunchiului','Blatul NU pe copac']),
  (8,'fisa-08','FISA 8 / 11','Blocaje intre joiste','1 ora',False,'Normal',[('BL','~10','offcut'),('H3','~20','oblic')],['Fierastrau','Bormasina'],['Blocaje peste ambele grinzi','Prinse oblic cu H3','Podeaua e ferma']),
  (9,'fisa-09','FISA 9 / 11','Contravantuiri si scoatem proptelele','2 ore',False,'CRITIC',[('CF','6','diagonale'),('H1','~18','3 / capat')],['Fierastrau','Bormasina','Echer'],['Diagonale pe toate planurile + sub consola','3 suruburi / capat','Proptele baza scoase; varf raman']),
  (10,'fisa-10','FISA 10 / 11','Dusumeaua de larice','3-4 ore',False,'Normal',[('DL','17','larice 28x145'),('H4','~204','2 / joista'),('F1','2','ulei')],['Bormasina','Cui distantier 5 mm','Pensula'],['Toate scandurile cu 2 H4 / joista','Gol egal de 5 mm','Decupaj la copac','Uns cu ulei']),
- (11,'fisa-11','FISA 11 / 11','Balustrada si poarta','3-4 ore',False,'CRITIC',[('SB','~6','stalpisor, bulonat de cadru'),('SP','set','sipci, gol <9 cm'),('MC','~7 m','mana curenta sus'),('BM','~12','bulon M10 in cadru')],['Bormasina','Nivela','Fierastrau'],['Mana curenta la 1 m de la dusumea','Goluri sub 9 cm peste tot','Poarta pe S3','Stalpisori bulonati de cadru, testati prin impingere']),
+ (11,'fisa-11','FISA 11 / 11','Balustrada si poarta','3-4 ore',False,'CRITIC',[('SB','~6','stalpisor 70x70, de cadru'),('SP','set','sipci, gol <9 cm'),('MC','~7 m','mana curenta sus'),('BM','~12','bulon M10 in cadru')],['Bormasina','Nivela','Fierastrau'],['Mana curenta la 1 m de la dusumea','Goluri sub 9 cm peste tot','Poarta pe S3','Stalpisori bulonati de cadru, testati prin impingere']),
 ]
 STEPFN={1:stage1,2:stage2,3:stage3,4:stage4,5:stage5,6:stage6,7:stage7,8:stage8,9:stage9,10:stage10,11:stage11}
 import pickle
@@ -228,4 +227,4 @@ PARTS={'ST':('POZE/COD_7337253.png','Stalp KVH 100x100'),'GR':('POZE/COD_5483835
  'PT':('POZE/lemn.png','Proptea temporara'),'C1':('POZE/COD_738965.png','Coltar 100x100x90'),'C2':('POZE/COD_738910.png','Coltar 90x90x65'),
  'H1':('POZE/COD_10434633.png','Heco 8x200'),'H2':('POZE/COD_10434398.png','Heco 6x100'),'H3':('POZE/COD_10434139.png','Heco 6x80'),
  'H4':('POZE/COD_10528829.png','Inox 5x60'),'B1':('POZE/COD_12130958.png','Tija M12 (taie 220)'),'B2':('POZE/COD_6834285.png','Bulon M12x120'),
- 'B3':('POZE/COD_3840897.png','Saiba M12'),'B4':('POZE/COD_3830642.png','Piulita M12'),'F1':('POZE/COD_5509678.png','Ulei tec'),'PAP':('POZE/papuc.svg','Papuc reazem U'),'SB':('POZE/lemn.png','Stalpisor 7x7 (Faza 2)'),'SP':('POZE/lemn.png','Sipci balustrada'),'MC':('POZE/lemn.png','Mana curenta'),'BM':('POZE/COD_6834285.png','Bulon M10')}
+ 'B3':('POZE/COD_3840897.png','Saiba M12'),'B4':('POZE/COD_3830642.png','Piulita M12'),'F1':('POZE/COD_5509678.png','Ulei tec'),'PAP':('POZE/papuc.svg','Papuc reazem U'),'SB':('POZE/lemn.png','Stalpisor 7x7 (Faza 2)'),'SP':('POZE/lemn.png','Sipci balustrada'),'MC':('POZE/lemn.png','Mana curenta'),'BM':('POZE/COD_6834285.png','Bulon M10'),'RM':('POZE/lemn.png','Traverse rama'),'F2':('POZE/kober.jpg','Grund Köber'),'F3':('POZE/lemn.png','Topcoat (Faza 2)')}
