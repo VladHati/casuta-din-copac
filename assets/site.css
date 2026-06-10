@@ -47,3 +47,33 @@ a,button,.btn,.act,.card,.dot,.pcard,.cell,.dlrow,.tg,.chip,.pill{
   .rv{opacity:1!important;transform:none!important}
   .shotband,.gallery,.gshot{box-shadow:none}
 }
+
+/* ============================================================
+   Bara de navigatie + breadcrumb (identica pe toate paginile)
+   Culori fixe — nu depinde de variabilele fiecarei pagini.
+   Ascunsa in mod embed (iframe 3D) si la print.
+   ============================================================ */
+.topnav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
+  border-bottom:1px solid #ECE8E1}
+.tn-in{max-width:1100px;margin:0 auto;padding:0 22px;height:54px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tn-logo{display:inline-flex;align-items:center;gap:8px;font-family:'Fraunces',Georgia,serif;font-weight:600;
+  font-size:16px;color:#1C1C1C!important;text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.tn-logo .tn-mark{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;
+  background:#C2693A;color:#fff;font-size:11px;transform:translateY(-1px)}
+.tn-links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tn-links::-webkit-scrollbar{display:none}
+.tn-links a{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.02em;color:#5C574E!important;
+  text-decoration:none;padding:7px 11px;border-radius:9px;white-space:nowrap;position:relative}
+.tn-links a:hover{color:#1C1C1C!important;background:#F4F1EB}
+.tn-links a.on{color:#1C1C1C!important;font-weight:700}
+.tn-links a.on::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;background:#C2693A;border-radius:2px}
+.tn-crumb{max-width:1100px;margin:0 auto;padding:7px 22px;display:flex;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;color:#A39C8E;border-top:1px solid #F4F1EB}
+.tn-crumb a{color:#A39C8E!important;text-decoration:none}
+.tn-crumb a:hover{color:#C2693A!important}
+.tn-crumb b{color:#5C574E;font-weight:700}
+.tn-crumb span{opacity:.6}
+@media(max-width:560px){.tn-logo{font-size:14px}.tn-in{height:50px;gap:10px;padding:0 14px}.tn-crumb{padding:6px 14px}}
+html.emb .topnav,html.emb .tn-crumb{display:none!important}
+@media print{.topnav,.tn-crumb{display:none!important}}

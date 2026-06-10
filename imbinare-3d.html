@@ -28,14 +28,28 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(24px,4vw
 .codes div{display:flex;gap:8px}
 .codes .c{font-family:'Space Mono',monospace;font-weight:700;min-width:26px}
 .codes .s{color:var(--soft)}
+/* mod embed (iframe): doar modelul + controale */
+html.emb body{background:transparent}
+html.emb .wrap{padding:8px 10px 12px}
+html.emb h1,html.emb .lead,html.emb .codes{display:none}
+html.emb .stage{height:min(70vh,420px);border-radius:14px}
 </style>
 <link rel="stylesheet" href="assets/site.css">
 <script defer src="assets/site.js"></script>
 </head>
 <body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><b>Imbinari &middot; Nod 3D</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="imbinari"]');if(a)a.classList.add("on");})();</script>
+
 <div class="wrap">
   <h1>Imbinarea, in 3D</h1>
-  <p class="lead"><b>Nodul din FATA</b>: stalp taiat + grinda glulam <b>pe varful lui</b> + joista + dusumea, cu coltarele (C1/C2) si suruburile la scara. (Nodul din SPATE e diferit: grinda pe o <b>polita din lemn + 2 buloane M12</b> — vezi imbinari-ghid.html / montaj-3d-complet.html.) Trage ca sa rotesti, scroll/pinch zoom. Stinge layere ca sa vezi pe rand lemnul, coltarele, suruburile.</p>
+  <p class="lead"><b>Nodul din FATA</b>: stalp taiat + grinda glulam <b>pe varful lui</b> + joista + dusumea, cu coltarele (C1/C2) si suruburile la scara. (Nodul din SPATE e diferit: grinda pe o <b>polita din lemn + 2 buloane M12</b> — vezi nodul B din pagina Imbinari.) Trage ca sa rotesti, scroll/pinch zoom. Stinge layere ca sa vezi pe rand lemnul, coltarele, suruburile.</p>
 
   <div class="stage">
     <canvas id="cv"></canvas>

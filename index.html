@@ -15,42 +15,41 @@ a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;line-height:1.05}
 .mono{font-family:'Space Mono',monospace}
 
-.hero{position:relative;overflow:hidden;padding:74px 0 40px;background:#FFFFFF}
+.hero{position:relative;overflow:hidden;padding:54px 0 30px;background:#FFFFFF}
 .hero .tag{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:12px;font-family:'Space Mono',monospace;margin-bottom:18px}
 .hero h1{font-size:clamp(38px,7vw,66px);letter-spacing:-.02em}
-.hero p{font-size:clamp(16px,2.3vw,20px);color:var(--soft);max-width:560px;margin:16px 0 0}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero .sub{font-size:clamp(16px,2.3vw,20px);color:var(--soft);max-width:540px;margin:16px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
   border-radius:999px;padding:11px 18px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;transition:transform .12s,box-shadow .12s}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(38,36,31,.12)}
+.prog{display:flex;align-items:center;gap:12px;margin-top:20px;max-width:540px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px;transition:border-color .12s}
+.prog:hover{border-color:var(--acc)}
+.prog .pl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.prog .track{flex:1;height:9px;background:#efece6;border-radius:999px;overflow:hidden}
+.prog .track i{display:block;height:100%;background:linear-gradient(90deg,#1d7a44,#3a9c63);width:0;transition:width .5s}
+.prog .pp{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:var(--ink);white-space:nowrap}
 
-section{padding:30px 0;border-top:1px solid var(--line)}
+section{padding:34px 0;border-top:1px solid var(--line)}
 .shead{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
 .shead .n{font-family:'Space Mono',monospace;color:var(--acc);font-size:13px}
 .shead h2{font-size:clamp(20px,3.2vw,27px)}
-.sdesc{color:var(--soft);font-size:14px;margin:0 0 18px;max-width:640px}
+.sdesc{color:var(--soft);font-size:14px;margin:0 0 20px;max-width:640px}
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(max-width:680px){.grid{grid-template-columns:1fr}}
-.full{grid-column:1/-1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+@media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
 
-.card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
+.card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;min-height:178px;
   box-shadow:0 1px 2px rgba(38,36,31,.04),0 8px 24px rgba(38,36,31,.05);transition:transform .15s, box-shadow .15s, border-color .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(38,36,31,.05),0 14px 34px rgba(38,36,31,.10);border-color:#DADAD8}
+.card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(38,36,31,.05),0 16px 38px rgba(38,36,31,.11);border-color:#DADAD8}
 .card.primary{border-color:var(--acc);box-shadow:0 1px 2px rgba(194,105,58,.10),0 10px 28px rgba(194,105,58,.10)}
-.card .chip{align-self:flex-start;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.06em;border:1.5px solid var(--ink);border-radius:6px;padding:2px 8px;margin-bottom:10px}
-.card .chip.d3{border-color:var(--acc);color:var(--acc)}
-.card .chip.leaf{border-color:var(--leaf);color:var(--leaf)}
-.card h3{font-size:19px;margin-bottom:6px}
-.card p{margin:0;color:var(--soft);font-size:14px;flex:1}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.act{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;
-  border:1.5px solid var(--line);border-radius:8px;padding:6px 11px;color:var(--ink);background:var(--paper);transition:border-color .12s,background .12s}
-.act:hover{border-color:var(--acc)}
-.act.open{color:var(--acc)}
-.act.pdf{color:var(--soft)}
-.act svg{display:block}
+.card .ic{font-size:22px;margin-bottom:12px}
+.card .chip{align-self:flex-start;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p{margin:0;color:var(--soft);font-size:13.5px;flex:1}
+.card .go{margin-top:14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--acc)}
 
 .dlrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:9px}
 .dlrow .l{font-size:14px}
@@ -58,28 +57,29 @@ section{padding:30px 0;border-top:1px solid var(--line)}
 .dlrow .l span{color:var(--faint);font-family:'Space Mono',monospace;font-size:11.5px}
 .dlrow a{flex:0 0 auto;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--acc);border:1.5px solid var(--acc);border-radius:8px;padding:7px 12px}
 .dlrow a:hover{background:var(--acc);color:#fff}
-
 footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
-.prog{display:flex;align-items:center;gap:12px;margin-top:18px;max-width:540px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 15px;transition:border-color .12s}
-.prog:hover{border-color:var(--acc)}
-.prog .pl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
-.prog .track{flex:1;height:9px;background:#efece6;border-radius:999px;overflow:hidden}
-.prog .track i{display:block;height:100%;background:linear-gradient(90deg,#1d7a44,#3a9c63);width:0;transition:width .5s}
-.prog .pp{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:var(--ink);white-space:nowrap}
 </style>
 <link rel="stylesheet" href="assets/site.css">
 <script defer src="assets/site.js"></script>
 </head>
 <body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div></header>
 
 <header class="hero">
   <div class="wrap">
     <span class="tag">Manualul proiectului · Tudor &amp; tata · Faza 1</span>
     <h1>Casuta din copac</h1>
-    <p>Totul intr-un loc: prezentarea, montajul pas cu pas, piesele cu coduri, imbinarile, modelele 3D si verificarea. Fiecare document se poate descarca in PDF.</p>
+    <p class="sub">Tot ce tine de proiect intr-un loc: unde suntem, cum se construieste, ce cumperi, cum se imbina si modelele 3D.</p>
     <div class="cta">
-      <a class="btn" href="PDF/Manual-Faza-1-complet.pdf" download>↓ Descarca manualul complet (PDF · 36 pag)</a>
-      <a class="btn ghost" href="ghid-montaj.html">Construieste pas cu pas →</a>
+      <a class="btn" href="ghid-montaj.html">Construieste pas cu pas →</a>
+      <a class="btn ghost" href="PDF/Manual-Faza-1-complet.pdf" download>↓ Manualul complet (PDF)</a>
     </div>
     <a class="prog" href="timeline.html"><span class="pl">Stadiu proiect</span><span class="track"><i id="heroFill"></i></span><span class="pp" id="heroPct">vezi →</span></a>
   </div>
@@ -89,162 +89,66 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
   <div class="shotband"><img src="POZE/santier-3.jpg" alt="Gradina din spate, locul casutei langa corcodus"><div class="cap">Gradina din spate · aici creste casuta, langa corcodus</div></div>
 </div>
 
-<!-- A · INCEPE AICI -->
-<section>
+<!-- DESTINATII -->
+<section style="border-top:none;padding-top:30px">
   <div class="wrap">
-    <div class="shead"><span class="n">A</span><h2>Incepe aici</h2></div>
-    <p class="sdesc">Imaginea de ansamblu si dosarul cu toate datele blocate ale proiectului.</p>
+    <div class="shead"><span class="n">·</span><h2>Tot proiectul, pe scurt</h2></div>
+    <p class="sdesc">Sase locuri, fiecare cu un singur rost. Bara de sus te duce oriunde, din orice pagina.</p>
     <div class="grid">
-      <a class="card full primary" href="timeline.html">
-        <span class="chip">STADIU · timeline + checklist</span>
-        <h3>In ce stadiu suntem</h3>
-        <p>Fazele proiectului cu status si un checklist de constructie bifabil. Vezi cat ai facut si ce urmeaza — progresul se salveaza in browser.</p>
-        <div class="actions"><span class="act open">Deschide →</span></div>
-      </a>
-      <a class="card" href="casuta-din-copac.html">
-        <span class="chip leaf">PENTRU TUDOR</span>
-        <h3>Prezentarea vizuala</h3>
-        <p>Conceptul, cotele mari si clare, planul de sus, vederea laterala, etapele si regulile de siguranta.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/00-Prezentare.pdf" download>↓ PDF</a></div>
-      </a>
-      <a class="card" href="CASUTA-DIN-COPAC.md">
-        <span class="chip">DOSAR</span>
-        <h3>Dosarul proiectului</h3>
-        <p>Scop, datele terenului, cotele blocate, structura explicata simplu, etapele si deciziile deschise.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/05-Dosar-proiect.pdf" download>↓ PDF</a></div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- B · CONSTRUIESTE -->
-<section>
-  <div class="wrap">
-    <div class="shead"><span class="n">B</span><h2>Construieste — pas cu pas</h2></div>
-    <p class="sdesc">Calea principala. Deschide ghidul 2D pe telefon sau printeaza-l; foloseste modelul 3D ca sa intelegi fiecare etapa in spatiu.</p>
-    <div class="grid">
+      <a class="card primary" href="timeline.html">
+        <div class="ic">📍</div>
+        <span class="chip">unde suntem</span>
+        <h3>Stadiu</h3>
+        <p>Fazele proiectului si un checklist bifabil. Progresul se salveaza in browser.</p>
+        <span class="go">deschide →</span>
+      </a>
+
       <a class="card primary" href="ghid-montaj.html">
-        <span class="chip">GHID 2D · 8 pasi · printabil</span>
-        <h3>Ghidul de montaj</h3>
-        <p>Pas cu pas, ca la mobila: stalpi → nivel → polite → grinzi → joiste → contrafise → dusumea. Fiecare pas citeaza codurile pieselor. Pasii critici marcati rosu.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/02-Ghid-montaj-pas-cu-pas.pdf" download>↓ PDF</a></div>
+        <div class="ic">📐</div>
+        <span class="chip">cum construim · 11 pasi</span>
+        <h3>Ghid de montaj</h3>
+        <p>Pas cu pas, ca la mobila, cu schema 2D si model 3D la fiecare etapa. Pasii critici marcati.</p>
+        <span class="go">deschide →</span>
       </a>
-      <a class="card" href="montaj-3d-complet.html">
-        <span class="chip d3">3D · 9 etape</span>
-        <h3>Montajul in 3D</h3>
-        <p>Acelasi montaj construit etapa cu etapa, rotabil, cu layere si instructiuni (inclusiv taierea stalpilor la 1872).</p>
-        <div class="actions"><span class="act open">Deschide →</span><span class="act" style="color:var(--faint)">interactiv</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- C · PIESE & CUMPARATURI -->
-<section>
-  <div class="wrap">
-    <div class="shead"><span class="n">C</span><h2>Piese &amp; cumparaturi</h2></div>
-    <p class="sdesc">Catalogul cu coduri (ca la IKEA), lista de comandat si sculele.</p>
-    <div class="grid">
-      <a class="card primary full" href="materiale.html">
-        <span class="chip leaf">MATERIALE · poze · status</span>
-        <h3>Materiale — cu poze si status</h3>
-        <p>Toate materialele intr-un loc, cu poza reala: ce ai deja, ce e in comanda Hornbach si ce mai trebuie luat. Fiecare piesa cu codul ei si unde se foloseste la montaj.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/06-Materiale.pdf" download>↓ PDF</a></div>
+      <a class="card" href="materiale.html">
+        <div class="ic">🧱</div>
+        <span class="chip">ce cumperi</span>
+        <h3>Materiale &amp; piese</h3>
+        <p>Toate piesele cu poza, cod si status, tabelul de paritate si sculele. Ce ai, ce-ai comandat, ce mai trebuie.</p>
+        <span class="go">deschide →</span>
       </a>
-      <a class="card" href="catalog-piese.html">
-        <span class="chip">CATALOG · coduri · paritate</span>
-        <h3>Catalog de piese + paritate</h3>
-        <p>Fiecare piesa cu cod, cantitate si sursa (o ai / cumperi / offcut). Tabel care verifica ca tot ce cer schemele exista in lista, plus ce mai trebuie luat.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/01-Catalog-piese-paritate.pdf" download>↓ PDF</a></div>
-      </a>
-      <a class="card" href="Tracker_materiale_casuta.xlsx" download>
-        <span class="chip">EXCEL · 5 foi</span>
-        <h3>Tracker materiale &amp; comanda</h3>
-        <p>Materiale · Debitare · Platforma premium · <b>Comanda Hornbach</b> (lista cu coduri de piesa) · Scule. Totalul comenzii Faza 1.</p>
-        <div class="actions"><span class="act open">Descarca .xlsx ↓</span></div>
-      </a>
-      <a class="card full" href="scule.html">
-        <span class="chip leaf">SCULE · poze Hornbach</span>
-        <h3>Sculele, cu poze reale</h3>
-        <p>Sculele de care ai nevoie, cu fotografii si link-uri de produs de pe Hornbach. Etichete esential / inchiriaza.</p>
-        <div class="actions"><span class="act open">Deschide →</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- D · IMBINARI -->
-<section>
-  <div class="wrap">
-    <div class="shead"><span class="n">D</span><h2>Imbinari in detaliu</h2></div>
-    <p class="sdesc">Cum intra fiecare piesa. Ghidul printabil e cel principal; restul sunt aceleasi imbinari, vazute in 3D.</p>
-    <div class="grid">
-      <a class="card primary" href="imbinari-ghid.html">
-        <span class="chip">PRINTABIL · piese + audit</span>
-        <h3>Ghid imbinari + audit</h3>
-        <p>Alb-negru, stil IKEA: piesele cu coduri, cele 6 imbinari desenate pas cu pas si auditul tehnic in 11 puncte.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/03-Imbinari-si-audit.pdf" download>↓ PDF</a></div>
-      </a>
-      <a class="card" href="imbinari-3d-ghid.html">
-        <span class="chip d3">3D · exploded</span>
-        <h3>Ghid imbinari 3D</h3>
-        <p>Cele 6 imbinari, fiecare cu buton exploded ↔ asamblat. Vezi cum intra coltarele, polita si suruburile.</p>
-        <div class="actions"><span class="act open">Deschide →</span><span class="act" style="color:var(--faint)">interactiv</span></div>
-      </a>
-      <a class="card" href="imbinare-3d.html">
-        <span class="chip d3">3D · nod detaliu</span>
-        <h3>Nodul, in detaliu</h3>
-        <p>Un nod real marit (grinda pe stalp + joista + dusumea), cu coltare si suruburi la scara.</p>
-        <div class="actions"><span class="act open">Deschide →</span><span class="act" style="color:var(--faint)">interactiv</span></div>
-      </a>
       <a class="card" href="imbinari.html">
-        <span class="chip">PRODUSE · color</span>
-        <h3>Produse + imbinari (color)</h3>
-        <p>Produsele exacte cu pret si cele cinci imbinari in culori. Buna pentru recunoscut piesele la magazin.</p>
-        <div class="actions"><span class="act open">Deschide →</span></div>
+        <div class="ic">🔩</div>
+        <span class="chip">cum se prind</span>
+        <h3>Imbinari</h3>
+        <p>Nodul din fata in 3D si cele cinci imbinari desenate: coltare, suruburi, polita, contravantuiri.</p>
+        <span class="go">deschide →</span>
       </a>
+
+      <a class="card" href="modele-3d.html">
+        <div class="ic">🧊</div>
+        <span class="chip">interactiv</span>
+        <h3>Modele 3D</h3>
+        <p>Patru modele de rotit: montajul pe etape, platforma intreaga, nodul si scara.</p>
+        <span class="go">deschide →</span>
+      </a>
+
+      <a class="card" href="casuta-din-copac.html">
+        <div class="ic">📖</div>
+        <span class="chip">dosar &amp; verificare</span>
+        <h3>Dosar</h3>
+        <p>Prezentarea vizuala, cotele blocate, regulile de siguranta si auditul tehnic al proiectului.</p>
+        <span class="go">deschide →</span>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- E · MODELE 3D -->
-<section>
-  <div class="wrap">
-    <div class="shead"><span class="n">E</span><h2>Modele 3D</h2></div>
-    <p class="sdesc">Structura finala, rotabila, cu cote si layere.</p>
-    <div class="grid">
-      <a class="card" href="platforma-3d.html">
-        <span class="chip d3">3D · layere</span>
-        <h3>Platforma — model interactiv</h3>
-        <p>Structura finala a platformei: stalpi, grinzi, joiste, contravantuiri, balustrada, copac. Layere selectabile.</p>
-        <div class="actions"><span class="act open">Deschide →</span></div>
-      </a>
-      <a class="card" href="scara-3d.html">
-        <span class="chip d3">3D · cote · pasi</span>
-        <h3>Scara — model 3D (Faza 2)</h3>
-        <p>Scara de acces la balcon: 11 trepte, ~49°, mana curenta pe ambele parti, poarta sus. Rotabila.</p>
-        <div class="actions"><span class="act open">Deschide →</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- F · VERIFICARE -->
-<section>
-  <div class="wrap">
-    <div class="shead"><span class="n">F</span><h2>Verificare</h2></div>
-    <div class="grid">
-      <a class="card full" href="audit.html">
-        <span class="chip d3">AUDIT</span>
-        <h3>Audit tehnic &amp; design</h3>
-        <p>Verdict pe fiecare punct: structura, design, consecventa intre fisiere si ce a ramas deschis.</p>
-        <div class="actions"><span class="act open">Deschide →</span><a class="act pdf" href="PDF/04-Audit-tehnic.pdf" download>↓ PDF</a></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOTO · DE PE SANTIER -->
+<!-- FOTO -->
 <section>
   <div class="wrap">
     <div class="shead"><span class="n">FOTO</span><h2>De pe santier</h2></div>
@@ -257,19 +161,16 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
   </div>
 </section>
 
-<!-- G · DESCARCA TOT -->
+<!-- DESCARCA -->
 <section>
   <div class="wrap">
-    <div class="shead"><span class="n">G</span><h2>Descarca tot (PDF)</h2></div>
-    <p class="sdesc">Toate documentele printabile, pentru santier sau pentru arhiva. Modelele 3D raman doar online (interactive).</p>
-    <div class="dlrow"><div class="l"><b>Manual Faza 1 — complet</b> <span>· prezentare + catalog + montaj + imbinari + dosar · 36 pag</span></div><a href="PDF/Manual-Faza-1-complet.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>00 · Prezentarea vizuala</b></div><a href="PDF/00-Prezentare.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>01 · Catalog de piese + paritate</b></div><a href="PDF/01-Catalog-piese-paritate.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>02 · Ghid de montaj pas cu pas</b></div><a href="PDF/02-Ghid-montaj-pas-cu-pas.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>03 · Imbinari + audit</b></div><a href="PDF/03-Imbinari-si-audit.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>04 · Audit tehnic &amp; design</b></div><a href="PDF/04-Audit-tehnic.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>05 · Dosarul proiectului</b></div><a href="PDF/05-Dosar-proiect.pdf" download>↓ PDF</a></div>
-    <div class="dlrow"><div class="l"><b>06 · Materiale</b> <span>· poze + status + unde se foloseste</span></div><a href="PDF/06-Materiale.pdf" download>↓ PDF</a></div>
+    <div class="shead"><span class="n">PDF</span><h2>Descarca pentru santier</h2></div>
+    <p class="sdesc">Documentele printabile. Modelele 3D raman online (interactive).</p>
+    <div class="dlrow"><div class="l"><b>Manual Faza 1 — complet</b> <span>· prezentare + montaj + piese + imbinari + dosar</span></div><a href="PDF/Manual-Faza-1-complet.pdf" download>↓ PDF</a></div>
+    <div class="dlrow"><div class="l"><b>Ghid de montaj — 11 pasi</b></div><a href="PDF/02-Ghid-montaj-pas-cu-pas.pdf" download>↓ PDF</a></div>
+    <div class="dlrow"><div class="l"><b>Materiale</b> <span>· poze + status</span></div><a href="PDF/06-Materiale.pdf" download>↓ PDF</a></div>
+    <div class="dlrow"><div class="l"><b>Dosarul proiectului</b></div><a href="PDF/05-Dosar-proiect.pdf" download>↓ PDF</a></div>
+    <div class="dlrow"><div class="l"><b>Audit tehnic &amp; design</b></div><a href="PDF/04-Audit-tehnic.pdf" download>↓ PDF</a></div>
     <div class="dlrow"><div class="l"><b>Tracker materiale &amp; comanda</b> <span>· Excel, 5 foi</span></div><a href="Tracker_materiale_casuta.xlsx" download>↓ XLSX</a></div>
   </div>
 </section>
@@ -277,12 +178,11 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
 <footer>
   <div class="wrap">
     <p class="mono">CASUTA DIN COPAC · manualul proiectului · 2026</p>
-    <p>Acest fisier (index.html) e punctul de pornire pentru tot proiectul.</p>
   </div>
 </footer>
 
 <script>(function(){var K='casuta-progres-v1';var s;try{s=JSON.parse(localStorage.getItem(K))}catch(e){}if(!s)s={prep_comanda:true};
-var ids=['prep_comanda','prep_livrare','p1','p2','p3','p4','p5','p6','p7','p8','p9','f_pereti','f_acoperis','f_scara','f_masa','fin_grund','fin_topcoat','fin_sol','fin_joaca'];
+var ids=['prep_comanda','prep_livrare','p1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11','f_pereti','f_acoperis','f_scara','fin_grund','fin_topcoat','fin_sol','fin_joaca'];
 var d=ids.filter(function(i){return s[i]}).length,p=Math.round(d/ids.length*100);
 var f=document.getElementById('heroFill');if(f)f.style.width=p+'%';
 var e=document.getElementById('heroPct');if(e)e.textContent=p+'% facut';})();</script>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modele 3D — Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--ink:#141312;--soft:#5C574E;--faint:#938D80;--line:#E7E4DE;--acc:#C2693A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;margin:0;font-size:clamp(32px,5.5vw,52px);line-height:1.03}
+.mono{font-family:'Space Mono',monospace}
+a{color:var(--acc);text-decoration:none}
+.hero{padding:48px 0 26px}
+.hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.hero p{color:var(--soft);max-width:600px;margin:12px 0 0;font-size:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:14px 0 50px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.mcard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;
+  box-shadow:0 1px 2px rgba(20,19,18,.04),0 10px 28px rgba(20,19,18,.06);transition:transform .18s ease,box-shadow .22s ease}
+.mcard:hover{transform:translateY(-3px);box-shadow:0 4px 10px rgba(20,19,18,.07),0 18px 44px rgba(20,19,18,.10)}
+.mcard .thumb{background:linear-gradient(#FBFAF8,#F2EEE7);border-bottom:1px solid var(--line);padding:20px;display:grid;place-items:center;height:190px}
+.mcard .thumb svg{width:100%;height:100%}
+.mcard .b{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.mcard .tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.mcard h2{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:5px 0 6px}
+.mcard p{margin:0;color:var(--soft);font-size:14px;flex:1}
+.mcard .go{margin-top:14px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--acc)}
+footer{padding:10px 0 70px;color:var(--faint);font-size:12.5px;text-align:center}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script defer src="assets/site.js"></script>
+</head>
+<body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><b>Modele 3D</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="3d"]');if(a)a.classList.add("on");})();</script>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kick">Modele interactive · trage = roteste</div>
+    <h1>Casuta in 3D</h1>
+    <p>Patru modele pe care le rotesti cu degetul. Vezi structura din orice unghi inainte sa pui mana pe scule.</p>
+  </header>
+
+  <div class="grid">
+
+    <a class="mcard" href="montaj-3d-complet.html">
+      <div class="thumb">
+        <svg viewBox="0 0 220 150" fill="none">
+          <rect x="40" y="40" width="120" height="55" rx="3" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/>
+          <line x1="40" y1="95" x2="40" y2="135" stroke="#1C1C1C" stroke-width="3"/><line x1="155" y1="95" x2="155" y2="135" stroke="#1C1C1C" stroke-width="3"/>
+          <line x1="160" y1="40" x2="160" y2="135" stroke="#1C1C1C" stroke-width="3"/><line x1="45" y1="40" x2="45" y2="135" stroke="#9A744A" stroke-width="3" opacity=".5"/>
+          <text x="185" y="50" font-family="Space Mono" font-size="11" fill="#C2693A">11</text>
+          <text x="178" y="64" font-family="Space Mono" font-size="8" fill="#938D80">pasi</text>
+        </svg>
+      </div>
+      <div class="b"><span class="tag">Platforma · pas cu pas</span><h2>Montajul, etapa cu etapa</h2>
+        <p>Cele 11 etape ale platformei, una cate una: stalpi, grinzi, joiste, dusumea, balustrada. Acelasi model care apare in ghid.</p>
+        <span class="go">deschide →</span></div>
+    </a>
+
+    <a class="mcard" href="platforma-3d.html">
+      <div class="thumb">
+        <svg viewBox="0 0 220 150" fill="none">
+          <path d="M30 70 L110 45 L190 70 L110 95 Z" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/>
+          <line x1="40" y1="73" x2="40" y2="120" stroke="#1C1C1C" stroke-width="3"/><line x1="180" y1="73" x2="180" y2="120" stroke="#1C1C1C" stroke-width="3"/>
+          <line x1="110" y1="95" x2="110" y2="128" stroke="#1C1C1C" stroke-width="3"/><line x1="60" y1="118" x2="110" y2="128" stroke="#9A744A" stroke-width="2" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="b"><span class="tag">Platforma · model final</span><h2>Platforma intreaga</h2>
+        <p>Cadrul complet — cei 4 stalpi, grinzile, podeaua si consola balconului — ca obiect intreg, de rotit.</p>
+        <span class="go">deschide →</span></div>
+    </a>
+
+    <a class="mcard" href="imbinare-3d.html">
+      <div class="thumb">
+        <svg viewBox="0 0 220 150" fill="none">
+          <rect x="95" y="55" width="30" height="80" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/>
+          <rect x="60" y="40" width="100" height="22" fill="#E7D3AC" stroke="#1C1C1C" stroke-width="2"/>
+          <rect x="128" y="22" width="22" height="40" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/>
+          <path d="M88 62 l8 0 0 14" fill="none" stroke="#9499A1" stroke-width="4"/>
+          <circle cx="92" cy="68" r="2.4" fill="#3a3a3a"/>
+        </svg>
+      </div>
+      <div class="b"><span class="tag">Detaliu · nod</span><h2>Nodul stalp-grinda-joista</h2>
+        <p>Imbinarea din fata, marita: coltarele C1/C2 si suruburile, cu layere pe care le poti stinge pe rand.</p>
+        <span class="go">deschide →</span></div>
+    </a>
+
+    <a class="mcard" href="scara-3d.html">
+      <div class="thumb">
+        <svg viewBox="0 0 220 150" fill="none">
+          <g stroke="#1C1C1C" stroke-width="2" fill="#ECDFC6">
+          <rect x="60" y="110" width="40" height="14"/><rect x="80" y="92" width="40" height="14"/><rect x="100" y="74" width="40" height="14"/><rect x="120" y="56" width="40" height="14"/><rect x="140" y="38" width="40" height="14"/></g>
+          <line x1="58" y1="128" x2="178" y2="34" stroke="#9A744A" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="b"><span class="tag">Faza 2 · acces</span><h2>Scara</h2>
+        <p>Scara de urcat pe balcon, cu unghi si cote. Parte din Faza 2, dar buna de vazut din timp.</p>
+        <span class="go">deschide →</span></div>
+    </a>
+
+  </div>
+
+  <footer class="mono">Casuta din copac · modele 3D · trage pentru a roti, scroll/pinch pentru zoom</footer>
+</div>
+</body>
+</html>

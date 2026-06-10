@@ -20,9 +20,8 @@ os.makedirs(OUT, exist_ok=True)
 # (sursa HTML, fisier PDF)
 PAGES = [
     ("casuta-din-copac.html", "00-Prezentare.pdf"),
-    ("catalog-piese.html",    "01-Catalog-piese-paritate.pdf"),
     ("ghid-montaj.html",      "02-Ghid-montaj-pas-cu-pas.pdf"),
-    ("imbinari-ghid.html",    "03-Imbinari-si-audit.pdf"),
+    ("imbinari.html",         "03-Imbinari.pdf"),
     ("audit.html",            "04-Audit-tehnic.pdf"),
     ("materiale.html",        "06-Materiale.pdf"),
 ]
@@ -59,8 +58,9 @@ def main():
     print("OK dosar -> PDF/05-Dosar-proiect.pdf")
 
     # Manual combinat
-    order = ["00-Prezentare.pdf", "01-Catalog-piese-paritate.pdf",
-             "02-Ghid-montaj-pas-cu-pas.pdf", "03-Imbinari-si-audit.pdf",
+    order = ["00-Prezentare.pdf",
+             "02-Ghid-montaj-pas-cu-pas.pdf", "06-Materiale.pdf",
+             "03-Imbinari.pdf", "04-Audit-tehnic.pdf",
              "05-Dosar-proiect.pdf"]
     w = PdfWriter()
     for f in order:

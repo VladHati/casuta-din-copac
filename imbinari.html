@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Produse + imbinari — Casuta din copac</title>
+<title>Imbinari — Casuta din copac</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -14,28 +14,25 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotes
 h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;margin:0}
 h2{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0}
 .mono{font-family:'Space Mono',monospace}
-.hero{padding:60px 0 26px}
+a{color:var(--acc);text-decoration:none}
+.hero{padding:48px 0 26px}
 .hero .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
 .hero h1{font-size:clamp(32px,5.5vw,52px);margin:10px 0 12px}
-.hero p{color:var(--soft);max-width:600px;margin:0}
+.hero p{color:var(--soft);max-width:620px;margin:0;font-size:15px}
 section{padding:34px 0;border-top:1px solid var(--line)}
 .head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
 .head .n{font-family:'Space Mono',monospace;color:var(--acc);font-size:14px}
 .head h2{font-size:clamp(22px,3.4vw,30px)}
-/* products */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column}
-.pcard svg{width:100%;height:84px;margin-bottom:8px}
-.pcard .nm{font-size:13.5px;font-weight:600;line-height:1.25}
-.pcard .sp{font-size:12px;color:var(--faint);font-family:'Space Mono',monospace;margin:2px 0 8px}
-.pcard .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between}
-.pcard .pr{font-family:'Space Mono',monospace;font-weight:700;font-size:14px}
-.pcard .qt{font-family:'Space Mono',monospace;font-size:11px;color:var(--soft)}
-.tag{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;padding:2px 7px;border-radius:6px;margin-top:6px;width:fit-content}
-.tag.have{background:#EAF1E6;color:var(--ok)}
-.tag.buy{background:#FBEEE4;color:var(--acc)}
+/* 3D node */
+.nodwrap{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fafafa;box-shadow:0 1px 2px rgba(28,28,28,.04),0 14px 40px rgba(28,28,28,.07)}
+.nod3d{width:100%;height:min(64vh,460px);border:0;display:block;background:#f7f7f6}
+.d3lbl{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid var(--line);
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.codes{display:grid;grid-template-columns:repeat(2,1fr);gap:7px 22px;margin-top:18px;font-size:13px}
+@media(max-width:640px){.codes{grid-template-columns:1fr}}
+.codes div{display:flex;gap:8px}
+.codes .c{font-family:'Space Mono',monospace;font-weight:700;min-width:26px;color:var(--ink)}
+.codes .s{color:var(--soft)}
 /* joints */
 .joint{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
 @media(max-width:760px){.joint{grid-template-columns:1fr}}
@@ -46,102 +43,57 @@ section{padding:34px 0;border-top:1px solid var(--line)}
 .joint ul{margin:0;padding-left:18px;color:var(--soft);font-size:14px}
 .joint ul li{margin:4px 0}
 .chip{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:3px 8px;margin:8px 6px 0 0;color:var(--soft)}
+.callout{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:12px;padding:16px 18px;margin-top:6px;font-size:14px;color:var(--soft)}
+.callout b{color:var(--ink)}
 footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
-.legend{font-size:12px;color:var(--soft);margin-top:6px}
-.legend b{color:var(--ink)}
+@media print{.nodwrap{display:none}.joint{break-inside:avoid}}
 </style>
 <link rel="stylesheet" href="assets/site.css">
 <script defer src="assets/site.js"></script>
 </head>
 <body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><b>Imbinari</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="imbinari"]');if(a)a.classList.add("on");})();</script>
+
 <div class="wrap">
 
   <header class="hero">
-    <div class="kick">Materiale premium · imbinari</div>
-    <h1>Exact ce cumperi<br>si cum se imbina</h1>
-    <p>Toate produsele de la Hornbach (o singura comanda), cu pretul real. Apoi fiecare imbinare desenata: unde sta coltarul, unde intra suruburile Heco.</p>
+    <div class="kick">Cum se prind piesele · noduri</div>
+    <h1>Imbinarile,<br>nod cu nod</h1>
+    <p>Cum se intalnesc stalpul, grinda, joista si dusumeaua: unde sta coltarul, unde intra suruburile Heco. Intai nodul din fata in 3D, apoi fiecare imbinare desenata.</p>
   </header>
 
-  <!-- PRODUSE -->
+  <!-- 01 NOD 3D -->
   <section>
-    <div class="head"><span class="n">01</span><h2>Produsele exacte</h2></div>
-    <div class="grid">
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="50" y="6" width="20" height="72" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/><ellipse cx="60" cy="10" rx="10" ry="3" fill="#D8C6A2" stroke="#1C1C1C" stroke-width="1.2"/><circle cx="60" cy="10" r="3" fill="none" stroke="#9A744A" stroke-width="1"/></svg>
-        <div class="nm">ST · Stalpi KVH 100×100×4000</div><div class="sp">rasinos rindeluit · Hornbach</div>
-        <div class="ft"><span class="pr">149 lei</span><span class="qt">×4</span></div><span class="tag have">AVEM</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="48" y="6" width="24" height="72" fill="#E0D2B6" stroke="#1C1C1C" stroke-width="2"/></svg>
-        <div class="nm">JO · Barna 100×100×4000 (joiste Leroy)</div><div class="sp">nerindeluit · Leroy Merlin</div>
-        <div class="ft"><span class="pr">87 lei</span><span class="qt">×4</span></div><span class="tag have">AVEM</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="46" y="6" width="28" height="72" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/></svg>
-        <div class="nm">JO · KVH 100×100×4000 (joiste extra)</div><div class="sp">2 joiste in plus · Hornbach</div>
-        <div class="ft"><span class="pr">149 lei</span><span class="qt">×2</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="14" y="26" width="92" height="32" fill="#E7D3AC" stroke="#1C1C1C" stroke-width="2"/><line x1="14" y1="36" x2="106" y2="36" stroke="#C5A576" stroke-width="1"/><line x1="14" y1="42" x2="106" y2="42" stroke="#B99A6A" stroke-width="1"/><line x1="14" y1="48" x2="106" y2="48" stroke="#B99A6A" stroke-width="1"/></svg>
-        <div class="nm">GR · Grinda lamelara Glulam 90×200×4000</div><div class="sp">lemn lamelar premium · Hornbach</div>
-        <div class="ft"><span class="pr">479 lei</span><span class="qt">×2 (grinzi principale)</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="12" y="30" width="96" height="22" rx="2" fill="#E3C99E" stroke="#1C1C1C" stroke-width="2"/><line x1="12" y1="41" x2="108" y2="41" stroke="#C2693A" stroke-width="1" opacity=".5"/></svg>
-        <div class="nm">DL · Dusumea larice Konsta 28×145×3000</div><div class="sp">larice 28 mm, durabil · Hornbach</div>
-        <div class="ft"><span class="pr">79,90 lei</span><span class="qt">×17</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><path d="M40 20 v44 h36" fill="none" stroke="#9499A1" stroke-width="9"/><path d="M44 24 L44 60 L72 60" fill="none" stroke="#7E838C" stroke-width="2"/><path d="M44 60 L44 40 L62 60 Z" fill="#C7CBD1" stroke="#7E838C" stroke-width="1.4"/><circle cx="40" cy="32" r="2.2" fill="#3a3a3a"/><circle cx="40" cy="50" r="2.2" fill="#3a3a3a"/><circle cx="58" cy="64" r="2.2" fill="#3a3a3a"/></svg>
-        <div class="nm">C1 · Coltar rigidizat Alberts 100×100×90×3</div><div class="sp">cu nervura · grinda fata→stalp · Hornbach</div>
-        <div class="ft"><span class="pr">9,35 lei</span><span class="qt">×4</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><path d="M44 24 v40 h34" fill="none" stroke="#9499A1" stroke-width="8"/><path d="M48 30 L48 56 L48 56 L70 56" fill="none" stroke="#7E838C" stroke-width="2"/><path d="M48 56 L48 40 L64 56 Z" fill="#C7CBD1" stroke="#7E838C" stroke-width="1.2"/><circle cx="44" cy="36" r="2" fill="#3a3a3a"/><circle cx="60" cy="60" r="2" fill="#3a3a3a"/></svg>
-        <div class="nm">C2 · Coltar rigidizat Alberts 90×90×65×2,5</div><div class="sp">joiste→grinda, anti-ridicare · Hornbach</div>
-        <div class="ft"><span class="pr">4,83 lei</span><span class="qt">×12</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><g><circle cx="30" cy="42" r="9" fill="#5a5f66" stroke="#3a3a3a" stroke-width="1.5"/><path d="M30 38 l3 4 -3 4 -3-4z" fill="#2b2b2b"/><rect x="39" y="40" width="58" height="4" fill="#7E838C"/><g stroke="#7E838C" stroke-width="2"><line x1="44" y1="36" x2="44" y2="48"/><line x1="52" y1="36" x2="52" y2="48"/><line x1="60" y1="37" x2="60" y2="47"/><line x1="68" y1="37" x2="68" y2="47"/><line x1="76" y1="38" x2="76" y2="46"/><line x1="84" y1="38" x2="84" y2="46"/></g><path d="M97 42 l8 0" stroke="#7E838C" stroke-width="3"/></g></svg>
-        <div class="nm">H1 · Heco Topix-Plus 8×200 Torx (100 buc)</div><div class="sp">structural, fara pre-gaurire · Hornbach</div>
-        <div class="ft"><span class="pr">369 lei</span><span class="qt">×1 pac</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><circle cx="34" cy="42" r="8" fill="#5a5f66" stroke="#3a3a3a" stroke-width="1.5"/><path d="M34 38 l3 4 -3 4 -3-4z" fill="#2b2b2b"/><rect x="42" y="40" width="44" height="4" fill="#7E838C"/><g stroke="#7E838C" stroke-width="2"><line x1="46" y1="37" x2="46" y2="47"/><line x1="54" y1="37" x2="54" y2="47"/><line x1="62" y1="37" x2="62" y2="47"/><line x1="70" y1="38" x2="70" y2="46"/><line x1="78" y1="38" x2="78" y2="46"/></g></svg>
-        <div class="nm">H2+H3 · Heco 6×100 zincat + 6×80 (100 buc)</div><div class="sp">conectori, blocaje · Hornbach</div>
-        <div class="ft"><span class="pr">95 + 73 lei</span><span class="qt">×1+1</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><circle cx="40" cy="42" r="8" fill="#cfd3d8" stroke="#9499A1" stroke-width="1.5"/><path d="M40 38 l3 4 -3 4 -3-4z" fill="#9499A1"/><rect x="48" y="40" width="40" height="4" fill="#cfd3d8"/><g stroke="#cfd3d8" stroke-width="2"><line x1="52" y1="37" x2="52" y2="47"/><line x1="60" y1="37" x2="60" y2="47"/><line x1="68" y1="38" x2="68" y2="46"/><line x1="76" y1="38" x2="76" y2="46"/></g></svg>
-        <div class="nm">H4 · Suruburi inox A2 5×60 dusumea (2×100)</div><div class="sp">inox, nu pateaza laricele · Hornbach</div>
-        <div class="ft"><span class="pr">~112 lei</span><span class="qt">×2 pac</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
-      <div class="pcard">
-        <svg viewBox="0 0 120 84"><rect x="46" y="20" width="28" height="48" rx="3" fill="#E7B05A" stroke="#1C1C1C" stroke-width="2"/><rect x="54" y="12" width="12" height="10" fill="#9A744A" stroke="#1C1C1C" stroke-width="1.5"/><text x="60" y="48" text-anchor="middle" font-family="Space Mono" font-size="9" fill="#5a3b1a">ulei</text></svg>
-        <div class="nm">F1 · Ulei lemn tec Hornbach Plus 2,5 l</div><div class="sp">finisaj premium larice · Hornbach</div>
-        <div class="ft"><span class="pr">144 lei</span><span class="qt">×2</span></div><span class="tag buy">COMANDAT</span>
-      </div>
-
+    <div class="head"><span class="n">01</span><h2>Nodul din fata, in 3D</h2></div>
+    <div class="nodwrap">
+      <iframe class="nod3d" src="imbinare-3d.html?embed=1" loading="lazy" title="Nodul stalp / grinda / joista in 3D"></iframe>
+      <div class="d3lbl"><span>▶ trage = roteste · scroll = zoom · stinge layere</span><a href="imbinare-3d.html">deschide pe tot ecranul →</a></div>
     </div>
-    <p class="legend" style="margin-top:14px"><b>Comandat 09.06.2026: ~3.886 lei + livrare (4101 lei total).</b> Aceasta e o vedere de ansamblu — lista completa si exacta, cu toate codurile (inclusiv B1 tija polita, B3 saibe, B4 piulite), e in <b>Catalog de piese</b> si in Tracker, foaia „Comanda Hornbach". Grundul (F2) il ai deja (Köber 4L), deci nu e in cos.</p>
+    <div class="codes">
+      <div><span class="c">ST</span><span class="s">stalp 100×100</span></div>
+      <div><span class="c">C1</span><span class="s">coltar 100×100×90 (grinda→stalp), 2 buc</span></div>
+      <div><span class="c">GR</span><span class="s">grinda glulam 90×200, pe varful stalpului</span></div>
+      <div><span class="c">C2</span><span class="s">coltar 90×90 (joista→grinda), anti-ridicare</span></div>
+      <div><span class="c">JO</span><span class="s">joista 100×100, peste grinda</span></div>
+      <div><span class="c">H1</span><span class="s">Heco 8×200 — in stalp si in grinda</span></div>
+      <div><span class="c">DL</span><span class="s">dusumea larice 28×145, gol 5 mm</span></div>
+      <div><span class="c">H4</span><span class="s">surub inox 5×60 — dusumea (2/joista)</span></div>
+    </div>
+    <p class="callout"><b>Nodul din spate e diferit:</b> acolo grinda nu sta pe varf, ci pe o <b>polita din lemn prinsa cu 2 buloane M12</b> in stalpul care continua in sus. Vezi nodul B mai jos si etapele in <a href="ghid-montaj.html">ghid</a>.</p>
   </section>
 
-  <!-- IMBINARI -->
+  <!-- 02 IMBINARI 2D -->
   <section>
-    <div class="head"><span class="n">02</span><h2>Cum arata imbinarile</h2></div>
+    <div class="head"><span class="n">02</span><h2>Cele cinci imbinari</h2></div>
 
-    <!-- A1 -->
+    <!-- A -->
     <div class="joint">
       <div class="txt">
         <div class="badge">A</div>
@@ -160,11 +112,9 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
           <line x1="120" y1="92" x2="300" y2="92" stroke="#B99A6A" stroke-width="1"/><line x1="120" y1="100" x2="300" y2="100" stroke="#B99A6A" stroke-width="1"/><line x1="120" y1="108" x2="300" y2="108" stroke="#B99A6A" stroke-width="1"/>
           <text x="210" y="74" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#5C574E">grinda glulam</text>
           <text x="210" y="245" text-anchor="middle" font-family="Space Mono" font-size="10" fill="#5C574E">stalp</text>
-          <!-- left bracket -->
           <path d="M168 120 L180 120 L180 170 L168 170 Z M168 120 L168 132 L180 120" fill="#C7CBD1" stroke="#7E838C" stroke-width="2"/>
           <path d="M180 122 L180 168 L170 168" fill="none" stroke="#7E838C" stroke-width="2"/>
           <circle cx="173" cy="100" r="2.5" fill="#3a3a3a"/><circle cx="173" cy="150" r="2.5" fill="#3a3a3a"/>
-          <!-- right bracket -->
           <path d="M252 120 L240 120 L240 170 L252 170 Z" fill="#C7CBD1" stroke="#7E838C" stroke-width="2"/>
           <circle cx="247" cy="100" r="2.5" fill="#3a3a3a"/><circle cx="247" cy="150" r="2.5" fill="#3a3a3a"/>
           <text x="330" y="104" font-family="Space Mono" font-size="10" fill="#C2693A">Heco 8×200</text>
@@ -175,11 +125,11 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </div>
     </div>
 
-    <!-- A2 -->
+    <!-- B -->
     <div class="joint">
       <div class="txt">
         <div class="badge">B</div>
-        <h3>Grinda spate pe fata stalpului inalt</h3>
+        <h3>Grinda spate pe polita stalpului inalt</h3>
         <ul>
           <li>Stalpul din spate <b>continua in sus</b>. Grinda se reazema pe o <b>polita din lemn</b> (bloc 100×100) prinsa de stalp.</li>
           <li><b>2 buloane M12</b> tin polita in stalp; polita <b>duce greutatea</b>. Heco tin grinda lipita.</li>
@@ -193,11 +143,9 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
           <rect x="176" y="110" width="180" height="44" fill="#E7D3AC" stroke="#1C1C1C" stroke-width="2"/>
           <line x1="176" y1="122" x2="356" y2="122" stroke="#B99A6A" stroke-width="1"/><line x1="176" y1="130" x2="356" y2="130" stroke="#B99A6A" stroke-width="1"/><line x1="176" y1="140" x2="356" y2="140" stroke="#B99A6A" stroke-width="1"/>
           <text x="266" y="104" text-anchor="middle" font-family="Space Grotesk" font-size="12" fill="#5C574E">grinda glulam</text>
-          <!-- POLITA din lemn sub grinda -->
           <rect x="176" y="154" width="44" height="30" fill="#E0C293" stroke="#1C1C1C" stroke-width="2"/>
           <line x1="176" y1="164" x2="220" y2="164" stroke="#B99A6A" stroke-width="1"/><line x1="176" y1="174" x2="220" y2="174" stroke="#B99A6A" stroke-width="1"/>
           <text x="150" y="200" text-anchor="middle" font-family="Space Mono" font-size="10" fill="#5C574E">polita lemn</text>
-          <!-- buloane M12 prin polita in stalp -->
           <circle cx="186" cy="162" r="3.4" fill="#3a3a3a"/><circle cx="186" cy="176" r="3.4" fill="#3a3a3a"/>
           <text x="300" y="180" font-family="Space Mono" font-size="10" fill="#C2693A">2× M12 prin polita → stalp</text>
         </svg>
@@ -222,7 +170,6 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
           <text x="80" y="142" font-family="Space Grotesk" font-size="12" fill="#5C574E">grinda</text>
           <rect x="180" y="106" width="60" height="50" fill="#ECDFC6" stroke="#1C1C1C" stroke-width="2"/>
           <text x="210" y="98" text-anchor="middle" font-family="Space Mono" font-size="10" fill="#5C574E">joista 100×100</text>
-          <!-- bracket on side -->
           <path d="M240 130 L256 130 L256 132 L256 150 L240 150" fill="none" stroke="#7E838C" stroke-width="3"/>
           <path d="M240 150 L240 134 L254 150 Z" fill="#C7CBD1" stroke="#7E838C" stroke-width="1.4"/>
           <circle cx="248" cy="124" r="2.5" fill="#3a3a3a"/><circle cx="248" cy="166" r="2.5" fill="#3a3a3a"/>
@@ -286,10 +233,11 @@ footer{padding:34px 0 70px;color:var(--faint);font-size:13px;text-align:center}
       </div>
     </div>
 
+    <p class="callout">Produsele exacte, cu pret real si cod Hornbach (coltare, Heco, buloane), sunt pe pagina <b><a href="materiale.html">Materiale</a></b>.</p>
   </section>
 
   <footer>
-    Faza platforma · produse Hornbach · preturi iunie 2026 (verifica la comanda). Imbinari: suruburi Heco + coltare rigidizate = montaj rapid, fara pre-gaurire.
+    Faza platforma · imbinari: suruburi Heco + coltare rigidizate = montaj rapid, fara pre-gaurire.
   </footer>
 
 </div>
