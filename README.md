@@ -43,7 +43,7 @@ index.html              hub-ul (punct de pornire)
 casuta-din-copac.html   prezentare (pentru Tudor)
 catalog-piese.html      catalog piese + paritate (coduri)
 ghid-montaj.html        ghid montaj 2D, pas cu pas
-montaj-3d-complet.html  montaj 3D, 9 etape
+montaj-3d-complet.html  montaj 3D, 11 etape
 imbinari-ghid.html      imbinari + audit (printabil)
 imbinari-3d-ghid.html   imbinari 3D exploded
 imbinare-3d.html        nod detaliu 3D

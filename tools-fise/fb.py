@@ -213,7 +213,7 @@ META=[
  (8,'fisa-08','FISA 8 / 11','Blocaje intre joiste','1 ora',False,'Normal',[('BL','~10','offcut'),('H3','~20','oblic')],['Fierastrau','Bormasina'],['Blocaje peste ambele grinzi','Prinse oblic cu H3','Podeaua e ferma']),
  (9,'fisa-09','FISA 9 / 11','Contravantuiri si scoatem proptelele','2 ore',False,'CRITIC',[('CF','6','diagonale'),('H1','~18','3 / capat')],['Fierastrau','Bormasina','Echer'],['Diagonale pe toate planurile + sub consola','3 suruburi / capat','Proptele baza scoase; varf raman']),
  (10,'fisa-10','FISA 10 / 11','Dusumeaua de larice','3-4 ore',False,'Normal',[('DL','17','larice 28x145'),('H4','~204','2 / joista'),('F1','2','ulei')],['Bormasina','Cui distantier 5 mm','Pensula'],['Toate scandurile cu 2 H4 / joista','Gol egal de 5 mm','Decupaj la copac','Uns cu ulei']),
- (11,'fisa-11','FISA 11 / 11','Balustrada si poarta','3-4 ore',False,'CRITIC',[('SB','~6','stalpisor 70x70, de cadru'),('SP','set','sipci, gol <9 cm'),('MC','~7 m','mana curenta sus'),('BM','~12','bulon M10 in cadru')],['Bormasina','Nivela','Fierastrau'],['Mana curenta la 1 m de la dusumea','Goluri sub 9 cm peste tot','Poarta pe S3','Stalpisori bulonati de cadru, testati prin impingere']),
+ (11,'fisa-11','FISA 11 / 11','Balustrada si poarta','3-4 ore',False,'CRITIC',[('SB','~7','stalpisor 58x58, de cadru'),('SP','~24','sipci, gol <9 cm'),('MC','~7 m','mana curenta sus'),('BM','~12','bulon M10 in cadru')],['Bormasina','Nivela','Fierastrau'],['Mana curenta la 1 m de la dusumea','Goluri sub 9 cm peste tot','Poarta pe S3','Stalpisori bulonati de cadru, testati prin impingere']),
 ]
 STEPFN={1:stage1,2:stage2,3:stage3,4:stage4,5:stage5,6:stage6,7:stage7,8:stage8,9:stage9,10:stage10,11:stage11}
 import pickle
