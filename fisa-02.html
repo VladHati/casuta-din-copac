@@ -1,0 +1,151 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FISA 2 / 11 — Nivel +2200 si taiere stalpi fata · Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#161413;--soft:#5C574E;--faint:#9A9388;--line:#E7E3DB;--acc:#C2693A;--paper:#FFFFFF;--wash:#FAF8F4;--crit:#C2412B;}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}.mono{font-family:'Space Mono',monospace}a{color:var(--acc);text-decoration:none}
+.fh{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center;padding:30px 0 24px;border-bottom:3px solid var(--ink)}
+@media(max-width:760px){.fh{grid-template-columns:1fr}}
+.fh .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.fh h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(28px,4.6vw,44px);line-height:1.04;margin:8px 0 14px;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.mtag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px}
+.mtag.crit{border-color:var(--crit);color:var(--crit)}
+.herodraw{border:1px solid var(--line);border-radius:16px;background:var(--wash);padding:10px}.herodraw svg{width:100%;height:auto;display:block}
+.sec{padding:28px 0;border-bottom:1px solid var(--line)}
+.sh{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 16px}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}@media(max-width:760px){.pg{grid-template-columns:repeat(2,1fr)}}
+.pc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.pc .im{height:96px;background:var(--wash);display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.pc .im img{max-width:88%;max-height:80px;object-fit:contain;mix-blend-mode:multiply}.pc .im .ph{font-family:'Space Mono',monospace;font-size:26px;color:#d9d2c6;font-weight:700}
+.pc .bd{padding:9px 11px;display:flex;flex-direction:column;gap:3px}.pc .row1{display:flex;justify-content:space-between;align-items:center}
+.pc .code{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;background:var(--ink);color:#fff;border-radius:6px;padding:1px 8px}
+.pc .qt{font-family:'Space Mono',monospace;font-weight:700;font-size:14px}.pc .nm{font-size:12px;font-weight:600;line-height:1.2}.pc .nt{font-size:11px;color:var(--soft)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding:14px 0 0}.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.lg i{width:16px;height:16px;border-radius:4px;border:2px solid #161413;display:inline-block}
+.tools{display:flex;flex-wrap:wrap;gap:8px}.tool{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);background:var(--wash);border-radius:8px;padding:7px 12px;color:var(--soft)}
+.step{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
+.step:first-child{border-top:none}
+.bn{width:46px;height:46px;min-width:46px;align-self:start;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
+.step .tx{font-size:16.5px;line-height:1.5;max-width:640px}
+.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}
+.drawbox svg{width:100%;height:auto;display:block}
+.zoombox{margin-top:12px;display:inline-block;border:1px dashed var(--acc);border-radius:12px;background:#fff;padding:8px;max-width:380px}
+.zoombox .zl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 4px}
+.zoombox svg{width:100%;height:auto;display:block}
+.fkey{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;padding:12px 14px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}.fk{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--soft)}
+.warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:#FBEEE4;border:1px solid #F0D8C4;border-left:4px solid var(--acc);border-radius:10px;padding:11px 13px;font-size:14px;color:#7a4a2c;max-width:640px}
+.warn b{color:var(--crit);font-size:18px;line-height:1}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:10px}.check li{display:flex;align-items:flex-start;gap:11px;font-size:15px}
+.check .bx{flex:0 0 auto;width:22px;height:22px;border:2px solid var(--ink);border-radius:6px;margin-top:1px}
+.fnav{display:flex;justify-content:space-between;gap:12px;padding:26px 0 70px}
+.fnav a{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:1.5px solid var(--ink);border-radius:10px;padding:10px 16px;color:var(--ink)}
+.fnav a:hover{background:var(--ink);color:#fff}.fnav a.dis{opacity:.3;pointer-events:none}
+@media print{.topnav,.tn-crumb,.fnav{display:none!important}.sec,.step,.pc{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style><link rel="stylesheet" href="assets/site.css"><script defer src="assets/site.js"></script></head><body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="ghid-montaj.html">Ghid</a><span>&rsaquo;</span><a href="fise.html">Fise montaj</a><span>&rsaquo;</span><b>Fisa 2</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="ghid"]');if(a)a.classList.add("on");})();</script>
+<div class="wrap">
+ <section class="fh"><div><div class="kick">FISA 2 / 11</div><h1>Nivel +2200 si taiere stalpi fata</h1><div class="meta"><span class="mtag">~1-2 ore</span><span class="mtag crit">CRITIC</span></div></div><div class="herodraw"><svg viewBox="0 0 620 744" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="84.0,529.0 71.0,536.5 71.0,191.5 84.0,184.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,521.5 84.0,529.0 84.0,184.0 71.0,176.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,176.5 84.0,184.0 71.0,191.5 58.0,184.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="302.2,403.0 289.2,410.5 289.2,129.7 302.2,122.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,395.5 302.2,403.0 302.2,122.2 289.2,114.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,114.7 302.2,122.2 289.2,129.7 276.2,122.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="343.8,679.0 330.8,686.5 330.8,341.5 343.8,334.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,671.5 343.8,679.0 343.8,334.0 330.8,326.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,326.5 343.8,334.0 330.8,341.5 317.8,334.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="562.0,553.0 549.0,560.5 549.0,279.7 562.0,272.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,545.5 562.0,553.0 562.0,272.2 549.0,264.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,264.7 562.0,272.2 549.0,279.7 536.0,272.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="302.2" y1="388.0" x2="302.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="388.0" x2="308.2" y2="388.0" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="58.0" x2="308.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<rect x="256.0" y="203.0" width="92.5" height="16" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="302.2" y="215.0" fill="#C2693A" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">+2200 podea</text>
+</svg></div></section>
+ <div class="legend">
+<span class="lg"><i style="background:#E8973C"></i>stalp</span>
+<span class="lg"><i style="background:#3F8FA6"></i>grinda</span>
+<span class="lg"><i style="background:#7BAE52"></i>joista</span>
+<span class="lg"><i style="background:#E9C277"></i>dusumea</span>
+<span class="lg"><i style="background:#B083C6"></i>polita</span>
+<span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span>
+<span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span>
+</div>
+ <section class="sec"><div class="sh">Piese pentru aceasta etapa</div><div class="pg"><div class="pc"><div class="im"><img src="POZE/COD_7337253.png" alt="Stalp KVH 100x100" loading="lazy"></div><div class="bd"><div class="row1"><span class="code">ST</span><span class="qt">—</span></div><div class="nm">Stalp KVH 100x100</div><div class="nt">doar cei 2 din fata se taie</div></div></div></div></section>
+ <section class="sec"><div class="sh">Scule</div><div class="tools"><span class="tool">Nivela cu furtun / laser</span><span class="tool">Creion</span><span class="tool">Fierastrau</span><span class="tool">Echer</span></div></section>
+ <section class="sec"><div class="sh">Pas cu pas</div><div class="fkey"><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (pe fata vazuta)</span><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>surub/piulita pe partea ascunsa</span><span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directia de insurubare</span><span class="fk"><b style="color:#161413">oblic</b> = la unghi (toe-screw)</span><span class="fk">folosim <b style="color:#161413">suruburi + buloane</b>, nu cuie</span></div><div class="step"><div class="bn">1</div><div><div class="tx">Marcheaza +2200 (fata podelei) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat.</div><div class="drawbox"><svg viewBox="0 0 620 744" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="84.0,529.0 71.0,536.5 71.0,191.5 84.0,184.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,521.5 84.0,529.0 84.0,184.0 71.0,176.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,176.5 84.0,184.0 71.0,191.5 58.0,184.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="302.2,403.0 289.2,410.5 289.2,129.7 302.2,122.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,395.5 302.2,403.0 302.2,122.2 289.2,114.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,114.7 302.2,122.2 289.2,129.7 276.2,122.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="343.8,679.0 330.8,686.5 330.8,341.5 343.8,334.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,671.5 343.8,679.0 343.8,334.0 330.8,326.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,326.5 343.8,334.0 330.8,341.5 317.8,334.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="562.0,553.0 549.0,560.5 549.0,279.7 562.0,272.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,545.5 562.0,553.0 562.0,272.2 549.0,264.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,264.7 562.0,272.2 549.0,279.7 536.0,272.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="302.2" y1="388.0" x2="302.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="388.0" x2="308.2" y2="388.0" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="58.0" x2="308.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<rect x="256.0" y="203.0" width="92.5" height="16" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="302.2" y="215.0" fill="#C2693A" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">+2200 podea</text>
+</svg></div></div></div><div class="step"><div class="bn">2</div><div><div class="tx">Coboara 328 mm si marcheaza +1872 (grinda 200 + joista 100 + dusumea 28). Acolo se sprijina podeaua.</div><div class="drawbox"><svg viewBox="0 0 620 744" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="84.0,529.0 71.0,536.5 71.0,191.5 84.0,184.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,521.5 84.0,529.0 84.0,184.0 71.0,176.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.0,176.5 84.0,184.0 71.0,191.5 58.0,184.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="302.2,403.0 289.2,410.5 289.2,129.7 302.2,122.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,395.5 302.2,403.0 302.2,122.2 289.2,114.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="289.2,114.7 302.2,122.2 289.2,129.7 276.2,122.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="343.8,679.0 330.8,686.5 330.8,341.5 343.8,334.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,671.5 343.8,679.0 343.8,334.0 330.8,326.5" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="330.8,326.5 343.8,334.0 330.8,341.5 317.8,334.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="562.0,553.0 549.0,560.5 549.0,279.7 562.0,272.2" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,545.5 562.0,553.0 562.0,272.2 549.0,264.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="549.0,264.7 562.0,272.2 549.0,279.7 536.0,272.2" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="302.2" y1="107.2" x2="302.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="107.2" x2="308.2" y2="107.2" stroke="#C2693A" stroke-width="1.6"/>
+<line x1="296.2" y1="58.0" x2="308.2" y2="58.0" stroke="#C2693A" stroke-width="1.6"/>
+<rect x="286.0" y="62.6" width="32.5" height="16" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="302.2" y="74.6" fill="#C2693A" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">328</text>
+<rect x="288.1" y="77.2" width="101.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="338.6" y="89.7" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">+1872 sprijin</text>
+</svg></div><div class="warn"><b>!</b><div>Pas critic — verifica inainte sa mergi mai departe.</div></div></div></div><div class="step"><div class="bn">3</div><div><div class="tx">Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite. Stalpii din spate raman INTREGI.</div><div class="drawbox"><svg viewBox="0 0 640 964" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="298.4,198.3 311.9,206.1 298.4,213.9 284.9,206.1" fill="none" stroke="#C2693A" stroke-width="1.6" stroke-dasharray="6 5"/>
+<polygon points="568.5,354.3 582.0,362.1 568.5,369.9 555.0,362.1" fill="none" stroke="#C2693A" stroke-width="1.6" stroke-dasharray="6 5"/>
+<polygon points="85.0,742.6 71.5,750.4 71.5,391.7 85.0,383.9" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.5,734.8 85.0,742.6 85.0,383.9 71.5,376.1" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.5,376.1 85.0,383.9 71.5,391.7 58.0,383.9" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="311.9,611.6 298.4,619.4 298.4,327.5 311.9,319.7" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="298.4,603.8 311.9,611.6 311.9,319.7 298.4,311.9" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="298.4,311.9 311.9,319.7 298.4,327.5 284.9,319.7" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="355.1,898.5 341.6,906.3 341.6,547.7 355.1,539.9" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="341.6,890.7 355.1,898.5 355.1,539.9 341.6,532.1" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="341.6,532.1 355.1,539.9 341.6,547.7 328.1,539.9" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="582.0,767.5 568.5,775.3 568.5,483.4 582.0,475.6" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="568.5,759.7 582.0,767.5 582.0,475.6 568.5,467.8" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="568.5,467.8 582.0,475.6 568.5,483.4 555.0,475.6" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="311.9,179.3 298.4,187.1 298.4,73.6 311.9,65.8" fill="#c58033" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<polygon points="298.4,171.5 311.9,179.3 311.9,65.8 298.4,58.0" fill="#E8973C" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<polygon points="298.4,58.0 311.9,65.8 298.4,73.6 284.9,65.8" fill="#eba555" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<polygon points="582.0,335.3 568.5,343.1 568.5,229.5 582.0,221.7" fill="#c58033" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<polygon points="568.5,327.5 582.0,335.3 582.0,221.7 568.5,213.9" fill="#E8973C" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<polygon points="568.5,213.9 582.0,221.7 568.5,229.5 555.0,221.7" fill="#eba555" stroke="#744c1e" stroke-width="3.4" stroke-linejoin="round"/>
+<line x1="298.4" y1="122.6" x2="298.4" y2="262.9" stroke="#C2693A" stroke-width="3.2" stroke-dasharray="7 6"/>
+<line x1="298.4" y1="262.9" x2="307.4" y2="274.9" stroke="#C2693A" stroke-width="3.2"/>
+<line x1="298.4" y1="262.9" x2="289.4" y2="274.9" stroke="#C2693A" stroke-width="3.2"/>
+<line x1="568.5" y1="278.5" x2="568.5" y2="418.9" stroke="#C2693A" stroke-width="3.2" stroke-dasharray="7 6"/>
+<line x1="568.5" y1="418.9" x2="577.5" y2="430.9" stroke="#C2693A" stroke-width="3.2"/>
+<line x1="568.5" y1="418.9" x2="559.5" y2="430.9" stroke="#C2693A" stroke-width="3.2"/>
+<rect x="416.7" y="396.0" width="101.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="467.2" y="408.5" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">taie la +1872</text>
+</svg></div><div class="warn"><b>!</b><div>Pas critic — verifica inainte sa mergi mai departe.</div></div></div></div><div class="step"><div class="bn">4</div><div><div class="tx">Teseste muchia taiata. Abia acum strange definitiv suruburile B2 de la baza.</div><div class="zoombox"><div class="zl">zoom · detaliu</div><svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><g transform="translate(6,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">VEDERE DIN FATA</text><rect x="74" y="16" width="34" height="118" rx="3" fill="#E8973C" stroke="#161413" stroke-width="2.4"/><path d="M64 134 v16 h48 v-16" fill="none" stroke="#161413" stroke-width="3"/><rect x="64" y="150" width="48" height="10" rx="3" fill="#AAB2BB" stroke="#161413" stroke-width="2.4"/><circle cx="70" cy="70" r="5.6" fill="#161413"/><line x1="66.6" y1="70" x2="73.4" y2="70" stroke="#fff" stroke-width="1.4"/><circle cx="112" cy="70" r="5.6" fill="#161413"/><line x1="108.6" y1="70" x2="115.4" y2="70" stroke="#fff" stroke-width="1.4"/><line x1="40" y1="70" x2="62" y2="70" stroke="#C2693A" stroke-width="2.6"/><line x1="62" y1="70" x2="70.81257977101627" y2="63.41680641485648" stroke="#C2693A" stroke-width="2.6"/><line x1="62" y1="70" x2="70.81257977101627" y2="76.58319358514352" stroke="#C2693A" stroke-width="2.6"/><line x1="136" y1="70" x2="114" y2="70" stroke="#C2693A" stroke-width="2.6"/><line x1="114" y1="70" x2="105.18742022898373" y2="76.58319358514352" stroke="#C2693A" stroke-width="2.6"/><line x1="114" y1="70" x2="105.18742022898373" y2="63.41680641485648" stroke="#C2693A" stroke-width="2.6"/><text x="88" y="178" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400">papuc U</text></g><g transform="translate(198,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">DE SUS</text><rect x="66" y="46" width="46" height="46" rx="3" fill="#E8973C" stroke="#161413" stroke-width="2.4"/><path d="M58 40 h62 v62 h-62" fill="none" stroke="#161413" stroke-width="3"/><circle cx="62" cy="69" r="5.6" fill="#161413"/><line x1="58.6" y1="69" x2="65.4" y2="69" stroke="#fff" stroke-width="1.4"/><circle cx="116" cy="69" r="5.6" fill="#161413"/><line x1="112.6" y1="69" x2="119.4" y2="69" stroke="#fff" stroke-width="1.4"/><text x="88" y="120" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400">bulon prin aripi</text></g><rect x="6" y="192" width="368" height="24" rx="7" fill="#fff" stroke="#C2693A" stroke-width="1.4"/><text x="190" y="208" text-anchor="middle" font-family="Space Mono,monospace" font-size="11.5" fill="#C2693A" font-weight="700">B2 x2 / stalp · M12 · strange cu cheia 19</text></svg></div></div></div></section>
+ <section class="sec"><div class="sh">Gata cand</div><ul class="check"><li><span class="bx"></span><span>Linia +1872 identica pe toti</span></li><li><span class="bx"></span><span>Doar stalpii fata taiati</span></li><li><span class="bx"></span><span>Stalpii spate INTREGI</span></li><li><span class="bx"></span><span>Suruburi baza stranse</span></li></ul></section>
+ <div class="fnav"><a href="fisa-01.html">&larr; Fisa anterioara</a><a href="fisa-03.html">Fisa urmatoare &rarr;</a></div>
+</div></body></html>
