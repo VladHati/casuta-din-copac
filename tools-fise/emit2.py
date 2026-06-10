@@ -28,18 +28,19 @@ CSS='''<style>
 .pc .qt{font-family:'Space Mono',monospace;font-weight:700;font-size:14px}.pc .nm{font-size:12px;font-weight:600;line-height:1.2}.pc .nt{font-size:11px;color:var(--soft)}
 .legend{display:flex;flex-wrap:wrap;gap:14px;padding:14px 0 0}.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.lg i{width:16px;height:16px;border-radius:4px;border:2px solid #161413;display:inline-block}
 .tools{display:flex;flex-wrap:wrap;gap:8px}.tool{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);background:var(--wash);border-radius:8px;padding:7px 12px;color:var(--soft)}
+.fkey{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 18px;padding:13px 15px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}
+.fk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
+.fnote{flex-basis:100%;margin-top:4px;font-size:12.5px;color:var(--soft)}.fnote b{color:#161413}
 .step{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
 .step:first-child{border-top:none}
 .bn{width:46px;height:46px;min-width:46px;align-self:start;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
 .step .tx{font-size:16.5px;line-height:1.5;max-width:640px}
-.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}
-.drawbox svg{width:100%;height:auto;display:block}
-.zoombox{margin-top:12px;display:inline-block;border:1px dashed var(--acc);border-radius:12px;background:#fff;padding:8px;max-width:380px}
-.zoombox .zl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 4px}
+.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}.drawbox svg{width:100%;height:auto;display:block}
+.zoombox{margin-top:14px;display:block;border:1.5px dashed var(--acc);border-radius:14px;background:#fff;padding:12px 14px;max-width:620px}
+.zoombox .zl{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;font-weight:700}
 .zoombox svg{width:100%;height:auto;display:block}
-.fkey{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;padding:12px 14px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}.fk{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--soft)}
 .warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:#FBEEE4;border:1px solid #F0D8C4;border-left:4px solid var(--acc);border-radius:10px;padding:11px 13px;font-size:14px;color:#7a4a2c;max-width:640px}
-.warn b{color:var(--crit);font-size:18px;line-height:1}
+.warn b{color:var(--crit);font-size:16px;line-height:1.1}
 .check{list-style:none;padding:0;margin:0;display:grid;gap:10px}.check li{display:flex;align-items:flex-start;gap:11px;font-size:15px}
 .check .bx{flex:0 0 auto;width:22px;height:22px;border:2px solid var(--ink);border-radius:6px;margin-top:1px}
 .fnav{display:flex;justify-content:space-between;gap:12px;padding:26px 0 70px}
@@ -47,6 +48,22 @@ CSS='''<style>
 .fnav a:hover{background:var(--ink);color:#fff}.fnav a.dis{opacity:.3;pointer-events:none}
 @media print{.topnav,.tn-crumb,.fnav{display:none!important}.sec,.step,.pc{break-inside:avoid}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>'''
+LEG=('<div class="legend">'
+ '<span class="lg"><i style="background:#E8973C"></i>stalp</span>'
+ '<span class="lg"><i style="background:#3F8FA6"></i>grinda</span>'
+ '<span class="lg"><i style="background:#7BAE52"></i>joista</span>'
+ '<span class="lg"><i style="background:#E9C277"></i>dusumea</span>'
+ '<span class="lg"><i style="background:#B083C6"></i>polita</span>'
+ '<span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span>'
+ '<span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span>'
+ '</div>')
+FKEY=('<div class="fkey">'
+ '<span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (fata vazuta)</span>'
+ '<span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>surub/piulita ascuns (pe spate)</span>'
+ '<span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directia de insurubare</span>'
+ '<span class="fk"><b style="color:#161413">oblic</b> = la unghi (toe-screw)</span>'
+ '<div class="fnote">Folosim <b>suruburi + buloane</b>, nu cuie. (Singurul cui e distantierul de 5 mm la dusumea.)</div>'
+ '</div>')
 def pcard(code,qty,note):
     if code=='—':
         return f'<div class="pc"><div class="im"><span class="ph">?</span></div><div class="bd"><div class="row1"><span class="code">—</span><span class="qt">{qty}</span></div><div class="nt">{note}</div></div></div>'
@@ -60,8 +77,8 @@ def emit(s,prev,nxt):
     steps=''
     for i,st in enumerate(s['steps'],1):
         big=f'<div class="drawbox">{st["svg"]}</div>' if st.get('svg') else ''
-        zoom=f'<div class="zoombox"><div class="zl">zoom · detaliu</div>{st["zoom"]}</div>' if st.get('zoom') else ''
-        warn='<div class="warn"><b>!</b><div>Pas critic — verifica inainte sa mergi mai departe.</div></div>' if st.get('warn') else ''
+        zoom=f'<div class="zoombox"><div class="zl">zoom &middot; cum se prinde</div>{st["zoom"]}</div>' if st.get('zoom') else ''
+        warn='<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div>' if st.get('warn') else ''
         steps+=f'<div class="step"><div class="bn">{i}</div><div><div class="tx">{st["t"]}</div>{big}{zoom}{warn}</div></div>'
     checks=''.join(f'<li><span class="bx"></span><span>{c}</span></li>' for c in s['check'])
     mtags=f'<span class="mtag">~{s["time"]}</span><span class="mtag {("crit" if crit else "")}">{s["diff"]}</span>'+('<span class="mtag">2 persoane</span>' if s['ppl'] else '')
@@ -75,18 +92,10 @@ def emit(s,prev,nxt):
 {NAV.format(cr="Fisa "+str(s["n"]))}
 <div class="wrap">
  <section class="fh"><div><div class="kick">{s["kick"]}</div><h1>{s["title"]}</h1><div class="meta">{mtags}</div></div><div class="herodraw">{hero}</div></section>
- <div class="legend">
-<span class="lg"><i style="background:#E8973C"></i>stalp</span>
-<span class="lg"><i style="background:#3F8FA6"></i>grinda</span>
-<span class="lg"><i style="background:#7BAE52"></i>joista</span>
-<span class="lg"><i style="background:#E9C277"></i>dusumea</span>
-<span class="lg"><i style="background:#B083C6"></i>polita</span>
-<span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span>
-<span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span>
-</div>
+ {LEG}
  <section class="sec"><div class="sh">Piese pentru aceasta etapa</div><div class="pg">{parts}</div></section>
  <section class="sec"><div class="sh">Scule</div><div class="tools">{tools}</div></section>
- <section class="sec"><div class="sh">Pas cu pas</div><div class="fkey"><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (pe fata vazuta)</span><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>surub/piulita pe partea ascunsa</span><span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directia de insurubare</span><span class="fk"><b style="color:#161413">oblic</b> = la unghi (toe-screw)</span><span class="fk">folosim <b style="color:#161413">suruburi + buloane</b>, nu cuie</span></div>{steps}</section>
+ <section class="sec"><div class="sh">Pas cu pas</div>{FKEY}{steps}</section>
  <section class="sec"><div class="sh">Gata cand</div><ul class="check">{checks}</ul></section>
  <div class="fnav">{pv}{nx}</div>
 </div></body></html>'''

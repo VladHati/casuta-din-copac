@@ -142,6 +142,10 @@ def render(boxes, struts=None, screws=None, dims=None, arrows=None, labels=None,
     # labels
     for l in labels:
         p=TP(l['at']); col=l.get('color',INK); t=l['t']; wbed=10+len(t)*7
+        if l.get('to'):
+            q=TP(l['to'])
+            out.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" x2="{q[0]:.1f}" y2="{q[1]:.1f}" stroke="{col}" stroke-width="1.2"/>')
+            out.append(f'<circle cx="{q[0]:.1f}" cy="{q[1]:.1f}" r="2.6" fill="{col}"/>')
         out.append(f'<rect x="{p[0]-wbed/2:.1f}" y="{p[1]-9:.1f}" width="{wbed:.1f}" height="17" rx="4" fill="#fff" stroke="{col}" stroke-width="1.2"/>')
         out.append(f'<text x="{p[0]:.1f}" y="{p[1]+3.5:.1f}" fill="{col}" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">{t}</text>')
     out.append('</svg>')

@@ -25,18 +25,19 @@
 .pc .qt{font-family:'Space Mono',monospace;font-weight:700;font-size:14px}.pc .nm{font-size:12px;font-weight:600;line-height:1.2}.pc .nt{font-size:11px;color:var(--soft)}
 .legend{display:flex;flex-wrap:wrap;gap:14px;padding:14px 0 0}.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.lg i{width:16px;height:16px;border-radius:4px;border:2px solid #161413;display:inline-block}
 .tools{display:flex;flex-wrap:wrap;gap:8px}.tool{font-family:'Space Mono',monospace;font-size:12px;border:1px solid var(--line);background:var(--wash);border-radius:8px;padding:7px 12px;color:var(--soft)}
+.fkey{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 18px;padding:13px 15px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}
+.fk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
+.fnote{flex-basis:100%;margin-top:4px;font-size:12.5px;color:var(--soft)}.fnote b{color:#161413}
 .step{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
 .step:first-child{border-top:none}
 .bn{width:46px;height:46px;min-width:46px;align-self:start;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Space Mono',monospace;font-weight:700;font-size:20px}
 .step .tx{font-size:16.5px;line-height:1.5;max-width:640px}
-.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}
-.drawbox svg{width:100%;height:auto;display:block}
-.zoombox{margin-top:12px;display:inline-block;border:1px dashed var(--acc);border-radius:12px;background:#fff;padding:8px;max-width:380px}
-.zoombox .zl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 4px}
+.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:12px}.drawbox svg{width:100%;height:auto;display:block}
+.zoombox{margin-top:14px;display:block;border:1.5px dashed var(--acc);border-radius:14px;background:#fff;padding:12px 14px;max-width:620px}
+.zoombox .zl{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 8px;font-weight:700}
 .zoombox svg{width:100%;height:auto;display:block}
-.fkey{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;padding:12px 14px;background:#FAF8F4;border:1px solid var(--line);border-radius:12px}.fk{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--soft)}
 .warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:#FBEEE4;border:1px solid #F0D8C4;border-left:4px solid var(--acc);border-radius:10px;padding:11px 13px;font-size:14px;color:#7a4a2c;max-width:640px}
-.warn b{color:var(--crit);font-size:18px;line-height:1}
+.warn b{color:var(--crit);font-size:16px;line-height:1.1}
 .check{list-style:none;padding:0;margin:0;display:grid;gap:10px}.check li{display:flex;align-items:flex-start;gap:11px;font-size:15px}
 .check .bx{flex:0 0 auto;width:22px;height:22px;border:2px solid var(--ink);border-radius:6px;margin-top:1px}
 .fnav{display:flex;justify-content:space-between;gap:12px;padding:26px 0 70px}
@@ -48,92 +49,108 @@
 <a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
 </nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="ghid-montaj.html">Ghid</a><span>&rsaquo;</span><a href="fise.html">Fise montaj</a><span>&rsaquo;</span><b>Fisa 6</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="ghid"]');if(a)a.classList.add("on");})();</script>
 <div class="wrap">
- <section class="fh"><div><div class="kick">FISA 6 / 11</div><h1>Cele 6 joiste</h1><div class="meta"><span class="mtag">~2 ore</span><span class="mtag crit">CRITIC</span><span class="mtag">2 persoane</span></div></div><div class="herodraw"><svg viewBox="0 0 660 530" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
-<polygon points="86.0,302.5 72.0,310.6 72.0,242.6 86.0,234.5" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="72.0,294.4 86.0,302.5 86.0,234.5 72.0,226.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="72.0,226.4 86.0,234.5 72.0,242.6 58.0,234.5" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="98.7,243.4 86.0,250.7 86.0,234.5 98.7,227.2" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="84.6,235.3 98.7,243.4 98.7,227.2 84.6,219.1" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="84.6,219.1 98.7,227.2 86.0,234.5 72.0,226.4" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,397.2 352.4,404.5 352.4,372.1 365.1,364.8" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="70.6,227.2 365.1,397.2 365.1,364.8 70.6,194.8" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="70.6,194.8 365.1,364.8 352.4,372.1 58.0,202.1" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="321.6,166.5 307.6,174.6 307.6,106.6 321.6,98.5" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,158.4 321.6,166.5 321.6,98.5 307.6,90.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,90.4 321.6,98.5 307.6,106.6 293.5,98.5" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="366.5,464.4 352.4,472.5 352.4,404.5 366.5,396.4" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="352.4,456.3 366.5,464.4 366.5,396.4 352.4,388.3" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="352.4,388.3 366.5,396.4 352.4,404.5 338.4,396.4" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="379.1,405.3 366.5,412.6 366.5,396.4 379.1,389.1" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,397.2 379.1,405.3 379.1,389.1 365.1,381.0" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,381.0 379.1,389.1 366.5,396.4 352.4,388.3" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="602.0,260.4 589.4,267.7 589.4,235.3 602.0,228.0" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,90.4 602.0,260.4 602.0,228.0 307.6,58.0" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,58.0 602.0,228.0 589.4,235.3 294.9,65.3" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="602.0,328.4 588.0,336.5 588.0,268.5 602.0,260.4" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="588.0,320.3 602.0,328.4 602.0,260.4 588.0,252.3" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="588.0,252.3 602.0,260.4 588.0,268.5 574.0,260.4" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<rect x="306.1" y="47.4" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="321.6" y="59.9" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">100</text>
-<rect x="338.3" y="66.0" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="353.8" y="78.5" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">280</text>
-<rect x="400.0" y="101.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="415.5" y="114.1" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">720</text>
-<rect x="452.6" y="134.0" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="471.6" y="146.5" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1120</text>
-<rect x="512.9" y="168.8" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="531.9" y="181.3" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1550</text>
-<rect x="573.2" y="203.6" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="592.2" y="216.1" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1980</text>
+ <section class="fh"><div><div class="kick">FISA 6 / 11</div><h1>Cele 6 joiste</h1><div class="meta"><span class="mtag">~2 ore</span><span class="mtag crit">CRITIC</span><span class="mtag">2 persoane</span></div></div><div class="herodraw"><svg viewBox="0 0 680 546" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="87.1,311.5 72.5,319.8 72.5,249.3 87.1,241.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="72.5,303.1 87.1,311.5 87.1,241.0 72.5,232.6" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="72.5,232.6 87.1,241.0 72.5,249.3 58.0,241.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="100.2,250.2 87.1,257.7 87.1,241.0 100.2,233.4" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="85.6,241.8 100.2,250.2 100.2,233.4 85.6,225.0" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="85.6,225.0 100.2,233.4 87.1,241.0 72.5,232.6" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,409.6 363.3,417.2 363.3,383.6 376.3,376.1" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.1,233.4 376.3,409.6 376.3,376.1 71.1,199.8" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.1,199.8 376.3,376.1 363.3,383.6 58.0,207.4" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="331.3,170.5 316.7,178.9 316.7,108.4 331.3,100.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,162.1 331.3,170.5 331.3,100.0 316.7,91.6" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,91.6 331.3,100.0 316.7,108.4 302.2,100.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="377.8,479.3 363.3,487.7 363.3,417.2 377.8,408.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="363.3,470.9 377.8,479.3 377.8,408.8 363.3,400.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="363.3,400.4 377.8,408.8 363.3,417.2 348.7,408.8" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="390.9,418.0 377.8,425.6 377.8,408.8 390.9,401.2" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,409.6 390.9,418.0 390.9,401.2 376.3,392.9" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,392.9 390.9,401.2 377.8,408.8 363.3,400.4" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="622.0,267.8 608.9,275.4 608.9,241.8 622.0,234.2" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,91.6 622.0,267.8 622.0,234.2 316.7,58.0" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,58.0 622.0,234.2 608.9,241.8 303.7,65.6" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="622.0,338.3 607.5,346.7 607.5,276.2 622.0,267.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="607.5,329.9 622.0,338.3 622.0,267.8 607.5,259.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="607.5,259.4 622.0,267.8 607.5,276.2 592.9,267.8" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="331.3" y1="49.6" x2="331.3" y2="66.4" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="331.3" cy="66.4" r="2.6" fill="#C2693A"/>
+<rect x="315.8" y="40.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="331.3" y="53.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">100</text>
+<line x1="357.4" y1="44.6" x2="357.4" y2="81.5" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="357.4" cy="81.5" r="2.6" fill="#C2693A"/>
+<rect x="341.9" y="35.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="357.4" y="48.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">280</text>
+<line x1="421.4" y1="101.6" x2="421.4" y2="118.4" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="421.4" cy="118.4" r="2.6" fill="#C2693A"/>
+<rect x="405.9" y="92.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="421.4" y="105.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">720</text>
+<line x1="479.5" y1="115.1" x2="479.5" y2="152.0" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="479.5" cy="152.0" r="2.6" fill="#C2693A"/>
+<rect x="460.5" y="106.1" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="479.5" y="118.6" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1120</text>
+<line x1="542.1" y1="171.3" x2="542.1" y2="188.1" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="542.1" cy="188.1" r="2.6" fill="#C2693A"/>
+<rect x="523.1" y="162.3" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="542.1" y="174.8" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1550</text>
+<line x1="604.6" y1="187.2" x2="604.6" y2="224.2" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="604.6" cy="224.2" r="2.6" fill="#C2693A"/>
+<rect x="585.6" y="178.2" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="604.6" y="190.7" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1980</text>
 </svg></div></section>
- <div class="legend">
-<span class="lg"><i style="background:#E8973C"></i>stalp</span>
-<span class="lg"><i style="background:#3F8FA6"></i>grinda</span>
-<span class="lg"><i style="background:#7BAE52"></i>joista</span>
-<span class="lg"><i style="background:#E9C277"></i>dusumea</span>
-<span class="lg"><i style="background:#B083C6"></i>polita</span>
-<span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span>
-<span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span>
-</div>
+ <div class="legend"><span class="lg"><i style="background:#E8973C"></i>stalp</span><span class="lg"><i style="background:#3F8FA6"></i>grinda</span><span class="lg"><i style="background:#7BAE52"></i>joista</span><span class="lg"><i style="background:#E9C277"></i>dusumea</span><span class="lg"><i style="background:#B083C6"></i>polita</span><span class="lg"><i style="background:#AAB2BB"></i>coltar metal</span><span class="lg"><i style="background:#E2663B"></i>diagonala/proptea</span></div>
  <section class="sec"><div class="sh">Piese pentru aceasta etapa</div><div class="pg"><div class="pc"><div class="im"><img src="POZE/COD_7337253.png" alt="Joista 100x100" loading="lazy"></div><div class="bd"><div class="row1"><span class="code">JO</span><span class="qt">6</span></div><div class="nm">Joista 100x100</div><div class="nt">dintr-o bucata</div></div></div><div class="pc"><div class="im"><img src="POZE/COD_738910.png" alt="Coltar 90x90x65" loading="lazy"></div><div class="bd"><div class="row1"><span class="code">C2</span><span class="qt">12</span></div><div class="nm">Coltar 90x90x65</div><div class="nt">2 / joista</div></div></div><div class="pc"><div class="im"><img src="POZE/COD_10434398.png" alt="Heco 6x100" loading="lazy"></div><div class="bd"><div class="row1"><span class="code">H2</span><span class="qt">~60</span></div><div class="nm">Heco 6x100</div><div class="nt">in coltare</div></div></div></div></section>
  <section class="sec"><div class="sh">Scule</div><div class="tools"><span class="tool">Bormasina</span><span class="tool">Ruleta</span><span class="tool">Creion</span><span class="tool">Echer</span></div></section>
- <section class="sec"><div class="sh">Pas cu pas</div><div class="fkey"><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (pe fata vazuta)</span><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>surub/piulita pe partea ascunsa</span><span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directia de insurubare</span><span class="fk"><b style="color:#161413">oblic</b> = la unghi (toe-screw)</span><span class="fk">folosim <b style="color:#161413">suruburi + buloane</b>, nu cuie</span></div><div class="step"><div class="bn">1</div><div><div class="tx">Marcheaza pe ambele grinzi pozitiile celor 6 joiste, de la coltul S4: 100 / 280 / 720 / 1120 / 1550 / 1980 mm.</div><div class="drawbox"><svg viewBox="0 0 660 530" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
-<polygon points="86.0,302.5 72.0,310.6 72.0,242.6 86.0,234.5" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="72.0,294.4 86.0,302.5 86.0,234.5 72.0,226.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="72.0,226.4 86.0,234.5 72.0,242.6 58.0,234.5" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="98.7,243.4 86.0,250.7 86.0,234.5 98.7,227.2" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="84.6,235.3 98.7,243.4 98.7,227.2 84.6,219.1" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="84.6,219.1 98.7,227.2 86.0,234.5 72.0,226.4" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,397.2 352.4,404.5 352.4,372.1 365.1,364.8" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="70.6,227.2 365.1,397.2 365.1,364.8 70.6,194.8" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="70.6,194.8 365.1,364.8 352.4,372.1 58.0,202.1" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="321.6,166.5 307.6,174.6 307.6,106.6 321.6,98.5" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,158.4 321.6,166.5 321.6,98.5 307.6,90.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,90.4 321.6,98.5 307.6,106.6 293.5,98.5" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="366.5,464.4 352.4,472.5 352.4,404.5 366.5,396.4" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="352.4,456.3 366.5,464.4 366.5,396.4 352.4,388.3" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="352.4,388.3 366.5,396.4 352.4,404.5 338.4,396.4" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="379.1,405.3 366.5,412.6 366.5,396.4 379.1,389.1" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,397.2 379.1,405.3 379.1,389.1 365.1,381.0" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="365.1,381.0 379.1,389.1 366.5,396.4 352.4,388.3" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="602.0,260.4 589.4,267.7 589.4,235.3 602.0,228.0" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,90.4 602.0,260.4 602.0,228.0 307.6,58.0" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="307.6,58.0 602.0,228.0 589.4,235.3 294.9,65.3" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="602.0,328.4 588.0,336.5 588.0,268.5 602.0,260.4" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="588.0,320.3 602.0,328.4 602.0,260.4 588.0,252.3" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<polygon points="588.0,252.3 602.0,260.4 588.0,268.5 574.0,260.4" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
-<rect x="306.1" y="47.4" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="321.6" y="59.9" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">100</text>
-<rect x="338.3" y="66.0" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="353.8" y="78.5" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">280</text>
-<rect x="400.0" y="101.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="415.5" y="114.1" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">720</text>
-<rect x="452.6" y="134.0" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="471.6" y="146.5" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1120</text>
-<rect x="512.9" y="168.8" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="531.9" y="181.3" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1550</text>
-<rect x="573.2" y="203.6" width="38.0" height="17" rx="4" fill="#fff" stroke="#161413" stroke-width="1.2"/>
-<text x="592.2" y="216.1" fill="#161413" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1980</text>
+ <section class="sec"><div class="sh">Pas cu pas</div><div class="fkey"><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (fata vazuta)</span><span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>surub/piulita ascuns (pe spate)</span><span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directia de insurubare</span><span class="fk"><b style="color:#161413">oblic</b> = la unghi (toe-screw)</span><div class="fnote">Folosim <b>suruburi + buloane</b>, nu cuie. (Singurul cui e distantierul de 5 mm la dusumea.)</div></div><div class="step"><div class="bn">1</div><div><div class="tx">Marcheaza pe ambele grinzi pozitiile celor 6 joiste, de la coltul S4: 100 / 280 / 720 / 1120 / 1550 / 1980 mm.</div><div class="drawbox"><svg viewBox="0 0 680 546" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+<polygon points="87.1,311.5 72.5,319.8 72.5,249.3 87.1,241.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="72.5,303.1 87.1,311.5 87.1,241.0 72.5,232.6" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="72.5,232.6 87.1,241.0 72.5,249.3 58.0,241.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="100.2,250.2 87.1,257.7 87.1,241.0 100.2,233.4" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="85.6,241.8 100.2,250.2 100.2,233.4 85.6,225.0" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="85.6,225.0 100.2,233.4 87.1,241.0 72.5,232.6" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,409.6 363.3,417.2 363.3,383.6 376.3,376.1" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.1,233.4 376.3,409.6 376.3,376.1 71.1,199.8" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="71.1,199.8 376.3,376.1 363.3,383.6 58.0,207.4" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="331.3,170.5 316.7,178.9 316.7,108.4 331.3,100.0" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,162.1 331.3,170.5 331.3,100.0 316.7,91.6" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,91.6 331.3,100.0 316.7,108.4 302.2,100.0" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="377.8,479.3 363.3,487.7 363.3,417.2 377.8,408.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="363.3,470.9 377.8,479.3 377.8,408.8 363.3,400.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="363.3,400.4 377.8,408.8 363.3,417.2 348.7,408.8" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="390.9,418.0 377.8,425.6 377.8,408.8 390.9,401.2" fill="#bfb1c6" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,409.6 390.9,418.0 390.9,401.2 376.3,392.9" fill="#e1d0e9" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="376.3,392.9 390.9,401.2 377.8,408.8 363.3,400.4" fill="#e5d6ec" stroke="#785987" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="622.0,267.8 608.9,275.4 608.9,241.8 622.0,234.2" fill="#9bb4bc" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,91.6 622.0,267.8 622.0,234.2 316.7,58.0" fill="#b6d4dd" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="316.7,58.0 622.0,234.2 608.9,241.8 303.7,65.6" fill="#bfdae1" stroke="#2b6171" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="622.0,338.3 607.5,346.7 607.5,276.2 622.0,267.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="607.5,329.9 622.0,338.3 622.0,267.8 607.5,259.4" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="607.5,259.4 622.0,267.8 607.5,276.2 592.9,267.8" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="331.3" y1="49.6" x2="331.3" y2="66.4" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="331.3" cy="66.4" r="2.6" fill="#C2693A"/>
+<rect x="315.8" y="40.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="331.3" y="53.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">100</text>
+<line x1="357.4" y1="44.6" x2="357.4" y2="81.5" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="357.4" cy="81.5" r="2.6" fill="#C2693A"/>
+<rect x="341.9" y="35.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="357.4" y="48.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">280</text>
+<line x1="421.4" y1="101.6" x2="421.4" y2="118.4" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="421.4" cy="118.4" r="2.6" fill="#C2693A"/>
+<rect x="405.9" y="92.6" width="31.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="421.4" y="105.1" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">720</text>
+<line x1="479.5" y1="115.1" x2="479.5" y2="152.0" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="479.5" cy="152.0" r="2.6" fill="#C2693A"/>
+<rect x="460.5" y="106.1" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="479.5" y="118.6" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1120</text>
+<line x1="542.1" y1="171.3" x2="542.1" y2="188.1" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="542.1" cy="188.1" r="2.6" fill="#C2693A"/>
+<rect x="523.1" y="162.3" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="542.1" y="174.8" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1550</text>
+<line x1="604.6" y1="187.2" x2="604.6" y2="224.2" stroke="#C2693A" stroke-width="1.2"/>
+<circle cx="604.6" cy="224.2" r="2.6" fill="#C2693A"/>
+<rect x="585.6" y="178.2" width="38.0" height="17" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
+<text x="604.6" y="190.7" fill="#C2693A" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">1980</text>
 </svg></div></div></div><div class="step"><div class="bn">2</div><div><div class="tx">Aseaza prima joista peste ambele grinzi. Capatul din fata iese 700 mm in gol (consola = balconul).</div><div class="drawbox"><svg viewBox="0 0 680 619" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
 <polygon points="377.1,138.0 389.5,145.1 82.7,322.2 70.4,315.1" fill="none" stroke="#C2693A" stroke-width="1.6" stroke-dasharray="6 5"/>
 <polygon points="82.7,410.8 70.4,417.9 70.4,357.9 82.7,350.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
@@ -186,7 +203,7 @@
 <line x1="293.5" y1="207.4" x2="287.5" y2="197.1" stroke="#C2693A" stroke-width="1.6"/>
 <rect x="287.6" y="157.3" width="92.5" height="16" rx="4" fill="#fff" stroke="#C2693A" stroke-width="1.2"/>
 <text x="333.8" y="169.3" fill="#C2693A" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">700 consola</text>
-</svg></div><div class="warn"><b>!</b><div>Pas critic — verifica inainte sa mergi mai departe.</div></div></div></div><div class="step"><div class="bn">3</div><div><div class="tx">Aseaza toate cele 6 joiste la pozitiile marcate.</div><div class="drawbox"><svg viewBox="0 0 680 539" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+</svg></div><div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div></div></div><div class="step"><div class="bn">3</div><div><div class="tx">Aseaza toate cele 6 joiste la pozitiile marcate.</div><div class="drawbox"><svg viewBox="0 0 680 539" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
 <polygon points="82.7,330.8 70.4,337.9 70.4,277.9 82.7,270.8" fill="#d1b79a" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
 <polygon points="70.4,323.6 82.7,330.8 82.7,270.8 70.4,263.7" fill="#f6d7b5" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
 <polygon points="70.4,263.7 82.7,270.8 70.4,277.9 58.0,270.8" fill="#f7dcbf" stroke="#9e6729" stroke-width="2.0" stroke-linejoin="round"/>
@@ -281,7 +298,7 @@
 <line x1="296.1" y1="111.9" x2="288.9" y2="121.5" stroke="#161413" stroke-width="2.6"/>
 <rect x="269.5" y="66.5" width="53.2" height="17" rx="4" fill="#161413"/>
 <text x="296.1" y="79.0" fill="#fff" font-size="11" font-weight="700" text-anchor="middle" font-family="Space Mono,monospace">C2  x2</text>
-</svg></div><div class="zoombox"><div class="zl">zoom · detaliu</div><svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><g transform="translate(6,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">LATERAL</text><rect x="34" y="86" width="120" height="40" rx="3" fill="#3F8FA6" stroke="#161413" stroke-width="2.4"/><rect x="78" y="30" width="40" height="56" rx="3" fill="#7BAE52" stroke="#161413" stroke-width="2.4"/><rect x="118" y="60" width="14" height="52" rx="3" fill="#AAB2BB" stroke="#161413" stroke-width="2.4"/><circle cx="126" cy="72" r="5.6" fill="#161413"/><line x1="122.6" y1="72" x2="129.4" y2="72" stroke="#fff" stroke-width="1.4"/><circle cx="126" cy="86" r="5.6" fill="#161413"/><line x1="122.6" y1="86" x2="129.4" y2="86" stroke="#fff" stroke-width="1.4"/><circle cx="126" cy="104" r="5.6" fill="#161413"/><line x1="122.6" y1="104" x2="129.4" y2="104" stroke="#fff" stroke-width="1.4"/><line x1="98" y1="28" x2="98" y2="12" stroke="#C2693A" stroke-width="2.6"/><line x1="98" y1="12" x2="91.41680641485648" y2="3.1874202289837292" stroke="#C2693A" stroke-width="2.6"/><line x1="98" y1="12" x2="104.58319358514352" y2="3.1874202289837292" stroke="#C2693A" stroke-width="2.6"/><text x="98" y="150" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400"></text><text x="150" y="150" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#C2693A" font-weight="400">ridicare</text></g><g transform="translate(198,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">DE SUS</text><rect x="30" y="60" width="120" height="30" rx="3" fill="#3F8FA6" stroke="#161413" stroke-width="2.4"/><rect x="76" y="40" width="40" height="70" rx="3" fill="#7BAE52" stroke="#161413" stroke-width="2.4"/><circle cx="120" cy="66" r="5.6" fill="#161413"/><line x1="116.6" y1="66" x2="123.4" y2="66" stroke="#fff" stroke-width="1.4"/><circle cx="120" cy="84" r="5.6" fill="#161413"/><line x1="116.6" y1="84" x2="123.4" y2="84" stroke="#fff" stroke-width="1.4"/><text x="88" y="128" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400">coltar pe lateral</text></g><rect x="6" y="192" width="368" height="24" rx="7" fill="#fff" stroke="#C2693A" stroke-width="1.4"/><text x="190" y="208" text-anchor="middle" font-family="Space Mono,monospace" font-size="11.5" fill="#C2693A" font-weight="700">C2 x2 / joista (fata + spate) · TOTAL 12</text></svg></div><div class="warn"><b>!</b><div>Pas critic — verifica inainte sa mergi mai departe.</div></div></div></div></section>
+</svg></div><div class="zoombox"><div class="zl">zoom &middot; cum se prinde</div><svg viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg"><g transform="translate(6,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">LATERAL</text><rect x="34" y="86" width="120" height="40" rx="3" fill="#3F8FA6" stroke="#161413" stroke-width="2.4"/><rect x="78" y="30" width="40" height="56" rx="3" fill="#7BAE52" stroke="#161413" stroke-width="2.4"/><rect x="118" y="60" width="14" height="52" rx="3" fill="#AAB2BB" stroke="#161413" stroke-width="2.4"/><circle cx="126" cy="72" r="5.6" fill="#161413"/><line x1="122.6" y1="72" x2="129.4" y2="72" stroke="#fff" stroke-width="1.4"/><circle cx="126" cy="86" r="5.6" fill="#161413"/><line x1="122.6" y1="86" x2="129.4" y2="86" stroke="#fff" stroke-width="1.4"/><circle cx="126" cy="104" r="5.6" fill="#161413"/><line x1="122.6" y1="104" x2="129.4" y2="104" stroke="#fff" stroke-width="1.4"/><line x1="98" y1="28" x2="98" y2="12" stroke="#C2693A" stroke-width="2.6"/><line x1="98" y1="12" x2="91.41680641485648" y2="3.1874202289837292" stroke="#C2693A" stroke-width="2.6"/><line x1="98" y1="12" x2="104.58319358514352" y2="3.1874202289837292" stroke="#C2693A" stroke-width="2.6"/><text x="98" y="150" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400"></text><text x="150" y="150" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#C2693A" font-weight="400">ridicare</text></g><g transform="translate(198,26)"><rect x="0" y="0" width="176" height="158" rx="12" fill="#FBFAF8" stroke="#E7E3DB" stroke-width="1.5"/><text x="88" y="-8" text-anchor="middle" font-family="Space Mono,monospace" font-size="10.5" fill="#C2693A" font-weight="700">DE SUS</text><rect x="30" y="60" width="120" height="30" rx="3" fill="#3F8FA6" stroke="#161413" stroke-width="2.4"/><rect x="76" y="40" width="40" height="70" rx="3" fill="#7BAE52" stroke="#161413" stroke-width="2.4"/><circle cx="120" cy="66" r="5.6" fill="#161413"/><line x1="116.6" y1="66" x2="123.4" y2="66" stroke="#fff" stroke-width="1.4"/><circle cx="120" cy="84" r="5.6" fill="#161413"/><line x1="116.6" y1="84" x2="123.4" y2="84" stroke="#fff" stroke-width="1.4"/><text x="88" y="128" text-anchor="middle" font-family="Space Mono,monospace" font-size="9" fill="#5C574E" font-weight="400">coltar pe lateral</text></g><rect x="6" y="192" width="368" height="24" rx="7" fill="#fff" stroke="#C2693A" stroke-width="1.4"/><text x="190" y="208" text-anchor="middle" font-family="Space Mono,monospace" font-size="11.5" fill="#C2693A" font-weight="700">C2 x2 / joista (fata + spate) · TOTAL 12</text></svg></div><div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div></div></div></section>
  <section class="sec"><div class="sh">Gata cand</div><ul class="check"><li><span class="bx"></span><span>6 joiste la pozitii</span></li><li><span class="bx"></span><span>Consola 700 mm</span></li><li><span class="bx"></span><span>12 coltare C2</span></li></ul></section>
  <div class="fnav"><a href="fisa-05.html">&larr; Fisa anterioara</a><a href="fisa-07.html">Fisa urmatoare &rarr;</a></div>
 </div></body></html>
