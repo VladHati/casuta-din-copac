@@ -27,7 +27,8 @@ def cover_hero():
 MAT=[('le ai deja',[('ST','4','stalpi KVH 100x100'),('JO','4','joiste (din lotul de 6)'),('PAP','4','papuci, deja in beton'),('F2','1','grund Köber 4 L')]),
      ('in comanda Hornbach (4.101 lei)',[('GR','2','grinzi glulam 90x200'),('JO','2','completare joiste'),('DL','17','dusumea larice'),('C1','4','coltare 100x90'),('C2','12','coltare 90x65 joiste; +2 grinda spate = de luat'),('H1','1 pac','Heco 8x200'),('H2','1 pac','Heco 6x100'),('H3','1 pac','Heco 6x80'),('H4','2 pac','inox 5x60'),('B1','1','tija M12 (taie 4x ~220)'),('B2','1 pac','M12x120 baza'),('B3','1 pac','saibe M12'),('B4','1 pac','piulite M12'),('F1','2','ulei tec')]),
      ('din offcut',[('PO','2','polite'),('BL','~12','blocaje'),('RM','2','traverse rama copac'),('CF','6','contrafise'),('PT','~6','proptele')]),
-     ('Faza 2 / de ales (nu opreste startul)',[('SB','~7','stalpisor balustrada 58x58'),('SP','~24','sipci 18x18, gol <9 cm'),('MC','~7 m','mana curenta'),('BM','~12','bulon M10 balustrada'),('F3','1','topcoat colorat exterior')])]
+     ('balustrada (Faza 1)',[('SB','~7','stalpisor balustrada 58x58'),('SP','~24','sipci 18x18, gol <9 cm'),('MC','~7 m','mana curenta'),('BM','~12','bulon M10 balustrada')]),
+     ('de ales (nu opreste startul)',[('F3','1','topcoat colorat exterior')])]
 PARTS2=dict(PARTS); PARTS2['F2']=('POZE/kober.jpg','Grund Köber 4 L'); PARTS2['F3']=('POZE/lemn.png','Topcoat colorat')
 
 SAFETY=[('Inaltime 2,2 m','Balustrada de 1 m jur-imprejur, goluri sub 9 cm, poarta pe partea S3. Sub platforma, sol moale (scoarta/nisip) pe ~5 m².'),
@@ -152,7 +153,7 @@ def fisa_html(s):
             f'<div class="sh">Gata cand</div><ul class="check">{checks}</ul></section>')
 
 
-TOOLS=[('Boloboc / nivela cu furtun','verticalitate + orizontalitate'),('Bormasina + biti','suruburi Heco si gauri'),('Burghiu lemn 13 mm','gauri pentru buloane M12'),('Cheie 19 (M12)','buloane baza + polita'),('Cheie M10','balustrada (Faza 2)'),('Bomfaier','taiat tija filetata'),('Fierastrau / circular','taieri stalpi, dusumea, offcut'),('Echer mare','unghiuri drepte'),('Ruleta + creion','masuratori, trasaj'),('Cui 5 mm','distantier intre scanduri'),('Pensula','grund + ulei'),('2 persoane','la grinzi si ridicari')]
+TOOLS=[('Boloboc / nivela cu furtun','verticalitate + orizontalitate'),('Bormasina + biti','suruburi Heco si gauri'),('Burghiu lemn 13 mm','gauri pentru buloane M12'),('Cheie 19 (M12)','buloane baza + polita'),('Cheie M10','balustrada'),('Bomfaier','taiat tija filetata'),('Fierastrau / circular','taieri stalpi, dusumea, offcut'),('Echer mare','unghiuri drepte'),('Ruleta + creion','masuratori, trasaj'),('Cui 5 mm','distantier intre scanduri'),('Pensula','grund + ulei'),('2 persoane','la grinzi si ridicari')]
 tools_html=''.join(f'<li><b>{t}</b><span>{d}</span></li>' for t,d in TOOLS)
 SCULE_SECT=('<section class="sect"><div class="eyebrow">Trusa completa</div><h2>Scule de care ai nevoie</h2>''<p class="lead">Pregateste-le pe toate inainte de start. Pe fiecare fisa apar doar sculele etapei.</p>''<ul class="toollist">'+tools_html+'</ul></section>')
 
