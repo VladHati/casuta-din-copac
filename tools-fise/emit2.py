@@ -78,7 +78,8 @@ def emit(s,prev,nxt):
     for i,st in enumerate(s['steps'],1):
         big=f'<div class="drawbox">{st["svg"]}</div>' if st.get('svg') else ''
         zoom=f'<div class="zoombox"><div class="zl">zoom &middot; cum se prinde</div>{st["zoom"]}</div>' if st.get('zoom') else ''
-        warn='<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div>' if st.get('warn') else ''
+        wt=st.get('warn')
+        warn=f'<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; {wt}</div></div>' if wt else ''
         steps+=f'<div class="step"><div class="h"><div class="bn">{i}</div><div class="tx">{st["t"]}</div></div>{big}{zoom}{warn}</div>'
     checks=''.join(f'<li><span class="bx"></span><span>{c}</span></li>' for c in s['check'])
     mtags=f'<span class="mtag">~{s["time"]}</span><span class="mtag {("crit" if crit else "")}">{s["diff"]}</span>'+('<span class="mtag">2 persoane</span>' if s['ppl'] else '')

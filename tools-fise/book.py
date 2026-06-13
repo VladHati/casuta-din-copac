@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pickle
 import fb
-from fb import PARTS, PROJ, render, PS, W, D, JX, BEAMB, JOB, DECKB, posts_stub, polite_g, beam_back_g, beam_front_g, joists_g, deck_g, g, N
+from fb import PARTS, PROJ, render, PS, W, D, JX, BEAMB, JOB, DECKB, polite_g, beam_back_g, beam_front_g, joists_g, deck_g, g, N
 DATA=pickle.load(open('data.pkl','rb'))
 
 # ---- hero coperta: platforma finala, colorata ----
@@ -25,7 +25,7 @@ def cover_hero():
 
 # ---- sectiune materiale (curata, un singur stil) ----
 MAT=[('le ai deja',[('ST','4','stalpi KVH 100x100'),('JO','4','joiste (din lotul de 6)'),('PAP','4','papuci, deja in beton'),('F2','1','grund Köber 4 L')]),
-     ('in comanda Hornbach (4.101 lei)',[('GR','2','grinzi glulam 90x200'),('JO','2','completare joiste'),('DL','17','dusumea larice'),('C1','4','coltare 100x90'),('C2','12','coltare 90x65 joiste; +2 grinda spate = de luat'),('H1','1 pac','Heco 8x200'),('H2','1 pac','Heco 6x100'),('H3','1 pac','Heco 6x80'),('H4','2 pac','inox 5x60'),('B1','1','tija M12 (taie 4x ~220)'),('B2','1 pac','M12x120 baza'),('B3','1 pac','saibe M12'),('B4','1 pac','piulite M12'),('F1','2','ulei tec')]),
+     ('in comanda Hornbach (4.101 lei)',[('GR','2','grinzi glulam 90x200'),('JO','2','completare joiste'),('DL','17','dusumea larice'),('C1','4','coltare 100x90'),('C2','14','coltare 90x65: 12 joiste + 2 grinda spate'),('H1','1 pac','Heco 8x200'),('H2','1 pac','Heco 6x100'),('H3','1 pac','Heco 6x80'),('H4','3 pac','inox 5x60 (204 necesare)'),('B1','1','tija M12 (taie 4x ~220)'),('B2','1 pac','M12x120 baza'),('B3','1 pac','saibe M12'),('B4','1 pac','piulite M12'),('F1','2','ulei tec')]),
      ('din offcut',[('PO','2','polite'),('BL','~12','blocaje'),('RM','2','traverse rama copac'),('CF','6','contrafise'),('PT','~6','proptele')]),
      ('balustrada (Faza 1)',[('SB','~7','stalpisor balustrada 58x58'),('SP','~24','sipci 18x18, gol <9 cm'),('MC','~7 m','mana curenta'),('BM','~12','bulon M10 balustrada')]),
      ('de ales (nu opreste startul)',[('F3','1','topcoat colorat exterior')])]
@@ -96,12 +96,13 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-sp
 .fk{display:inline-flex;align-items:center;gap:2mm;font-size:9pt;color:var(--soft)}
 .fnote{flex-basis:100%;margin-top:1mm;font-size:9pt;color:var(--soft)}.fnote b{color:#161413}
 .step{padding:4mm 0;border-top:1px solid var(--line);break-inside:avoid}
+.gata{break-inside:avoid;break-before:avoid;padding-top:1mm}
 .step .h{display:flex;gap:4mm;align-items:flex-start}
 .bn{flex:0 0 9mm;width:9mm;height:9mm;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-family:'Space Mono',monospace;font-weight:700;font-size:12pt}
 .tx{font-size:11pt;line-height:1.45}
-.step .drawbox,.step .zoombox,.step .warn{margin-left:13mm}
-.drawbox{margin-top:3mm;border:1px solid var(--line);border-radius:3mm;background:var(--wash);padding:3mm;text-align:center}
-.drawbox svg{max-height:72mm;max-width:100%;width:auto;height:auto;display:inline-block}
+.step .zoombox,.step .warn{margin-left:13mm}
+.drawbox{margin-top:3mm;border:1px solid var(--line);border-radius:3mm;background:var(--wash);padding:3mm 2mm;text-align:center}
+.drawbox svg{max-height:104mm;max-width:100%;width:auto;height:auto;display:inline-block}
 .zoombox{margin-top:3mm;border:1.4px dashed var(--acc);border-radius:3mm;background:#fff;padding:3mm 3.5mm;max-width:165mm}
 .zoombox .zl{font-family:'Space Mono',monospace;font-size:8.6pt;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 2mm;font-weight:700}
 .zoombox svg{max-height:48mm;max-width:100%;width:auto;height:auto;display:block;margin:0 auto}
@@ -116,10 +117,50 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-sp
 .scard h3{font-size:14pt;margin:0 0 1.5mm}
 .scard p{margin:0;color:var(--soft);font-size:10.5pt}
 .toollist{list-style:none;padding:0;margin:0;columns:2;column-gap:10mm}.toollist li{break-inside:avoid;padding:2.6mm 0;border-bottom:1px solid var(--line)}.toollist b{display:block;font-size:11pt}.toollist span{font-size:9.5pt;color:var(--soft)}
+/* safety banner pe p2 */
+.banner{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:6mm 0 0}
+.bcard{background:#FBEEE4;border:1px solid #F0D8C4;border-left:3px solid var(--crit);border-radius:2.6mm;padding:3mm 3.4mm}
+.bcard .bk{font-family:'Space Mono',monospace;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--crit);font-weight:700}
+.bcard p{margin:1.4mm 0 0;font-size:9.6pt;color:#7a4a2c;line-height:1.35}
+/* checkbox pe cardul de material */
+.pc .r1 .cbx{flex:0 0 auto;width:3.8mm;height:3.8mm;border:1.6px solid var(--ink);border-radius:1.2mm;margin-right:auto}
+.pc .nm b{font-family:'Space Mono',monospace;color:var(--ink);font-weight:700}
+/* pictograme scule */
+.tool{display:inline-flex;align-items:center;gap:1.6mm}
+.tool svg{flex:0 0 auto;display:block}
 </style>'''
 
-LEG=('<div class="legend">'+''.join(f'<span class="lg"><i style="background:{c}"></i><b>{cod}</b>&nbsp;{n}</span>' for c,cod,n in
- [('#E8973C','ST','stalp'),('#3F8FA6','GR','grinda'),('#7BAE52','JO','joista'),('#E9C277','DL','dusumea'),('#B083C6','PO','polita'),('#AAB2BB','C1/C2','coltar'),('#E2663B','CF','contrafisa')])+'</div>')
+# legenda: (culoare, eticheta, coduri-care-o-folosesc). Completa o data; filtrata pe fisa.
+LEG_ITEMS=[('#E8973C','ST','stalp',{'ST','SB','PT'}),('#3F8FA6','GR','grinda',{'GR'}),
+ ('#7BAE52','JO','joista',{'JO','RM'}),('#E9C277','DL','dusumea',{'DL','MC','SP'}),
+ ('#B083C6','PO','polita',{'PO'}),('#AAB2BB','C1/C2','coltar',{'C1','C2'}),
+ ('#CBA24B','BL','blocaj',{'BL'}),('#E2663B','CF','contrafisa',{'CF'}),('#A56B41','—','copac',set())]
+def legend(codes=None):
+    rows=[(c,cod,n) for c,cod,n,used in LEG_ITEMS if codes is None or (used & codes)]
+    if not rows: return ''
+    return '<div class="legend">'+''.join(f'<span class="lg"><i style="background:{c}"></i><b>{cod}</b>&nbsp;{n}</span>' for c,cod,n in rows)+'</div>'
+LEG=legend()
+# pictograme scule monoline (reutilizabile)
+_IC='stroke="#5C574E" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"'
+ICONS={
+ 'drill':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><path d="M4 8h9v5H4z"/><path d="M13 9h4l3-2v6l-3-2h-4"/><path d="M6 13v4h3v-4"/></svg>',
+ 'wrench':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><path d="M16 4a4 4 0 0 0-3.5 5.9l-7 7 2.6 2.6 7-7A4 4 0 1 0 16 4z"/></svg>',
+ 'level':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><rect x="3" y="9" width="18" height="6" rx="1"/><circle cx="12" cy="12" r="1.6"/></svg>',
+ 'saw':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><path d="M3 8l14 0 4 3-18 0z"/><path d="M5 11v2M8 11v2M11 11v2M14 11v2"/></svg>',
+ 'tape':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><rect x="3" y="6" width="18" height="8" rx="1"/><path d="M7 14v3M11 14v2M15 14v3"/></svg>',
+ 'people':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><circle cx="8" cy="7" r="2.4"/><path d="M4 19v-3a4 4 0 0 1 8 0v3"/><circle cx="17" cy="8" r="2"/><path d="M14 19v-2a3 3 0 0 1 6 0v2"/></svg>',
+ 'brush':f'<svg width="15" height="15" viewBox="0 0 24 24" {_IC}><rect x="9" y="3" width="6" height="9" rx="1"/><path d="M9 12h6v3a3 3 0 0 1-6 0z"/><path d="M12 18v3"/></svg>'}
+def ticon(name):
+    n=name.lower()
+    if 'bormasina' in n or 'burghiu' in n: k='drill'
+    elif 'cheie' in n: k='wrench'
+    elif 'boloboc' in n or 'nivela' in n or 'echer' in n: k='level'
+    elif 'fierastrau' in n or 'circular' in n or 'bomfaier' in n: k='saw'
+    elif 'pensula' in n: k='brush'
+    elif 'persoane' in n: k='people'
+    elif 'ruleta' in n or 'creion' in n or 'cui' in n: k='tape'
+    else: k=None
+    return ICONS.get(k,'')
 FKEY=('<div class="fkey">'
  '<span class="fk"><svg width="16" height="16"><circle cx="8" cy="8" r="5" fill="#161413"/><line x1="5" y1="8" x2="11" y2="8" stroke="#fff" stroke-width="1.4"/></svg>cap surub (fata)</span>'
  '<span class="fk"><svg width="16" height="16"><circle cx="8" cy="8" r="5" fill="#fff" stroke="#161413" stroke-width="1.8" stroke-dasharray="2 1.6"/></svg>ascuns (pe spate)</span>'
@@ -127,9 +168,11 @@ FKEY=('<div class="fkey">'
  '<span class="fk"><b style="color:#161413">oblic</b> = la unghi</span>'
  '<div class="fnote">Folosim <b>suruburi + buloane</b>, nu cuie.</div></div>')
 
-def pcard(code,qty,note):
+def pcard(code,qty,note,check=False):
     img,name=PARTS2.get(code,('',code))
-    return f'<div class="pc"><div class="im"><img src="{img}" alt=""></div><div class="bd"><div class="r1"><span class="code">{code}</span><span class="qt">{qty}</span></div><div class="nm">{note}</div></div></div>'
+    nm=f'<b>{name}</b> &middot; {note}' if (name and name!=code) else note   # spec (dim) la locul folosirii
+    cbx='<span class="cbx"></span>' if check else ''
+    return f'<div class="pc"><div class="im"><img src="{img}" alt=""></div><div class="bd"><div class="r1">{cbx}<span class="code">{code}</span><span class="qt">{qty}</span></div><div class="nm">{nm}</div></div></div>'
 
 def fisa_html(s):
     crit=s['diff']=='CRITIC'
@@ -137,20 +180,22 @@ def fisa_html(s):
     mt=f'<span class="mtag">~{s["time"]}</span><span class="mtag {("crit" if crit else "")}">{s["diff"]}</span>'+('<span class="mtag">2 persoane</span>' if s['ppl'] else '')
     parts=''.join(pcard(*p) for p in s['parts'] if p[0]!='—')
     if not parts: parts='<div class="pc"><div class="bd"><div class="nm">'+s['parts'][0][2]+'</div></div></div>'
-    tools=''.join(f'<span class="tool">{t}</span>' for t in s['tools'])
+    tools=''.join(f'<span class="tool">{ticon(t)}{t}</span>' for t in s['tools'])
+    fleg=legend({p[0] for p in s['parts']})        # doar culorile folosite pe fisa
     steps=''
     for i,st in enumerate(s['steps'],1):
         big=f'<div class="drawbox">{st["svg"]}</div>' if st.get('svg') else ''
         zoom=f'<div class="zoombox"><div class="zl">zoom &middot; cum se prinde</div>{st["zoom"]}</div>' if st.get('zoom') else ''
-        warn='<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; opreste-te si verifica.</div></div>' if st.get('warn') else ''
+        wt=st.get('warn')
+        warn=f'<div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; {wt}</div></div>' if wt else ''
         steps+=f'<div class="step"><div class="h"><div class="bn">{i}</div><div class="tx">{st["t"]}</div></div>{big}{zoom}{warn}</div>'
     checks=''.join(f'<li><span class="bx"></span><span>{c}</span></li>' for c in s['check'])
     return (f'<section class="fisa"><div class="fhead"><div><div class="kick">{s["kick"]}</div>'
             f'<h2>{s["title"]}</h2><div class="meta">{mt}</div></div><div class="herodraw">{hero}</div></div>'
-            f'{LEG}<div class="sh">Piese</div><div class="pg">{parts}</div>'
+            f'{fleg}<div class="sh">Piese</div><div class="pg">{parts}</div>'
             f'<div class="sh">Scule</div><div class="tools">{tools}</div>'
             f'<div class="sh">Pas cu pas</div>{FKEY}{steps}'
-            f'<div class="sh">Gata cand</div><ul class="check">{checks}</ul></section>')
+            f'<div class="gata"><div class="sh">Gata cand</div><ul class="check">{checks}</ul></div></section>')
 
 
 TOOLS=[('Boloboc / nivela cu furtun','verticalitate + orizontalitate'),('Bormasina + biti','suruburi Heco si gauri'),('Burghiu lemn 13 mm','gauri pentru buloane M12'),('Cheie 19 (M12)','buloane baza + polita'),('Cheie M10','balustrada'),('Bomfaier','taiat tija filetata'),('Fierastrau / circular','taieri stalpi, dusumea, offcut'),('Echer mare','unghiuri drepte'),('Ruleta + creion','masuratori, trasaj'),('Cui 5 mm','distantier intre scanduri'),('Pensula','grund + ulei'),('2 persoane','la grinzi si ridicari')]
@@ -163,8 +208,13 @@ FACTS=[('Inaltime podea','2200 mm'),('Cadru stalpi','2100 × 1780 mm'),('Balcon 
 facts=''.join(f'<li><span>{k}</span><b>{v}</b></li>' for k,v in FACTS)
 mat_html=''
 for gh,items in MAT:
-    cards=''.join(pcard(c,q,n) for c,q,n in items)
+    cards=''.join(pcard(c,q,n,check=True) for c,q,n in items)   # bifezi inainte de start
     mat_html+=f'<div class="mgrp"><div class="gh">{gh}</div><div class="pg">{cards}</div></div>'
+BANNER=('<div class="banner">'
+ '<div class="bcard"><div class="bk">Regula 1</div><p><b>Copacul nu tine nimic.</b> Corcodusul trece liber prin podea, cu joc. Tot ce e portant sta pe cei 4 stalpi.</p></div>'
+ '<div class="bcard"><div class="bk">Regula 2</div><p><b>Balustrada, goluri sub 9 cm</b>, mana curenta la 1 m — podeaua e la 2,2 m.</p></div>'
+ '<div class="bcard"><div class="bk">Regula 3</div><p><b>Nimeni pe consola</b> (balcon) inainte de a monta contrafisele de sub nas.</p></div>'
+ '</div>')
 safe_html=''.join(f'<div class="scard"><h3>{t}</h3><p>{p}</p></div>' for t,p in SAFETY)
 fise_html=''.join(fisa_html(s) for s in DATA)
 
@@ -182,6 +232,8 @@ DOC=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8">
 <section class="sect"><div class="eyebrow">Imaginea de ansamblu</div><h2>Ce construim</h2>
   <p class="lead">O casuta ridicata la 2,2 m pe patru stalpi (nu in copac — corcodusul e prea subtire ca s-o tina). In spate, langa gard, partea inchisa; in fata, un balcon deschis care iese 700 mm peste stalpi. Copacul trece prin podeaua balconului si il retezam ca masuta. <b>Numerotam stalpii: S1-S2 = spate (raman lungi, 4 m), S3-S4 = fata (se taie la +1872).</b></p>
   <div class="cc"><div class="draw">{cover_hero()}</div><ul class="facts">{facts}</ul></div>
+  <div class="sh">Codul culorilor (acelasi in tot manualul)</div>{LEG}
+  {BANNER}
 </section>
 __TOC__
 <section class="sect"><div class="eyebrow">De ce ai nevoie</div><h2>Materiale</h2>
@@ -196,7 +248,7 @@ __TOC__
 </section>
 </body></html>'''
 from weasyprint import HTML as _H
-import fitz
+from pypdf import PdfReader
 def build(toc_html):
     open('book.html','w',encoding='utf-8').write(DOC.replace('__TOC__',toc_html))
     _H('book.html', base_url=PROJ+'/').write_pdf(OUT)
@@ -208,13 +260,16 @@ def toc(rowsdata):
     li=''.join(f'<li><span class="num">{n}</span><span class="tl">{lbl}</span><span class="tp">{pg}</span></li>' for n,lbl,pg in rowsdata)
     return f'<section class="sect"><div class="eyebrow">Navigare</div><h2>Cuprins</h2><ul class="toc">{li}</ul></section>'
 build(toc([(n,lbl,'··') for n,lbl,_ in entries]))
-d=fitz.open(OUT)
-def pageof(needle):
-    nn=needle.replace(' ','').upper()
-    for i in range(d.page_count):
-        if nn in d[i].get_text().replace(' ','').upper(): return str(i+1)
-    return ''
-rows=[(n,lbl,pageof(key)) for n,lbl,key in entries]
-d.close()
-build(toc(rows))
+try:
+    r=PdfReader(OUT)
+    pages=[(pg.extract_text() or '').replace(' ','').upper() for pg in r.pages]
+    def pageof(needle):
+        nn=needle.replace(' ','').upper()
+        for i,txt in enumerate(pages):
+            if nn in txt: return str(i+1)
+        return '··'
+    rows=[(n,lbl,pageof(key)) for n,lbl,key in entries]
+    build(toc(rows))
+except Exception as e:
+    print('AVERTISMENT: pasul de numerotare cuprins a esuat ('+str(e)+'); pastrez punctele.')
 print('Manual cu cuprins scris,', len(DATA),'fise')
