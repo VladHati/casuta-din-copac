@@ -7,8 +7,7 @@ NAV='''<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.
 cards=''
 for s in DATA:
     crit='crit' if s['diff']=='CRITIC' else ''
-    hero=s['steps'][0].get('svg') or s['steps'][1].get('svg')
-    cards+=f'''<a class="fcard" href="{s['slug']}.html"><div class="thumb">{hero}</div><div class="b"><div class="num">{s['n']:02d}<span class="of">/11</span></div><h2>{s['title']}</h2><div class="row"><span class="t">~{s['time']}</span><span class="d {crit}">{s['diff']}</span></div></div></a>'''
+    cards+=f'''<a class="fcard" href="{s['slug']}.html"><div class="thumb"><img src="{s['png']}" alt="Pas {s['n']}: {s['title']}" loading="lazy"></div><div class="b"><div class="num">{s['n']:02d}<span class="of">/11</span></div><h2>{s['title']}</h2><div class="row"><span class="t">~{s['time']}</span><span class="d {crit}">{s['diff']}</span></div></div></a>'''
 html=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fise de montaj — Faza 1 · Casuta din copac</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +21,7 @@ html=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="
 .grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:18px 0 60px}}@media(max-width:860px){{.grid{{grid-template-columns:repeat(2,1fr)}}}}@media(max-width:560px){{.grid{{grid-template-columns:1fr}}}}
 .fcard{{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,19,18,.04),0 8px 22px rgba(20,19,18,.05);transition:transform .16s,box-shadow .2s}}
 .fcard:hover{{transform:translateY(-3px);box-shadow:0 16px 40px rgba(20,19,18,.11)}}
-.thumb{{background:var(--wash);border-bottom:1px solid var(--line);padding:10px;height:172px;display:grid;place-items:center}}.thumb svg{{max-width:100%;max-height:152px}}
+.thumb{{background:var(--wash);border-bottom:1px solid var(--line);padding:10px;height:172px;display:grid;place-items:center}}.thumb svg{{max-width:100%;max-height:152px}}.thumb img{{max-width:100%;max-height:152px;object-fit:contain;display:block}}
 .b{{padding:14px 16px 18px}}.num{{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:var(--acc)}}.num .of{{color:var(--faint)}}
 .b h2{{font-family:'Fraunces',serif;font-weight:600;font-size:19px;margin:4px 0 10px}}.row{{display:flex;gap:8px}}
 .row .t,.row .d{{font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--line);border-radius:999px;padding:3px 9px;color:var(--soft)}}.row .d.crit{{border-color:var(--crit);color:var(--crit)}}

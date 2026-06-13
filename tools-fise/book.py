@@ -1,27 +1,7 @@
 # -*- coding: utf-8 -*-
 import pickle
-import fb
-from fb import PARTS, PROJ, render, PS, W, D, JX, BEAMB, JOB, DECKB, polite_g, beam_back_g, beam_front_g, joists_g, deck_g, g, N
+from fb import PARTS, PROJ, OVERVIEW_DRAW
 DATA=pickle.load(open('data.pkl','rb'))
-
-# ---- hero coperta: platforma finala, colorata ----
-def cover_hero():
-    ph=950
-    A=[g('post',0,0,0,PS,ph,PS),g('post',W-PS,0,0,PS,ph,PS),g('post',0,0,D-PS,PS,ph,PS),g('post',W-PS,0,D-PS,PS,ph,PS)]
-    beams=[g('beam',0,ph,0,W,200,90),g('beam',0,ph,D-90,W,200,90)]
-    JY=ph+200
-    joists=[g('joist',x,JY,-700,PS,PS,D+700) for x in JX]
-    # dusumea doar pe partea din spate (casa), ca sa se vada joistele in fata (balcon)
-    deck=[];z=250
-    while z<D-40: deck.append(g('deck',-20,JY+PS,z,W+40,28,140)); z+=150
-    tree=[{'x':470,'y':ph-260,'z':-300,'dx':150,'dy':1500,'dz':150,'mat':'tree'}]
-    L=[{'t':'ST','at':(-360,ph+120,60),'to':(50,ph-60,50),'color':fb.PAL['post']},
-       {'t':'GR','at':(W+330,ph+120,45),'to':(W-60,ph+100,45),'color':fb.PAL['beam']},
-       {'t':'JO','at':(180,JY+520,-720),'to':(150,JY+50,-360),'color':fb.PAL['joist']},
-       {'t':'DL','at':(W+340,JY+360,D-260),'to':(W-200,JY+128,D-260),'color':fb.PAL['deck']},
-       {'t':'copac','at':(470,ph+1380,-220),'to':(545,ph+250,-220),'color':fb.PAL['tree']}]
-    D2=[{'p1':(100,JY,-700),'p2':(100,JY,0),'t':'consola 700'}]
-    return render(A+beams+joists+deck+tree, labels=L, dims=D2, W=860)
 
 # ---- sectiune materiale (curata, un singur stil) ----
 MAT=[('le ai deja',[('ST','4','stalpi KVH 100x100'),('JO','4','joiste (din lotul de 6)'),('PAP','4','papuci, deja in beton'),('F2','1','grund Köber 4 L')]),
@@ -62,6 +42,10 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-sp
 .cc{display:grid;grid-template-columns:1fr 1fr;gap:8mm;align-items:start}
 .cc .draw{border:1px solid var(--line);border-radius:4mm;background:var(--wash);padding:4mm}
 .cc .draw svg{width:100%;height:auto;display:block}
+/* desen pas = PNG line-art + overlay vector */
+.stepart{position:relative;margin:0;display:block;line-height:0}
+.stepart img{width:100%;height:auto;display:block;border-radius:2mm}
+.stepart .ovl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .facts{list-style:none;padding:0;margin:0}
 .facts li{display:flex;justify-content:space-between;gap:6mm;padding:2.4mm 0;border-bottom:1px solid var(--line);font-size:11pt}
 .facts li b{font-family:'Space Mono',monospace;color:var(--ink)}
@@ -176,7 +160,7 @@ def pcard(code,qty,note,check=False):
 
 def fisa_html(s):
     crit=s['diff']=='CRITIC'
-    hero=s['steps'][0].get('svg') or (s['steps'][1].get('svg') if len(s['steps'])>1 else '')
+    hero=s['draw']
     mt=f'<span class="mtag">~{s["time"]}</span><span class="mtag {("crit" if crit else "")}">{s["diff"]}</span>'+('<span class="mtag">2 persoane</span>' if s['ppl'] else '')
     parts=''.join(pcard(*p) for p in s['parts'] if p[0]!='—')
     if not parts: parts='<div class="pc"><div class="bd"><div class="nm">'+s['parts'][0][2]+'</div></div></div>'
@@ -231,7 +215,7 @@ DOC=f'''<!doctype html><html lang="ro"><head><meta charset="utf-8">
 </div></div>
 <section class="sect"><div class="eyebrow">Imaginea de ansamblu</div><h2>Ce construim</h2>
   <p class="lead">O casuta ridicata la 2,2 m pe patru stalpi (nu in copac — corcodusul e prea subtire ca s-o tina). In spate, langa gard, partea inchisa; in fata, un balcon deschis care iese 700 mm peste stalpi. Copacul trece prin podeaua balconului si il retezam ca masuta. <b>Numerotam stalpii: S1-S2 = spate (raman lungi, 4 m), S3-S4 = fata (se taie la +1872).</b></p>
-  <div class="cc"><div class="draw">{cover_hero()}</div><ul class="facts">{facts}</ul></div>
+  <div class="cc"><div class="draw">{OVERVIEW_DRAW}</div><ul class="facts">{facts}</ul></div>
   <div class="sh">Codul culorilor (acelasi in tot manualul)</div>{LEG}
   {BANNER}
 </section>

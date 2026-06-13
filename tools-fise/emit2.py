@@ -17,6 +17,7 @@ CSS='''<style>
 .mtag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px}
 .mtag.crit{border-color:var(--crit);color:var(--crit)}
 .herodraw{border:1px solid var(--line);border-radius:16px;background:var(--wash);padding:10px}.herodraw svg{width:100%;height:auto;display:block}
+.stepart{position:relative;margin:0;display:block;line-height:0}.stepart img{width:100%;height:auto;display:block;border-radius:10px}.stepart .ovl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .sec{padding:28px 0;border-bottom:1px solid var(--line)}
 .sh{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 16px}
 .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}@media(max-width:760px){.pg{grid-template-columns:repeat(2,1fr)}}
@@ -73,7 +74,7 @@ def emit(s,prev,nxt):
     crit=s['diff']=='CRITIC'
     parts=''.join(pcard(*p) for p in s['parts'])
     tools=''.join(f'<span class="tool">{t}</span>' for t in s['tools'])
-    hero=s['steps'][0].get('svg') or (s['steps'][1].get('svg') if len(s['steps'])>1 else '')
+    hero=s['draw']
     steps=''
     for i,st in enumerate(s['steps'],1):
         big=f'<div class="drawbox">{st["svg"]}</div>' if st.get('svg') else ''
