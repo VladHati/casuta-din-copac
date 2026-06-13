@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+import os
 from iso import render, PAL
 from det import DETS
-PROJ="/sessions/funny-pensive-ritchie/mnt/CASUTA DIN COPAC"
+# Radacina proiectului = folderul parinte al lui tools-fise (robust pe orice masina).
+PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PS=100;W=2100;D=1780
 FT=1872; BT=2300; BEAMB=1872; BEAMTOP=2072; JOB=2072; JOT=2172; DECKB=2172
 JX=[100,280,720,1120,1550,1980]
@@ -161,7 +163,7 @@ def stage7():
     tree=[N('tree',450,1280,-300,160,1500,160,code='copac')]
     s2=F(base+tree,W=680,labels=[{'t':'reteaza la +2780','at':(530,2820,-220),'color':'#C2693A'}])
     return [dict(t='Intre joistele de la 280 si 720 — trunchiul cade chiar intre ele, fara sa le atinga — monteaza 2 traverse scurte (RM) care inchid rama gaurii.',svg=s1,warn=False),
-            dict(t='Reteaza corcodusul la ~+2780 (deasupra podelei). Lasa joc de 3-5 cm jur-imprejurul trunchiului.',svg=s2,warn=True),
+            dict(t='Reteaza corcodusul la ~+2780 de la sol (≈580 peste podea). Lasa joc de 3-5 cm jur-imprejurul trunchiului.',svg=s2,warn=True),
             dict(t='Blatul mesei se fixeaza de podea, prin cadrul lui — NICIODATA de copac.',svg=None,zoom=DETS['TABLE'],warn=True)]
 def stage8():
     base=posts_stub()+polite_g()+[beam_back_g(),beam_front_g()]+joists_g()
@@ -227,4 +229,4 @@ PARTS={'ST':('POZE/COD_7337253.png','Stalp KVH 100x100'),'GR':('POZE/COD_5483835
  'PT':('POZE/lemn.png','Proptea temporara'),'C1':('POZE/COD_738965.png','Coltar 100x100x90'),'C2':('POZE/COD_738910.png','Coltar 90x90x65'),
  'H1':('POZE/COD_10434633.png','Heco 8x200'),'H2':('POZE/COD_10434398.png','Heco 6x100'),'H3':('POZE/COD_10434139.png','Heco 6x80'),
  'H4':('POZE/COD_10528829.png','Inox 5x60'),'B1':('POZE/COD_12130958.png','Tija M12 (taie 220)'),'B2':('POZE/COD_6834285.png','Bulon M12x120'),
- 'B3':('POZE/COD_3840897.png','Saiba M12'),'B4':('POZE/COD_3830642.png','Piulita M12'),'F1':('POZE/COD_5509678.png','Ulei tec'),'PAP':('POZE/papuc.svg','Papuc reazem U'),'SB':('POZE/lemn.png','Stalpisor 7x7 (Faza 2)'),'SP':('POZE/lemn.png','Sipci balustrada'),'MC':('POZE/lemn.png','Mana curenta'),'BM':('POZE/COD_6834285.png','Bulon M10'),'RM':('POZE/lemn.png','Traverse rama'),'F2':('POZE/kober.jpg','Grund Köber'),'F3':('POZE/lemn.png','Topcoat (Faza 2)')}
+ 'B3':('POZE/COD_3840897.png','Saiba M12'),'B4':('POZE/COD_3830642.png','Piulita M12'),'F1':('POZE/COD_5509678.png','Ulei tec'),'PAP':('POZE/papuc.svg','Papuc reazem U'),'SB':('POZE/lemn.png','Stalpisor 58x58'),'SP':('POZE/lemn.png','Sipci balustrada'),'MC':('POZE/lemn.png','Mana curenta'),'BM':('POZE/COD_6834285.png','Bulon M10'),'RM':('POZE/lemn.png','Traverse rama'),'F2':('POZE/kober.jpg','Grund Köber'),'F3':('POZE/lemn.png','Topcoat (Faza 2)')}

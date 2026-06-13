@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ro"><head><meta charset="utf-8">
+<title>Audit complet — Casuta din copac · 13.06.2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@page{size:A4;margin:18mm 16mm 16mm}
+*{box-sizing:border-box}
+body{font-family:'Space Grotesk',system-ui,sans-serif;color:#26241F;line-height:1.5;font-size:10.5pt;margin:0}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;color:#1C1C1C;line-height:1.08}
+h1{font-size:30pt;margin:0 0 2pt;letter-spacing:-.01em}
+h2{font-size:15pt;margin:22pt 0 7pt;border-bottom:2px solid #1C1C1C;padding-bottom:5pt}
+h3{font-size:11.5pt;margin:13pt 0 3pt}
+.kick{font-family:'Space Mono',monospace;font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:#C2693A;margin:0 0 8pt}
+.mono{font-family:'Space Mono',monospace}
+.lede{font-size:11.5pt;color:#3A3833;max-width:none;margin:4pt 0 0}
+.verdict{border:1.5px solid #1C1C1C;border-radius:10px;padding:13pt 15pt;margin:14pt 0 0;background:#FBFAF8}
+.verdict p{margin:0 0 6pt}
+.verdict p:last-child{margin:0}
+table{border-collapse:collapse;width:100%;font-size:9pt;margin:6pt 0 0}
+th,td{border:1px solid #D9D4CB;padding:5pt 7pt;text-align:left;vertical-align:top}
+th{background:#1C1C1C;color:#fff;font-family:'Space Mono',monospace;font-size:8pt;letter-spacing:.04em;text-transform:uppercase}
+td.id{font-family:'Space Mono',monospace;font-weight:700;white-space:nowrap}
+.sev{font-family:'Space Mono',monospace;font-weight:700;font-size:8pt;padding:2pt 6pt;border-radius:20px;white-space:nowrap;display:inline-block}
+.s-crit{background:#7E2A18;color:#fff}
+.s-high{background:#C2693A;color:#fff}
+.s-med{background:#E6C26A;color:#3A2E12}
+.s-low{background:#E7E3DB;color:#5C574E}
+.s-ok{background:#2E5E43;color:#fff}
+.f{border-left:3px solid #C2693A;padding:2pt 0 2pt 12pt;margin:11pt 0}
+.f.ok{border-color:#2E5E43}
+.f .meta{font-family:'Space Mono',monospace;font-size:8.5pt;color:#8A8475;margin:1pt 0 4pt}
+.f p{margin:3pt 0}
+.lbl{font-family:'Space Mono',monospace;font-size:8pt;font-weight:700;color:#1C1C1C}
+.fix{background:#F4F0E8;border-radius:6px;padding:6pt 9pt;margin:4pt 0 0;font-size:9.5pt}
+code{font-family:'Space Mono',monospace;background:#EFEAE1;padding:.5pt 3pt;border-radius:3px;font-size:9pt}
+footer{margin-top:20pt;padding-top:8pt;border-top:1px solid #E2DDD4;font-family:'Space Mono',monospace;font-size:8pt;color:#938D80}
+.tag{font-family:'Space Mono',monospace;font-size:8pt;color:#938D80}
+ul{padding-left:16pt;margin:4pt 0}li{margin:2pt 0}
+.avoid-break{break-inside:avoid}
+</style></head>
+<body>
+
+<p class="kick">Audit tehnic · documentatie · cod · 13 iunie 2026</p>
+<h1>Casuta din copac — audit complet</h1>
+<p class="lede">Trecere prin tot proiectul: cele 11 fise, ghidurile, paginile 3D, trackerul xlsx, dosarul .md, README, scripturile de generare si PDF-urile. Patru tipuri de eroare cautate: corectitudine structurala, consecventa intre fisiere, greseli de continut, claritate de montaj.</p>
+
+<div class="verdict">
+<p><span class="lbl">VERDICT.</span> Proiectul NU e „plin de erori". Structura e corecta si dimensionata cu margine. Cifrele dintre fisiere sunt, in marea lor majoritate, consecvente — un pas de verificare anterior (vezi <code>audit.html</code> §03) a curatat neconcordantele mari, si tin.</p>
+<p>Ce ramane sunt <b>11 defecte punctuale</b>: 1 contradictie de scop care chiar incurca montajul, 3 greseli de continut/spec in fise, si 7 probleme de „drift" al documentatiei si fisierelor generate. <b>Cheia:</b> aproape toate greselile de continut traiesc in <b>generatorul fiselor</b> (<code>tools-fise/fb.py</code>), nu doar in HTML — deci se repara la sursa, altfel revin la urmatorul build.</p>
+</div>
+
+<h2>Sumar pe severitate</h2>
+<table>
+<tr><th>ID</th><th>Severitate</th><th>Problema</th><th>Unde traieste</th></tr>
+<tr><td class="id">F1</td><td><span class="sev s-crit">CRITIC</span></td><td>Balustrada + masa apar si ca Faza 1 si ca Faza 2 — contradictie de scop</td><td>ghid-montaj, fise.html, book.py, fb.py</td></tr>
+<tr><td class="id">F2</td><td><span class="sev s-high">RIDICAT</span></td><td>Stalpisor balustrada scris si „7x7" si „58x58" in aceeasi fisa</td><td>fb.py L230 → fisa-11.html</td></tr>
+<tr><td class="id">F3</td><td><span class="sev s-high">RIDICAT</span></td><td>Coltar C1 prins cu Heco 8×200 — nu intra in coltar; incoerent cu C2 (6×100)</td><td>fb.py L210, imbinari.html nod A, fisa-05</td></tr>
+<tr><td class="id">F4</td><td><span class="sev s-high">RIDICAT</span></td><td>Taiere copac „+2780 (deasupra podelei)" — gresit; e de la sol (~580 peste podea)</td><td>fb.py (fisa-7) → fisa-07.html</td></tr>
+<tr><td class="id">F5</td><td><span class="sev s-med">MEDIU</span></td><td>PDF-urile Fisa-01…10 sunt vechi (build 10:45, HTML editat 15:00)</td><td>PDF/Fisa-01…10.pdf</td></tr>
+<tr><td class="id">F6</td><td><span class="sev s-med">MEDIU</span></td><td>README „Structura" depasit: liste pagini-redirect ca reale, omite manualul (fise), gresit despre PDF-uri</td><td>README.md</td></tr>
+<tr><td class="id">F7</td><td><span class="sev s-med">MEDIU</span></td><td>Tracker xlsx scrie „11 trepte" unde corect e 10 trepte (11 niveluri)</td><td>Tracker, foaia „Platforma premium"</td></tr>
+<tr><td class="id">F8</td><td><span class="sev s-low">JOS</span></td><td>Doua generatoare de fise in paralel; setul vechi (fise_*.py) e mort</td><td>tools-fise/fise_gen·emit·build·index.py</td></tr>
+<tr><td class="id">F9</td><td><span class="sev s-low">JOS</span></td><td>Lipseste STATUS.md (firul de coordonare Main↔Builder)</td><td>radacina proiect</td></tr>
+<tr><td class="id">F10</td><td><span class="sev s-low">JOS</span></td><td>Fisier lock LibreOffice ramas langa tracker (blocheaza editarea)</td><td>.~lock.Tracker_…xlsx#</td></tr>
+<tr><td class="id">F11</td><td><span class="sev s-low">JOS</span></td><td>Numerotare PDF-uri de sectiune sare peste „01-"</td><td>PDF/ (00,02,03,04,05,06)</td></tr>
+</table>
+
+<h2>Detalii si fix propus</h2>
+
+<div class="f avoid-break">
+<h3>F1 · Balustrada si masa: Faza 1 sau Faza 2? <span class="sev s-crit">CRITIC</span></h3>
+<p class="meta">ghid-montaj.html (titlu „Faza 1" + footer L440) · fise.html (titlu „Faza 1") · tools-fise/book.py L30 · tools-fise/fb.py</p>
+<p>Ghidul si setul de fise sunt etichetate <b>Faza 1</b> si contin pasul 7 (gaura copac + masa) si pasul 11 (balustrada). Dar footer-ul aceluiasi ghid si gruparea din <code>book.py</code> spun ca <b>balustrada si masa sunt Faza 2</b>. Deci aceeasi piesa e in doua faze deodata.</p>
+<p><span class="lbl">DE CE CONTEAZA.</span> Un constructor care citeste „Faza 1 = doar platforma" poate sari balustrada — adica lasa o platforma la 2,2 m fara mana curenta. E singura eroare din lista cu impact direct de siguranta.</p>
+<div class="fix"><span class="lbl">FIX (recomandat, dar decizia ta).</span> Balustrada (siguranta) si masa raman <b>Faza 1</b>, fiindca platforma nu e utilizabila in siguranta fara ele. Faza 2 = doar pereti, acoperis, scara. Aliniaza footer-ul ghidului, <code>book.py</code> si <code>fb.py</code> la aceasta granita.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F2 · „Stalpisor 7x7" vs „58x58" <span class="sev s-high">RIDICAT</span></h3>
+<p class="meta">tools-fise/fb.py — L216 zice <code>('SB','~7','stalpisor 58x58')</code>; L230 zice <code>'SB':(…,'Stalpisor 7x7 (Faza 2)')</code> → ambele ajung in fisa-11.html</p>
+<p>In aceeasi fisa, chip-ul piesei spune „7x7", iar lista de piese spune „58x58". Trackerul si planul de debitare (P13) confirma <b>58×58</b>.</p>
+<div class="fix"><span class="lbl">FIX.</span> In <code>fb.py</code> L230 schimba <code>'Stalpisor 7x7 (Faza 2)'</code> → <code>'Stalpisor 58x58'</code>. Regenereaza fisa-11.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F3 · Coltar C1 prins cu Heco 8×200 <span class="sev s-high">RIDICAT</span></h3>
+<p class="meta">tools-fise/fb.py L210 (<code>'H1','~12','in coltare'</code>, H1 = Heco 8×200) · imbinari.html nod A · fisa-05.html</p>
+<p>Pentru coltarul C1 (Alberts 100×100×90×3) se cer suruburi Heco 8×200. Un surub de 8 mm grosime si 200 mm lungime <b>nu intra prin gaurile unui coltar</b> de tabla (gauri ~5 mm) si e mult prea lung pentru o aripa de 90–100 mm. In plus, coltarul C2 (90×90) e prins corect cu Heco 6×100 — deci C1 e singurul outlier.</p>
+<p><span class="lbl">NOTA.</span> Heco 8×200 sunt corecte la contrafise (nod D, lemn-pe-lemn). Doar in coltare sunt gresite.</p>
+<div class="fix"><span class="lbl">FIX (de confirmat la magazin).</span> In coltarul C1 foloseste acelasi surub ca la C2 — Heco 6×100 (H2), sau suruburile de conector recomandate de producatorul coltarului. Corecteaza in <code>fb.py</code> (fisa-05) si in textul nodului A din <code>imbinari.html</code>.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F4 · Taiere corcodus: „+2780 (deasupra podelei)" <span class="sev s-high">RIDICAT</span></h3>
+<p class="meta">fisa-07.html (text + eticheta SVG „reteaza la +2780")</p>
+<p>+2780 e cota <b>de la sol</b> (podea 2200 + blat ~580). Eticheta „(deasupra podelei)" ar insemna o masa la ~5 m. Celelalte pagini (ghid-montaj, montaj-3d) spun corect doar „il retezi la ~+2780", fara paranteza gresita.</p>
+<div class="fix"><span class="lbl">FIX.</span> „~+2780 <b>de la sol</b> (≈580 peste podea)". Schimba in sursa fisei 7 din <code>fb.py</code>, apoi regenereaza.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F5 · PDF-uri de fisa invechite <span class="sev s-med">MEDIU</span></h3>
+<p class="meta">PDF/Fisa-01.pdf … Fisa-10.pdf (mtime 10:45) vs fisa-0X.html (mtime 15:00)</p>
+<p>HTML-ul fiselor a fost editat la 15:00; PDF-urile per-fisa 01–10 sunt de la 10:45 (Fisa-11, manualul combinat si Fise-montaj sunt de la 15:00). Deci PDF-urile 01–10 nu reflecta ultimele editari.</p>
+<div class="fix"><span class="lbl">FIX.</span> Regenereaza toate PDF-urile de fisa cu <code>tools-fise/book.py</code> (sistemul care le produce), nu cu <code>build_pdfs.py</code>. Fa-o dupa F2/F3/F4.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F6 · README „Structura" depasit <span class="sev s-med">MEDIU</span></h3>
+<p class="meta">README.md</p>
+<p>Lista de structura descrie <code>catalog-piese.html</code>, <code>imbinari-ghid.html</code>, <code>imbinari-3d-ghid.html</code> ca pagini reale — sunt acum doar redirect-uri. <b>Omite</b> exact manualul: <code>fise.html</code> + <code>fisa-01…11.html</code>, si <code>materiale.html</code>, <code>scule.html</code>, <code>timeline.html</code>, <code>modele-3d.html</code>. Si spune ca „toate PDF-urile sunt generate cu <code>build_pdfs.py</code>" — fals: PDF-urile de fisa vin din <code>tools-fise/book.py</code>.</p>
+<div class="fix"><span class="lbl">FIX.</span> Rescrie sectiunea „Structura": pagini reale + fise + redirect-uri marcate ca atare. Explica cele doua sisteme de PDF (sectiuni = <code>build_pdfs.py</code>; fise/manual = <code>tools-fise/book.py</code>).</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F7 · „11 trepte" in tracker <span class="sev s-med">MEDIU</span></h3>
+<p class="meta">Tracker_materiale_casuta.xlsx, foaia „Platforma premium" (col Rol + nota de jos)</p>
+<p>Textul zice „11 trepte", dar cantitatea e 10 si restul proiectului (scara-3d.html, audit.html, debitare P17) spune corect <b>10 trepte / 11 niveluri</b> (podea = nivelul 11). 11 risers, 10 trepte.</p>
+<div class="fix"><span class="lbl">FIX.</span> In xlsx schimba „11 trepte" → „10 trepte (11 niveluri)". Doar text; cantitatea 10 e deja corecta.</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F8 · Doua generatoare de fise <span class="sev s-low">JOS</span></h3>
+<p class="meta">tools-fise/: activ = fb.py, book.py, det.py, iso.py, emit2.py, idx2.py · mort = fise_gen.py, fise_emit.py, fise_build.py, fise_index.py</p>
+<p>Setul <code>fise_*.py</code> se refera doar la el insusi, nimic din site nu-l foloseste, si contine valori vechi (ex. „(Faza 2)" la balustrada). Risc de „drift": cineva editeaza fisierul gresit.</p>
+<div class="fix"><span class="lbl">FIX.</span> Confirma ca <code>fb.py</code>/<code>book.py</code> sunt singurul sistem activ, apoi sterge setul <code>fise_*.py</code> (sau muta-l in <code>tools-fise/_arhiva/</code>).</div>
+</div>
+
+<div class="f avoid-break">
+<h3>F9 · Lipseste STATUS.md · F10 · Lock xlsx · F11 · Gaura numerotare PDF <span class="sev s-low">JOS</span></h3>
+<p><b>F9:</b> nu exista STATUS.md — firul comun Main↔Builder din workflow. Am pus unul de start (vezi mai jos). <b>F10:</b> <code>.~lock.Tracker_materiale_casuta.xlsx#</code> = fisierul e deschis in LibreOffice; inchide-l inainte de orice editare prin script. <b>F11:</b> PDF-urile de sectiune sar de la 00 la 02 (nu exista 01-) — cosmetic; ori adaugi un 01, ori renumerotezi.</p>
+</div>
+
+<h2>Ce e corect (verificat)</h2>
+<div class="f ok avoid-break">
+<p class="meta">verificat prin calcul si cross-check, nu doar citit</p>
+<ul>
+<li><span class="lbl">Structura.</span> Grinzi glulam 90×200 pe 2100 mm si joiste 100×100 cu consola 700 — efort de incovoiere ~16% din capacitate, sageata neglijabila. Consola 700 e la limita regulii de buzunar (39% din deschidere), <b>dar</b> e proiectata cu contrafisa sub nas + joiste continue + C2 anti-ridicare. Aia raman obligatorii la executie.</li>
+<li><span class="lbl">Stiva de cote.</span> 2200 podea = 1872 (taiere stalpi fata) + 200 grinda + 100 joista + 28 dusumea. Consecventa intre .md, fise 2/4/5, ghid si tracker.</li>
+<li><span class="lbl">Consecventa cifre.</span> Maturat dupa valorile vechi (80×140, consola 500, 5 joiste) — nu mai exista nicaieri activ. Coduri Hornbach: aceleasi in materiale.html si in tracker.</li>
+<li><span class="lbl">Siguranta.</span> Balustrada 1 m, goluri &lt;90 mm, sol moale, scara cu mana curenta — toate corect specificate. Zero link-uri interne rupte.</li>
+</ul>
+</div>
+
+<h2>Ce intra in BRIEF-ul pentru Builder</h2>
+<p>Conform fluxului ales (raport acum → fix prin Builder), am scris <code>BRIEF-audit-fixes.md</code> in radacina proiectului. Cuprinde, in ordine: F2, F3, F4 la sursa in <code>fb.py</code> (+ imbinari.html) → regenerare fise (F5) → F1 decizia de faza in trei fisiere → F6 README → F7 xlsx → F8 curatare cod → commit + push (deploy Netlify). Decizia de la F1 si confirmarea surubului de la F3 raman ale tale — sunt marcate in brief ca puncte de aprobare.</p>
+
+<footer>Audit · faza platforma · 13.06.2026 · 11 defecte (1 critic, 3 ridicate, 3 medii, 4 joase) · structura: corecta. Sursa adevarului pentru fise = tools-fise/fb.py + book.py.</footer>
+
+</body></html>
