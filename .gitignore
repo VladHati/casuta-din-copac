@@ -3,6 +3,7 @@
 
 # resturi de build / sistem
 .~lock.*#
+~$*.xlsx
 node_modules/
 .npm/
 deploy-*.zip

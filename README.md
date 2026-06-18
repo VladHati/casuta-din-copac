@@ -38,6 +38,29 @@ python3 build_pdfs.py        # scrie in ./PDF/
 
 ---
 
+## Ordine rulare pipeline fise (tools-fise/)
+
+Cand schimbi fb.py sau continut de fise, ruleaza din `tools-fise/` (caile `.pkl` sunt relative la CWD):
+
+```bash
+cd tools-fise
+python3 det.py     # genereaza dets.pkl (detectii geometrie)
+python3 fb.py      # genereaza data.pkl (fise build data)
+python3 emit2.py   # genereaza fisa-*.html in radacina proiectului
+python3 idx2.py    # genereaza fise.html (index)
+python3 book.py    # genereaza book.html + PDF/Manual + PDF/Fisa-*.pdf
+```
+
+Apoi din radacina proiectului:
+
+```bash
+python3 build_pdfs.py   # regenereaza sectiunile PDF (00,02,03,04,05,06)
+```
+
+**Nota:** `*.pkl` si `book.html` sunt artefacte de build generate — nu sunt in repo (gitignorat).
+
+---
+
 ## Structura
 
 Pagini principale:

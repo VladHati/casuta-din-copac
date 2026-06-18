@@ -1,0 +1,5 @@
+weasyprint
+markdown
+pypdf
+numpy
+Pillow
