@@ -2,6 +2,7 @@
 
 Firul comun Main <-> Builder. O linie pe reper: data, ce s-a schimbat, ce urmeaza.
 
+- 2026-06-18 14:00 | audit-fixes-2026-06-18 re-verificat: toate 14 puncte confirmate in commit a1debc5 (11:50). Nicio modificare noua. | URMEAZA: Vlad push.
 - 2026-06-18 11:45 | audit-fixes executat (14 puncte). DOC: stalpisori ×7 in materiale.html + PDF/06, inventar ghid-montaj C2×14/qty18 + PDF/02. Tracker: buget 8500, balustrada scoasa din nota Faza 2, 2 randuri noi (mana curenta + feronerie poarta), sectiune BALUSTRADA in Platforma premium, avertisment receptie in Comanda Hornbach, Debitare P22 C2(14). Pipeline: requirements.txt creat, README pipeline order, .gitignore ~$*.xlsx, book.html sters. | URMEAZA: Vlad push.
 - 2026-06-13 — Audit complet al proiectului (Main). 11 defecte gasite (1 critic, 3 ridicate, 3 medii, 4 joase); structura verificata corecta. Raport: `PDF/Audit-complet-2026-06-13.pdf`. Scris `BRIEF-audit-fixes.md`. URMEAZA: Vlad decide F1 (granita de faza) + F3 (surub C1), apoi Builder executa brief-ul.
 - 2026-06-13 (Main) | Vlad a decis: F1 = balustrada+masa in FAZA 1; F3 = coltar C1 cu Heco 6×100. Scris `BRIEF-audit-fixes-v2.md`. URMEAZA: Builder aplica v2, apoi Vlad face `git push` (toate commit-urile, inclusiv cele 6 reparatii deja facute).
