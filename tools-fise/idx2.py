@@ -2,7 +2,7 @@ import pickle
 from fb import PROJ
 DATA=pickle.load(open('data.pkl','rb'))
 NAV='''<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
-<a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+<a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
 </nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="ghid-montaj.html">Ghid</a><span>&rsaquo;</span><b>Fise montaj</b></div></header><script>(function(){var a=document.querySelector('.tn-links a[data-k="ghid"]');if(a)a.classList.add("on");})();</script>'''
 cards=''
 for s in DATA:

@@ -1,0 +1,415 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FISA scule — Grinzi + joiste: unde si cum dai gaurile · Casuta din copac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#161413;--soft:#5C574E;--faint:#9A9388;--line:#E7E3DB;--acc:#C2693A;--paper:#FFFFFF;--wash:#FAF8F4;--crit:#C2412B;
+ --st:#E8973C;--gr:#3F8FA6;--jo:#7BAE52;--dl:#E9C277;--po:#B083C6;--co:#AAB2BB;
+ --gsr:#3F8FA6;--gdr:#C2693A;--old:#9A9388;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+.mono{font-family:'Space Mono',monospace}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600}
+.fh{padding:34px 0 22px;border-bottom:3px solid var(--ink)}
+.fh .kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.fh h1{font-size:clamp(27px,4.4vw,42px);line-height:1.04;margin:9px 0 6px;letter-spacing:-.02em}
+.fh .sub{color:var(--soft);font-size:15px;max-width:640px;margin:0 0 15px}
+.fh .sub i{font-family:'Fraunces',Georgia,serif;font-style:italic}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.mtag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:11px;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px}
+.mtag.crit{border-color:var(--crit);color:var(--crit)}
+
+.big{margin:22px 0 4px;background:#FBEEE4;border:1px solid #F0D8C4;border-left:4px solid var(--acc);border-radius:12px;padding:15px 17px}
+.big .t{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:5px}
+.big p{margin:0;font-size:15.5px}.big b{color:var(--crit)}
+
+.sec{padding:26px 0;border-bottom:1px solid var(--line)}
+.sh{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 15px}
+
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:760px){.tools{grid-template-columns:1fr}}
+.tcard{border:1px solid var(--line);border-radius:13px;background:#fff;padding:13px 14px;border-top:4px solid var(--tc,#ccc)}
+.tcard .nm{font-family:'Space Mono',monospace;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.tcard .role{font-size:13px;color:var(--soft);margin-top:5px}
+.tcard .bit{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--ink);margin-top:8px;background:var(--wash);border-radius:7px;padding:5px 8px;display:inline-block}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--tc,#ccc);display:inline-block;flex:0 0 auto}
+
+.legend{display:flex;flex-wrap:wrap;gap:13px}
+.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
+.lg i{width:15px;height:15px;border-radius:4px;border:2px solid var(--ink);display:inline-block}
+.lg b{color:var(--ink);font-family:'Space Mono',monospace}
+.fkey{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0 0;padding:13px 15px;background:var(--wash);border:1px solid var(--line);border-radius:12px}
+.fk{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}.fk b{color:var(--ink)}
+
+.step{padding:22px 0;border-top:1px solid var(--line)}.step:first-of-type{border-top:none}
+.step .h{display:flex;gap:15px;align-items:flex-start}
+.bn{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:19px}
+.step .tx{font-size:16.5px;line-height:1.5}.step .tx b{color:var(--ink)}
+.step .body{margin-left:59px}
+.trow{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.tbadge{display:inline-flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:12px;border:1.5px solid var(--tc,#ccc);border-radius:999px;padding:5px 12px;color:var(--ink);background:#fff}
+.tbadge .dot{width:9px;height:9px}
+.drawbox{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:14px;text-align:center}
+.drawbox svg{max-width:100%;height:auto;display:inline-block}
+.zoombox{margin-top:14px;border:1.5px dashed var(--acc);border-radius:14px;background:#fff;padding:13px 15px}
+.zoombox .zl{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin:0 0 10px;font-weight:700}
+.zoombox svg{width:100%;height:auto;display:block}
+.warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;background:#FBEEE4;border:1px solid #F0D8C4;border-left:4px solid var(--acc);border-radius:10px;padding:11px 13px;font-size:14px;color:#7a4a2c}
+.warn b{color:var(--crit);font-size:16px;line-height:1.1}
+.warn.red{background:#FBE9E6;border-color:#EEC7C0;border-left-color:var(--crit)}
+
+.check{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.check li{display:flex;align-items:flex-start;gap:11px;font-size:15px}
+.check .bx{flex:0 0 auto;width:21px;height:21px;border:2px solid var(--ink);border-radius:6px;margin-top:1px}
+.foot{padding:22px 0 60px;color:var(--faint);font-size:12.5px}
+@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.step,.tcard,.sec,.zoombox,.drawbox{break-inside:avoid}}
+</style><link rel="stylesheet" href="assets/site.css">
+</head><body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="desene.html">Desene</a><span>&rsaquo;</span><b>Fisa scule &mdash; gauri</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="desene"]');if(a)a.classList.add("on");})();</script>
+
+<div class="wrap">
+
+<section class="fh">
+  <div class="kick">Fisa scule · grinzi + joiste</div>
+  <h1>Unde si cum dai gaurile</h1>
+  <p class="sub">Montajul grinzilor glulam si al joistelor, cu <i>sculele pe care le ai tu</i>. Fiecare pas iti spune ce scula, ce varf si la ce reglaj.</p>
+  <div class="meta"><span class="mtag">~1 zi in doi</span><span class="mtag crit">CRITIC</span><span class="mtag">2 persoane la grinzi</span></div>
+</section>
+
+<div class="big">
+  <div class="t">Cel mai important lucru de inteles</div>
+  <p>Singura <b>gaurire adevarata</b> din tot montajul e la <b>polita</b>: 2 gauri de Ø13 pentru buloanele M12. In rest <b>nu gauresti</b> — insurubezi. Suruburile Heco intra direct in lemn, <b>fara pre-gaurire</b>. Pilotul de 4-5&nbsp;mm il pui doar la capetele lemnului, unde crapa. <b>Talpicul</b> de sub polita se prinde doar cu suruburi (2× Heco 8×200) — fara gaurire.</p>
+</div>
+
+<section class="sec">
+  <div class="sh">Sculele tale — care, la ce</div>
+  <div class="tools">
+    <div class="tcard" style="--tc:var(--gsr)">
+      <div class="nm"><span class="dot"></span>GSR 18V-65</div>
+      <div class="role">Bormasina cu ambreiaj. Face <b>gaurile de Ø13</b> pentru M12 si suruburile delicate. Are frana — se opreste la cota.</div>
+      <div class="bit">viteza 1 · burghiu lemn Ø13 lung</div>
+    </div>
+    <div class="tcard" style="--tc:var(--gdr)">
+      <div class="nm"><span class="dot"></span>GDR 18V-215</div>
+      <div class="role">Impact. Bate <b>Heco 8×200</b> (structurale) fara efort. Fara frana — controlezi din tragaci.</div>
+      <div class="bit">bit T40 impact · fara pilot</div>
+    </div>
+    <div class="tcard" style="--tc:var(--old)">
+      <div class="nm"><span class="dot"></span>HP347 (veche)</div>
+      <div class="role">Doar <b>gauri pilot 4-5&nbsp;mm</b> la capetele lemnului. Treaba usoara, ii menajeaza acumulatorii uzati.</div>
+      <div class="bit">burghiu lemn 4-5 mm</div>
+    </div>
+  </div>
+  <div class="fkey">
+    <span class="fk"><b>T40</b> = Heco 8×200</span>
+    <span class="fk"><b>T30</b> = Heco 6×100 &amp; 6×80</span>
+    <span class="fk">Bitii Torx <b>impact-rated</b> — altfel se rup pe GDR.</span>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sh">Piesele si semnele din desene</div>
+  <div class="legend">
+    <span class="lg"><i style="background:var(--st)"></i><b>ST</b>&nbsp;stalp</span>
+    <span class="lg"><i style="background:var(--gr)"></i><b>GR</b>&nbsp;grinda glulam</span>
+    <span class="lg"><i style="background:var(--jo)"></i><b>JO</b>&nbsp;joista</span>
+    <span class="lg"><i style="background:var(--po)"></i><b>PO</b>&nbsp;polita</span>
+    <span class="lg"><i style="background:#B8935A"></i><b>TL</b>&nbsp;talpic (sub polita)</span>
+    <span class="lg"><i style="background:var(--co)"></i><b>C1/C2</b>&nbsp;coltar</span>
+  </div>
+  <div class="fkey">
+    <span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#161413"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="#fff" stroke-width="1.6"/></svg>cap surub (vazut)</span>
+    <span class="fk"><svg width="20" height="20"><circle cx="10" cy="10" r="6" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/></svg>ascuns (pe spate)</span>
+    <span class="fk"><svg width="30" height="16"><line x1="3" y1="8" x2="22" y2="8" stroke="#C2693A" stroke-width="2.6"/><path d="M22 8 L16 4 M22 8 L16 12" stroke="#C2693A" stroke-width="2.6" fill="none"/></svg>directie insurubare</span>
+    <span class="fk"><svg width="34" height="16"><circle cx="9" cy="8" r="4.5" fill="none" stroke="#3F8FA6" stroke-width="2"/><path d="M15 8 L29 8 M29 8 L24 5 M29 8 L24 11" stroke="#3F8FA6" stroke-width="2" fill="none"/></svg><b>gaura</b> (burghiu)</span>
+    <span class="fk"><b>oblic</b> = la unghi (toe-screw)</span>
+  </div>
+</section>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="h"><div class="bn">1</div><div class="tx"><b>TALPIC + POLITA pe stalpul din spate.</b> Intai <b>talpicul</b> (bloc 100×100 din offcut, ~180 mm, confirma pe teren): il prinzi cu 2 suruburi pe fata interioara a stalpului, cu fata de sus la <b>+1772</b>. Peste el aseaza <b>polita</b>, cu fata de sus fix la <b>+1872</b>. Aici e singura gaurire reala.</div></div>
+  <div class="body">
+    <div class="trow">
+      <span class="tbadge" style="--tc:var(--gsr)"><span class="dot"></span>GSR · viteza 1 · burghiu Ø13 lung</span>
+      <span class="tbadge" style="--tc:var(--old)"><span class="dot"></span>cheie 19 pt piulita</span>
+    </div>
+    <div class="drawbox">
+      <svg viewBox="0 0 520 312" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+        <!-- level -->
+        <line x1="30" y1="70" x2="492" y2="70" stroke="#C2412B" stroke-width="1.6" stroke-dasharray="6 5"/>
+        <text x="30" y="62" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">+1872 · fata de sus</text>
+        <!-- post (tall, continues up) -->
+        <rect x="175" y="34" width="80" height="236" fill="#E8973C" stroke="#161413" stroke-width="2.4"/>
+        <text x="215" y="26" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">stalp intreg — continua sus ↑</text>
+        <text x="215" y="256" text-anchor="middle" font-family="Space Mono,monospace" font-size="13" font-weight="700" fill="#5b3a12">ST</text>
+        <!-- polita -->
+        <rect x="255" y="70" width="95" height="80" fill="#B083C6" stroke="#161413" stroke-width="2.4"/>
+        <text x="302" y="115" text-anchor="middle" font-family="Space Mono,monospace" font-size="13" font-weight="700" fill="#fff">PO</text>
+        <!-- talpic: bloc de compresiune sub polita -->
+        <rect x="255" y="150" width="95" height="90" fill="#B8935A" stroke="#C2412B" stroke-width="2.6"/>
+        <line x1="255" y1="150" x2="350" y2="150" stroke="#C2412B" stroke-width="4"/>
+        <text x="302" y="200" text-anchor="middle" font-family="Space Mono,monospace" font-size="13" font-weight="700" fill="#fff">TL</text>
+        <text x="366" y="196" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#C2412B">TALPIC ~180</text>
+        <text x="366" y="212" font-family="Space Grotesk" font-size="12" fill="#C2412B">polita reazema pe el</text>
+        <text x="366" y="228" font-family="Space Grotesk" font-size="12" fill="#5C574E">2× Heco 8×200 in stalp</text>
+        <!-- through holes -->
+        <g>
+          <line x1="350" y1="98" x2="175" y2="98" stroke="#3F8FA6" stroke-width="2.4" stroke-dasharray="5 4"/>
+          <path d="M175 98 L187 93 M175 98 L187 103" stroke="#3F8FA6" stroke-width="2.4" fill="none"/>
+          <circle cx="350" cy="98" r="6" fill="none" stroke="#3F8FA6" stroke-width="2.2"/>
+          <line x1="350" y1="128" x2="175" y2="128" stroke="#3F8FA6" stroke-width="2.4" stroke-dasharray="5 4"/>
+          <path d="M175 128 L187 123 M175 128 L187 133" stroke="#3F8FA6" stroke-width="2.4" fill="none"/>
+          <circle cx="350" cy="128" r="6" fill="none" stroke="#3F8FA6" stroke-width="2.2"/>
+        </g>
+        <!-- hidden nut on back (left) -->
+        <circle cx="175" cy="98" r="6.5" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/>
+        <circle cx="175" cy="128" r="6.5" fill="#fff" stroke="#161413" stroke-width="2" stroke-dasharray="2.4 2"/>
+        <text x="160" y="96" text-anchor="end" font-family="Space Grotesk" font-size="12" fill="#5C574E">piulita +</text>
+        <text x="160" y="112" text-anchor="end" font-family="Space Grotesk" font-size="12" fill="#5C574E">saiba (spate)</text>
+        <!-- right labels -->
+        <text x="366" y="102" font-family="Space Mono,monospace" font-size="12.5" font-weight="700" fill="#3F8FA6">Ø13</text>
+        <text x="366" y="132" font-family="Space Mono,monospace" font-size="12.5" font-weight="700" fill="#3F8FA6">Ø13</text>
+        <text x="360" y="170" font-family="Space Grotesk" font-size="12" fill="#3C3833">gauresti dinspre polita</text>
+        <!-- rod label below post -->
+        <text x="215" y="298" text-anchor="middle" font-family="Space Mono,monospace" font-size="12.5" font-weight="700" fill="#161413">tija M12 (taiata 220) ×2</text>
+      </svg>
+    </div>
+    <div class="warn red"><b>!</b><div><b>KICKBACK.</b> Burghiul lung de Ø13 musca adanc. Tine bormasina cu <b>ambele maini</b>, viteza 1, si fii gata sa eliberezi tragaciul daca se blocheaza — altfel iti rasuceste incheietura.</div></div>
+    <div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; fara talpic, polita ar atarna doar in cele 2 buloane M12, in forfecare: acolo cedeaza deck-ul. Talpicul duce greutatea (compresiune), M12 tin pozitia si contra smulgerii. Strange piulita M12 pana polita nu se mai misca deloc.</div></div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="h"><div class="bn">2</div><div class="tx"><b>GRINDA DIN SPATE pe polite.</b> In doi, o asezati pe cele doua polite (sta pe ele, iar ele stau pe talpice — nu o tineti voi). Verifica intai ca ambele talpice sunt montate. Fata de sus la <b>+2072</b>, orizontala. Apoi o prinzi.</div></div>
+  <div class="body">
+    <div class="trow">
+      <span class="tbadge" style="--tc:var(--gdr)"><span class="dot"></span>GDR impact · bit T40 · 3 Heco 8×200 oblic / capat</span>
+      <span class="tbadge" style="--tc:var(--gsr)"><span class="dot"></span>GSR · T30 · coltar C2</span>
+    </div>
+    <div class="drawbox">
+      <svg viewBox="0 0 560 352" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+        <!-- top note: back posts stay full height -->
+        <text x="280" y="24" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">stalpii spate raman intregi — continua pana la acoperis ↑</text>
+        <!-- tall posts (continue up past the beam) -->
+        <rect x="104" y="36" width="46" height="280" fill="#E8973C" stroke="#161413" stroke-width="2.4"/>
+        <rect x="410" y="36" width="46" height="280" fill="#E8973C" stroke="#161413" stroke-width="2.4"/>
+        <text x="127" y="300" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#5b3a12">ST</text>
+        <text x="433" y="300" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#5b3a12">ST</text>
+        <!-- polite: shelves bolted to inner faces -->
+        <rect x="150" y="150" width="58" height="44" fill="#B083C6" stroke="#161413" stroke-width="2.2"/>
+        <rect x="352" y="150" width="58" height="44" fill="#B083C6" stroke="#161413" stroke-width="2.2"/>
+        <text x="179" y="177" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">PO</text>
+        <text x="381" y="177" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">PO</text>
+        <!-- M12 already through polita (from step 1) -->
+        <circle cx="158" cy="164" r="3.2" fill="#161413"/><circle cx="158" cy="182" r="3.2" fill="#161413"/>
+        <circle cx="402" cy="164" r="3.2" fill="#161413"/><circle cx="402" cy="182" r="3.2" fill="#161413"/>
+        <!-- talpice sub polite -->
+        <rect x="150" y="194" width="58" height="60" fill="#B8935A" stroke="#C2412B" stroke-width="2.2"/>
+        <rect x="352" y="194" width="58" height="60" fill="#B8935A" stroke="#C2412B" stroke-width="2.2"/>
+        <line x1="150" y1="194" x2="208" y2="194" stroke="#C2412B" stroke-width="3.4"/>
+        <line x1="352" y1="194" x2="410" y2="194" stroke="#C2412B" stroke-width="3.4"/>
+        <text x="179" y="229" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">TL</text>
+        <text x="381" y="229" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">TL</text>
+        <text x="280" y="229" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">TALPIC ~180 — reazem la compresiune</text>
+        <text x="179" y="274" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">2× M12 (pas 1)</text>
+        <!-- beam: rests ON the polite, between the posts -->
+        <rect x="150" y="100" width="260" height="50" fill="#3F8FA6" stroke="#161413" stroke-width="2.6"/>
+        <text x="280" y="130" text-anchor="middle" font-family="Space Mono,monospace" font-size="13" font-weight="700" fill="#fff">GR — grinda spate 90×200</text>
+        <!-- levels -->
+        <text x="280" y="92" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#C2412B">+2072</text>
+        <line x1="70" y1="150" x2="104" y2="150" stroke="#C2412B" stroke-width="1.4" stroke-dasharray="6 5"/>
+        <text x="66" y="154" text-anchor="end" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#C2412B">+1872</text>
+        <!-- oblique Heco: beam ends into posts -->
+        <g stroke="#C2693A" stroke-width="2.6" fill="none">
+          <path d="M170 114 L152 120 M152 120 L159 118 M152 120 L155 125"/>
+          <path d="M170 126 L152 132 M152 132 L159 130 M152 132 L155 137"/>
+          <path d="M170 138 L152 144 M152 144 L159 142 M152 144 L155 149"/>
+        </g>
+        <g stroke="#C2693A" stroke-width="2.6" fill="none">
+          <path d="M390 114 L408 120 M408 120 L401 118 M408 120 L405 125"/>
+          <path d="M390 126 L408 132 M408 132 L401 130 M408 132 L405 137"/>
+          <path d="M390 138 L408 144 M408 144 L401 142 M408 144 L405 149"/>
+        </g>
+        <!-- C2 anti-uplift: inner top corners, ties beam to post -->
+        <path d="M150 80 L150 100 L176 100" fill="none" stroke="#AAB2BB" stroke-width="6"/>
+        <circle cx="150" cy="89" r="3.8" fill="#161413"/><circle cx="165" cy="100" r="3.8" fill="#161413"/>
+        <text x="150" y="74" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#5C574E">C2</text>
+        <path d="M410 80 L410 100 L384 100" fill="none" stroke="#AAB2BB" stroke-width="6"/>
+        <circle cx="410" cy="89" r="3.8" fill="#161413"/><circle cx="395" cy="100" r="3.8" fill="#161413"/>
+        <text x="410" y="74" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#5C574E">C2</text>
+        <!-- oblique label in open span under beam -->
+        <text x="280" y="180" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#161413">3× Heco 8×200 oblic</text>
+        <!-- caption: the key teaching point -->
+        <text x="280" y="340" text-anchor="middle" font-family="Space Grotesk" font-size="13" fill="#3C3833">Grinda sta PE polite, politele stau PE talpice — greutatea merge prin lemn, nu prin buloane.</text>
+      </svg>
+    </div>
+    <div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; coltar C2 la fiecare capat. Grinda nu trebuie sa se poata ridica de pe polita. Nu infunda capul Heco sub lemn — te opresti cand e la fata.</div></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <div class="h"><div class="bn">3</div><div class="tx"><b>GRINDA DIN FATA pe varful stalpilor taiati.</b> Sprijin direct pe lemn, la +1872. Prinzi cu 2 coltare C1 pe stalp.</div></div>
+  <div class="body">
+    <div class="trow">
+      <span class="tbadge" style="--tc:var(--gdr)"><span class="dot"></span>GDR sau GSR · bit T30 · Heco 6×100 in coltare</span>
+    </div>
+    <div class="drawbox">
+      <svg viewBox="0 0 520 264" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+        <!-- level -->
+        <line x1="150" y1="112" x2="370" y2="112" stroke="#C2412B" stroke-width="1.4" stroke-dasharray="6 5"/>
+        <text x="150" y="106" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#C2412B">+1872 varf</text>
+        <!-- post -->
+        <rect x="222" y="112" width="80" height="95" fill="#E8973C" stroke="#161413" stroke-width="2.4"/>
+        <text x="262" y="166" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#5b3a12">ST taiat</text>
+        <!-- beam -->
+        <rect x="150" y="66" width="220" height="46" fill="#3F8FA6" stroke="#161413" stroke-width="2.6"/>
+        <text x="260" y="93" text-anchor="middle" font-family="Space Mono,monospace" font-size="13" font-weight="700" fill="#fff">GR fata</text>
+        <!-- C1 left -->
+        <path d="M222 112 L200 112 L200 90" fill="none" stroke="#AAB2BB" stroke-width="7"/>
+        <circle cx="211" cy="112" r="4.4" fill="#161413"/><circle cx="200" cy="101" r="4.4" fill="#161413"/>
+        <text x="190" y="132" text-anchor="end" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#5C574E">C1</text>
+        <!-- C1 right -->
+        <path d="M302 112 L324 112 L324 90" fill="none" stroke="#AAB2BB" stroke-width="7"/>
+        <circle cx="313" cy="112" r="4.4" fill="#161413"/><circle cx="324" cy="101" r="4.4" fill="#161413"/>
+        <text x="334" y="132" text-anchor="start" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#5C574E">C1</text>
+        <!-- caption -->
+        <text x="260" y="240" text-anchor="middle" font-family="Space Grotesk" font-size="13" fill="#3C3833">2 coltare C1 / stalp — cate unul pe fiecare fata.</text>
+      </svg>
+    </div>
+    <div class="warn"><b>!</b><div><b>STOP-verificare</b> &mdash; ambele grinzi la +2072, perfect orizontale, inainte sa treci la joiste. Aici corectezi, nu mai tarziu.</div></div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <div class="h"><div class="bn">4</div><div class="tx"><b>JOISTELE (6) peste ambele grinzi.</b> Marchezi pozitiile de la coltul S4, asezi fiecare joista pe AMBELE grinzi, prinzi cu coltar C2 la fiecare reazem.</div></div>
+  <div class="body">
+    <div class="trow">
+      <span class="tbadge" style="--tc:var(--gdr)"><span class="dot"></span>GDR/GSR · T30 · C2 la 12 reazeme</span>
+      <span class="tbadge" style="--tc:var(--old)"><span class="dot"></span>HP347 · pilot 4-5 mm la capete</span>
+    </div>
+    <div class="drawbox">
+      <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+        <text x="300" y="30" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2693A">VEDERE DE SUS</text>
+        <!-- beams -->
+        <rect x="60" y="86" width="400" height="26" fill="#3F8FA6" stroke="#161413" stroke-width="2.2"/>
+        <rect x="60" y="238" width="400" height="26" fill="#3F8FA6" stroke="#161413" stroke-width="2.2"/>
+        <text x="466" y="103" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#3F8FA6">GR fata</text>
+        <text x="466" y="255" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#3F8FA6">GR spate</text>
+        <!-- joists -->
+        <g fill="#7BAE52" stroke="#161413" stroke-width="2">
+          <rect x="78" y="56" width="20" height="234"/>
+          <rect x="120" y="56" width="20" height="234"/>
+          <rect x="210" y="56" width="20" height="234"/>
+          <rect x="290" y="56" width="20" height="234"/>
+          <rect x="370" y="56" width="20" height="234"/>
+          <rect x="430" y="56" width="20" height="234"/>
+        </g>
+        <!-- C2 dots -->
+        <g fill="#161413">
+          <circle cx="88" cy="99" r="3.4"/><circle cx="130" cy="99" r="3.4"/><circle cx="220" cy="99" r="3.4"/><circle cx="300" cy="99" r="3.4"/><circle cx="380" cy="99" r="3.4"/><circle cx="440" cy="99" r="3.4"/>
+          <circle cx="88" cy="251" r="3.4"/><circle cx="130" cy="251" r="3.4"/><circle cx="220" cy="251" r="3.4"/><circle cx="300" cy="251" r="3.4"/><circle cx="380" cy="251" r="3.4"/><circle cx="440" cy="251" r="3.4"/>
+        </g>
+        <!-- cantilever bracket -->
+        <line x1="60" y1="68" x2="60" y2="56" stroke="#C2412B" stroke-width="1.4"/>
+        <line x1="60" y1="62" x2="88" y2="62" stroke="#C2412B" stroke-width="2"/>
+        <text x="170" y="48" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#C2412B">consola 700 — egala la toate 6</text>
+        <!-- positions -->
+        <text x="260" y="306" text-anchor="middle" font-family="Space Grotesk" font-size="12.5" fill="#3C3833">pozitii de la S4: 100 · 280 · [copac] · 720 · 1120 · 1550 · 1980</text>
+      </svg>
+    </div>
+    <div class="warn"><b>!</b><div><b>CRITIC</b> &mdash; consola de 700 egala la toate. Aliniaza <b>nasurile</b> pe o sfoara intinsa, nu coada. C2 la fiecare reazem (12 total) — capetele din spate se ridica ~40% cand un copil sta pe consola.</div></div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <div class="h"><div class="bn">5</div><div class="tx"><b>BLOCAJE intre joiste.</b> Bucati scurte de lemn peste fiecare grinda, ca joistele sa nu se rasuceasca. Podeaua devine ferma.</div></div>
+  <div class="body">
+    <div class="trow">
+      <span class="tbadge" style="--tc:var(--gdr)"><span class="dot"></span>GDR/GSR · T30 · Heco 6×80 oblic</span>
+    </div>
+    <div class="drawbox">
+      <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+        <rect x="40" y="150" width="440" height="30" fill="#3F8FA6" stroke="#161413" stroke-width="2.2"/>
+        <text x="60" y="171" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">GR</text>
+        <rect x="120" y="70" width="34" height="80" fill="#7BAE52" stroke="#161413" stroke-width="2.2"/>
+        <rect x="300" y="70" width="34" height="80" fill="#7BAE52" stroke="#161413" stroke-width="2.2"/>
+        <text x="137" y="120" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#274d1f">JO</text>
+        <text x="317" y="120" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#274d1f">JO</text>
+        <rect x="154" y="96" width="146" height="54" fill="#E9C277" stroke="#161413" stroke-width="2.2"/>
+        <text x="227" y="128" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#5b3a12">BLOCAJ (offcut)</text>
+        <g stroke="#C2693A" stroke-width="2.6" fill="none">
+          <path d="M154 108 L138 100 M138 100 L146 100 M138 100 L142 106"/>
+          <path d="M300 108 L316 100 M316 100 L308 100 M316 100 L312 106"/>
+        </g>
+        <text x="260" y="205" text-anchor="middle" font-family="Space Grotesk" font-size="13" fill="#3C3833">Cate un blocaj peste fiecare grinda (fata + spate), prins oblic cu H3.</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ZOOM: drilling detail -->
+<section class="sec">
+  <div class="zoombox">
+    <div class="zl">zoom · gaurirea M12 (singura gaurire adevarata)</div>
+    <svg viewBox="0 0 620 236" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial,sans-serif">
+      <!-- drill label above -->
+      <text x="150" y="56" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#3F8FA6">Ø13 · GSR viteza 1</text>
+      <!-- polita -->
+      <rect x="130" y="70" width="90" height="90" fill="#B083C6" stroke="#161413" stroke-width="2.4"/>
+      <!-- post -->
+      <rect x="220" y="70" width="90" height="90" fill="#E8973C" stroke="#161413" stroke-width="2.4"/>
+      <!-- sacrificial -->
+      <rect x="310" y="70" width="26" height="90" fill="#EDE7DC" stroke="#9A9388" stroke-width="2" stroke-dasharray="4 3"/>
+      <!-- drill path -->
+      <line x1="92" y1="100" x2="308" y2="100" stroke="#3F8FA6" stroke-width="3" stroke-dasharray="6 5"/>
+      <path d="M308 100 L296 94 M308 100 L296 106" stroke="#3F8FA6" stroke-width="3" fill="none"/>
+      <!-- bolt line -->
+      <circle cx="104" cy="132" r="8" fill="#161413"/>
+      <line x1="112" y1="132" x2="322" y2="132" stroke="#161413" stroke-width="4"/>
+      <rect x="322" y="124" width="10" height="16" fill="#161413"/>
+      <!-- block labels below -->
+      <text x="175" y="180" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#6b4b86">PO 100</text>
+      <text x="265" y="180" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#5b3a12">ST 100</text>
+      <text x="130" y="206" font-family="Space Mono,monospace" font-size="11" fill="#161413">tija M12 (220) · saiba+piulita spate · pozitie + anti-smulgere</text>
+      <!-- sacrificial note -->
+      <text x="346" y="92" font-family="Space Grotesk" font-size="12" fill="#5C574E">lemn de sacrificiu</text>
+      <text x="346" y="108" font-family="Space Grotesk" font-size="12" fill="#5C574E">(nu smulge fibra la iesire)</text>
+      <!-- note box -->
+      <rect x="360" y="130" width="252" height="66" rx="8" fill="#FBEEE4" stroke="#F0D8C4"/>
+      <text x="372" y="150" font-family="Space Grotesk" font-size="12.5" font-weight="600" fill="#7a4a2c">Burghiu prea scurt pt 200 mm?</text>
+      <text x="372" y="168" font-family="Space Grotesk" font-size="12.5" fill="#7a4a2c">Gauresti din ambele parti,</text>
+      <text x="372" y="185" font-family="Space Grotesk" font-size="12.5" fill="#7a4a2c">pana se intalnesc la mijloc.</text>
+    </svg>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sh">Gata cand</div>
+  <ul class="check">
+    <li><span class="bx"></span><span>Cate un talpic (~180, offcut) sub FIECARE polita, prins in stalp, fara joc</span></li>
+    <li><span class="bx"></span><span>Ambele polite la +1872, asezate pe talpic, 2 buloane M12 stranse, nu se misca</span></li>
+    <li><span class="bx"></span><span>Grinda spate pe polite, +2072, 3 Heco 8×200/capat + C2 anti-ridicare</span></li>
+    <li><span class="bx"></span><span>Grinda fata pe varf, 2 coltare C1/stalp, ambele grinzi orizontale la +2072</span></li>
+    <li><span class="bx"></span><span>6 joiste, consola 700 egala (aliniate pe sfoara), 12 coltare C2</span></li>
+    <li><span class="bx"></span><span>Blocaje peste ambele grinzi, prinse oblic</span></li>
+  </ul>
+</section>
+
+<div class="foot" style="border-top:1px solid var(--line)">
+  <p><b>Inainte de weekend:</b> verifica ca ai burghiu Ø13 destul de lung (strapungere 200 mm) si biti T40/T30 impact-rated. Fara ele, pasul 1 si suruburile structurale se blocheaza.</p>
+  <p class="mono">CASUTA DIN COPAC · fisa scule &amp; gauri · grinzi + joiste · 2026</p>
+</div>
+
+</div></body></html>

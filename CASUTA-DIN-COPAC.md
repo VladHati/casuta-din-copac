@@ -33,7 +33,7 @@ Vlad nu e inginer constructor. E un parinte priceput la multe, dar aici are nevo
 |---|---|
 | Inaltime podea (de la sol) | 2200 mm |
 | Adancime totala cu balconul | 2480 mm (1780 + 700 consola) |
-| Perete casuta | 1300 mm |
+| Perete casa de sus | 1800 mm spate / 1500 mm fata |
 | Balustrada balcon | 1000 mm, goluri sub 90 mm |
 | Blat masa (deasupra podelei) | ~580 mm |
 | Casuta / balcon (impartirea adancimii) | 1100 / 680 mm |
@@ -119,9 +119,18 @@ Lista completa de cumparat, preturile si planul de taiere (debitare) sunt in fis
 
 ---
 
+## Casa de sus (partea inchisa, evolutie a peretelui din spate)
+
+Peretele inchis din spate a crescut intr-o casa propriu-zisa: 2100 x 1100, pereti 1800 (spate) -> 1500 (fata), acoperis intr-o apa, usa + geam. Inlocuieste vechea cota de perete de 1300 mm. Planul complet, materialele si verificarea structurala sunt in `CASA-plan-constructie.html`. Ramase de ales: invelitoarea (Onduline vs policarbonat) si usa vs gol.
+
 ## Fisiere in proiect
 
-- `CASUTA-DIN-COPAC.md` — acest dosar.
+- `SOURCE-OF-TRUTH.md` — indexul: cine guverneaza fiecare tip de informatie (citeste-l primul).
+- `CASUTA-DIN-COPAC.md` — acest dosar (geometrie + cote).
 - `Tracker_materiale_casuta.xlsx` — buget + plan de debitare.
+- `Fisa-santier-casuta.pdf` — reviewul structural (nodurile critice).
+- `NODURI-grinda-stalp.html` — nodurile grinda-stalp (fata pe varf, spate pe polita + talpic).
+- `PODEA-plan-sectiune.html` — planul + sectiunea podelei, cu cote.
+- `CASA-plan-constructie.html` — planul casei de sus.
 - `casuta-din-copac.html` — pagina luminoasa, animata, de aratat lui Tudor.
 - `POZE/` — fotografii de pe teren.

@@ -3,7 +3,7 @@ import pickle
 from fb import PARTS, PROJ
 DATA=pickle.load(open('data.pkl','rb'))
 NAV='''<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
-<a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+<a href="timeline.html" data-k="stadiu">Stadiu</a><a href="ghid-montaj.html" data-k="ghid">Ghid</a><a href="materiale.html" data-k="materiale">Materiale</a><a href="imbinari.html" data-k="imbinari">Imbinari</a><a href="modele-3d.html" data-k="3d">3D</a><a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
 </nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="ghid-montaj.html">Ghid</a><span>&rsaquo;</span><a href="fise.html">Fise montaj</a><span>&rsaquo;</span><b>{cr}</b></div></header><script>(function(){{var p=new URLSearchParams(location.search);if(p.has("embed")){{document.documentElement.classList.add("emb");return;}}var a=document.querySelector('.tn-links a[data-k="ghid"]');if(a)a.classList.add("on");}})();</script>'''
 CSS='''<style>
 :root{--ink:#161413;--soft:#5C574E;--faint:#9A9388;--line:#E7E3DB;--acc:#C2693A;--paper:#FFFFFF;--wash:#FAF8F4;--crit:#C2412B;}
@@ -55,6 +55,7 @@ LEG=('<div class="legend">'
  '<span class="lg"><i style="background:#7BAE52"></i><b>JO</b>&nbsp;joista</span>'
  '<span class="lg"><i style="background:#E9C277"></i><b>DL</b>&nbsp;dusumea</span>'
  '<span class="lg"><i style="background:#B083C6"></i><b>PO</b>&nbsp;polita</span>'
+ '<span class="lg"><i style="background:#B8935A"></i><b>TL</b>&nbsp;talpic</span>'
  '<span class="lg"><i style="background:#AAB2BB"></i><b>C1/C2</b>&nbsp;coltar</span>'
  '<span class="lg"><i style="background:#E2663B"></i><b>CF</b>&nbsp;diagonala</span>'
  '</div>')

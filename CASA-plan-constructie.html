@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CASA — plan de constructie</title>
+<style>
+  :root{
+    --bg:#14171d; --panel:#191d25; --panel2:#1e232c; --ink:#e7e9e5; --dim:#9aa0a8;
+    --line:#2b313b; --timber:#c69a68; --timber-d:#8a6a46; --key:#e8894a; --ok:#5fbfc2;
+    --warn:#e0b64a;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Helvetica Neue',Arial,system-ui,sans-serif;line-height:1.55;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 28px 80px}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.01em;margin:0 0 6px}
+  .sub{color:var(--dim);font-size:15px;margin:0 0 26px}
+  h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--key);
+    font-weight:700;margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  h3{font-size:17px;margin:22px 0 8px;font-weight:600}
+  p{margin:0 0 12px}
+  strong{color:#fff}
+  .mono{font-family:'SFMono-Regular',Menlo,monospace;font-size:13px}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+  .fact{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px}
+  .fact .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+  .fact .v{font-size:19px;font-family:'SFMono-Regular',Menlo,monospace;color:var(--ink);margin-top:2px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+  .crit{border-left:3px solid var(--key)}
+  .safe{border-left:3px solid var(--ok)}
+  ul{margin:6px 0 12px;padding-left:20px}
+  li{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  td.n{font-family:'SFMono-Regular',Menlo,monospace;white-space:nowrap;color:var(--timber)}
+  a{color:var(--ok);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:var(--ok)}
+  .step{display:flex;gap:14px;margin:14px 0;align-items:baseline}
+  .step .num{font-family:'SFMono-Regular',Menlo,monospace;color:var(--key);font-weight:700;
+    min-width:26px;font-size:15px}
+  .tag{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(232,137,74,.14);color:var(--key);border-radius:4px;padding:2px 7px;margin-left:6px;font-weight:700;vertical-align:middle}
+  .tag.s{background:rgba(95,191,194,.14);color:var(--ok)}
+  svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:14px 0}
+  .tot{font-size:20px;font-family:'SFMono-Regular',Menlo,monospace;color:#fff}
+  .note{color:var(--dim);font-size:13px}
+  hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topnav"><div class="tn-in"><a class="tn-logo" href="index.html"><span class="tn-mark">&#9651;</span>Casuta din copac</a><nav class="tn-links">
+<a href="timeline.html" data-k="stadiu">Stadiu</a>
+<a href="ghid-montaj.html" data-k="ghid">Ghid</a>
+<a href="materiale.html" data-k="materiale">Materiale</a>
+<a href="imbinari.html" data-k="imbinari">Imbinari</a>
+<a href="modele-3d.html" data-k="3d">3D</a>
+<a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+</nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><a href="desene.html">Desene</a><span>&rsaquo;</span><b>Casa de sus &mdash; plan</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="desene"]');if(a)a.classList.add("on");})();</script>
+
+<div class="wrap">
+
+<h1>CASA de sus — plan de constructie</h1>
+<p class="sub">Casuta din copac · partea de sus, peste podea · acoperis intr-o apa pe fata · pentru copii 12–14 ani</p>
+
+<div class="facts">
+  <div class="fact"><div class="k">Amprenta</div><div class="v">2100 × 1100</div></div>
+  <div class="fact"><div class="k">Podea</div><div class="v">+2200</div></div>
+  <div class="fact"><div class="k">Perete spate</div><div class="v">1800</div></div>
+  <div class="fact"><div class="k">Perete fata</div><div class="v">1500</div></div>
+  <div class="fact"><div class="k">Panta</div><div class="v">~15°</div></div>
+</div>
+
+<h2>Ideea, pe scurt</h2>
+<p>O <strong>cutie usoara de lemn</strong> asezata pe podea, in spate (langa gard). Nu o construiesti sus, bucata cu bucata. O faci in <strong>4 pereti plati, jos pe iarba</strong>, ii ridici si ii insurubezi intre ei si de stalpi. Ca la o magazie de gradina. Deasupra, un acoperis simplu intr-o apa care coboara spre terasa.</p>
+<p>Trei lucruri o fac usoara pentru tine:</p>
+<ul>
+  <li><strong>Pereti panou</strong> — lucrezi jos, la orizontala, apoi ridici. Fara catarat cu lemne in brate.</li>
+  <li><strong>Prefabricate</strong> — geamul si usa le cumperi gata facute. Nu le fabrici.</li>
+  <li><strong>Taiere la magazin</strong> — Hornbach taie OSB-ul si lemnul la cota (serviciu debitare). Vii acasa cu piese gata, doar le insurubezi. Cu fierastraul tau de 66mm oricum n-ai taia drept OSB de 2,5m.</li>
+</ul>
+
+<h2>Cote si schema</h2>
+<svg viewBox="0 0 820 380" role="img" aria-label="Sectiune laterala: casa in spate cu acoperis intr-o apa spre fata, terasa deschisa">
+  <style>
+    .l{font-family:'SFMono-Regular',Menlo,monospace;fill:#9aa0a8;font-size:11px}
+    .lk{font-family:'Helvetica Neue',Arial;fill:#e8894a;font-size:11px;font-weight:600}
+    .lv{font-family:'SFMono-Regular',Menlo,monospace;fill:#5fbfc2;font-size:10.5px}
+  </style>
+  <line x1="70" y1="330" x2="770" y2="330" stroke="#8a6a46" stroke-width="2"/>
+  <!-- back post -->
+  <rect x="120" y="120" width="15" height="210" fill="#c69a68" stroke="#8a6a46"/>
+  <!-- front post -->
+  <rect x="360" y="205" width="14" height="125" fill="#e8894a"/>
+  <!-- deck -->
+  <rect x="120" y="205" width="520" height="9" fill="#c69a68"/>
+  <!-- front foundation post under terrace -->
+  <rect x="512" y="214" width="13" height="116" fill="#c69a68" stroke="#8a6a46"/>
+  <rect x="503" y="205" width="31" height="10" fill="#8a6a46"/>
+  <!-- house walls -->
+  <rect x="135" y="120" width="225" height="85" fill="#c69a68" opacity="0.12"/>
+  <!-- roof single slope -->
+  <line x1="112" y1="116" x2="382" y2="201" stroke="#c69a68" stroke-width="9" stroke-linecap="round"/>
+  <!-- railing front -->
+  <line x1="632" y1="205" x2="632" y2="150" stroke="#c69a68" stroke-width="5"/>
+  <line x1="600" y1="168" x2="635" y2="150" stroke="#c69a68" stroke-width="4"/>
+  <!-- water arrow -->
+  <line x1="384" y1="203" x2="410" y2="234" stroke="#5fbfc2" stroke-width="2.4" marker-end="url(#w)"/>
+  <defs><marker id="w" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#5fbfc2"/></marker></defs>
+  <!-- labels -->
+  <text x="200" y="90" class="lk">CASA — acoperis</text>
+  <text x="200" y="105" class="l">adancime 1100</text>
+  <text x="500" y="120" class="l">TERASA — deschisa</text>
+  <text x="420" y="250" class="lv">apa spre terasa/gradina</text>
+  <text x="128" y="150" class="l" transform="rotate(-90 128 150)">stalp 4.00</text>
+  <text x="300" y="196" class="lk">stalp fata ~1500</text>
+  <text x="150" y="345" class="l">gard 30cm ↤</text>
+  <text x="690" y="345" class="l">↦ gradina</text>
+  <!-- levels -->
+  <line x1="648" y1="330" x2="660" y2="330" stroke="#5fbfc2"/><text x="664" y="333" class="lv">0.00</text>
+  <line x1="648" y1="205" x2="660" y2="205" stroke="#5fbfc2"/><text x="664" y="208" class="lv">+2.20 podea</text>
+  <line x1="648" y1="116" x2="660" y2="116" stroke="#5fbfc2"/><text x="664" y="119" class="lv">+4.00 spate</text>
+  <line x1="384" y1="201" x2="384" y2="201" stroke="#5fbfc2"/>
+  <text x="300" y="215" class="lv"> </text>
+</svg>
+<p class="note">Spatele (stalpii de 4m, la gard) tine partea inalta. Acoperisul coboara spre fata, la ~+3.70. Terasa ramane deschisa in fata, fara acoperis. Daca un copil aluneca de pe acoperis, cade inapoi pe terasa, nu 4m in curte.</p>
+
+<h2>Materiale — lista de cumparaturi</h2>
+<p class="note">Preturi iulie 2026, Bucuresti. Cantitatile sunt orientative — confirma pe lista de taiere finala.</p>
+<table>
+  <tr><th>Ce</th><th>Dimensiune</th><th>Buc</th><th>Pret/buc</th><th>Magazin</th></tr>
+  <tr><td>Rigla rindeluita 45×45 (montanti pereti + sipci)</td><td>2–3 m</td><td>~16</td><td class="n">~15 lei</td><td><a href="https://www.hornbach.ro/p/grinda-cherestea-rindeluita-45x45x3000-mm/12047978/">Hornbach</a></td></tr>
+  <tr><td>Stalp 70×70 (cei 2 stalpi fata, sub acoperis — mai grosi ca sa nu se legene)</td><td>~1,6 m</td><td>2</td><td class="n">~45 lei</td><td>Hornbach / Dedeman</td></tr>
+  <tr><td>Grinda rindeluita 42×90 (capriori + talpi/cununi)</td><td>2–3 m</td><td>~10</td><td class="n">~28 lei</td><td><a href="https://www.hornbach.ro/p/grinda-cherestea-rindeluita-42x90x2000-mm/10701245/">Hornbach</a></td></tr>
+  <tr><td>OSB 3, 12 mm (imbracare + rigidizare)</td><td>2500×1250</td><td>4</td><td class="n">79 lei</td><td><a href="https://www.dedeman.ro/ro/osb-3-12-x-2500-x-1250-mm/p/4007526">Dedeman</a></td></tr>
+  <tr><td>Placa ondulata bituminoasa Onduline Easyfix</td><td>2000×810</td><td>3</td><td class="n">44 lei</td><td><a href="https://www.dedeman.ro/ro/placa-ondulata-bituminoasa-onduline-easyfix-rosu-38-x-810-x-2000-mm/p/6050423">Dedeman</a></td></tr>
+  <tr><td>Cuie Onduline cu capac</td><td>set</td><td>1</td><td class="n">~35 lei</td><td>Dedeman</td></tr>
+  <tr><td>Fereastra PVC deschidere simpla (geam care se deschide)</td><td>56×56 cm</td><td>1</td><td class="n">127 lei</td><td><a href="https://www.hornbach.ro/p/fereastra-pvc-termopan-4-camere-56x56-cm-alba-dreapta-deschidere-simpla/8901629/">Hornbach</a></td></tr>
+  <tr><td>Usa lamelara pin (mini-usa, se taie la cota)</td><td>99×39 cm</td><td>1</td><td class="n">85 lei</td><td><a href="https://www.hornbach.ro/p/usa-lamelara-classen-pin-99-3x39-4-cm/1462506/">Hornbach</a></td></tr>
+  <tr><td>Placa acrilica (hublou / geam fix lateral)</td><td>500×250×4</td><td>2</td><td class="n">15 lei</td><td><a href="https://www.hornbach.ro/p/placa-acrilica-500x250x4-mm-transparenta/1477845/">Hornbach</a></td></tr>
+  <tr><td>Surub lemn Torx 5×80 (asamblare cadre)</td><td>175 buc</td><td>1</td><td class="n">59 lei</td><td>Hornbach</td></tr>
+  <tr><td>Surub lemn Torx 6×120 (stalpi, talpi)</td><td>100 buc</td><td>1</td><td class="n">86 lei</td><td>Hornbach</td></tr>
+  <tr><td>Surub 4×60 (OSB)</td><td>~250 buc</td><td>1</td><td class="n">~30 lei</td><td>Dedeman</td></tr>
+  <tr><td>Coltar rigidizat 100×100×3 (noduri grele)</td><td>—</td><td>8</td><td class="n">~11 lei</td><td><a href="https://www.dedeman.ro/ro/coltare-metalice-perforate/c/3205">Dedeman</a></td></tr>
+  <tr><td>Vinclu zincat 90×90 (colturi cadre)</td><td>—</td><td>20</td><td class="n">~6 lei</td><td>Dedeman</td></tr>
+  <tr><td>Suport picior stalp (baza stalpi fata)</td><td>—</td><td>2</td><td class="n">~27 lei</td><td><a href="https://www.dedeman.ro/ro/suporti-stalpi/c/3208">Dedeman</a></td></tr>
+  <tr><td>Tija filetata M12 + piulite + saibe late (ancorare anti-smulgere)</td><td>1 m</td><td>2</td><td class="n">22 lei</td><td><a href="https://www.dedeman.ro/ro/tija-filetata-din-otel-zincat-alb-din-975-4-8-diametrul-m12-1-m-lungime/p/6000862">Dedeman</a></td></tr>
+  <tr><td>Ancora/banda anti-vant (capriori + joiste, la ambele capete)</td><td>—</td><td>~14</td><td class="n">~8 lei</td><td><a href="https://www.dedeman.ro/ro/conectori-pentru-constructii-din-lemn/c/3204">Dedeman</a></td></tr>
+  <tr><td>Tirfon/bulon M10×120 (perete spate → stalpii de 4m)</td><td>M10×120</td><td>8</td><td class="n">~6 lei</td><td>Dedeman</td></tr>
+  <tr><td>Lazura Sadolin Extra + grund lemn</td><td>2,5 L</td><td>1+1</td><td class="n">~112 lei</td><td><a href="https://www.hornbach.ro/p/lazura-pentru-lemn-sadolin-extra-incolor-2-5-l/7716118/">Hornbach</a></td></tr>
+</table>
+<p class="note">Serviciu care iti scuteste o zi de munca: <a href="https://www.hornbach.ro/servicii/servicii-de-debitare/">debitare la Hornbach</a> — le dai lista de cote, taie ei OSB-ul si lemnul.</p>
+
+<h2>Prefabricate & scurtaturi</h2>
+<div class="card">
+<p><strong>Geam care se deschide</strong> — fereastra PVC 56×56, 127 lei. Cea mai mica reala. O pui in <strong>peretele din fata</strong> (spre terasa) — daca un copil se apleaca pe geam, e peste terasa, nu peste curtea de la 4m. Nu pune geam care se deschide in peretii laterali (cadere in curte) sau in spate (langa gard).</p>
+<p><strong>Usa</strong> — mini-usa lamelara pin 99×39, 85 lei, o tai la inaltime. SAU, cel mai sigur si mai ieftin: <strong>gol de usa deschis, 0 lei</strong> — fara balamale, fara sa prinda degete, intri direct de pe terasa. Pentru un grup de copii, golul deschis e alegerea mea.</p>
+<p><strong>Geamuri fixe / hublouri</strong> — placi acrilice 500×250, 15 lei bucata. Nu se sparg in cioburi (spre deosebire de sticla) — kid-safe. Le prinzi cu sipca peste un gol.</p>
+</div>
+
+<h2>Acoperisul — alegerea ta</h2>
+<div class="card">
+<p><strong>Recomandat: Onduline (bituminos ondulat).</strong> Cel mai usor si sigur pentru tine si copii: se taie ca un carton cu fierastraul tau (fara muchii taioase), placile Easyfix au semne unde bati cuiele (nu gresesti), e cel mai usor de ridicat, linistit la ploaie, ~130 lei tot acoperisul. Minus: e opac, inauntru e mai intuneric — de aia pui geamul + hublourile pentru lumina.</p>
+<p class="note"><strong>Prindere:</strong> sipci transversale la <strong>≤450mm</strong> (nu 500) pentru zapada, si <strong>indeseste cuiele pe margini si pe randul de jos</strong> (marginea unde bate vantul). Desprinderea Onduline la vant e cel mai probabil mod de avarie — de aici se pleaca.</p>
+<p class="note"><strong>Alternativa daca vrei lumina din tavan:</strong> policarbonat ondulat transparent 0,8 mm (~150 lei/coala, ~450 lei tot). Aproape la fel de usor (aceleasi suruburi cu saiba de cauciuc), dar trebuie sa pre-gauresti gauri mai mari ca sa "respire" la caldura. Alege opal/bronz, nu transparent, ca sa nu fie cuptor vara.</p>
+<p class="note"><strong>NU tabla:</strong> zgomot la ploaie + muchii taioase + span fierbinte cand tai. Nu langa copii.</p>
+</div>
+
+<h2>Structura & noduri de siguranta</h2>
+<p>Totul se leaga intr-un <strong>lant</strong>, de sus pana in fundatie. Vantul ridica acoperisul; lantul il tine.</p>
+<p class="note">Zapada Bucuresti ~1,6 kN/m² (~400 kg pe acoperis) — sectiunile o duc lejer. Atentie la un lucru contra-intuitiv: <strong>cel mai rau caz de smulgere e cu acoperisul FARA zapada</strong> (vant pe casa inalta, fara greutate care sa-l tina). De aceea lantul de mai jos nu e optional.</p>
+<div class="card crit">
+<p><strong>Lantul anti-smulgere (nodurile care conteaza — verificate structural):</strong></p>
+<ul>
+  <li><strong>Capriorii → pereti:</strong> <strong>fiecare</strong> caprior legat cu <strong>ancora/banda anti-vant, la AMBELE capete</strong> — nu doar vinclu. Vinclul tine la forfecare, nu la smulgere. ~10–12 ancore.</li>
+  <li><strong>Joistele → grinzile glulam:</strong> joistele nu doar stau pe grinzi, se <strong>leaga in jos</strong> de glulam. Altfel vantul, prin tija M12, ridica joista de pe grinda.</li>
+  <li><strong>Stalpii fata → podea:</strong> tija M12 ancorata <strong>intr-o joista fix sub stalp</strong> (stalpul centrat pe joista, nu pe scandura goala), saiba lata dedesubt. Cate una per stalp.</li>
+  <li><strong>Peretele spate → stalpii de 4m:</strong> nodul cel mai important — el tine si stalpii inalti (baza lor e articulata, cutia ii stabilizeaza). <strong>Tirfoane/buloane M10–M12 pe mai multe inaltimi, NU suruburi 5×80.</strong></li>
+  <li><strong>Cutia → podea:</strong> talpa peretilor in joiste (5×80) + vinclu la ~40cm; <strong>blocaje sub talpi</strong> unde cad intre joiste, nu doar in scandura.</li>
+  <li><strong>Rigidizarea:</strong> OSB pe toti peretii = cutie care nu se leagana. Inlocuieste contravantuirile complicate.</li>
+</ul>
+</div>
+<div class="card safe">
+<p><strong>Siguranta copii 12–14 ani:</strong></p>
+<ul>
+  <li><strong>Balustrada 1100mm</strong>, sarcina orizontala ~1,0 kN/m, doar lamele verticale, goluri sub 90mm, stalpi bulonati sus si jos — mai ales pe nasul consolei.</li>
+  <li>Geam care se deschide <strong>doar pe fata</strong> (peste terasa). Lateral/spate doar fix. <strong>Placile acrilice prinse cu sipca pe AMBELE fete</strong> — sa nu le poata impinge afara un copil (s-ar deschide un gol de cadere la inaltime).</li>
+  <li><strong>Anti-catarare pe acoperis:</strong> fara treapta/sprijin usor de la balustrada sau peretele din fata spre acoperis. Tine balustrada inalta la jonctiunea casa/terasa.</li>
+  <li><strong>Cap:</strong> streasina din fata e la ~3,70 = la inaltimea capului unui copil inalt care sta pe terasa la usa. <strong>Teseste/captuseste marginea.</strong></li>
+  <li><strong>Sol moale ≥300mm tasat</strong> (scoarta/nisip) sub toata zona — cad mai des si de mai sus. Niciun surub iesit, muchii tesite.</li>
+  <li><strong>Fanta de 30cm din spate</strong> (casa–gard): inchide-o, sa nu ramana un copil blocat sau sa se catere pe ea.</li>
+</ul>
+</div>
+
+<h2>Ordinea de constructie</h2>
+<div class="step"><div class="num">1</div><div><strong>Taie tot la magazin</strong> (debitare Hornbach) — OSB si lemn la cota. Vii cu piese gata.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Pune o joista sub linia stalpilor fata (la 1100)</strong> + tija M12 de ancorare <span class="tag">critic — inainte de podea</span> Dupa ce bati dusumeaua nu mai ajungi acolo.</div></div>
+<div class="step"><div class="num">3</div><div>Bate dusumeaua, cu decupaj la copac.</div></div>
+<div class="step"><div class="num">4</div><div><strong>Construieste cei 4 pereti plati, jos pe iarba</strong> — montanti 45×45 + talpi, goluri pentru usa si geam, imbraci cu OSB. Peretii laterali au taietura oblica sus (panta).</div></div>
+<div class="step"><div class="num">5</div><div><strong>Ridica peretii si insurubeaza-i</strong> — intai spatele (prins de stalpii de 4m cu tirfoane M10–M12), apoi laterale, apoi fata. Verifica <strong>coltul drept si vertical</strong>. <strong>Zi fara vant, minim 3 oameni, propteste fiecare panou inainte sa-i dai drumul</strong> (ridici panouri de 2×1,8m pe o podea la 2,2m). <strong>Nu scoate proptelele temporare de pe stalpii de 4m pana cutia nu e sus si bulonata</strong> — baza lor e articulata, cutia ii tine. <span class="tag">critic</span></div></div>
+<div class="step"><div class="num">6</div><div>Prinde cutia de podea + stalpii fata cu tija M12 <span class="tag">critic</span> Monteaza geamul si usa (sau lasa golul).</div></div>
+<div class="step"><div class="num">7</div><div>Capriorii pe cununi, <strong>fiecare legat cu ancora anti-vant la ambele capete</strong>. Sipci peste ei la ≤450mm.</div></div>
+<div class="step"><div class="num">8</div><div>Onduline, cuie in creste. Jgheab la marginea joasa (fata) + burlan in curtea ta.</div></div>
+<div class="step"><div class="num">9</div><div>Grund + lazura (teseste si trateaza capetele taiate). Verificare finala <span class="tag s">siguranta</span> suruburi, balustrada, sol moale.</div></div>
+
+<h2>Lista de taiere — pentru debitare la Hornbach</h2>
+<p class="note">Fixat: <strong>Onduline · panta 15° · stalpi fata 1500 · gol de usa deschis.</strong></p>
+<div class="card crit">
+<p><strong>Masoara intai pe teren</strong> (stalpii sunt deja pusi — cotele de mai jos sunt nominale, ajusteaza-le la ce masori):</p>
+<ul>
+  <li>Latimea libera <strong>intre stalpii din spate</strong> → perete spate.</li>
+  <li>Latimea libera <strong>intre stalpii din fata</strong> → perete fata.</li>
+  <li>Adancimea <strong>spate→fata pe fiecare latura</strong> → pereti laterali.</li>
+</ul>
+</div>
+<table>
+  <tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th></tr>
+  <tr><td>Stalpi fata (sub acoperis)</td><td>70×70</td><td class="n">1500</td><td>2</td></tr>
+  <tr><td>Cununa + talpa perete spate</td><td>42×90</td><td class="n">~2000 *</td><td>2</td></tr>
+  <tr><td>Cununa (taiata oblic 15°) + talpa perete fata</td><td>42×90</td><td class="n">~2000 *</td><td>2</td></tr>
+  <tr><td>Talpa pereti laterali</td><td>42×90</td><td class="n">~1100 *</td><td>2</td></tr>
+  <tr><td>Cununa oblica pereti laterali</td><td>42×90</td><td class="n">~1140 *</td><td>2</td></tr>
+  <tr><td>Capriori</td><td>42×90</td><td class="n">~1350</td><td>5</td></tr>
+  <tr><td>Montanti perete spate</td><td>45×45</td><td class="n">~1620</td><td>5</td></tr>
+  <tr><td>Montanti perete fata (in jurul golului de usa + geamului)</td><td>45×45</td><td class="n">~1320</td><td>6</td></tr>
+  <tr><td>Montanti pereti laterali (urmaresc panta, in trepte)</td><td>45×45</td><td class="n">1620 / 1470 / 1320</td><td>6</td></tr>
+  <tr><td>Sipci pt Onduline (peste capriori)</td><td>45×45</td><td class="n">~2200</td><td>4</td></tr>
+  <tr><td>OSB 12 — perete spate</td><td>panou</td><td class="n">~2000×1800 *</td><td>1</td></tr>
+  <tr><td>OSB 12 — perete fata (decupezi usa+geam tu)</td><td>panou</td><td class="n">~2000×1500 *</td><td>1</td></tr>
+  <tr><td>OSB 12 — pereti laterali (trapez, il tai tu)</td><td>panou</td><td class="n">~1150×1800 *</td><td>2</td></tr>
+</table>
+<p class="note">* Ajusteaza la cota masurata pe teren. Hornbach taie panourile OSB dreptunghiulare; tu decupezi trapezul lateral si golurile (usa, geam) cu fierastraul vertical. Onduline: 3 coli 2000×810, taiate la ~1300 pe panta. Golul de usa: ~500 latime × ~1300 inaltime in peretele din fata, ramele cu montanti dubli.</p>
+
+<h2>Buget</h2>
+<p class="tot">~1900–2100 lei</p>
+<p class="note">Cu Onduline + geam + mini-usa + toti conectorii anti-vant. Din care poate ai deja suruburi si lazura. Cu policarbonat in loc de Onduline: +~300 lei. Cu gol de usa in loc de usa: −85 lei.</p>
+
+<hr>
+<p class="note">Surse preturi: Hornbach.ro, Dedeman.ro, Leroymerlin.ro (iulie 2026). Cotele structurale: dosarul proiectului + review 2026-07-10. Urmatorul pas: lista de taiere la milimetru (cut list) pentru debitare, dupa ce fixezi invelitoarea si usa vs gol.</p>
+
+</div>
+</body>
+</html>
