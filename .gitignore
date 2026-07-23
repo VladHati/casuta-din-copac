@@ -15,3 +15,5 @@ __pycache__/
 # artefacte de build ale generatorului de fise (regenerate de fb.py)
 tools-fise/*.pkl
 tools-fise/book.html
+# env de build (micromamba) — nu se comite
+bin/

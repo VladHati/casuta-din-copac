@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>De luat azi · Hornbach</title>
+<style>
+  :root{
+    --bg:#101114; --panel:#16181c; --panel2:#1b1e23; --line:#23262c;
+    --txt:#e9e7e2; --dim:#8b909a; --faint:#5e636d;
+    --amber:#d89152; --amber-soft:#3a2c1c; --green:#7fae6e; --red:#cf6b5a;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans)}
+  body{padding:22px 16px 80px;max-width:560px;margin:0 auto;line-height:1.45}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+  h1{font-size:30px;letter-spacing:-.02em;margin:6px 0 2px;font-weight:600}
+  .sub{color:var(--dim);font-size:14px;margin:0 0 4px}
+  .lede{font-family:var(--serif);font-style:italic;color:#cbc8c1;font-size:15px;margin:14px 0 22px;padding-left:12px;border-left:2px solid var(--amber-soft)}
+  .sect{margin:26px 0 8px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .sect h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--txt);margin:0;font-weight:600}
+  .sect .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--faint)}
+  .item{display:flex;gap:12px;align-items:flex-start;padding:13px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;transition:.15s}
+  .item:active{background:var(--panel2)}
+  .item.done{opacity:.4}
+  .item.done .name{text-decoration:line-through;text-decoration-color:var(--amber)}
+  .box{flex:0 0 20px;height:20px;margin-top:1px;border:1.5px solid #3a3f48;border-radius:6px;display:grid;place-items:center}
+  .item.done .box{background:var(--amber);border-color:var(--amber)}
+  .box svg{opacity:0}.item.done .box svg{opacity:1}
+  .body{flex:1;min-width:0}
+  .name{font-size:15.5px;font-weight:550}
+  .spec{color:var(--dim);font-size:12.5px;margin-top:2px}
+  .meta{display:flex;gap:10px;align-items:center;margin-top:7px;flex-wrap:wrap}
+  .qty{font-family:var(--mono);font-size:12px;color:var(--txt);background:#202329;border:1px solid var(--line);padding:2px 7px;border-radius:6px}
+  .code{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+  .price{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--txt);white-space:nowrap}
+  .price .u{color:var(--faint)}
+  .note{font-size:12px;color:var(--amber);margin-top:6px}
+  .cond{border-style:dashed;background:transparent}
+  .totals{margin-top:30px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .trow{display:flex;justify-content:space-between;padding:12px 15px;font-size:13.5px;border-bottom:1px solid var(--line)}
+  .trow:last-child{border-bottom:0}
+  .trow .v{font-family:var(--mono)}
+  .trow.big{background:var(--panel);font-size:15px;font-weight:600}
+  .trow.big .v{color:var(--amber)}
+  .trow .lab{color:var(--dim)}
+  .warn{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--amber);border-radius:10px;padding:14px 16px}
+  .warn h3{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+  .warn ul{margin:0;padding-left:18px;color:#c8c6c0;font-size:13px}
+  .warn li{margin:5px 0}
+  .ft{margin-top:30px;text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+  b{font-weight:650}
+</style>
+</head>
+<body>
+  <div class="kicker">De luat azi &middot; 18.06.2026</div>
+  <h1>Hornbach</h1>
+  <p class="sub">Faza 1 &mdash; ce a ramas dupa ce a venit comanda <span style="font-family:var(--mono);font-size:12px">DV9048520886</span></p>
+  <p class="lede">Platforma e acoperita integral de ce-a sosit. Astea-s piesele care duc casuta de la schelet la balcon cu balustrada &mdash; plus culoarea si solul moale dedesubt.</p>
+
+  <div class="sect"><h2>Balustrada</h2><span class="tag">FISA 11 &middot; FAZA 1</span></div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Stalpisori balustrada 58&times;58</div>
+      <div class="spec">h = 100 cm &middot; 3 laturi, inclusiv nasul consolei</div>
+      <div class="meta"><span class="qty">7 buc</span><span class="code">cod la raft</span><span class="price">426,37 <span class="u">lei</span></span></div>
+      <div class="note">Ia <b>7</b>, nu 6 (pagina web zice 6, cut-list + tracker zic 7).</div>
+    </div>
+  </div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Sipci umplutura 18&times;18</div>
+      <div class="spec">Goluri sub 9 cm &mdash; siguranta copil. Se masoara la fata locului.</div>
+      <div class="meta"><span class="qty">~24 buc</span><span class="code">cod la raft</span><span class="price">79,20 <span class="u">lei</span></span></div>
+    </div>
+  </div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Mana curenta + rigla jos 45&times;70</div>
+      <div class="spec">Sus si jos, jur-imprejur pe 3 laturi. Ia 3&ndash;4 lungimi de 3 m.</div>
+      <div class="meta"><span class="qty">~9 m total</span><span class="code">cod la raft</span><span class="price">la raft</span></div>
+      <div class="note">Lipsea din tracker &mdash; n-o uita. Fara ea balustrada n-are de ce sa se prinda.</div>
+    </div>
+  </div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Buloane M10&times;120 + piulita + saiba</div>
+      <div class="spec">Prind stalpisorii 58&times;58 de cadru</div>
+      <div class="meta"><span class="qty">12 buc</span><span class="code">cod la raft</span><span class="price">42,00 <span class="u">lei</span></span></div>
+    </div>
+  </div>
+
+  <div class="sect"><h2>Finisaj</h2><span class="tag">F3 &middot; ALEGEREA TA</span></div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Topcoat colorat exterior</div>
+      <div class="spec">Grundul Köber pe care-l ai e incolor, nu tine UV singur. Asta da culoarea + protectia finala.</div>
+      <div class="meta"><span class="qty">1 buc</span><span class="code">~6 l</span><span class="price">~170,00 <span class="u">lei</span></span></div>
+      <div class="note">Decizie la raft: <b>translucid</b> (se vede lemnul) vs <b>opac</b> (acopera). + culoarea.</div>
+    </div>
+  </div>
+
+  <div class="sect"><h2>Siguranta</h2><span class="tag">SUB PLATFORMA</span></div>
+
+  <div class="item" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Sol moale &mdash; scoarta / nisip</div>
+      <div class="spec">~5 m² sub casuta, amortizare la cadere. Il pui inainte sa inceapa joaca la inaltime.</div>
+      <div class="meta"><span class="qty">~5 m²</span><span class="price">la raft</span></div>
+      <div class="note">Poate nu e la Hornbach &mdash; verifica pepiniera / depozit de gradina.</div>
+    </div>
+  </div>
+
+  <div class="sect"><h2>Backup</h2><span class="tag">DOAR DACA</span></div>
+
+  <div class="item cond" onclick="t(this)">
+    <span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#101114" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div class="body">
+      <div class="name">Lemn pentru contrafise</div>
+      <div class="spec">Cele 6 contrafise + proptelele ar trebui sa iasa din offcut-uri. Iei o grinda ieftina nerindeluita DOAR daca nu ajung.</div>
+      <div class="meta"><span class="qty">0&ndash;1 grinda</span><span class="price">~40&ndash;80 <span class="u">lei</span></span></div>
+      <div class="note">Verifica offcut-urile dupa taieri. Nu cumpara orbeste.</div>
+    </div>
+  </div>
+
+  <div class="totals">
+    <div class="trow"><span class="lab">Sigur azi (pret cunoscut)</span><span class="v">717,57 lei</span></div>
+    <div class="trow"><span class="lab">+ la raft (mana curenta, sol, backup)</span><span class="v">~150&ndash;280 lei</span></div>
+    <div class="trow big"><span class="lab">Estimat azi</span><span class="v">~850&ndash;1.000 lei</span></div>
+  </div>
+
+  <div class="warn">
+    <h3>De stiut</h3>
+    <ul>
+      <li><b>Buget (atentie):</b> din 6.600 ai cheltuit deja <b>4.965</b> (ce aveai + comanda + livrare). Azi ~870&ndash;1.000 &rarr; ramai cu <b>~600&ndash;900</b>. Faza 2 (pereti 608, capriori 156, scara ~730, + invelitoare + sol) = <b>~1.500&ndash;2.000</b> &mdash; depaseste plafonul cu ~700&ndash;1.300. Ori ridici plafonul (tu l-ai pus), ori Faza 2 se intinde.</li>
+      <li><b>Nimic de aici nu blocheaza startul platformei</b> &mdash; daca azi nu prinzi balustrada, doar topcoat + sol sunt strict utile.</li>
+      <li>Preturile goale (mana curenta, sol, contrafise) se completeaza la raft.</li>
+    </ul>
+  </div>
+
+  <div class="ft">CASUTA DIN COPAC &middot; cu Tudor &middot; Faza 1</div>
+
+<script>
+  function t(el){el.classList.toggle('done')}
+</script>
+</body>
+</html>

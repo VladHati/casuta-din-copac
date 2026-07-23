@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rezolvare pe santier · Casuta din copac</title>
+<style>
+  :root{
+    --bg:#f5f4f0; --card:#ffffff; --card2:#faf9f6; --line:#e7e4dd; --line2:#dcd8cf;
+    --txt:#1d1f23; --dim:#6c717a; --faint:#9aa0a8;
+    --amber:#b06a2c; --amber-bg:#f6ecdf;
+    --p0:#bb3b2c; --p1:#c07d2c; --p2:#a98a36; --ok:#5c8a4c; --ok-bg:#eaf1e4;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5}
+  body{max-width:600px;margin:0 auto;padding:26px 16px 90px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+  h1{font-size:29px;letter-spacing:-.02em;margin:7px 0 3px;font-weight:650}
+  .sub{color:var(--dim);font-size:14px;margin:0}
+  .lede{font-family:var(--serif);font-style:italic;color:#3a3d42;font-size:15.5px;margin:16px 0 6px;padding-left:12px;border-left:2px solid var(--amber)}
+
+  .phase{margin:24px 0 0}
+  .ph-h{display:flex;align-items:baseline;gap:10px;margin:0 2px 10px}
+  .ph-n{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .ph-t{font-size:13px;letter-spacing:.13em;text-transform:uppercase;font-weight:650}
+  .ph-when{margin-left:auto;font-size:11px;color:var(--dim);font-style:italic}
+  .ph.gate .ph-t{color:var(--p0)}
+
+  .item{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;transition:.12s}
+  .item:active{background:var(--card2)}
+  .item.done{opacity:.5}
+  .item.done .nm{text-decoration:line-through;text-decoration-color:var(--amber)}
+  .box{flex:0 0 21px;height:21px;margin-top:1px;border:1.5px solid #c5c1b6;border-radius:6px;display:grid;place-items:center;background:#fff}
+  .item.done .box{background:var(--amber);border-color:var(--amber)}
+  .box svg{opacity:0}.item.done .box svg{opacity:1}
+  .bd{flex:1;min-width:0}
+  .row1{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .nm{font-size:15.5px;font-weight:600}
+  .tag{font-family:var(--mono);font-size:10px;color:var(--faint);margin-left:auto}
+  .sev{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.04em;padding:1px 6px;border-radius:4px}
+  .sev.p0{background:#f6e3e0;color:var(--p0)} .sev.p1{background:#f6ead7;color:var(--p1)} .sev.p2{background:#f1ecd9;color:var(--p2)}
+  .how{font-size:13px;color:#42454b;margin-top:5px}
+  .how b{color:var(--amber)}
+
+  .done-card{background:var(--ok-bg);border:1px solid #cfe0c4;border-radius:12px;padding:13px 15px;margin:8px 0}
+  .done-card .row1 .nm{color:#2f5226}
+  .done-card .chk{flex:0 0 21px;height:21px;border-radius:6px;background:var(--ok);display:grid;place-items:center;margin-top:1px}
+  .done-card .how{color:#3d5a33}
+
+  .rule{margin-top:30px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--p0);border-radius:12px;padding:16px 18px}
+  .rule h3{margin:0 0 6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--p0)}
+  .rule p{margin:0;font-size:14px;color:#42454b}
+  .rule b{color:var(--txt)}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:18px 2px 0;font-size:11.5px;color:var(--dim)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .dot.p0{background:var(--p0)} .dot.p1{background:var(--p1)} .dot.p2{background:var(--p2)}
+  .ft{margin-top:34px;text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+  <div class="kicker">Rezolvare pe santier</div>
+  <h1>Fixurile fizice, in ordine</h1>
+  <p class="sub">Din auditul 18.06 · doar ce se face cu mainile pe teren</p>
+  <p class="lede">Structura nu se prabuseste. Astea-s lucrurile care fac diferenta intre „pare gata" si „las copilul sus linistit".</p>
+
+  <div class="legend">
+    <span><span class="dot p0"></span> P0 — pana aici, interzis la joaca</span>
+    <span><span class="dot p1"></span> P1 — pericol la constructie</span>
+    <span><span class="dot p2"></span> P2 — important</span>
+  </div>
+
+  <div class="phase ph gate">
+    <div class="ph-h"><span class="ph-n">0</span><span class="ph-t">Verifica intai</span><span class="ph-when">deblocheaza restul</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Numara coltarele C2</span><span class="sev p1">P1</span><span class="tag">LIV-01</span></div>
+      <div class="how">Trebuie <b>14</b> (90×90×65). Hartia se contrazice — platit pare 12. Daca-s 12, iei 2 (cod 738910) inainte de fisa 4/6.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Numara pachetele de inox 5×60</span><span class="sev p2">P2</span><span class="tag">LIV-02</span></div>
+      <div class="how">Trebuie <b>3</b> pachete (300 buc, ~204 necesare). Daca-s 2, iei 1 (cod 10528829). 200 e prea pe muchie.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Verifica offcut-ul pentru contrafise</span><span class="sev p2">P2</span><span class="tag">STR-04</span></div>
+      <div class="how">Dupa taieri, vezi daca ies 6 contrafise solide (~70-80 mm) din resturi. Daca nu, o grinda ieftina nerindeluita.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Confirma lemn sanatos prin gaura copacului</span><span class="sev p2">P2</span><span class="tag">ARB-03</span></div>
+      <div class="how">Portiunea care trece prin podea (~+2,2 m) sa fie lemn sanatos, nu zona crapata de la baza.</div></div></div>
+  </div>
+
+  <div class="phase ph gate">
+    <div class="ph-h"><span class="ph-n">1</span><span class="ph-t">Structura — inainte sa urce cineva</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Papuc de grinda metalic la polita (grinda spate)</span><span class="sev p0">P0</span><span class="tag">STR-01</span></div>
+      <div class="how">Veriga cea mai slaba. Pune un <b>papuc de grinda (joist hanger) pentru 90 mm</b> prins in fata stalpului — grinda calca in el, nu atarna de buloane. Pastrezi cele 2 M12 pentru smulgere. Polita din offcut = backup. <b>Ia varianta heavy-gauge</b> si, daca poti, pune pe cineva cu experienta de terase sa-l vada.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Bulon baza M12×140 (nu 120)</span><span class="sev p1">P1</span><span class="tag">STR-02</span></div>
+      <div class="how">120 e prea scurt: 108 mm strapungere + abia 12 pentru saiba+piulita. Ia <b>M12×140</b> pentru cele 8 de la papuci.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">C2 la fiecare reazem + 2-4 rezerva</span><span class="sev p1">P1</span><span class="tag">STR-03/06</span></div>
+      <div class="how">Toate 6 joistele + ambele capete grinda spate = 14, fara exceptie (anti-smulgere reala, ~0,4 kN la nasul consolei). Ia 2-4 in plus (~15 lei) — noduri fara rezerva.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Contrafisa de sub nasul consolei — prinsa pe lateral/cu coltar</span><span class="sev p2">P2</span><span class="tag">STR-04</span></div>
+      <div class="how">Acolo lucreaza la intindere; 3 suruburi oblice in capatul fibrei sunt slabe. Prinde-o lateral sau cu un coltar.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Mareste jocul in gaura copacului la 8-10 cm</span><span class="sev p2">P2</span><span class="tag">ARB-02</span></div>
+      <div class="how">Corcodus matur cu coroana mare se balanseaza mult. Test: impinge trunchiul cu putere, vezi cat se misca la +2,2 m — golul sa fie mai mare ca deplasarea.</div></div></div>
+  </div>
+
+  <div class="phase ph gate">
+    <div class="ph-h"><span class="ph-n">2</span><span class="ph-t">In timpul constructiei — cu Tudor pe santier</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Grinda fata: 3 adulti SAU 2 blocuri de sprijin</span><span class="sev p1">P1</span><span class="tag">FEZ-01</span></div>
+      <div class="how">~32 kg ridicat peste cap la 2 m si tinut cat prinzi C1. Pune 2 blocuri temporare sub ea (ca la grinda spate) sau fii 3 adulti. <b>Copilul nu sub sarcina suspendata.</b></div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Scula corecta la taieri in inaltime</span><span class="sev p1">P1</span><span class="tag">FEZ-02</span></div>
+      <div class="how">Retezatul glisant e de banc — nu taie stalpul in picioare la 1,87 m, nici copacul la 2,78 m. Acolo: <b>circular de mana pe 4 fete + coada de vulpe</b>. Retezatul ramane pentru debitat la sol.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Casca (adult + copil), trusa prim-ajutor, ham</span><span class="sev p1">P1</span><span class="tag">FEZ-03</span></div>
+      <div class="how">Lipsesc din lista de scule. Copilul poarta casca cand se ridica piese grele sus; ham pentru lucru la marginea fara balustrada (pasii 6-10).</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Varfurile de Heco 8×200 care ies din lemn</span><span class="sev p1">P1</span><span class="tag">SIG-06</span></div>
+      <div class="how">Un surub de 200 batut oblic intr-o piesa de 90-100 iese pe partea opusa. Verifica fiecare, taie/poleste varful + capac. Sau 8×160 unde 200 strapunge.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Nu scoate proptelele inainte de contravantuiri</span><span class="sev p2">P2</span><span class="tag">FEZ-04</span></div>
+      <div class="how">Asigura din start lemn pentru proptele + contrafise (nu „daca ajunge offcut"). La fiecare pas critic, copilul tine sculele / sta la distanta.</div></div></div>
+  </div>
+
+  <div class="phase ph gate">
+    <div class="ph-h"><span class="ph-n">3</span><span class="ph-t">Balustrada + acces — inainte de joaca</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Poarta: canat de lemn cu auto-inchidere</span><span class="sev p0">P0</span><span class="tag">SIG-03</span></div>
+      <div class="how">Cel mai grav punct: acum e doar un gol deasupra scarii de 49°. Fa un <b>canat din aceleasi sipci verticale</b> pe rama 45×70 + <b>2 balamale cu arc</b> (self-close) + <b>zavor sus, dubla actiune</b>, deschidere <b>spre interior</b>. Pana e gata, golul ramane inchis cu o travee.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Stalpisori: 2 buloane M10 fiecare, decalate</span><span class="sev p2">P2</span><span class="tag">SIG-08</span></div>
+      <div class="how">Un singur M10 lasa stalpisorul sa se roteasca in timp. <b>2 M10 decalate pe verticala</b> per stalpisor (~14, nu 12). Test prin impingere cu forta de adult pe fiecare, mai ales pe nas.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Gol balustrada ≤85 mm, verificat cu sablon</span><span class="sev p2">P2</span><span class="tag">SIG-07</span></div>
+      <div class="how">„<9 cm" = 90 mm e fix in banda periculoasa de cap-blocat. Tinta ≤85 mm, masurat cu un sablon de 89 mm, nu la ochi. Sipcile raman verticale.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Manson flexibil in golul trunchi-podea</span><span class="sev p1">P1</span><span class="tag">SIG-04</span></div>
+      <div class="how">Golul de 8-10 cm langa un trunchi care se misca poate prinde o glezna mica. Pune un guler-perie/cauciuc prins de podea (nu de copac): lasa copacul sa se miste, nu lasa piciorul sa intre.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Rotunjeste muchiile + aschii</span><span class="sev p2">P2</span><span class="tag">SIG-10</span></div>
+      <div class="how">Laricele face aschii. Rupe muchia + slefuieste + ulei la mana curenta, marginea podelei, decupajul copacului, capetele de scandura.</div></div></div>
+  </div>
+
+  <div class="phase ph">
+    <div class="ph-h"><span class="ph-n">4</span><span class="ph-t">Sol moale</span><span class="ph-when">rezolvat de tine</span></div>
+    <div class="done-card item" onclick="t(this)">
+      <span class="chk"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="bd"><div class="row1"><span class="nm">Pat de amortizare — te-ai ocupat</span><span class="tag">SIG-01/02</span></div>
+      <div class="how">Singura verificare ramasa: sa prinda si <b>nasul consolei + baza scarii</b>, nu doar sub podea — acolo aterizeaza cine cade peste balustrada.</div></div></div>
+  </div>
+
+  <div class="phase ph">
+    <div class="ph-h"><span class="ph-n">5</span><span class="ph-t">Finisaj — inainte de joaca</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Timp de uscare complet inainte de joaca</span><span class="sev p2">P2</span><span class="tag">SIG-09/FEZ-05</span></div>
+      <div class="how">Uleiul de tec ramane activ zile. Respecta fisa produsului (zile, nu ore), aplicat pe vreme uscata. Ordine: grund → uscare → topcoat → uscare → abia apoi joaca.</div></div></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Topcoat certificat sigur pentru copil</span><span class="sev p2">P2</span><span class="tag">SIG-09</span></div>
+      <div class="how">Alege F3 explicit cu mentiunea <b>„sigur pentru jucarii / EN 71-3 / rezistent la saliva"</b> — nu doar dupa culoare. Copiii ating/musca suprafetele.</div></div></div>
+  </div>
+
+  <div class="phase ph">
+    <div class="ph-h"><span class="ph-n">6</span><span class="ph-t">Scara — decizie acum (Faza 2)</span></div>
+    <div class="item" onclick="t(this)"><div class="bd"><div class="row1"><span class="nm">Lungeste baza scarii la ~40-42°</span><span class="sev p2">P2</span><span class="tag">FEZ-06</span></div>
+      <div class="how">49° e abrupt pentru copii la coborare. Daca terenul permite, intinde baza la 2400-2600 mm. Daca ramane 49°: mana curenta continua ambele parti + nas + antiderapant + poarta auto-inchidere sus.</div></div></div>
+  </div>
+
+  <div class="rule">
+    <h3>Regula de acces</h3>
+    <p><b>Platforma e interzisa la joaca</b> pana exista, toate trei: <b>poarta</b> functionala, <b>scara fixa</b>, si <b>solul moale</b> pe toata zona de impact. Pana atunci, sus doar adultii, cu scara legata.</p>
+  </div>
+
+  <div class="ft">CASUTA DIN COPAC · cu Tudor · fixuri de santier din auditul 18.06</div>
+
+<script>
+  // prepend a checkbox to each actionable item (skip the already-done sol-moale card)
+  var cb='<svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5L5 9.5L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.querySelectorAll('.item:not(.done-card)').forEach(function(it){
+    if(it.querySelector(':scope > .box')) return;
+    var s=document.createElement('span'); s.className='box'; s.innerHTML=cb;
+    it.insertBefore(s, it.firstChild);
+  });
+  function t(el){el.classList.toggle('done')}
+</script>
+</body>
+</html>
