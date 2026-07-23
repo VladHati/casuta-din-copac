@@ -39,12 +39,12 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
 <a href="materiale.html" data-k="materiale">Materiale</a>
 <a href="imbinari.html" data-k="imbinari">Imbinari</a>
 <a href="modele-3d.html" data-k="3d">3D</a>
-<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+<a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
 </nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><b>Modele 3D &middot; Platforma</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="3d"]');if(a)a.classList.add("on");})();</script>
 
 <div class="wrap">
   <h1>Platforma in 3D</h1>
-  <p class="lead">Stalpii, grinzile, joistele, podeaua si intaririle — la scara. Trage = roteste, scroll/pinch = zoom. Aprinde si stinge layerele din dreapta ca sa vezi fiecare strat.</p>
+  <p class="lead">Stalpii, grinzile, joistele, podeaua si intaririle — la scara. La stalpii din spate, grinda sta pe polita, iar polita reazema pe <b>talpic</b> (blocul de sub ea, in culoarea diagonalelor): greutatea merge prin compresiune, buloanele M12 sunt doar pozitie + anti-smulgere. Trage = roteste, scroll/pinch = zoom. Aprinde si stinge layerele din dreapta ca sa vezi fiecare strat.</p>
 
   <div class="stage">
     <canvas id="cv"></canvas>
@@ -138,8 +138,10 @@ h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw
   box(W+0.16,beamH,beamD,M.beam,W/2,beamCy,backBeamZ,G.beams);
   box(W+0.16,beamH,beamD,M.beam,W/2,beamCy,frontBeamZ,G.beams);
   // polita lemn sub grinda spate + 2 buloane M12, la fiecare stalp spate
+  // sub polita: TALPIC (bloc 100x100, ~180) — reazem la compresiune; M12 = doar pozitie + anti-smulgere
   [0,W].forEach(px=>{
     box(0.12,0.10,0.10,M.beam,px,beamCy-beamH/2-0.05,backBeamZ,G.beams);
+    box(0.12,0.18,0.10,M.brace,px,beamCy-beamH/2-0.19,backBeamZ,G.beams);
     box(0.024,0.024,0.13,M.clip,px,beamCy-beamH/2-0.028,backBeamZ+0.01,G.beams);
     box(0.024,0.024,0.13,M.clip,px,beamCy-beamH/2-0.072,backBeamZ+0.01,G.beams);
   });

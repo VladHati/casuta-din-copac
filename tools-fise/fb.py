@@ -51,10 +51,25 @@ Z_ANCHOR='''<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
 <text x="150" y="196" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">papuc in beton</text>
 <circle cx="118" cy="150" r="5" fill="#161413"/><circle cx="182" cy="150" r="5" fill="#161413"/>
 <rect x="196" y="142" width="48" height="19" rx="4" fill="#161413"/><text x="220" y="156" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="Space Mono,monospace">B2 x2</text></svg>'''
+# Fisa 3 / pas: talpicul (bloc de compresiune) sub polita, pe fata stalpului din spate
+Z_TALPIC='''<svg viewBox="0 0 340 232" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial">
+<line x1="40" y1="86" x2="300" y2="86" stroke="#C2412B" stroke-width="1.1" stroke-dasharray="6 5"/><text x="36" y="90" text-anchor="end" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">+1872</text>
+<rect x="60" y="20" width="70" height="192" fill="#E8973C" stroke="#161413" stroke-width="2.6"/><text x="95" y="228" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">stalp spate (intreg)</text>
+<rect x="130" y="86" width="90" height="48" fill="#B083C6" stroke="#161413" stroke-width="2.6"/><text x="175" y="116" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">POLITA</text>
+<rect x="130" y="134" width="90" height="46" fill="#B8935A" stroke="#C2412B" stroke-width="2.6"/><text x="175" y="163" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#fff">TALPIC</text>
+<line x1="130" y1="134" x2="220" y2="134" stroke="#C2412B" stroke-width="4"/>
+<path d="M206 96 v30 m0 0 l-6 -10 m6 10 l6 -10" fill="none" stroke="#C2412B" stroke-width="2.4"/><text x="240" y="118" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">compresiune</text>
+<g stroke="#161413" stroke-width="3"><line x1="205" y1="148" x2="105" y2="148"/><line x1="205" y1="168" x2="105" y2="168"/></g>
+<circle cx="205" cy="148" r="4.5" fill="#161413"/><circle cx="205" cy="168" r="4.5" fill="#161413"/>
+<line x1="228" y1="134" x2="228" y2="180" stroke="#C2693A" stroke-width="1.8"/><line x1="222" y1="134" x2="234" y2="134" stroke="#C2693A" stroke-width="1.8"/><line x1="222" y1="180" x2="234" y2="180" stroke="#C2693A" stroke-width="1.8"/>
+<text x="240" y="161" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2693A">~180</text>
+<text x="240" y="143" font-family="Space Mono,monospace" font-size="10" fill="#5C574E">2× H1</text>
+<text x="336" y="206" text-anchor="end" font-family="Space Grotesk" font-size="11" fill="#5C574E">confirma masura pe teren</text></svg>'''
 # Fisa 3 / pas: gaureste 2 gauri in polita
 Z_DRILL='''<svg viewBox="0 0 340 210" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial">
 <rect x="40" y="20" width="70" height="170" fill="#E8973C" stroke="#161413" stroke-width="2.6"/><text x="75" y="206" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">stalp spate</text>
-<rect x="110" y="70" width="96" height="74" fill="#B083C6" stroke="#161413" stroke-width="2.6"/><text x="158" y="160" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">polita</text>
+<rect x="110" y="70" width="96" height="74" fill="#B083C6" stroke="#161413" stroke-width="2.6"/><text x="158" y="64" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">polita</text>
+<rect x="110" y="144" width="96" height="34" fill="#B8935A" stroke="#C2412B" stroke-width="2.4"/><text x="158" y="167" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">TALPIC</text>
 <circle cx="150" cy="92" r="7" fill="#fff" stroke="#161413" stroke-width="2.4"/><circle cx="150" cy="122" r="7" fill="#fff" stroke="#161413" stroke-width="2.4"/>
 <line x1="206" y1="92" x2="300" y2="78" stroke="#C2693A" stroke-width="3"/><path d="M300 78 l-12 -2 m12 2 l-9 8" stroke="#C2693A" stroke-width="3" fill="none"/>
 <rect x="278" y="60" width="56" height="20" rx="4" fill="#C2693A"/><text x="306" y="74" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="Space Mono,monospace">Ø13</text>
@@ -111,17 +126,19 @@ def stage2():
     return [dict(t='Marcheaza +2200 (fata podelei) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat fiecare.',warn=None),
             dict(t='Coboara 328 mm si marcheaza +1872 — aici sta talpa GRINZII. Grinda 200 + joista 100 + dusumea 28 = 328, asa ajungi la +2200.',
                  warn='Linia +1872 trebuie identica pe toti 4 stalpii.'),
-            dict(t='Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite. Stalpii din spate raman INTREGI.',
+            dict(t='Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite SI pentru talpice (blocurile de sub polite). Stalpii din spate raman INTREGI.',
                  warn='Taie doar fata. Stalpii din spate raman intregi — ei sunt stalpii Fazei 2.'),
             dict(t='Teseste muchia taiata. Abia acum strange definitiv suruburile B2 de la baza.',zoom=DETS['B2'],warn=None)]
 def stage3():
-    return [dict(t='Aseaza polita (bloc 100x100 din offcut) pe fata interioara a stalpului din spate, cu fata de sus la +1872.',warn=None),
+    return [dict(t='INTAI TALPICUL. Taie din offcut 2 blocuri 100x100 de ~180 mm (confirma masura pe teren) si prinde cate unul pe fata interioara a fiecarui stalp din spate, cu fata de sus la +1772 — adica exact sub polita. Prinde-l cu 2 suruburi H1 in stalp.',svg=Z_TALPIC,
+                 warn='Fara talpic, polita atarna doar in cele 2 buloane M12, in forfecare — acolo cedeaza deck-ul.'),
+            dict(t='Aseaza polita (bloc 100x100 din offcut) PESTE talpic, pe fata interioara a stalpului din spate, cu fata de sus la +1872. Polita reazema pe talpic: greutatea trece prin compresiune, prin lemn.',warn='Polita trebuie sa stea lipita pe talpic, fara joc. Daca ramane spatiu, coboara polita sau grosaza talpicul.'),
             dict(t='Gaureste prin polita in stalp: 2 gauri strapunse de 13 mm pe fiecare polita.',svg=Z_DRILL,warn=None),
-            dict(t='Bate 2 buloane M12 (B1) cu saiba (B3) prin polita in stalp; strange cu piulita (B4) pe spate. Repeta la al doilea stalp.',zoom=DETS['B1'],
-                 warn='Strange buloanele M12 pana polita nu se mai misca deloc.')]
+            dict(t='Bate 2 buloane M12 (B1) cu saiba (B3) prin polita in stalp; strange cu piulita (B4) pe spate. Repeta la al doilea stalp. Buloanele tin polita in pozitie si contra smulgerii — greutatea o duce talpicul.',zoom=DETS['B1'],
+                 warn='Strange buloanele M12 pana polita nu se mai misca deloc. Ele sunt pozitie + anti-smulgere, NU reazem.')]
 def stage4():
-    return [dict(t='Ridicati in DOI grinda din spate si asezati-o pe cele doua polite. Sta pe polita — nu o tineti voi.',
-                 warn='Grinda sta pe polite; nu o tineti voi cat o prindeti.'),
+    return [dict(t='Ridicati in DOI grinda din spate si asezati-o pe cele doua polite. Sta pe polita, polita sta pe talpic — nu o tineti voi.',
+                 warn='Verifica intai ca ambele talpice sunt montate sub polite. Grinda sta pe polite; nu o tineti voi cat o prindeti.'),
             dict(t='Verifica fata de sus la +2072 si orizontalitatea pe toata lungimea.',warn=None),
             dict(t='Prinde grinda de fiecare stalp cu 3 suruburi H1 oblice PLUS un coltar C2 anti-smulgere in stalp si in grinda. Grinda nu trebuie sa se poata ridica de pe polita.',zoom=DETS['H1B'],
                  warn='Coltar C2 anti-smulgere la fiecare capat — grinda spate nu se poate ridica de pe polita.')]
@@ -174,8 +191,8 @@ def stage11():
 META=[
  (1,'fisa-01','FISA 1 / 11','Stalpii in papuci','2-3 ore',True,'Mediu',[('ST','4','la lungime mare, NU taia'),('PAP','4','deja in beton'),('B2','8','2 / stalp'),('PT','~6','proptele')],['Cheie 19 (M12)','Boloboc','Bormasina','2 persoane'],['Toti 4 stalpii verticali pe 2 fete','Proptele la fiecare stalp','Suruburi inca slabe']),
  (2,'fisa-02','FISA 2 / 11','Nivel +2200 si taiere stalpi fata','1-2 ore',False,'CRITIC',[('ST','—','doar cei 2 din fata se taie')],['Nivela cu furtun / laser','Creion','Fierastrau','Echer'],['Linia +1872 identica pe toti','Doar stalpii fata taiati','Stalpii spate INTREGI','Suruburi baza stranse']),
- (3,'fisa-03','FISA 3 / 11','Polite pe stalpii din spate','1 ora',False,'CRITIC',[('PO','2','offcut 100x100'),('B1','4','tija ~220'),('B3','8','2 / bulon: cap + piulita'),('B4','4','piulite')],['Bormasina + burghiu 13','Cheie 19','Bomfaier'],['Ambele polite sus la +1872','2 buloane stranse / polita','Polita nu se misca']),
- (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Grinda pe ambele polite','Fata sus la +2072','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
+ (3,'fisa-03','FISA 3 / 11','Talpic + polite pe stalpii din spate','1 ora',False,'CRITIC',[('TL','2','offcut 100x100, ~180 mm'),('PO','2','offcut 100x100'),('H1','4','2 / talpic'),('B1','4','tija ~220'),('B3','8','2 / bulon: cap + piulita'),('B4','4','piulite')],['Bormasina + burghiu 13','Cheie 19','Bomfaier','Fierastrau'],['Talpic sub FIECARE polita, fara joc','Ambele polite sus la +1872','2 buloane stranse / polita','Polita nu se misca']),
+ (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Talpicele montate sub ambele polite','Grinda pe ambele polite','Fata sus la +2072','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
  (5,'fisa-05','FISA 5 / 11','Grinda din fata pe varful stalpilor','1 ora',True,'CRITIC',[('GR','1','grinda fata'),('C1','4','2 / stalp'),('H2','~12','in coltare')],['2 persoane','Bormasina','Nivela'],['Grinda pe varful stalpilor','2 coltare C1 / stalp','Ambele grinzi la +2072']),
  (6,'fisa-06','FISA 6 / 11','Cele 6 joiste','2 ore',True,'CRITIC',[('JO','6','dintr-o bucata'),('C2','12','2 / joista'),('H2','~60','in coltare')],['Bormasina','Ruleta','Creion','Echer'],['6 joiste la pozitii','Consola 700 mm','12 coltare C2']),
  (7,'fisa-07','FISA 7 / 11','Gaura copacului si masa','1-2 ore',False,'Atentie',[('RM','2','traverse = rama gaurii'),('H3','~6','prindere')],['Fierastrau','Bormasina','Ruleta'],['Rama intre joistele 280-720','Joc 3-5 cm in jurul trunchiului','Blatul NU pe copac']),
@@ -196,7 +213,7 @@ print('DATA + desene gata:',len(DATA),'fise,',sum(len(d['steps']) for d in DATA)
 
 PARTS={'ST':('POZE/COD_7337253.png','Stalp KVH 100x100'),'GR':('POZE/COD_5483835.png','Grinda glulam 90x200'),
  'JO':('POZE/COD_7337253.png','Joista 100x100'),'DL':('POZE/COD_6224073.png','Dusumea larice 28x145'),
- 'PO':('POZE/lemn.png','Polita (offcut)'),'BL':('POZE/lemn.png','Blocaj (offcut)'),'CF':('POZE/lemn.png','Contrafisa (offcut)'),
+ 'PO':('POZE/lemn.png','Polita (offcut)'),'TL':('POZE/lemn.png','Talpic ~180 (offcut)'),'BL':('POZE/lemn.png','Blocaj (offcut)'),'CF':('POZE/lemn.png','Contrafisa (offcut)'),
  'PT':('POZE/lemn.png','Proptea temporara'),'C1':('POZE/COD_738965.png','Coltar 100x100x90'),'C2':('POZE/COD_738910.png','Coltar 90x90x65'),
  'H1':('POZE/COD_10434633.png','Heco 8x200'),'H2':('POZE/COD_10434398.png','Heco 6x100'),'H3':('POZE/COD_10434139.png','Heco 6x80'),
  'H4':('POZE/COD_10528829.png','Inox 5x60'),'B1':('POZE/COD_12130958.png','Tija M12 (taie 220)'),'B2':('POZE/COD_6834285.png','Bulon M12x120'),

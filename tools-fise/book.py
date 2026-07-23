@@ -6,7 +6,7 @@ DATA=pickle.load(open('data.pkl','rb'))
 # ---- sectiune materiale (curata, un singur stil) ----
 MAT=[('le ai deja',[('ST','4','stalpi KVH 100x100'),('JO','4','joiste (din lotul de 6)'),('PAP','4','papuci, deja in beton'),('F2','1','grund Köber 4 L')]),
      ('in comanda Hornbach (4.101 lei)',[('GR','2','grinzi glulam 90x200'),('JO','2','completare joiste'),('DL','17','dusumea larice'),('C1','4','coltare 100x90'),('C2','14','coltare 90x65: 12 joiste + 2 grinda spate'),('H1','1 pac','Heco 8x200'),('H2','1 pac','Heco 6x100'),('H3','1 pac','Heco 6x80'),('H4','3 pac','inox 5x60 (204 necesare)'),('B1','1','tija M12 (taie 4x ~220)'),('B2','1 pac','M12x120 baza'),('B3','1 pac','saibe M12'),('B4','1 pac','piulite M12'),('F1','2','ulei tec')]),
-     ('din offcut',[('PO','2','polite'),('BL','~12','blocaje'),('RM','2','traverse rama copac'),('CF','6','contrafise'),('PT','~6','proptele')]),
+     ('din offcut',[('PO','2','polite'),('TL','2','talpice ~180 sub polite'),('BL','~12','blocaje'),('RM','2','traverse rama copac'),('CF','6','contrafise'),('PT','~6','proptele')]),
      ('balustrada (Faza 1)',[('SB','~7','stalpisor balustrada 58x58'),('SP','~24','sipci 18x18, gol <9 cm'),('MC','~7 m','mana curenta'),('BM','~12','bulon M10 balustrada')]),
      ('de ales (nu opreste startul)',[('F3','1','topcoat colorat exterior')])]
 PARTS2=dict(PARTS); PARTS2['F2']=('POZE/kober.jpg','Grund Köber 4 L'); PARTS2['F3']=('POZE/lemn.png','Topcoat colorat')
@@ -117,7 +117,7 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0;letter-sp
 # legenda: (culoare, eticheta, coduri-care-o-folosesc). Completa o data; filtrata pe fisa.
 LEG_ITEMS=[('#E8973C','ST','stalp',{'ST','SB','PT'}),('#3F8FA6','GR','grinda',{'GR'}),
  ('#7BAE52','JO','joista',{'JO','RM'}),('#E9C277','DL','dusumea',{'DL','MC','SP'}),
- ('#B083C6','PO','polita',{'PO'}),('#AAB2BB','C1/C2','coltar',{'C1','C2'}),
+ ('#B083C6','PO','polita',{'PO'}),('#B8935A','TL','talpic',{'TL'}),('#AAB2BB','C1/C2','coltar',{'C1','C2'}),
  ('#CBA24B','BL','blocaj',{'BL'}),('#E2663B','CF','contrafisa',{'CF'}),('#A56B41','—','copac',set())]
 def legend(codes=None):
     rows=[(c,cod,n) for c,cod,n,used in LEG_ITEMS if codes is None or (used & codes)]

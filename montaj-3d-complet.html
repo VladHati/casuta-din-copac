@@ -58,7 +58,7 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
 <a href="materiale.html" data-k="materiale">Materiale</a>
 <a href="imbinari.html" data-k="imbinari">Imbinari</a>
 <a href="modele-3d.html" data-k="3d">3D</a>
-<a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
+<a href="desene.html" data-k="desene">Desene</a><a href="casuta-din-copac.html" data-k="dosar">Dosar</a>
 </nav></div><div class="tn-crumb"><a href="index.html">Acasa</a><span>&rsaquo;</span><b>Modele 3D &middot; Montaj</b></div></header><script>(function(){var p=new URLSearchParams(location.search);if(p.has("embed")){document.documentElement.classList.add("emb");return;}var a=document.querySelector('.tn-links a[data-k="3d"]');if(a)a.classList.add("on");})();</script>
 
 <div class="wrap">
@@ -155,14 +155,16 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
   strut(0,0.9,D,-0.5,0.02,D,0.05,COL.temp,'temp',1); strut(W,0.9,D,W+0.5,0.02,D,0.05,COL.temp,'temp',1);
   strut(0,0.9,0,-0.5,0.02,0,0.05,COL.temp,'temp',1); strut(W,0.9,0,W+0.5,0.02,0,0.05,COL.temp,'temp',1);
 
-  // POLITA spate bulonata in stalpii inalti (step3) + 2 M12
+  // POLITA spate pe TALPIC, bulonata in stalpii inalti (step3) + 2 M12 (pozitie + anti-smulgere)
   function POL(px){
     box(0.12,0.10,0.10,COL.beam, px, beamCy-beamH/2-0.05, backBeamZ, 'beams',3);
+    box(0.12,0.18,0.10,COL.brace||COL.beam, px, beamCy-beamH/2-0.19, backBeamZ, 'beams',3);
     box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.028, backBeamZ+0.01, 'metal',3);
     box(0.024,0.024,0.13,COL.metal, px, beamCy-beamH/2-0.072, backBeamZ+0.01, 'metal',3);
   }
   POL(0);POL(W);
   lbl('polita',0,beamCy-beamH/2-0.05,backBeamZ-0.14,'labels',3,undefined,'#7A5A3C');
+  lbl('talpic',0,beamCy-beamH/2-0.19,backBeamZ-0.14,'labels',3,undefined,'#C2412B');
   // GRINDA SPATE pe polita (step4)
   box(W+0.16,beamH,beamD,COL.beam,W/2,beamCy,backBeamZ,'beams',4);
   // GRINDA FATA pe varful stalpilor fata (step5) + coltare C1
@@ -216,10 +218,10 @@ body.embed .stage{height:100vh;border-radius:0;border:none}
     b:["Aseaza toti <b>4 stalpii</b> in ancorele din beton, <b>la lungime mare</b> — NU ii tai inca.","Prinde-i in ancora doar <b>slab</b> (suruburi puse, nestranse).","Adu fiecare stalp <b>perfect vertical</b> (la plumb) pe doua fete vecine.","Pune <b>2 proptele la baza</b> fiecarui stalp. La cei <b>2 stalpi inalti din spate</b> adauga si cate o <b>proptea de varf</b> spre exterior — altfel varful se leagana.","Strangerea finala vine abia dupa pasul 2."],c:["ST ×4"],f:["proptele baza","proptele varf"]},
    {t:"Trasare nivel + taiere stalpi fata",tools:"nivela lunga / laser · fierastrau · echer",crit:1,
     b:["Transfera <b>+2200</b> (fata podelei) pe toti 4 stalpii, cu nivela pe o scandura dreapta. NU masura separat.","Sub ea marcheaza linia de sprijin a grinzii la <b>+1872</b> (cu 328 mai jos: grinda 200 + joista 100 + dusumea 28).","Taie <b>doar S3 si S4 (fata)</b> la +1872 — pe varful lor sta grinda din fata.","<b>S1 si S2 (spate) NU se taie</b> — raman inalti pentru casuta.","Teseste muchia de sus; acum strange definitiv ancorele."],c:["taiere 1872"],f:[]},
-   {t:"Polita pe stalpii din spate",tools:"bormasina · cheie · 2× bulon M12",crit:1,
-    b:["Pe fata fiecarui stalp <b>din spate</b> (S1, S2), prinde un <b>bloc de lemn 100×100 — polita</b>.","Fixeaz-o cu <b>2 buloane M12</b> prin polita in stalp, cu fata de sus la <b>+1872</b>.","<b>Polita duce greutatea</b> grinzii din spate; e cea mai sigura prindere."],c:["polita ×2"],f:["M12 ×4"]},
+   {t:"Talpic + polita pe stalpii din spate",tools:"bormasina · cheie · fierastrau · 2× bulon M12",crit:1,
+    b:["Intai <b>talpicul</b>: bloc 100×100 din offcut, <b>~180 mm</b> (confirma pe teren), prins cu 2 suruburi H1 pe fata fiecarui stalp <b>din spate</b> (S1, S2), cu fata de sus la <b>+1772</b>.","Peste el, <b>polita</b> (bloc 100×100), cu fata de sus la <b>+1872</b>; fixeaz-o cu <b>2 buloane M12</b> prin polita in stalp.","<b>Polita reazema pe talpic</b> — greutatea trece prin compresiune. Cele 2 M12 sunt doar pozitie + anti-smulgere, nu reazem."],c:["talpic ×2","polita ×2"],f:["M12 ×4","H1 ×4"]},
    {t:"Grinda din spate pe polita",tools:"2 persoane · bormasina · suruburi H1",crit:1,
-    b:["Ridicati in doi <b>grinda din spate</b> (glulam) si aseaz-o <b>pe cele doua polite</b>.","Sta pe polita — nu o tineti voi tot timpul. Prinde-o de stalpi cu <b>H1</b> (o tin lipita).","Verifica fata de sus la <b>+2072</b> (1872 + 200)."],c:["GR spate ×1"],f:["H1"]},
+    b:["Ridicati in doi <b>grinda din spate</b> (glulam) si aseaz-o <b>pe cele doua polite</b>.","Sta pe polita, iar polita sta pe <b>talpic</b> — nu o tineti voi tot timpul. Verifica intai ca ambele talpice sunt montate. Prinde-o de stalpi cu <b>H1</b> (o tin lipita).","Verifica fata de sus la <b>+2072</b> (1872 + 200)."],c:["GR spate ×1"],f:["H1"]},
    {t:"Grinda din fata pe varful stalpilor",tools:"2 persoane · coltare C1 · suruburi H1",crit:1,
     b:["Aseaza <b>grinda din fata</b> (glulam) <b>PE varful</b> stalpilor S3/S4 (taiati la 1872) — sprijin direct.","Fixeaz-o cu cate un <b>coltar C1</b> pe fiecare fata + suruburi <b>H1</b>.","Verifica: ambele grinzi <b>perfect orizontale</b>, varful la +2072."],c:["GR fata ×1"],f:["C1 ×4","H1"]},
    {t:"Joistele",tools:"coltare C2 · suruburi H2 · metru",crit:1,
