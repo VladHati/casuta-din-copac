@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit complet · Casuta din copac · 18.06.2026</title>
+<style>
+  :root{
+    --bg:#0f1013; --panel:#16181d; --panel2:#1b1e24; --line:#24272e; --line2:#2e323a;
+    --txt:#e9e7e2; --dim:#9298a3; --faint:#646a74;
+    --amber:#d89152; --serif-c:#cfccc4;
+    --p0:#d2564a; --p1:#d98a4e; --p2:#c2a24f; --p3:#7d828c;
+    --ok:#7fae6e;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5}
+  body{max-width:920px;margin:0 auto;padding:40px 22px 100px}
+  a{color:var(--amber)}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
+  h1{font-size:34px;letter-spacing:-.02em;margin:8px 0 4px;font-weight:600}
+  .meta{color:var(--dim);font-size:13.5px;margin:0}
+  .meta .mono{font-family:var(--mono);font-size:12px}
+  .verdict{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--serif-c);margin:26px 0 6px;padding:18px 22px;border-left:2px solid var(--amber);background:linear-gradient(90deg,rgba(216,145,82,.06),transparent)}
+  .verdict b{color:var(--txt);font-style:normal;font-weight:600}
+  .verdict .em{font-style:italic}
+
+  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:26px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+  .stat .n{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1}
+  .stat .l{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:7px}
+  .stat.p0 .n{color:var(--p0)} .stat.p1 .n{color:var(--p1)} .stat.p2 .n{color:var(--p2)} .stat.p3 .n{color:var(--p3)}
+  .stat.tot .n{color:var(--txt)}
+
+  h2.sec{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt);margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:600}
+
+  .now{background:var(--panel);border:1px solid var(--p0);border-radius:14px;padding:18px 20px;margin:8px 0 4px}
+  .now h3{margin:0 0 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--p0)}
+  .now p.s{margin:0 0 12px;color:var(--dim);font-size:13px}
+  .now ol{margin:0;padding-left:20px}
+  .now li{margin:9px 0;font-size:14.5px}
+  .now li b{color:var(--txt)}
+  .now .tag{font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .now .sub{color:var(--dim);font-size:13px;margin-top:2px}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 6px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
+  .fbtn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 13px;cursor:pointer;transition:.15s}
+  .fbtn:hover{border-color:var(--line2);color:var(--txt)}
+  .fbtn.on{background:var(--panel2);color:var(--txt);border-color:var(--amber)}
+
+  .lens{margin:14px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .lens>summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:12px;background:var(--panel)}
+  .lens>summary::-webkit-details-marker{display:none}
+  .lens>summary .chev{color:var(--faint);font-family:var(--mono);transition:.2s}
+  .lens[open]>summary .chev{transform:rotate(90deg)}
+  .lens>summary .nm{font-size:15px;font-weight:600;flex:1}
+  .lens>summary .pills{display:flex;gap:5px}
+  .pill{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:20px;border:1px solid var(--line2)}
+  .pill.p0{color:var(--p0)} .pill.p1{color:var(--p1)} .pill.p2{color:var(--p2)} .pill.p3{color:var(--p3)}
+  .lens .body{padding:6px 18px 16px}
+
+  .f{padding:15px 0;border-top:1px solid var(--line)}
+  .f:first-child{border-top:0}
+  .f .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .f .id{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .sev{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:5px}
+  .sev.p0{background:rgba(210,86,74,.16);color:var(--p0)}
+  .sev.p1{background:rgba(217,138,78,.16);color:var(--p1)}
+  .sev.p2{background:rgba(194,162,79,.16);color:var(--p2)}
+  .sev.p3{background:rgba(125,130,140,.16);color:var(--p3)}
+  .f .ttl{font-size:15px;font-weight:600;margin:0;flex:1;min-width:60%}
+  .f .desc{margin:8px 0 0;font-size:14px;color:#d6d4cd}
+  .f .ev{margin:7px 0 0;font-size:12.5px;color:var(--dim)}
+  .f .ev b{color:var(--faint);font-weight:600;font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+  .f .fix{margin:7px 0 0;font-size:13.5px;color:var(--txt);padding-left:12px;border-left:2px solid var(--line2)}
+  .f .fix b{color:var(--amber);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  td .st{font-family:var(--mono);font-size:11px;font-weight:600}
+  .st.closed{color:var(--ok)} .st.partial{color:var(--p2)} .st.open{color:var(--p1)}
+  td.mono,.mono{font-family:var(--mono);font-size:12px}
+
+  .ok-list{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--ok);border-radius:12px;padding:16px 20px}
+  .ok-list li{margin:6px 0;font-size:13.5px;color:#cdd4c8}
+  .ok-list li b{color:var(--ok)}
+
+  .bud{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .bud .r{display:flex;justify-content:space-between;padding:11px 16px;font-size:13.5px;border-bottom:1px solid var(--line)}
+  .bud .r:last-child{border-bottom:0}
+  .bud .r .v{font-family:var(--mono)}
+  .bud .r.bad{background:rgba(210,86,74,.07)} .bud .r.bad .v{color:var(--p0)}
+  .bud .r.head{color:var(--dim)}
+  .note{color:var(--dim);font-size:12.5px;margin:10px 2px 0}
+  .ft{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+  <div class="kicker">Audit complet · toate unghiurile</div>
+  <h1>Casuta din copac</h1>
+  <p class="meta">18.06.2026 · 8 lentile · <span class="mono">44 findings</span> · metoda: 4 auditori specializati + calcul structural independent (nu doar citit documentatia)</p>
+
+  <div class="verdict">
+    Lemnul e <b>supradimensionat</b> &mdash; confirmat prin calcul, nu pe incredere. Structura <span class="em">nu se prabuseste.</span>
+    Riscul real sta in alta parte: <b>trei noduri structurale</b> pe care auditurile vechi le-au declarat prea repede „rezolvate", si <b>barierele care tin copilul sus</b> (poarta, sol moale) care sunt numite pe hartie, dar nu facute sa functioneze pentru o cadere de 2,2 m. Plus o livrare care nu se potriveste cu hartia si un buget care sare.
+  </div>
+
+  <div class="strip">
+    <div class="stat p0"><div class="n">4</div><div class="l">P0 critic</div></div>
+    <div class="stat p1"><div class="n">15</div><div class="l">P1 ridicat</div></div>
+    <div class="stat p2"><div class="n">13</div><div class="l">P2 mediu</div></div>
+    <div class="stat p3"><div class="n">12</div><div class="l">P3 minor</div></div>
+    <div class="stat tot"><div class="n">44</div><div class="l">total</div></div>
+  </div>
+
+  <h2 class="sec">De rezolvat inainte de orice</h2>
+  <div class="now">
+    <h3>Inainte sa urce copilul (P0)</h3>
+    <p class="s">Pana la astea trei, platforma e interzisa la joaca.</p>
+    <ol>
+      <li><b>Poarta reala la capul scarii</b> <span class="tag">SIG-03</span><div class="sub">Acum e doar un gol in balustrada pe S3, fix deasupra scarii de 49°. Zero balama, zero zavor in proiect. Cel mai grav punct. Canat + arc auto-inchidere + zavor sus. Pana exista, golul ramane inchis cu o travee.</div></li>
+      <li><b>Sol moale real, nu simbolic</b> <span class="tag">SIG-01 + SIG-02</span><div class="sub">„~5 m², fara grosime, sub casuta" nu protejeaza o cadere de 2,2 m. Standardul (BS EN 1177): pat de scoarta afanat ~250&ndash;300 mm, delimitat, pe TOATA zona de impact &mdash; 3 laturi + nasul consolei + baza scarii, nu doar sub podea.</div></li>
+      <li><b>Reazem sub polita grinzii spate</b> <span class="tag">STR-01</span><div class="sub">Grinda care duce ~jumatate de podea atarna de 2 buloane M12 in forfecare, fara prag de rezemare. Pune un cleat/coltar dedesubt (ideal papuc de grinda) ca sa „calce" pe ceva. Propteaua nu se scoate pana atunci.</div></li>
+    </ol>
+  </div>
+  <div class="now" style="border-color:var(--p1);margin-top:14px">
+    <h3 style="color:var(--p1)">Inainte sa pui mana pe fierastrau (P1 executie)</h3>
+    <p class="s">Cu Tudor pe santier.</p>
+    <ol>
+      <li><b>Grinda fata = 3 adulti sau sprijin temporar</b> <span class="tag">FEZ-01</span><div class="sub">~32 kg ridicat peste cap la 2 m si tinut cat prinzi C1. Nu „2 persoane" cu un copil. Pune 2 blocuri de sprijin sub ea, ca la grinda spate.</div></li>
+      <li><b>Scula corecta la taieri in inaltime</b> <span class="tag">FEZ-02</span><div class="sub">Retezatul glisant e scula de banc &mdash; nu taie stalpul in picioare la 1,87 m, nici copacul la 2,78 m. Acolo: circular de mana pe 4 fete + coada de vulpe.</div></li>
+      <li><b>Numara livrarea</b> <span class="tag">LIV-01 + LIV-02</span><div class="sub">14 coltare C2 si 3 pachete inox &mdash; hartia se contrazice (subtotalul platit = 12 si 2). Daca-s scurte, completezi inainte de fisa 4&ndash;6.</div></li>
+      <li><b>Casca, trusa prim-ajutor, varfuri Heco</b> <span class="tag">FEZ-03 + SIG-06</span><div class="sub">Lipsesc din lista de scule. Si varfurile de Heco 8×200 batute oblic ies din lemn &mdash; taie/capaceste.</div></li>
+    </ol>
+  </div>
+
+  <h2 class="sec">Toate findings</h2>
+  <div class="filters" id="filters">
+    <button class="fbtn on" data-f="all">Toate · 44</button>
+    <button class="fbtn" data-f="p0">P0 · 4</button>
+    <button class="fbtn" data-f="p1">P1 · 15</button>
+    <button class="fbtn" data-f="p2">P2 · 13</button>
+    <button class="fbtn" data-f="p3">P3 · 12</button>
+  </div>
+  <div id="findings"></div>
+
+  <h2 class="sec">Ce e corect (verificat, nu doar citit)</h2>
+  <div class="ok-list"><ul style="margin:0;padding-left:18px">
+    <li><b>Lemnul e supradimensionat.</b> Glulam 90×200 pe 2,1 m: efort ~4,3 din ~14&ndash;16 N/mm² disponibili, sageata L/1235. Joiste si dusumea la fel. Nu lemnul e veriga slaba.</li>
+    <li><b>Copacul nu poarta sarcina.</b> Cei 4 stalpi pe papuci U in beton duc tot; corcodusul doar trece prin gaura. Conceptul e corect.</li>
+    <li><b>Secventa de proptele/contravantuiri e bine gandita.</b> Pasul 9 interzice explicit scoaterea proptelelor inainte de contrafise.</li>
+    <li><b>Detalii de siguranta deja corecte:</b> sipci balustrada verticale (non-catarabile) + rigla jos; masa prinsa de cadru, nu de copac; scara isi recunoaste singura unghiul prost.</li>
+    <li><b>Web sanatos:</b> zero linkuri rupte, zero imagini lipsa pe 30 de pagini; netlify.toml coerent; PyMuPDF/fitz eliminat confirmat.</li>
+  </ul></div>
+
+  <h2 class="sec">Cele 11 defecte din auditul precedent (13.06)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Status</th><th>Dovada in fisierele de azi</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">F1</td><td><span class="st closed">INCHIS</span></td><td>balustrada+masa in Faza 1 (ghid-montaj L442, book.py)</td></tr>
+      <tr><td class="mono">F2</td><td><span class="st closed">INCHIS</span></td><td>stalpisor 58×58 in fisa-11; zero „7x7"</td></tr>
+      <tr><td class="mono">F3</td><td><span class="st closed">INCHIS</span></td><td>C1 = Heco 6×100 (fisa-05, imbinari nod A); 8×200 ramane doar la contrafise</td></tr>
+      <tr><td class="mono">F4</td><td><span class="st closed">INCHIS</span></td><td>corcodus la „+2780 de la sol" (fisa-07); zero „deasupra podelei"</td></tr>
+      <tr><td class="mono">F5</td><td><span class="st closed">INCHIS</span></td><td>PDF-urile regenerate, mtime mai nou ca HTML</td></tr>
+      <tr><td class="mono">F6</td><td><span class="st closed">INCHIS</span></td><td>README descrie structura + 2 sisteme PDF</td></tr>
+      <tr><td class="mono">F7</td><td><span class="st closed">INCHIS</span></td><td>„10 trepte (11 niveluri)" in tracker</td></tr>
+      <tr><td class="mono">F8</td><td><span class="st closed">INCHIS</span></td><td>cod mort mutat in tools-fise/_arhiva</td></tr>
+      <tr><td class="mono">F9</td><td><span class="st closed">INCHIS</span></td><td>STATUS.md complet la zi</td></tr>
+      <tr><td class="mono">F10</td><td><span class="st partial">PARTIAL</span></td><td>lock-ul xlsx inca prezent fizic (gitignored, nu blocheaza)</td></tr>
+      <tr><td class="mono">F11</td><td><span class="st open">DESCHIS</span></td><td>cosmetic: lipseste PDF/01-... din sectiuni</td></tr>
+    </tbody>
+  </table>
+  <p class="note">9 inchise · 1 partial · 1 deschis cosmetic. Reparatiile vechi tin. Defectele NOI de mai sus sunt pe alt nivel (rezistenta reala + siguranta copil), pe care auditul de documentatie din 13.06 nu le-a atins.</p>
+
+  <h2 class="sec">Buget</h2>
+  <div class="bud">
+    <div class="r head"><span>Pozitie</span><span class="v">lei</span></div>
+    <div class="r"><span>Plafon (pus de tine)</span><span class="v">6.600</span></div>
+    <div class="r"><span>Cheltuit / sosit (materiale marcate) + livrare 215</span><span class="v">~5.180</span></div>
+    <div class="r"><span>Azi, fara balustrada (topcoat + sol)</span><span class="v">~170+</span></div>
+    <div class="r"><span>Faza 2 (pereti 608, capriori 156, scara ~730, invelitoare, sol)</span><span class="v">~1.500&ndash;2.000</span></div>
+    <div class="r"><span>Nebugetate: mana curenta balustrada, sol moale real, poarta, M12×140, rezerve</span><span class="v">~+800&ndash;1.500</span></div>
+    <div class="r bad"><span>Total realist proiect</span><span class="v">~7.500&ndash;8.700</span></div>
+    <div class="r bad"><span>Depasire fata de plafon</span><span class="v">~1.000&ndash;2.100</span></div>
+  </div>
+  <p class="note">Plafonul de 6.600 nu mai tine odata ce sol moale e facut ca lumea (nu „5 m² simbolic") si balustrada are mana curenta in buget. Ori ridici plafonul cu ~1.500&ndash;2.000, ori Faza 2 se intinde in timp. Decizie constienta, nu surpriza la final.</p>
+
+  <div class="ft">CASUTA DIN COPAC · audit 18.06.2026 · pentru Vlad &amp; Tudor</div>
+
+<script>
+const F = [
+ // STRUCTURA
+ {id:'STR-01',sev:'p0',lens:'STR',ttl:'Nodul polita (grinda spate pe offcut + 2× M12) — veriga cea mai slaba',
+  desc:'Grinda din spate duce ~45-50% din podea si se reazema pe un bloc de offcut ~120 mm prins de fata stalpului doar cu 2 buloane M12. Nimic sub el: toata sarcina verticala atarna de buloane in forfecare. Modul clasic de cedare al unui ledger prost detaliat.',
+  ev:'platforma-3d.html L141-145 (polita = box pe fata stalpului); imbinari nod B; calcul: ~6,2 kN cu copii care sar, utilizare ~60% fara prag de rezemare.',
+  fix:'Adauga un reazem care preia vertical: cleat-opritor sub polita cu inca 1-2 M12, SAU coltar de otel, SAU ideal papuc de grinda 90×200 in stalp. Propteaua de sub grinda spate nu se scoate pana atunci.'},
+ {id:'STR-02',sev:'p1',lens:'STR',ttl:'Bulon baza M12×120 prea scurt pentru through-bolt complet',
+  desc:'Strapungere = aripa papuc 4 + stalp 100 + aripa papuc 4 = 108 mm. Din 120 raman 12 mm pentru saiba + piulita, cand ai nevoie de ~12,5. Filetul abia prinde; cu 2 saibe sau papuc mai gros, piulita nu se mai inchide.',
+  ev:'materiale.html (B2 M12×120); fb.py/det.py B2; papuc 101×100 otel 4 mm.',
+  fix:'Treci la M12×140 (sau 130) pentru baza. Afecteaza doar 8 buloane, diferenta de pret neglijabila.'},
+ {id:'STR-03',sev:'p1',lens:'STR',ttl:'Anti-smulgere reala la consola — zero rezerva, depinde 100% de C2',
+  desc:'Un copil pe nasul consolei ridica capatul din spate al joistei cu ~0,4 kN (calculat, nu teoretic). Cele 14 C2 sunt singurul lucru care tine podeaua jos. Daca lipsesc 2 (vezi LIV-01) sau unul e prins prost, ai un punct fara redundanta.',
+  ev:'fb.py stage4/stage6; det.py C2 „ridicare"; R_back = −0,41 kN la varful consolei.',
+  fix:'C2 la FIECARE reazem fara exceptie (toate 6 joiste + ambele capete grinda spate = 14). Ia 2-4 C2 in plus ca rezerva.'},
+ {id:'STR-04',sev:'p2',lens:'STR',ttl:'Stabilitate laterala — depinde de contrafise din offcut, nemasurate, prinse slab',
+  desc:'Stalpii fata sunt liberi pana la grinda; rigiditatea vine din diagonale. Conceptul exista (diagonale in 3 plane + sub consola), dar toate sunt „din offcut/verifica" si prinse cu 3× H1 lemn-pe-lemn fara coltar. Pe directia fata-spate, balconul deschis nu are perete de bracaj.',
+  ev:'platforma-3d.html L166-174; imbinari nod D (CF cu 3× H1, fara coltar); audit.html („stabilitate = conditie").',
+  fix:'Nu trata CF ca „gratis daca ajunge offcut". Daca nu ajung 6 contrafise solide (~70-80 mm), cumpara o grinda ieftina. Diagonala de sub nas se prinde pe lateral/cu coltar (lucreaza la intindere).'},
+ {id:'STR-05',sev:'p3',lens:'STR',ttl:'Terminologie: grinda nu face consola, joistele o fac',
+  desc:'Brief-ul zice „grinda pe 2300 + consola 700". Real: grinzile se intind 2100 intre stalpi si NU fac consola; joistele 100×100 sunt continue cu consola 700. Doar claritate, niciun pericol.',
+  ev:'fb.py beam_*_g (x:0→2100) vs joists_g (z:−700→D); Debitare P3 „~2300" = lung. taiere.',
+  fix:'Clarificare in brief/cut-list ca sa nu se confunde drumul de incarcare. Fara actiune fizica.'},
+ {id:'STR-06',sev:'p3',lens:'STR',ttl:'C1 ×4 si C2 ×14 — noduri critice fara piesa de schimb',
+  desc:'Comanda are exact 4 C1 si 14 C2. Daca unul se indoaie la montaj sau se gaureste gresit, te opresti si revii la magazin.',
+  ev:'Tracker Comanda (C1 ×4, C2 ×14 exact).',
+  fix:'Ia 1-2 C1 si 2-4 C2 in plus (~30-40 lei). Asigurare ieftina.'},
+ // ARBORE
+ {id:'ARB-02',sev:'p2',lens:'ARB',ttl:'Gaura copac: joc 3-5 cm probabil insuficient pentru un corcodus matur',
+  desc:'Pozele arata un corcodus matur cu coroana mare, nu un puiet. Un copac cu coroana de 3-4 m se balanseaza serios la vant; deformatia la +2200 poate depasi jocul de 30-50 mm. Trunchiul ar freca dusumeaua si ar impinge sarcini laterale in platforma.',
+  ev:'poza 8BA4057D (coroana mare); fb.py stage7 „joc 3-5 cm"; trunchi Ø~160-180.',
+  fix:'Mareste jocul la minim 8-10 cm, mai mult pe directia vantului. Test empiric: impinge trunchiul si vezi cat se misca la +2,2 m. Daca retezi coroana jos, problema scade mult (dar pierzi umbra) — decizie constienta.'},
+ {id:'ARB-03',sev:'p2',lens:'ARB',ttl:'Trunchiul are semne de uzura la baza — confirma sanatatea',
+  desc:'In poze scoarta e crapata la baza, posibila degradare. Un trunchi care putrezeste isi schimba diametrul, lasa aschii in jurul gaurii, si „masa-copac" are termen scurt.',
+  ev:'poze 759D140F, C1ABE475; audit.html („trunchi mort = termen de expirare").',
+  fix:'Confirma vizual ca portiunea prin podea (~+2,2 m) e lemn sanatos. Trateaza capatul retezat (tesit + capac) sa scurga apa.'},
+ // LIVRARE
+ {id:'LIV-01',sev:'p1',lens:'LIV',ttl:'C2 coltare — livrare posibil 12 in loc de 14',
+  desc:'Comanda, Platforma premium si paritatea spun 14. Dar cardul materiale.html arata „12 buc · 57,96 lei" (= exact 12×4,83) si subtotalul platit (3.886,24) corespunde la 12. Daca au sosit 12, lipsesc cele 2 anti-smulgere de la grinda spate.',
+  ev:'materiale.html L185-188 vs Tracker Comanda („14"); 57,96/4,83 = 12.',
+  fix:'Numara fizic coltarele 90×90. Daca-s 12, mai iei 2 (738910) inainte de fisa 4/6. Nu-s optionale.'},
+ {id:'LIV-02',sev:'p2',lens:'LIV',ttl:'Inox 5×60 — livrare posibil 2 pachete in loc de 3',
+  desc:'Cardul materiale.html arata „2 pac · 111,64 lei" (= 2×55,82). Restul surselor spun 3 pac/300. Necesar ~204. Cu 200 esti la limita exacta, zero rezerva pentru pierderi.',
+  ev:'materiale.html L223 vs Tracker Comanda („3"); paritate „300 buc".',
+  fix:'Numara pachetele la primire. Daca-s 2, mai iei 1 (10528829, ~56 lei). 200 vs 204 e prea pe muchie.'},
+ // BUGET
+ {id:'BUD-01',sev:'p1',lens:'BUD',ttl:'Plafonul de 6.600 nu mai tine — depasire realista ~1.000-2.100',
+  desc:'Cheltuit/sosit ~5.180. Faza 2 ramasa ~1.500-2.000. Plus piese nebugetate (mana curenta balustrada, sol moale real, poarta, M12×140). Total realist ~7.500-8.700.',
+  ev:'Tracker foaia Materiale (sume pe linie) + findings DOC-04, SIG-01, SIG-03.',
+  fix:'Decizie constienta: ridici plafonul cu ~1.500-2.000, SAU intinzi Faza 2 in timp. Nu lasa sa fie surpriza la final.'},
+ {id:'BUD-02',sev:'p2',lens:'BUD',ttl:'Piese de siguranta si materiale lipsa din buget',
+  desc:'Nu au rand in tracker: mana curenta balustrada (~400-700), pat de sol moale real ~250-300 mm (~300-600 vs „5 m² simbolic"), feronerie poarta (~100-200), extra C1/C2 + M12×140. Toate sunt obligatorii, niciuna bugetata.',
+  ev:'Tracker foile Materiale / Platforma premium (lipsesc randurile).',
+  fix:'Adauga-le ca linii in tracker acum, ca sa vezi numarul real inainte sa cumperi pe bucati.'},
+ // DOCUMENTATIE
+ {id:'DOC-01',sev:'p1',lens:'DOC',ttl:'Stalpisori: 6 in materiale.html vs 7 peste tot',
+  desc:'materiale.html L393 zice „×6". Debitare, foaia Materiale si fisa-11 zic 7. Cine cumpara dupa materiale.html ia 6 — balustrada nu inchide perimetrul (lipseste unul de colt / nas consola).',
+  ev:'materiale.html L393 („×6") vs Debitare P13, Materiale R18, fisa-11 BOM.',
+  fix:'Schimba ×6 → ×7 in materiale.html. Regenereaza 06-Materiale.pdf.'},
+ {id:'DOC-02',sev:'p2',lens:'DOC',ttl:'C2 = 12 (vechi) in ghid-montaj si Debitare; corectul e 14',
+  desc:'Inventarul ghid-montaj L123 zice „C1×4 + C2×12, qty 16"; Debitare P22 idem. Lipsesc cele 2 pentru grinda spate. Cine numara din inventar pleaca la magazin cu 16 coltare, nu 18.',
+  ev:'ghid-montaj L123; Debitare P22; vs Comanda/Materiale „14".',
+  fix:'ghid-montaj L123: C2×12→14, qty 16→18. Debitare P22: 12→14.'},
+ {id:'DOC-03',sev:'p1',lens:'DOC',ttl:'Subtotal comanda 3.886,24 nu corespunde cantitatilor curente',
+  desc:'Header Comanda zice subtotal 3.886,24 (= C2×12 + H4×2 + restul). Datele curente (C2=14, H4=3, status SOSIT) dau 3.951,72 — cu 65,48 mai mult. Ambiguitate contabila: ori s-au cumparat suplimentar 2 C2 + 1 inox neinregistrate, ori statusul SOSIT e gresit pentru ele.',
+  ev:'Comanda Hornbach R2 vs sumele pe linie din xlsx.',
+  fix:'Clarifica: daca +2 C2 / +1 inox au fost cumparate separat, adauga linie; daca nu, schimba statusul lor in „de cumparat". Asta inchide si LIV-01/02.'},
+ {id:'DOC-04',sev:'p2',lens:'DOC',ttl:'Mana curenta balustrada lipseste din tracker',
+  desc:'45×70, ~9 m total, exista in Debitare P14 si fisa-11, dar NU are rand in foaia Materiale sau Platforma premium. O pozitie de ~400-700 lei fara buget alocat.',
+  ev:'Debitare P14, fisa-11 BOM vs foaia Materiale (lipseste randul).',
+  fix:'Adauga rand balustrada-mana curenta in Materiale + Platforma premium cu pret estimat.'},
+ {id:'DOC-05',sev:'p2',lens:'DOC',ttl:'Foaia Materiale R2 inca zice „Faza 2 ...balustrada..."',
+  desc:'Nota de buget din Materiale R2 listeaza balustrada in Faza 2, desi decizia F1 a mutat-o in Faza 1. Reziduu necurattat.',
+  ev:'Tracker Materiale R2.',
+  fix:'Scoate „balustrada" din enumerarea Faza 2.'},
+ {id:'DOC-06',sev:'p3',lens:'DOC',ttl:'Sipci balustrada lipsesc din Comanda si Platforma premium',
+  desc:'Sipci (~24, goluri <9 cm) sunt in foaia Materiale si fisa-11, dar categoria „balustrada" lipseste complet din Platforma premium (doar scara are material acolo).',
+  ev:'Materiale R19, fisa-11 vs Platforma premium (absent).',
+  fix:'Adauga rand balustrada-lemn in Platforma premium.'},
+ {id:'DOC-07',sev:'p3',lens:'DOC',ttl:'book.html — restura de build in tools-fise',
+  desc:'Fisier temporar de build (124 KB), gitignored dar nesters. Cosmetic.',
+  ev:'tools-fise/book.html, regenerat de book.py.',
+  fix:'Sterge manual; se regenereaza la fiecare run.'},
+ // TECH
+ {id:'GIT-01',sev:'p1',lens:'TECH',ttl:'Commit nepublicat — Netlify serveste versiunea veche',
+  desc:'Local e cu 1 commit inaintea origin/main (e4686fe: tracker + materiale.html C2/H4). Netlify face deploy la push, deci site-ul live arata date vechi despre materiale.',
+  ev:'git rev-list --left-right --count origin/main...main → 0 1.',
+  fix:'git push origin main acum. Rezolva in ~1 minut.'},
+ {id:'PIPE-02',sev:'p1',lens:'TECH',ttl:'Pipeline-ul depinde de CWD, ordinea nedocumentata',
+  desc:'book.py/emit2.py/idx2.py incarca data.pkl pe cale relativa. Trebuie rulate din tools-fise/. README mentioneaza doar book.py, omite det.py→fb.py→emit2.py→idx2.py. Cine ruleaza din root primeste FileNotFoundError.',
+  ev:'tools-fise/book.py L4 (path relativ); README incomplet.',
+  fix:'README: documenteaza ordinea „cd tools-fise && det→fb→emit2→idx2→book". Sau cai absolute cu __file__.'},
+ {id:'PIPE-03',sev:'p1',lens:'TECH',ttl:'requirements.txt nu exista',
+  desc:'build_pdfs.py trimite la requirements.txt care lipseste. Dependinte reale nedocumentate: weasyprint, markdown, pypdf, numpy, Pillow.',
+  ev:'ls requirements* → not found; grep import in axon2.py.',
+  fix:'Creeaza requirements.txt cu cele 5 + nota brew pango (macOS).'},
+ {id:'GIT-02',sev:'p3',lens:'TECH',ttl:'Fisiere necomise in working tree',
+  desc:'8 diferente nestaged (sterse, modificate, untracked: DE-LUAT-AZI, _archive, DONE-BRIEF-uri). Risc minor de pierdere.',
+  ev:'git status --short.',
+  fix:'Commit de curatenie (DONE-BRIEF + DE-LUAT da, _archive nu), apoi push.'},
+ {id:'GIT-03',sev:'p3',lens:'TECH',ttl:'.gitignore nu prinde lock-ul Excel (Windows)',
+  desc:'Are .~lock.*# (LibreOffice) dar nu ~$*.xlsx (Excel). Daca se deschide pe Windows, lock-ul poate ajunge in repo.',
+  ev:'.gitignore.',
+  fix:'Adauga ~$*.xlsx.'},
+ {id:'WEB-02',sev:'p3',lens:'TECH',ttl:'Fara redirects 404 in Netlify',
+  desc:'netlify.toml nu are [[redirects]]. URL fara .html → 404. Minor, linkurile interne folosesc .html.',
+  ev:'netlify.toml.',
+  fix:'Optional: adauga redirects daca vrei URL-uri curate.'},
+ {id:'WEB-04',sev:'p3',lens:'TECH',ttl:'Stub-urile redirect sunt corecte — pastreaza-le',
+  desc:'catalog-piese / comanda-corespondent / imbinari-ghid (~770 B) sunt redirect-uri cu meta refresh. Nu-s gunoi, tin URL-urile vechi bookmark-ate.',
+  ev:'continut confirmat (meta refresh + location.replace).',
+  fix:'Niciuna. Corect asa.'},
+ {id:'PIPE-04',sev:'p3',lens:'TECH',ttl:'pkl-urile sunt generate, nu in repo',
+  desc:'tools-fise/*.pkl gitignored corect. Cine cloneaza si ruleaza book.py fara fb.py inainte primeste eroare.',
+  ev:'git ls-files tools-fise/*.pkl → gol.',
+  fix:'Documenteaza (legat de PIPE-02) ca pkl-urile se genereaza.'},
+ {id:'PIPE-05',sev:'p3',lens:'TECH',ttl:'book.py scrie book.html in CWD',
+  desc:'Cale relativa; gitignored corect, dar din alta locatie apare in locul gresit.',
+  ev:'book.py L237.',
+  fix:'Minor — ruleaza mereu din tools-fise/.'},
+ // SIGURANTA
+ {id:'SIG-01',sev:'p0',lens:'SIG',ttl:'Solul moale e simbolic, nu protectie de cadere',
+  desc:'Specificat „~5 m² scoarta/nisip" fara grosime. Pentru cadere de 2,2 m, BS EN 1177 cere strat afanat ~250-300 mm tasat. Scoarta imprastiata subtire pe pamant tare = practic zero amortizare.',
+  ev:'materiale.html, DE-LUAT, timeline.html; BS EN 1177 (~300 mm = cadere ~3 m).',
+  fix:'Pat continut ~250-300 mm tasat, delimitat (bordura), reumplut periodic. Alternativ placi cauciuc certificate HIC. Scoate „~5 m², fara grosime" din toate paginile.'},
+ {id:'SIG-02',sev:'p0',lens:'SIG',ttl:'Zona moale nu acopera unde cade de fapt copilul',
+  desc:'Cine cade peste balustrada aterizeaza in afara amprentei, la ~1 m de margine. Sub nasul consolei si la baza scarii nu e prevazut nimic. Solul e doar „sub casuta".',
+  ev:'ghid-montaj (consola 700); fisa-11 (balustrada 3 laturi + nas); materiale (sol „sub casuta").',
+  fix:'Mapeaza zona de impact = banda ~1,5 m in jurul fiecarei laturi expuse + sub nas + baza scarii. Sol moale pe toata banda.'},
+ {id:'SIG-03',sev:'p0',lens:'SIG',ttl:'Poarta nu exista — e doar un gol in balustrada',
+  desc:'Pe S3 (capul scarii) „poarta" inseamna literal o intrerupere a balustradei. Zero canat, balama, arc sau zavor in tot proiectul. Un gol deschis la 2,2 m deasupra unei scari de 49° = cel mai periculos punct, mai ales pentru prietenii mai mici ai lui Tudor.',
+  ev:'scara-3d.html L138/148 („gol = poarta"); grep: 0 rezultate balama/arc/zavor.',
+  fix:'Poarta reala cu canat: balama cu arc de auto-inchidere + zavor cu deschidere in sus (peste mana copilului mic), deschidere spre interior. Pana atunci golul ramane inchis cu travee demontabila. Adauga feroneria la materiale.'},
+ {id:'SIG-04',sev:'p1',lens:'SIG',ttl:'Golul trunchi-podea poate prinde un picior',
+  desc:'Joc inelar 3-5 cm langa un trunchi care se misca poate prinde o glezna mica sau ciupi (efect de foarfeca la oscilatie). Documentatia trateaza golul doar pentru miscarea copacului, niciodata pentru piciorul copilului.',
+  ev:'fisa-07, ghid pas 7 (joc 3-5 cm); 0 mentiuni manson/perie.',
+  fix:'Manson flexibil / guler-perie peste gol: lasa copacul sa se miste, nu lasa piciorul sa intre. Prins de podea, nu de copac.'},
+ {id:'SIG-05',sev:'p1',lens:'SIG',ttl:'Acces in Faza 1 fara scara fixa — risc de scara improvizata',
+  desc:'Scara e Faza 2. Intre platforma gata si scara montata, singurul urcus e o scara de imprumut, pe care copiii o vor folosi nesecurizata. Si golul „poarta S3" sta deschis fara scara dedesubt.',
+  ev:'timeline.html (scara = Faza 2); ghid pas 11.',
+  fix:'Regula: platforma interzisa la joaca pana exista scara fixa + poarta + sol moale. Ideal muta scara mai devreme — e bariera de acces, nu finisaj. Tine golul S3 inchis pana e scara.'},
+ {id:'SIG-06',sev:'p1',lens:'SIG',ttl:'Varfuri de Heco 8×200 ies din lemn la toe-screw',
+  desc:'Un surub de 200 mm batut oblic intr-o piesa de 90-100 mm iese pe fata opusa cu varful ascutit. Sub podea (unde copilul baga mana de la masa-copac) si la contrafise raman varfuri expuse.',
+  ev:'materiale (H1 8×200); ghid pas 4/5/9 (oblic); AUDIT-2026-06-13 F3.',
+  fix:'La fiecare toe-screw verifica daca varful iese; taie/poleste + capac, sau alege 8×160 unde 200 strapunge.'},
+ {id:'SIG-07',sev:'p2',lens:'SIG',ttl:'Gol balustrada „<9 cm" — verifica cu sablon, tinta ≤85 mm',
+  desc:'„<9 cm" = 90 mm e fix in banda periculoasa de cap-blocat (89-110 mm). Sipcile verticale 18×18 sunt corecte (non-catarabile), dar golul trebuie masurat cu sablon, nu la ochi.',
+  ev:'fisa-11 (h 1 m, goluri <9 cm); DE-LUAT (sipci 18×18).',
+  fix:'Tinta gol ≤85 mm, verificat cu sablon fizic de 89 mm. Pastreaza sipcile verticale; nimic „calcabil" orizontal pe interior.'},
+ {id:'SIG-08',sev:'p2',lens:'SIG',ttl:'Stalpisori balustrada — 1 bulon M10 fiecare e marginal',
+  desc:'7 stalpisori 58×58 h=1000 prinsi cu doar ~12 M10 = ~1-2/stalpisor. La 1 m, un copil care se atarna da un moment mare; cu un singur M10 stalpisorul se roteste/slabeste in timp.',
+  ev:'fisa-11 („bulonati de cadru", test prin impingere); DE-LUAT (M10 12 buc / 7 stalpisori).',
+  fix:'Minim 2 M10 per stalpisor, decalate pe verticala (brat de parghie) → ~14 buc, nu 12. Test de impingere cu forta de adult pe fiecare, mai ales pe nas.'},
+ {id:'SIG-09',sev:'p2',lens:'SIG',ttl:'Finisaj: fara timp de curare + topcoat nedecis ca sigur pentru copil',
+  desc:'Nu se da timp de uscare inainte de joaca. Uleiul de tec ramane „activ" zile; copiii ating/musca suprafetele. Topcoatul e „alegerea ta de culoare", fara cerinta sa fie certificat sigur pentru jucarii.',
+  ev:'fisa-10 pas 4 (ulei, fara timp); materiale (F3 fara criteriu toxicitate).',
+  fix:'Regula: uscare completa conform fisei produsului (zile, nu ore) inainte de joaca. Alege F3 explicit „sigur jucarii / EN 71-3 / saliva-fast", nu doar culoare.'},
+ {id:'SIG-10',sev:'p3',lens:'SIG',ttl:'Muchii vii + aschii la larice',
+  desc:'Laricele face aschii nefinist, mai ales la decupajul gaurii si la capetele taiate. Ghidul cere tesire doar la stalpi (pas 2), nu generalizat.',
+  ev:'ghid pas 2 (tesire doar stalp); fisa-10.',
+  fix:'Rotunjeste/slefuieste toate muchiile accesibile (mana curenta, marginea podelei, decupaj copac, capete trepte) + rupe muchia + ulei.'},
+ // FEZABILITATE
+ {id:'FEZ-01',sev:'p1',lens:'FEZ',ttl:'Grinda fata pe varful stalpilor — nu e operatie pentru 2 (cu un copil)',
+  desc:'Glulam ~32 kg ridicat peste cap la +2 m si TINUT cat pui C1 + bati suruburile, FARA reazem (spre deosebire de grinda spate care sta pe polita). Realist 3 adulti, nu „2 persoane" cu un copil de 11 ani. Risc: grinda scapa peste copil.',
+  ev:'ghid pas 5 (fara reazem) vs pas 4 (grinda spate pe polita); greutate calculata.',
+  fix:'Pune 2 blocuri de sprijin temporare sub grinda fata, SAU 3 adulti, SAU scripete. Copilul nu sub sarcina suspendata. Marcheaza pasul „3 adulti sau sprijin".'},
+ {id:'FEZ-02',sev:'p1',lens:'FEZ',ttl:'Retezatul glisant — scula gresita pentru taieri in inaltime',
+  desc:'Stalpii stau verticali in ancore. Taierea la +1872 si copacul la +2780 cer taiere in pozitie. Fierastraul de retezat glisant e scula de banc — nu poate fi dus pe scara sa taie un stalp in picioare. Contradictie de proces in scule.html.',
+  ev:'scule.html (retezat = scula de banc); ghid pas 2; fisa-07 (copac +2780).',
+  fix:'Pentru taieri in pozitie: circular de mana pe 4 fete + coada de vulpe. Retezatul ramane pt debitare la sol. Clarifica in ghid care scula la care taiere.'},
+ {id:'FEZ-03',sev:'p1',lens:'FEZ',ttl:'Lista de scule fara protectie esentiala',
+  desc:'Are ochelari/manusi/antifoane, dar lipsesc casca (mai ales pt copil cand se ridica grinzi sus), trusa de prim ajutor, ham pentru lucru la marginea platformei fara balustrada.',
+  ev:'scule.html (fara ham/casca/prim ajutor).',
+  fix:'Adauga casca (adult + copil), trusa prim-ajutor, eventual ham + ancoraj. Copilul poarta casca cand se manevreaza piese grele sus.'},
+ {id:'FEZ-04',sev:'p2',lens:'FEZ',ttl:'Rolul copilului nedefinit la pasii critici; proptelele depind de offcut',
+  desc:'Secventa de stabilitate e buna (proptele baza+varf, avertisment pas 9). Dar PT/CF sunt „din offcut/verifica" — daca nu ajung, omul e tentat sa sara peste proptea. Si nicaieri nu scrie ce face copilul in siguranta la ridicari/taieri.',
+  ev:'ghid pas 1/9; materiale (CF/PT „din offcut/verifica").',
+  fix:'Asigura din start lemn pentru PT+CF (nu depinde de offcut). Adauga la fiecare pas critic „copilul: tine sculele / sta la distanta / nu sub grinda".'},
+ {id:'FEZ-05',sev:'p2',lens:'FEZ',ttl:'Fereastra de vreme pentru ulei/topcoat — fara conditie explicita',
+  desc:'Uleiul si topcoatul cer lemn uscat + zile de uscare. timeline are pasii de finisaj ca simple checkbox-uri, fara conditie de vreme si fara ordine (grund→uscare→topcoat→uscare→abia apoi joaca).',
+  ev:'fisa-10; timeline.html (finisaje ca checkbox).',
+  fix:'Scrie secventa de finisaj cu vreme uscata + timpii intre straturi si inainte de joaca. Leaga „joaca" de finalizarea uscarii.'},
+ {id:'FEZ-06',sev:'p3',lens:'FEZ',ttl:'Scara Faza 2 abrupta (49°) — decide acum',
+  desc:'Proiectul recunoaste 49° („sub zona buna 600-660"). Pentru copil + prieteni mai mici, abrupt la coborare. Faza 2, dar decizia se ia acum.',
+  ev:'scara-3d.html (49°, optiuni conditionale).',
+  fix:'Decide acum sa lungesti baza la ~2400-2600 mm (~40-42°) daca terenul permite. Daca ramane 49°: mana curenta continua ambele parti + nas + antiderapant + poarta auto-inchidere sus.'},
+];
+
+const lenses = [
+ {k:'STR',nm:'Structura & rezistenta'},
+ {k:'ARB',nm:'Arborele viu'},
+ {k:'LIV',nm:'Materiale & livrare'},
+ {k:'BUD',nm:'Buget'},
+ {k:'DOC',nm:'Documentatie & coerenta'},
+ {k:'TECH',nm:'Web · pipeline · git'},
+ {k:'SIG',nm:'Siguranta copil'},
+ {k:'FEZ',nm:'Fezabilitate executie'},
+];
+const sevRank={p0:0,p1:1,p2:2,p3:3};
+let filter='all';
+
+function render(){
+  const root=document.getElementById('findings');
+  root.innerHTML='';
+  lenses.forEach(L=>{
+    let items=F.filter(f=>f.lens===L.k && (filter==='all'||f.sev===filter));
+    if(!items.length) return;
+    items.sort((a,b)=>sevRank[a.sev]-sevRank[b.sev]);
+    const counts={p0:0,p1:0,p2:0,p3:0};
+    F.filter(f=>f.lens===L.k).forEach(f=>counts[f.sev]++);
+    const det=document.createElement('details');
+    det.className='lens'; det.open=(filter!=='all'|| ['STR','SIG'].includes(L.k));
+    let pills='';
+    ['p0','p1','p2','p3'].forEach(s=>{if(counts[s])pills+=`<span class="pill ${s}">${counts[s]} ${s.toUpperCase()}</span>`});
+    det.innerHTML=`<summary><span class="chev">&#9656;</span><span class="nm">${L.nm}</span><span class="pills">${pills}</span></summary>
+      <div class="body">${items.map(f=>`
+        <div class="f">
+          <div class="top"><span class="sev ${f.sev}">${f.sev.toUpperCase()}</span><span class="ttl">${f.ttl}</span><span class="id">${f.id}</span></div>
+          <p class="desc">${f.desc}</p>
+          <p class="ev"><b>Dovada:</b> ${f.ev}</p>
+          <p class="fix"><b>Fix:</b> ${f.fix}</p>
+        </div>`).join('')}</div>`;
+    root.appendChild(det);
+  });
+}
+document.getElementById('filters').addEventListener('click',e=>{
+  if(!e.target.classList.contains('fbtn'))return;
+  filter=e.target.dataset.f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('on',b===e.target));
+  render();
+});
+render();
+</script>
+</body>
+</html>

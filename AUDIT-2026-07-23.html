@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit tintit · Casuta din copac · 23.07.2026</title>
+<style>
+  :root{
+    --bg:#0f1013; --panel:#16181d; --panel2:#1b1e24; --line:#24272e; --line2:#2e323a;
+    --txt:#e9e7e2; --dim:#9298a3; --faint:#646a74;
+    --amber:#d89152; --serif-c:#cfccc4;
+    --p0:#d2564a; --p1:#d98a4e; --p2:#c2a24f; --p3:#7d828c;
+    --ok:#7fae6e;
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5}
+  body{max-width:920px;margin:0 auto;padding:40px 22px 100px}
+  a{color:var(--amber)}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
+  h1{font-size:34px;letter-spacing:-.02em;margin:8px 0 4px;font-weight:600}
+  .meta{color:var(--dim);font-size:13.5px;margin:0}
+  .meta .mono{font-family:var(--mono);font-size:12px}
+  .verdict{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--serif-c);margin:26px 0 6px;padding:18px 22px;border-left:2px solid var(--p1);background:linear-gradient(90deg,rgba(217,138,78,.07),transparent)}
+  .verdict b{color:var(--txt);font-style:normal;font-weight:600}
+  .verdict .em{font-style:italic}
+
+  .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:26px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+  .stat .n{font-family:var(--mono);font-size:26px;font-weight:600;line-height:1}
+  .stat .l{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:7px}
+  .stat.p0 .n{color:var(--p0)} .stat.ok .n{color:var(--ok)} .stat.p2 .n{color:var(--p2)} .stat.p3 .n{color:var(--p3)}
+  .stat.tot .n{color:var(--txt)}
+
+  h2.sec{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt);margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:600}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 4px}
+  @media(max-width:700px){.grid2{grid-template-columns:1fr}}
+  .now{background:var(--panel);border:1px solid var(--ok);border-radius:14px;padding:18px 20px}
+  .now h3{margin:0 0 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok)}
+  .now.crit{border-color:var(--p0)}
+  .now.crit h3{color:var(--p0)}
+  .now ul{margin:0;padding-left:18px}
+  .now li{margin:8px 0;font-size:14px}
+  .now li b{color:var(--txt)}
+  .now .tag{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  td.mono,.mono{font-family:var(--mono);font-size:12px}
+  .note{color:var(--dim);font-size:12.5px;margin:10px 2px 0}
+
+  .f{padding:15px 0;border-top:1px solid var(--line)}
+  .f:first-child{border-top:0}
+  .f .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .f .id{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .sev{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:5px}
+  .sev.p0{background:rgba(210,86,74,.16);color:var(--p0)}
+  .sev.ok{background:rgba(127,174,110,.16);color:var(--ok)}
+  .sev.p2{background:rgba(194,162,79,.16);color:var(--p2)}
+  .sev.p3{background:rgba(125,130,140,.16);color:var(--p3)}
+  .f .ttl{font-size:15px;font-weight:600;margin:0;flex:1;min-width:60%}
+  .f .desc{margin:8px 0 0;font-size:14px;color:#d6d4cd}
+  .f .ev{margin:7px 0 0;font-size:12.5px;color:var(--dim)}
+  .f .ev b{color:var(--faint);font-weight:600;font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+  .f .fix{margin:7px 0 0;font-size:13.5px;color:var(--txt);padding-left:12px;border-left:2px solid var(--line2)}
+  .f .fix b{color:var(--amber);font-weight:600}
+  .f .fix.done b{color:var(--ok)}
+  .f .fix.now b{color:var(--p0)}
+
+  .ft{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);text-align:center;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+  <div class="kicker">Audit tintit · nodurile grinda&ndash;stalp</div>
+  <h1>Casuta din copac</h1>
+  <p class="meta">23.07.2026 &middot; declansat inainte de montajul glulam pe cei 4 stalpi &middot; <span class="mono">10 findings</span> &middot; metoda: 3 subagenti (spec tehnic, status/foto, igiena fisiere) + verificare EXIF directa + confirmare Vlad pe teren, corectat live dupa verificare pe santier</p>
+
+  <div class="verdict">
+    <b>Partial verde.</b> Nodul fata (grinda pe varful stalpului taiat la 1900&nbsp;mm) e curat &mdash; poti continua fara nimic de schimbat. Nodul spate <b>nu e inca gata de incarcat</b>: polita e montata doar pe cele 2 bulon M12, fara niciun reazem de compresiune dedesubt. Exact conditia pe care propriul tau review structural (10.07) o numeste punctul unde cedeaza un deck prost facut &mdash; si acelasi <b>STR-01 din auditul din 18.06</b>, deschis atunci ca P0, tot deschis azi. Fix simplu si rapid: un bloc de compresiune sub fiecare polita, inainte sa incarci grinda spate. Bolturile M12 raman, dar trec in rolul lor corect &mdash; pozitie si anti-smulgere, nu portanta. <span class="em">Nu monta glulamul pe spate pana e pus blocul.</span>
+  </div>
+
+  <div class="strip">
+    <div class="stat p0"><div class="n">1</div><div class="l">critic deschis</div></div>
+    <div class="stat ok"><div class="n">2</div><div class="l">rezolvate azi</div></div>
+    <div class="stat p2"><div class="n">3</div><div class="l">mediu deschis</div></div>
+    <div class="stat p3"><div class="n">4</div><div class="l">jos deschis</div></div>
+    <div class="stat tot"><div class="n">10</div><div class="l">total</div></div>
+  </div>
+
+  <h2 class="sec">Nodurile &mdash; ce s-a confirmat azi</h2>
+  <div class="grid2">
+    <div class="now">
+      <h3>Nod fata &middot; S3 / S4 &middot; ok</h3>
+      <ul>
+        <li><b>Stalp taiat la 1900&nbsp;mm</b> &mdash; confirmat direct de Vlad.</li>
+        <li>Grinda sta <b>direct pe varf</b> (lemn pe lemn, compresiune). Fara piese ascunse.</li>
+        <li>Prindere: <b>2&times; coltar C1</b> + Heco 6&times;100.</li>
+      </ul>
+    </div>
+    <div class="now crit">
+      <h3>Nod spate &middot; S1 / S2 &middot; neincheiat</h3>
+      <ul>
+        <li>Stalpul ramane <b>intreg</b> (continua la acoperis) &mdash; nu se taie.</li>
+        <li><b>Polita montata direct pe fata stalpului</b>, top la 1900&nbsp;mm.</li>
+        <li><b>Fara reazem dedesubt</b>: doar 2&times; M12 duc toata sarcina verticala, in forfecare.</li>
+        <li>De facut <b>inainte</b> sa incarci grinda: bloc de compresiune sub polita &mdash; vezi findings mai jos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">Cote &mdash; stack de inaltime</h2>
+  <table>
+    <thead><tr><th>Reper</th><th>Hartie (veche)</th><th>Confirmat azi</th></tr></thead>
+    <tbody>
+      <tr><td>Varf stalp fata / polita spate</td><td class="mono">+1872</td><td class="mono">+1900</td></tr>
+      <tr><td>Varf grinda (ambele noduri)</td><td class="mono">+2072</td><td class="mono">+2100</td></tr>
+      <tr><td>Podea</td><td class="mono">+2200</td><td class="mono">+2228</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Diferenta de 28&nbsp;mm e uniforma pe ambele noduri &mdash; grinzile raman perfect orizontale intre ele. Nu afecteaza rezistenta (marja mare, verificat 10.07). Doar hartia (PODEA-plan-sectiune.html, NODURI-grinda-stalp.html, fisa-03, fisa-04) inca arata cifrele vechi.</p>
+
+  <h2 class="sec">Ramas deschis &mdash; critic</h2>
+
+  <div class="f">
+    <div class="top"><span class="sev p0">P0</span><span class="ttl">Polita spate atarna pe 2&times; M12, fara reazem &mdash; recurenta din AUDIT-2026-06-18</span><span class="id">STR-01</span></div>
+    <p class="desc">Confirmat azi pe teren: polita e montata direct pe stalpul spate, top 1900&nbsp;mm, doar pe cele 2 bulon M12 &mdash; fara talpic sau orice alt reazem de compresiune dedesubt. Verificat 23.07 impotriva a cinci documente separate: nu e o greseala de executie, e un gap de propagare intre reviewul structural si fisele de montaj.</p>
+    <p class="ev"><b>Dovada:</b> fisa-03.html, fisa-04.html, ghid-montaj.html, imbinari.html si FISA-scule-gauri-grinzi-joiste.html descriu toate acelasi lucru &mdash; polita pe 2&times; M12, „polita duce greutatea" (ghid-montaj.html, marcat CRITIC), fara nicio mentiune de talpic. Fisa-santier-casuta.pdf (reviewul structural original, 10.07, singurul cu calcul in spate) spune opusul, in cuvinte aproape identice cu NODURI-grinda-stalp.html: „Reazema pe talpic la compresiune; M12 doar pozitionare + antismulgere. Nu doua buloane in forfecare pura &mdash; aici cedeaza prima." Vlad a construit exact dupa fisele pe care le avea &mdash; recomandarea din review nu a ajuns niciodata in ele.</p>
+    <p class="fix now"><b>Fix acum:</b> bloc de compresiune (offcut ~100&times;100) sub fiecare polita &mdash; 2 bucati, una per stalp spate &mdash; fixat la contact direct, fara gol intre bloc si polita. Bolturile M12 raman, dar trec in rolul lor corect: pozitie + anti-smulgere, nu portanta verticala. Nu incarca grinda spate pana blocul e pus. <b>Fix in documentatie:</b> fisa-03.html, fisa-04.html, ghid-montaj.html si imbinari.html trebuie actualizate sa arate talpicul &mdash; altfel oricine construieste dupa ele repeta acelasi gol la celalalt stalp spate sau la un rebuild viitor.</p>
+  </div>
+
+  <h2 class="sec">Ce a rezolvat sesiunea</h2>
+
+  <div class="f">
+    <div class="top"><span class="sev ok">REZOLVAT</span><span class="ttl">Inaltimea de taiere a stalpilor fata nu era confirmata in acte</span><span class="id">NOD-02</span></div>
+    <p class="desc">Un commit git (f912a50) scria „stalpi fata taiati, confirmat foto". Dar nota proprie din STATUS.md (22.07) spunea ca singurele poze noi din acea zi nu arata nicio taietura. Contradictie ramasa deschisa in STATUS.md pana azi.</p>
+    <p class="ev"><b>Dovada:</b> STATUS.md, sectiunea „DE RECONCILIAT inainte de push", 22.07.2026.</p>
+    <p class="fix done"><b>Rezolvat:</b> confirmat direct cu Vlad &mdash; 1900&nbsp;mm, nu 1872 cum presupunea planul vechi.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev ok">REZOLVAT</span><span class="ttl">Pozele din disputa erau irelevante, nu contradictorii</span><span class="id">FOTO-01</span></div>
+    <p class="desc">IMG_2171.jpeg si IMG_2172.jpeg &mdash; pozele pe care se baza toata disputa de mai sus &mdash; au EXIF cu data reala 10.07.2026, ora 18:36. Nu 22.07 cum sugera data de salvare a fisierului. Preced orice taiere cu 12 zile. Nu confirmau si nu infirmau nimic &mdash; pur si simplu nu erau despre ziua aia.</p>
+    <p class="ev"><b>Dovada:</b> EXIF DateTimeOriginal + GPS timestamp, ambele fisiere, verificate direct.</p>
+    <p class="fix done"><b>Rezolvat:</b> inchide firul din memoria de proiect (incidentul de integritate din 22.07) &mdash; nu era o problema de incredere, era o confuzie de poze vechi re-incarcate.</p>
+  </div>
+
+  <h2 class="sec">Ramas deschis &mdash; mediu</h2>
+
+  <div class="f">
+    <div class="top"><span class="sev p2">MEDIU</span><span class="ttl">Cotele din documentatie nu reflecta inaltimea confirmata azi</span><span class="id">DOC-01</span></div>
+    <p class="desc">+1872/+2072/+2200 inca apar in patru fisiere, in loc de +1900/+2100/+2228. Plus doua nituri minore gasite de audit: eticheta joista 2550 vs 2480 in planul podelei, si codul C2 refolosit pentru doua piese diferite (cantitatile ies corect, doar eticheta e ambigua).</p>
+    <p class="ev"><b>Dovada:</b> PODEA-plan-sectiune.html, NODURI-grinda-stalp.html, fisa-03.html, fisa-04.html &mdash; toate patru cu cifrele vechi.</p>
+    <p class="fix"><b>Fix:</b> sincronizeaza cifrele in cele 4 fisiere &mdash; si adauga acolo blocul de compresiune din STR-01, care lipseste si el din fise.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev p2">MEDIU</span><span class="ttl">~26 fisiere de lucru real stau necomise, fara backup</span><span class="id">GIT-01</span></div>
+    <p class="desc">Inclusiv livrabilele de ieri si azi: NODURI-grinda-stalp.html, CASA-plan-constructie.html, ambele PODEA-*.html, FISA-scule-gauri-grinzi-joiste.html, SCULE-DISPONIBILE.md, GHID-scule-insurubat.md, plus ~20 altele.</p>
+    <p class="ev"><b>Dovada:</b> git status &mdash; untracked, ~26 fisiere.</p>
+    <p class="fix"><b>Fix:</b> doua commituri curate &mdash; unul cu livrabilele noi, unul cu cele 3 stersuri (FAILED/NEEDS-INPUT/RUNNING vechi) impreuna cu reaparitia lor in _archive/.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev p2">MEDIU</span><span class="ttl">Singurul commit local ramane nepublicat</span><span class="id">GIT-02</span></div>
+    <p class="desc">Cel cu afirmatia disputata „confirmat foto" (f912a50) e local, cu o nota proprie de asteptare in STATUS.md.</p>
+    <p class="ev"><b>Dovada:</b> git status: ahead of origin/main by 1 commit. STATUS.md: „nu face push pana nu se clarifica".</p>
+    <p class="fix"><b>Fix:</b> acum ca raspunsul real e confirmat (1900&nbsp;mm), inchide nota si fa push &mdash; dupa ce STR-01 e rezolvat pe teren, nu inainte.</p>
+  </div>
+
+  <h2 class="sec">Ramas deschis &mdash; jos</h2>
+
+  <div class="f">
+    <div class="top"><span class="sev p3">JOS</span><span class="ttl">CASUTA-DIN-COPAC.md inca arata perete 1300&nbsp;mm</span><span class="id">DOC-02</span></div>
+    <p class="desc">Decizia din 22.07 a schimbat peretele spate la 1800&nbsp;mm; fisierul de cote nu a fost actualizat.</p>
+    <p class="fix"><b>Fix:</b> un find/replace, cand ajungi la documentatia CASA de sus.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev p3">JOS</span><span class="ttl">Doua pagini noi nu sunt legate in navigatia site-ului</span><span class="id">WEB-01</span></div>
+    <p class="desc">NODURI-grinda-stalp.html si FISA-scule-gauri-grinzi-joiste.html raman previzualizari izolate, fara link din index.html.</p>
+    <p class="fix"><b>Fix:</b> decide daca le vrei canonice pe site (adauga in nav) sau raman doar de referinta interna.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev p3">JOS</span><span class="ttl">Binar tert necomis in radacina proiectului</span><span class="id">GIT-03</span></div>
+    <p class="desc">bin/micromamba sta untracked &mdash; nu ar trebui sa ajunga in istoricul git.</p>
+    <p class="fix"><b>Fix:</b> adauga-l in .gitignore inainte sa intre accidental intr-un commit.</p>
+  </div>
+
+  <div class="f">
+    <div class="top"><span class="sev p3">JOS</span><span class="ttl">3 briefuri esuate pe 22.07 &mdash; cauza reala nediagnosticata pana acum</span><span class="id">PIPE-01</span></div>
+    <p class="desc">santier-update v1&ndash;v3 au picat pe login expirat + conexiune cazuta la Builder, nu pe o eroare de logica &mdash; v4 a mers instant pe aceeasi editare. Dar v1 a esuat mut: fara commit, fara motiv inregistrat nicaieri.</p>
+    <p class="ev"><b>Dovada:</b> header-ele proprii ale briefurilor v3/v4; exit code 1, cost $0 pe v1/v2.</p>
+    <p class="fix"><b>Fix:</b> un pre-flight check de autentificare/conexiune pe Builder, ca esecul sa nu mai fie silentios.</p>
+  </div>
+
+  <div class="ft">CASUTA DIN COPAC &middot; audit tintit 23.07.2026 &middot; pentru Vlad &amp; Tudor</div>
+</body>
+</html>
