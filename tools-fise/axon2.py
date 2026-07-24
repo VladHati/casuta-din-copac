@@ -157,25 +157,25 @@ def _ov(step, final=False):
                 NO('platforma la 2,2 m  .  balcon 700 mm in consola  .  balustrada 1 m',0.5,0.975)]
     if step==1:
         return [B('ST',(0,2.95,D)),
-                NO('S1.S2 spate (4 m)  .  S3.S4 fata (taiate la +1872)',0.5,0.975)]
+                NO('S1.S2 spate (4 m)  .  S3.S4 fata (taiate la ~1900)',0.5,0.975)]
     if step==2:
-        return [DM('+2200 podea',(W,2.20,0),(W+0.44,2.20,0)),
-                DM('+1872 taie',(W,1.872,0),(W+0.44,1.872,0)),
-                NO('taie la 1872, NU la 2200  .  partea taiata = polite',0.5,0.975)]
+        return [DM('+2228 podea',(W,2.228,0),(W+0.44,2.228,0)),
+                DM('+1900 taie',(W,1.900,0),(W+0.44,1.900,0)),
+                NO('taie la ~1900, NU la 2228  .  partea taiata = polite',0.5,0.975)]
     if step==3:
-        return [B('PO',(0,polY+E,bk)), DM('+1872',(0,polY,bk),(-0.40,polY,bk)),
+        return [B('PO',(0,polY+E,bk)), DM('+1900',(0,polY,bk),(-0.40,polY,bk)),
                 NO('polita din offcut  .  2 buloane M12 / polita',0.5,0.975)]
     if step==4:
-        return [B('GR',(W/2,bC+E,bk)), DM('+2072',(W,A.beamTop,bk),(W+0.42,A.beamTop,bk)),
+        return [B('GR',(W/2,bC+E,bk)), DM('+2100',(W,A.beamTop,bk),(W+0.42,A.beamTop,bk)),
                 NO('grinda spate sta PE polite  .  3 H1 + coltar C2 anti-smulgere',0.5,0.975)]
     if step==5:
         return [B('GR',(W/2,bC+E,0)), B('C1',(0,A.beamTop,0)), B('C1',(W,A.beamTop,0)),
-                DM('+2072',(0,A.beamTop,0),(-0.42,A.beamTop,0)),
+                DM('+2100',(0,A.beamTop,0),(-0.42,A.beamTop,0)),
                 NO('grinda fata pe varful stalpilor taiati  .  2 coltare C1 / stalp',0.5,0.975)]
     if step==6:
         return [B('JO x6',(0.10,jCy+E,-0.55)), B('C2',(0.155,jCy,0.0)),
                 DM('700 consola',(0.10,jCy+E,-0.7),(0.10,jCy+E,0.0)),
-                NO('pozitii pe grinda: 100 . 280 . 720 . 1120 . 1550 . 1980',0.5,0.975)]
+                NO('capete pe axa stalpilor 0 / 2100 (dublate)  .  intre: 280 . 720 . 1120 . 1550',0.5,0.975)]
     if step==7:
         return [B('copac',(A.trunkX,2.30,A.trunkZ)),
                 DM('+2780',(A.trunkX,2.78,A.trunkZ),(A.trunkX,3.05,A.trunkZ)),

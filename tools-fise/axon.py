@@ -5,7 +5,7 @@ occlusion), flat shading, outlines, ground shadow, built/new styling, explode+gh
 import math
 
 # ---- geometry (m), mirrored from montaj-3d-complet.html ----
-W=2.1; D=1.78; FLOOR=2.2; PS=0.1
+W=2.1; D=1.78; FLOOR=2.228; PS=0.1   # FLOOR = top dusumea as-built +2228 (plan initial 2200); lant +1900/+2100/+2200/+2228
 deckThk=0.028; jH=0.1; beamH=0.20; beamD=0.09
 beamTop=FLOOR-deckThk-jH; beamCy=beamTop-beamH/2; jCy=beamTop+jH/2
 fCut=beamTop-beamH

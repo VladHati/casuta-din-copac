@@ -23,15 +23,17 @@ Vlad nu e inginer constructor. E un parinte priceput la multe, dar aici are nevo
 - Cadrul celor 4 stalpi: **2100 mm** (latime) × **1780 mm** (adancime).
 - Ambele diagonale: **2750 mm** — adica un dreptunghi perfect, cu colturi drepte.
 - Fundatiile de beton si ancorele metalice sunt deja turnate in pamant.
-- Copacul (corcodus): trunchi de **Ø160 mm** (circumferinta 500 mm), la **200 mm** in fata stalpilor din fata, deplasat spre coltul **S4** (fata-stanga), cu centrul la **~500 mm** de S4 pe latime (~1600 mm de S3). Scara + poarta pe partea S3 (fata-dreapta) ca sa nu se bata cu masa. Asezare joiste (de la S4): 100 / 280 / [gaura] / 720 / 1120 / 1550 / 1980 mm — trunchiul cade intre joistele de la 280 si 720, niciuna nu-l atinge.
+- Copacul (corcodus): trunchi de **Ø160 mm** (circumferinta 500 mm), la **200 mm** in fata stalpilor din fata, deplasat spre coltul **S4** (fata-stanga), cu centrul la **~500 mm** de S4 pe latime (~1600 mm de S3). Scara + poarta pe partea S3 (fata-dreapta) ca sa nu se bata cu masa. Asezare joiste (de la S4), decizie 24.07: capetele pe axa stalpilor **0 / 2100** (dublate — joista-sora la fiecare capat), intre ele **280 / [gaura] / 720 / 1120 / 1550** mm — trunchiul cade intre joistele de la 280 si 720, niciuna nu-l atinge. Joistele de capat calaresc proeminenta glulamului spate si trec prin fata stalpilor spate intregi.
 
 ---
 
 ## Cotele casutei (blocate)
 
+Lant de inaltimi **as-built** (migrat 24.07; plan initial 1872/2072/2172/2200): varf stalpi fata / top polita+talpic **1900** → top glulam **2100** → top joiste **2200** → top dusumea **2228**. Fiecare cota e cu ~28 mm peste plan.
+
 | Ce | Cota |
 |---|---|
-| Inaltime podea (de la sol) | 2200 mm |
+| Inaltime podea / top dusumea (de la sol) | 2228 mm (plan initial 2200) |
 | Adancime totala cu balconul | 2480 mm (1780 + 700 consola) |
 | Perete casa de sus | 1800 mm spate / 1500 mm fata |
 | Balustrada balcon | 1000 mm, goluri sub 90 mm |
@@ -45,10 +47,10 @@ Vlad nu e inginer constructor. E un parinte priceput la multe, dar aici are nevo
 **Ideea de baza:** casuta sta pe 4 stalpi, ca o masa pe 4 picioare. Copacul nu duce nicio greutate.
 
 - **Stalpii din spate (la gard):** se pastreaza la 4 m, continui din pamant pana la acoperis. Ei formeaza scheletul casutei.
-- **Stalpii din fata:** se taie la nivelul podelei (2200). Sustin podeaua si balconul.
+- **Stalpii din fata:** se taie la ~1900 as-built (plan initial 1872), sub talpa grinzii. Sustin podeaua si balconul.
 - **Baza stalpilor:** papuc reazem U (101×100, otel 4 mm) deja prins in beton. Stalpul intra in papuc si se fixeaza cu buloane M12 prin aripi (tine si la smulgere/vant). Capatul stalpului se trateaza si se lasa drenaj, sa nu putrezeasca in talpa. Baza e articulata — stabilitatea laterala vine din contravantuiri + pereti.
-- **Grinzile principale:** doua grinzi din lemn lamelar (glulam) 90×200 trec peste cei 2100 mm dintre stalpi. Grinda din **fata** sta pe varful stalpilor (taiati); grinda din **spate** sta pe o **polita din lemn bulonata in stalp cu 2 buloane M12** — polita duce greutatea, asa e cel mai sigur.
-- **Joistele (grinzile podelei):** cele 4 grinzi de la Leroy + inca 2 (total 6), asezate din fata in spate. Pe ele se bate dusumeaua.
+- **Grinzile principale:** doua grinzi din lemn lamelar (glulam) 90×200 trec peste cei 2100 mm dintre stalpi. Grinda din **fata** sta pe varful stalpilor (taiati); grinda din **spate** sta pe o **polita**, iar polita reazema pe un **talpic** (bloc de compresiune) fixat pe fata stalpului; cele 2 buloane M12 sunt doar pozitie si anti-smulgere — greutatea trece prin talpic, in compresiune. As-built 24.07: talpic pe fata cu 3× Heco 8x200 + 2 M12 + contrafisa 45° sub nod (nu crestatura).
+- **Joistele (grinzile podelei):** cele 4 grinzi de la Leroy + inca 2 (total 6), plus 2 joiste-sora la capete (dublare) — asezate din fata in spate. Pe ele se bate dusumeaua. Se taie DOAR dupa masuratoarea as-built (tinta ~2430-2450, nu 2550).
 - **Bracajul (rigidizarea):** peretii casutei se imbraca in placaj. Asa casuta devine o "cutie" rigida care impiedica stalpii inalti sa se legene. Fara asta, structura inalta se clatina.
 - **Contrafisele:** lemne scurte montate pe diagonala sub podea, la fiecare stalp. Ele triangulează baza — un triunghi nu se deformeaza, un patrat da.
 - **Proptele temporare la varf:** stalpii inalti din spate raman nebracati la varf pana la peretii din Faza 2. Pana atunci, tine fiecare varf cu o proptea temporara (de la varful stalpului la podea). Le scoti cand peretii imbracati in placaj sunt gata.
@@ -88,8 +90,8 @@ Lista completa de cumparat, preturile si planul de taiere (debitare) sunt in fis
 ## Etapele de constructie (pasii critici marcati)
 
 1. **[CRITIC] Prindem stalpii de ancore** — fiecare perfect vertical (verificat cu nivela). Stramb aici = stramb peste tot.
-2. **[CRITIC] Montam grinzile principale la +2200** — perfect orizontale, bulonate.
-3. **[CRITIC] Asezam joistele** — continue (o singura bucata), cu consola de 700 in fata + contrafisa sub nas (obligatorie la 700).
+2. **[CRITIC] Montam grinzile principale** (top glulam +2100, podea +2228 as-built) — perfect orizontale, bulonate.
+3. **[CRITIC] Asezam joistele** — continue (o singura bucata), capetele pe axa stalpilor (0/2100) dublate, taiate dupa masuratoarea as-built; consola de 700 in fata + contrafisa sub nas (obligatorie la 700).
 4. Batem dusumeaua, cu gaura pentru copac (joc 3-5 cm jur-imprejur).
 5. Ridicam peretii (imbracati in placaj) si acoperisul.
 6. **[CRITIC] Montam balustrada** — 1 m inaltime, jur-imprejur, goluri sub 9 cm.

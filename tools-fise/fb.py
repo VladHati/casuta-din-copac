@@ -5,11 +5,13 @@ from det import DETS
 # Radacina proiectului = folderul parinte al lui tools-fise (robust pe orice masina).
 PROJ=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PS=100;W=2100;D=1780
-FRONTTOP=1872          # stalpii din fata, taiati la +1872 (top grinda fata sta pe ei)
+FRONTTOP=1900          # stalpii din fata, taiati la ~1900 as-built (plan initial 1872); top grinda fata sta pe ei
 BACKTOP=3260           # stalpii din spate desenati pana aici (real +4000, vezi eticheta)
-BEAMB=1872; BEAMTOP=2072; JOB=2072; JOT=2172; DECKB=2172; DECKTOP=2200
+# Lant as-built (plan initial 1872/2072/2172/2200): top polita+talpic 1900 -> top glulam 2100 -> top joiste 2200 -> top dusumea 2228
+BEAMB=1900; BEAMTOP=2100; JOB=2100; JOT=2200; DECKB=2200; DECKTOP=2228
 RAIL=1000              # inaltimea balustradei deasupra dusumelei
-JX=[100,280,720,1120,1550,1980]
+# Joiste 24.07: capetele pe axa stalpilor (0 / 2100), dublate (sister); intre = 280/720/1120/1550. Lungime dupa masuratoare as-built.
+JX=[0,280,720,1120,1550,2100]
 
 def g(mat,x,y,z,dx,dy,dz): return {'x':x,'y':y,'z':z,'dx':dx,'dy':dy,'dz':dz,'mat':mat,'built':True}
 def N(mat,x,y,z,dx,dy,dz,ex=None,code=None):
@@ -53,7 +55,7 @@ Z_ANCHOR='''<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
 <rect x="196" y="142" width="48" height="19" rx="4" fill="#161413"/><text x="220" y="156" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="Space Mono,monospace">B2 x2</text></svg>'''
 # Fisa 3 / pas: talpicul (bloc de compresiune) sub polita, pe fata stalpului din spate
 Z_TALPIC='''<svg viewBox="0 0 340 232" xmlns="http://www.w3.org/2000/svg" font-family="Space Grotesk,Arial">
-<line x1="40" y1="86" x2="300" y2="86" stroke="#C2412B" stroke-width="1.1" stroke-dasharray="6 5"/><text x="36" y="90" text-anchor="end" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">+1872</text>
+<line x1="40" y1="86" x2="300" y2="86" stroke="#C2412B" stroke-width="1.1" stroke-dasharray="6 5"/><text x="36" y="90" text-anchor="end" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#C2412B">+1900</text>
 <rect x="60" y="20" width="70" height="192" fill="#E8973C" stroke="#161413" stroke-width="2.6"/><text x="95" y="228" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" fill="#5C574E">stalp spate (intreg)</text>
 <rect x="130" y="86" width="90" height="48" fill="#B083C6" stroke="#161413" stroke-width="2.6"/><text x="175" y="116" text-anchor="middle" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#fff">POLITA</text>
 <rect x="130" y="134" width="90" height="46" fill="#B8935A" stroke="#C2412B" stroke-width="2.6"/><text x="175" y="163" text-anchor="middle" font-family="Space Mono,monospace" font-size="12" font-weight="700" fill="#fff">TALPIC</text>
@@ -123,37 +125,38 @@ def stage1():
                  warn='Verifica fiecare stalp la plumb pe 2 fete inainte de a strange proptelele.'),
             dict(t='Prinde suruburile B2 in papuc DOAR slab (2 / stalp) — sa poti inca corecta. Le strangi la Fisa 2.',zoom=DETS['B2'],warn=None)]
 def stage2():
-    return [dict(t='Marcheaza +2200 (fata podelei) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat fiecare.',warn=None),
-            dict(t='Coboara 328 mm si marcheaza +1872 — aici sta talpa GRINZII. Grinda 200 + joista 100 + dusumea 28 = 328, asa ajungi la +2200.',
-                 warn='Linia +1872 trebuie identica pe toti 4 stalpii.'),
-            dict(t='Taie DOAR stalpii din fata (S3, S4) la +1872. Partea taiata o pastrezi pentru polite SI pentru talpice (blocurile de sub polite). Stalpii din spate raman INTREGI.',
+    return [dict(t='Marcheaza +2228 (fata podelei, as-built) pe toti 4 stalpii. Foloseste o scandura dreapta + boloboc, nu masura separat fiecare.',warn=None),
+            dict(t='Coboara 328 mm si marcheaza +1900 — aici sta talpa GRINZII. Grinda 200 + joista 100 + dusumea 28 = 328, asa ajungi la +2228.',
+                 warn='Linia +1900 trebuie identica pe toti 4 stalpii.'),
+            dict(t='Taie DOAR stalpii din fata (S3, S4) la ~+1900 (as-built; plan initial 1872). Partea taiata o pastrezi pentru polite SI pentru talpice (blocurile de sub polite). Stalpii din spate raman INTREGI.',
                  warn='Taie doar fata. Stalpii din spate raman intregi — ei sunt stalpii Fazei 2.'),
             dict(t='Teseste muchia taiata. Abia acum strange definitiv suruburile B2 de la baza.',zoom=DETS['B2'],warn=None)]
 def stage3():
-    return [dict(t='INTAI TALPICUL. Taie din offcut 2 blocuri 100x100 de ~180 mm (confirma masura pe teren) si prinde cate unul pe fata interioara a fiecarui stalp din spate, cu fata de sus la +1772 — adica exact sub polita. Prinde-l cu 2 suruburi H1 in stalp.',svg=Z_TALPIC,
+    return [dict(t='INTAI TALPICUL. Taie din offcut 2 blocuri 100x100 de ~180 mm (confirma masura pe teren) si prinde cate unul pe fata interioara a fiecarui stalp din spate, cu fata de sus la +1800 — adica exact sub polita. Prinde-l cu 2 suruburi H1 in stalp.',svg=Z_TALPIC,
                  warn='Fara talpic, polita atarna doar in cele 2 buloane M12, in forfecare — acolo cedeaza deck-ul.'),
-            dict(t='Aseaza polita (bloc 100x100 din offcut) PESTE talpic, pe fata interioara a stalpului din spate, cu fata de sus la +1872. Polita reazema pe talpic: greutatea trece prin compresiune, prin lemn.',warn='Polita trebuie sa stea lipita pe talpic, fara joc. Daca ramane spatiu, coboara polita sau grosaza talpicul.'),
+            dict(t='AS-BUILT 24.07: talpicul e fixat pe FATA stalpului cu 3× Heco 8x200 + cele 2 tije M12 (pozitie / anti-smulgere) + o contrafisa 45° sub nod (nu crestatura). Redundanta acceptata pt structura temporara. VERIFICA contrafisa la AMBELE noduri spate.',warn='Reazemul e pe fata (suruburi + contrafisa), nu crestatura in stalp. Contrafisa 45° sub fiecare nod spate — verifica-le pe ambele.'),
+            dict(t='Aseaza polita (bloc 100x100 din offcut) PESTE talpic, pe fata interioara a stalpului din spate, cu fata de sus la +1900. Polita reazema pe talpic: greutatea trece prin compresiune, prin lemn.',warn='Polita trebuie sa stea lipita pe talpic, fara joc. Daca ramane spatiu, coboara polita sau grosaza talpicul.'),
             dict(t='Gaureste prin polita in stalp: 2 gauri strapunse de 13 mm pe fiecare polita.',svg=Z_DRILL,warn=None),
             dict(t='Bate 2 buloane M12 (B1) cu saiba (B3) prin polita in stalp; strange cu piulita (B4) pe spate. Repeta la al doilea stalp. Buloanele tin polita in pozitie si contra smulgerii — greutatea o duce talpicul.',zoom=DETS['B1'],
                  warn='Strange buloanele M12 pana polita nu se mai misca deloc. Ele sunt pozitie + anti-smulgere, NU reazem.')]
 def stage4():
     return [dict(t='Ridicati in DOI grinda din spate si asezati-o pe cele doua polite. Sta pe polita, polita sta pe talpic — nu o tineti voi.',
                  warn='Verifica intai ca ambele talpice sunt montate sub polite. Grinda sta pe polite; nu o tineti voi cat o prindeti.'),
-            dict(t='Verifica fata de sus la +2072 si orizontalitatea pe toata lungimea.',warn=None),
+            dict(t='Verifica fata de sus la +2100 si orizontalitatea pe toata lungimea.',warn=None),
             dict(t='Prinde grinda de fiecare stalp cu 3 suruburi H1 oblice PLUS un coltar C2 anti-smulgere in stalp si in grinda. Grinda nu trebuie sa se poata ridica de pe polita.',zoom=DETS['H1B'],
                  warn='Coltar C2 anti-smulgere la fiecare capat — grinda spate nu se poate ridica de pe polita.')]
 def stage5():
-    return [dict(t='Asezati grinda din fata PE varful stalpilor S3/S4 (taiati). Sprijin direct pe lemn, la +1872.',
-                 warn='Sprijin direct pe varful taiat la +1872, perfect orizontal.'),
+    return [dict(t='Asezati grinda din fata PE varful stalpilor S3/S4 (taiati). Sprijin direct pe lemn, la ~+1900.',
+                 warn='Sprijin direct pe varful taiat la ~+1900, perfect orizontal.'),
             dict(t='Prinde cu cate un coltar C1 pe fiecare fata (2/stalp) + suruburi H2 in stalp si in grinda.',zoom=DETS['C1'],warn=None),
-            dict(t='Verifica: ambele grinzi orizontale, varful la +2072. Ai cadrul de baza.',
-                 warn='Ambele grinzi la +2072, perfect orizontale, inainte de a continua.')]
+            dict(t='Verifica: ambele grinzi orizontale, varful la +2100. Ai cadrul de baza.',
+                 warn='Ambele grinzi la +2100, perfect orizontale, inainte de a continua.')]
 def stage6():
-    return [dict(t='Marcheaza pe ambele grinzi pozitiile celor 6 joiste, de la coltul S4: 100 / 280 / 720 / 1120 / 1550 / 1980 mm.',warn=None),
-            dict(t='Aseaza prima joista peste ambele grinzi, la pozitia 100. Capatul din fata iese 700 mm in gol — asta e consola (balconul).',
-                 warn='Consola de 700 mm trebuie egala la toate joistele.'),
-            dict(t='Aseaza toate cele 6 joiste la pozitiile marcate. Fiecare reazema pe AMBELE grinzi.',warn=None),
-            dict(t='La FIECARE reazem (fata + spate) prinde un coltar C2 pe lateral — 12 in total. Tine joista jos la consola.',zoom=DETS['C2'],
+    return [dict(t='Marcheaza pe ambele grinzi pozitiile celor 6 joiste, de la coltul S4: 0 / 280 / 720 / 1120 / 1550 / 2100 mm. Joistele de capat (0 si 2100) stau pe axa stalpilor: calaresc proeminenta glulamului spate si trec prin fata stalpilor spate intregi.',warn='Capetele joiste (0 si 2100) se DUBLEAZA — pune cate o joista-sora (sister) lipita, ca sa duca stalpii casei si nasul consolei.'),
+            dict(t='Taie toate joistele (6 + 2 surori) DOAR dupa ce masori span-ul real pe structura (tinta ~2430-2450, NU 2550). Capatul din fata iese 700 mm in gol — asta e consola (balconul).',
+                 warn='NU taia dupa lista veche (2550). Masoara as-built intai; consola de 700 mm egala la toate joistele.'),
+            dict(t='Aseaza toate joistele la pozitiile marcate; capetele dublate. Fiecare reazema pe AMBELE grinzi. Pune blocajele + ancorele M12 INAINTE de dusumea.',warn=None),
+            dict(t='La FIECARE reazem (fata + spate) prinde un coltar C2 pe lateral — 12 in total. Tine joista jos la consola. Dusumeaua se decupeaza in dreptul stalpilor spate.',zoom=DETS['C2'],
                  warn='Coltar C2 la fiecare reazem, fata si spate. Niciun reazem nelegat.')]
 def stage7():
     return [dict(t='Intre joistele de la 280 si 720 — trunchiul cade chiar intre ele, fara sa le atinga — monteaza 2 traverse scurte (RM) care inchid rama gaurii.',warn=None),
@@ -190,11 +193,11 @@ def stage11():
 
 META=[
  (1,'fisa-01','FISA 1 / 11','Stalpii in papuci','2-3 ore',True,'Mediu',[('ST','4','la lungime mare, NU taia'),('PAP','4','deja in beton'),('B2','8','2 / stalp'),('PT','~6','proptele')],['Cheie 19 (M12)','Boloboc','Bormasina','2 persoane'],['Toti 4 stalpii verticali pe 2 fete','Proptele la fiecare stalp','Suruburi inca slabe']),
- (2,'fisa-02','FISA 2 / 11','Nivel +2200 si taiere stalpi fata','1-2 ore',False,'CRITIC',[('ST','—','doar cei 2 din fata se taie')],['Nivela cu furtun / laser','Creion','Fierastrau','Echer'],['Linia +1872 identica pe toti','Doar stalpii fata taiati','Stalpii spate INTREGI','Suruburi baza stranse']),
- (3,'fisa-03','FISA 3 / 11','Talpic + polite pe stalpii din spate','1 ora',False,'CRITIC',[('TL','2','offcut 100x100, ~180 mm'),('PO','2','offcut 100x100'),('H1','4','2 / talpic'),('B1','4','tija ~220'),('B3','8','2 / bulon: cap + piulita'),('B4','4','piulite')],['Bormasina + burghiu 13','Cheie 19','Bomfaier','Fierastrau'],['Talpic sub FIECARE polita, fara joc','Ambele polite sus la +1872','2 buloane stranse / polita','Polita nu se misca']),
- (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Talpicele montate sub ambele polite','Grinda pe ambele polite','Fata sus la +2072','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
- (5,'fisa-05','FISA 5 / 11','Grinda din fata pe varful stalpilor','1 ora',True,'CRITIC',[('GR','1','grinda fata'),('C1','4','2 / stalp'),('H2','~12','in coltare')],['2 persoane','Bormasina','Nivela'],['Grinda pe varful stalpilor','2 coltare C1 / stalp','Ambele grinzi la +2072']),
- (6,'fisa-06','FISA 6 / 11','Cele 6 joiste','2 ore',True,'CRITIC',[('JO','6','dintr-o bucata'),('C2','12','2 / joista'),('H2','~60','in coltare')],['Bormasina','Ruleta','Creion','Echer'],['6 joiste la pozitii','Consola 700 mm','12 coltare C2']),
+ (2,'fisa-02','FISA 2 / 11','Nivel +2228 si taiere stalpi fata','1-2 ore',False,'CRITIC',[('ST','—','doar cei 2 din fata se taie')],['Nivela cu furtun / laser','Creion','Fierastrau','Echer'],['Linia +1900 identica pe toti','Doar stalpii fata taiati','Stalpii spate INTREGI','Suruburi baza stranse']),
+ (3,'fisa-03','FISA 3 / 11','Talpic + polite pe stalpii din spate','1 ora',False,'CRITIC',[('TL','2','offcut 100x100, ~180 mm'),('PO','2','offcut 100x100'),('H1','4','2 / talpic'),('B1','4','tija ~220'),('B3','8','2 / bulon: cap + piulita'),('B4','4','piulite')],['Bormasina + burghiu 13','Cheie 19','Bomfaier','Fierastrau'],['Talpic sub FIECARE polita, fara joc','Ambele polite sus la +1900','2 buloane stranse / polita','As-built: talpic pe fata cu 3 Heco 8x200 + contrafisa 45 la ambele noduri']),
+ (4,'fisa-04','FISA 4 / 11','Grinda din spate pe polite','1 ora',True,'CRITIC',[('GR','1','grinda spate'),('C2','2','coltar anti-smulgere'),('H1','6','3 oblice / capat')],['2 persoane','Bormasina','Nivela'],['Talpicele montate sub ambele polite','Grinda pe ambele polite','Fata sus la +2100','Coltar anti-smulgere la fiecare capat','Buloane polita REVERIFICATE dupa asezarea grinzii']),
+ (5,'fisa-05','FISA 5 / 11','Grinda din fata pe varful stalpilor','1 ora',True,'CRITIC',[('GR','1','grinda fata'),('C1','4','2 / stalp'),('H2','~12','in coltare')],['2 persoane','Bormasina','Nivela'],['Grinda pe varful stalpilor','2 coltare C1 / stalp','Ambele grinzi la +2100']),
+ (6,'fisa-06','FISA 6 / 11','Cele 6 joiste (+2 surori la capete)','2 ore',True,'CRITIC',[('JO','6+2','dintr-o bucata; capete dublate'),('C2','12','2 / joista'),('H2','~60','in coltare')],['Bormasina','Ruleta','Creion','Echer'],['Capete pe axa stalpilor (0/2100), dublate','Intre: 280/720/1120/1550','Taiate dupa masuratoare as-built (~2430-2450)','Consola 700 mm','12 coltare C2']),
  (7,'fisa-07','FISA 7 / 11','Gaura copacului si masa','1-2 ore',False,'Atentie',[('RM','2','traverse = rama gaurii'),('H3','~6','prindere')],['Fierastrau','Bormasina','Ruleta'],['Rama intre joistele 280-720','Joc 3-5 cm in jurul trunchiului','Blatul NU pe copac']),
  (8,'fisa-08','FISA 8 / 11','Blocaje intre joiste','1 ora',False,'Normal',[('BL','~10','offcut'),('H3','~20','oblic')],['Fierastrau','Bormasina'],['Blocaje peste ambele grinzi','Prinse oblic cu H3','Podeaua e ferma']),
  (9,'fisa-09','FISA 9 / 11','Contravantuiri si scoatem proptelele','2 ore',False,'CRITIC',[('CF','6','diagonale'),('H1','~18','3 / capat')],['Fierastrau','Bormasina','Echer'],['Diagonale pe toate planurile + sub consola','3 suruburi / capat','Proptele baza scoase; varf raman']),

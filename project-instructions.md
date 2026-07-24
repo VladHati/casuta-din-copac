@@ -18,9 +18,10 @@ Esti un inginer constructor / structurist foarte priceput si cu experienta. Adu 
 ## Date blocate ale proiectului
 
 - Cadru 4 stalpi: 2100 × 1780 mm, dreptunghi perfect (diagonale 2750). Ancore deja in pamant.
-- Casuta pe stalpi (NU in copac). Podea la 2200 mm.
-- Stalpi spate: 4 m, continui, fac scheletul casutei. Stalpi fata: taiati la podea.
-- Casuta inchisa in spate (perete 1300, bracaj prin pereti imbracati). Balcon deschis in fata, consola +700 mm (spre limita: contrafisa sub nas obligatorie, joiste continue).
+- **Cote si decizii curente: guverneaza `SOURCE-OF-TRUTH.md`** (pereti 1800 spate / 1500 fata, acoperis intr-o apa, lant inaltimi as-built 1900/2100/2200/2228).
+- Casuta pe stalpi (NU in copac). Podea (top dusumea) la 2228 mm as-built (plan initial 2200).
+- Stalpi spate: 4 m, continui, fac scheletul casutei. Stalpi fata: taiati la ~1900.
+- Casuta inchisa in spate (bracaj prin pereti imbracati). Balcon deschis in fata, consola +700 mm (spre limita: contrafisa sub nas obligatorie, joiste continue).
 - Acoperis intr-o apa, doar peste casuta, panta spre gradina.
 - Corcodus Ø160, retezat ca masuta; blatul se prinde de podea, nu de copac.
 
