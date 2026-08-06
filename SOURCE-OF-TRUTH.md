@@ -14,9 +14,10 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 | Noduri grinda-stalp | `NODURI-grinda-stalp.html` | actual |
 | Podea (plan + sectiune) | `PODEA-plan-sectiune.html` | actual |
 | Faza podea (instructiuni de santier) | `FISA-CONTINUARE-podea.html` / `.pdf` | actual (as-built 24.07) |
-| Casa de sus | `CASA-plan-constructie.html` | actual (invelitoare + usa de ales) |
+| Casa de sus | `CASA-plan-constructie.html` | actual (decizii fixate 06.08: Onduline, gol usa) |
+| Faza 2 (instructiuni de santier: podea-final, balustrada, scara, casa) | `FISA-FAZA-2-casa-gard-scara.html` / `.pdf` | actual (06.08) |
 | Stadiu santier | `STATUS.md` + `timeline.html` | actual |
-| Audit tehnic | `AUDIT-2026-07-24.md` (curent), `AUDIT-2026-07-23.html` + `AUDIT-2026-06-18.html` (istorice, cu banner de stare) | actual |
+| Audit tehnic | `AUDIT-2026-08-06.md` (curent), `AUDIT-2026-07-24.md` + `AUDIT-2026-07-23.html` + `AUDIT-2026-06-18.html` (istorice) | actual |
 
 ## Cote blocate (rezumat — detaliul e in dosar)
 
@@ -27,13 +28,14 @@ Lant canonic de inaltimi **as-built** (migrat 24.07): **varf stalpi fata / top p
 - Stalpi spate: intregi, 4 m. Stalpi fata: taiati ~1900 (plan initial 1872).
 - Consola balcon: 700.
 - Perete casa de sus: 1800 spate / 1500 fata (inlocuieste vechiul 1300).
-- Balustrada: 1000, goluri sub 90.
+- Balustrada (decizie 06.08): 1000 general, 1100 pe consola; goluri sub 90; M10 total 14.
 
 ## Goluri deschise (de inchis)
 
 - **[P0 SIGURANTA — INCHIS 24.07] Talpic sub polita spate.** Propagarea in fise / tracker / 3D e FACUTA (commit 386f755). Fizic confirmat de Vlad: talpic sub fiecare polita, fixat pe fata stalpului cu 3× Heco 8x200 + 2 tije M12 (pozitie/anti-smulgere) + contrafisa 45° sub nod. DE VERIFICAT pe teren: contrafisa prezenta la AMBELE noduri spate.
 - **[P2 COMANDA] Receptie C2 / inox — DESCHIS.** Cantitatile "platite" nu-s inca reconciliate (Vlad n-a numarat). Vlad numara la urmatoarea iesire, apoi se aliniaza.
-- **[PARCAT] Balustrada 1000 vs 1100.** Decizie amanata explicit de Vlad (24.07). Nu propaga nimic legat de balustrada/inaltime/M10 pana la decizie.
+- **[INCHIS 06.08] Balustrada 1000 vs 1100.** Decizie Vlad: 1000 general, 1100 pe consola. M10 reconciliat la 14 (7 stalpisori × 2). Propagat in CASA-plan + FISA-FAZA-2.
+- **[INCHIS 06.08 — prin decizie] Dublarea joistelor de capat (sisters).** Poarta din 24.07 ("obligatoriu inainte de stalpii casei") inchisa prin SKIP DEFINITIV, decizie informata Vlad; calculul si rezerva necuantificata in `AUDIT-2026-08-06.md`. FISA-CONTINUARE Pasul 3 = caduc; nu se mai cumpara KVH/C2/6×100 pt surori.
 - **[P2 BUGET] All-in.** Baza Faza 1 = 8500 (Tracker). Casa de sus ~1900-2100 (CASA-plan). Total ~10.400-10.600. Cifra veche 6600 (din `DE-LUAT-AZI-Hornbach.html`) e depasita — fisier arhivat.
 
 ## Reguli de propagare
