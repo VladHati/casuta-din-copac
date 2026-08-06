@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>FISA MONTAJ — BALUSTRADA | Casuta din copac</title>
+<style>
+  @page { size: A4; margin: 13mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; margin: 0; }
+  h1 { font-size: 17pt; margin: 0 0 2mm; letter-spacing: -0.3pt; }
+  .sub { color: #555; font-size: 8.5pt; margin-bottom: 4mm; }
+  h2 { font-size: 11.5pt; margin: 6mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.5pt solid #1a1a1a; }
+  h3 { font-size: 10pt; margin: 4mm 0 1.5mm; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0; }
+  th, td { border: 0.5pt solid #999; padding: 1.4mm 2mm; text-align: left; vertical-align: top; font-size: 8.8pt; }
+  th { background: #efefef; font-size: 8.2pt; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 3mm 4mm; margin: 3mm 0; }
+  .warn b { color: #b3261e; }
+  .note { border-left: 2.5pt solid #1a1a1a; background: #f5f5f5; padding: 2mm 3mm; margin: 2mm 0; font-size: 8.8pt; }
+  .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 3mm 0; font-size: 8.8pt; }
+  .fix b { color: #1a6b3c; }
+  ul, ol { margin: 1mm 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1.2mm; }
+  .step { border: 0.8pt solid #1a1a1a; margin: 3mm 0; page-break-inside: avoid; }
+  .step-head { background: #1a1a1a; color: #fff; padding: 1.6mm 3mm; font-weight: bold; font-size: 10pt; }
+  .step-body { padding: 2.5mm 3mm; }
+  .gata { border: 0.8pt dashed #1a1a1a; background: #f7f7f2; padding: 2mm 3mm; margin: 2mm 0 0; font-size: 8.8pt; }
+  .chk { color: #555; }
+  svg { display: block; margin: 2mm auto; }
+  .cap { text-align: center; font-size: 8pt; color: #555; margin-bottom: 2mm; }
+  .pgbrk { page-break-before: always; }
+  .two { display: flex; gap: 4mm; }
+  .two > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<h1>FISA MONTAJ — BALUSTRADA</h1>
+<div class="sub">6 august 2026 · faza F2, dupa ce podeaua e completa · decizie: <b>1000 mm pe laturi, 1100 mm pe fata (consola)</b> · goluri sub 90 mm · stalpisori bulonati de CADRU, niciodata doar in dusumea</div>
+
+<div class="warn">
+<b>Trei reguli care nu se negociaza:</b>
+<ol>
+<li><b>Stalpisorii se prind de lemnul structurii</b> (joista de capat / joista, 100×200), cu bulon M10 strapuns. Suruburi in dusumea = balustrada care cedeaza exact cand se sprijina un copil in ea.</li>
+<li><b>Fiecare stalpisor cade pe axa unei joiste.</b> Pozitiile din fisa asta nu sunt "cam pe acolo" — sunt alese ca sa existe lemn in spatele fiecarui bulon.</li>
+<li><b>Golul luminii sub 90 mm, peste tot.</b> Taie un martor de 90 din offcut si incearca-l in fiecare gol inainte sa zici gata.</li>
+</ol>
+</div>
+
+<div class="fix">
+<b>DOUA CORECTII fata de fisele anterioare (rezultate din calculul de mai jos — cifrele astea le folosesti):</b>
+<ul style="margin-bottom:0">
+<li><b>8 stalpisori, nu 7</b> → <b>16 buloane M10, nu 14</b>. Motivul: balustrada se face INAINTEA casei (F2 inainte de F4), deci ambele laturi au nevoie de un stalpisor propriu la capatul dinspre casa — nu se pot sprijini de peretele casei, care inca nu exista. <b>Cumperi 4 buloane M10×120 (ai 12), nu 2.</b></li>
+<li><b>Pozitiile sunt dictate de joiste</b>, nu de impartirea egala a laturii: 4 stalpisori pe fata, pe axele joistelor <span class="mono">0 · 720 · 1550 · 2100</span> (travei 720 / 830 / 550 — toate sub 900) si cate 2 pe fiecare latura.</li>
+</ul>
+</div>
+
+<h2>Ce construiesti — vedere de sus</h2>
+
+<svg viewBox="-280 -330 2950 3160" width="470">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#444"/></marker>
+  </defs>
+  <style>
+    .lbl{font-family:Helvetica,Arial;font-size:62px;fill:#1a1a1a}
+    .sm{font-family:Helvetica,Arial;font-size:52px;fill:#555}
+    .dim{font-family:'Courier New',monospace;font-size:56px;fill:#b3261e;font-weight:bold}
+    .jo{fill:#e8e2d8;stroke:#9b8f7d;stroke-width:4}
+    .gl{fill:#cfc4b0;stroke:#6b6152;stroke-width:5}
+    .rail{stroke:#1a1a1a;stroke-width:14;fill:none}
+    .post{fill:#b3261e}
+    .dl{stroke:#444;stroke-width:3}
+    .hs{fill:#f2f2f2;stroke:#999;stroke-width:4;stroke-dasharray:22 14}
+  </style>
+
+  <!-- joists (front-back), x positions, depth 0..2440 -->
+  <g class="jo">
+    <rect x="-50" y="0" width="100" height="2440"/>
+    <rect x="230" y="0" width="100" height="2440"/>
+    <rect x="670" y="0" width="100" height="2440"/>
+    <rect x="1070" y="0" width="100" height="2440"/>
+    <rect x="1500" y="0" width="100" height="2440"/>
+    <rect x="2050" y="0" width="100" height="2440"/>
+  </g>
+  <!-- glulams -->
+  <rect class="gl" x="-50" y="700" width="2200" height="90"/>
+  <rect class="gl" x="-50" y="2350" width="2200" height="90"/>
+  <!-- house footprint -->
+  <rect class="hs" x="-50" y="1340" width="2200" height="1100"/>
+  <text class="sm" x="700" y="1900">viitoarea CASA (F4)</text>
+  <text class="sm" x="700" y="1980">fara balustrada aici</text>
+
+  <!-- railing lines -->
+  <path class="rail" d="M -50 30 L 2150 30"/>
+  <path class="rail" d="M -20 30 L -20 1340"/>
+  <path class="rail" d="M 2120 30 L 2120 1340"/>
+
+  <!-- posts: front 4 -->
+  <g class="post">
+    <rect x="-45" y="20" width="90" height="90"/>
+    <rect x="675" y="20" width="90" height="90"/>
+    <rect x="1505" y="20" width="90" height="90"/>
+    <rect x="2055" y="20" width="90" height="90"/>
+    <!-- sides -->
+    <rect x="-45" y="625" width="90" height="90"/>
+    <rect x="-45" y="1250" width="90" height="90"/>
+    <rect x="2055" y="625" width="90" height="90"/>
+    <rect x="2055" y="1250" width="90" height="90"/>
+  </g>
+
+  <!-- gate -->
+  <path d="M 2120 640 L 2320 500" stroke="#1a6b3c" stroke-width="12" fill="none"/>
+  <text class="sm" x="2180" y="760" fill="#1a6b3c">poarta</text>
+  <text class="sm" x="2180" y="830" fill="#1a6b3c">+ scara</text>
+
+  <!-- dims across front -->
+  <line class="dl" x1="0" y1="-120" x2="720" y2="-120" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dim" x="250" y="-150">720</text>
+  <line class="dl" x1="720" y1="-120" x2="1550" y2="-120" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dim" x="1030" y="-150">830</text>
+  <line class="dl" x1="1550" y1="-120" x2="2100" y2="-120" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dim" x="1700" y="-150">550</text>
+  <text class="sm" x="480" y="-40">axele joistelor: 0 · 720 · 1550 · 2100</text>
+
+  <!-- side dims -->
+  <line class="dl" x1="-160" y1="30" x2="-160" y2="670" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dim" x="-250" y="400" transform="rotate(-90 -250 400)">670</text>
+  <line class="dl" x1="-160" y1="670" x2="-160" y2="1340" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text class="dim" x="-250" y="1050" transform="rotate(-90 -250 1050)">670</text>
+
+  <text class="lbl" x="620" y="-230">FATA / CONSOLA — h 1100</text>
+  <text class="sm" x="2200" y="1150" transform="rotate(90 2200 1150)">LATURA — h 1000</text>
+  <text class="sm" x="-140" y="2200">glulam spate</text>
+  <text class="sm" x="-140" y="640">glulam fata</text>
+  <text class="dim" x="880" y="2700">2100 latime · 2440 adancime (VERIFICA pe teren)</text>
+</svg>
+<div class="cap">Plan: 8 stalpisori (rosu) pe axele joistelor · balustrada pe 3 laturi · spatele ramane liber pentru casa</div>
+
+<div class="note"><b>Inainte de orice taiere:</b> masoara latimea reala (nominal 2100) si adancimea reala a terasei de la nasul consolei pana la linia unde incepe casa (nominal 1340 = 2440 total − 1100 casa). Daca adancimea reala difera cu peste 30 mm, muta stalpisorul de mijloc al laturii la jumatatea cotei masurate si spune-mi cifra.</div>
+
+<h2 class="pgbrk">Cut list — taie tot inainte sa urci</h2>
+<table>
+<tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th><th>Din</th></tr>
+<tr><td>Stalpisor FATA (h 1100)</td><td class="mono">58×58 / 60×60</td><td class="mono">1330</td><td class="mono">4</td><td>2 bare de 3 m (2 buc/bara)</td></tr>
+<tr><td>Stalpisor LATURA (h 1000)</td><td class="mono">58×58 / 60×60</td><td class="mono">1230</td><td class="mono">4</td><td>2 bare de 3 m (2 buc/bara)</td></tr>
+<tr><td>Mana curenta fata</td><td class="mono">45×70</td><td class="mono">2160</td><td class="mono">1</td><td>1 bara (ramane offcut 840)</td></tr>
+<tr><td>Mana curenta laturi</td><td class="mono">45×70</td><td class="mono">1360</td><td class="mono">2</td><td>1 bara (2 buc/bara: 2×1360=2720)</td></tr>
+<tr><td>Lisa jos fata</td><td class="mono">45×70</td><td class="mono">2160</td><td class="mono">1</td><td>1 bara</td></tr>
+<tr><td>Lisa jos laturi</td><td class="mono">45×70</td><td class="mono">1360</td><td class="mono">2</td><td>1 bara</td></tr>
+<tr><td>Lamele fata</td><td class="mono">18×28 (sau 18×18)</td><td class="mono">1000</td><td class="mono">~20</td><td>3 buc/bara de 3 m → 7 bare</td></tr>
+<tr><td>Lamele laturi</td><td class="mono">18×28</td><td class="mono">900</td><td class="mono">~25</td><td>3 buc/bara → 9 bare</td></tr>
+<tr><td>Rama poarta (montanti + traverse)</td><td class="mono">45×70</td><td class="mono">2×900 + 2×560</td><td class="mono">4</td><td>1 bara</td></tr>
+</table>
+<div class="note"><b>De ce lungimile astea:</b> stalpisorul = <span class="mono">1000</span> (sau 1100) inaltime utila + <span class="mono">28</span> grosimea dusumelei + <span class="mono">200</span> suprapunerea pe joista + <span class="mono">~100</span> rezerva de taiere la fix pe santier = 1330 / 1230. Lasi rezerva SUS si retezi la sfarsit, dupa ce mana curenta e la nivel. Lamela = inaltimea intre lisa jos si mana curenta, masurata pe loc dupa ce ramele sunt montate — cifrele 1000/900 sunt pentru comanda materialului, nu pentru taiere finala.</div>
+
+<h2>Cum arata prinderea — sectiune prin stalpisor</h2>
+<div class="two">
+<div>
+<svg viewBox="-140 -120 720 1500" width="215">
+  <style>
+    .l2{font-family:Helvetica,Arial;font-size:34px;fill:#1a1a1a}
+    .s2{font-family:Helvetica,Arial;font-size:28px;fill:#555}
+    .d2{font-family:'Courier New',monospace;font-size:30px;fill:#b3261e;font-weight:bold}
+  </style>
+  <!-- joist -->
+  <rect x="0" y="900" width="240" height="400" fill="#e8e2d8" stroke="#9b8f7d" stroke-width="5"/>
+  <text class="s2" x="30" y="1120">joista</text>
+  <text class="s2" x="30" y="1160">100×200</text>
+  <!-- deck -->
+  <rect x="0" y="844" width="240" height="56" fill="#d8cbb4" stroke="#8a7c62" stroke-width="4"/>
+  <text class="s2" x="-135" y="880">dusumea</text>
+  <!-- stalpisor on outer face -->
+  <rect x="240" y="-60" width="116" height="1360" fill="#f3d9c9" stroke="#b3261e" stroke-width="6"/>
+  <text class="l2" x="380" y="300">stalpisor</text>
+  <text class="s2" x="380" y="345">58×58</text>
+  <!-- bolts -->
+  <circle cx="298" cy="990" r="26" fill="#1a1a1a"/><circle cx="298" cy="1210" r="26" fill="#1a1a1a"/>
+  <line x1="120" y1="990" x2="470" y2="990" stroke="#1a1a1a" stroke-width="7"/>
+  <line x1="120" y1="1210" x2="470" y2="1210" stroke="#1a1a1a" stroke-width="7"/>
+  <text class="d2" x="380" y="980">M10</text>
+  <text class="d2" x="380" y="1200">M10</text>
+  <text class="s2" x="-140" y="1000">saiba lata</text>
+  <text class="s2" x="-140" y="1040">+ piulita</text>
+  <!-- dims -->
+  <line x1="530" y1="-60" x2="530" y2="844" stroke="#444" stroke-width="4"/>
+  <text class="d2" x="480" y="420" transform="rotate(-90 480 420)">1000 utila</text>
+  <line x1="530" y1="900" x2="530" y2="1300" stroke="#444" stroke-width="4"/>
+  <text class="d2" x="560" y="1130" transform="rotate(-90 560 1130)">200 lap</text>
+  <line x1="240" y1="1370" x2="298" y2="1370" stroke="#444" stroke-width="3"/>
+  <text class="s2" x="150" y="1420">gaura Ø11 strapunsa</text>
+</svg>
+<div class="cap">Sectiune: stalpisor pe FATA EXTERIOARA a joistei, 2× M10 strapuns</div>
+</div>
+<div>
+<svg viewBox="-120 -120 760 1500" width="215">
+  <style>
+    .l3{font-family:Helvetica,Arial;font-size:34px;fill:#1a1a1a}
+    .s3{font-family:Helvetica,Arial;font-size:28px;fill:#555}
+    .d3{font-family:'Courier New',monospace;font-size:30px;fill:#b3261e;font-weight:bold}
+  </style>
+  <!-- elevation of one bay -->
+  <rect x="0" y="0" width="58" height="1180" fill="#f3d9c9" stroke="#b3261e" stroke-width="6"/>
+  <rect x="660" y="0" width="58" height="1180" fill="#f3d9c9" stroke="#b3261e" stroke-width="6"/>
+  <!-- handrail + lisa -->
+  <rect x="-30" y="-30" width="778" height="70" fill="#d8cbb4" stroke="#6b6152" stroke-width="5"/>
+  <rect x="0" y="1010" width="718" height="70" fill="#d8cbb4" stroke="#6b6152" stroke-width="5"/>
+  <text class="s3" x="250" y="-55">mana curenta 45×70</text>
+  <text class="s3" x="290" y="1140">lisa jos</text>
+  <!-- lamele -->
+  <g fill="#efe6d6" stroke="#9b8f7d" stroke-width="3">
+    <rect x="112" y="40" width="18" height="970"/><rect x="218" y="40" width="18" height="970"/>
+    <rect x="324" y="40" width="18" height="970"/><rect x="430" y="40" width="18" height="970"/>
+    <rect x="536" y="40" width="18" height="970"/>
+  </g>
+  <line x1="130" y1="560" x2="218" y2="560" stroke="#b3261e" stroke-width="6"/>
+  <text class="d3" x="120" y="530">gol 88</text>
+  <line x1="112" y1="700" x2="130" y2="700" stroke="#444" stroke-width="5"/>
+  <text class="s3" x="60" y="770">18</text>
+  <text class="d3" x="250" y="880">pas 106 mm</text>
+  <text class="s3" x="250" y="925">(18 + 88)</text>
+</svg>
+<div class="cap">Elevatie travee: lamele verticale, pas 106 → gol 88 (&lt; 90)</div>
+</div>
+</div>
+
+<div class="step pgbrk">
+<div class="step-head">PASUL 1 — Traseaza si gaureste stalpisorii (JOS, pe capra)</div>
+<div class="step-body">
+<ul>
+<li>Pe fiecare stalpisor, de la capatul de JOS, marcheaza cele doua gauri la <span class="mono">50</span> si <span class="mono">150</span> mm. Ele cad la mijlocul inaltimii joistei (joista are 200; gaurile ies la ~1/4 si ~3/4 din inaltimea ei).</li>
+<li>Gaureste <span class="mono">Ø11</span> strapuns prin stalpisor, cu GSR pe simbolul burghiu, viteza 1, ambele maini. Lemn de sacrificiu dedesubt ca sa nu smulgi fibra la iesire.</li>
+<li>Marcheaza pe fiecare stalpisor, cu creionul, care e SUS (capatul cu rezerva) si daca e piesa de FATA (1330) sau de LATURA (1230). Nu le amesteca.</li>
+<li>Teseste toate muchiile cu glaspapir — mainile copiilor trec pe stalpisori.</li>
+</ul>
+<div class="note"><b>Scule:</b> GSR + burghiu lemn 11, echer, creion, cleme, capre. Piesa gaurita = piesa prinsa in cleme.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 8 stalpisori gauriti cate 2× Ø11 · ☐ marcati SUS/FATA/LATURA · ☐ muchii tesite.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Monteaza stalpisorii pe structura</div>
+<div class="step-body">
+<p style="margin:0 0 1.5mm"><b>Ordinea: intai cei 4 de colt/capat, apoi cei de mijloc</b> — asa poti intinde o sfoara intre capete si alinia restul.</p>
+<table>
+<tr><th>Stalpisor</th><th>Unde se prinde</th><th>Cum</th></tr>
+<tr><td>FATA ×4 (axele <span class="mono">0 · 720 · 1550 · 2100</span>)</td><td>pe fata LATERALA a joistei corespunzatoare, langa nasul consolei (retras ~40 mm de la capatul joistei)</td><td>2× M10×120 strapuns prin joista (100 mm) + saiba lata pe ambele fete + piulita. Strangi pana intra saiba ~1 mm in lemn, nu mai mult.</td></tr>
+<tr><td>LATURA ×4 (la <span class="mono">670</span> si <span class="mono">1340</span> de nas, pe fiecare latura)</td><td>pe fata EXTERIOARA a joistei de capat (cea de la 0, respectiv 2100)</td><td>identic: 2× M10×120 strapuns + saibe late + piulite.</td></tr>
+</table>
+<ul>
+<li>Fiecare stalpisor: pune-l la pozitie, verifica <b>vertical cu nivela pe doua fete</b>, insemneaza gaurile prin gaurile deja facute, da-l jos, gaureste <span class="mono">Ø11</span> prin joista, monteaza.</li>
+<li>Piulitele vin pe partea din INTERIOR (dinspre punte) sau pe exterior — dar in ambele cazuri <b>capatul tijei taiat la ras</b> si pilit. Nimic ascutit la inaltimea mainii unui copil.</li>
+<li>Dupa ce toti 8 sunt pusi: <b>zgaltaie fiecare cu putere</b>. Orice joc = strange piulita sau adauga o saiba; nu merge mai departe cu un stalpisor care se misca.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 8 stalpisori bulonati, cate 2 M10 fiecare · ☐ toti verticali (nivela pe 2 fete) · ☐ zero joc la zgaltait · ☐ capete de tija la ras si pilite.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Retezare la cota + mana curenta si lisa jos</div>
+<div class="step-body">
+<ul>
+<li><b>Retezi acum, nu inainte:</b> de la fata dusumelei masoara <span class="mono">1100</span> pe cei 4 stalpisori de FATA si <span class="mono">1000</span> pe cei 4 de LATURA. Marcheaza cu furtunul de nivel sau nivela lunga intre ei, ca linia sa fie una singura, nu 8 cote independente.</li>
+<li>Taie cu circularul, ghidat de un echer prins in clema. Teseste capatul.</li>
+<li><b>Mana curenta 45×70</b> peste capetele stalpisorilor, cu fata lata orizontala: 2× Heco <span class="mono">6×100</span> pe fiecare stalpisor, batute oblic din lateral (nu vertical prin mijloc — crapa). Imbinarile intre bare cad DEASUPRA unui stalpisor, taiate la 45°, niciodata in gol.</li>
+<li><b>Lisa jos 45×70</b> intre stalpisori, cu fata de jos la <span class="mono">40 mm</span> deasupra dusumelei (lasa loc pentru maturat si scurgerea apei): 2× Heco <span class="mono">6×80</span> oblic la fiecare capat.</li>
+<li>Tranzitia <b>1100 → 1000</b> la coltul consolei: taie mana curenta oblic pe ~150 mm sau fa o treapta neteda. Nicio muchie in unghi ascutit.</li>
+</ul>
+<div class="warn" style="margin-bottom:0"><b>Zona de colt = zona de catarat.</b> Verifica dupa montaj: nu exista nicio suprafata orizontala intre lisa jos si mana curenta pe care sa se poata pune un picior. Daca a iesit una (de exemplu o traversa de rigidizare), scoate-o.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ toate capetele la aceeasi linie (1100 fata / 1000 laturi) · ☐ mana curenta continua, imbinari peste stalpisori · ☐ lisa jos la 40 de dusumea · ☐ zero praguri orizontale intermediare.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 4 — Lamelele (partea care tine copilul inauntru)</div>
+<div class="step-body">
+<ul>
+<li>Masoara pe loc inaltimea libera intre lisa jos si mana curenta, in fiecare travee. Taie lamelele la cota masurata minus <span class="mono">2 mm</span> (sa intre fara sa forteze).</li>
+<li><b>Trasare:</b> pe lisa jos si pe mana curenta, marcheaza pasul de <span class="mono">106 mm</span> (18 lamela + 88 gol) pornind de la fiecare stalpisor spre mijlocul traveei. Ultimul gol de langa stalpisor iese mai mic — bine asa, niciodata mai mare.</li>
+<li><b>Prindere:</b> 1× surub inox <span class="mono">4×50</span> sus + 1 jos, batut oblic (~45°) din spatele lamelei, cu <b>pregaurire 3 mm</b> — lamela de 18 crapa altfel. Bit T20, GSR pe ambreiaj mic (5–8).</li>
+<li>Alternativa mai curata daca ai rabdare: lisa jos si mana curenta cu canal de 18 frezat — dar cu sculele tale, prinderea oblica e alegerea corecta.</li>
+<li><b>Verificarea finala cu martorul de 90:</b> plimba cubul de 90 prin FIECARE gol, inclusiv cele de langa stalpisori si cel de sub mana curenta la tranzitia 1100/1000. Daca trece pe undeva, adaugi o lamela acolo.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ toate lamelele montate, cate 2 suruburi fiecare · ☐ martorul de 90 NU trece nicaieri · ☐ zero varfuri de surub iesite pe partea dinspre punte · ☐ nimic care sa se clatine la impins cu palma.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 5 — Poarta de la scara</div>
+<div class="step-body">
+<ul>
+<li><b>Golul portii:</b> <span class="mono">560 mm</span> latime libera, in latura pe care urca scara, imediat langa stalpisorul de la 670. Latimea o confirmi dupa ce stii unde ajunge scara (F3) — daca inca nu stii sigur, monteaza tot restul balustradei si lasa golul, poarta o pui la final.</li>
+<li><b>Rama portii:</b> 2 montanti 45×70 × 900 + 2 traverse 45×70 × 560, incheiate cu cate 2× Heco 6×100 pe colt + un vinclu 40×40 in fiecare colt, pe partea dinspre punte. Aceleasi lamele, acelasi pas de 106.</li>
+<li><b>Balamale cu arc ×2</b>, prinse pe stalpisor, la 100 mm de sus si de jos. <b>Poarta se deschide spre PUNTE, niciodata spre gol</b> — daca se deschide spre scara, un copil care se sprijina in ea cade cu tot cu poarta.</li>
+<li><b>Zavor sus, la ~1000 de dusumea</b>, pe partea dinspre punte, cu manevrare peste balustrada. Sus = incomod pentru un copil mic, accesibil pentru unul mare si pentru adult.</li>
+<li>Dupa montaj: da-i drumul de 10 ori din pozitii diferite. Trebuie sa se inchida singura si sa se zavorasca de fiecare data, fara ajutor.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ poarta se inchide SINGURA din orice pozitie · ☐ zavorul prinde de fiecare data · ☐ se deschide spre punte · ☐ golurile din poarta trec testul de 90 · ☐ balamalele fara joc.</div>
+</div>
+</div>
+
+<h2>Feronerie — totalul balustradei</h2>
+<table>
+<tr><th>Articol</th><th>Cantitate</th><th>Unde</th></tr>
+<tr><td>Bulon M10×120 + 2 saibe late + piulita</td><td class="mono">16</td><td>8 stalpisori × 2 · <b>ai 12 → cumperi 4</b></td></tr>
+<tr><td>Heco 6×100 (T30)</td><td class="mono">~24</td><td>mana curenta pe stalpisori (2/stalpisor) + colturi poarta</td></tr>
+<tr><td>Heco 6×80 (T30)</td><td class="mono">~32</td><td>lisa jos (2 la fiecare capat de tronson)</td></tr>
+<tr><td>Inox 4×50 (T20)</td><td class="mono">~90</td><td>lamele: 2 buc × ~45 lamele</td></tr>
+<tr><td>Balama cu arc</td><td class="mono">2</td><td>poarta</td></tr>
+<tr><td>Zavor</td><td class="mono">1</td><td>poarta, montat SUS</td></tr>
+<tr><td>Vinclu 40×40</td><td class="mono">4</td><td>colturile ramei portii</td></tr>
+</table>
+
+<h2>Verificarea finala — inainte sa urce un copil</h2>
+<ul>
+<li class="chk">☐ <b>Testul de sprijin:</b> te sprijini cu toata greutatea in mana curenta, in mijlocul fiecarei travee. Zero deplasare vizibila, zero trosnet.</li>
+<li class="chk">☐ <b>Testul de 90:</b> martorul nu trece prin niciun gol, nicaieri, inclusiv sub mana curenta si la poarta.</li>
+<li class="chk">☐ <b>Testul de catarat:</b> te uiti la balustrada din exterior — nu exista nicio priza orizontala intre lisa si mana curenta.</li>
+<li class="chk">☐ <b>Pipait:</b> treci palma pe toata mana curenta si pe toti stalpisorii — zero aschii, zero capete de surub, zero muchii vii.</li>
+<li class="chk">☐ Toate piulitele stranse, toate capetele de tija taiate la ras si pilite.</li>
+<li class="chk">☐ Lazura/ulei dat pe tot lemnul nou (dupa montaj, nu inainte).</li>
+</ul>
+
+<div class="sub" style="margin-top:4mm">Sursa cote: as-built 06.08 (joiste 0/280/720/1120/1550/2100, dusumea +2228) · decizia 06.08 balustrada 1000/1100-consola · fisa-11 (detaliu prindere) · FISA-FAZA-2. Corectii introduse aici, cu motivul: 8 stalpisori (nu 7) pentru ca balustrada precede casa; 16 M10 (nu 14); pozitii pe axele joistelor (nu impartire egala). Adancimea terasei 1340 si latimea 2100 = nominale — se confirma la fata locului inainte de taiere.</div>
+
+</body>
+</html>

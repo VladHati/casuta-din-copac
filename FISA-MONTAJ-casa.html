@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>FISA MONTAJ — CASA | Casuta din copac</title>
+<style>
+  @page { size: A4; margin: 13mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; margin: 0; }
+  h1 { font-size: 17pt; margin: 0 0 2mm; letter-spacing: -0.3pt; }
+  .sub { color: #555; font-size: 8.5pt; margin-bottom: 4mm; }
+  h2 { font-size: 11.5pt; margin: 6mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.5pt solid #1a1a1a; }
+  h3 { font-size: 10pt; margin: 4mm 0 1.5mm; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0; }
+  th, td { border: 0.5pt solid #999; padding: 1.4mm 2mm; text-align: left; vertical-align: top; font-size: 8.8pt; }
+  th { background: #efefef; font-size: 8.2pt; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 3mm 4mm; margin: 3mm 0; }
+  .warn b { color: #b3261e; }
+  .note { border-left: 2.5pt solid #1a1a1a; background: #f5f5f5; padding: 2mm 3mm; margin: 2mm 0; font-size: 8.8pt; }
+  .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 3mm 0; font-size: 8.8pt; }
+  .fix b { color: #1a6b3c; }
+  ul, ol { margin: 1mm 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1.2mm; }
+  .step { border: 0.8pt solid #1a1a1a; margin: 3mm 0; page-break-inside: avoid; }
+  .step-head { background: #1a1a1a; color: #fff; padding: 1.6mm 3mm; font-weight: bold; font-size: 10pt; }
+  .step-body { padding: 2.5mm 3mm; }
+  .gata { border: 0.8pt dashed #1a1a1a; background: #f7f7f2; padding: 2mm 3mm; margin: 2mm 0 0; font-size: 8.8pt; }
+  .chk { color: #555; }
+  svg { display: block; margin: 2mm auto; }
+  .cap { text-align: center; font-size: 8pt; color: #555; margin-bottom: 2mm; }
+  .pgbrk { page-break-before: always; }
+  .two { display: flex; gap: 4mm; }
+  .two > div { flex: 1; }
+  .fill { display:inline-block; min-width: 22mm; border-bottom: 0.8pt solid #1a1a1a; }
+</style>
+</head>
+<body>
+
+<h1>FISA MONTAJ — CASA</h1>
+<div class="sub">6 august 2026 · faza F4, ultima · cutie 2100 × 1100, acoperis intr-o apa spre terasa · decizii: <b>Onduline · gol de usa (fara usa) · fereastra PVC 56×56 doar in fata</b> · se incepe numai dupa ce F1–F3 sunt bifate</div>
+
+<div class="warn">
+<b>Patru reguli care nu se negociaza:</b>
+<ol>
+<li><b>Nu se cumpara si nu se taie nimic inainte de Pasul 0.</b> Cotele din fisa sunt nominale; casa se croieste dupa ce masori structura existenta.</li>
+<li><b>Proptelele de pe stalpii de 4 m NU se ating</b> pana cutia nu e sus si bulonata. Baza lor e articulata — cutia e cea care ii tine.</li>
+<li><b>Peretii se ridica in zi fara vant, minim 3 oameni</b>, fiecare panou proptit inainte sa-i dai drumul. Ridici panouri de ~2 m² pe o platforma la 2,2 m inaltime.</li>
+<li><b>Poarta de sezon:</b> OSB-ul si acoperisul se pun in aceeasi etapa. Schelet neimbracat lasat peste ploi = lemn stricat si cutie care se leagana.</li>
+</ol>
+</div>
+
+<div class="fix">
+<b>DE CITIT INAINTE DE TOATE — inaltimea peretelui din spate nu e o alegere:</b>
+<p style="margin:1mm 0">Peretele din spate se prinde de stalpii de 4 m existenti. Deci inaltimea lui = <b>cat ies stalpii deasupra dusumelei</b>, nu 1800 cat scria in plan. Stalp 4000 − dusumea 2228 ≈ <b>1772</b>, dar depinde de cat au intrat in fundatie si de taietura reala. <b>Masori, apoi decizi.</b></p>
+<p style="margin:1mm 0 0">Consecinta: peretele din fata = spate − <b>300</b> (asta da panta de ~15° pe adancimea de 1100). Daca stalpii ies mai putin de <b>1700</b>, spune-mi cifra inainte sa tai — la sub 1700 spate / 1400 fata, un copil de 165 cm sta aplecat in partea din fata, si atunci schimbam panta sau adancimea.</p>
+</div>
+
+<h2>Pasul 0 — Cele 5 masuratori care croiesc casa</h2>
+<table>
+<tr><th>#</th><th>Ce masori</th><th>Nominal</th><th>Cota reala</th></tr>
+<tr><td class="mono">M1</td><td><b>Cat ies stalpii de 4 m deasupra dusumelei</b> (ambii; ia cea mai MICA valoare)</td><td class="mono">~1772</td><td><span class="fill"></span></td></tr>
+<tr><td class="mono">M2</td><td><b>Distanta de la fata stalpilor spate pana la axa tijelor M12</b> din podea = adancimea reala a casei</td><td class="mono">1100</td><td><span class="fill"></span></td></tr>
+<tr><td class="mono">M3</td><td><b>Lumina intre stalpii de 4 m</b> (fata interioara la fata interioara), masurata jos SI sus</td><td class="mono">2000</td><td><span class="fill"></span></td></tr>
+<tr><td class="mono">M4</td><td><b>Distanta intre axele celor 2 tije M12</b> (trebuie sa fie egala cu M3 + 100)</td><td class="mono">2100</td><td><span class="fill"></span></td></tr>
+<tr><td class="mono">M5</td><td><b>Cat ies tijele M12 deasupra dusumelei</b></td><td class="mono">~100</td><td><span class="fill"></span></td></tr>
+</table>
+<div class="warn">
+<b>STOP daca:</b> M3 masurat jos difera de M3 masurat sus cu peste 15 mm (stalpii nu-s paraleli — se rezolva inainte de casa) · sau tijele M12 nu cad pe axa joistelor de capat, la ~M2 de peretele din spate. In oricare caz, trimite-mi cifrele inainte de debitare.
+</div>
+
+<h2>Cum sta casa pe podea</h2>
+<svg viewBox="-320 1150 2760 1650" width="470">
+  <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#444"/></marker></defs>
+  <style>
+    .jo{fill:#f0ece4;stroke:#c0b6a4;stroke-width:4}
+    .gl{fill:#e2d8c4;stroke:#8a8070;stroke-width:5}
+    .wl{fill:#d8cbb4;stroke:#1a1a1a;stroke-width:6}
+    .po{fill:#b3261e}
+    .fp{fill:#e8894a;stroke:#8a4a1e;stroke-width:5}
+    .t{font-family:Helvetica,Arial;font-size:58px;fill:#1a1a1a}
+    .s{font-family:Helvetica,Arial;font-size:48px;fill:#555}
+    .d{font-family:'Courier New',monospace;font-size:54px;fill:#b3261e;font-weight:bold}
+    .dl{stroke:#444;stroke-width:4}
+  </style>
+  <!-- joists -->
+  <g class="jo">
+    <rect x="-50" y="1200" width="100" height="1240"/><rect x="230" y="1200" width="100" height="1240"/>
+    <rect x="670" y="1200" width="100" height="1240"/><rect x="1070" y="1200" width="100" height="1240"/>
+    <rect x="1500" y="1200" width="100" height="1240"/><rect x="2050" y="1200" width="100" height="1240"/>
+  </g>
+  <rect class="gl" x="-50" y="2350" width="2200" height="90"/>
+  <text class="s" x="750" y="2412">glulam spate</text>
+
+  <!-- house walls: back y=2350..2440 area, front y=1340 -->
+  <rect class="wl" x="-50" y="2305" width="2200" height="45"/>
+  <rect class="wl" x="-50" y="1340" width="2200" height="45"/>
+  <rect class="wl" x="-50" y="1385" width="45" height="920"/>
+  <rect class="wl" x="2105" y="1385" width="45" height="920"/>
+
+  <!-- back posts 100x100 -->
+  <rect class="po" x="-50" y="2340" width="100" height="100"/>
+  <rect class="po" x="2050" y="2340" width="100" height="100"/>
+  <text class="s" x="90" y="2300">stalp 4 m</text>
+  <text class="s" x="1700" y="2300">stalp 4 m</text>
+
+  <!-- front posts 70x70 on M12 -->
+  <rect class="fp" x="-35" y="1345" width="70" height="70"/>
+  <rect class="fp" x="2065" y="1345" width="70" height="70"/>
+  <circle cx="0" cy="1380" r="16" fill="#1a1a1a"/><circle cx="2100" cy="1380" r="16" fill="#1a1a1a"/>
+  <text class="d" x="-310" y="1600">stalp 70×70</text>
+  <text class="d" x="-310" y="1660">pe tija M12</text>
+  <line x1="-120" y1="1560" x2="-20" y2="1420" stroke="#b3261e" stroke-width="4"/>
+
+  <!-- openings in front wall -->
+  <rect x="200" y="1335" width="500" height="55" fill="#fff" stroke="#1a1a1a" stroke-width="6"/>
+  <text class="t" x="250" y="1500">GOL USA 500</text>
+  <rect x="1100" y="1335" width="570" height="55" fill="#dff0f5" stroke="#3a6ea5" stroke-width="6"/>
+  <text class="t" x="1120" y="1500" fill="#3a6ea5">FEREASTRA 570</text>
+
+  <!-- rafters direction -->
+  <g stroke="#8a8070" stroke-width="6" stroke-dasharray="30 18">
+    <line x1="0" y1="1390" x2="0" y2="2305"/><line x1="500" y1="1390" x2="500" y2="2305"/>
+    <line x1="1000" y1="1390" x2="1000" y2="2305"/><line x1="1500" y1="1390" x2="1500" y2="2305"/>
+    <line x1="2100" y1="1390" x2="2100" y2="2305"/>
+  </g>
+  <text class="s" x="1150" y="2150">capriori la 500 — 5 buc</text>
+
+  <!-- dims -->
+  <line class="dl" x1="0" y1="1230" x2="2100" y2="1230" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="d" x="880" y="1210">M4 = 2100</text>
+  <line class="dl" x1="2280" y1="1380" x2="2280" y2="2390" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="d" x="2360" y="1900" transform="rotate(-90 2360 1900)">M2 = 1100</text>
+  <text class="t" x="700" y="2680">TERASA (in fata) — balustrada din F2</text>
+</svg>
+<div class="cap">Plan: casa sta pe spatele podelei · stalpii fata (portocaliu) pe tijele M12 deja montate · capriori la 500</div>
+
+<h2 class="pgbrk">Sectiune — inaltimile si panta</h2>
+<svg viewBox="-450 -420 2200 2500" width="440">
+  <defs><marker id="ah2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#444"/></marker></defs>
+  <style>
+    .t2{font-family:Helvetica,Arial;font-size:56px;fill:#1a1a1a}
+    .s2{font-family:Helvetica,Arial;font-size:46px;fill:#555}
+    .d2{font-family:'Courier New',monospace;font-size:52px;fill:#b3261e;font-weight:bold}
+    .dl2{stroke:#444;stroke-width:4}
+    .wd{fill:#d8cbb4;stroke:#6b6152;stroke-width:5}
+  </style>
+  <!-- deck line at y=1900 (=0 level) -->
+  <rect x="-400" y="1900" width="2000" height="45" fill="#d8cbb4" stroke="#6b6152" stroke-width="5"/>
+  <text class="s2" x="-420" y="2030">DUSUMEA +2228</text>
+  <!-- back post -->
+  <rect class="wd" x="1100" y="128" width="100" height="1772" fill="#e8e2d8"/>
+  <text class="s2" x="1220" y="1000" transform="rotate(-90 1220 1000)">stalp 4 m</text>
+  <!-- back wall -->
+  <rect class="wd" x="1010" y="128" width="90" height="1772"/>
+  <!-- front wall -->
+  <rect class="wd" x="0" y="428" width="90" height="1472"/>
+  <!-- rafter line: (0,1472)->(1100,1772) in level coords ; svg y = 1900 - level -->
+  <line x1="-200" y1="1900" x2="1300" y2="1490" stroke="#c69a68" stroke-width="0" />
+  <polygon points="-200,483 1300,74 1300,164 -200,573" fill="#c9b28c" stroke="#8a7c62" stroke-width="5"/>
+  <text class="s2" x="380" y="330" transform="rotate(-15.3 380 330)">caprior 42×90</text>
+  <!-- onduline -->
+  <line x1="-210" y1="470" x2="1310" y2="56" stroke="#7a4a3a" stroke-width="16"/>
+  <text class="d2" x="700" y="150" transform="rotate(-15.3 700 150)">Onduline</text>
+  <!-- water arrow -->
+  <line x1="-230" y1="520" x2="-330" y2="700" stroke="#3a6ea5" stroke-width="10" marker-end="url(#ah2)"/>
+  <text class="s2" x="-440" y="800" fill="#3a6ea5">jgheab</text>
+  <!-- dims -->
+  <line class="dl2" x1="1450" y1="128" x2="1450" y2="1900" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+  <text class="d2" x="1530" y="1000" transform="rotate(-90 1530 1000)">M1 spate ~1772</text>
+  <line class="dl2" x1="-330" y1="428" x2="-330" y2="1900" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+  <text class="d2" x="-390" y="1200" transform="rotate(-90 -390 1200)">fata = M1 − 300</text>
+  <line class="dl2" x1="90" y1="2080" x2="1010" y2="2080" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+  <text class="d2" x="380" y="2160">M2 = 1100</text>
+  <text class="d2" x="330" y="-120">panta 300 / 1100 = 15,3°</text>
+  <line class="dl2" x1="1300" y1="74" x2="1300" y2="-60"/>
+  <!-- overhangs -->
+  <line class="dl2" x1="-200" y1="640" x2="0" y2="640" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+  <text class="d2" x="-320" y="720">200</text>
+  <line class="dl2" x1="1200" y1="230" x2="1300" y2="230" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+  <text class="d2" x="1250" y="200">100</text>
+  <text class="t2" x="300" y="1100">INTERIOR</text>
+  <text class="s2" x="-430" y="1500">gol usa</text>
+</svg>
+<div class="cap">Sectiune: apa curge spre terasa · streasina fata 200 (teseste muchia — e la inaltimea capului) · spate 100</div>
+
+<h2>Cut list — se completeaza DUPA Pasul 0</h2>
+<p class="note" style="margin-top:0"><b>Notatii:</b> <span class="mono">H</span> = M1 (inaltimea reala spate) · <span class="mono">A</span> = M2 (adancimea reala) · <span class="mono">L</span> = M3 (lumina intre stalpi). Formulele dau cotele de taiat; cifrele din paranteze sunt nominalul.</p>
+<table>
+<tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th></tr>
+<tr><td>Talpa + cununa perete SPATE</td><td class="mono">42×90</td><td class="mono">L (2000)</td><td class="mono">2</td></tr>
+<tr><td>Talpa + cununa perete FATA</td><td class="mono">42×90</td><td class="mono">L (2000)</td><td class="mono">2</td></tr>
+<tr><td>Talpa + cununa pereti LATERALI (cununa taiata oblic 15,3°)</td><td class="mono">42×90</td><td class="mono">A − 90 (1010)</td><td class="mono">4</td></tr>
+<tr><td>Montanti perete SPATE</td><td class="mono">45×45</td><td class="mono">H − 84 (1688)</td><td class="mono">5</td></tr>
+<tr><td>Montanti perete FATA (inclusiv dublurile de la usa)</td><td class="mono">45×45</td><td class="mono">H − 384 (1388)</td><td class="mono">7</td></tr>
+<tr><td>Montanti LATERALI (3/perete, in trepte pe panta)</td><td class="mono">45×45</td><td class="mono">1688 / 1550 / 1400</td><td class="mono">6</td></tr>
+<tr><td>Buiandrug usa + prag fereastra + buiandrug fereastra</td><td class="mono">42×90</td><td class="mono">590 / 660 / 660</td><td class="mono">3</td></tr>
+<tr><td>Capriori (cu streasina 200 fata + 100 spate)</td><td class="mono">42×90</td><td class="mono">√(A²+300²) + 300 (1440)</td><td class="mono">5</td></tr>
+<tr><td>Sipci acoperis (peste capriori, la ≤450)</td><td class="mono">45×45</td><td class="mono">L + 200 (2200)</td><td class="mono">4</td></tr>
+<tr><td>Stalpi FATA (pe tijele M12)</td><td class="mono">70×70</td><td class="mono">H − 300 − 42 (1430)</td><td class="mono">2</td></tr>
+<tr><td>OSB perete spate</td><td class="mono">12 mm</td><td class="mono">L × H (2000×1772)</td><td class="mono">1 panou</td></tr>
+<tr><td>OSB perete fata (golurile le tai tu)</td><td class="mono">12 mm</td><td class="mono">L × (H−300)</td><td class="mono">1 panou</td></tr>
+<tr><td>OSB laterali (trapez — il tai tu dintr-un dreptunghi)</td><td class="mono">12 mm</td><td class="mono">A × H</td><td class="mono">2 panouri</td></tr>
+</table>
+<div class="note"><b>La debitare</b> (Hornbach sau Leroy) dai doar cotele dreptunghiulare. Trapezul lateral, golul de usa si golul ferestrei le decupezi tu cu fierastraul vertical, dupa ce ramele sunt gata — asa ies exact pe rama, nu pe hartie.</div>
+
+<h2>Peretele din fata — cum se ramuieste</h2>
+<svg viewBox="-260 -200 2560 1900" width="470">
+  <style>
+    .m{fill:#e8e2d8;stroke:#8a7c62;stroke-width:6}
+    .p{fill:#d8cbb4;stroke:#6b6152;stroke-width:6}
+    .t3{font-family:Helvetica,Arial;font-size:52px;fill:#1a1a1a}
+    .s3{font-family:Helvetica,Arial;font-size:42px;fill:#555}
+    .d3{font-family:'Courier New',monospace;font-size:48px;fill:#b3261e;font-weight:bold}
+    .dl3{stroke:#444;stroke-width:4}
+  </style>
+  <!-- plates -->
+  <rect class="p" x="0" y="0" width="2000" height="42"/>
+  <rect class="p" x="0" y="1430" width="2000" height="42"/>
+  <text class="s3" x="2030" y="36">cununa</text>
+  <text class="s3" x="2030" y="1470">talpa</text>
+  <!-- studs -->
+  <g class="m">
+    <rect x="0" y="42" width="45" height="1388"/>
+    <rect x="1955" y="42" width="45" height="1388"/>
+    <rect x="155" y="42" width="45" height="1388"/>
+    <rect x="700" y="42" width="45" height="1388"/>
+    <rect x="1055" y="42" width="45" height="1388"/>
+    <rect x="1670" y="42" width="45" height="1388"/>
+  </g>
+  <!-- door opening 500 wide, 1300 high -->
+  <rect x="200" y="172" width="500" height="1258" fill="#fff" stroke="#1a1a1a" stroke-width="6"/>
+  <rect class="p" x="155" y="130" width="590" height="42"/>
+  <text class="t3" x="290" y="800">GOL USA</text>
+  <text class="d3" x="300" y="880">500 × 1300</text>
+  <text class="s3" x="180" y="105">buiandrug</text>
+  <!-- window RO 570x570, sill 700 above deck -> from bottom: y = 1430-700-570 = 160? -->
+  <rect x="1100" y="590" width="570" height="570" fill="#dff0f5" stroke="#3a6ea5" stroke-width="6"/>
+  <rect class="p" x="1055" y="548" width="660" height="42"/>
+  <rect class="p" x="1055" y="1160" width="660" height="42"/>
+  <text class="t3" x="1150" y="880" fill="#3a6ea5">FEREASTRA</text>
+  <text class="d3" x="1150" y="950" fill="#3a6ea5">570 × 570</text>
+  <line class="dl3" x1="1770" y1="1160" x2="1770" y2="1430"/>
+  <text class="d3" x="1800" y="1320">prag 700</text>
+  <!-- dims -->
+  <line class="dl3" x1="0" y1="-90" x2="2000" y2="-90" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="d3" x="820" y="-120">L = 2000</text>
+  <line class="dl3" x1="-140" y1="0" x2="-140" y2="1472" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="d3" x="-190" y="800" transform="rotate(-90 -190 800)">H − 300</text>
+  <text class="s3" x="760" y="1560">montanti la ~500 · dubli la marginile golurilor</text>
+</svg>
+<div class="cap">Peretele din fata: gol de usa 500×1300 · fereastra 570×570 cu pragul la 700 · montanti dubli pe marginile golurilor</div>
+<div class="note"><b>Ferestre si goluri — regula de siguranta:</b> singura fereastra care se deschide sta in peretele din FATA, deasupra terasei. In laterale si spate <b>doar hublouri fixe</b> din acrilic, prinse cu sipca pe AMBELE fete — sa nu le poata impinge afara un copil si sa deschida un gol de cadere de la 2,2 m.</div>
+
+<div class="step pgbrk">
+<div class="step-head">PASUL 1 — Construieste cei 4 pereti JOS, pe iarba</div>
+<div class="step-body">
+<p style="margin:0 0 1.5mm"><b>Ordinea: spate → fata → laterale.</b> Fiecare panou se face plat pe iarba, pe doua capre sau direct pe o folie.</p>
+<ul>
+<li><b>Rama:</b> talpa si cununa 42×90 asezate pe LAT (90 mm devine grosimea peretelui), montanti 45×45 intre ele, <b>aliniati la muchia EXTERIOARA a talpii</b> (acolo vine OSB-ul; cei 45 mm ramasi in interior sunt raftul pe care poti prinde mai tarziu politite).</li>
+<li><b>Prinderea fiecarui montant:</b> 2× surub 5×80 prin talpa in capatul montantului + 2× prin cununa, pregaurite 3,5 mm. Verifica cu echerul la fiecare montant — un panou stramb nu se mai indreapta dupa ce pui OSB-ul.</li>
+<li><b>Montanti la ~500</b> interax. La golul de usa si la fereastra: <b>montant dublu pe fiecare margine</b> (unul continuu + unul scurt care tine buiandrugul).</li>
+<li><b>Diagonala de control:</b> masoara cele doua diagonale ale panoului. Egale la ±3 mm → e in echer. Abia atunci pui OSB-ul.</li>
+<li><b>OSB 12 pe fata exterioara:</b> surub 4×60 la <span class="mono">150 mm</span> pe margini si <span class="mono">300 mm</span> in camp. OSB-ul e cel care face cutia rigida — el inlocuieste contravantuirile. Nu sari peste el si nu-l pune „mai tarziu".</li>
+<li><b>Golurile</b> (usa, fereastra, hublouri) le decupezi acum, cu fierastraul vertical, urmarind rama pe dinauntru.</li>
+<li>Peretii laterali: cununa taiata oblic la <span class="mono">15,3°</span>, montantii in trepte (1688 / 1550 / 1400). Trapezul de OSB il croiesti dupa rama, nu invers.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 4 panouri gata, toate cu diagonale egale ±3 mm · ☐ OSB pe toate 4, prins la 150/300 · ☐ goluri decupate · ☐ nimic care sa depaseasca conturul (surub, aschie).</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Pregateste podeaua si stalpii din fata</div>
+<div class="step-body">
+<ul>
+<li><b>Traseaza pe dusumea</b> conturul exact al casei: linia peretelui din spate (lipita de stalpii de 4 m) si linia din fata (prin axele celor 2 tije M12). Verifica diagonalele dreptunghiului trasat — egale = casa iese dreapta.</li>
+<li><b>Stalpii din fata 70×70:</b> in capatul de jos, gaura <span class="mono">Ø13</span> adanca <span class="mono">M5 + 30</span> (peste tija) si, coaxial, o largire <span class="mono">Ø30</span> adanca <span class="mono">40</span> pentru saiba si piulita — asa piulita sta ingropata si stalpul se aseaza plan pe dusumea.</li>
+<li>Aseaza stalpul peste tija, pune saiba lata + piulita in largire, strange. Verifica <b>vertical pe doua fete</b> si propteste-l provizoriu in doua directii.</li>
+<li><b>Blocaje sub talpi:</b> unde talpa peretelui din fata cade intre joiste, monteaza dedesubt (daca ai acces) sau accepta reazemul pe cele 6 traversari de joista — talpa din fata trece peste toate joistele, deci reazemul e asigurat. Talpile laterale cad exact deasupra joistelor de capat: reazem plin, ideal.</li>
+</ul>
+<div class="warn" style="margin-bottom:0"><b>Verifica inainte de a merge mai departe:</b> cei 2 stalpi din fata sunt verticali, bine stransi pe tije si proptiti. Ei sunt reperul dupa care se aseaza tot restul cutiei.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ contur trasat, diagonale egale · ☐ 2 stalpi montati pe tije, verticali, proptiti · ☐ piulite ingropate, nimic proeminent pe dusumea.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Ridicarea (zi fara vant, 3 oameni)</div>
+<div class="step-body">
+<ol>
+<li><b>Peretele din SPATE primul.</b> Il ridici, il aduci pe linie, il proptesti, apoi il prinzi de stalpii de 4 m: <b>tirfoane M10×120 pe 3 inaltimi</b> in fiecare capat (la ~200 de jos, la mijloc, la ~200 de sus), pregaurite Ø8 in perete si Ø6 in stalp. <b>Nu suruburi de 5×80 aici</b> — asta e nodul care tine si stalpii inalti.</li>
+<li><b>Peretii LATERALI.</b> Fiecare se aduce perpendicular pe cel din spate, se prinde in colt cu <b>4× surub 6×120</b> (prin montantul de capat al lateralului in montantul de capat al spatelui) + <b>2 coltare rigidizate 100×100</b> pe interior, sus si jos.</li>
+<li><b>Peretele din FATA ultimul.</b> Se prinde in colturi identic (4× 6×120 + 2 coltare) si de <b>stalpii 70×70</b>: 3× surub 6×120 prin montantul de capat in stalp, pe 3 inaltimi.</li>
+<li><b>Talpile in podea, dupa ce cutia e in echer:</b> surub <span class="mono">5×80</span> la fiecare <span class="mono">400 mm</span> prin talpa in joiste (unde exista joista dedesubt) + <b>vinclu zincat 90×90 la fiecare ~400 mm</b> pe interior, prins in talpa si in dusumea/joista.</li>
+<li><b>Verifica in aceasta ordine:</b> diagonalele cutiei (±5 mm) → verticalitatea celor 4 colturi cu nivela → cununile la nivel.</li>
+</ol>
+<div class="warn" style="margin-bottom:0"><b>Abia dupa ce toate cele 4 laturi sunt prinse intre ele SI de podea</b> se pot scoate proptelele temporare de pe stalpii de 4 m. Nu inainte.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 6 tirfoane M10 in stalpii de 4 m · ☐ toate cele 4 colturi cu 4× 6×120 + 2 coltare · ☐ talpi prinse la 400 + vincluri · ☐ diagonale ±5 mm · ☐ colturi verticale · ☐ proptelele scoase.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 4 — Acoperisul (capriori → sipci → Onduline)</div>
+<div class="step-body">
+<ul>
+<li><b>Capriorii</b> 42×90, asezati pe cununi la <span class="mono">500</span> interax (5 buc, aliniati cu montantii). La fiecare capat, o crestatura de sprijin (birds-mouth) de max <span class="mono">30 mm</span> adancime, sau — mai simplu si acceptabil aici — capriorul asezat direct pe cununa, taiat oblic la 15,3°.</li>
+<li><b>Ancorele anti-vant: fiecare caprior, la AMBELE capete.</b> Banda/ancora prinsa cu suruburi scurte, in caprior si in cununa. <b>Vinclul nu inlocuieste ancora</b> — vinclul tine la forfecare, ancora tine la smulgere. 10 ancore in total.</li>
+<li><b>Sipci 45×45</b> peste capriori, perpendicular, la <span class="mono">≤450 mm</span> (nu 500 — asta e cerinta pentru zapada): 5 randuri, cate 1× 6×100 in fiecare intersectie cu un caprior.</li>
+<li><b>Onduline:</b> foile se taie la lungimea pantei + streasina (nominal ~1440–1500) cu fierastraul cu panza fina. Montaj de la marginea de JOS in sus, suprapunere <b>1 onda lateral</b> si <b>~170 mm</b> pe rand daca ai doua randuri.</li>
+<li><b>Cuiele Onduline se bat NUMAI in creasta ondulei</b> (nu in vale — acolo curge apa). Pe randul de jos si pe marginile laterale: <b>in fiecare creasta</b>. In camp: din 2 in 2. Desprinderea la vant incepe intotdeauna de la marginea de jos.</li>
+<li><b>Jgheab</b> pe marginea de jos + burlan care descarca in curtea ta, nu spre gard si nu pe terasa.</li>
+</ul>
+<div class="warn" style="margin-bottom:0"><b>Streasina din fata ajunge la ~3,70 de la sol = inaltimea capului unui copil inalt care sta pe terasa.</b> Teseste muchia sau captuseste-o cu o sipca rotunjita. Nu lasa colt viu de Onduline la nivelul fetei.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 5 capriori montati la 500 · ☐ 10 ancore anti-vant (2/caprior) · ☐ sipci la ≤450 · ☐ Onduline complet, cuie in creasta, indesite jos si pe margini · ☐ jgheab + burlan · ☐ muchia streasinii tesita.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 5 — Inchideri, siguranta, finisaj</div>
+<div class="step-body">
+<ul>
+<li><b>Fereastra PVC 56×56</b> in golul din fata: se fixeaza in rama cu 4 bride sau suruburi prin tocul de PVC, apoi silicon de exterior pe conturul exterior. Verifica sa se deschida complet fara sa loveasca nimic.</li>
+<li><b>Hublourile acrilice</b> in laterale: taie golul cu 20 mm mai mic decat placa pe fiecare latura, prinde placa cu <b>sipca pe AMBELE fete</b> (interior si exterior), suruburi 4×40 la 150. Gaurile in acrilic se fac cu <b>1 mm joc</b> — se dilata la caldura si crapa daca il strangi fix.</li>
+<li><b>Golul de usa:</b> prag mic (o sipca 18×45 pe talpa) ca sa nu alunece lucrurile afara. Muchiile golului rotunjite cu glaspapir.</li>
+<li><b>Fanta din spate</b> (intre casa si gard, ~30 cm): <b>inchide-o</b> — cu OSB, sipci sau plasa, la ambele capete. Un copil care intra acolo si se blocheaza nu poate fi scos usor.</li>
+<li><b>Anti-catarare:</b> verifica din exterior ca nu exista nicio treapta (streasina joasa, sipca, hublou, colt de balustrada) de pe care se poate ajunge pe acoperis. Daca exista, scoate-o.</li>
+<li><b>Grund + lazura</b> pe tot lemnul nou, cu atentie speciala la <b>capetele taiate</b> — pe acolo intra apa prima. OSB-ul se lazuieste pe TOATE fetele si muchiile; OSB nevopsit se umfla la prima ploaie serioasa.</li>
+<li><b>Sol moale ≥300 mm</b> (scoarta sau nisip), tasat, pe toata zona de cadere din jurul casutei.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ fereastra montata, se deschide liber · ☐ hublouri dublu-sipcate, cu joc la gauri · ☐ prag pus, muchii rotunjite · ☐ fanta din spate inchisa · ☐ zero prize de catarare spre acoperis · ☐ lazura pe tot, inclusiv capete si muchii OSB · ☐ sol moale asternut.</div>
+</div>
+</div>
+
+<h2>Feronerie — totalul casei</h2>
+<table>
+<tr><th>Articol</th><th>Cantitate</th><th>Unde</th></tr>
+<tr><td>Tirfon/bulon M10×120</td><td class="mono">6</td><td>perete spate → stalpii de 4 m, 3 pe fiecare</td></tr>
+<tr><td>Surub 6×120 (T30)</td><td class="mono">~22</td><td>colturi cutie (4 × 4) + stalpi fata (2 × 3)</td></tr>
+<tr><td>Surub 5×80 (T25)</td><td class="mono">~175</td><td>rame pereti (4/montant) + talpi in joiste la 400</td></tr>
+<tr><td>Surub 4×60 (T20)</td><td class="mono">~250</td><td>OSB: 150 pe margini, 300 in camp</td></tr>
+<tr><td>Surub 6×100 (T30)</td><td class="mono">~25</td><td>sipci acoperis peste capriori</td></tr>
+<tr><td>Coltar rigidizat 100×100×3</td><td class="mono">8</td><td>2 pe fiecare colt al cutiei</td></tr>
+<tr><td>Vinclu zincat 90×90</td><td class="mono">20</td><td>talpi in podea, la ~400</td></tr>
+<tr><td>Ancora/banda anti-vant</td><td class="mono">10 (+4 rezerva)</td><td><b>fiecare caprior, ambele capete</b></td></tr>
+<tr><td>Suport picior stalp</td><td class="mono">2</td><td>optional, la baza stalpilor 70×70 (tija M12 e prinderea reala)</td></tr>
+<tr><td>Cuie Onduline cu capac</td><td class="mono">1 set (~100)</td><td>creasta ondulei; indesite jos si pe margini</td></tr>
+<tr><td>Piulita M12 + saiba lata</td><td class="mono">2 + 2</td><td>pe tijele deja montate</td></tr>
+</table>
+
+<h2>Verificarea finala a casei</h2>
+<ul>
+<li class="chk">☐ <b>Lantul anti-smulgere complet</b>, verificat nod cu nod: talpi in joiste · perete spate in stalpii de 4 m (6 tirfoane) · stalpi fata pe tijele M12 · fiecare caprior cu 2 ancore.</li>
+<li class="chk">☐ <b>Testul de impingere:</b> impinge cutia din colt cu umarul. Zero deplasare, zero scartait. Daca se misca, OSB-ul nu e prins destul des.</li>
+<li class="chk">☐ Diagonalele cutiei egale ±5 mm, colturile verticale.</li>
+<li class="chk">☐ Onduline: cuie doar in creasta, randul de jos si marginile indesite, nimic care fluiera sau se ridica la vant.</li>
+<li class="chk">☐ Apa curge in jgheab si de acolo in curte — verifica cu o galeata de apa turnata pe acoperis.</li>
+<li class="chk">☐ Zero muchii vii, zero capete de surub, zero aschii la inaltimea mainii sau a capului.</li>
+<li class="chk">☐ Fanta din spate inchisa · fara prize de catarare spre acoperis · sol moale asternut.</li>
+<li class="chk">☐ Lazura pe tot lemnul si pe toate fetele OSB-ului, inclusiv capetele taiate.</li>
+<li class="chk">☐ <b>Proptelele temporare scoase</b> — si structura verificata inca o data dupa scoaterea lor.</li>
+</ul>
+
+<div class="sub" style="margin-top:4mm">Sursa: CASA-plan-constructie.html (concept, materiale, review structural 10.07) · deciziile 06.08 (Onduline, gol de usa, fara dublarea joistelor) · as-built 06.08 (ambele tije M12 montate sub dusumea) · FISA-FAZA-2 · FISA-ACHIZITIE. Corectie introdusa aici, cu motivul: inaltimea peretelui din spate NU e 1800 ales din plan, ci M1 = cat ies stalpii de 4 m deasupra dusumelei (~1772) — peretele se prinde de ei, deci ei o dicteaza; peretele din fata = M1 − 300 pentru panta de 15,3° pe 1100. Toate celelalte cote sunt formule de M1/M2/M3, nu numere fixe.</div>
+
+</body>
+</html>
