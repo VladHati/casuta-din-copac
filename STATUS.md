@@ -2,6 +2,8 @@
 
 Firul comun Main <-> Builder. O linie pe reper: data, ce s-a schimbat, ce urmeaza.
 
+- 2026-08-06 12:26 (Builder) | RUNNING-BRIEF-commit-plan-hub-2026-08-06 EXECUTAT. Commit (f42f50e): PLAN-FAZA-2.html + STATUS. Status curat (RUNNING brief asta + 2 DONE briefuri din antes + NEEDS-INPUT = untracked permisi). Push ramane la Vlad. | URMEAZA: Vlad `git push origin main` din Main; F1 podea.
+
 - 2026-08-06 seara (Main, Cowork) | Livrat `PLAN-FAZA-2.html` (cerere Vlad, skeleton aprobat): pagina-hub a fazei 2 — dark, stilul CASA-plan, nav sticky cu ancore + scrollspy, self-contained. 10 sectiuni: stare azi / cele 7 decizii cu motivele / ordinea cu portile vizuale (inclusiv marcajul "poarta sisters INCHISA PRIN DECIZIE") / F1-F4 pas cu pas cu GATA CAND / cumparaturi pe 2 drumuri cu randurile Leroy verificate / siguranta copii / deschise + linkuri catre toate documentele fazei. Verificat: taguri balansate, toate ancorele au id, toate linkurile locale exista. Regula de precedenta scrisa in footer: la contradictie castiga fisierul canonic din SoT. | URMEAZA: Builder comite (brief plan-hub); Vlad: push + F1.
 
 - 2026-08-06 23:56 (Builder) | RUNNING-BRIEF-commit-achizitie-2026-08-06 EXECUTAT. Commit (0410699): FISA-FAZA-2 + FISA-ACHIZITIE (3 faze balustrada/scara/casa) + STATUS cu liniile Leroy+split magazine+organizare drumuri. Status curat (RUNNING brief + DONE brief din hygiene v2 = 2 untracked). Push ramane la Vlad (403 cunoscut). | URMEAZA: Vlad `git push origin main` din Main; F1 podea (lastari, rama, rest dusumea, numaratoare receptie). *(Nota Main: intrarea asta fusese avariata de un edit gresit al meu — restaurata identic din istoricul sesiunii.)*
