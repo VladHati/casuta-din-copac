@@ -1,0 +1,187 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    svg { --text-primary:#111; --text-secondary:#444; --text-muted:#777; --text-accent:#b3261e;
+          --surface-1:#f4f4f4; --surface-2:#e6e6e6; --border:#ccc; --border-strong:#888; }
+  </style>
+  <rect x="0" y="0" width="1000" height="720" fill="#ffffff"/>
+
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#111111" letter-spacing="1">PODEA</text>
+  <text x="40" y="66" font-size="12" fill="#444444" font-family="monospace">6 joiste ACUM · surorile inainte de CASA · 24.07.2026</text>
+
+  <g>
+    <path d="M 870 22 L 898 70 L 842 70 Z" fill="none" stroke="#b3261e" stroke-width="3.5" stroke-linejoin="round"/>
+    <text x="870" y="62" font-size="26" font-weight="bold" fill="#b3261e" text-anchor="middle">!</text>
+    <text x="870" y="88" font-size="10" fill="#b3261e" text-anchor="middle" font-family="monospace">masoara A inainte sa tai</text>
+  </g>
+
+  <g font-family="monospace" font-size="10.5" fill="#444444" text-anchor="middle">
+    <text x="150" y="122">0</text><text x="198" y="122">280</text><text x="272" y="122">720</text>
+    <text x="340" y="122">1120</text><text x="414" y="122">1550</text><text x="507" y="122">2100</text>
+  </g>
+  <g stroke="#888888" stroke-width="1" stroke-dasharray="2 3">
+    <line x1="150" y1="126" x2="150" y2="150"/><line x1="198" y1="126" x2="198" y2="150"/>
+    <line x1="272" y1="126" x2="272" y2="150"/><line x1="340" y1="126" x2="340" y2="150"/>
+    <line x1="414" y1="126" x2="414" y2="150"/><line x1="507" y1="126" x2="507" y2="150"/>
+  </g>
+
+  <rect x="141" y="131" width="18" height="19" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4 3"/>
+  <rect x="498" y="131" width="18" height="19" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="530" y="128" font-size="9.5" fill="#777777" font-family="monospace">stalpi spate</text>
+
+  <rect x="133" y="150" width="391" height="15" fill="#e6e6e6" stroke="#111111" stroke-width="3"/>
+  <rect x="133" y="431" width="391" height="15" fill="#e6e6e6" stroke="#111111" stroke-width="3"/>
+  <rect x="141" y="446" width="18" height="17" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4 3"/>
+  <rect x="498" y="446" width="18" height="17" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <g fill="#f4f4f4" stroke="#111111" stroke-width="2.5">
+    <rect x="189.5" y="150" width="17" height="415"/>
+    <rect x="263.5" y="150" width="17" height="415"/>
+    <rect x="331.5" y="150" width="17" height="415"/>
+    <rect x="405.5" y="150" width="17" height="415"/>
+  </g>
+  <g fill="#f4f4f4" stroke="#111111" stroke-width="2.5">
+    <rect x="141.5" y="150" width="17" height="415"/>
+    <rect x="158.5" y="150" width="17" height="415" fill="none" stroke="#999999" stroke-dasharray="7 5"/>
+    <rect x="481.5" y="150" width="17" height="415" fill="none" stroke="#999999" stroke-dasharray="7 5"/>
+    <rect x="498.5" y="150" width="17" height="415"/>
+  </g>
+  <g font-family="monospace" font-size="12" font-weight="bold" fill="#111111" text-anchor="middle">
+    <text x="158.5" y="590" font-size="9" fill="#999999">loc sora</text>
+    <text x="498.5" y="590" font-size="9" fill="#999999">loc sora</text>
+    <text x="328" y="606" font-size="9.5" fill="#999999">slotul de langa joistele de capat ramane LIBER — surorile intra acolo inainte de casa</text>
+  </g>
+
+  <g fill="#e6e6e6" stroke="#111111" stroke-width="1.8">
+    <rect x="177" y="152" width="11" height="11"/><rect x="208" y="152" width="54" height="11"/>
+    <rect x="282" y="152" width="48" height="11"/><rect x="350" y="152" width="54" height="11"/>
+    <rect x="424" y="152" width="56" height="11"/>
+    <rect x="177" y="433" width="11" height="11"/><rect x="208" y="433" width="54" height="11"/>
+    <rect x="282" y="433" width="48" height="11"/><rect x="350" y="433" width="54" height="11"/>
+    <rect x="424" y="433" width="56" height="11"/>
+  </g>
+
+  <rect x="206.5" y="265" width="57" height="15" fill="#e6e6e6" stroke="#111111" stroke-width="2"/>
+  <rect x="206.5" y="320" width="57" height="15" fill="#e6e6e6" stroke="#111111" stroke-width="2"/>
+  <circle cx="235" cy="300" r="14" fill="none" stroke="#111111" stroke-width="3"/>
+  <circle cx="235" cy="300" r="22" fill="none" stroke="#b3261e" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="235" y="253" font-size="9.5" fill="#b3261e" text-anchor="middle" font-family="monospace">gol 3-5 cm</text>
+
+  <g>
+    <circle cx="158.5" cy="337" r="7" fill="none" stroke="#b3261e" stroke-width="3"/>
+    <circle cx="158.5" cy="337" r="1.8" fill="#b3261e"/>
+    <circle cx="498.5" cy="337" r="7" fill="none" stroke="#b3261e" stroke-width="3"/>
+    <circle cx="498.5" cy="337" r="1.8" fill="#b3261e"/>
+    <text x="328" y="356" font-size="10.5" fill="#b3261e" text-anchor="middle" font-family="monospace">M12 — inainte de dusumea</text>
+    <line x1="175" y1="337" x2="255" y2="337" stroke="#b3261e" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="400" y1="337" x2="482" y2="337" stroke="#b3261e" stroke-width="1" stroke-dasharray="3 3"/>
+  </g>
+
+  <g stroke="#b3261e" stroke-width="2">
+    <line x1="545" y1="150" x2="545" y2="446"/>
+    <line x1="538" y1="150" x2="552" y2="150"/><line x1="538" y1="446" x2="552" y2="446"/>
+  </g>
+  <text x="556" y="300" font-size="16" font-weight="bold" fill="#b3261e" font-family="monospace">A</text>
+  <g stroke="#111111" stroke-width="2">
+    <line x1="545" y1="446" x2="545" y2="565"/>
+    <line x1="538" y1="565" x2="552" y2="565"/>
+  </g>
+  <text x="556" y="512" font-size="13" fill="#111111" font-family="monospace">700</text>
+  <text x="470" y="625" font-size="14" font-weight="bold" fill="#111111" font-family="monospace" text-anchor="end">JOISTA = A + 700  (~2430-2450)</text>
+  <text x="470" y="642" font-size="10.5" fill="#444444" font-family="monospace" text-anchor="end">spatele la ras cu glulamul spate · toate 6 EGALE (surorile la fel, mai tarziu)</text>
+
+  <line x1="610" y1="110" x2="610" y2="580" stroke="#cccccc" stroke-width="1"/>
+
+  <g stroke="#111111" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M 640 168 L 640 140 M 640 168 L 672 168"/>
+  </g>
+  <circle cx="640" cy="150" r="2" fill="#111111"/><circle cx="662" cy="168" r="2" fill="#111111"/>
+  <text x="690" y="152" font-size="12" font-family="monospace" fill="#111111">C2 90x90x65</text>
+  <text x="690" y="168" font-size="15" font-weight="bold" font-family="monospace" fill="#111111">x12</text>
+  <text x="760" y="168" font-size="10" font-family="monospace" fill="#b3261e">(stoc 14 — ajunge; +4 la surori)</text>
+
+  <g stroke="#111111" stroke-width="3" stroke-linecap="round">
+    <circle cx="642" cy="214" r="5.5" fill="none"/>
+    <line x1="648" y1="214" x2="712" y2="214"/>
+    <line x1="660" y1="209" x2="660" y2="219"/><line x1="672" y1="209" x2="672" y2="219"/>
+    <line x1="684" y1="209" x2="684" y2="219"/><line x1="696" y1="209" x2="696" y2="219"/>
+  </g>
+  <text x="724" y="210" font-size="12" font-family="monospace" fill="#111111">HECO 6x100 · T30 · colturi spate</text>
+  <text x="724" y="226" font-size="15" font-weight="bold" font-family="monospace" fill="#111111">x6</text>
+
+  <g stroke="#111111" stroke-width="3" stroke-linecap="round">
+    <circle cx="642" cy="268" r="5.5" fill="none"/>
+    <line x1="648" y1="268" x2="698" y2="268"/>
+    <line x1="660" y1="263" x2="660" y2="273"/><line x1="672" y1="263" x2="672" y2="273"/>
+    <line x1="684" y1="263" x2="684" y2="273"/>
+  </g>
+  <text x="724" y="264" font-size="12" font-family="monospace" fill="#111111">HECO 6x80 · T30 · coltare+blocaje</text>
+  <text x="724" y="280" font-size="15" font-weight="bold" font-family="monospace" fill="#111111">x87</text><text x="778" y="280" font-size="10" font-family="monospace" fill="#b3261e">pachetul e la limita → +1</text>
+
+  <g stroke="#111111" stroke-width="2.6" stroke-linecap="round">
+    <circle cx="642" cy="322" r="5" fill="none"/>
+    <line x1="647" y1="322" x2="684" y2="322"/>
+    <line x1="658" y1="318" x2="658" y2="326"/><line x1="670" y1="318" x2="670" y2="326"/>
+  </g>
+  <text x="724" y="318" font-size="12" font-family="monospace" fill="#111111">INOX A2 5x60 · T25 · +68 la surori</text>
+  <text x="724" y="334" font-size="15" font-weight="bold" font-family="monospace" fill="#111111">x204</text>
+  <text x="790" y="334" font-size="10" font-family="monospace" fill="#b3261e">GSR ambreiaj 8-12 · NU impact</text>
+
+  <g stroke="#111111" stroke-width="4" stroke-linecap="round">
+    <line x1="636" y1="376" x2="700" y2="376"/>
+  </g>
+  <g stroke="#111111" stroke-width="1.6">
+    <line x1="642" y1="371" x2="642" y2="381"/><line x1="650" y1="371" x2="650" y2="381"/>
+    <line x1="658" y1="371" x2="658" y2="381"/><line x1="666" y1="371" x2="666" y2="381"/>
+    <line x1="674" y1="371" x2="674" y2="381"/><line x1="682" y1="371" x2="682" y2="381"/>
+    <line x1="690" y1="371" x2="690" y2="381"/>
+  </g>
+  <circle cx="710" cy="376" r="7" fill="none" stroke="#111111" stroke-width="2.5"/>
+  <text x="724" y="372" font-size="12" font-family="monospace" fill="#111111">TIJA M12 + saiba lata + piulita</text>
+  <text x="724" y="388" font-size="15" font-weight="bold" font-family="monospace" fill="#111111">x2</text>
+  <text x="762" y="388" font-size="10" font-family="monospace" fill="#b3261e">gaura Ø13</text>
+
+  <text x="636" y="430" font-size="11" fill="#444444" font-family="monospace">SCULE:</text>
+  <g font-family="monospace" font-size="10.5" fill="#111111">
+    <rect x="636" y="440" width="118" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="644" y="455">GSR 18V ambreiaj</text>
+    <rect x="762" y="440" width="100" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="770" y="455">GDR 18V + T30</text>
+    <rect x="636" y="468" width="128" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="644" y="483">HS7611K + impins</text>
+    <rect x="772" y="468" width="90" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="780" y="483">ruleta+nivela</text>
+    <rect x="636" y="496" width="130" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="644" y="511">PST 700E decupaje</text>
+    <rect x="774" y="496" width="88" height="22" rx="4" fill="none" stroke="#888888"/>
+    <text x="782" y="511">cleme+capre</text>
+  </g>
+
+  <g font-family="monospace" font-size="10" fill="#444444">
+    <text x="636" y="548">• capul surubului LA RAS — nici iesit, nici ingropat</text>
+    <text x="636" y="564">• pregaurire 4-5 doar la capetele scandurilor</text>
+  </g>
+
+  <line x1="40" y1="655" x2="960" y2="655" stroke="#cccccc" stroke-width="1"/>
+  <g font-family="monospace" font-size="10.5" fill="#111111" text-anchor="middle">
+    <circle cx="90" cy="686" r="12" fill="none" stroke="#111111" stroke-width="2.5"/>
+    <text x="90" y="690" font-weight="bold">1</text>
+    <g stroke="#111111" stroke-width="2"><line x1="112" y1="686" x2="162" y2="686"/><line x1="120" y1="681" x2="120" y2="691"/><line x1="136" y1="681" x2="136" y2="691"/><line x1="152" y1="681" x2="152" y2="691"/></g>
+    <text x="137" y="712">MASOARA A</text>
+    <circle cx="270" cy="686" r="12" fill="none" stroke="#111111" stroke-width="2.5"/>
+    <text x="270" y="690" font-weight="bold">2</text>
+    <path d="M 292 692 L 300 680 L 308 692 L 316 680 L 324 692 L 332 680" fill="none" stroke="#111111" stroke-width="2"/>
+    <text x="312" y="712">TAIE 6 EGALE</text>
+    <circle cx="450" cy="686" r="12" fill="none" stroke="#111111" stroke-width="2.5"/>
+    <text x="450" y="690" font-weight="bold">3</text>
+    <g stroke="#111111" stroke-width="2" fill="none"><rect x="472" y="678" width="42" height="8"/><path d="M 480 692 L 480 700 L 490 700"/></g>
+    <text x="494" y="712">JOISTE + C2</text>
+    <circle cx="630" cy="686" r="12" fill="none" stroke="#111111" stroke-width="2.5"/>
+    <text x="630" y="690" font-weight="bold">4</text>
+    <g stroke="#111111" stroke-width="2" fill="none"><rect x="652" y="676" width="8" height="24"/><rect x="660" y="676" width="8" height="24"/><rect x="674" y="682" width="12" height="10"/></g>
+    <text x="672" y="712">BLOCAJE + M12</text>
+    <circle cx="830" cy="686" r="12" fill="none" stroke="#111111" stroke-width="2.5"/>
+    <text x="830" y="690" font-weight="bold">5</text>
+    <g stroke="#111111" stroke-width="2" fill="none"><rect x="852" y="678" width="46" height="7"/><rect x="852" y="690" width="46" height="7"/></g>
+    <text x="878" y="712">DUSUMEA rost 5</text>
+  </g>
+</svg>
