@@ -9,26 +9,26 @@
   :root{
     --bg:#14171d; --panel:#191d25; --panel2:#1e232c; --ink:#e7e9e5; --dim:#9aa0a8;
     --line:#2b313b; --timber:#c69a68; --key:#e8894a; --ok:#5fbfc2; --warn:#e0b64a; --red:#e06a5a;
+    --built:#5a6069; --f1:#c69a68; --f2:#e8894a; --f3:#5fbfc2; --f4:#e0b64a;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Arial,system-ui,sans-serif;line-height:1.55;font-size:16px}
-  .wrap{max-width:880px;margin:0 auto;padding:0 28px 90px}
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(20,23,29,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav .in{max-width:880px;margin:0 auto;padding:10px 28px;display:flex;gap:4px;flex-wrap:wrap}
-  nav a{color:var(--dim);text-decoration:none;font-size:12.5px;letter-spacing:.04em;padding:4px 9px;border-radius:6px;font-family:'Space Mono',monospace}
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px 90px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,23,29,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .in{max-width:900px;margin:0 auto;padding:10px 28px;display:flex;gap:3px;flex-wrap:wrap}
+  nav a{color:var(--dim);text-decoration:none;font-size:12px;letter-spacing:.04em;padding:4px 9px;border-radius:6px;font-family:'Space Mono',monospace}
   nav a:hover{color:var(--ink);background:var(--panel2)}
   nav a.on{color:var(--key);background:rgba(232,137,74,.12)}
   section{scroll-margin-top:64px}
-  h1{font-family:'Fraunces',serif;font-size:34px;font-weight:600;letter-spacing:-.01em;margin:38px 0 6px}
+  h1{font-family:'Fraunces',serif;font-size:36px;font-weight:600;letter-spacing:-.015em;margin:40px 0 6px}
   .sub{color:var(--dim);font-size:15px;margin:0 0 22px}
-  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--key);font-weight:700;margin:46px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);font-family:'Space Mono',monospace}
-  h3{font-size:17px;margin:20px 0 8px;font-weight:600}
+  h2{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--key);font-weight:700;margin:52px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);font-family:'Space Mono',monospace}
+  h3{font-size:17px;margin:22px 0 8px;font-weight:600}
   p{margin:0 0 12px}
   strong{color:#fff}
   em{font-family:'Fraunces',serif;font-style:italic;color:var(--timber)}
-  .mono,td.n{font-family:'Space Mono',monospace;font-size:13px}
+  .mono{font-family:'Space Mono',monospace;font-size:13px}
   .facts{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 6px}
   .fact{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:140px}
   .fact .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
@@ -38,21 +38,21 @@
   .crit{border-left:3px solid var(--key)}
   .safe{border-left:3px solid var(--ok)}
   .alert{border-left:3px solid var(--red)}
+  .green{border-left:3px solid #7fb069}
   ul,ol{margin:6px 0 12px;padding-left:20px}
   li{margin:6px 0}
   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
   th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
   th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600}
-  td.n{white-space:nowrap;color:var(--timber)}
+  td.n{white-space:nowrap;color:var(--timber);font-family:'Space Mono',monospace;font-size:13px}
   .tag{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:rgba(232,137,74,.14);color:var(--key);border-radius:4px;padding:2px 7px;font-weight:700;vertical-align:middle;font-family:'Space Mono',monospace}
   .tag.s{background:rgba(95,191,194,.14);color:var(--ok)}
-  .tag.w{background:rgba(224,182,74,.14);color:var(--warn)}
   .tag.r{background:rgba(224,106,90,.16);color:var(--red)}
-  .tag.g{background:rgba(122,168,116,.16);color:#8fbf88}
+  .tag.g{background:rgba(127,176,105,.16);color:#8fbf88}
   .step{display:flex;gap:14px;margin:12px 0;align-items:baseline}
   .step .num{font-family:'Space Mono',monospace;color:var(--key);font-weight:700;min-width:28px;font-size:15px}
-  .gate{display:flex;align-items:center;gap:12px;margin:26px 0;padding:12px 16px;border:1px dashed var(--warn);border-radius:10px;color:var(--warn);font-size:14px}
-  .gate .g-ico{font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:.1em;white-space:nowrap}
+  .gate{display:flex;align-items:center;gap:12px;margin:22px 0;padding:11px 16px;border:1px dashed var(--warn);border-radius:10px;color:var(--warn);font-size:14px}
+  .gate .g-ico{font-family:'Space Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.1em;white-space:nowrap}
   .chk{list-style:none;padding-left:2px}
   .chk li{padding-left:26px;position:relative;color:var(--dim)}
   .chk li::before{content:"";position:absolute;left:0;top:4px;width:14px;height:14px;border:1.5px solid var(--dim);border-radius:3px}
@@ -68,203 +68,495 @@
   .ph a:hover{border-color:var(--key)}
   .ph .t{font-family:'Space Mono',monospace;font-size:12px;color:var(--key)}
   .ph .d{font-size:13px;color:var(--dim);margin-top:3px}
+  /* figures */
+  figure{margin:22px 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 18px 14px}
+  figure svg{width:100%;height:auto;display:block}
+  figcaption{color:var(--dim);font-size:12.5px;margin-top:12px;text-align:center;font-family:'Space Mono',monospace;letter-spacing:.02em}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-size:11.5px;font-family:'Space Mono',monospace;color:var(--dim)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .corr{background:rgba(127,176,105,.07);border:1px solid rgba(127,176,105,.3);border-radius:12px;padding:16px 18px;margin:16px 0}
+  .corr h4{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8fbf88;font-family:'Space Mono',monospace}
 </style>
 </head>
 <body>
 
 <nav><div class="in">
-<a href="#azi">AZI</a><a href="#decizii">DECIZII</a><a href="#ordine">ORDINE</a><a href="#f1">F1 PODEA</a><a href="#f2">F2 BALUSTRADA</a><a href="#f3">F3 SCARA</a><a href="#f4">F4 CASA</a><a href="#cumparaturi">CUMPARATURI</a><a href="#siguranta">SIGURANTA</a><a href="#deschise">DESCHISE</a>
+<a href="#azi">AZI</a><a href="#ansamblu">ANSAMBLU</a><a href="#decizii">DECIZII</a><a href="#corectii">CORECTII</a><a href="#ordine">ORDINE</a><a href="#f1">F1 PODEA</a><a href="#f2">F2 BALUSTRADA</a><a href="#f3">F3 SCARA</a><a href="#f4">F4 CASA</a><a href="#cumparaturi">CUMPARATURI</a><a href="#siguranta">SIGURANTA</a><a href="#deschise">DESCHISE</a>
 </div></nav>
 
 <div class="wrap">
 
 <h1>Planul fazei 2</h1>
-<p class="sub">Podea → balustrada → scara → casa · consolidat 6 august 2026, dupa auditul complet · toate deciziile de mai jos sunt <strong>finale</strong> · sursa de executie pe santier: <a href="FISA-FAZA-2-casa-gard-scara.pdf">FISA-FAZA-2 (PDF, 6 pag)</a> + <a href="FISA-ACHIZITIE-faza-2.pdf">FISA-ACHIZITIE (PDF, 3 pag)</a></p>
+<p class="sub">Podea → balustrada → scara → casa · consolidat 6 august 2026 · toate deciziile sunt <strong>finale</strong> · executie: <a href="FISA-MONTAJ-balustrada.pdf">fisa balustrada</a> · <a href="FISA-MONTAJ-scara.pdf">fisa scara</a> · <a href="FISA-MONTAJ-casa.pdf">fisa casa</a> · <a href="FISA-ACHIZITIE-faza-2.pdf">lista de cumparaturi</a></p>
 
 <!-- ================= AZI ================= -->
 <section id="azi">
 <h2>01 — Unde suntem azi</h2>
 <div class="facts">
-  <div class="fact"><div class="k">Structura</div><div class="v">gata <small>stalpi + glulam + 6 joiste</small></div></div>
+  <div class="fact"><div class="k">Structura</div><div class="v">gata <small>stalpi + glulam + joiste</small></div></div>
   <div class="fact"><div class="k">Dusumea</div><div class="v">partiala</div></div>
   <div class="fact"><div class="k">Lant inaltimi</div><div class="v">1900·2100·2200·2228</div></div>
-  <div class="fact"><div class="k">Buget ramas</div><div class="v">~3.050–3.250 <small>lei</small></div></div>
+  <div class="fact"><div class="k">Buget ramas</div><div class="v">~3.050 <small>lei</small></div></div>
   <div class="fact"><div class="k">Zile de lucru</div><div class="v">~6–7 <small>≈ 3–4 weekenduri</small></div></div>
 </div>
 <div class="card">
-<p><strong>Facut si verificat</strong> (poze + confirmari): 4 stalpi pe papuc si fundatie · glulamuri sus, nodurile spate cu talpic + 3× Heco 8×200 + 2× M12 + contrafisa 45° (P0 inchis) · 6 joiste taiate si montate pe pozitiile <span class="mono">0 · 280 · 720 · 1120 · 1550 · 2100</span> · blocaje intre joiste · coltare C2 montate de dedesubt · <strong>ambele ancore M12 pentru stalpii casei, puse inainte de dusumea</strong> — detaliul care salveaza ancorarea casei.</p>
+<p><strong>Facut si verificat:</strong> 4 stalpi pe papuc si fundatie · glulamuri sus, nodurile spate cu talpic + 3× Heco 8×200 + 2× M12 + contrafisa 45° (P0 inchis) · 6 joiste taiate si montate pe <span class="mono">0 · 280 · 720 · 1120 · 1550 · 2100</span> · blocaje · coltare C2 de dedesubt · <strong>ambele ancore M12 pentru stalpii casei, puse inainte de dusumea</strong> — detaliul care salveaza ancorarea casei.</p>
 <p style="margin-bottom:0"><strong>Ramas din faza podelei:</strong> restul dusumelei · rama copac · curatarea lastarilor (copacul a dat ~1,5 m de lastari fix prin zona podelei) · numaratoarea receptiei · protejarea tijelor M12.</p>
 </div>
 <div class="card alert">
-<p style="margin-bottom:0"><strong>Un singur lucru administrativ:</strong> commit-urile din 06.08 asteapta <span class="mono">git push origin main</span> din contul Main — Builder nu poate face push (403). Pana la push, site-ul live ramane in urma.</p>
+<p style="margin-bottom:0"><strong>Singurul lucru administrativ:</strong> commit-urile din 06.08 asteapta <span class="mono">git push origin main</span> din contul Main — Builder nu poate face push (403). Pana la push, site-ul live ramane in urma.</p>
 </div>
+</section>
+
+<!-- ================= ANSAMBLU ================= -->
+<section id="ansamblu">
+<h2>02 — Ansamblul: ce exista si ce se construieste</h2>
+
+<figure>
+<svg viewBox="-620 -420 4000 5300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elevatie laterala: structura existenta, podea, balustrada si casa">
+  <defs>
+    <marker id="aE" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#9aa0a8"/></marker>
+  </defs>
+  <style>
+    .ex{fill:#3a4048;stroke:#5a6069;stroke-width:9}
+    .p1{fill:#4a4234;stroke:#c69a68;stroke-width:9}
+    .p2{fill:#4a3529;stroke:#e8894a;stroke-width:9}
+    .p4{fill:#464026;stroke:#e0b64a;stroke-width:9}
+    .gr{stroke:#5a6069;stroke-width:10}
+    .lv{stroke:#2b313b;stroke-width:4;stroke-dasharray:26 18}
+    .tx{font-family:'Space Mono',monospace;font-size:78px;fill:#9aa0a8}
+    .tw{font-family:'Space Mono',monospace;font-size:78px;fill:#e7e9e5}
+    .dm{font-family:'Space Mono',monospace;font-size:74px;fill:#c69a68}
+    .dl{stroke:#9aa0a8;stroke-width:4}
+  </style>
+
+  <!-- level guides -->
+  <line class="lv" x1="-420" y1="2372" x2="3300" y2="2372"/>
+  <line class="lv" x1="-420" y1="2172" x2="3300" y2="2172"/>
+  <line class="lv" x1="-420" y1="2044" x2="3300" y2="2044"/>
+  <line class="lv" x1="-420" y1="272" x2="3300" y2="272"/>
+
+  <!-- ground -->
+  <line class="gr" x1="-480" y1="4272" x2="3320" y2="4272"/>
+  <text class="tx" x="-480" y="4400">SOL 0.00</text>
+
+  <!-- EXISTING: front post (cut 1900) at depth 700..790 -->
+  <rect class="ex" x="700" y="2372" width="100" height="1900"/>
+  <!-- back post 4m at depth 2340..2440 -->
+  <rect class="ex" x="2340" y="272" width="100" height="4000"/>
+  <text class="tx" x="2470" y="1500">stalp 4 m</text>
+  <text class="tx" x="470" y="3400" transform="rotate(-90 470 3400)">stalp taiat 1900</text>
+  <!-- glulams (cross-section) -->
+  <rect class="ex" x="700" y="2172" width="90" height="200"/>
+  <rect class="ex" x="2350" y="2172" width="90" height="200"/>
+  <text class="tx" x="830" y="2300">glulam</text>
+  <!-- joist profile -->
+  <rect class="ex" x="0" y="2072" width="2440" height="100"/>
+  <text class="tx" x="130" y="2150">joiste 100×200</text>
+
+  <!-- F1: decking -->
+  <rect class="p1" x="0" y="2044" width="2440" height="28"/>
+  <text class="dm" x="620" y="1960" fill="#c69a68">F1 · dusumea +2228</text>
+
+  <!-- F2: railing on the nose, h=1100 -->
+  <rect class="p2" x="0" y="944" width="58" height="1100"/>
+  <rect class="p2" x="-40" y="900" width="150" height="45"/>
+  <g stroke="#e8894a" stroke-width="7" opacity=".75">
+    <line x1="130" y1="960" x2="130" y2="2030"/><line x1="236" y1="960" x2="236" y2="2030"/>
+    <line x1="342" y1="960" x2="342" y2="2030"/><line x1="448" y1="960" x2="448" y2="2030"/>
+  </g>
+  <text class="dm" x="-540" y="1400" fill="#e8894a" transform="rotate(-90 -540 1400)">F2 · 1100 consola</text>
+
+  <!-- F4: house. front wall at depth 1340, back wall at 2350 -->
+  <rect class="p4" x="1340" y="572" width="90" height="1472"/>
+  <rect class="p4" x="2260" y="272" width="90" height="1772"/>
+  <!-- roof: from (1240, 3700 lvl) to (2540, 4000 lvl) -->
+  <polygon class="p4" points="1140,627 2540,272 2540,362 1140,717"/>
+  <text class="dm" x="1560" y="480" fill="#e0b64a" transform="rotate(-14.3 1560 480)">F4 · Onduline</text>
+  <text class="tw" x="1560" y="1500">CASA</text>
+  <text class="tx" x="1500" y="1620">2100 × 1100</text>
+
+  <!-- water arrow -->
+  <line x1="1110" y1="700" x2="960" y2="960" stroke="#5fbfc2" stroke-width="9" marker-end="url(#aE)"/>
+  <text class="tx" x="700" y="1060" fill="#5fbfc2">apa → terasa</text>
+
+  <!-- dims -->
+  <line class="dl" x1="-300" y1="2044" x2="-300" y2="4272" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <text class="dm" x="-360" y="3200" transform="rotate(-90 -360 3200)">2228</text>
+  <line class="dl" x1="3160" y1="272" x2="3160" y2="4272" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <text class="dm" x="3240" y="2400" transform="rotate(-90 3240 2400)">~4000</text>
+  <line class="dl" x1="0" y1="4620" x2="700" y2="4620" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <text class="dm" x="-60" y="4740">consola 700</text>
+  <line class="dl" x1="700" y1="4620" x2="1340" y2="4620" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <text class="tx" x="720" y="4560">terasa libera</text>
+  <line class="dl" x1="1340" y1="4620" x2="2440" y2="4620" marker-start="url(#aE)" marker-end="url(#aE)"/>
+  <text class="dm" x="1620" y="4740">casa 1100</text>
+</svg>
+<div class="legend">
+  <span><i style="background:#5a6069"></i> existent</span>
+  <span><i style="background:#c69a68"></i> F1 podea</span>
+  <span><i style="background:#e8894a"></i> F2 balustrada</span>
+  <span><i style="background:#e0b64a"></i> F4 casa</span>
+</div>
+<figcaption>Elevatie laterala — casa in spate, terasa si consola in fata, apa curge spre terasa</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="-620 -480 5100 3400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan: podea, pozitiile balustradei, casa si scara">
+  <style>
+    .jo{fill:#232830;stroke:#3a4048;stroke-width:6}
+    .gl{fill:#2b3038;stroke:#5a6069;stroke-width:7}
+    .dk{fill:#1c2128;stroke:#2b313b;stroke-width:4}
+    .hs{fill:rgba(224,182,74,.08);stroke:#e0b64a;stroke-width:8}
+    .rl{stroke:#e8894a;stroke-width:14;fill:none}
+    .po{fill:#e8894a}
+    .bp{fill:#5a6069}
+    .st{fill:rgba(95,191,194,.1);stroke:#5fbfc2;stroke-width:8}
+    .tx{font-family:'Space Mono',monospace;font-size:74px;fill:#9aa0a8}
+    .tw{font-family:'Space Mono',monospace;font-size:74px;fill:#e7e9e5}
+    .dm{font-family:'Space Mono',monospace;font-size:70px;fill:#c69a68}
+    .dl{stroke:#9aa0a8;stroke-width:4}
+  </style>
+  <defs><marker id="aP" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#9aa0a8"/></marker></defs>
+
+  <!-- deck -->
+  <rect class="dk" x="-50" y="0" width="2200" height="2440"/>
+  <!-- joists -->
+  <g class="jo">
+    <rect x="-50" y="0" width="100" height="2440"/><rect x="230" y="0" width="100" height="2440"/>
+    <rect x="670" y="0" width="100" height="2440"/><rect x="1070" y="0" width="100" height="2440"/>
+    <rect x="1500" y="0" width="100" height="2440"/><rect x="2050" y="0" width="100" height="2440"/>
+  </g>
+  <!-- glulams -->
+  <rect class="gl" x="-50" y="700" width="2200" height="90"/>
+  <rect class="gl" x="-50" y="2350" width="2200" height="90"/>
+  <!-- back posts -->
+  <rect class="bp" x="-50" y="2340" width="100" height="100"/>
+  <rect class="bp" x="2050" y="2340" width="100" height="100"/>
+  <!-- tree -->
+  <circle cx="500" cy="1550" r="150" fill="#2f3a2c" stroke="#7fb069" stroke-width="8"/>
+  <text class="tx" x="330" y="1830" fill="#7fb069">copac</text>
+
+  <!-- house -->
+  <rect class="hs" x="-50" y="1340" width="2200" height="1100"/>
+  <text class="tw" x="1150" y="1900">CASA</text>
+  <text class="tx" x="1080" y="2000">2100 × 1100</text>
+  <circle cx="0" cy="1380" r="26" fill="#e0b64a"/><circle cx="2100" cy="1380" r="26" fill="#e0b64a"/>
+  <text class="tx" x="180" y="1290" fill="#e0b64a">tije M12 (montate)</text>
+
+  <!-- railing -->
+  <path class="rl" d="M -50 30 L 2150 30"/>
+  <path class="rl" d="M -20 30 L -20 1340"/>
+  <path class="rl" d="M 2120 30 L 2120 1340"/>
+  <g class="po">
+    <rect x="-45" y="20" width="90" height="90"/><rect x="675" y="20" width="90" height="90"/>
+    <rect x="1505" y="20" width="90" height="90"/><rect x="2055" y="20" width="90" height="90"/>
+    <rect x="-45" y="625" width="90" height="90"/><rect x="-45" y="1250" width="90" height="90"/>
+    <rect x="2055" y="625" width="90" height="90"/><rect x="2055" y="1250" width="90" height="90"/>
+  </g>
+  <text class="dm" x="620" y="-110" fill="#e8894a">8 stalpisori · axele joistelor 0 · 720 · 1550 · 2100</text>
+
+  <!-- stair -->
+  <rect class="st" x="2150" y="380" width="1900" height="600" transform="rotate(0 2150 380)"/>
+  <g stroke="#5fbfc2" stroke-width="6" opacity=".8">
+    <line x1="2340" y1="380" x2="2340" y2="980"/><line x1="2530" y1="380" x2="2530" y2="980"/>
+    <line x1="2720" y1="380" x2="2720" y2="980"/><line x1="2910" y1="380" x2="2910" y2="980"/>
+  </g>
+  <text class="tx" x="2400" y="1120" fill="#5fbfc2">SCARA — baza 1900</text>
+  <path d="M 2150 680 L 2050 680" stroke="#5fbfc2" stroke-width="12" marker-end="url(#aP)"/>
+  <text class="tx" x="2200" y="300" fill="#5fbfc2">poarta cu arc</text>
+
+  <!-- dims -->
+  <line class="dl" x1="0" y1="-230" x2="2100" y2="-230" marker-start="url(#aP)" marker-end="url(#aP)"/>
+  <text class="dm" x="900" y="-260">2100</text>
+  <line class="dl" x1="-330" y1="0" x2="-330" y2="2440" marker-start="url(#aP)" marker-end="url(#aP)"/>
+  <text class="dm" x="-390" y="1220" transform="rotate(-90 -390 1220)">2440</text>
+  <text class="tx" x="700" y="620">TERASA</text>
+</svg>
+<div class="legend">
+  <span><i style="background:#5a6069"></i> structura</span>
+  <span><i style="background:#e8894a"></i> balustrada · 8 stalpisori</span>
+  <span><i style="background:#5fbfc2"></i> scara</span>
+  <span><i style="background:#e0b64a"></i> casa</span>
+</div>
+<figcaption>Plan de sus — balustrada pe 3 laturi, casa pe spate, scara pe latura cu poarta</figcaption>
+</figure>
 </section>
 
 <!-- ================= DECIZII ================= -->
 <section id="decizii">
-<h2>02 — Deciziile inchise pe 6 august</h2>
+<h2>03 — Deciziile inchise pe 6 august</h2>
 <table>
 <tr><th>Decizie</th><th>Alegerea</th><th>De ce / consecinta</th></tr>
-<tr><td>Balustrada</td><td class="n">1000 general<br>1100 pe consola</td><td>1100 exact unde a cerut structuristul (nasul consolei); M10 reconciliat la <span class="mono">14</span> (7 stalpisori × 2, de cumparat 2).</td></tr>
+<tr><td>Balustrada</td><td class="n">1000 general<br>1100 pe consola</td><td>1100 exact unde a cerut structuristul (nasul consolei).</td></tr>
 <tr><td>Invelitoare casa</td><td class="n">Onduline</td><td>usor, se taie ca un carton, fara muchii taioase, linistit la ploaie, ~140 lei tot acoperisul.</td></tr>
 <tr><td>Usa casa</td><td class="n">gol deschis</td><td>−85 lei, zero degete prinse, ventilatie; prag mic.</td></tr>
-<tr><td>Scara</td><td class="n">baza 1900 · ~49°</td><td>varianta abrupta, aleasa informat → <strong>compensarile devin obligatorii</strong>, nu optionale (vezi F3).</td></tr>
-<tr><td>Dublarea joistelor (sisters)</td><td class="n">SKIP definitiv</td><td>poarta din 24.07 inchisa <em>prin decizie</em>, cu cifre: casa = ~770 kg worst case → ~1,9 kN/stalp; joista simpla 100×200 lucreaza la ~1,3 vs ~14 MPa admisibil (margine &gt;10×). Rezerva necuantificata (parghia pe proeminenta glulam) notata in <a href="AUDIT-2026-08-06.md">audit</a>. Economie ~170 lei.</td></tr>
-<tr><td>Ordinea fazei</td><td class="n">F1 → F2 → F3 → F4</td><td>balustrada imediat dupa podea: podea completa fara balustrada = margine libera la 2,2 m, iar X-urile laterale sunt o scara perfecta pentru copii.</td></tr>
-<tr><td>Rama copac</td><td class="n">in F1</td><td>inainte de scandurile din zona copacului; gol 3–5 cm de jur imprejur, nimic nu atinge trunchiul.</td></tr>
+<tr><td>Scara</td><td class="n">baza 1900 · 49,5°</td><td>varianta abrupta, aleasa informat → <strong>compensarile devin obligatorii</strong>. Bonus verificat ulterior: la 1900 coarda iese 2928 si intra fix intr-o bara de 3 m.</td></tr>
+<tr><td>Dublarea joistelor</td><td class="n">SKIP definitiv</td><td>poarta din 24.07 inchisa <em>prin decizie</em>: casa = ~770 kg worst case → ~1,9 kN/stalp; joista simpla 100×200 lucreaza la ~1,3 vs ~14 MPa admisibil. Rezerva necuantificata notata in <a href="AUDIT-2026-08-06.md">audit</a>.</td></tr>
+<tr><td>Ordinea fazei</td><td class="n">F1 → F2 → F3 → F4</td><td>balustrada imediat dupa podea: margine libera la 2,2 m si X-urile sunt o scara gata facuta pentru copii.</td></tr>
+<tr><td>Rama copac</td><td class="n">in F1</td><td>inainte de scandurile din zona copacului; gol 3–5 cm, nimic nu atinge trunchiul.</td></tr>
 </table>
+</section>
+
+<!-- ================= CORECTII ================= -->
+<section id="corectii">
+<h2>04 — Corectii iesite din desenele de executie</h2>
+<p>Cand am desenat fiecare element la scara, patru cifre din planurile initiale nu au rezistat. Toate schimba ce cumperi sau cum construiesti — sunt deja propagate in fise.</p>
+
+<div class="corr">
+<h4>01 · Balustrada — 8 stalpisori, nu 7</h4>
+<p style="margin-bottom:0">Balustrada se face <strong>inaintea</strong> casei, deci ambele laturi au nevoie de stalpisor propriu la capatul dinspre casa — nu se pot sprijini de un perete care inca nu exista. <strong>16 buloane M10, cumperi 4 nu 2.</strong> In plus, pozitiile cad pe <strong>axele joistelor</strong> (0 · 720 · 1550 · 2100), nu pe impartire egala: pe fata nu exista rigla de margine, deci un stalpisor „la mijloc, la 1050" ar avea bulonul in gol. Bonus: traveile ies 720 / 830 / 550, toate sub 900.</p>
+</div>
+
+<div class="corr">
+<h4>02 · Scara — coardele NU se pot cresta</h4>
+<p style="margin-bottom:0">Cu 202,5 × 190, crestatura ar manca <span class="mono">138,5 mm</span> perpendicular dintr-o coarda de <span class="mono">140</span> — ar ramane 1,5 mm de lemn. Deci <strong>trepte pe tacheti</strong> (blocuri orizontale insurubate pe fata interioara), coarda ramane intreaga. Din aceeasi geometrie, <strong>tachetul are 100 mm, nu 140</strong>: pe 100 orizontal muchia coardei coboara 117, deci incape in latimea de 140. Consecinta: <strong>6 bare de 45×45, nu 2</strong>; coltarele de trepte nu mai trebuie.</p>
+</div>
+
+<div class="corr">
+<h4>03 · Casa — inaltimea peretelui din spate nu e o alegere</h4>
+<p style="margin-bottom:0">Peretele din spate se prinde de stalpii de 4 m, deci <strong>ei ii dicteaza inaltimea</strong>: <span class="mono">M1</span> = cat ies stalpii peste dusumea (~1772), nu 1800 cat scria in plan. Peretele din fata = <span class="mono">M1 − 300</span> (panta 15,3° pe 1100). Tot cut list-ul casei e acum in <strong>formule de M1/M2/M3</strong>, nu in numere fixe.</p>
+</div>
+
+<div class="corr">
+<h4>04 · Lamele balustrada — 18 bare, nu 24</h4>
+<p style="margin-bottom:0">~42 lamele la pas de 106 mm (18 lamela + 88 gol). Economie ~50 lei. In schimb lipsea inoxul 4×50 pentru prinderea lor — adaugat pe lista.</p>
+</div>
 </section>
 
 <!-- ================= ORDINE ================= -->
 <section id="ordine">
-<h2>03 — Ordinea si portile</h2>
-<p>Patru faze, fiecare cu un <em>gata cand</em> verificabil. Portile dintre ele nu se sar: fiecare a fost pusa acolo de un risc real, nu de birocratie.</p>
+<h2>05 — Ordinea si portile</h2>
+<p>Patru faze, fiecare cu un <em>gata cand</em> verificabil. Portile dintre ele nu se sar: fiecare a fost pusa acolo de un risc real.</p>
 
 <div class="card"><p style="margin:0"><span class="tag">F1</span>&nbsp; <strong>Inchide podeaua</strong> · ~1 zi · lastari → rama copac → dusumea → verificari + numaratoare</p></div>
 <div class="gate"><span class="g-ico">⟶ POARTA</span> dusumea completa, zero varfuri, tije protejate, contrafise verificate la AMBELE noduri</div>
 <div class="card"><p style="margin:0"><span class="tag">F2</span>&nbsp; <strong>Balustrada</strong> · ~1–1,5 zile · prima lucrare de sus — pana atunci santier inchis pentru copii</p></div>
-<div class="gate"><span class="g-ico">⟶ POARTA</span> zgaltait = zero joc · sablonul de 90 nu trece nicaieri · poarta se inchide singura</div>
-<div class="card"><p style="margin:0"><span class="tag">F3</span>&nbsp; <strong>Scara</strong> · ~1 zi · 1900/49° cu toate compensarile montate</p></div>
-<div class="gate"><span class="g-ico">⟶ POARTA</span> F1–F3 bifate + masuratorile din teren facute (pozitiile reale ale tijelor M12!) → abia atunci debitarea</div>
+<div class="gate"><span class="g-ico">⟶ POARTA</span> zgaltait = zero joc · martorul de 90 nu trece nicaieri · poarta se inchide singura</div>
+<div class="card"><p style="margin:0"><span class="tag">F3</span>&nbsp; <strong>Scara</strong> · ~1 zi · 1900 / 49,5° cu toate compensarile montate</p></div>
+<div class="gate"><span class="g-ico">⟶ POARTA</span> F1–F3 bifate + cele 5 masuratori M1–M5 facute → abia atunci debitarea</div>
 <div class="card"><p style="margin:0"><span class="tag">F4</span>&nbsp; <strong>Casa</strong> · ~3–4 zile · pereti-panou jos, ridicare in zi fara vant, lant anti-smulgere complet, Onduline</p></div>
-<div class="gate"><span class="g-ico">⟶ SEZON</span> niciodata schelet acoperit-neimbracat peste sezonul de ploi — OSB-ul se pune in aceeasi etapa cu acoperisul</div>
-<p class="note">Poarta veche „dublarea joistelor inainte de stalpii casei" nu mai exista — inchisa prin decizie pe 06.08 <span class="tag g">INCHISA PRIN DECIZIE</span></p>
+<div class="gate"><span class="g-ico">⟶ SEZON</span> niciodata schelet acoperit-neimbracat peste sezonul de ploi — OSB-ul se pune odata cu acoperisul</div>
+<p class="note">Poarta veche „dublarea joistelor inainte de stalpii casei" nu mai exista <span class="tag g">INCHISA PRIN DECIZIE</span></p>
 </section>
 
 <!-- ================= F1 ================= -->
 <section id="f1">
-<h2>04 — F1 · Inchide podeaua <span style="float:right;color:var(--dim)">~1 zi</span></h2>
-<div class="step"><div class="num">1</div><div><strong>Curata lastarii</strong> din zona podelei (foarfeca/fierastrau de mana). Trunchiul principal nu se atinge. Golul de 3–5 cm ramane peste tot.</div></div>
-<div class="step"><div class="num">2</div><div><strong>Rama copac:</strong> 2 traverse ~300 din offcut 100×100, intre joistele de la 280 si 720, Heco 6×80 oblic (~6 sur.). <span class="tag">inainte de scandurile din zona copacului</span></div></div>
-<div class="step"><div class="num">3</div><div><strong>Restul dusumelei</strong> — regulile stabilite raman: scanduri la <span class="mono">2100</span>, rost 5 mm (cui distantier), decupaj la stalpii spate (PST 700E) si la copac, <strong>inox 5×60 NUMAI cu GSR pe ambreiaj 8–12, bit T25</strong> — niciodata cu impactul; 2 sur./scandura pe fiecare linie de joista; pregaurire 4–5 doar la capete; ulei DUPA montaj.</div></div>
-<div class="step"><div class="num">4</div><div><strong>Protejeaza tijele M12</strong> care ies din podea (capac/banda groasa) — stau asa pana la casa, pe puntea pe care merg copiii.</div></div>
-<div class="step"><div class="num">5</div><div><strong>Verificari + numaratoare:</strong> contrafisa stransa la ambele noduri spate · capete de surub la ras · cozile contrafiselor taiate la sol · numara C2 / inox / 6×80 / 6×100 ramase (receptia n-a fost verificata niciodata) · <strong>masoara nasul real al consolei</strong> (decide lungimile stalpisorilor de consola).</div></div>
+<h2>06 — F1 · Inchide podeaua <span style="float:right;color:var(--dim)">~1 zi</span></h2>
+<div class="step"><div class="num">1</div><div><strong>Curata lastarii</strong> din zona podelei. Trunchiul principal nu se atinge; golul de 3–5 cm ramane peste tot.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Rama copac:</strong> 2 traverse ~300 din offcut 100×100, intre joistele de la 280 si 720, Heco 6×80 oblic. <span class="tag">inainte de scandurile din zona copacului</span></div></div>
+<div class="step"><div class="num">3</div><div><strong>Restul dusumelei:</strong> scanduri la <span class="mono">2100</span>, rost 5 mm, decupaj la stalpii spate si la copac, <strong>inox 5×60 numai cu GSR pe ambreiaj 8–12</strong> (niciodata impactul), 2 sur./scandura pe fiecare joista, pregaurire doar la capete, ulei dupa montaj.</div></div>
+<div class="step"><div class="num">4</div><div><strong>Protejeaza tijele M12</strong> care ies din podea — stau asa pana la casa, pe puntea pe care merg copiii.</div></div>
+<div class="step"><div class="num">5</div><div><strong>Verificari + numaratoare:</strong> contrafisa la ambele noduri spate · capete la ras · cozile contrafiselor taiate la sol · numara C2 / inox / 6×80 / 6×100 · <strong>masoara nasul real al consolei</strong>.</div></div>
 <div class="card safe"><p style="margin:0"><strong>Gata cand:</strong></p>
 <ul class="chk" style="margin-bottom:0">
 <li>dusumea completa, uleiata, zero varfuri iesite</li>
 <li>rama copac montata, gol 3–5 cm</li>
-<li>tije M12 protejate</li>
-<li>contrafise verificate la ambele noduri</li>
+<li>tije M12 protejate · contrafise verificate ambele</li>
 <li>numaratoarea + cifra consolei scrise pe fisa</li>
 </ul></div>
 </section>
 
 <!-- ================= F2 ================= -->
 <section id="f2">
-<h2>05 — F2 · Balustrada <span style="float:right;color:var(--dim)">~1–1,5 zile</span></h2>
-<p><em>Prima lucrare dupa podea, nu ultima.</em> Pana e gata, platforma ramane santier inchis pentru copii — X-urile laterale se urca in 5 secunde.</p>
-<div class="step"><div class="num">1</div><div><strong>Stalpisorii pe CADRU, niciodata doar in dusumea:</strong> 58×58 (sau 60×60 de la Leroy) suprapus pe fata exterioara a joistei de capat / grinzii, <strong>2× bulon M10 strapuns</strong> per stalpisor (gaura Ø11, saibe late, piulita spre exterior). Detaliul canonic: <a href="fisa-11.html">fisa-11</a>.</div></div>
-<div class="step"><div class="num">2</div><div><strong>Pozitii:</strong> interax ≤900. Frontul consolei: 3 stalpisori la <span class="mono">h=1100</span> (taiati 1400). Lateralele: 4 stalpisori la <span class="mono">h=1000</span> (taiati 1300). Spatele nu are balustrada — acolo vine casa.</div></div>
-<div class="step"><div class="num">3</div><div><strong>Mana curenta 45×70</strong> continua peste stalpisori + <strong>lisa jos</strong> la nivelul dusumelei. Tranzitia 1100→1000 la coltul consolei: taietura oblica sau treapta neteda.</div></div>
-<div class="step"><div class="num">4</div><div><strong>Lamele verticale</strong> (18×18 sau 18×28) intre lisa si mana curenta: <strong>golul luminii sub 90 mm</strong> — taie un cub de 90 ca sablon; nu trece nicaieri. Fara elemente orizontale (scara de catarat).</div></div>
-<div class="step"><div class="num">5</div><div><strong>Poarta la scara:</strong> rama usoara + aceleasi lamele, 2 balamale cu arc (se inchide singura), zavor SUS la 1000. Se deschide spre punte, nu spre gol.</div></div>
-<div class="card safe"><p style="margin:0"><strong>Gata cand:</strong></p>
-<ul class="chk" style="margin-bottom:0">
-<li>zgaltait zdravan fiecare stalpisor = zero joc</li>
-<li>sablonul de 90 nu trece nicaieri</li>
-<li>poarta se inchide si se zavoraste singura</li>
-<li>zero capete sau varfuri iesite pe partea copiilor</li>
-</ul></div>
+<h2>07 — F2 · Balustrada <span style="float:right;color:var(--dim)">~1–1,5 zile</span></h2>
+<p><em>Prima lucrare dupa podea, nu ultima.</em> Pana e gata, platforma ramane santier inchis pentru copii.</p>
+
+<figure>
+<svg viewBox="-260 -260 1500 1750" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Detaliu prindere stalpisor si pas lamele">
+  <style>
+    .jo2{fill:#232830;stroke:#5a6069;stroke-width:7}
+    .dk2{fill:#3a3226;stroke:#c69a68;stroke-width:6}
+    .po2{fill:#4a3529;stroke:#e8894a;stroke-width:8}
+    .la{fill:#2b3038;stroke:#5a6069;stroke-width:5}
+    .tx2{font-family:'Space Mono',monospace;font-size:44px;fill:#9aa0a8}
+    .dm2{font-family:'Space Mono',monospace;font-size:44px;fill:#e8894a}
+    .dl2{stroke:#9aa0a8;stroke-width:4}
+  </style>
+  <!-- LEFT: section -->
+  <rect class="jo2" x="0" y="900" width="240" height="400"/>
+  <text class="tx2" x="20" y="1130">joista</text>
+  <text class="tx2" x="20" y="1180">100×200</text>
+  <rect class="dk2" x="0" y="844" width="240" height="56"/>
+  <text class="tx2" x="-250" y="880">dusumea</text>
+  <rect class="po2" x="240" y="-40" width="116" height="1340"/>
+  <text class="dm2" x="390" y="300">stalpisor 58×58</text>
+  <circle cx="298" cy="990" r="26" fill="#e8894a"/><circle cx="298" cy="1210" r="26" fill="#e8894a"/>
+  <line x1="140" y1="990" x2="470" y2="990" stroke="#e8894a" stroke-width="8"/>
+  <line x1="140" y1="1210" x2="470" y2="1210" stroke="#e8894a" stroke-width="8"/>
+  <text class="dm2" x="390" y="975">M10</text>
+  <text class="dm2" x="390" y="1195">M10</text>
+  <text class="tx2" x="-250" y="1000">saiba lata</text>
+  <text class="tx2" x="-250" y="1050">+ piulita</text>
+  <line class="dl2" x1="530" y1="-40" x2="530" y2="844"/>
+  <text class="dm2" x="490" y="420" transform="rotate(-90 490 420)">1000 / 1100</text>
+  <line class="dl2" x1="530" y1="900" x2="530" y2="1300"/>
+  <text class="dm2" x="570" y="1130" transform="rotate(-90 570 1130)">200 lap</text>
+  <text class="tx2" x="-60" y="1400">gauri la 50 si 150 de la capatul de jos</text>
+
+  <!-- RIGHT: lamele pitch -->
+  <g transform="translate(760,0)">
+    <rect class="dk2" x="0" y="-30" width="440" height="70"/>
+    <rect class="dk2" x="0" y="1010" width="440" height="70"/>
+    <text class="tx2" x="0" y="-70">mana curenta</text>
+    <text class="tx2" x="90" y="1150">lisa jos</text>
+    <g class="la">
+      <rect x="60" y="40" width="18" height="970"/><rect x="166" y="40" width="18" height="970"/>
+      <rect x="272" y="40" width="18" height="970"/><rect x="378" y="40" width="18" height="970"/>
+    </g>
+    <line x1="78" y1="560" x2="166" y2="560" stroke="#e8894a" stroke-width="7"/>
+    <text class="dm2" x="60" y="530">gol 88</text>
+    <text class="dm2" x="120" y="880">pas 106</text>
+    <text class="tx2" x="120" y="930">(18 + 88)</text>
+  </g>
+</svg>
+<figcaption>Stalpisorul se prinde de joista cu 2× M10 strapuns · lamele la pas 106 → gol 88</figcaption>
+</figure>
+
+<div class="step"><div class="num">1</div><div><strong>Gauresti stalpisorii jos, pe capra:</strong> 2 gauri Ø11 la <span class="mono">50</span> si <span class="mono">150</span> de capatul de jos.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Montezi 8 stalpisori</strong> pe axele joistelor, cu 2× M10×120 strapuns + saibe late. Zgaltai fiecare — zero joc.</div></div>
+<div class="step"><div class="num">3</div><div><strong>Retezi la cota abia acum</strong>, cu o singura linie de nivel pentru toti (1100 fata / 1000 laturi), apoi mana curenta si lisa jos.</div></div>
+<div class="step"><div class="num">4</div><div><strong>Lamele la pas 106</strong>, prinse oblic cu inox 4×50 si <strong>pregaurire 3 mm</strong> — sipca de 18 crapa altfel. Verifica cu martorul de 90 in fiecare gol.</div></div>
+<div class="step"><div class="num">5</div><div><strong>Poarta la scara:</strong> gol 560, balamale cu arc, zavor sus la 1000, se deschide <strong>spre punte</strong>.</div></div>
+<p class="note">Detaliul complet, cu cut list si feronerie: <a href="FISA-MONTAJ-balustrada.pdf">FISA-MONTAJ-balustrada.pdf</a></p>
 </section>
 
 <!-- ================= F3 ================= -->
 <section id="f3">
-<h2>06 — F3 · Scara <span style="float:right;color:var(--dim)">~1 zi</span></h2>
-<div class="card crit"><p style="margin:0"><strong>Ai ales varianta abrupta (1900 / ~49°).</strong> Compensarile de mai jos sunt <em>parte din decizie</em> — fara oricare din ele, scara nu se da in folosinta copiilor.</p></div>
-<div class="step"><div class="num">1</div><div><strong>Geometrie:</strong> baza la <span class="mono">1900</span> de linia podelei, varf la <span class="mono">+2228</span> → coarde ~2930 (din bare de 3 m). <span class="mono">11</span> urcari a ~203 · <span class="mono">10</span> trepte · calcatura 190 · latime 600. Traseaza cu echerul (203/190) pe coarde; crestezi coardele sau montezi pe coltare.</div></div>
-<div class="step"><div class="num">2</div><div><strong>Trepte cu nas:</strong> dulapul de 190 montat cu 15–20 mm peste linia coardei → calcatura efectiva ~205–210.</div></div>
-<div class="step"><div class="num">3</div><div><strong>Baza pe dale</strong>, nu pe pamant; opritor sa nu alunece. <strong>Sus:</strong> coardele prinse de cadru cu coltar + <span class="mono">2× M10</span>; scara da in poarta cu arc din F2.</div></div>
-<div class="step"><div class="num">4</div><div><strong>Banda antiderapanta pe fiecare treapta</strong> + <strong>mana curenta pe AMBELE parti</strong>, continua, capete rotunjite.</div></div>
-<div class="card safe"><p style="margin:0"><strong>Gata cand:</strong></p>
-<ul class="chk" style="margin-bottom:0">
-<li>zero balans la urcare cu un adult</li>
-<li>banda pe toate 10 treptele</li>
-<li>2 maini curente continue, de jos pana la poarta</li>
-<li>poarta de sus functionala · dale sub coarde</li>
-</ul></div>
+<h2>08 — F3 · Scara <span style="float:right;color:var(--dim)">~1 zi</span></h2>
+<div class="card crit"><p style="margin:0"><strong>Ai ales varianta abrupta.</strong> Compensarile sunt parte din decizie: trepte late 600 cu nas · banda antiderapanta pe fiecare treapta · mana curenta pe AMBELE parti · dale la baza · poarta cu arc sus. Si o regula de folosire: <strong>la 49,5° se coboara cu fata la scara</strong>.</p></div>
+
+<figure>
+<svg viewBox="-620 -420 3400 3100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elevatie scara cotata">
+  <defs><marker id="aS" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#9aa0a8"/></marker></defs>
+  <style>
+    .co3{stroke:#3f4a4c;stroke-width:140;stroke-linecap:butt;opacity:.95}
+    .tr3{fill:#2b3038;stroke:#5fbfc2;stroke-width:5}
+    .dk3{fill:#3a3226;stroke:#c69a68;stroke-width:5}
+    .tx3{font-family:'Space Mono',monospace;font-size:76px;fill:#9aa0a8}
+    .dm3{font-family:'Space Mono',monospace;font-size:72px;fill:#5fbfc2}
+    .dl3{stroke:#9aa0a8;stroke-width:4}
+  </style>
+  <line x1="-560" y1="2228" x2="2700" y2="2228" stroke="#5a6069" stroke-width="10"/>
+  <text class="tx3" x="-560" y="2360">SOL</text>
+  <rect x="-120" y="2228" width="420" height="90" fill="#232830" stroke="#5a6069" stroke-width="5"/>
+  <text class="tx3" x="-560" y="2180">dala</text>
+  <line class="co3" x1="53" y1="2273" x2="1953" y2="45"/>
+  <g class="tr3">
+    <rect x="-20" y="2003" width="210" height="45"/><rect x="170" y="1800" width="210" height="45"/>
+    <rect x="360" y="1598" width="210" height="45"/><rect x="550" y="1395" width="210" height="45"/>
+    <rect x="740" y="1193" width="210" height="45"/><rect x="930" y="990" width="210" height="45"/>
+    <rect x="1120" y="788" width="210" height="45"/><rect x="1310" y="585" width="210" height="45"/>
+    <rect x="1500" y="383" width="210" height="45"/><rect x="1690" y="180" width="210" height="45"/>
+  </g>
+  <rect class="dk3" x="1900" y="-28" width="700" height="28"/>
+  <rect x="1900" y="0" width="700" height="200" fill="#232830" stroke="#5a6069" stroke-width="5"/>
+  <text class="tx3" x="2010" y="130">joista</text>
+  <text class="tx3" x="1980" y="-90">PUNTEA +2228</text>
+  <circle cx="1935" cy="60" r="24" fill="#5fbfc2"/><circle cx="1935" cy="150" r="24" fill="#5fbfc2"/>
+  <text class="dm3" x="1450" y="-190">2× M10 sus</text>
+  <line class="dl3" x1="0" y1="2450" x2="1900" y2="2450" marker-start="url(#aS)" marker-end="url(#aS)"/>
+  <text class="dm3" x="760" y="2560">1900 baza</text>
+  <line class="dl3" x1="2760" y1="0" x2="2760" y2="2228" marker-start="url(#aS)" marker-end="url(#aS)"/>
+  <text class="dm3" x="2840" y="1200" transform="rotate(-90 2840 1200)">2228</text>
+  <line class="dl3" x1="380" y1="1598" x2="380" y2="1800" stroke="#5fbfc2" stroke-width="5"/>
+  <text class="dm3" x="410" y="1730">202,5</text>
+  <line class="dl3" x1="170" y1="1900" x2="360" y2="1900" stroke="#5fbfc2" stroke-width="5"/>
+  <text class="dm3" x="90" y="1990">190</text>
+  <text class="dm3" x="760" y="1120" transform="rotate(-49.5 760 1120)">coarda 2928 · 49,5°</text>
+</svg>
+<figcaption>11 urcari × 202,5 · 10 trepte × 190 · coarda 2928 — intra fix intr-o bara de 3 m</figcaption>
+</figure>
+
+<div class="step"><div class="num">1</div><div><strong>Masoara inaltimea reala</strong> si imparte la 11. Toate urcarile egale — o treapta diferita cu peste 5 mm e treapta pe care se impiedica cineva.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Trasezi cu echerul „mergator"</strong> (190 / 202,5), nu cu masura cumulata — asa erorile nu se aduna. A doua coarda se copiaza prin suprapunere, niciodata trasata separat.</div></div>
+<div class="step"><div class="num">3</div><div><strong>Tacheti 45×45×100</strong> pe fata interioara, 3× Heco 6×80 in zigzag fiecare.</div></div>
+<div class="step"><div class="num">4</div><div><strong>Ridici, prinzi sus</strong> cu 2× M10 pe coarda + coltar, <strong>jos</strong> cu opritoare in dala. Nimeni nu urca inainte de asta.</div></div>
+<div class="step"><div class="num">5</div><div><strong>Trepte</strong> (4× inox 5×60 fiecare, nas 20), <strong>banda antiderapanta</strong>, apoi <strong>mainile curente pe ambele parti</strong> pana la stalpisorul portii.</div></div>
+<p class="note">Detaliul complet, cu metoda de trasare si feronerie: <a href="FISA-MONTAJ-scara.pdf">FISA-MONTAJ-scara.pdf</a></p>
 </section>
 
 <!-- ================= F4 ================= -->
 <section id="f4">
-<h2>07 — F4 · Casa <span style="float:right;color:var(--dim)">~3–4 zile</span></h2>
-<p>Cutie usoara 2100×1100, pereti 1800 spate / 1500 fata, acoperis intr-o apa spre terasa — daca un copil aluneca de pe acoperis, cade pe terasa, nu 4 m in curte. Se construieste <em>jos, pe iarba</em>, in 4 pereti-panou, apoi se ridica. Planul detaliat: <a href="CASA-plan-constructie.html">CASA-plan-constructie</a>.</p>
-<div class="step"><div class="num">1</div><div><strong>Masoara pe teren</strong> (nimic la magazin inainte): latimile libere intre stalpi (spate / fata), adancimea pe fiecare latura si <strong>pozitiile reale ale celor 2 tije M12</strong> din podea — ele fixeaza stalpii fata ai casei. Daca tijele nu cad pe axa joistelor de capat la ~1100 de peretele din spate: <span class="tag r">STOP</span> si discutam inainte de debitare.</div></div>
-<div class="step"><div class="num">2</div><div><strong>Debitare</strong> pe cotele masurate (Hornbach sau Leroy — ambele au serviciul): montanti 45×45, talpi/cununi/capriori 42×90, OSB la cota. Trapezul lateral si golurile (usa ~500×1300, fereastra 56×56) le tai tu cu PST-ul.</div></div>
-<div class="step"><div class="num">3</div><div><strong>4 pereti plati, jos:</strong> rame 45×45 + talpi 42×90, gol usa + gol fereastra DOAR in fata (peste terasa), hublouri fixe lateral. OSB pe fete = rigidizarea (inlocuieste contravantuirile).</div></div>
-<div class="step"><div class="num">4</div><div><strong>Ridicarea — zi fara vant, minim 3 oameni:</strong> spate → laterale → fata; fiecare panou proptit inainte sa-i dai drumul. <strong>Proptelele stalpilor de 4 m NU se scot</strong> pana cutia nu e sus si bulonata — baza lor e articulata, cutia ii tine. <span class="tag">critic</span></div></div>
-<div class="step"><div class="num">5</div><div><strong>Lantul anti-smulgere</strong> (nodurile care conteaza): talpi in joiste (5×80 + vinclu la ~40 cm + blocaje sub talpi) · perete spate → stalpii de 4 m cu <strong>tirfoane M10 pe mai multe inaltimi</strong> · stalpi fata 70×70 pe suport picior + piulita pe <strong>tija M12 existenta</strong> · fiecare caprior cu <strong>ancora anti-vant la AMBELE capete</strong> (vinclul tine la forfecare, nu la smulgere). Contra-intuitiv dar verificat: cel mai rau caz de smulgere e acoperisul <em>fara</em> zapada, cu vant.</div></div>
-<div class="step"><div class="num">6</div><div><strong>Acoperis:</strong> capriori 42×90 pe cununi · sipci la <span class="mono">≤450</span> · Onduline cu cuie in creasta, <strong>indesite pe margini si pe randul de jos</strong> — desprinderea la vant e modul de avarie #1. Streasina fata la ~3,70 = inaltimea capului: teseste/captuseste muchia.</div></div>
-<div class="step"><div class="num">7</div><div><strong>Inchideri:</strong> fereastra PVC doar in fata · hublouri acrilice prinse cu sipca pe AMBELE fete (sa nu le impinga un copil afara) · gol de usa cu prag mic · <strong>fanta de 30 cm casa–gard inchisa</strong> (sa nu ramana un copil blocat).</div></div>
-<div class="step"><div class="num">8</div><div><strong>Finisaj:</strong> grund + lazura, capete taiate tratate, muchii tesite, verificare finala de siguranta.</div></div>
-<div class="card safe"><p style="margin:0"><strong>Gata cand:</strong></p>
-<ul class="chk" style="margin-bottom:0">
-<li>cutia bulonata pe toate 4 laturile lantului (talpi / spate / stalpi fata / capriori)</li>
-<li>toate ancorele anti-vant puse · Onduline complet, margini indesite</li>
-<li>acrilic dublu-sipcat · fanta inchisa</li>
-<li>proptele scoase ABIA acum · lazura data</li>
-</ul></div>
+<h2>09 — F4 · Casa <span style="float:right;color:var(--dim)">~3–4 zile</span></h2>
+<div class="card crit"><p style="margin:0"><strong>Nu se cumpara si nu se taie nimic inainte de cele 5 masuratori.</strong> Tot cut list-ul casei e in formule de M1, M2, M3 — nu in numere fixe.</p></div>
+
+<table>
+<tr><th>#</th><th>Ce masori</th><th class="n">Nominal</th></tr>
+<tr><td class="n">M1</td><td>Cat ies stalpii de 4 m deasupra dusumelei (ia cea mai mica valoare) — <strong>el da inaltimea peretelui din spate</strong></td><td class="n">~1772</td></tr>
+<tr><td class="n">M2</td><td>De la fata stalpilor spate pana la axa tijelor M12 = adancimea reala a casei</td><td class="n">1100</td></tr>
+<tr><td class="n">M3</td><td>Lumina intre stalpii de 4 m, masurata jos SI sus</td><td class="n">2000</td></tr>
+<tr><td class="n">M4</td><td>Distanta intre axele celor 2 tije M12 (trebuie = M3 + 100)</td><td class="n">2100</td></tr>
+<tr><td class="n">M5</td><td>Cat ies tijele M12 deasupra dusumelei</td><td class="n">~100</td></tr>
+</table>
+<div class="card alert"><p style="margin:0"><strong>STOP daca:</strong> M3 jos difera de M3 sus cu peste 15 mm · sau tijele M12 nu cad pe axa joistelor de capat · sau M1 e sub 1700 (atunci un copil de 165 cm sta aplecat in fata si schimbam panta sau adancimea). In oricare caz — cifrele inainte de debitare.</p></div>
+
+<div class="step"><div class="num">1</div><div><strong>4 pereti plati, jos pe iarba:</strong> rame 45×45 pe talpi 42×90, diagonale egale ±3 mm, apoi OSB 12 la 150/300 — OSB-ul e cel care face cutia rigida.</div></div>
+<div class="step"><div class="num">2</div><div><strong>Pregatesti podeaua:</strong> conturul trasat, cei 2 stalpi 70×70 montati pe tijele M12 (gaura Ø13 + largire Ø30 pentru piulita ingropata), verticali si proptiti.</div></div>
+<div class="step"><div class="num">3</div><div><strong>Ridicarea, zi fara vant, 3 oameni:</strong> spate (6 tirfoane M10 in stalpii de 4 m) → laterale → fata. Colturile cu 4× 6×120 + 2 coltare. <strong>Proptelele se scot abia dupa ce cutia e prinsa pe toate laturile.</strong></div></div>
+<div class="step"><div class="num">4</div><div><strong>Acoperis:</strong> 5 capriori la 500, <strong>fiecare cu ancora anti-vant la AMBELE capete</strong> (vinclul tine la forfecare, ancora la smulgere), sipci la ≤450, Onduline cu cuie in creasta — indesite pe randul de jos si pe margini, de acolo incepe desprinderea.</div></div>
+<div class="step"><div class="num">5</div><div><strong>Inchideri:</strong> fereastra doar in fata · hublouri acrilice dublu-sipcate, cu joc la gauri · fanta de 30 cm din spate inchisa · lazura pe tot, inclusiv capetele taiate si muchiile OSB.</div></div>
+<p class="note">Detaliul complet, cu plan, sectiune, elevatia peretelui si lantul anti-smulgere: <a href="FISA-MONTAJ-casa.pdf">FISA-MONTAJ-casa.pdf</a></p>
 </section>
 
 <!-- ================= CUMPARATURI ================= -->
 <section id="cumparaturi">
-<h2>08 — Cumparaturi: doua drumuri</h2>
-<p>Randurile <span class="lm">LEROY</span> = pret si stoc <strong>verificate live pe 06.08</strong> pe magazinul Bucuresti Colosseum. Randurile <span class="hb">HORNBACH</span>/Dedeman = estimari iulie 2026, se confirma la raft. Lista completa cu checkbox-uri, de printat: <a href="FISA-ACHIZITIE-faza-2.pdf">FISA-ACHIZITIE (PDF)</a>.</p>
+<h2>10 — Cumparaturi: doua drumuri</h2>
+<p>Randurile <span class="lm">LEROY</span> = pret si stoc <strong>verificate live pe 06.08</strong>, magazinul Bucuresti Colosseum. <span class="hb">HORNBACH</span>/Dedeman = estimari iulie 2026. Lista cu checkbox-uri, de printat: <a href="FISA-ACHIZITIE-faza-2.pdf">FISA-ACHIZITIE (PDF)</a>.</p>
 <div class="card crit"><p style="margin:0"><strong>Onduline la Leroy Colosseum: doar 15 buc in stoc la verificare</strong> (necesar 3). Daca faci drumul, ia-le primul.</p></div>
-<h3>Drumul 1 — acum</h3>
 <table>
-<tr><th>Magazin</th><th>Ce iei</th><th class="n">~Total</th></tr>
-<tr><td><span class="lm">Leroy Colosseum</span></td><td>Onduline Base ×3 (46,80 · stoc 15) · cuie Onduline · fereastra PVC 56×56 (126,99 · stoc 34) · rigla 60×60 ×4 stalpisori (46,00 · stoc 504) · sipca 18×28 ×24 lamele (8,29 · stoc 226)</td><td class="n">~685</td></tr>
-<tr><td><span class="hb">Hornbach</span></td><td>restul balustradei (45×70 ×4 mana curenta+lisa, M10 ×2, balamale arc, zavor) · scara completa (coarde 60×140 ×2, dulap 45×190 ×2, banda antiderapanta, maini curente, M10, dale) · lazura + grund · acrilic 500×250 ×2</td><td class="n">~800</td></tr>
+<tr><th>Drum</th><th>Cand</th><th>Ce iei</th><th class="n">~Total</th></tr>
+<tr><td><span class="lm">Leroy Colosseum</span></td><td>acum</td><td>Onduline ×3 · cuie · fereastra PVC 56×56 · rigla 60×60 ×4 (stalpisori) · sipca 18×28 ×18 (lamele)</td><td class="n">~635</td></tr>
+<tr><td><span class="hb">Hornbach</span></td><td>acum</td><td>restul balustradei (45×70 ×4, <strong>4× M10</strong>, inox 4×50, balamale, zavor) · scara completa (<strong>6 bare 45×45</strong>, coarde 60×140, dulapi 45×190, banda, M10, dale) · lazura · acrilic</td><td class="n">~810</td></tr>
+<tr><td><span class="hb">Hornbach + Dedeman</span></td><td><strong>dupa M1–M5</strong></td><td>lemn casa cu debitare (45×45, 42×90, 70×70) · OSB ×4 · suruburi · coltari · vincluri · <strong>ancore anti-vant ×14</strong> · tirfoane M10 ×8</td><td class="n">~1.720</td></tr>
 </table>
-<h3>Drumul 2 — abia dupa masuratorile din F4 / pasul 1</h3>
-<table>
-<tr><th>Magazin</th><th>Ce iei</th><th class="n">~Total</th></tr>
-<tr><td><span class="hb">Hornbach</span> (+Dedeman feronerie)</td><td>lemn casa cu DEBITARE pe cut list-ul masurat: 45×45 ×~16 · 42×90 ×~10 · 70×70 ×1 (Leroy nu are sectiunile astea) · OSB3 12 ×4 (79,33 la Leroy, stoc 769 — sau Hornbach) · suruburi 5×80/6×120/4×60 · coltari · vincluri · suporti stalp · ancore anti-vant ×14 · tirfoane M10 ×8</td><td class="n">~1.720</td></tr>
-</table>
-<p class="tot">Total faza 2: ~3.050–3.250 lei</p>
-<p class="note">Nu se cumpara: usa (gol) · tije M12 (montate) · KVH/C2/zigzag pt dublare (skip) · M10 doar +2+2 (ai 12). Consumabile F1 pe lista din fisa: biti Torx T40/T30/T25, prelungitor+PRCD, +1 pachet 6×80 dupa numaratoare, +2 larice rezerva, capace tije.</p>
+<p class="tot">Total faza 2: ~3.050 lei</p>
+<p class="note">Nu se cumpara: usa (gol) · tije M12 (montate) · KVH/C2 pentru dublare (skip) · coltare de trepte (tacheti in loc).</p>
 </section>
 
 <!-- ================= SIGURANTA ================= -->
 <section id="siguranta">
-<h2>09 — Siguranta copii: reguli permanente</h2>
+<h2>11 — Siguranta copii: reguli permanente</h2>
 <div class="card safe">
 <ul style="margin-bottom:0">
-<li><strong>Copiii nu urca pe structura pana F2 (balustrada) nu e gata.</strong> X-urile laterale se urca usor — pana atunci, santier inchis.</li>
-<li>Toate capetele de surub <strong>la ras</strong> — nici iesite (agata), nici ingropate. Zero varfuri iesite pe partea cealalta, oriunde.</li>
-<li>Piesa taiata = piesa prinsa in cleme. Gauri mari = ambele maini pe GSR (recul). Inox = GSR cu ambreiaj, niciodata impactul.</li>
-<li><strong>Sol moale ≥300 mm</strong> (scoarta/nisip) sub toata zona de cadere — cel tarziu la darea in folosinta.</li>
-<li>Geam care se deschide DOAR pe fata (peste terasa). Lateral/spate: doar fix, dublu-sipcat.</li>
-<li>Fara treapta sau sprijin usor de la balustrada spre acoperis (anti-catarare).</li>
-<li>Metoda de taiere KVH ramane cea stabilita: trasat pe 4 fete + HS7611K pe fiecare fata + miezul cu fierastraul de impins.</li>
+<li><strong>Copiii nu urca pe structura pana F2 nu e gata.</strong> X-urile laterale se urca usor — pana atunci, santier inchis.</li>
+<li>Toate capetele de surub <strong>la ras</strong>. Zero varfuri iesite pe partea cealalta, oriunde.</li>
+<li>Piesa taiata = piesa prinsa in cleme. Gauri mari = ambele maini pe GSR. Inox = GSR cu ambreiaj, niciodata impactul.</li>
+<li><strong>Golul luminii sub 90 mm</strong> peste tot in balustrada si in poarta — verificat cu martorul, nu din ochi.</li>
+<li><strong>Sol moale ≥300 mm</strong> sub toata zona de cadere, cel tarziu la darea in folosinta.</li>
+<li>Geam care se deschide doar in fata (peste terasa). Lateral si spate: doar fix, dublu-sipcat.</li>
+<li>Fara priza orizontala de catarare: nici in balustrada, nici de la balustrada spre acoperis.</li>
+<li><strong>Scara: se coboara cu fata la ea.</strong> Spus si aratat copiilor din prima zi.</li>
 </ul>
 </div>
 </section>
 
 <!-- ================= DESCHISE ================= -->
 <section id="deschise">
-<h2>10 — Deschise (corect documentate, nu uitate)</h2>
+<h2>12 — Deschise</h2>
 <table>
 <tr><th>Item</th><th>Cine</th><th>Cand</th></tr>
 <tr><td><span class="mono">git push origin main</span> — commit-urile din 06.08 asteapta; site-ul live e in urma</td><td>Vlad</td><td>azi, 10 secunde</td></tr>
-<tr><td>Poze cu starea reala (dusumea partiala, blocaje, C2, ancore) — starea declarata ramane neverificata foto; ultimele poze sunt din 03.08</td><td>Vlad</td><td>prima iesire</td></tr>
-<tr><td>Numaratoarea receptiei: C2, inox 5×60, rest 6×80/6×100, cheie 17/19</td><td>Vlad</td><td>F1</td></tr>
-<tr><td>Masoara nasul real al consolei (pozele din 03.08 sugereaza sub 700) → lungimile stalpisorilor de consola</td><td>Vlad</td><td>F1</td></tr>
-<tr><td>Doua intrebari din poze: crestatura in stalpul spate ~0,5 m peste grinda (IMG_2285) — ce e? Placa perforata pe glulamul spate (2A9524F8) — ce acopera?</td><td>Vlad</td><td>un reply</td></tr>
-<tr><td>Review extern „om cu terase" 15 min la nodurile spate + consola — dupa decizia sisters ramane <em>recomandare</em>, nu conditie</td><td>optional</td><td>inainte de F4</td></tr>
+<tr><td>Poze cu starea reala — ultimele sunt din 03.08 si arata joistele goale</td><td>Vlad</td><td>prima iesire</td></tr>
+<tr><td>Numaratoarea receptiei: C2, inox 5×60, rest 6×80 / 6×100, cheie 17/19</td><td>Vlad</td><td>F1</td></tr>
+<tr><td>Nasul real al consolei (pozele sugereaza sub 700) → lungimile stalpisorilor de consola</td><td>Vlad</td><td>F1</td></tr>
+<tr><td>Cele 5 masuratori M1–M5 ale casei</td><td>Vlad</td><td>inainte de F4</td></tr>
+<tr><td>Crestatura din stalpul spate (IMG_2285) si placa perforata de pe glulam (2A9524F8) — ce sunt?</td><td>Vlad</td><td>un reply</td></tr>
+<tr><td>Review extern „om cu terase" — dupa decizia sisters ramane <em>recomandare</em>, nu conditie</td><td>optional</td><td>inainte de F4</td></tr>
 </table>
 
 <hr>
 <h3>Documentele fazei</h3>
 <div class="ph">
-<a href="FISA-FAZA-2-casa-gard-scara.pdf"><div class="t">FISA-FAZA-2.pdf</div><div class="d">executie pe santier, 6 pag, pas cu pas</div></a>
-<a href="FISA-ACHIZITIE-faza-2.pdf"><div class="t">FISA-ACHIZITIE.pdf</div><div class="d">cumparaturi cu checkbox-uri, 3 pag</div></a>
-<a href="AUDIT-2026-08-06.md"><div class="t">AUDIT-2026-08-06</div><div class="d">auditul complet + cifrele deciziilor</div></a>
-<a href="CASA-plan-constructie.html"><div class="t">CASA-plan</div><div class="d">planul detaliat al casei, cut list nominal</div></a>
-<a href="fisa-11.html"><div class="t">fisa-11</div><div class="d">detaliul de prindere balustrada</div></a>
-<a href="SCHEMA-detaliu-coltar-C2.pdf"><div class="t">SCHEMA-C2</div><div class="d">coltarele de dedesubt, as-built</div></a>
+<a href="FISA-MONTAJ-balustrada.pdf"><div class="t">MONTAJ · balustrada</div><div class="d">6 pag · desene, cut list, 5 pasi</div></a>
+<a href="FISA-MONTAJ-scara.pdf"><div class="t">MONTAJ · scara</div><div class="d">6 pag · geometrie, trasare, tacheti</div></a>
+<a href="FISA-MONTAJ-casa.pdf"><div class="t">MONTAJ · casa</div><div class="d">8 pag · M1–M5, plan, sectiune, lant</div></a>
+<a href="FISA-ACHIZITIE-faza-2.pdf"><div class="t">ACHIZITIE</div><div class="d">3 pag · checkbox-uri, pe drumuri</div></a>
+<a href="FISA-FAZA-2-casa-gard-scara.pdf"><div class="t">FAZA 2 · general</div><div class="d">6 pag · fisa de ansamblu</div></a>
+<a href="AUDIT-2026-08-06.md"><div class="t">AUDIT 06.08</div><div class="d">auditul complet + cifrele deciziilor</div></a>
 </div>
-<p class="note" style="margin-top:22px">Consolidat din: AUDIT-2026-08-06 · FISA-FAZA-2 · FISA-ACHIZITIE · CASA-plan-constructie · SOURCE-OF-TRUTH · verificarea live Leroy Colosseum 06.08. Daca pagina asta contrazice vreo fisa, castiga fisierul canonic din SOURCE-OF-TRUTH.md.</p>
+<p class="note" style="margin-top:22px">Consolidat din: AUDIT-2026-08-06 · cele 3 fise de montaj · FISA-ACHIZITIE · CASA-plan-constructie · SOURCE-OF-TRUTH · verificarea live Leroy Colosseum 06.08. Daca pagina asta contrazice vreo fisa, castiga fisierul canonic din SOURCE-OF-TRUTH.md.</p>
 </section>
 
 </div>
@@ -275,7 +567,7 @@
   var secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
   function onScroll(){
     var i=secs.length-1;
-    while(i>0 && secs[i].getBoundingClientRect().top>90) i--;
+    while(i>0 && secs[i] && secs[i].getBoundingClientRect().top>90) i--;
     links.forEach(function(a,k){a.classList.toggle('on',k===i)});
   }
   document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
