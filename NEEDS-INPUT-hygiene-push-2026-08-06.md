@@ -28,7 +28,16 @@ cd "/Users/Shared/Builds/CASUTA DIN COPAC"
 git push origin main
 ```
 
-## Nota aditionala
+## Fisiere necomise — actiune Vlad necesara
 
-FISA-FAZA-2-casa-gard-scara.html si FISA-FAZA-2-casa-gard-scara.pdf sunt absente de pe disc.
-Nu au putut fi incluse in Commit 1. De verificat: urmeaza sa fie create, sau nu mai sunt necesare?
+Dupa executia celor 3 commit-uri, `git status` arata fisiere modificate/noi (au aparut in timp ce brieful rula — probabil un alt proces pe contul Main):
+
+**Necomise (modificate, in afara brief-ului):**
+- `CASA-plan-constructie.html` — modificat (nu era in lista brief-ului ca modified)
+- `SOURCE-OF-TRUTH.md` — modificat (in afara scopului brief-ului)
+
+**Necomis (nou, in lista brief-ului dar aparut dupa Commit 1):**
+- `FISA-FAZA-2-casa-gard-scara.html` — a aparut pe disc dupa ce Commit 1 fusese deja facut
+- `FISA-FAZA-2-casa-gard-scara.pdf` — inca absent de pe disc
+
+Acestea au fost lasate intentionat necomise conform instructiunii din brief ("daca apar fisiere neasteptate fata de lista, lasa-le necomise si noteaza-le"). Vlad sa decida: commit suplimentar sau las-le pentru urmatoarea sesiune.
