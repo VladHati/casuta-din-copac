@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>SCHEMA SCARII — cum arata si cum se monteaza | Casuta din copac</title>
+<style>
+  @page { size: A4; margin: 12mm 11mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; margin: 0; }
+  h1 { font-size: 17pt; margin: 0 0 2mm; letter-spacing: -0.3pt; }
+  .sub { color: #555; font-size: 8.5pt; margin-bottom: 4mm; }
+  h2 { font-size: 11.5pt; margin: 5mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.5pt solid #1a1a1a; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0; }
+  th, td { border: 0.5pt solid #999; padding: 1.4mm 2mm; text-align: left; vertical-align: top; font-size: 8.8pt; }
+  th { background: #efefef; font-size: 8.2pt; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 3mm 4mm; margin: 3mm 0; }
+  .warn b { color: #b3261e; }
+  .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 3mm 0; font-size: 8.8pt; }
+  .fix b { color: #1a6b3c; }
+  .note { border-left: 2.5pt solid #1a1a1a; background: #f5f5f5; padding: 2mm 3mm; margin: 2mm 0; font-size: 8.8pt; }
+  ul, ol { margin: 1mm 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1.2mm; }
+  .fig { page-break-inside: avoid; margin: 3mm 0 5mm; }
+  .fig img { display: block; width: 100%; }
+  .fig .cap { font-size: 8.2pt; color: #555; text-align: center; margin-top: 1mm; }
+  .fig.half img { width: 92%; margin: 0 auto; }
+  .pgbrk { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<h1>SCHEMA SCARII — cum arata si cum se monteaza</h1>
+<div class="sub">6 august 2026 · faza F3 · sectiuni pe varianta <b>Leroy Colosseum</b> (coarda 100×100, treapta 46×250, tachet 46×46) · geometria ramane cea decisa: baza 1900, inaltime 2228</div>
+
+<div class="fix">
+<b>CORECTIE DE CIFRA — panta reala e 46,8°, nu 49,5°.</b>
+<p style="margin:1mm 0">Cei 49,5° din documentele anterioare sunt <b>diagonala de la sol la punte</b> (atan 2228/1900) — nu panta scarii. Panta unei scari se masoara ca <b>urcare / calcatura</b>: atan(202,5 / 190) = <b>46,8°</b>. Diferenta vine din faptul ca sunt <b>11 urcari dar numai 10 calcaturi</b>.</p>
+<p style="margin:1mm 0 0">Nu schimba nimic din ce ai decis (baza ramane 1900, inaltimea 2228, 11×202,5 si 10×190) — dar scara e putin mai putin abrupta decat credeam, si cifra corecta trebuie sa fie in fise. Cu treptele de 250 de la Leroy, talpa se aseaza pe 250 mm, nu pe 190: <b>senzatia la picior e de ~39°</b>, adica aproape de o scara normala de interior.</p>
+</div>
+
+<h2>1 · Ansamblul</h2>
+<div class="fig">
+<img src="assets/iso/sc-1-ansamblu.svg" alt="Ansamblul scarii, cotat">
+<div class="cap">Doua coarde 100×100 la 600 lumina · 10 trepte 46×250×600 pe tacheti · baza pe dale · varful bulonat in joista de capat</div>
+</div>
+
+<table>
+<tr><th>Marime</th><th>Valoare</th><th>De unde</th></tr>
+<tr><td>Inaltime totala (sol → fata dusumelei)</td><td class="mono">2228</td><td><b>masoara pe teren</b>, apoi imparte la 11</td></tr>
+<tr><td>Baza (proiectia pe orizontala)</td><td class="mono">1900</td><td>decizia ta · 10 × 190</td></tr>
+<tr><td>Urcare</td><td class="mono">202,5</td><td>2228 / 11</td></tr>
+<tr><td>Calcatura (going)</td><td class="mono">190</td><td>1900 / 10</td></tr>
+<tr><td><b>Panta</b></td><td class="mono">46,8°</td><td>atan(202,5 / 190)</td></tr>
+<tr><td>Pas pe coarda (intre trepte)</td><td class="mono">278</td><td>√(202,5² + 190²) — cifra cu care trasezi</td></tr>
+<tr><td>Lungime coarda pe axa</td><td class="mono">2777</td><td>√(1900² + 2025²) · cu taieturile de capat → taie la <b>~2930</b></td></tr>
+<tr><td>Lumina intre coarde</td><td class="mono">600</td><td>= lungimea treptei</td></tr>
+<tr><td>Adancime treapta</td><td class="mono">250</td><td>iese 60 peste treapta de dedesubt</td></tr>
+</table>
+
+<h2 class="pgbrk">2 · Treapta pe tachet — nodul care se repeta de 10 ori</h2>
+<div class="fig">
+<img src="assets/iso/sc-2-tachet.svg" alt="Detaliu tachet si treapta">
+<div class="cap">Tachetul se insurubeaza pe fata interioara a coardei · treapta coboara peste el · coarda ramane intreaga</div>
+</div>
+<div class="warn">
+<b>De ce tachet si nu crestatura:</b> o crestatura de 202,5 × 190 mananca <span class="mono">138,5 mm</span> perpendicular din coarda. Dintr-o coarda de 100 sau chiar 140 nu mai ramane nimic — ar fi o coarda taiata in bucati. Cu tacheti, coarda lucreaza intreaga pe toata lungimea.
+</div>
+<div class="note"><b>Lungimea tachetului depinde de coarda:</b> pe coarda de <b>100</b> (Leroy) tachetul are <span class="mono">80 mm</span>; pe una de <b>140</b> (Hornbach) poate avea <span class="mono">100 mm</span>. Regula: tachetul e orizontal, coarda e inclinata — pe lungimea tachetului muchia coardei coboara cu <i>lungime × 1,066</i>, si asta trebuie sa incapa in latimea coardei.</div>
+
+<h2>3 · Prinderea de sus</h2>
+<div class="fig">
+<img src="assets/iso/sc-3-sus.svg" alt="Prinderea coardei de joista de capat">
+<div class="cap">Taietura verticala lipita de joista · 2× M10×120 strapuns · coltar dedesubt pentru forfecare</div>
+</div>
+
+<h2 class="pgbrk">4 · Baza</h2>
+<div class="fig">
+<img src="assets/iso/sc-4-baza.svg" alt="Baza coardei pe dala">
+<div class="cap">Taietura orizontala pe dala · opritor cu dibluri · fasie de folie intre lemn si beton</div>
+</div>
+
+<h2>5 · Mainile curente</h2>
+<div class="fig">
+<img src="assets/iso/sc-5-mana.svg" alt="Montanti si mana curenta">
+<div class="cap">3 montanti pe fiecare parte, pe fata exterioara a coardei · mana curenta paralela cu panta, la 900 masurat vertical de la nas</div>
+</div>
+
+<h2>Ordinea de montaj — pe scurt</h2>
+<ol>
+<li><b>Masoara</b> inaltimea reala si imparte la 11. Toate urcarile egale (±5 mm max).</li>
+<li><b>Traseaza</b> cu echerul „mergator" (190 / 202,5), 10 pasi. A doua coarda se copiaza prin suprapunere, nu se traseaza separat.</li>
+<li><b>Taie</b> coardele (jos orizontal, sus vertical) si cei 20 de tacheti.</li>
+<li><b>Insurubeaza tachetii</b> jos, pe capre — 3× Heco 6×80 fiecare, in zigzag.</li>
+<li><b>Ridica si prinde</b>: sus 2× M10 pe fiecare coarda + coltar, jos opritoare in dala. <b>Nimeni nu urca inainte.</b></li>
+<li><b>Trepte</b>: 2× inox 5×60 la fiecare capat, nas la 60, apoi <b>banda antiderapanta pe toate 10</b>.</li>
+<li><b>Mainile curente</b> pe ambele parti, pana la stalpisorul portii.</li>
+</ol>
+
+<h2>Lista de cumparaturi — Leroy Colosseum (stoc verificat 06.08)</h2>
+<table>
+<tr><th>Ce</th><th>Produs</th><th>Buc</th><th>Pret</th><th>Stoc</th></tr>
+<tr><td>Coarde</td><td>Grinda nerindeluita 100×100×3000</td><td class="mono">2</td><td class="mono">67,99</td><td class="mono">157</td></tr>
+<tr><td>Trepte</td><td>Dulap nerindeluit 46×250×3000 (5 trepte/bara)</td><td class="mono">2</td><td class="mono">69,89</td><td class="mono">23</td></tr>
+<tr><td>Tacheti + montanti + mana curenta</td><td>Rigla nerindeluita 46×46×4000</td><td class="mono">3</td><td class="mono">21,89</td><td class="mono">91</td></tr>
+<tr><td>Antiderapant</td><td>Banda Tesa 50 mm × 5 m, negru</td><td class="mono">2</td><td class="mono">50,60</td><td class="mono">28</td></tr>
+<tr><td>Baza</td><td>Pavaj beton 400×400×60</td><td class="mono">2</td><td class="mono">9,16</td><td class="mono">—</td></tr>
+<tr><td colspan="3"><b>Total Leroy</b></td><td class="mono">~480</td><td></td></tr>
+<tr><td>De la Hornbach/Dedeman</td><td>4× M10×120 + saibe/piulite · 4 dibluri 6×60 · Heco 6×80 (~68) si 6×100 (~30) · inox 5×60 (40)</td><td class="mono">—</td><td class="mono">~60</td><td></td></tr>
+</table>
+<div class="note"><b>Lemnul de la Leroy e nerindeluit</b> — pentru exterior e in regula, dar <b>slefuieste nasul fiecarei trepte si mainile curente</b>: acolo pun copiii talpa si mana. Si trateaza toate capetele taiate cu lazura, pe acolo intra apa prima.</div>
+
+<div class="sub" style="margin-top:4mm">Sursa: decizia 06.08 (baza 1900, inaltime 2228, compensari obligatorii) · verificare live Leroy Colosseum 06.08 · desene generate din cotele reale cu <span class="mono">tools-fise/gen_scara.py</span>. Corectie fata de fisele anterioare: panta reala 46,8° (nu 49,5°); sectiuni Leroy 100×100 / 46×250 in loc de 60×140 / 45×190; tachet 80 in loc de 100.</div>
+
+</body>
+</html>

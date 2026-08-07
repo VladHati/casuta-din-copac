@@ -13,11 +13,11 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 | Instructiuni montaj | `tools-fise/` -> `fisa-01..11` + Manual | actual |
 | Noduri grinda-stalp | `NODURI-grinda-stalp.html` | actual |
 | Podea (plan + sectiune) | `PODEA-plan-sectiune.html` | actual |
-| Faza podea (instructiuni de santier) | `FISA-CONTINUARE-podea.html` / `.pdf` | actual (as-built 24.07) |
-| Casa de sus | `CASA-plan-constructie.html` | actual (decizii fixate 06.08: Onduline, gol usa) |
-| Faza 2 (instructiuni de santier: podea-final, balustrada, scara, casa) | `FISA-FAZA-2-casa-gard-scara.html` / `.pdf` | actual (06.08) |
+| Faza 2 completa (podea-final, balustrada, scara, casa) | `MANUAL-FAZA-2.html` / `.pdf` | actual — SURSA UNICA |
 | Stadiu santier | `STATUS.md` + `timeline.html` | actual |
 | Audit tehnic | `AUDIT-2026-08-06.md` (curent), `AUDIT-2026-07-24.md` + `AUDIT-2026-07-23.html` + `AUDIT-2026-06-18.html` (istorice) | actual |
+
+Pentru Faza 2, MANUAL-FAZA-2 bate orice alt fisier. Documentele absorbite sunt in `_archive/faza2-absorbite/`.
 
 ## Cote blocate (rezumat — detaliul e in dosar)
 
