@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>MANUAL FAZA 2 — sursa unica de adevar | Casuta din copac</title>
+<style>
+  @page { size: A4; margin: 12mm 11mm; @bottom-right { content: counter(page); font-family: Helvetica; font-size: 8pt; color: #888; } }
+  * { box-sizing: border-box; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; margin: 0; }
+  h1 { font-size: 20pt; margin: 0 0 2mm; letter-spacing: -0.4pt; }
+  .sub { color: #555; font-size: 8.5pt; margin-bottom: 4mm; }
+  h2 { font-size: 12pt; margin: 7mm 0 2mm; padding: 1.5mm 3mm; background: #1a1a1a; color: #fff; letter-spacing: 0.2pt; }
+  h3 { font-size: 10.5pt; margin: 4mm 0 1.5mm; padding-bottom: 0.8mm; border-bottom: 1pt solid #1a1a1a; }
+  h4 { font-size: 9.5pt; margin: 3mm 0 1mm; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0; }
+  th, td { border: 0.5pt solid #999; padding: 1.3mm 2mm; text-align: left; vertical-align: top; font-size: 8.6pt; }
+  th { background: #efefef; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 2.5mm 3.5mm; margin: 2.5mm 0; }
+  .warn b { color: #b3261e; }
+  .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 2.5mm 0; font-size: 8.8pt; }
+  .fix b { color: #1a6b3c; }
+  .note { border-left: 2.5pt solid #1a1a1a; background: #f5f5f5; padding: 2mm 3mm; margin: 2mm 0; font-size: 8.8pt; }
+  ul, ol { margin: 1mm 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1.1mm; }
+  .step { border: 0.8pt solid #1a1a1a; margin: 2.5mm 0; page-break-inside: avoid; }
+  .step-head { background: #1a1a1a; color: #fff; padding: 1.4mm 3mm; font-weight: bold; font-size: 9.8pt; }
+  .step-body { padding: 2.2mm 3mm; }
+  .gata { border: 0.8pt dashed #1a1a1a; background: #f7f7f2; padding: 1.8mm 3mm; margin: 2mm 0 0; font-size: 8.6pt; }
+  .chk { color: #555; }
+  .iso { display:block; width:100%; margin:2mm auto 1mm; }
+  .iso.sm { width:70%; }
+  .iso.md { width:86%; }
+  .cap { text-align: center; font-size: 7.8pt; color: #555; margin-bottom: 2mm; }
+  .pgbrk { page-break-before: always; }
+  .toc { columns: 2; font-size: 9pt; }
+  .toc div { margin-bottom: 1mm; }
+  .lm { color:#1a6b3c; font-weight:bold; font-size:7.5pt; letter-spacing:.4pt; }
+  .badge { display:inline-block; background:#1a1a1a; color:#fff; font-size:7.5pt; padding:0.3mm 1.6mm; border-radius:2pt; letter-spacing:.4pt; }
+</style>
+</head>
+<body>
+
+<h1>MANUAL FAZA 2</h1>
+<div class="sub"><b>Sursa unica de adevar pentru tot ce mai e de construit la casuta din copac.</b><br>
+Versiunea 1.0 · 6 august 2026 · acopera: inchiderea podelei, balustrada, scara, casa.<br>
+Faza 1 (structura: stalpi, glulam, joiste) e construita — istoricul ei ramane in dosarul de proiect si in manualul Fazei 1.</div>
+
+<div class="warn">
+<b>REGULA DE PRECEDENTA:</b> daca documentul asta contrazice orice alta fisa, plan sau desen din proiect pentru Faza 2, <b>castiga documentul asta</b>. Fisele absorbite au fost mutate in <span class="mono">_archive/</span>. Nu construi dupa ele.
+</div>
+
+<div class="toc">
+<div><b>1</b> · Unde suntem</div>
+<div><b>2</b> · Deciziile inchise</div>
+<div><b>3</b> · Cotele canonice</div>
+<div><b>4</b> · Ordinea si portile</div>
+<div><b>5</b> · F1 — Inchide podeaua</div>
+<div><b>6</b> · F2 — Balustrada</div>
+<div><b>7</b> · F3 — Scara</div>
+<div><b>8</b> · F4 — Casa</div>
+<div><b>9</b> · Cumparaturi</div>
+<div><b>10</b> · Siguranta copii</div>
+<div><b>11</b> · Deschise</div>
+<div><b>12</b> · Istoricul corectiilor</div>
+</div>
+
+<h2>1 · Unde suntem</h2>
+<table>
+<tr><th>Facut si verificat</th><th>Ramas de facut</th></tr>
+<tr><td>
+4 stalpi pe papuc + fundatie · glulamuri montate · nodurile din spate cu talpic + 3× Heco 8×200 + 2× M12 + contrafisa 45° (P0 inchis) · 6 joiste taiate si montate pe <span class="mono">0 · 280 · 720 · 1120 · 1550 · 2100</span> · blocaje intre joiste · coltare C2 de dedesubt · <b>ambele ancore M12 pentru stalpii casei, montate inainte de dusumea</b>
+</td><td>
+restul dusumelei (partiala azi) · rama copacului · curatarea lastarilor · numaratoarea receptiei · <b>balustrada · scara · casa</b>
+</td></tr>
+</table>
+<table>
+<tr><th>Buget ramas</th><th>Zile de lucru</th><th>Lant inaltimi</th><th>Amprenta punte</th></tr>
+<tr><td class="mono">~3.000 lei</td><td class="mono">~6–7 (3–4 weekenduri)</td><td class="mono">1900 · 2100 · 2200 · 2228</td><td class="mono">2100 × 2440</td></tr>
+</table>
+
+<h2>2 · Deciziile inchise</h2>
+<p style="margin:0 0 2mm">Toate sunt <b>finale</b>. Nu se redeschid decat daca le redeschizi tu explicit.</p>
+<table>
+<tr><th>Decizie</th><th>Alegerea</th><th>Motiv / consecinta</th></tr>
+<tr><td>Balustrada — inaltime</td><td class="mono">1000 general<br>1100 pe consola</td><td>1100 exact unde a cerut structuristul (nasul consolei). Restul la 1000.</td></tr>
+<tr><td>Balustrada — stalpisori</td><td class="mono">8 buc · 16× M10</td><td>balustrada se face INAINTEA casei → ambele laturi au nevoie de stalpisor propriu la capatul dinspre casa.</td></tr>
+<tr><td>Invelitoare casa</td><td class="mono">Onduline</td><td>usor, se taie fara muchii taioase, linistit la ploaie, ~140 lei tot acoperisul.</td></tr>
+<tr><td>Usa casa</td><td class="mono">gol deschis</td><td>−85 lei, zero degete prinse, ventilatie. Prag mic.</td></tr>
+<tr><td>Scara — geometrie</td><td class="mono">baza 1900 · 11×202,5 · 10×190</td><td>varianta abrupta, aleasa informat. Compensarile devin obligatorii.</td></tr>
+<tr><td>Scara — trepte</td><td class="mono">pe tacheti</td><td>coardele NU se pot cresta (calcul in §7).</td></tr>
+<tr><td>Dublarea joistelor (sisters)</td><td class="mono">SKIP definitiv</td><td>casa = ~770 kg worst case → ~1,9 kN/stalp; joista simpla 100×200 lucreaza la ~1,3 vs ~14 MPa admisibil (margine &gt;10×). Rezerva necuantificata: parghia pe proeminenta glulamului la nodul din spate. Recomandarea de dublare / review extern — declinata informat.</td></tr>
+<tr><td>Ordinea fazei</td><td class="mono">F1 → F2 → F3 → F4</td><td>balustrada imediat dupa podea: margine libera la 2,2 m si X-urile laterale sunt o scara gata facuta pentru copii.</td></tr>
+</table>
+
+<h2>3 · Cotele canonice</h2>
+<table>
+<tr><th>Marime</th><th>Cota</th><th>Nota</th></tr>
+<tr><td>Varf stalpi fata / top polita+talpic</td><td class="mono">1900</td><td>as-built</td></tr>
+<tr><td>Top glulam</td><td class="mono">2100</td><td></td></tr>
+<tr><td>Top joiste</td><td class="mono">2200</td><td>joiste 100×200</td></tr>
+<tr><td><b>Fata dusumelei</b></td><td class="mono">2228</td><td>dusumea larice 28 mm</td></tr>
+<tr><td>Latime punte (axe joiste capat)</td><td class="mono">2100</td><td></td></tr>
+<tr><td>Adancime punte (nas → spate)</td><td class="mono">2440</td><td><b>verifica pe teren</b></td></tr>
+<tr><td>Axele joistelor de la S4</td><td class="mono">0 · 280 · 720 · 1120 · 1550 · 2100</td><td>totul se prinde pe ele</td></tr>
+<tr><td>Consola (nasul din fata)</td><td class="mono">700 nominal</td><td>pozele sugereaza mai putin — <b>de masurat</b></td></tr>
+<tr><td>Adancime terasa libera</td><td class="mono">1340</td><td>= 2440 − 1100 casa</td></tr>
+<tr><td>Amprenta casa</td><td class="mono">2100 × 1100</td><td>pe spate, lipita de stalpii de 4 m</td></tr>
+<tr><td>Perete casa spate / fata</td><td class="mono">M1 / M1 − 300</td><td>M1 = cat ies stalpii de 4 m peste dusumea (~1772). <b>Nu e o alegere</b> — vezi §8</td></tr>
+<tr><td>Panta acoperis</td><td class="mono">300 / 1100 = 15,3°</td><td>o apa, spre terasa</td></tr>
+<tr><td>Balustrada</td><td class="mono">1000 / 1100 consola</td><td>goluri sub 90</td></tr>
+<tr><td>Scara — panta reala</td><td class="mono">46,8°</td><td>atan(202,5/190). <b>Nu 49,5°</b> — vezi §12</td></tr>
+</table>
+
+<h2>4 · Ordinea si portile</h2>
+<table>
+<tr><th>Faza</th><th>Durata</th><th>Poarta de iesire — nu treci mai departe fara</th></tr>
+<tr><td><b>F1</b> Inchide podeaua</td><td>~1 zi</td><td>dusumea completa · rama copac · tije M12 protejate · contrafise verificate la AMBELE noduri</td></tr>
+<tr><td><b>F2</b> Balustrada</td><td>~1–1,5 zile</td><td>zero joc la zgaltait · martorul de 90 nu trece nicaieri · poarta se inchide singura</td></tr>
+<tr><td><b>F3</b> Scara</td><td>~1 zi</td><td>zero balans cu adult · banda pe toate 10 · 2 maini curente continue</td></tr>
+<tr><td><b>F4</b> Casa</td><td>~3–4 zile</td><td>F1–F3 bifate · cele 5 masuratori M1–M5 facute · pozitia trunchiului confirmata</td></tr>
+</table>
+<div class="warn"><b>Poarta de sezon:</b> nu lasa scheletul casei acoperit-neimbracat peste sezonul de ploi. OSB-ul se pune in aceeasi etapa cu acoperisul.<br>
+<b>Poarta veche „dublarea joistelor inainte de stalpii casei" NU mai exista</b> — inchisa prin decizie (§2).</div>
+
+<h2 class="pgbrk">5 · F1 — Inchide podeaua <span style="float:right;font-weight:normal;font-size:9pt">~1 zi</span></h2>
+<div class="step">
+<div class="step-head">Pasii</div>
+<div class="step-body">
+<ol>
+<li><b>Curata lastarii</b> din zona podelei (copacul a dat ~1,5 m de lastari fix acolo). Trunchiul principal nu se atinge.</li>
+<li><b>Rama copac:</b> 2 traverse ~300 din offcut 100×100, intre joistele de la 280 si 720, Heco 6×80 oblic (~6 sur.). <b>Gol 3–5 cm de jur imprejurul trunchiului — nimic nu atinge copacul.</b></li>
+<li><b>Restul dusumelei:</b> scanduri la <span class="mono">2100</span> · rost <span class="mono">5 mm</span> (un cui ca distantier) · decupaje la cei 2 stalpi din spate (PST 700E) si la copac · <b>inox 5×60, NUMAI cu GSR pe ambreiaj 8–12, bit T25 — niciodata cu impactul</b> (capul inox se rupe in larice) · 2 suruburi/scandura pe fiecare din cele 6 linii de joista · pregaurire 4–5 mm doar la capete · ulei DUPA montaj.</li>
+<li><b>Protejeaza tijele M12</b> care ies din dusumea: capac sau banda groasa pe fiecare. Stau asa pana la casa, pe puntea pe care merg copiii.</li>
+<li><b>Verificari:</b> contrafisa 45° prezenta si stransa la AMBELE noduri din spate · toate capetele de surub la ras · cozile contrafiselor si proptelelor taiate la ras la sol.</li>
+<li><b>Masoara si scrie aici:</b> nasul real al consolei <span class="mono">______</span> · adancimea reala a puntii <span class="mono">______</span> · <b>de la spatele podelei pana la centrul trunchiului</b> <span class="mono">______</span> (vezi §11).</li>
+<li><b>Numara receptia</b> (n-a fost verificata niciodata): C2 ramase · inox 5×60 · Heco 6×80 · Heco 6×100 · cheie tubulara 17/19.</li>
+</ol>
+<div class="gata"><b>GATA CAND:</b> ☐ dusumea completa, uleiata, zero varfuri iesite · ☐ rama copac montata, gol 3–5 cm · ☐ tije protejate · ☐ contrafise verificate ambele · ☐ cele 3 masuratori + numaratoarea scrise mai sus.</div>
+</div>
+</div>
+
+<h2 class="pgbrk">6 · F2 — Balustrada <span style="float:right;font-weight:normal;font-size:9pt">~1–1,5 zile</span></h2>
+<div class="warn">
+<b>Trei reguli:</b> (1) stalpisorii se prind de <b>lemnul structurii</b> cu bulon M10 strapuns — suruburi in dusumea = balustrada care cedeaza exact cand se sprijina un copil; (2) fiecare stalpisor cade pe <b>axa unei joiste</b>, altfel bulonul intra in gol; (3) <b>golul luminii sub 90 mm</b>, verificat cu un martor de 90 taiat din offcut, in fiecare gol.
+</div>
+<img class="iso" src="assets/iso/bal-1-ansamblu.svg" alt="Ansamblu balustrada">
+<div class="cap">8 stalpisori (A–H) · fata la 1100 pe axele 0 · 720 · 1550 · 2100 (travei 720 / 830 / 550) · laturi la 1000, pe 670 si 1340 de la nas</div>
+
+<h3>Cut list</h3>
+<table>
+<tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th></tr>
+<tr><td>Stalpisor FATA (h 1100)</td><td class="mono">58×58 sau 60×60</td><td class="mono">1330</td><td class="mono">4</td></tr>
+<tr><td>Stalpisor LATURA (h 1000)</td><td class="mono">58×58 sau 60×60</td><td class="mono">1230</td><td class="mono">4</td></tr>
+<tr><td>Mana curenta fata / laturi</td><td class="mono">45×70</td><td class="mono">2160 / 1360</td><td class="mono">1 / 2</td></tr>
+<tr><td>Lisa jos fata / laturi</td><td class="mono">45×70</td><td class="mono">2160 / 1360</td><td class="mono">1 / 2</td></tr>
+<tr><td>Lamele</td><td class="mono">18×28</td><td class="mono">~1000 fata / ~900 laturi</td><td class="mono">~42</td></tr>
+<tr><td>Rama poarta</td><td class="mono">45×70</td><td class="mono">2×900 + 2×560</td><td class="mono">4</td></tr>
+</table>
+<div class="note"><b>De ce lungimile astea:</b> stalpisor = 1000 (sau 1100) + 28 dusumea + 200 suprapunere pe joista + ~100 rezerva de taiere. <b>Rezerva sta SUS si se reteaza la final</b>, dupa ce mana curenta e la nivel.</div>
+
+<div class="step">
+<div class="step-head">PASUL 1 — Gaureste stalpisorii (jos, pe capra)</div>
+<div class="step-body">
+<img class="iso sm" src="assets/iso/bal-2-stalpisor.svg" alt="Stalpisor cotat">
+<ul>
+<li>De la capatul de JOS, marcheaza gaurile la <span class="mono">50</span> si <span class="mono">150</span> mm — cad la 1/4 si 3/4 din inaltimea joistei.</li>
+<li>Gaureste <span class="mono">Ø11</span> strapuns, GSR pe simbol burghiu, viteza 1, ambele maini. Lemn de sacrificiu la iesire.</li>
+<li>Marcheaza pe fiecare: SUS · FATA (1330) sau LATURA (1230). Teseste muchiile — mainile copiilor trec pe ele.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 8 stalpisori × 2 gauri Ø11 · ☐ marcati · ☐ muchii tesite.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Monteaza stalpisorii</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/bal-3-montaj.svg" alt="Montaj stalpisor">
+<ul>
+<li><b>Ordinea:</b> intai cei 4 de colt/capat, apoi cei de mijloc — intre capete intinzi o sfoara si aliniezi restul.</li>
+<li><b>FATA (4):</b> pe fata laterala a joistei de pe axa respectiva, retras ~40 mm de capatul joistei. <b>LATURI (4):</b> pe fata exterioara a joistei de capat.</li>
+<li>Pozitionezi, verifici <b>vertical cu nivela pe doua fete</b>, insemnezi prin gaurile existente, dai jos, gauresti Ø11 prin joista, montezi: <b>2× M10×120 + saiba lata pe ambele fete + piulita</b>.</li>
+<li>Capetele de tija <b>taiate la ras si pilite</b>. Apoi <b>zgaltaie fiecare stalpisor cu putere</b> — orice joc se corecteaza acum.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 8 stalpisori × 2 M10 · ☐ toti verticali · ☐ zero joc · ☐ capete pilite.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Retezare + mana curenta + lisa</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/bal-4-rails.svg" alt="Mana curenta si lisa">
+<ul>
+<li><b>Retezi acum, nu inainte:</b> de la fata dusumelei, <span class="mono">1100</span> pe cei 4 din fata si <span class="mono">1000</span> pe cei 4 laterali. Marcheaza cu furtun de nivel sau nivela lunga — <b>o singura linie pentru toti</b>, nu 8 cote independente.</li>
+<li><b>Mana curenta 45×70</b> peste capete, fata lata orizontala: 2× Heco <span class="mono">6×100</span> pe fiecare stalpisor, oblic din lateral. Imbinarile cad <b>deasupra unui stalpisor</b>, taiate la 45°.</li>
+<li><b>Lisa jos 45×70</b>, fata de jos la <span class="mono">40 mm</span> deasupra dusumelei: 2× Heco <span class="mono">6×80</span> oblic la fiecare capat.</li>
+<li>Tranzitia <b>1100 → 1000</b> la coltul consolei: taietura oblica pe ~150 mm sau treapta neteda. Nicio muchie ascutita.</li>
+</ul>
+<div class="warn" style="margin-bottom:0"><b>Zona de colt = zona de catarat.</b> Dupa montaj verifica: nu exista nicio suprafata orizontala intre lisa si mana curenta pe care sa se puna un picior.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ toate capetele pe aceeasi linie · ☐ mana curenta continua · ☐ lisa la 40 · ☐ zero praguri intermediare.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 4 — Lamelele</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/bal-5-lamele.svg" alt="Lamele, pas 106">
+<ul>
+<li>Masoara pe loc inaltimea libera in fiecare travee, taie lamelele la cota minus <span class="mono">2 mm</span>.</li>
+<li><b>Pas <span class="mono">106 mm</span></b> (18 lamela + 88 gol), pornind de la fiecare stalpisor spre mijloc. Ultimul gol iese mai mic — bine asa, niciodata mai mare.</li>
+<li><b>1× inox 4×50 sus + 1 jos</b>, oblic din spate, cu <b>pregaurire 3 mm</b> — sipca de 18 crapa altfel. Bit T20, ambreiaj mic.</li>
+<li><b>Testul de 90:</b> plimba martorul prin FIECARE gol, inclusiv cele de langa stalpisori si la tranzitia 1100/1000.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ toate lamelele, 2 suruburi fiecare · ☐ martorul de 90 nu trece nicaieri · ☐ zero varfuri spre punte.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 5 — Poarta de la scara</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/bal-6-poarta.svg" alt="Poarta">
+<ul>
+<li><b>Gol 560 mm</b> in latura pe care urca scara, langa stalpisorul de la 670. Confirma latimea dupa ce stii unde ajunge scara (F3).</li>
+<li><b>Rama:</b> 2 montanti 45×70 × 900 + 2 traverse 45×70 × 560, colturi cu 2× Heco 6×100 + vinclu 40×40 pe interior. Aceleasi lamele, acelasi pas.</li>
+<li><b>2 balamale cu arc</b> la 100 mm de sus si de jos. <b>Se deschide spre PUNTE, niciodata spre gol.</b></li>
+<li><b>Zavor sus, la ~1000</b> de dusumea, pe partea dinspre punte.</li>
+<li>Da-i drumul de 10 ori din pozitii diferite — trebuie sa se inchida si sa se zavorasca singura de fiecare data.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ se inchide singura din orice pozitie · ☐ zavorul prinde mereu · ☐ se deschide spre punte · ☐ trece testul de 90.</div>
+</div>
+</div>
+
+<h3>Feronerie balustrada</h3>
+<table>
+<tr><th>Articol</th><th>Cant</th><th>Unde</th></tr>
+<tr><td>Bulon M10×120 + 2 saibe late + piulita</td><td class="mono">16</td><td>8 stalpisori × 2 — <b>ai 12, cumperi 4</b></td></tr>
+<tr><td>Heco 6×100 (T30)</td><td class="mono">~24</td><td>mana curenta + colturi poarta</td></tr>
+<tr><td>Heco 6×80 (T30)</td><td class="mono">~32</td><td>lisa jos</td></tr>
+<tr><td>Inox 4×50 (T20)</td><td class="mono">~90</td><td>lamele: 2 × ~42</td></tr>
+<tr><td>Balama cu arc · zavor · vinclu 40×40</td><td class="mono">2 · 1 · 4</td><td>poarta</td></tr>
+</table>
+
+<h2 class="pgbrk">7 · F3 — Scara <span style="float:right;font-weight:normal;font-size:9pt">~1 zi</span></h2>
+<div class="warn">
+<b>Ai ales varianta abrupta.</b> Compensarile sunt parte din decizie, nu optiuni: trepte late 600 cu nas · <b>banda antiderapanta pe fiecare treapta</b> · <b>mana curenta pe AMBELE parti</b> · dale la baza · poarta cu arc sus. Plus o regula de folosire, spusa si aratata copiilor: <b>la panta asta se coboara cu fata la scara</b>, ca pe o scara de mansarda.
+</div>
+<img class="iso" src="assets/iso/sc-1-ansamblu.svg" alt="Ansamblu scara">
+<div class="cap">Doua coarde la 600 lumina · 10 trepte pe tacheti · baza pe dale · varful bulonat in joista de capat</div>
+
+<h3>Geometria</h3>
+<table>
+<tr><th>Marime</th><th>Valoare</th><th>De unde</th></tr>
+<tr><td>Inaltime totala</td><td class="mono">2228</td><td><b>masoara pe teren</b>, apoi imparte la 11</td></tr>
+<tr><td>Baza</td><td class="mono">1900</td><td>10 × 190</td></tr>
+<tr><td>Urcare</td><td class="mono">202,5</td><td>2228 / 11 · toate egale, ±5 mm max</td></tr>
+<tr><td>Calcatura</td><td class="mono">190</td><td>1900 / 10</td></tr>
+<tr><td><b>Panta</b></td><td class="mono">46,8°</td><td>atan(202,5 / 190) — vezi §12</td></tr>
+<tr><td>Pas pe coarda</td><td class="mono">278</td><td>√(202,5² + 190²) — cifra cu care trasezi</td></tr>
+<tr><td>Lungime coarda</td><td class="mono">taie la ~2930</td><td>axa 2777 + taieturile de capat · intra intr-o bara de 3 m</td></tr>
+<tr><td>Lumina intre coarde</td><td class="mono">600</td><td>= lungimea treptei</td></tr>
+<tr><td>Adancime treapta</td><td class="mono">250</td><td>iese 60 peste cea de jos → talpa se aseaza pe 250</td></tr>
+</table>
+<div class="fix"><b>De ce treapta de 250 conteaza:</b> cu calcatura de 190 dar treapta de 250, piciorul are 250 mm de sprijin. Senzatia la urcare devine echivalenta cu <b>~39°</b> — practic o scara normala de interior, pe aceeasi geometrie si aceeasi bara de 3 m.</div>
+
+<h3>Cut list <span class="lm">SECTIUNI LEROY COLOSSEUM</span></h3>
+<table>
+<tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th></tr>
+<tr><td>Coarda</td><td class="mono">100×100</td><td class="mono">~2930</td><td class="mono">2</td></tr>
+<tr><td>Treapta</td><td class="mono">46×250</td><td class="mono">600</td><td class="mono">10</td></tr>
+<tr><td>Tachet</td><td class="mono">46×46</td><td class="mono">80</td><td class="mono">20</td></tr>
+<tr><td>Montant mana curenta</td><td class="mono">46×46</td><td class="mono">1200</td><td class="mono">6</td></tr>
+<tr><td>Mana curenta</td><td class="mono">46×46</td><td class="mono">~2950</td><td class="mono">2</td></tr>
+<tr><td>Opritor la baza</td><td class="mono">46×46</td><td class="mono">200</td><td class="mono">2</td></tr>
+</table>
+<div class="warn">
+<b>Coardele NU se pot cresta.</b> O crestatura de 202,5 × 190 mananca <span class="mono">138,5 mm</span> perpendicular din coarda — dintr-una de 100 (sau chiar 140) nu mai ramane nimic. De aceea treptele stau pe <b>tacheti</b>, iar coarda ramane intreaga pe toata lungimea.<br>
+<b>Lungimea tachetului depinde de coarda:</b> pe 100 → tachet <span class="mono">80</span>; pe 140 → tachet <span class="mono">100</span>. Regula: pe lungimea tachetului muchia coardei coboara cu <i>lungime × 1,066</i>, si asta trebuie sa incapa in latimea coardei.
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 1 — Masoara si pregateste baza</div>
+<div class="step-body">
+<img class="iso sm" src="assets/iso/sc-4-baza.svg" alt="Baza scarii">
+<ul>
+<li>Masoara inaltimea reala pana la fata dusumelei, exact unde urca scara. <b>Imparte la 11.</b> Scrie aici: <span class="mono">______</span></li>
+<li>Marcheaza pe sol punctul la <span class="mono">1900</span> orizontal de la fata joistei de capat.</li>
+<li>Sapa ~10 cm, balast compactat, aseaza cele 2 dale la nivel (nivela lunga pe amandoua).</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ inaltime masurata si impartita la 11 · ☐ dale asezate, stabile, la nivel.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Traseaza si taie coardele</div>
+<div class="step-body">
+<ul>
+<li><b>Metoda echerului „mergator":</b> pui echerul pe coarda cu <span class="mono">190</span> si <span class="mono">202,5</span> pe muchia de sus, trasezi coltul, muti echerul <b>exact in varful precedent</b> si repeti — de 10 ori. Asa erorile nu se aduna, cum s-ar intampla masurand de fiecare data de la capat.</li>
+<li>Fiecare colt = coltul din spate al unei trepte. <b>Linia tachetului</b> = linia orizontala coborata cu <span class="mono">46</span> (grosimea treptei).</li>
+<li><b>Taieturile de capat:</b> jos orizontala (sta plan pe dala), sus verticala (se lipeste de joista).</li>
+<li><b>A doua coarda NU se traseaza separat:</b> o pui pe prima, cleme, si copiezi liniile.</li>
+<li><b>Verificare inainte de taiere:</b> de la capatul de jos la ultimul colt trebuie sa iasa ~<span class="mono">2780</span> (10 × 278). Peste 15 mm diferenta → retrasezi, nu compensezi la ultima treapta.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 10 pozitii trasate · ☐ linia tachetilor trasata · ☐ a doua coarda copiata · ☐ verificarea de 2780 trecuta.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Tachetii, jos pe capre</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/sc-2-tachet.svg" alt="Tachet si treapta">
+<ul>
+<li>Taie cei 20 de tacheti la <span class="mono">80</span>.</li>
+<li><b>Fiecare pe fata INTERIOARA a coardei</b>, cu fata de sus exact pe linia trasata: <b>3× Heco 6×80 in zigzag</b> (la ~20 / 50 / 80 pe lungime), pregaurite 4 mm. Nu pe aceeasi linie de fibra — despica lemnul.</li>
+<li>Cand ai terminat o coarda, aseaz-o peste cealalta: <b>tachetii trebuie sa coincida</b>. Corectezi acum, nu dupa ridicare.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 20 tacheti × 3 suruburi · ☐ coardele suprapuse coincid · ☐ toate taieturile de capat facute.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 4 — Ridica si prinde</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/sc-3-sus.svg" alt="Prinderea de sus">
+<ul>
+<li><b>Doi oameni.</b> Unul tine sus, unul pozitioneaza baza pe dale.</li>
+<li>Verifica: coardele paralele (600 masurat <b>sus SI jos</b>) · scara in plan vertical · tachetii orizontali la nivela.</li>
+<li><b>Sus:</b> gaura Ø11 prin coarda si joista → <b>2× M10×120</b> (la ~60 si ~150 de la fata dusumelei) + saibe late + piulite. Plus <b>1 coltar sub fiecare coarda</b>, 4× Heco 6×80 — el preia forfecarea, buloanele tin scara lipita.</li>
+<li><b>Jos:</b> <b>opritor 45×45 × 200</b> in fata fiecarei coarde, 2 dibluri + suruburi 6×60 in dala. <b>Fasie de folie/EPDM</b> intre lemn si beton.</li>
+</ul>
+<div class="warn" style="margin-bottom:0"><b>Nimeni nu urca pana nu sunt puse ambele buloane pe fiecare coarda SI opritoarele de jos.</b> O scara sprijinita provizoriu e exact configuratia in care aluneca.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 4 buloane · ☐ 2 coltare · ☐ 2 opritoare in dala · ☐ 600 sus si jos · ☐ tacheti la nivela.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 5 — Trepte si maini curente</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/sc-5-mana.svg" alt="Montanti si mana curenta">
+<ul>
+<li>Taie cele 10 trepte la <span class="mono">600</span> (sau cota reala intre fetele interioare). <b>Teseste toate muchiile, mai ales nasul.</b> Lemnul Leroy e nerindeluit — slefuieste nasul si mainile curente.</li>
+<li>Aseaza fiecare treapta pe tacheti, cu <b>nasul iesit 60 mm</b>. Nivela pe fiecare, pe ambele directii.</li>
+<li><b>2× inox 5×60 la fiecare capat</b> (4/treapta), verticale in tachet, pregaurire 4 mm, cap ingropat la ras. <b>Numai GSR pe ambreiaj 8–12.</b></li>
+<li><b>Banda antiderapanta</b> pe fiecare treapta, la 25–30 mm in spatele nasului, pe toata latimea. Lemn curat si USCAT la lipire.</li>
+<li><b>6 montanti 46×46 × 1200</b>, cate 3 pe parte, pe fata exterioara a coardei: <b>3× Heco 6×100</b> fiecare, zigzag. Retezi la <span class="mono">900</span> masurat <b>vertical de la nasul treptei</b>.</li>
+<li><b>Mana curenta</b> deasupra, paralela cu panta, 2× Heco 6×100 pe montant, capete rotunjite. <b>Se prelungeste pana la stalpisorul portii</b> — mana trebuie sa aiba de ce se tine exact cand pasesti pe punte.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 10 trepte × 4 suruburi, toate la nivela · ☐ banda pe toate 10 · ☐ 2 maini curente continue · ☐ zero balans la urcare cu adult.</div>
+</div>
+</div>
+
+<h3>Feronerie scara</h3>
+<table>
+<tr><th>Articol</th><th>Cant</th><th>Unde</th></tr>
+<tr><td>Bulon M10×120 + saibe + piulita</td><td class="mono">4</td><td>2 pe fiecare coarda, sus</td></tr>
+<tr><td>Coltar</td><td class="mono">2</td><td>sub capatul de sus al fiecarei coarde</td></tr>
+<tr><td>Heco 6×80 (T30)</td><td class="mono">~68</td><td>60 tacheti + 8 coltare</td></tr>
+<tr><td>Heco 6×100 (T30)</td><td class="mono">~30</td><td>18 montanti + 12 mana curenta</td></tr>
+<tr><td>Inox 5×60 (T25, GSR)</td><td class="mono">40</td><td>trepte</td></tr>
+<tr><td>Diblu + surub 6×60 · banda antiderapanta</td><td class="mono">4 · ~6 m</td><td>opritoare · 10 fasii × 600</td></tr>
+</table>
+
+<h2 class="pgbrk">8 · F4 — Casa <span style="float:right;font-weight:normal;font-size:9pt">~3–4 zile</span></h2>
+<div class="warn">
+<b>Patru reguli:</b> (1) nu cumperi si nu tai nimic inainte de cele 5 masuratori; (2) <b>proptelele de pe stalpii de 4 m nu se ating</b> pana cutia nu e sus si bulonata — baza lor e articulata, cutia ii tine; (3) ridicarea se face in <b>zi fara vant, minim 3 oameni</b>, fiecare panou proptit inainte sa-i dai drumul; (4) OSB-ul si acoperisul se pun in aceeasi etapa.
+</div>
+
+<h3>Pasul 0 — Cele 5 masuratori care croiesc casa</h3>
+<table>
+<tr><th>#</th><th>Ce masori</th><th>Nominal</th><th>Real</th></tr>
+<tr><td class="mono">M1</td><td><b>Cat ies stalpii de 4 m deasupra dusumelei</b> (ambii; ia valoarea mai MICA) — <b>el da inaltimea peretelui din spate</b></td><td class="mono">~1772</td><td class="mono">______</td></tr>
+<tr><td class="mono">M2</td><td>De la fata stalpilor spate pana la axa tijelor M12 = adancimea casei</td><td class="mono">1100</td><td class="mono">______</td></tr>
+<tr><td class="mono">M3</td><td>Lumina intre stalpii de 4 m, masurata <b>jos SI sus</b></td><td class="mono">2000</td><td class="mono">______</td></tr>
+<tr><td class="mono">M4</td><td>Distanta intre axele celor 2 tije M12 (= M3 + 100)</td><td class="mono">2100</td><td class="mono">______</td></tr>
+<tr><td class="mono">M5</td><td>Cat ies tijele M12 deasupra dusumelei</td><td class="mono">~100</td><td class="mono">______</td></tr>
+</table>
+<div class="warn">
+<b>STOP si intreaba inainte de debitare daca:</b> M3 jos difera de M3 sus cu peste 15 mm (stalpii nu-s paraleli) · tijele M12 nu cad pe axa joistelor de capat · <b>M1 e sub 1700</b> (un copil de 165 cm ar sta aplecat in fata — schimbam panta sau adancimea) · <b>trunchiul copacului cade in ultimii 1100 mm ai puntii</b> (atunci peretele trebuie croit in jurul lui — vezi §11).
+</div>
+
+<h3>Cut list — formule, nu numere fixe</h3>
+<p style="margin:0 0 1.5mm"><span class="mono">H</span> = M1 · <span class="mono">A</span> = M2 · <span class="mono">L</span> = M3. In paranteza: nominalul.</p>
+<table>
+<tr><th>Piesa</th><th>Sectiune</th><th>Lungime</th><th>Buc</th></tr>
+<tr><td>Talpa + cununa spate / fata</td><td class="mono">42×90</td><td class="mono">L (2000)</td><td class="mono">2 + 2</td></tr>
+<tr><td>Talpa + cununa laterale</td><td class="mono">42×90</td><td class="mono">A − 90 (1010)</td><td class="mono">4</td></tr>
+<tr><td>Montanti spate</td><td class="mono">45×45</td><td class="mono">H − 84 (1688)</td><td class="mono">5</td></tr>
+<tr><td>Montanti fata (cu dublurile de la goluri)</td><td class="mono">45×45</td><td class="mono">H − 384 (1388)</td><td class="mono">7</td></tr>
+<tr><td>Montanti laterali (in trepte pe panta)</td><td class="mono">45×45</td><td class="mono">1688 / 1550 / 1400</td><td class="mono">6</td></tr>
+<tr><td>Buiandrug usa · prag + buiandrug fereastra</td><td class="mono">42×90</td><td class="mono">590 · 660 · 660</td><td class="mono">3</td></tr>
+<tr><td>Capriori (streasina 200 fata + 100 spate)</td><td class="mono">42×90</td><td class="mono">√(A²+300²) + 300 (1440)</td><td class="mono">5</td></tr>
+<tr><td>Sipci acoperis</td><td class="mono">45×45</td><td class="mono">L + 200 (2200)</td><td class="mono">4</td></tr>
+<tr><td>Stalpi fata (pe tijele M12)</td><td class="mono">70×70</td><td class="mono">H − 342 (1430)</td><td class="mono">2</td></tr>
+<tr><td>OSB spate / fata / laterale</td><td class="mono">12 mm</td><td class="mono">L×H · L×(H−300) · A×H</td><td class="mono">1 · 1 · 2</td></tr>
+</table>
+<div class="note"><b>La debitare dai doar dreptunghiuri.</b> Trapezul lateral si golurile (usa ~500×1300, fereastra 570×570) le decupezi tu cu PST-ul, dupa ce ramele sunt gata — asa ies exact pe rama.<br>
+<b>Simplificare optionala:</b> in loc de pereti laterali trapezoidali, fa-i dreptunghiulari la inaltimea peretelui din fata si adauga deasupra peretelui din spate un <b>cadru separat de 300 mm</b> care creeaza panta. Patru panouri dreptunghiulare in loc de doua trapeze, OSB taiat drept.</div>
+
+<div class="step">
+<div class="step-head">PASUL 1 — Cei 4 pereti, jos pe iarba</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/ca-1-panou.svg" alt="Panou de perete">
+<ul>
+<li><b>Rama:</b> talpa si cununa 42×90 pe LAT (90 = grosimea peretelui), montanti 45×45 la ~500 interax, <b>aliniati la muchia EXTERIOARA</b> (acolo vine OSB-ul).</li>
+<li><b>Montant dublu</b> la fiecare capat de perete si pe fiecare margine de gol.</li>
+<li>Fiecare montant: 2× surub 5×80 prin talpa + 2 prin cununa, pregaurite 3,5 mm.</li>
+<li><b>Masoara diagonalele panoului — egale la ±3 mm.</b> Abia atunci pui OSB-ul.</li>
+<li><b>OSB 12 pe fata exterioara:</b> surub 4×60 la <span class="mono">150</span> pe margini, <span class="mono">300</span> in camp. OSB-ul e structura, nu imbracaminte — el face cutia rigida.</li>
+<li>Golurile le decupezi acum, urmarind rama pe dinauntru.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 4 panouri, diagonale egale ±3 mm · ☐ OSB pe toate, la 150/300 · ☐ goluri decupate · ☐ nimic proeminent.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Pregateste podeaua</div>
+<div class="step-body">
+<ul>
+<li><b>Trage cu creta liniile joistelor pe dusumea</b> (<span class="mono">0 · 280 · 720 · 1120 · 1550 · 2100</span>). Sub talpi ai doar 28 mm de dusumea — <b>prinderea reala se face doar acolo unde e joista dedesubt</b>. Fara liniile astea prinzi in gol si nu vezi.</li>
+<li>Traseaza conturul casei: linia din spate lipita de stalpii de 4 m, linia din fata prin axele tijelor M12. Verifica diagonalele dreptunghiului.</li>
+<li><b>Stalpii 70×70:</b> in capatul de jos, gaura <span class="mono">Ø13</span> adanca M5+30, si coaxial o largire <span class="mono">Ø30 adanca 40</span> pentru saiba si piulita. Asa piulita sta ingropata si stalpul se aseaza plan.</li>
+<li>Aseaza stalpul peste tija, saiba lata, piulita, strange. Verifica vertical pe doua fete, <b>propteste-l in doua directii</b>.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ linii joiste trasate · ☐ contur trasat, diagonale egale · ☐ 2 stalpi montati, verticali, proptiti · ☐ piulite ingropate.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Ridicarea si legarea cutiei</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/ca-2-ridicare.svg" alt="Ordinea de ridicare">
+<ol>
+<li><b>SPATE.</b> Ridici, aduci pe linie, <b>proptesti</b>, apoi prinzi de stalpii de 4 m: <b>tirfoane M10×120 pe 3 inaltimi</b> in fiecare capat (~200 jos, mijloc, ~200 sus), pregaurite Ø8 in perete si Ø6 in stalp. <b>Nu suruburi de 5×80 aici</b> — asta e nodul care tine si stalpii inalti.</li>
+<li><b>LATERALE.</b> Fiecare perpendicular pe spate: <b>4× surub 6×120</b> prin montantul de capat + <b>2 coltare rigidizate 100×100</b> pe interior, sus si jos.</li>
+<li><b>FATA.</b> Identic in colturi, plus <b>3× 6×120 in fiecare stalp 70×70</b>.</li>
+<li><b>TALPILE IN PODEA</b>, dupa ce cutia e in echer: <b>surub 6×140</b> la fiecare <span class="mono">400 mm</span>, <b>pe liniile de joista</b> + <b>vinclu zincat 90×90 la ~400</b> pe interior.</li>
+<li>Verifici in ordinea: diagonalele cutiei (±5 mm) → verticalitatea celor 4 colturi → cununile la nivel.</li>
+</ol>
+<div class="warn"><b>Lungimea surubului la talpi:</b> talpa 42 + dusumea 28 = <b>70 mm pana sa ajunga in joista</b>. Un 5×80 ar intra 10 mm in lemnul portant — practic nimic. <b>Minimum 6×120, recomandat 6×140.</b></div>
+<div class="warn" style="margin-bottom:0"><b>Abia dupa ce toate cele 4 laturi sunt prinse intre ele SI de podea</b> se scot proptelele de pe stalpii de 4 m.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 6 tirfoane M10 · ☐ 4 colturi × (4× 6×120 + 2 coltare) · ☐ talpi cu 6×140 la 400 pe liniile de joista + vincluri · ☐ diagonale ±5 mm · ☐ colturi verticale · ☐ proptele scoase.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 4 — Acoperisul</div>
+<div class="step-body">
+<img class="iso md" src="assets/iso/ca-3-acoperis.svg" alt="Acoperis: capriori, sipci, ancore">
+<ul>
+<li><b>5 capriori</b> 42×90 pe cununi, la <span class="mono">500</span> interax, aliniati cu montantii. Crestatura de sprijin max 30 mm, sau taiati oblic la 15,3°.</li>
+<li><b>ANCORA anti-vant la AMBELE capete ale FIECARUI caprior</b> — 10 bucati. <b>Vinclul tine la forfecare, ancora tine la smulgere.</b> Sunt lucruri diferite.</li>
+<li><b>Sipci 45×45</b> peste capriori, la <span class="mono">≤450</span> (nu 500 — asta e cerinta pentru zapada): 1× 6×100 la fiecare intersectie.</li>
+<li><b>Onduline:</b> taiat la lungimea pantei + streasina, montat <b>de jos in sus</b>, suprapunere 1 onda lateral. <b>Cuiele NUMAI in creasta ondulei</b> (in vale curge apa). Pe randul de jos si pe marginile laterale: <b>in fiecare creasta</b>. In camp: din 2 in 2.</li>
+<li><b>Jgheab</b> pe marginea de jos + burlan care descarca in curtea ta, nu spre gard si nu pe terasa.</li>
+</ul>
+<div class="note"><b>Contra-intuitiv dar verificat:</b> cel mai rau caz de smulgere e cu acoperisul <b>fara</b> zapada — vant pe o casa inalta, fara greutate care s-o tina. De aceea lantul de ancore nu e optional.<br>
+<b>Streasina din fata</b> ajunge la ~3,70 de la sol = inaltimea capului unui copil inalt care sta pe terasa. Teseste sau captuseste muchia.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ 5 capriori la 500 · ☐ 10 ancore (2/caprior) · ☐ sipci la ≤450 · ☐ Onduline complet, cuie in creasta, indesite jos si pe margini · ☐ jgheab + burlan · ☐ muchie tesita.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 5 — Inchideri si finisaj</div>
+<div class="step-body">
+<ul>
+<li><b>Fereastra PVC 56×56</b> in golul din fata (peste terasa). Bride sau suruburi prin toc, silicon de exterior pe contur. Verifica sa se deschida complet.</li>
+<li><b>Hublouri acrilice</b> laterale, FIXE, prinse cu <b>sipca pe AMBELE fete</b> — sa nu le poata impinge afara un copil si sa deschida un gol de cadere. Gaurile in acrilic cu <b>1 mm joc</b>: se dilata la caldura si crapa daca il strangi fix.</li>
+<li><b>Golul de usa:</b> prag mic (sipca 18×45 pe talpa), muchii rotunjite.</li>
+<li><b>Fanta din spate</b> (casa–gard, ~30 cm): <b>inchide-o la ambele capete</b>. Un copil care intra si se blocheaza acolo nu se scoate usor.</li>
+<li><b>Anti-catarare:</b> verifica din exterior ca nu exista nicio treapta (streasina, sipca, hublou, colt de balustrada) de pe care se ajunge pe acoperis.</li>
+<li><b>Grund + lazura pe tot</b>, cu atentie la <b>capetele taiate</b> si la <b>toate fetele si muchiile OSB-ului</b> — OSB nevopsit se umfla la prima ploaie serioasa.</li>
+<li><b>Sol moale ≥300 mm</b> (scoarta/nisip), tasat, pe toata zona de cadere.</li>
+</ul>
+<div class="note"><b>Podeaua casei = dusumeaua existenta</b>, cu rosturi de 5 mm. Inauntru intra praf, ploaie in rafale, si cad jucarii mici printre scanduri. Daca deranjeaza, se pune mai tarziu o foaie de OSB peste dusumea, doar in interiorul casei — nu e structural, e confort.</div>
+<div class="gata"><b>GATA CAND:</b> ☐ fereastra monta si functionala · ☐ hublouri dublu-sipcate cu joc · ☐ prag + muchii rotunjite · ☐ fanta inchisa · ☐ zero prize de catarare · ☐ lazura pe tot inclusiv capete si OSB · ☐ sol moale asternut.</div>
+</div>
+</div>
+
+<h3>Feronerie casa</h3>
+<table>
+<tr><th>Articol</th><th>Cant</th><th>Unde</th></tr>
+<tr><td>Tirfon/bulon M10×120</td><td class="mono">6</td><td>perete spate → stalpii de 4 m</td></tr>
+<tr><td>Surub 6×120 (T30)</td><td class="mono">~22</td><td>colturi cutie + stalpi fata</td></tr>
+<tr><td><b>Surub 6×140 (T30)</b></td><td class="mono">~30</td><td><b>talpi in joiste, la 400</b></td></tr>
+<tr><td>Surub 5×80 (T25)</td><td class="mono">~100</td><td>rame pereti (4/montant)</td></tr>
+<tr><td>Surub 4×60 (T20)</td><td class="mono">~250</td><td>OSB, 150 margini / 300 camp</td></tr>
+<tr><td>Surub 6×100 (T30)</td><td class="mono">~25</td><td>sipci acoperis</td></tr>
+<tr><td>Coltar rigidizat 100×100 · vinclu 90×90</td><td class="mono">8 · 20</td><td>colturi cutie · talpi</td></tr>
+<tr><td><b>Ancora anti-vant</b></td><td class="mono">10 (+4 rezerva)</td><td><b>fiecare caprior, ambele capete</b></td></tr>
+<tr><td>Cuie Onduline cu capac · piulita M12 + saiba</td><td class="mono">1 set · 2</td><td>acoperis · pe tijele existente</td></tr>
+</table>
+
+<h2 class="pgbrk">9 · Cumparaturi</h2>
+<p style="margin:0 0 2mm">Randurile <span class="lm">LEROY</span> = pret si stoc <b>verificate live 06.08</b>, magazinul Bucuresti Colosseum. Restul: estimari iulie 2026, se confirma la raft.</p>
+<div class="warn"><b>Onduline la Leroy Colosseum: doar 15 buc in stoc la verificare</b> (necesar 3). Daca faci drumul, ia-le primul.</div>
+
+<h3>Drum 1 — acum</h3>
+<table>
+<tr><th></th><th>Produs</th><th>Buc</th><th>Pret</th><th>Pentru</th></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Rigla rindeluita 60×60×3000 <i>(stoc 504)</i></td><td class="mono">4</td><td class="mono">46,00</td><td>8 stalpisori balustrada</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Sipca rindeluita 18×28×3000 <i>(stoc 226)</i></td><td class="mono">18</td><td class="mono">8,29</td><td>~42 lamele</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Grinda 100×100×3000 <i>(stoc 157)</i></td><td class="mono">2</td><td class="mono">67,99</td><td>coarde scara</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Dulap 46×250×3000 <i>(stoc 23)</i></td><td class="mono">2</td><td class="mono">69,89</td><td>10 trepte</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Rigla 46×46×4000 <i>(stoc 91)</i></td><td class="mono">3</td><td class="mono">21,89</td><td>tacheti + montanti + mana curenta</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Banda antiderapanta Tesa 50 mm × 5 m <i>(stoc 28)</i></td><td class="mono">2</td><td class="mono">50,60</td><td>10 trepte</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Pavaj beton 400×400×60</td><td class="mono">2</td><td class="mono">9,16</td><td>baza scarii</td></tr>
+<tr><td>☐</td><td>Rigla 45×70×3000</td><td class="mono">4</td><td class="mono">~35</td><td>mana curenta + lisa balustrada + rama poarta</td></tr>
+<tr><td>☐</td><td>Bulon M10×120 + saibe + piulite</td><td class="mono">+8</td><td class="mono">~6</td><td>4 balustrada + 4 scara (ai 12)</td></tr>
+<tr><td>☐</td><td>Inox 4×50 (T20) · balama cu arc ×2 · zavor · vinclu 40×40 ×4</td><td class="mono">—</td><td class="mono">~95</td><td>lamele + poarta</td></tr>
+<tr><td>☐</td><td>Dibluri 6×60 ×4 · lazura Sadolin + grund · acrilic 500×250 ×2</td><td class="mono">—</td><td class="mono">~150</td><td>scara · finisaj · hublouri</td></tr>
+<tr><td>☐</td><td>Consumabile F1: biti Torx T40/T30/T25 · prelungitor + PRCD · +1 pachet 6×80 · +2 larice rezerva · capace tije</td><td class="mono">—</td><td class="mono">~200</td><td>podea</td></tr>
+</table>
+
+<h3>Drum 2 — DUPA masuratorile M1–M5</h3>
+<table>
+<tr><th></th><th>Produs</th><th>Buc</th><th>Pret</th></tr>
+<tr><td>☐</td><td>Rigla 45×45×3000 (montanti + sipci acoperis) — cu DEBITARE</td><td class="mono">~16</td><td class="mono">~15</td></tr>
+<tr><td>☐</td><td>Grinda 42×90 (talpi, cununi, capriori) — cu DEBITARE</td><td class="mono">~10</td><td class="mono">~28</td></tr>
+<tr><td>☐</td><td>Stalp 70×70×3000, taiat 2×</td><td class="mono">1</td><td class="mono">~90</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> OSB3 12 mm 2500×1250 <i>(stoc 769, are debitare)</i></td><td class="mono">4</td><td class="mono">79,33</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Onduline Base 2000×860 <i>(STOC 15)</i> + cuie cu capac</td><td class="mono">3 + 1</td><td class="mono">46,80</td></tr>
+<tr><td>☐</td><td><span class="lm">LEROY</span> Fereastra PVC 56×56 <i>(stoc 34)</i></td><td class="mono">1</td><td class="mono">126,99</td></tr>
+<tr><td>☐</td><td>Suruburi 5×80 · 6×120 · <b>6×140</b> · 4×60</td><td class="mono">4 cutii</td><td class="mono">~200</td></tr>
+<tr><td>☐</td><td>Coltare 100×100 ×8 · vincluri 90×90 ×20 · ancore anti-vant ×14 · tirfoane M10 ×8 · suport picior ×2</td><td class="mono">—</td><td class="mono">~380</td></tr>
+</table>
+<p style="font-size:11pt;font-family:'Courier New',monospace;font-weight:bold;margin:2mm 0">TOTAL FAZA 2: ~3.000 lei</p>
+<div class="note"><b>NU se cumpara:</b> usa (decis gol) · tije M12 (deja montate sub dusumea) · KVH/C2 pentru dublarea joistelor (decis skip) · coltare de trepte (tacheti in loc).<br>
+<b>Lemnul Leroy e nerindeluit</b> la grinzi, dulapi si rigle — pentru exterior e in regula, dar slefuieste nasul treptelor si mainile curente, si trateaza capetele taiate cu lazura.</div>
+
+<h2>10 · Siguranta copii — reguli permanente</h2>
+<ul>
+<li><b>Copiii nu urca pe structura pana F2 (balustrada) nu e GATA.</b> X-urile laterale se urca in 5 secunde — pana atunci, santier inchis.</li>
+<li>Toate capetele de surub <b>la ras</b> — nici iesite (agata), nici ingropate (pierzi reazemul capului). <b>Zero varfuri iesite pe partea cealalta, oriunde.</b></li>
+<li>Piesa taiata = piesa prinsa in cleme. Gauri mari = ambele maini pe GSR (recul). <b>Inox = GSR cu ambreiaj, niciodata impactul.</b></li>
+<li><b>Golul luminii sub 90 mm</b> peste tot in balustrada si in poarta — verificat cu martorul, nu din ochi.</li>
+<li><b>Fara priza orizontala de catarare</b>: nici in balustrada, nici de la balustrada spre acoperis.</li>
+<li>Geam care se deschide <b>doar in fata</b>, peste terasa. Lateral si spate: doar fix, dublu-sipcat.</li>
+<li><b>Scara: se coboara cu fata la ea.</b> Spus si aratat copiilor din prima zi.</li>
+<li><b>Sol moale ≥300 mm</b> sub toata zona de cadere, cel tarziu la darea in folosinta.</li>
+<li>Metoda de taiere KVH: trasat pe 4 fete → HS7611K pe fiecare fata → miezul cu fierastraul de impins.</li>
+</ul>
+
+<h2>11 · Deschise</h2>
+<table>
+<tr><th>Item</th><th>Cine</th><th>Cand</th></tr>
+<tr><td><b>Unde cade trunchiul fata de linia casei?</b> Masoara de la spatele podelei pana la centrul trunchiului. <b>Peste 1100</b> = casa e curata. <b>Sub 1100</b> = trunchiul trece prin casa si peretele trebuie croit in jurul lui — opreste-te si spune-mi cifra.</td><td>Vlad</td><td><b>inainte de F4</b></td></tr>
+<tr><td>Cele 5 masuratori M1–M5</td><td>Vlad</td><td>inainte de F4</td></tr>
+<tr><td>Nasul real al consolei (pozele sugereaza sub 700) → lungimile stalpisorilor de consola</td><td>Vlad</td><td>F1</td></tr>
+<tr><td>Numaratoarea receptiei: C2, inox 5×60, Heco 6×80 / 6×100, cheie 17/19</td><td>Vlad</td><td>F1</td></tr>
+<tr><td>Poze cu starea reala — ultimele sunt din 03.08 si arata joistele goale</td><td>Vlad</td><td>prima iesire</td></tr>
+<tr><td>Crestatura din stalpul spate (IMG_2285) si placa perforata de pe glulam (2A9524F8) — ce sunt?</td><td>Vlad</td><td>un reply</td></tr>
+<tr><td><span class="mono">git push origin main</span> — commit-urile asteapta, site-ul live e in urma</td><td>Vlad</td><td>azi</td></tr>
+<tr><td>Review extern „om cu terase" — dupa decizia sisters ramane <i>recomandare</i>, nu conditie</td><td>optional</td><td>inainte de F4</td></tr>
+</table>
+
+<h2>12 · Istoricul corectiilor</h2>
+<p style="margin:0 0 2mm">Ce s-a schimbat fata de planurile initiale, si de ce. Toate sunt deja aplicate mai sus.</p>
+<table>
+<tr><th>Corectie</th><th>Motiv</th></tr>
+<tr><td><b>Balustrada: 8 stalpisori, nu 7 → 16 M10, nu 14</b></td><td>balustrada se face inaintea casei, deci ambele laturi au nevoie de stalpisor propriu la capatul dinspre casa — nu se pot sprijini de un perete care inca nu exista.</td></tr>
+<tr><td><b>Stalpisorii cad pe axele joistelor</b>, nu pe impartire egala</td><td>pe fata nu exista rigla de margine; un stalpisor „la mijloc, la 1050" ar avea bulonul in gol. Bonus: traveile ies 720 / 830 / 550, toate sub 900.</td></tr>
+<tr><td><b>Lamele: 18 bare, nu 24</b> · adaugat inoxul 4×50</td><td>~42 lamele la pas de 106. Inoxul lipsea complet de pe lista.</td></tr>
+<tr><td><b>Scara: coardele NU se cresteaza → trepte pe tacheti</b></td><td>crestatura de 202,5 × 190 mananca 138,5 mm perpendicular din coarda; dintr-una de 140 ar ramane 1,5 mm.</td></tr>
+<tr><td><b>Tachet 80 mm (pe coarda de 100)</b>, nu 140</td><td>tachetul e orizontal, coarda inclinata: pe 80 mm muchia coboara 85 mm — trebuie sa incapa in latimea coardei.</td></tr>
+<tr><td><b>Scara: panta reala 46,8°, nu 49,5°</b></td><td>49,5° = diagonala sol-punte (atan 2228/1900). Panta unei scari = urcare/calcatura = atan(202,5/190). Diferenta vine din 11 urcari dar numai 10 calcaturi. Nu schimba geometria decisa.</td></tr>
+<tr><td><b>Scara: sectiuni Leroy</b> — coarda 100×100, treapta 46×250</td><td>disponibile in stoc si mai ieftine; treapta de 250 da talpii 250 mm de sprijin in loc de 190 → senzatie de ~39°.</td></tr>
+<tr><td><b>Casa: inaltimea peretelui spate = M1, nu 1800 din plan</b></td><td>peretele se prinde de stalpii de 4 m, deci ei ii dicteaza inaltimea (~1772). Fata = M1 − 300.</td></tr>
+<tr><td><b>Casa: tot cut list-ul in formule de M1/M2/M3</b></td><td>casa se croieste pe structura reala, nu pe plan.</td></tr>
+<tr><td><b>Casa: talpi cu 6×140, nu 5×80</b></td><td>talpa 42 + dusumea 28 = 70 mm pana in joista; un 5×80 ar intra 10 mm in lemnul portant.</td></tr>
+<tr><td><b>Casa: liniile joistelor trasate cu creta inainte de ridicare</b></td><td>sub talpi e doar dusumea de 28; prinderea reala se face doar pe cele 6 linii de joista.</td></tr>
+<tr><td><b>Dublarea joistelor: skip definitiv</b></td><td>decizie informata pe cifre (§2). Poarta din 24.07 inchisa prin decizie, nu prin executie.</td></tr>
+</table>
+
+<div class="sub" style="margin-top:5mm">
+<b>Documentul asta inlocuieste, pentru Faza 2:</b> PLAN-FAZA-2 · FISA-FAZA-2-casa-gard-scara · FISA-MONTAJ-balustrada · FISA-MONTAJ-scara · SCHEMA-scara · FISA-MONTAJ-casa · FISA-ACHIZITIE-faza-2 · FISA-CONTINUARE-podea · CASA-plan-constructie. Toate mutate in <span class="mono">_archive/</span>.<br>
+<b>Raman valabile, in afara scopului:</b> manualul si fisele Fazei 1 (structura as-built) · Fisa-santier-casuta.pdf (reviewul structural 10.07) · AUDIT-2026-08-06.md (auditul) · STATUS.md · Tracker_materiale.<br>
+Desenele izometrice sunt generate din cotele reale cu <span class="mono">tools-fise/iso2.py</span> + <span class="mono">gen_balustrada.py</span> / <span class="mono">gen_scara.py</span> / <span class="mono">gen_casa.py</span> — se regenereaza daca se schimba o cota.
+</div>
+
+</body>
+</html>
