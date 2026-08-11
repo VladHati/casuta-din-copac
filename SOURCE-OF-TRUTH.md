@@ -14,6 +14,7 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 | Noduri grinda-stalp | `NODURI-grinda-stalp.html` | actual |
 | Podea (plan + sectiune) | `PODEA-plan-sectiune.html` | actual |
 | Faza 2 completa (podea-final, balustrada, scara, casa) | `MANUAL-FAZA-2.html` / `.pdf` | actual — SURSA UNICA |
+| Pereti casa de sus (lambriu, rigidizare, geamuri laterale) | `PLAN-pereti-lambriu.html` | actual |
 | Stadiu santier | `STATUS.md` + `timeline.html` | actual |
 | Audit tehnic | `AUDIT-2026-08-06.md` (curent), `AUDIT-2026-07-24.md` + `AUDIT-2026-07-23.html` + `AUDIT-2026-06-18.html` (istorice) | actual |
 
@@ -27,7 +28,7 @@ Lant canonic de inaltimi **as-built** (migrat 24.07): **varf stalpi fata / top p
 - Podea (top dusumea): +2228 de la sol.
 - Stalpi spate: intregi, 4 m. Stalpi fata: taiati ~1900 (plan initial 1872).
 - Consola balcon: 700.
-- Perete casa de sus: 1800 spate / 1500 fata (inlocuieste vechiul 1300).
+- Casa de sus (as-built 11.08): perete spate 1700 + dulap 46×250 pe muchie = reazem 1950; perete fata 1642 (stalpi 90×90 deja montati la 1600, nu se taie). Panta 308/1100 = 15,6°. Usa 1600 liber. Peretii: lambriu fara OSB — vezi PLAN-pereti-lambriu.html.
 - Balustrada (decizie 06.08): 1000 general, 1100 pe consola; goluri sub 90; M10 total 14.
 
 ## Goluri deschise (de inchis)

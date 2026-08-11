@@ -35,7 +35,7 @@ Lant de inaltimi **as-built** (migrat 24.07; plan initial 1872/2072/2172/2200): 
 |---|---|
 | Inaltime podea / top dusumea (de la sol) | 2228 mm (plan initial 2200) |
 | Adancime totala cu balconul | 2480 mm (1780 + 700 consola) |
-| Perete casa de sus | 1800 mm spate / 1500 mm fata |
+| Perete casa de sus (as-built 11.08) | spate 1700 + dulap 46×250 = reazem 1950 / fata 1642 (stalpi 90×90 la 1600) |
 | Balustrada balcon | 1000 mm, goluri sub 90 mm |
 | Blat masa (deasupra podelei) | ~580 mm |
 | Casuta / balcon (impartirea adancimii) | 1100 / 680 mm |
@@ -123,7 +123,7 @@ Lista completa de cumparat, preturile si planul de taiere (debitare) sunt in fis
 
 ## Casa de sus (partea inchisa, evolutie a peretelui din spate)
 
-Peretele inchis din spate a crescut intr-o casa propriu-zisa: 2100 x 1100, pereti 1800 (spate) -> 1500 (fata), acoperis intr-o apa, usa + geam. Inlocuieste vechea cota de perete de 1300 mm. Planul complet, materialele si verificarea structurala sunt in `CASA-plan-constructie.html`. Ramase de ales: invelitoarea (Onduline vs policarbonat) si usa vs gol.
+Peretele inchis din spate a crescut intr-o casa propriu-zisa: 2100 x 1100, reazem spate 1950 (perete 1700 + dulap 46×250 pe muchie) -> fata 1642 (stalpi 90×90 deja montati la 1600, nu se taie), panta 308/1100 = 15,6°, acoperis intr-o apa Onduline, usa fara buiandrug cu inaltime libera 1600. Peretii: lambriu orizontal pe sipci de ventilare, rigidizare cu diagonale de lemn, doua geamuri laterale fixe — fara OSB. Planul complet, materialele si verificarea sunt in `MANUAL-FAZA-2.html` (geometrie + montaj) si `PLAN-pereti-lambriu.html` (sistemul de perete).
 
 ## Fisiere in proiect
 
