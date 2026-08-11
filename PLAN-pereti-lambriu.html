@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Pereti cu lambriu, fara OSB — plan | Casuta din copac</title>
+<style>
+  @page { size: A4; margin: 12mm 11mm; @bottom-right { content: counter(page); font-family: Helvetica; font-size: 8pt; color: #888; } }
+  * { box-sizing: border-box; }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; margin: 0; }
+  h1 { font-size: 20pt; margin: 0 0 2mm; letter-spacing: -0.4pt; }
+  .sub { color: #555; font-size: 8.5pt; margin-bottom: 4mm; }
+  h2 { font-size: 12pt; margin: 7mm 0 2mm; padding: 1.5mm 3mm; background: #1a1a1a; color: #fff; letter-spacing: 0.2pt; }
+  h3 { font-size: 10.5pt; margin: 4mm 0 1.5mm; padding-bottom: 0.8mm; border-bottom: 1pt solid #1a1a1a; }
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0; page-break-inside: avoid; }
+  th, td { border: 0.5pt solid #999; padding: 1.3mm 2mm; text-align: left; vertical-align: top; font-size: 8.6pt; }
+  th { background: #efefef; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4pt; }
+  .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 2.5mm 3.5mm; margin: 2.5mm 0; }
+  .warn b { color: #b3261e; }
+  .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 2.5mm 0; font-size: 8.8pt; }
+  .fix b { color: #1a6b3c; }
+  .note { border-left: 2.5pt solid #1a1a1a; background: #f5f5f5; padding: 2mm 3mm; margin: 2mm 0; font-size: 8.8pt; }
+  ul, ol { margin: 1mm 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1.1mm; }
+  .step { border: 0.8pt solid #1a1a1a; margin: 2.5mm 0; page-break-inside: avoid; }
+  .step-head { background: #1a1a1a; color: #fff; padding: 1.4mm 3mm; font-weight: bold; font-size: 9.8pt; }
+  .step-body { padding: 2.2mm 3mm; }
+  .gata { border: 0.8pt dashed #1a1a1a; background: #f7f7f2; padding: 1.8mm 3mm; margin: 2mm 0 0; font-size: 8.6pt; }
+  .pgbrk { page-break-before: always; }
+  .big { font-size: 11pt; }
+</style>
+</head>
+<body>
+
+<h1>CASA DE SUS — PERETI CU LAMBRIU</h1>
+<div class="sub"><b>Planul peretilor, pe structura care exista deja pe santier.</b><br>
+11 august 2026 · completeaza <span class="mono">MANUAL-FAZA-2</span> §F4 · inlocuieste varianta cu OSB.</div>
+
+<div class="warn">
+<b>CE INLOCUIESTE:</b> in MANUAL-FAZA-2 §F4 peretii erau cutie-panou cu OSB, iar inaltimile erau estimate. Aici OSB-ul dispare, iar toate inaltimile sunt masurate pe santier. <b>Restul ramane:</b> amprenta, capriori, Onduline, talpi in podea, siguranta. La orice alta contradictie castiga MANUAL-FAZA-2.
+</div>
+
+<h2>1 · Ce exista deja pe santier</h2>
+
+<table>
+<tr><th>Element</th><th>Stare</th><th>Cota</th></tr>
+<tr><td>Stalpii din spate</td><td>cei 4 originali de 4 m, intregi</td><td class="mono">1700 peste podea</td></tr>
+<tr><td>Stalpii din fata ai casei</td><td><b>90×90</b>, deja montati, prinsi cu coltare in L <b>direct in grinda</b> (nu in scandurile podelei) + suporti laterali</td><td class="mono">1600 peste podea</td></tr>
+<tr><td>Tijele M12 din podea</td><td>montate inainte de dusumea, <b>nefolosite</b> — la mai putin de 100 mm de stalpi</td><td class="mono">ies ~100</td></tr>
+<tr><td>Dulapi 46×250×3000</td><td><b>3 bucati, deja cumparate</b> (scara amanata)</td><td class="mono">1 se foloseste aici</td></tr>
+</table>
+
+<h2>2 · Geometria finala</h2>
+
+<table>
+<tr><th>Marime</th><th>Valoare</th><th>De unde vine</th></tr>
+<tr><td>Reazem SPATE</td><td class="mono big">1950</td><td>perete 1700 + dulap 46×250 pe muchie deasupra</td></tr>
+<tr><td>Reazem FATA</td><td class="mono big">1642</td><td>stalp 1600 + cununa 42 deasupra</td></tr>
+<tr><td>Cadere pe adancimea de 1100</td><td class="mono">308</td><td>1950 − 1642</td></tr>
+<tr><td><b>Panta acoperis</b></td><td class="mono big">15,6°</td><td>peste minimul de 10° al Onduline pe sipci, cu marja</td></tr>
+<tr><td><b>Inaltime libera la usa</b></td><td class="mono big">1600</td><td>1642 − 42 (cununa), cu talpa taiata din dreptul usii</td></tr>
+<tr><td>Caprior (cu streasina 200 fata + 100 spate)</td><td class="mono">1442</td><td>√(1100² + 308²) + 300</td></tr>
+</table>
+
+<div class="fix"><b>Doua lucruri pe care le rezolva geometria asta:</b> (1) <b>stalpii din fata nu se taie deloc</b> — raman 1600 cum sunt montati; (2) <b>un copil de 1,60 intra fara sa se aplece</b>, pentru ca talpa de jos se taie din dreptul usii dupa ce peretele e gata si drept.</div>
+
+<h3>2.1 Dulapul de 250 din spate</h3>
+
+<p style="margin:0 0 2mm">Capul stalpilor de 4 m si rigla de sus a peretelui din spate sunt <b>amandoua la 1700</b>. Deci dulapul nu sta pe doi stalpi, ci <b>pe toata lungimea peretelui</b>. Asta il face un element simplu, nu un nod critic.</p>
+
+<ul>
+<li>Se pune <b>pe muchie</b>: <b>250 in sus</b>, ~50 grosime (nominal 46), <b>lungime 2200</b> — cei doi stalpi de 100 dau 2000 lumina + 2×100. Restul dulapului de 3000 ramane rezerva.</li>
+<li>Fixare: <b>vinclu 90×90 pe ambele fete, la fiecare ~500</b>, prins in dulap si in rigla de sus a peretelui.</li>
+<li>Peste fiecare stalp de 4 m, in plus, <b>o placa metalica de imbinare pe fiecare fata</b> — acolo dulapul preia direct sarcina din stalp.</li>
+<li>Se monteaza <b>dupa</b> ce peretele din spate e ridicat, in echer si prins de stalpi.</li>
+</ul>
+
+<div class="note"><b>Pana nu sunt capriorii pe el, dulapul se poate rasturna lateral</b> — 250 inaltime pe 46 grosime e o lama. Nu-l lasa peste noapte fara cel putin doi capriori sau doua proptele.</div>
+
+<h3>2.2 Recuperarea tijelor M12</h3>
+
+<p style="margin:0 0 2mm">Coltarele in L prinse in grinda sunt o legatura buna la impins lateral. La <b>smuls in sus</b> — cazul in care vantul ridica acoperisul — o legatura directa in grinda e net mai sigura. Tijele exista deja, la mai putin de 100 mm. Se recupereaza in jumatate de ora.</p>
+
+<ul>
+<li>Iei un <b>coltar 100×100</b> si dai in talpa lui o gaura <span class="mono">Ø13</span>.</li>
+<li>Il pui peste tija, <b>saiba lata + piulita</b>, stransa.</li>
+<li>Bratul vertical il prinzi in stalp cu <b>4× surub 6×60</b>, pregaurit Ø5.</li>
+<li><b>Cate unul pe stalp.</b> Ramane sub podeaua casei, nu se vede, nu incurca.</li>
+</ul>
+
+<div class="pgbrk"></div>
+<h2>3 · De ce nu e de ajuns lambriul singur</h2>
+
+<p style="margin:0 0 2mm">Lambriul nu tine un perete drept. Imbinarea lamba-uluc lasa scandurile sa gliseze una fata de alta, deci un perete lambriuit se strambă in romb sub o impingere laterala. In varianta cu OSB, placa era cea care il tinea. Acum trebuie inlocuita.</p>
+
+<p style="margin:0 0 2mm">Inlocuitorul: <b>o scandura 20×90 pusa in diagonala, pe fata dinauntru a fiecarui cadru.</b> Lucreaza si la intindere si la compresiune, se prinde cu suruburi obisnuite, se vede cu ochiul liber daca e bine facuta, si costa ~125 lei in total.</p>
+
+<h3>3.1 Diagonalele din pereti</h3>
+
+<table>
+<tr><th>Perete</th><th>Dimensiuni panou</th><th>Configuratie</th><th>Lungime</th><th>Buc</th></tr>
+<tr><td><b>Spate</b></td><td class="mono">2000 × 1700</td><td>X complet, colt la colt</td><td class="mono">2625</td><td class="mono">2</td></tr>
+<tr><td><b>Fata</b></td><td class="mono">2000 × 1642</td><td>cate una in fiecare panou de langa usa (750 lat)</td><td class="mono">1805</td><td class="mono">2</td></tr>
+<tr><td><b>Laterale</b></td><td class="mono">1010 × 1642→1950</td><td>una, din coltul de JOS-SPATE spre coltul de SUS-FATA</td><td class="mono">1928</td><td class="mono">2</td></tr>
+</table>
+
+<p style="margin:0 0 2mm">Material: <b>scandura 20×90</b> — 5 bucati de 3000 acopera tot (necesar ~12,7 m taiati).</p>
+
+<ul>
+<li><b>Capetele decid totul.</b> Fiecare capat intra in coltul panoului cu <b>4× surub 5×60</b>, prinse si in montantul dublu de capat, si in talpa sau in cununa. O diagonala prinsa doar in talpa nu face nimic.</li>
+<li>La fiecare montant peste care trece: <b>2× surub 5×60</b>, pregaurit 3,5 mm.</li>
+<li>Capetele se taie in unghi, sa se aseze pe toata latimea in colt.</li>
+</ul>
+
+<div class="warn"><b>Ordinea:</b> masori diagonalele panoului si le faci egale la ±3 mm, <b>apoi</b> pui diagonala de rigidizare, <b>apoi</b> folie si lambriu. Diagonala inteapa panoul in forma in care il gaseste. Strambe ramane strambe.</div>
+
+<h3>3.2 Contrafisele stalpilor din fata</h3>
+
+<p style="margin:0 0 2mm">Fiecare stalp 90×90 primeste <b>doua contrafise la 45°</b> spre cununi: una in planul peretelui din fata, una in planul peretelui lateral.</p>
+
+<ul>
+<li><span class="mono">45×70</span>, brate de <span class="mono">300 × 300</span> → lungime taiata <span class="mono">424</span>, ambele capete la 45°. <b>4 bucati.</b></li>
+<li>Fiecare capat: <b>2× surub 6×120</b>, pregaurit Ø5.</li>
+<li>Verifica dupa montaj ca nu s-a format o treapta pe care se poate calca dinspre exterior.</li>
+</ul>
+
+<h3>3.3 Diagonala din planul acoperisului</h3>
+
+<p style="margin:0 0 2mm">O singura piesa <span class="mono">45×45 × 2400</span>, prinsa pe fata de sus a capriorilor, dintr-un colt in celalalt, cu <span class="mono">1× 6×100</span> la fiecare intersectie. Sipcile de acoperis se monteaza peste ea si se cresteaza 45 mm acolo unde o incaleca.</p>
+
+<div class="fix"><b>De ce merita cele ~30 de lei:</b> fara ea, cei patru pereti sunt rigizi fiecare in planul lui, dar cutia se poate inca deforma pe orizontala, la nivelul de sus. Diagonala asta transforma patru pereti intr-o cutie.</div>
+
+<h2>4 · Stratificatia peretelui</h2>
+
+<table>
+<tr><th>#</th><th>Strat</th><th>Material</th><th>Ce face</th></tr>
+<tr><td class="mono">1</td><td>Lambriu orizontal, suprapus</td><td class="mono">12,5 × 96</td><td>invelitoarea de ploaie si aspectul</td></tr>
+<tr><td class="mono">2</td><td>Sipca verticala de ventilare</td><td class="mono">20 × 45</td><td>cavitate de 20 mm — lambriul se usuca pe ambele fete</td></tr>
+<tr><td class="mono">3</td><td>Folie de difuzie</td><td class="mono">membrana</td><td>opreste ploaia impinsa de vant prin rosturi</td></tr>
+<tr><td class="mono">4</td><td>Cadru</td><td class="mono">42×90 talpa/cununa · 45×45 montanti la 500</td><td>portanta</td></tr>
+<tr><td class="mono">5</td><td>Diagonala, pe fata dinauntru</td><td class="mono">20 × 90</td><td><b>rigidizarea — inlocuieste OSB-ul</b></td></tr>
+</table>
+
+<div class="note"><b>Cavitatea de 20 mm nu e optionala.</b> Lambriu batut direct pe folie se umezeste pe spate, nu se usuca, si crapa in lamba intr-un sezon. Jos, cavitatea ramane <b>deschisa</b> — nu o inchide cu o sipca orizontala.</div>
+
+<div class="pgbrk"></div>
+<h2>5 · Cele doua geamuri laterale</h2>
+
+<div class="warn"><b>FIXE, fara exceptie.</b> Singurul geam care se deschide e cel din fata, peste terasa. Un geam lateral care se deschide da direct in 4 m de cadere. Daca vrei aerisire pe lateral, se face cu <b>un opritor care limiteaza deschiderea la sub 90 mm</b>.</div>
+
+<table>
+<tr><th>Piesa</th><th>Material</th><th>Dimensiune</th><th>Buc / geam</th></tr>
+<tr><td>Rama geamului</td><td class="mono">45×45</td><td class="mono">4 bucati, 400×400 la lumina</td><td class="mono">4</td></tr>
+<tr><td>Geam</td><td class="mono">acrilic 4 mm</td><td class="mono">440×440 (20 mm calare pe rama)</td><td class="mono">1</td></tr>
+<tr><td>Sipca de retinere, ambele fete</td><td class="mono">18×28</td><td class="mono">4 + 4</td><td class="mono">8</td></tr>
+<tr><td>Prag + buiandrug in perete</td><td class="mono">42×90</td><td class="mono">490</td><td class="mono">2</td></tr>
+<tr><td>Montanti dubli pe marginile golului</td><td class="mono">45×45</td><td class="mono">pe inaltimea panoului</td><td class="mono">2</td></tr>
+</table>
+
+<ul>
+<li>Acrilicul se prinde <b>cu sipca pe AMBELE fete</b>. Doar pe o fata inseamna ca un copil il poate impinge afara si deschide un gol de cadere.</li>
+<li>Gauri cu <b>1 mm joc</b> pe fiecare surub — acrilicul se dilata la soare si crapa daca e strans fix.</li>
+<li>Silicon de exterior pe contur, muchiile acrilicului pilite.</li>
+</ul>
+
+<h3>5.1 Pozitia golului</h3>
+
+<p style="margin:0 0 2mm">Peretele lateral e un trapez: <span class="mono">1010</span> lat, <span class="mono">1642</span> in fata, <span class="mono">1950</span> in spate. Diagonala urca din coltul de jos-spate spre coltul de sus-fata si taie exact zona unui geam centrat.</p>
+
+<table>
+<tr><th>Varianta</th><th>Gol (de la coltul din spate)</th><th>Prag</th><th>Diagonala la marginea din fata a golului</th><th>Verdict</th></tr>
+<tr><td><b>A — recomandata</b></td><td class="mono">150 → 550</td><td class="mono">950</td><td class="mono">894 — trece pe sub prag, liber 56 mm</td><td>copiii vad afara <b>stand jos</b></td></tr>
+<tr><td>B</td><td class="mono">305 → 705 (centrat)</td><td class="mono">1200</td><td class="mono">1146 — liber 54 mm</td><td>simetric, dar se vede afara doar in picioare</td></tr>
+</table>
+
+<div class="warn"><b>Marja e mica la ambele — sub 60 mm.</b> Traseaza pe panoul asezat jos <b>intai diagonala, apoi golul</b>. Daca se ating: <b>golul se muta, diagonala nu</b>.</div>
+
+<h2>6 · Ce se schimba fata de MANUAL-FAZA-2</h2>
+
+<table>
+<tr><th>Piesa</th><th>In manual</th><th>Acum</th></tr>
+<tr><td>Perete spate / fata</td><td class="mono">M1 / M1 − 300</td><td class="mono">1700 (+250 dulap) / 1642</td></tr>
+<tr><td>Panta</td><td class="mono">300/1100 = 15,3°</td><td class="mono">308/1100 = 15,6°</td></tr>
+<tr><td>Capriori</td><td class="mono">1440</td><td class="mono">1442</td></tr>
+<tr><td>Montanti spate / fata</td><td class="mono">1688 / 1388</td><td class="mono">1616 / 1558</td></tr>
+<tr><td>Montanti laterali</td><td class="mono">1688 / 1550 / 1400</td><td class="mono">1558 / 1712 / 1866</td></tr>
+<tr><td>Stalpi fata</td><td class="mono">70×70, de cumparat, H−342</td><td class="mono"><b>90×90, deja montati la 1600, nu se taie</b></td></tr>
+<tr><td>Reazem spate</td><td class="mono">—</td><td class="mono">dulap 46×250×2200 pe muchie (deja cumparat)</td></tr>
+<tr><td>OSB3 12 mm</td><td class="mono">4 placi</td><td class="mono"><b>eliminat</b></td></tr>
+<tr><td>Rigidizare</td><td class="mono">OSB</td><td class="mono">6 diagonale 20×90 + 4 contrafise + 1 diagonala acoperis</td></tr>
+<tr><td>Ancoraj stalpi fata</td><td class="mono">tije M12 prin stalp</td><td class="mono">coltare L in grinda + 1 coltar cu gaura Ø13 peste tija / stalp</td></tr>
+<tr><td>Geamuri laterale</td><td class="mono">hublouri acrilice, nedetaliate</td><td class="mono">2 rame 45×45 + acrilic 440×440, fixe</td></tr>
+</table>
+
+<p style="margin:0 0 2mm"><b>Suprafete de imbracat:</b> spate 3,90 m² (cu banda dulapului) · fata 2,48 m² (fara usa) · laterale 3,31 m² (fara geamuri) = <b>9,69 m²</b>. Cu 15% pierdere la taiere: <b>~11 m²</b>.</p>
+
+<h2>7 · Delta de cost</h2>
+
+<table>
+<tr><th>Pozitie</th><th>Cant</th><th>Lei</th></tr>
+<tr><td>OSB3 12 mm — <b>se scoate</b></td><td class="mono">4 placi</td><td class="mono">−317</td></tr>
+<tr><td>Stalp 70×70 — <b>se scoate</b> (stalpii exista)</td><td class="mono">1</td><td class="mono">−90</td></tr>
+<tr><td>Dulap 46×250 pentru reazemul din spate</td><td class="mono">1</td><td class="mono">0 — deja cumparat</td></tr>
+<tr><td>Scandura 20×90×3000 (diagonale)</td><td class="mono">5</td><td class="mono">+125</td></tr>
+<tr><td>Rigla 20×45×3000 (sipci ventilare)</td><td class="mono">11</td><td class="mono">+130</td></tr>
+<tr><td>Folie de difuzie</td><td class="mono">~15 m²</td><td class="mono">+150</td></tr>
+<tr><td>Lambriu exterior 12,5×96</td><td class="mono">~11 m²</td><td class="mono">+700</td></tr>
+<tr><td>Inox 3,5×40 pentru lambriu</td><td class="mono">2 cutii</td><td class="mono">+80</td></tr>
+<tr><td>Acrilic 500×250 (2 geamuri)</td><td class="mono">4</td><td class="mono">+60</td></tr>
+<tr><td>Rigla 45×45 (rame geamuri + diagonala acoperis)</td><td class="mono">2</td><td class="mono">+45</td></tr>
+<tr><th>DELTA</th><th class="mono">—</th><th class="mono">+883</th></tr>
+</table>
+
+<p style="margin:0 0 2mm">Lambriul singur e ~700 din diferenta. E si singura pozitie care poate misca totalul cu ±150 — preturile sunt 55–74 lei/m², verifica la raft.</p>
+
+<div class="pgbrk"></div>
+<h2>8 · Ordinea de montaj</h2>
+
+<div class="step">
+<div class="step-head">PASUL 1 — Peretele din SPATE, jos pe iarba, complet</div>
+<div class="step-body">
+<p style="margin:0 0 1.5mm"><b>Ala e singurul care TREBUIE facut jos.</b> Dupa ce sta in picioare ai ~300 mm pana la gard — nu mai bagi nici mana, nici masina de insurubat pe fata lui exterioara.</p>
+<ul>
+<li>Cadru <span class="mono">2000 × 1700</span>: talpa si cununa 42×90 pe lat, 5 montanti 45×45 de <span class="mono">1616</span> la ~500, montant dublu la capete.</li>
+<li>Diagonalele panoului egale la ±3 mm. Apoi <b>X-ul de rigidizare</b>, 2 diagonale de <span class="mono">2625</span>.</li>
+<li>Folie, sipci verticale, lambriu — <b>tot</b>. Lazura pe toate fetele lambriului, <b>inclusiv lamba si ulucul</b>, inainte de batut.</li>
+<li>Ridicat <b>in doi</b>. Cantareste ~70 kg imbracat.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ diagonale ±3 mm · ☐ X montat · ☐ imbracat complet pe exterior · ☐ lazura peste tot, si pe capete.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 2 — Ridicare spate + laterale si fata direct pe platforma</div>
+<div class="step-body">
+<ul>
+<li><b>Spate:</b> ridici, aduci pe linie, <b>proptesti</b>, prinzi de stalpii de 4 m cu <b>6× tirfon M10×120</b> pe 3 inaltimi in fiecare capat.</li>
+<li><b>Lateralele si fata le poti construi direct sus</b>, in picioare, daca preferi — nu au problema de acces a spatelui. Cadru, diagonala, apoi imbracat.</li>
+<li>Colturi: <b>4× surub 6×120</b> + 2 coltare 100×100 pe interior, sus si jos.</li>
+<li><b>Talpa se taie din dreptul usii</b> — abia dupa ce peretele din fata e gata, drept si prins in colturi. Asta iti da inaltimea libera de 1600.</li>
+<li>Talpi in podea: <span class="mono">6×140</span> la fiecare 400, pe liniile de joista trasate cu creta + vinclu 90×90.</li>
+<li><b>Cele 4 contrafise</b> pe stalpii din fata + <b>cele 2 coltare cu gaura Ø13</b> peste tijele M12.</li>
+<li>Proptelele se scot <b>dupa</b> ce toate cele 4 laturi sunt prinse intre ele SI de podea.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ 6 tirfoane · ☐ 4 colturi complete · ☐ talpa taiata la usa, liber 1600 · ☐ 4 contrafise · ☐ 2 coltare peste tije · ☐ talpi cu 6×140 la 400 · ☐ diagonale cutie ±5 mm · ☐ proptele scoase.</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-head">PASUL 3 — Dulapul de 250 si acoperisul</div>
+<div class="step-body">
+<ul>
+<li>Dulap <span class="mono">46×250 × 2200</span> pe muchie, peste capul stalpilor de 4 m SI peste cununa peretelui din spate. <b>Vinclu 90×90 pe ambele fete la ~500</b> + placa metalica pe fiecare stalp.</li>
+<li><b>Propteste-l imediat</b> sau pune doi capriori. Singur, se rastoarna.</li>
+<li>5 capriori <span class="mono">42×90 × 1442</span> la 500, taiati oblic la <b>15,6°</b>. <b>Ancora anti-vant la ambele capete ale fiecaruia</b> — 10 bucati.</li>
+<li><b>Diagonala de acoperis</b> 45×45×2400 peste capriori, apoi sipcile la ≤450, crestate unde o incaleca.</li>
+<li>Onduline de jos in sus, suprapunere laterala o onda, cuie <b>numai in creasta</b>.</li>
+<li>Geamurile laterale la final.</li>
+</ul>
+<div class="gata"><b>GATA CAND:</b> ☐ dulap cu vincluri la 500 + placi pe stalpi · ☐ 5 capriori · ☐ 10 ancore · ☐ diagonala acoperis · ☐ sipci ≤450 · ☐ Onduline complet · ☐ 2 geamuri fixe, dublu-sipcate, cu joc de 1 mm.</div>
+</div>
+</div>
+
+<h2>9 · Ce blocheaza cumparaturile</h2>
+
+<table>
+<tr><th>Item</th><th>De ce blocheaza</th></tr>
+<tr><td><b>M2</b> — adancimea reala (nominal 1100)</td><td>schimba lungimea capriorilor si panta</td></tr>
+<tr><td><b>M3</b> — lumina intre stalpii de 4 m (nominal 2000)</td><td>schimba talpi, cununi, diagonale, si cantitatea de lambriu</td></tr>
+<tr><td><b>M4</b> — distanta intre axele tijelor M12</td><td>confirma ca stalpii din fata sunt unde trebuie</td></tr>
+<tr><td><b>Pretul si stocul de lambriu</b></td><td>~700 lei, singura pozitie care misca totalul</td></tr>
+<tr><td><b>Unde cade trunchiul</b> fata de linia casei</td><td>daca intra in ultimii 1100 mm, un perete se croieste in jurul lui si diagonala din el se muta</td></tr>
+</table>
+
+<div class="warn"><b>Nu cumpara lambriu inainte de M2 si M3.</b> Suprafata de 9,69 m² e calculata pe nominal. 50 mm diferenta pe latime muta cantitatea cu jumatate de pachet, si lambriul e pozitia cea mai scumpa.</div>
+
+<div class="note" style="margin-top:5mm"><b>Deschis, in afara acestui plan:</b> scara — decizie amanata de Vlad (varianta simpla si usoara, de stabilit). Pana exista un acces sigur, copiii nu urca.</div>
+
+<div class="note"><b>Precedenta:</b> pentru pereti, inaltimi, rigidizare si geamuri laterale castiga documentul asta. Pentru orice altceva din casa de sus castiga <span class="mono">MANUAL-FAZA-2</span> §F4.</div>
+
+</body>
+</html>
