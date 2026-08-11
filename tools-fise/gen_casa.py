@@ -85,17 +85,17 @@ def s3():
     sc.box(0, -300, 0, L, PL, PW, "built", key=-1e5)
     # capriori
     for x in (0, 500, 1000, 1500, 2000 - 90):
-        sc.poly_z([(-200, -300 - 55), (A + 100, 0 - 55), (A + 100, 0 + 35), (-200, -300 + 35)],
+        sc.poly_z([(-100, -300 - 55), (A + 100, 0 - 55), (A + 100, 0 + 35), (-100, -300 + 35)],
                   0, 90, "new", key=x)
     # sipci
     for t in (0.05, 0.32, 0.6, 0.88):
-        zz = -200 + t * (A + 300)
+        zz = -100 + t * (A + 200)
         yy = -300 - 55 + t * 300 + 45
         sc.box(-100, yy, zz, L + 200, 45, 45, "new", key=1e6 + t)
     sc.lead(1000, -180, 500, 460, -420, "5 capriori 42×90 la 500 interax")
     sc.lead(500, -60, -100, -430, 540, "sipci 45×45 la ≤450 — nu 500 (zapada)", anchor="end")
     sc.lead(1500, -40, A - PW, 460, 320, "ANCORA anti-vant la AMBELE capete ale FIECARUI caprior")
-    sc.lead(0, -300, -200, -460, -300, "streasina fata 200 — teseste muchia, e la inaltimea capului", anchor="end")
+    sc.lead(0, -300, -100, -460, -300, "streasina fata 100 — teseste muchia (la ~1,61 peste podea, la inaltimea capului)", anchor="end")
     sc.dim((0, 0, A - PW), (0, -300, A - PW), (-380, 0), "308 = panta pe 1100 → 15,6°")
     sc.dim((0, 0, A), (500, 0, A), (0, -300), "500")
     sc.save(os.path.join(OUT, "ca-3-acoperis.svg"))

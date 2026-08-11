@@ -14,7 +14,7 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 | Noduri grinda-stalp | `NODURI-grinda-stalp.html` | actual |
 | Podea (plan + sectiune) | `PODEA-plan-sectiune.html` | actual |
 | Faza 2 completa (podea-final, balustrada, scara, casa) | `MANUAL-FAZA-2.html` / `.pdf` | actual — SURSA UNICA |
-| Pereti casa de sus (lambriu, rigidizare, geamuri laterale) | `PLAN-pereti-lambriu.html` | actual |
+| Pereti casa de sus (lambriu, contrafise, geamuri laterale) | `GHID-SIMPLU-casa.html` | actual — bate PLAN-pereti-lambriu.html (v1, istoric) |
 | Stadiu santier | `STATUS.md` + `timeline.html` | actual |
 | Audit tehnic | `AUDIT-2026-08-06.md` (curent), `AUDIT-2026-07-24.md` + `AUDIT-2026-07-23.html` + `AUDIT-2026-06-18.html` (istorice) | actual |
 
@@ -28,16 +28,16 @@ Lant canonic de inaltimi **as-built** (migrat 24.07): **varf stalpi fata / top p
 - Podea (top dusumea): +2228 de la sol.
 - Stalpi spate: intregi, 4 m. Stalpi fata: taiati ~1900 (plan initial 1872).
 - Consola balcon: 700.
-- Casa de sus (as-built 11.08): perete spate 1700 + dulap 46×250 pe muchie = reazem 1950; perete fata 1642 (stalpi 90×90 deja montati la 1600, nu se taie). Panta 308/1100 = 15,6°. Usa 1600 liber. Peretii: lambriu fara OSB — vezi PLAN-pereti-lambriu.html.
-- Balustrada (decizie 06.08): 1000 general, 1100 pe consola; goluri sub 90; M10 total 14.
+- Casa de sus (as-built 11.08): perete spate 1700 + dulap 46×250 pe muchie = reazem 1950; perete fata 1642 (stalpi 90×90 deja montati la 1600, nu se taie). Panta 308/1100 = 15,6°. Usa 1600 liber. Streasina 100 fata + 100 spate, caprior 1342, FARA jgheab (muchia la ~1,61 peste podea). Peretii: lambriu direct pe rama, contrafise, fara folie/OSB — canonic `GHID-SIMPLU-casa.html` (bate PLAN-pereti-lambriu v1). Scara AMANATA (11.08).
+- Balustrada (decizie 06.08): 1000 general, 1100 pe consola; goluri sub 90; M10 total 16 (8 stalpisori × 2).
 
 ## Goluri deschise (de inchis)
 
 - **[P0 SIGURANTA — INCHIS 24.07] Talpic sub polita spate.** Propagarea in fise / tracker / 3D e FACUTA (commit 386f755). Fizic confirmat de Vlad: talpic sub fiecare polita, fixat pe fata stalpului cu 3× Heco 8x200 + 2 tije M12 (pozitie/anti-smulgere) + contrafisa 45° sub nod. DE VERIFICAT pe teren: contrafisa prezenta la AMBELE noduri spate.
 - **[P2 COMANDA] Receptie C2 / inox — DESCHIS.** Cantitatile "platite" nu-s inca reconciliate (Vlad n-a numarat). Vlad numara la urmatoarea iesire, apoi se aliniaza.
-- **[INCHIS 06.08] Balustrada 1000 vs 1100.** Decizie Vlad: 1000 general, 1100 pe consola. M10 reconciliat la 14 (7 stalpisori × 2). Propagat in CASA-plan + FISA-FAZA-2.
+- **[INCHIS 06.08] Balustrada 1000 vs 1100.** Decizie Vlad: 1000 general, 1100 pe consola. M10 reconciliat la 16 (8 stalpisori × 2, corectat 06.08 la desenarea la scara). Propagat in CASA-plan + FISA-FAZA-2 + MANUAL.
 - **[INCHIS 06.08 — prin decizie] Dublarea joistelor de capat (sisters).** Poarta din 24.07 ("obligatoriu inainte de stalpii casei") inchisa prin SKIP DEFINITIV, decizie informata Vlad; calculul si rezerva necuantificata in `AUDIT-2026-08-06.md`. FISA-CONTINUARE Pasul 3 = caduc; nu se mai cumpara KVH/C2/6×100 pt surori.
-- **[P2 BUGET] All-in.** Baza Faza 1 = 8500 (Tracker). Casa de sus ~1900-2100 (CASA-plan). Total ~10.400-10.600. Cifra veche 6600 (din `DE-LUAT-AZI-Hornbach.html`) e depasita — fisier arhivat.
+- **[P2 BUGET] All-in.** Baza Faza 1 = 8500 (Tracker). Casa de sus ~1900-2100 (CASA-plan) + delta pereti lambriu ~680 (vs OSB, GHID §7). Total ~11.100-11.300. Cifra veche 6600 (din `DE-LUAT-AZI-Hornbach.html`) e depasita — fisier arhivat.
 
 ## Reguli de propagare
 
