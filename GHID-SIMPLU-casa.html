@@ -15,6 +15,7 @@
   th, td { border: 0.5pt solid #999; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; font-size: 9pt; }
   th { background: #efefef; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.4pt; }
   .mono { font-family: "Courier New", monospace; font-weight: bold; white-space: nowrap; }
+  .prod { font-family: "Courier New", monospace; font-weight: bold; font-size: 8pt; }
   .warn { border: 1.5pt solid #b3261e; background: #fdf1f0; padding: 2.5mm 3.5mm; margin: 2.5mm 0; }
   .warn b { color: #b3261e; }
   .fix { border: 1.2pt solid #1a6b3c; background: #f0f7f2; padding: 2.5mm 3.5mm; margin: 2.5mm 0; font-size: 9.2pt; }
@@ -37,7 +38,7 @@
 
 <h1>CASA DE SUS — GHID SIMPLU</h1>
 <div class="sub"><b>Acelasi plan ca in documentele tehnice, dar spus pe intelesul oricui, cu desene.</b><br>
-11 august 2026, varianta 2 · deciziile lui Vlad incluse: contrafise in loc de X, fara folie, lambriu batut direct pe rama, interior liber, acoperis iesit doar 10 cm, fara jgheab.</div>
+11 august 2026, varianta 6 · 13 capitole: fiecare perete cu desenele si pasii lui, colturile, acoperisul vazut de sus, detaliile de prindere, greselile frecvente si verificarea finala. Cote pe toate desenele.</div>
 
 <h2>1 · Cum va arata, vazuta din lateral</h2>
 
@@ -67,22 +68,23 @@
   <!-- dulap 250 pe muchie -->
   <rect x="442" y="61" width="22" height="55" fill="#c9dfd2" stroke="#1a6b3c" stroke-width="2.5"/>
 
-  <!-- perete fata: doar lemnul de sus (usa dedesubt) -->
-  <rect x="200" y="129" width="20" height="9" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="2"/>
-  <rect x="200" y="138" width="20" height="352" fill="#fff" stroke="#1a1a1a" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <!-- perete fata: lemnul de sus + marginile golului usii (sectiunea taie prin usa) -->
+  <rect x="200" y="126" width="20" height="12" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="2"/>
+  <line x1="200" y1="138" x2="200" y2="490" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="220" y1="138" x2="220" y2="490" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 4"/>
 
-  <!-- acoperis -->
-  <line x1="178" y1="135" x2="486" y2="55" stroke="#1a1a1a" stroke-width="7"/>
+  <!-- acoperis: sta PE lemnul din fata si PE dulap -->
+  <line x1="178" y1="139" x2="486" y2="49" stroke="#1a1a1a" stroke-width="7"/>
 
   <!-- streasina fata -->
   <text x="56" y="96" font-size="10.5" fill="#b3261e" font-weight="bold">iese doar 10 cm</text>
   <text x="56" y="110" font-size="10.5" fill="#b3261e">muchia ramane la 1,61 m</text>
   <text x="56" y="124" font-size="10.5" fill="#b3261e">FARA jgheab</text>
-  <line x1="170" y1="118" x2="178" y2="132" stroke="#b3261e" stroke-width="0.8"/>
+  <line x1="170" y1="120" x2="178" y2="136" stroke="#b3261e" stroke-width="0.8"/>
 
   <!-- cota fata sus -->
-  <text x="250" y="158" font-size="10.5" fill="#555">1642 sus, in fata</text>
-  <line x1="248" y1="153" x2="224" y2="136" stroke="#555" stroke-width="0.8"/>
+  <text x="250" y="162" font-size="10.5" fill="#555">1642 sus, in fata</text>
+  <line x1="248" y1="157" x2="222" y2="134" stroke="#555" stroke-width="0.8"/>
 
   <!-- copil 1600 -->
   <circle cx="148" cy="147" r="9" fill="none" stroke="#1a1a1a" stroke-width="2"/>
@@ -97,9 +99,7 @@
   <text x="56" y="297" font-size="10">sa se aplece</text>
 
   <!-- gol usa -->
-  <text x="56" y="445" font-size="10.5" fill="#555">aici e golul</text>
-  <text x="56" y="459" font-size="10.5" fill="#555">usii (intrarea)</text>
-  <line x1="120" y1="452" x2="198" y2="448" stroke="#555" stroke-width="0.8"/>
+
 
   <!-- cota usa -->
   <line x1="232" y1="138" x2="232" y2="490" stroke="#1a1a1a" stroke-width="1"/>
@@ -125,9 +125,36 @@
   <text x="506" y="255" font-size="11" font-weight="bold">1950</text>
   <text x="506" y="269" font-size="9.5">total, in</text>
   <text x="506" y="282" font-size="9.5">spate</text>
-</svg>
+<line x1="178" y1="536" x2="200" y2="536" stroke="#1a1a1a" stroke-width="0.6"/><line x1="178" y1="533" x2="178" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><line x1="200" y1="533" x2="200" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><text x="189.0" y="533" font-size="7" text-anchor="middle">100</text><line x1="200" y1="536" x2="464" y2="536" stroke="#1a1a1a" stroke-width="0.6"/><line x1="200" y1="533" x2="200" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><line x1="464" y1="533" x2="464" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><text x="332.0" y="533" font-size="7" text-anchor="middle">1100 (intre fetele exterioare)</text><line x1="464" y1="536" x2="486" y2="536" stroke="#1a1a1a" stroke-width="0.6"/><line x1="464" y1="533" x2="464" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><line x1="486" y1="533" x2="486" y2="539" stroke="#1a1a1a" stroke-width="0.6"/><text x="475.0" y="533" font-size="7" text-anchor="middle">100</text></svg>
 <figcaption>Casa vazuta din lateral. Spatele e mai inalt decat fata, ca apa de ploaie sa curga spre terasa, nu spre gard.</figcaption>
 </figure>
+
+<figure>
+<svg viewBox="0 0 600 400" width="540" xmlns="http://www.w3.org/2000/svg">
+<text x="300.0" y="16.0" font-size="10.5" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Sectiunea prin casa — toate inaltimile</text>
+<rect x="128.4" y="352.0" width="259.2" height="8.0" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0"/>
+<text x="130.0" y="372.0" font-size="8.5" fill="#555" text-anchor="start">podeaua (terasa)</text>
+<rect x="170.0" y="345.3" width="14.4" height="6.7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="170.0" y="96.0" width="7.2" height="249.3" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="170.0" y="89.3" width="14.4" height="6.7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="331.6" y="345.3" width="14.4" height="6.7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="338.8" y="86.7" width="7.2" height="258.6" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="331.6" y="80.0" width="14.4" height="6.7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="338.6" y="40.0" width="7.4" height="40.0" fill="#c9dfd2" stroke="#1a6b3c" stroke-width="1.3"/>
+<text x="332.6" y="60.0" font-size="7.5" fill="#1a6b3c" text-anchor="middle" transform="rotate(-90 332.6 60.0)">dulap 46×250</text>
+<polygon points="169.1,94.2 353.9,35.1 349.5,21.4 164.7,80.4" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.2"/>
+<text x="261.5" y="50.6" font-size="8" fill="#555" text-anchor="middle" transform="rotate(-9.3 261.5 50.6)">lemnul inclinat 42×90 × 1342</text>
+<text x="330" y="70" font-size="9" fill="#1a1a1a" text-anchor="middle" font-weight="bold">panta 15,6°</text>
+<line x1="52.0" y1="352.0" x2="52.0" y2="94.2" stroke="#1a1a1a" stroke-width="0.7"/><line x1="49.0" y1="352.0" x2="55.0" y2="352.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="49.0" y1="94.2" x2="55.0" y2="94.2" stroke="#1a1a1a" stroke-width="0.7"/><text x="60.0" y="223.1" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 60.0 223.1)">~1614 muchia</text>
+<line x1="84.0" y1="352.0" x2="84.0" y2="89.3" stroke="#1a1a1a" stroke-width="0.7"/><line x1="81.0" y1="352.0" x2="87.0" y2="352.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="81.0" y1="89.3" x2="87.0" y2="89.3" stroke="#1a1a1a" stroke-width="0.7"/><text x="92.0" y="220.6" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 92.0 220.6)">1642 fata</text>
+<line x1="112.0" y1="352.0" x2="112.0" y2="89.3" stroke="#1a1a1a" stroke-width="0.7"/><line x1="109.0" y1="352.0" x2="115.0" y2="352.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="109.0" y1="96.0" x2="115.0" y2="96.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="109.0" y1="89.3" x2="115.0" y2="89.3" stroke="#1a1a1a" stroke-width="0.7"/><text x="120.0" y="224.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 120.0 224.0)">1600 (usa libera)</text><text x="120.0" y="92.6" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 120.0 92.6)">42</text>
+<line x1="372.0" y1="352.0" x2="372.0" y2="40.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="369.0" y1="352.0" x2="375.0" y2="352.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="369.0" y1="80.0" x2="375.0" y2="80.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="369.0" y1="40.0" x2="375.0" y2="40.0" stroke="#1a1a1a" stroke-width="0.7"/><text x="380.0" y="216.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 380.0 216.0)">1700 perete</text><text x="380.0" y="60.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 380.0 60.0)">250</text>
+<line x1="400.0" y1="352.0" x2="400.0" y2="40.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="397.0" y1="352.0" x2="403.0" y2="352.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="397.0" y1="40.0" x2="403.0" y2="40.0" stroke="#1a1a1a" stroke-width="0.7"/><text x="408.0" y="196.0" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 408.0 196.0)">1950 spate</text>
+<line x1="154.0" y1="384.0" x2="362.0" y2="384.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="154.0" y1="381.0" x2="154.0" y2="387.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="170.0" y1="381.0" x2="170.0" y2="387.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="346.0" y1="381.0" x2="346.0" y2="387.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="362.0" y1="381.0" x2="362.0" y2="387.0" stroke="#1a1a1a" stroke-width="0.7"/><text x="162.0" y="381.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">100</text><text x="258.0" y="381.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">1100 (adancimea casei)</text><text x="354.0" y="381.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">100</text>
+<line x1="338.64" y1="32.0" x2="346.0" y2="32.0" stroke="#1a1a1a" stroke-width="0.6"/><line x1="338.64" y1="29.0" x2="338.64" y2="35.0" stroke="#1a1a1a" stroke-width="0.6"/><line x1="346.0" y1="29.0" x2="346.0" y2="35.0" stroke="#1a1a1a" stroke-width="0.6"/><text x="342.32" y="29.0" font-size="6.5" text-anchor="middle">46</text></svg>
+<figcaption>Aceeasi sectiune, desenata la scara din cotele reale: lanturile de cote pe verticala (fata 1600+42, spate 1700+250) si pe orizontala (100 + 1100 + 100).</figcaption>
+</figure>
+
 
 <table>
 <tr><th>Ce</th><th>Cat</th><th>De ce</th></tr>
@@ -148,7 +175,7 @@
 </ul>
 
 <div class="pgbrk"></div>
-<h2>3 · Cum se face un perete</h2>
+<h2>3 · Cum se face un perete — reguli valabile la toti peretii</h2>
 
 <p>Fiecare perete e o <b>rama de lemn</b>: un lemn jos, un lemn sus, si lemne verticale intre ele, la fiecare 50 cm. Peste rama vine imbracamintea (pagina urmatoare).</p>
 
@@ -161,17 +188,15 @@
   <rect x="70" y="244" width="260" height="7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
   <!-- montanti: dubli la capete -->
   <rect x="70" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
-  <rect x="76" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
   <rect x="132" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
   <rect x="197" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
   <rect x="262" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
-  <rect x="318" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
   <rect x="324" y="37" width="6" height="207" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
-  <!-- contrafise in cele 4 colturi -->
-  <line x1="82" y1="83" x2="122" y2="43" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="318" y1="83" x2="278" y2="43" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="82" y1="198" x2="122" y2="238" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="318" y1="198" x2="278" y2="238" stroke="#888" stroke-width="8" opacity="0.9"/>
+  <!-- contrafise: sus scurte (brate 150), jos lungi (brate 300) -->
+  <line x1="78" y1="63" x2="97" y2="45" stroke="#888" stroke-width="8" opacity="0.9"/>
+  <line x1="322" y1="63" x2="303" y2="45" stroke="#888" stroke-width="8" opacity="0.9"/>
+  <line x1="78" y1="199" x2="116" y2="238" stroke="#888" stroke-width="8" opacity="0.9"/>
+  <line x1="322" y1="199" x2="284" y2="238" stroke="#888" stroke-width="8" opacity="0.9"/>
   <!-- labels -->
   <text x="200" y="22" font-size="11" text-anchor="middle">lemnul de sus al ramei</text>
   <text x="200" y="268" font-size="11" text-anchor="middle">lemnul de jos al ramei</text>
@@ -191,16 +216,74 @@
   <line x1="35" y1="251" x2="45" y2="251" stroke="#1a1a1a" stroke-width="0.8"/>
   <text x="30" y="145" font-size="10.5" text-anchor="end">1700</text>
 </svg>
-<figcaption>Peretele din spate, vazut din interior. In fiecare colt: o proptea scurta la 45° (bratele de 30 cm), prinsa cu cate 2 suruburi lungi la fiecare capat.</figcaption>
+<figcaption>Peretele din spate, vazut din interior. In fiecare colt o proptea la 45°, prinsa cu cate 2 suruburi lungi la fiecare capat: <b>jos cu brate de 30 cm, sus cu brate de 15 cm</b>.</figcaption>
 </figure>
 
-<div class="warn"><b>De ce trebuie proptelele din colturi:</b> o rama goala se stramba — impinge-o dintr-o parte si se face romb. Propteaua inclinata din colt e cea care o tine dreapta. <b>Fara ele, casuta se leagana.</b> Fiecare perete primeste 4, cate una in fiecare colt: 16 in total. La peretele din fata, cele din colturile de sus se prind SI in stalpii grosi de 9 cm.</div>
+<div class="warn"><b>De ce trebuie proptelele din colturi:</b> o rama goala se stramba — impinge-o dintr-o parte si se face romb. Propteaua inclinata din colt e cea care o tine dreapta. <b>Fara ele, casuta se leagana.</b> Fiecare perete primeste 4, cate una in fiecare colt: 16 in total. <b>Regula de taiere: cele de JOS au bratele de 30 cm (taiate la 424); cele de SUS au bratele de 15 cm (taiate la 212)</b> — sus sunt mai scurte ca sa nu se bata cap in cap cu geamurile si cu fereastra. La peretele din fata, cele de sus se prind SI in stalpii grosi de 9 cm.</div>
 
 <div class="note"><b>Regula de aur:</b> inainte sa prinzi proptelele, masori cele doua diagonale ale ramei cu ruleta. Trebuie sa fie egale (voie 3 mm diferenta). Proptelele „ingheata" rama exact in forma in care o gasesc — daca era stramba, ramane stramba.</div>
 
 <div class="fix"><b>Bonus fata de varianta cu X:</b> mijlocul peretelui ramane complet liber — geamurile pot sta oriunde, si interiorul arata curat.</div>
 
-<h2>4 · Din ce straturi e facut peretele</h2>
+
+<h3>Sculele, pe etape</h3>
+
+<table>
+<tr><th>Etapa</th><th>Ce iti trebuie</th></tr>
+<tr><td>Trasat</td><td>ruleta · creion · echer/vinclu de tamplarie · sfoara cu creta (liniile joistelor)</td></tr>
+<tr><td>Taiat</td><td>fierastrau circular HS7611K (drept) · fierastrau de mana (colturi, finisari)</td></tr>
+<tr><td>Gaurit + insurubat</td><td>GSR cu ambreiaj · biti T20 / T25 / T30 · burghie 3,5 · 6 · 8 · 11 · 13</td></tr>
+<tr><td>Montaj si control</td><td>nivela · cleme (piesa taiata = piesa prinsa) · martorul de 90 mm din offcut</td></tr>
+</table>
+
+<figure>
+<svg viewBox="0 0 360 190" width="330" xmlns="http://www.w3.org/2000/svg">
+  <!-- talpa -->
+  <rect x="70" y="120" width="220" height="26" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- verticala -->
+  <rect x="150" y="30" width="30" height="90" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- suruburi prin talpa in capatul verticalei -->
+  <line x1="158" y1="158" x2="160" y2="80" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="172" y1="158" x2="170" y2="80" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="60" y="175" font-size="9.5" fill="#555">2× surub 5×80, prin talpa, in capatul verticalei</text>
+  <text x="240" y="50" font-size="9.5" fill="#b3261e" font-weight="bold">pregaurit 3,5 —</text>
+  <text x="240" y="62" font-size="9.5" fill="#b3261e">capatul de lemn</text>
+  <text x="240" y="74" font-size="9.5" fill="#b3261e">crapa altfel</text>
+  <line x1="236" y1="58" x2="176" y2="70" stroke="#b3261e" stroke-width="0.7"/>
+  <text x="60" y="40" font-size="9.5" fill="#555">verticala</text>
+  <line x1="88" y1="43" x2="148" y2="50" stroke="#555" stroke-width="0.7"/>
+  <text x="40" y="130" font-size="9.5" fill="#555">talpa</text>
+  <line x1="58" y1="132" x2="68" y2="133" stroke="#555" stroke-width="0.7"/>
+<line x1="150" y1="24" x2="180" y2="24" stroke="#1a1a1a" stroke-width="0.6"/><line x1="150" y1="21" x2="150" y2="27" stroke="#1a1a1a" stroke-width="0.6"/><line x1="180" y1="21" x2="180" y2="27" stroke="#1a1a1a" stroke-width="0.6"/><text x="165.0" y="21" font-size="7" text-anchor="middle">45</text><line x1="298" y1="120" x2="298" y2="146" stroke="#1a1a1a" stroke-width="0.6"/><line x1="295" y1="120" x2="301" y2="120" stroke="#1a1a1a" stroke-width="0.6"/><line x1="295" y1="146" x2="301" y2="146" stroke="#1a1a1a" stroke-width="0.6"/><text x="305" y="133.0" font-size="7" text-anchor="middle" transform="rotate(-90 305 133.0)">42</text></svg>
+<figcaption>Asa se prinde FIECARE verticala: 2 suruburi prin talpa si 2 prin cununa, mereu cu gaura de 3,5 data inainte.</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 360 266" width="330" xmlns="http://www.w3.org/2000/svg">
+<text x="180.0" y="16.0" font-size="10.5" fill="#1a1a1a" text-anchor="middle" font-weight="bold">Cum se prinde talpa in podea</text>
+<rect x="170.0" y="167.0" width="54.0" height="55.0" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="125.0" y="150.0" width="160.0" height="17.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="170.0" y="125.0" width="54.0" height="25.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="170.0" y="98.0" width="27.0" height="27.0" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="162.0" y="98.0" width="8.0" height="52.0" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.8"/>
+<line x1="200.0" y1="128.0" x2="200.0" y2="212.0" stroke="#555" stroke-width="1.8" stroke-dasharray="4 3"/>
+<text x="290.0" y="106.0" font-size="8.5" fill="#555" text-anchor="start">surub 6×140,</text>
+<text x="290.0" y="118.0" font-size="8.5" fill="#555" text-anchor="start">la fiecare 400,</text>
+<text x="290.0" y="130.0" font-size="8.5" fill="#555" text-anchor="start">pe linia joistei</text>
+<line x1="287.0" y1="112.0" x2="203.0" y2="138.0" stroke="#555" stroke-width="0.6"/>
+<text x="118.0" y="116.0" font-size="8" fill="#555" text-anchor="end">verticala</text>
+<text x="118.0" y="138.0" font-size="8" fill="#555" text-anchor="end">talpa</text>
+<text x="118.0" y="161.0" font-size="8" fill="#555" text-anchor="end">dusumeaua</text>
+<text x="118.0" y="195.0" font-size="8" fill="#555" text-anchor="end" font-weight="bold">JOISTA</text>
+<line x1="252.0" y1="125.0" x2="252.0" y2="212.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="249.0" y1="125.0" x2="255.0" y2="125.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="249.0" y1="150.0" x2="255.0" y2="150.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="249.0" y1="167.0" x2="255.0" y2="167.0" stroke="#1a1a1a" stroke-width="0.7"/><line x1="249.0" y1="212.0" x2="255.0" y2="212.0" stroke="#1a1a1a" stroke-width="0.7"/><text x="260.0" y="137.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 260.0 137.5)">42</text><text x="260.0" y="158.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 260.0 158.5)">28</text><text x="260.0" y="189.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 260.0 189.5)">≥70</text>
+<text x="180.0" y="242.0" font-size="7.8" fill="#b3261e" text-anchor="middle">in scandura goala surubul nu tine — de aceea liniile joistelor</text>
+<text x="180.0" y="254.0" font-size="7.8" fill="#b3261e" text-anchor="middle">se traseaza cu creta INAINTE de asezarea peretilor</text>
+<line x1="170" y1="92" x2="197" y2="92" stroke="#1a1a1a" stroke-width="0.6"/><line x1="170" y1="89" x2="170" y2="95" stroke="#1a1a1a" stroke-width="0.6"/><line x1="197" y1="89" x2="197" y2="95" stroke="#1a1a1a" stroke-width="0.6"/><text x="183.5" y="89" font-size="7" text-anchor="middle">45</text><text x="158" y="92" font-size="6.5" fill="#555" text-anchor="end">lambriu 12,5</text></svg>
+<figcaption>Sectiune prin marginea peretelui: talpa trece prin dusumea si se ancoreaza in joista — lantul 42+28+70.</figcaption>
+</figure>
+
+
+<h2>4 · Straturile peretelui</h2>
 
 <figure>
 <svg viewBox="0 0 470 340" width="440" xmlns="http://www.w3.org/2000/svg">
@@ -233,12 +316,12 @@
   <text x="170" y="200" font-size="10.5" font-weight="bold" text-anchor="end">1 · lambriu</text>
   <text x="170" y="213" font-size="9.5" fill="#555" text-anchor="end">scanduri orizontale,</text>
   <text x="170" y="225" font-size="9.5" fill="#555" text-anchor="end">suprapuse 2 cm,</text>
-  <text x="170" y="237" font-size="9.5" fill="#555" text-anchor="end">batute direct pe rama</text>
+  <text x="170" y="237" font-size="9.5" fill="#555" text-anchor="end">batute direct pe rama</text><text x="170" y="249" font-size="9.5" fill="#555" text-anchor="end">(12,5 × 96)</text>
   <line x1="174" y1="196" x2="185" y2="190" stroke="#555" stroke-width="0.7"/>
 
   <text x="306" y="90" font-size="10.5" font-weight="bold">2 · rama peretelui</text>
   <text x="306" y="103" font-size="9.5" fill="#555">(lemnele verticale — pe ele</text>
-  <text x="306" y="115" font-size="9.5" fill="#555">se bat scandurile)</text>
+  <text x="306" y="115" font-size="9.5" fill="#555">se bat scandurile)</text><text x="306" y="127" font-size="9.5" fill="#555">verticale 45×45 · talpa/cununa 42×90</text>
   <line x1="302" y1="86" x2="246" y2="92" stroke="#555" stroke-width="0.7"/>
 
   <text x="306" y="190" font-size="10.5" font-weight="bold">3 · interiorul ramane liber</text>
@@ -252,86 +335,616 @@
 <div class="note"><b>Doua conditii ca sa mearga fara folie:</b> (1) scandurile se suprapun generos, <b>2 cm</b> una peste alta; (2) <b>lazura pe TOATE fetele inainte de a fi batute</b> — dupa montaj nu mai ajungi la spatele lor. La ploaie cu vant puternic pot aparea dungi de umezeala inauntru — normal, se usuca singure. E casuta de joaca, nu dormitor.</div>
 
 <div class="pgbrk"></div>
-<h2>5 · Peretele lateral si geamul lui</h2>
+<h2>5 · PERETELE DIN SPATE</h2>
+
+<p>Singurul perete care se face COMPLET jos, pe iarba — dupa ridicare nu mai ajungi la fata lui dinspre gard. Dreptunghi simplu, fara goluri: 2000 lat, 1700 inalt.</p>
+<figure>
+<svg viewBox="0 0 470 330" width="440" xmlns="http://www.w3.org/2000/svg">
+<text x="235" y="18" font-size="10.5" font-weight="bold" text-anchor="middle">SPATE — elevatie cu toate cotele</text>
+<rect x="70.0" y="284.1" width="280.0" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="70.0" y="52.0" width="280.0" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="70.0" y="57.9" width="6.3" height="226.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="136.9" y="57.9" width="6.3" height="226.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="206.9" y="57.9" width="6.3" height="226.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="276.9" y="57.9" width="6.3" height="226.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="343.7" y="57.9" width="6.3" height="226.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<line x1="75.2" y1="80.9" x2="96.2" y2="59.9" stroke="#888" stroke-width="5"/>
+<line x1="344.9" y1="80.9" x2="323.9" y2="59.9" stroke="#888" stroke-width="5"/>
+<line x1="75.2" y1="240.1" x2="117.2" y2="282.1" stroke="#888" stroke-width="5"/>
+<line x1="344.9" y1="240.1" x2="302.9" y2="282.1" stroke="#888" stroke-width="5"/>
+<text x="116.2" y="264.8" font-size="8" fill="#555" text-anchor="middle">424</text>
+<line x1="112.0" y1="263.4" x2="91.0" y2="269.0" stroke="#555" stroke-width="0.6"/>
+<text x="116.2" y="87.0" font-size="8" fill="#555" text-anchor="middle">212</text>
+<line x1="112.0" y1="88.4" x2="89.6" y2="71.6" stroke="#555" stroke-width="0.6"/>
+<line x1="70.0" y1="36.0" x2="350.0" y2="36.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="70.0" y1="33.0" x2="70.0" y2="39.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="140.0" y1="33.0" x2="140.0" y2="39.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="210.0" y1="33.0" x2="210.0" y2="39.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="280.0" y1="33.0" x2="280.0" y2="39.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="350.0" y1="33.0" x2="350.0" y2="39.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="105.0" y="33.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">500</text>
+<text x="175.0" y="33.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">500</text>
+<text x="245.0" y="33.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">500</text>
+<text x="315.0" y="33.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">500</text>
+<line x1="70.0" y1="308.0" x2="350.0" y2="308.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="70.0" y1="305.0" x2="70.0" y2="311.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="350.0" y1="305.0" x2="350.0" y2="311.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="210.0" y="305.0" font-size="8" fill="#1a1a1a" text-anchor="middle">2000</text>
+<line x1="368.0" y1="290.0" x2="368.0" y2="52.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="365.0" y1="290.0" x2="371.0" y2="290.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="365.0" y1="284.1" x2="371.0" y2="284.1" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="365.0" y1="57.9" x2="371.0" y2="57.9" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="365.0" y1="52.0" x2="371.0" y2="52.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="376.0" y="287.1" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 376.0 287.1)">42</text>
+<text x="376.0" y="171.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 376.0 171.0)">1616 (verticalele)</text>
+<text x="376.0" y="54.9" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 376.0 54.9)">42</text>
+<line x1="54.0" y1="290.0" x2="54.0" y2="52.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="51.0" y1="290.0" x2="57.0" y2="290.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="51.0" y1="52.0" x2="57.0" y2="52.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="62.0" y="171.0" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 62.0 171.0)">1700</text>
+</svg>
+<figcaption>Elevatia peretelui din spate: interaxele de 500, lantul de inaltimi 42+1616+42, proptelele cu bratele lor.</figcaption>
+</figure>
+
+<h3>Materiale pentru peretele din SPATE</h3>
+
+<table>
+<tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
+<tr><td>Lemnul de jos + lemnul de sus</td><td class="mono">42×90</td><td class="mono">2000</td><td class="mono">2</td></tr>
+<tr><td>Verticale (1700 − 2×42)</td><td class="mono">45×45</td><td class="mono">1616</td><td class="mono">5</td></tr>
+<tr><td>Proptele de colt</td><td class="mono">45×45</td><td class="mono">2× 424 (jos) + 2× 212 (sus), capete 45°</td><td class="mono">4</td></tr>
+<tr><td>Lambriu</td><td class="mono">12,5×96</td><td class="mono">randuri de ~2000</td><td class="mono">~4,6 m²</td></tr>
+<tr><td>Suruburi</td><td colspan="3">5×80 rama (2 sus + 2 jos pe verticala, pregaurit 3,5) · 6×120 proptele · inox 3,5×40 lambriu · <b>dupa ridicare:</b> 6 tirfoane 10×120 in stalpii de 4 m + 6×140 lemnul de jos in podea, pe liniile joistelor</td></tr>
+</table>
+
+<h3>Montaj SPATE, pas cu pas (jos, pe iarba)</h3>
 
 <figure>
-<svg viewBox="0 0 470 410" width="430" xmlns="http://www.w3.org/2000/svg">
-  <!-- trapez: spate STANGA (mai inalt), fata DREAPTA; k=0.16; x 120..282, jos 340 -->
-  <polygon points="120,340 282,340 282,77 120,28" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="2"/>
-  <!-- contrafise in colturi -->
-  <line x1="128" y1="76" x2="168" y2="40" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="274" y1="122" x2="238" y2="87" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="128" y1="294" x2="168" y2="332" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <line x1="274" y1="294" x2="238" y2="332" stroke="#888" stroke-width="8" opacity="0.9"/>
-  <!-- geam centrat: 305..705 de la spate, prag 950 -->
-  <rect x="169" y="124" width="64" height="64" fill="#fff" stroke="#1a1a1a" stroke-width="2"/>
-  <line x1="169" y1="124" x2="233" y2="188" stroke="#ccc" stroke-width="1"/>
-  <line x1="233" y1="124" x2="169" y2="188" stroke="#ccc" stroke-width="1"/>
-  <text x="201" y="114" font-size="10.5" text-anchor="middle" font-weight="bold">geamul</text>
-
-  <!-- descriere geam -->
-  <text x="300" y="200" font-size="9.5" fill="#555">golul: 40 × 40 cm, cu partea</text>
-  <text x="300" y="213" font-size="9.5" fill="#555">de jos la 95 cm — copiii vad</text>
-  <text x="300" y="226" font-size="9.5" fill="#555">afara si cand stau jos.</text>
-  <text x="300" y="243" font-size="9.5" fill="#1a6b3c">Cu proptele in colturi, geamul</text>
-  <text x="300" y="256" font-size="9.5" fill="#1a6b3c">poate sta linistit la mijloc.</text>
-
-  <!-- margine sus -->
-  <text x="300" y="60" font-size="10.5">marginea de sus</text>
-  <text x="300" y="73" font-size="10.5">urmeaza panta</text>
-  <line x1="296" y1="64" x2="224" y2="60" stroke="#555" stroke-width="0.7"/>
-
-  <!-- stanga -->
-  <text x="108" y="150" font-size="10.5" fill="#555" text-anchor="end">mai inalt</text>
-  <text x="108" y="163" font-size="10.5" fill="#555" text-anchor="end">in spate</text>
-
-  <!-- jos -->
-  <text x="120" y="362" font-size="10.5" text-anchor="middle" font-weight="bold">spate (gard)</text>
-  <text x="282" y="362" font-size="10.5" text-anchor="middle" font-weight="bold">fata (terasa)</text>
-  <line x1="120" y1="380" x2="282" y2="380" stroke="#1a1a1a" stroke-width="0.8"/>
-  <line x1="120" y1="375" x2="120" y2="385" stroke="#1a1a1a" stroke-width="0.8"/>
-  <line x1="282" y1="375" x2="282" y2="385" stroke="#1a1a1a" stroke-width="0.8"/>
-  <text x="201" y="396" font-size="10" text-anchor="middle">1010</text>
-</svg>
-<figcaption>Peretele lateral (sunt doua, fata in fata, ca in oglinda). Proptele scurte in colturi, geamul la mijloc.</figcaption>
+<svg viewBox="0 0 470 268" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- PANOU A: rama cu cote (k=0.11: 2000->220, 1700->187) -->
+  <rect x="30" y="30" width="220" height="6" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <rect x="30" y="211" width="220" height="6" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <rect x="30" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <rect x="84" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <rect x="138" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <rect x="192" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <rect x="245" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <line x1="35" y1="46" x2="84" y2="46" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="60" y="43" font-size="8.5" text-anchor="middle">500</text>
+  <text x="20" y="128" font-size="8.5" text-anchor="middle" transform="rotate(-90 20 128)">verticale 1616</text>
+  <line x1="30" y1="224" x2="250" y2="224" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="30" y1="220" x2="30" y2="228" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="250" y1="220" x2="250" y2="228" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="140" y="234" font-size="8.5" text-anchor="middle">2000</text>
+  <line x1="258" y1="30" x2="258" y2="217" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="254" y1="30" x2="262" y2="30" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="254" y1="217" x2="262" y2="217" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="268" y="126" font-size="8.5" text-anchor="middle" transform="rotate(-90 268 126)">1700</text>
+  <text x="140" y="250" font-size="9.5" text-anchor="middle" font-weight="bold">A — rama: talpa, cununa, 5 verticale la 500</text>
+  <!-- PANOU B: diagonale + proptele -->
+  <rect x="290" y="30" width="160" height="6" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <rect x="290" y="211" width="160" height="6" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <rect x="290" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <rect x="445" y="36" width="5" height="175" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+  <line x1="295" y1="211" x2="445" y2="36" stroke="#b3261e" stroke-width="1" stroke-dasharray="5 3"/>
+  <line x1="295" y1="36" x2="445" y2="211" stroke="#b3261e" stroke-width="1" stroke-dasharray="5 3"/>
+  <rect x="330" y="110" width="80" height="26" fill="#fff" opacity="0.9"/>
+  <text x="370" y="120" font-size="8.5" fill="#b3261e" text-anchor="middle">masori AMBELE</text>
+  <text x="370" y="131" font-size="8.5" fill="#b3261e" text-anchor="middle">diagonale: egale ±3</text>
+  <line x1="297" y1="52" x2="311" y2="38" stroke="#888" stroke-width="6" opacity="0.9"/>
+  <line x1="443" y1="52" x2="429" y2="38" stroke="#888" stroke-width="6" opacity="0.9"/>
+  <line x1="297" y1="185" x2="323" y2="209" stroke="#888" stroke-width="6" opacity="0.9"/>
+  <line x1="443" y1="185" x2="417" y2="209" stroke="#888" stroke-width="6" opacity="0.9"/>
+  <text x="370" y="250" font-size="9.5" text-anchor="middle" font-weight="bold">B — apoi proptelele: sus 212, jos 424</text>
+<line x1="290.0" y1="236" x2="450.0" y2="236" stroke="#1a1a1a" stroke-width="0.7"/><line x1="290.0" y1="233" x2="290.0" y2="239" stroke="#1a1a1a" stroke-width="0.7"/><line x1="450.0" y1="233" x2="450.0" y2="239" stroke="#1a1a1a" stroke-width="0.7"/><text x="370.0" y="233" font-size="7.5" text-anchor="middle">2000</text><line x1="456" y1="30" x2="456" y2="217" stroke="#1a1a1a" stroke-width="0.7"/><line x1="453" y1="30" x2="459" y2="30" stroke="#1a1a1a" stroke-width="0.7"/><line x1="453" y1="217" x2="459" y2="217" stroke="#1a1a1a" stroke-width="0.7"/><text x="449" y="123.5" font-size="7" text-anchor="middle" transform="rotate(-90 449 123.5)">1700</text></svg>
+<figcaption>Cele doua etape care decid tot: intai rama dreapta, apoi „inghetata" cu proptele. Abia dupa aceea lambriul.</figcaption>
 </figure>
+
+<ol>
+<li><b>Aseaza talpa si cununa</b> paralele pe iarba si insemneaza pe AMANDOUA pozitiile verticalelor: interax la <span class="mono">0 · 500 · 1000 · 1500 · 2000</span>.</li>
+<li><b>Prinde cele 5 verticale</b> (1616): cate 2× surub 5×80 prin talpa si 2 prin cununa, pregaurit 3,5 — altfel capetele crapa.</li>
+<li><b>Masoara AMBELE diagonale ale ramei</b> — egale, voie 3 mm. Corectezi ACUM, impingand usor de colturi. Apoi <b>proptelele</b>: jos 2× 424, sus 2× 212, cate 2× 6×120 la fiecare capat.</li>
+<li><b>Lambriul, complet, cat panoul e jos:</b> lazura pe toate fetele INAINTE, primul rand jos, fiecare rand suprapune 2 cm peste cel de sub el, un inox 3,5×40 in fiecare verticala.</li>
+<li><b>Ridicare in doi</b>, propteste, apoi prinde: cate <b>3 tirfoane 10×120</b> in fiecare stalp de 4 m (jos ~200, mijloc, sus ~200 — pregaurit Ø8 in perete, Ø6 in stalp) si <b>talpa cu 6×140 la fiecare 400</b>, pe liniile joistelor + vincluri pe interior.</li>
+</ol>
+
+
+
+<figure>
+<svg viewBox="0 0 470 250" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- C: lambriul pe perete -->
+  <rect x="30" y="36" width="220" height="175" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="1.2"/>
+  <g stroke="#1a1a1a" stroke-width="0.8" fill="#e8e8e8">
+    <rect x="30" y="186" width="220" height="25"/>
+    <rect x="30" y="163" width="220" height="25"/>
+    <rect x="30" y="140" width="220" height="25"/>
+    <rect x="30" y="117" width="220" height="25"/>
+    <rect x="30" y="94" width="220" height="25"/>
+    <rect x="30" y="71" width="220" height="25"/>
+    <rect x="30" y="48" width="220" height="25"/>
+  </g>
+  <line x1="30" y1="36" x2="250" y2="36" stroke="#1a1a1a" stroke-width="1.2"/>
+  <!-- puncte inox pe verticale -->
+  <g fill="#1a1a1a">
+    <circle cx="60" cy="175" r="1.6"/><circle cx="114" cy="175" r="1.6"/><circle cx="168" cy="175" r="1.6"/><circle cx="222" cy="175" r="1.6"/>
+    <circle cx="60" cy="129" r="1.6"/><circle cx="114" cy="129" r="1.6"/><circle cx="168" cy="129" r="1.6"/><circle cx="222" cy="129" r="1.6"/>
+    <circle cx="60" cy="83" r="1.6"/><circle cx="114" cy="83" r="1.6"/><circle cx="168" cy="83" r="1.6"/><circle cx="222" cy="83" r="1.6"/>
+  </g>
+  <line x1="262" y1="200" x2="262" y2="60" stroke="#1a6b3c" stroke-width="1.6"/>
+  <path d="M258,66 L262,56 L266,66 z" fill="#1a6b3c"/>
+  <text x="270" y="120" font-size="8.5" fill="#1a6b3c" transform="rotate(-90 270 120)" text-anchor="middle">incepi de JOS</text>
+  <text x="140" y="216" font-size="8" fill="#555" text-anchor="middle">scandura 96 lata · fiecare rand acopera 20</text><text x="140" y="228" font-size="9.5" text-anchor="middle" font-weight="bold">C — lambriul: randuri suprapuse 2 cm,</text>
+  <text x="140" y="240" font-size="9.5" text-anchor="middle" font-weight="bold">un inox 3,5×40 in fiecare verticala</text>
+  <!-- D: prinderea de stalpii de 4 m -->
+  <rect x="360" y="36" width="24" height="175" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="336" y="36" width="24" height="175" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="1.2"/>
+  <line x1="322" y1="58" x2="378" y2="58" stroke="#555" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <line x1="322" y1="123" x2="378" y2="123" stroke="#555" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <line x1="322" y1="188" x2="378" y2="188" stroke="#555" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="418" y="60" font-size="8.5" fill="#555">sus ~200</text>
+  <text x="418" y="125" font-size="8.5" fill="#555">mijloc</text>
+  <text x="418" y="190" font-size="8.5" fill="#555">jos ~200</text>
+  <text x="348" y="28" font-size="8.5" text-anchor="middle">perete</text>
+  <text x="372" y="18" font-size="8.5" text-anchor="middle">stalp 4 m</text>
+  <line x1="372" y1="21" x2="372" y2="34" stroke="#555" stroke-width="0.6"/>
+  <text x="393" y="228" font-size="9.5" text-anchor="middle" font-weight="bold">D — 3 tirfoane 10×120</text>
+  <text x="393" y="240" font-size="9.5" text-anchor="middle" font-weight="bold">pe fiecare capat</text>
+</svg>
+<figcaption>C: imbracarea peretelui, jos pe iarba. D: dupa ridicare, capetele peretelui se prind de stalpii de 4 m — pregaurit Ø8 in perete, Ø6 in stalp.</figcaption>
+</figure>
+<div class="pgbrk"></div>
+<h2>6 · PERETII LATERALI — si geamurile lor</h2>
+
+<figure>
+<svg viewBox="0 0 470 460" width="420" xmlns="http://www.w3.org/2000/svg">
+<text x="235" y="18" font-size="10.5" font-weight="bold" text-anchor="middle">LATERAL — elevatie cu toate cotele</text>
+<rect x="120.0" y="392.9" width="171.7" height="7.1" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<polygon points="120.0,68.5 291.7,120.9 291.7,128.0 120.0,75.6" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="120.0" y="75.6" width="7.7" height="317.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="202.0" y="101.8" width="7.7" height="291.0" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="284.1" y="128.0" width="7.7" height="264.9" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="155.7" y="87.7" width="7.7" height="305.2" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="246.7" y="115.4" width="7.7" height="277.4" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="163.3" y="238.5" width="83.3" height="7.1" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="163.3" y="148.1" width="83.3" height="7.1" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="163.3" y="155.2" width="83.3" height="83.3" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.3"/>
+<rect x="171.0" y="162.8" width="68.0" height="68.0" fill="#fff" stroke="#1a1a1a" stroke-width="1"/>
+<line x1="171.0" y1="162.8" x2="239.0" y2="230.8" stroke="#ccc" stroke-width="0.8"/>
+<line x1="239.0" y1="162.8" x2="171.0" y2="230.8" stroke="#ccc" stroke-width="0.8"/>
+<line x1="123.8" y1="102.3" x2="149.3" y2="85.4" stroke="#888" stroke-width="5"/>
+<line x1="287.9" y1="152.3" x2="262.4" y2="122.2" stroke="#888" stroke-width="5"/>
+<line x1="125.8" y1="341.9" x2="174.8" y2="390.9" stroke="#888" stroke-width="5"/>
+<line x1="285.9" y1="341.9" x2="236.9" y2="390.9" stroke="#888" stroke-width="5"/>
+<line x1="120.0" y1="416.0" x2="291.7" y2="416.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="120.0" y1="413.0" x2="120.0" y2="419.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="163.3" y1="413.0" x2="163.3" y2="419.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="246.7" y1="413.0" x2="246.7" y2="419.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="291.7" y1="413.0" x2="291.7" y2="419.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="141.7" y="413.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">255</text>
+<text x="205.0" y="413.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">490</text>
+<text x="269.2" y="413.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">265</text>
+<line x1="120.0" y1="434.0" x2="291.7" y2="434.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="120.0" y1="431.0" x2="120.0" y2="437.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="291.7" y1="431.0" x2="291.7" y2="437.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="205.9" y="431.0" font-size="8" fill="#1a1a1a" text-anchor="middle">1010</text>
+<line x1="102.0" y1="400.0" x2="102.0" y2="68.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="99.0" y1="400.0" x2="105.0" y2="400.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="99.0" y1="68.5" x2="105.0" y2="68.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="110.0" y="234.2" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 110.0 234.2)">1950 (spate)</text>
+<line x1="309.7" y1="400.0" x2="309.7" y2="120.9" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="306.7" y1="400.0" x2="312.7" y2="400.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="306.7" y1="120.9" x2="312.7" y2="120.9" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="317.7" y="260.4" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 317.7 260.4)">1642 (fata)</text>
+<line x1="333.7" y1="400.0" x2="333.7" y2="120.9" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="330.7" y1="400.0" x2="336.7" y2="400.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="330.7" y1="238.5" x2="336.7" y2="238.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="330.7" y1="155.2" x2="336.7" y2="155.2" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="330.7" y1="120.9" x2="336.7" y2="120.9" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="341.7" y="319.2" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 341.7 319.2)">950</text>
+<text x="341.7" y="196.8" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 341.7 196.8)">490 gol</text>
+<text x="341.7" y="138.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 341.7 138.0)">202</text>
+<text x="123.8" y="247.0" font-size="7.5" fill="#555" text-anchor="middle" transform="rotate(-90 123.8 247.0)">1866</text>
+<text x="205.9" y="281.0" font-size="7.5" fill="#555" text-anchor="middle" transform="rotate(-90 205.9 281.0)">1712 (taiata la gol)</text>
+<text x="287.8" y="264.0" font-size="7.5" fill="#555" text-anchor="middle" transform="rotate(-90 287.8 264.0)">1558</text>
+<text x="205.9" y="58.3" font-size="8" fill="#555" text-anchor="middle">lemnul de sus: ~1050, capete taiate la 15,6°</text>
+<text x="140.4" y="452.0" font-size="9" fill="#1a1a1a" text-anchor="middle" font-weight="bold">spate (gard)</text>
+<text x="271.3" y="452.0" font-size="9" fill="#1a1a1a" text-anchor="middle" font-weight="bold">fata (terasa)</text>
+<line x1="155.7" y1="147.2" x2="163.35" y2="147.2" stroke="#1a1a1a" stroke-width="0.6"/><line x1="155.7" y1="144.2" x2="155.7" y2="150.2" stroke="#1a1a1a" stroke-width="0.6"/><line x1="163.35" y1="144.2" x2="163.35" y2="150.2" stroke="#1a1a1a" stroke-width="0.6"/><text x="159.52499999999998" y="144.2" font-size="6.5" text-anchor="middle">45</text><line x1="153.35" y1="238.5" x2="153.35" y2="245.64" stroke="#1a1a1a" stroke-width="0.6"/><line x1="150.35" y1="238.5" x2="156.35" y2="238.5" stroke="#1a1a1a" stroke-width="0.6"/><line x1="150.35" y1="245.64" x2="156.35" y2="245.64" stroke="#1a1a1a" stroke-width="0.6"/><text x="160.35" y="242.07" font-size="6.5" text-anchor="middle" transform="rotate(-90 160.35 242.07)">42</text><text x="267.9" y="97.39999999999998" font-size="8" fill="#1a1a1a" font-weight="bold" transform="rotate(-17 267.9 97.39999999999998)">15,6°</text></svg>
+<figcaption>Peretele lateral (sunt doua, fata in fata, ca in oglinda), cu toata rama la vedere: talpa, verticalele, dublurile golului, pragul si lemnul de deasupra. Geamul sta pe prag, intre dubluri — nu in aer.</figcaption>
+</figure>
+
+<h3>Cum il construiesti, pas cu pas</h3>
+
+<ol>
+<li><b>Asamblezi rama culcata pe podea:</b> lemnul de jos (1010), cele 3 verticale — <span class="mono">1558</span> spre fata, <span class="mono">1712</span> la mijloc, <span class="mono">1866</span> spre spate — si lemnul de sus, care e <b>inclinat</b> (~1050, cu capetele taiate oblic la 15,6°).</li>
+<li><b>Verifici cu ruleta cele doua diagonale</b> ale ramei — egale, voie 3 mm.</li>
+<li><b>Faci golul geamului:</b> doua verticale in plus pe marginile golului, pragul la <span class="mono">950</span> si lemnul de deasupra. Golul dintre ele: <b>490 × 490</b> — exact cat fereastra de lemn care intra in el la pasul 7. Verticala din mijloc (1712) se taie: ramane bucata de jos, care sprijina pragul, si bucata de sus, deasupra golului.</li>
+<li><b>Pui cele 4 proptele</b> din colturi: jos 424, sus 212 (cele scurte nu ating geamul).</li>
+<li><b>Bati lambriul</b> cat panoul e inca culcat — de jos in sus; randurile de sus le tai oblic, dupa panta. Lazura pe toate fetele, inainte.</li>
+<li><b>Il ridici si il prinzi:</b> capatul din spate de peretele din spate (deja ridicat), capatul din fata de stalpul 90×90, iar lemnul de jos in podea cu suruburi de 140 — <b>pe linia joistei de capat</b>, nu in scanduri goale.</li>
+<li><b>La final, geamul:</b> fereastra de lemn (tocul) intra IN gol, se insurubeaza in marginile lui, apoi plasticul si sipcile (vezi mai jos).</li>
+</ol>
+
+<h3>Materiale pentru UN perete lateral (×2 pentru amandoua)</h3>
+
+<table>
+<tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
+<tr><td>Lemnul de jos</td><td class="mono">42×90</td><td class="mono">1010</td><td class="mono">1</td></tr>
+<tr><td>Lemnul de sus, inclinat</td><td class="mono">42×90</td><td class="mono">~1050, capete oblice 15,6°</td><td class="mono">1</td></tr>
+<tr><td>Verticale</td><td class="mono">45×45</td><td class="mono">1558 · 1712 · 1866</td><td class="mono">3</td></tr>
+<tr><td>Verticale in plus, pe marginile golului</td><td class="mono">45×45</td><td class="mono">pe loc, dupa panou</td><td class="mono">2</td></tr>
+<tr><td>Prag + lemnul de deasupra golului</td><td class="mono">42×90</td><td class="mono">490</td><td class="mono">2</td></tr>
+<tr><td>Proptele de colt</td><td class="mono">45×45</td><td class="mono">2× 424 (jos) + 2× 212 (sus), capete 45°</td><td class="mono">4</td></tr>
+<tr><td>Fereastra de lemn (tocul) — intra fix in golul de 490×490</td><td class="mono">45×45</td><td class="mono">2× 490 (sus+jos) + 2× 400 (intre ele)</td><td class="mono">4</td></tr>
+<tr><td>Geamul</td><td class="mono">acrilic 4 mm</td><td class="mono">440 × 440 (din placa 500×500)</td><td class="mono">1</td></tr>
+<tr><td>Sipci de prindere a geamului</td><td class="mono">18×28</td><td class="mono">~440</td><td class="mono">8</td></tr>
+<tr><td>Lambriu</td><td class="mono">12,5×96</td><td class="mono">randuri de ~1010</td><td class="mono">~1,9 m²</td></tr>
+<tr><td>Suruburi</td><td colspan="3">5×80 rama (2 sus + 2 jos pe verticala) · 6×120 colturi si proptele · 6×140 lemnul de jos in joista · inox 3,5×40 lambriu · 4×50 sipcile geamului</td></tr>
+</table>
 
 <h3>Cum se face geamul (il facem noi, nu il cumparam)</h3>
 
+<div class="fix"><b>Geamul sta pe un cadru de lemn — exact ca o fereastra adevarata.</b> (1) Golul din perete e incadrat de lemn pe toate 4 laturile (verticalele dublate + pragul + lemnul de deasupra) si are <b>490 × 490</b>. (2) Faci separat, jos pe masa, <b>fereastra de lemn (tocul)</b>: rigla 45×45, doua piese de 490 sus si jos + doua de 400 intre ele → un patrat de exact 490×490 pe exterior, cu lumina de 400×400. (3) Tocul <b>intra fix in gol</b> si se prinde cu <b>2 suruburi 5×80 pe fiecare latura</b>, prin toc, in lemnul golului — capetele la ras. (4) Plasticul de 440×440 se aseaza pe toc (calca 20 pe fiecare latura) si e strans intre <b>doua sipci insurubate in toc, pe ambele fete</b>. Plasticul atinge doar lemnul tocului si sipcile — niciodata surub direct prin plastic in perete.</div>
+
 <figure>
-<svg viewBox="0 0 460 230" width="420" xmlns="http://www.w3.org/2000/svg">
-  <!-- rama block -->
-  <rect x="170" y="130" width="120" height="55" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="2"/>
-  <text x="230" y="205" font-size="10.5" text-anchor="middle">rama de lemn 45×45</text>
-  <!-- acrilic: se opreste PE rama -->
-  <rect x="226" y="35" width="7" height="95" fill="#dceef7" stroke="#1a1a1a" stroke-width="1.2"/>
+<svg viewBox="0 0 470 250" width="430" xmlns="http://www.w3.org/2000/svg">
+  <!-- marginile golului din perete (dublurile) -->
+  <rect x="120" y="120" width="45" height="70" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="295" y="120" width="45" height="70" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="112" y="228" font-size="9.5" fill="#555">peretele — marginile golului de 490</text>
+  <line x1="150" y1="216" x2="142" y2="192" stroke="#555" stroke-width="0.7"/>
+  <line x1="290" y1="216" x2="317" y2="192" stroke="#555" stroke-width="0.7"/>
+  <!-- tocul: intra intre margini -->
+  <rect x="165" y="128" width="130" height="45" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="230" y="156" font-size="9.5" text-anchor="middle">fereastra de lemn (tocul)</text>
+  <!-- suruburi toc->perete, orizontale -->
+  <line x1="168" y1="150" x2="132" y2="150" stroke="#555" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <line x1="292" y1="150" x2="328" y2="150" stroke="#555" stroke-width="1.4" stroke-dasharray="3 3"/>
+  <!-- acrilic pe toc -->
+  <rect x="226" y="40" width="7" height="88" fill="#dceef7" stroke="#1a1a1a" stroke-width="1.2"/>
   <text x="120" y="56" font-size="10.5" text-anchor="end">geam de plastic</text>
   <text x="120" y="68" font-size="10.5" text-anchor="end">(acrilic, 4 mm)</text>
   <line x1="124" y1="60" x2="224" y2="64" stroke="#555" stroke-width="0.7"/>
-  <!-- sipci pe fata ramei, flancheaza acrilicul -->
-  <rect x="200" y="102" width="24" height="28" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
-  <rect x="235" y="102" width="24" height="28" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
-  <text x="330" y="102" font-size="10.5">cate o sipca insurubata</text>
-  <text x="330" y="114" font-size="10.5">pe FIECARE parte —</text>
-  <text x="330" y="126" font-size="10.5" font-weight="bold">geamul nu poate fi</text>
-  <text x="330" y="138" font-size="10.5" font-weight="bold">impins afara de copii</text>
-  <line x1="328" y1="108" x2="261" y2="110" stroke="#555" stroke-width="0.7"/>
-  <!-- suruburi -->
-  <line x1="212" y1="102" x2="212" y2="176" stroke="#555" stroke-width="1.2" stroke-dasharray="3 3"/>
-  <line x1="247" y1="102" x2="247" y2="176" stroke="#555" stroke-width="1.2" stroke-dasharray="3 3"/>
-  <text x="115" y="150" font-size="9.5" fill="#555" text-anchor="end">suruburile trec prin</text>
-  <text x="115" y="162" font-size="9.5" fill="#555" text-anchor="end">sipca si intra in rama</text>
-  <line x1="119" y1="152" x2="209" y2="150" stroke="#555" stroke-width="0.7"/>
+  <!-- sipci pe toc, flancheaza acrilicul -->
+  <rect x="200" y="100" width="24" height="28" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
+  <rect x="235" y="100" width="24" height="28" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="330" y="66" font-size="10.5">cate o sipca insurubata</text>
+  <text x="330" y="78" font-size="10.5">in toc, pe FIECARE parte —</text>
+  <text x="330" y="90" font-size="10.5" font-weight="bold">geamul nu poate fi</text>
+  <text x="330" y="102" font-size="10.5" font-weight="bold">impins afara de copii</text>
+  <line x1="328" y1="72" x2="261" y2="106" stroke="#555" stroke-width="0.7"/>
+  <!-- suruburi sipci -->
+  <line x1="212" y1="100" x2="212" y2="166" stroke="#555" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="247" y1="100" x2="247" y2="166" stroke="#555" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="165" y1="205" x2="295" y2="205" stroke="#555" stroke-width="0.7"/>
+  <line x1="165" y1="201" x2="165" y2="209" stroke="#555" stroke-width="0.7"/>
+  <line x1="295" y1="201" x2="295" y2="209" stroke="#555" stroke-width="0.7"/>
+  <text x="230" y="216" font-size="8" fill="#555" text-anchor="middle">golul: 490</text>
+  <text x="352" y="140" font-size="9.5" fill="#555">tocul se insurubeaza</text>
+  <text x="352" y="152" font-size="9.5" fill="#555">orizontal in perete,</text>
+  <text x="352" y="164" font-size="9.5" fill="#555">2 suruburi pe latura</text>
+  <line x1="348" y1="146" x2="322" y2="150" stroke="#555" stroke-width="0.7"/>
 </svg>
-<figcaption>Geamul in taietura: plasticul se sprijina 2 cm pe rama si e prins intre cele doua sipci.</figcaption>
+<figcaption>Geamul in taietura: tocul de lemn intra in golul din perete si se insurubeaza in el; plasticul calca 2 cm pe toc si e strans intre cele doua sipci.</figcaption>
 </figure>
 
-<div class="warn"><b>Gaura prin plastic se da cu 1 mm mai larga decat surubul.</b> Plasticul se umfla la soare; daca e strans fix, crapa.</div>
+<div class="warn"><b>Doua reguli la geamuri:</b> (1) <b>gaura prin plastic se da cu 1 mm mai larga decat surubul</b> — plasticul se umfla la soare si crapa daca e strans fix; (2) <b>geamurile laterale NU se deschid</b> — un geam care se deschide pe lateral da direct intr-o cadere de 4 metri; singurul care se deschide e cel din fata, deasupra terasei.</div>
 
-<div class="warn"><b>Geamurile laterale NU se deschid.</b> Sunt fixe. Un geam care se deschide pe lateral da direct intr-o cadere de 4 metri. Singurul geam care se deschide e cel din fata, deasupra terasei.</div>
+<h3>Sectiune verticala prin geam — toate cotele</h3>
+
+<figure>
+<svg viewBox="0 0 430 400" width="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- exterior stanga / interior dreapta; perete: 42x90 pline = late (27), 45x45 = 13 -->
+  <text x="150" y="24" font-size="11" font-weight="bold" text-anchor="middle">AFARA</text>
+  <text x="330" y="24" font-size="11" font-weight="bold" text-anchor="middle">INAUNTRU</text>
+  <!-- cununa (42x90) sus -->
+  <rect x="200" y="40" width="27" height="13" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="50" font-size="8.5" fill="#555">lemnul de sus (cununa)</text>
+  <!-- bucata scurta peste gol -->
+  <rect x="200" y="53" width="13" height="34" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="238" y="70" font-size="8.5" fill="#555">bucata scurta de verticala (~76)</text>
+  <!-- buiandrug -->
+  <rect x="200" y="87" width="27" height="13" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="96" font-size="8.5" fill="#555">lemnul de deasupra golului (42×90)</text>
+  <!-- toc sus -->
+  <rect x="200" y="100" width="13" height="13" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="110" font-size="8.5" fill="#555">tocul, piesa de sus (45×45)</text>
+  <!-- acrilic vertical -->
+  <line x1="206" y1="104" x2="206" y2="252" stroke="#7fb2d6" stroke-width="2.5"/>
+  <text x="120" y="150" font-size="8.5" fill="#555" text-anchor="end">geamul de plastic,</text>
+  <text x="120" y="161" font-size="8.5" fill="#555" text-anchor="end">calca 20 pe toc</text>
+  <line x1="124" y1="155" x2="203" y2="160" stroke="#555" stroke-width="0.6"/>
+  <!-- sipci sus -->
+  <rect x="194" y="104" width="5" height="9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+  <rect x="213" y="104" width="5" height="9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+  <!-- sipci jos -->
+  <rect x="194" y="243" width="5" height="9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+  <rect x="213" y="243" width="5" height="9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+  <text x="120" y="245" font-size="8.5" fill="#555" text-anchor="end">sipca 18×28 pe</text>
+  <text x="120" y="256" font-size="8.5" fill="#555" text-anchor="end">AMBELE fete, sus si jos</text>
+  <line x1="124" y1="250" x2="192" y2="248" stroke="#555" stroke-width="0.6"/>
+  <!-- toc jos -->
+  <rect x="200" y="243" width="13" height="13" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="252" font-size="8.5" fill="#555">tocul, piesa de jos</text>
+  <!-- prag -->
+  <rect x="200" y="256" width="27" height="13" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="266" font-size="8.5" fill="#555">pragul (42×90), fata de sus la 950</text>
+  <!-- bucata scurta sub prag -->
+  <rect x="200" y="269" width="13" height="60" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="238" y="300" font-size="8.5" fill="#555">bucata scurta de verticala, sub prag (~866)</text>
+  <!-- semn de intrerupere -->
+  <path d="M196,335 L204,341 L196,347 L204,353" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <path d="M209,335 L217,341 L209,347 L217,353" stroke="#1a1a1a" stroke-width="1" fill="none"/>
+  <!-- talpa -->
+  <rect x="200" y="358" width="27" height="13" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="238" y="368" font-size="8.5" fill="#555">talpa, prinsa in joista cu 6×140</text>
+  <!-- lambriu pe exterior -->
+  <rect x="194" y="53" width="6" height="34" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.7"/>
+  <rect x="194" y="269" width="6" height="102" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="120" y="60" font-size="8.5" fill="#555" text-anchor="end">lambriul, pe fata</text>
+  <text x="120" y="71" font-size="8.5" fill="#555" text-anchor="end">dinspre afara</text>
+  <line x1="124" y1="65" x2="192" y2="64" stroke="#555" stroke-width="0.6"/>
+  <!-- cote -->
+  <line x1="380" y1="100" x2="380" y2="256" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="376" y1="100" x2="384" y2="100" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="376" y1="256" x2="384" y2="256" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="389" y="182" font-size="8.5" text-anchor="middle" transform="rotate(-90 389 182)">golul: 490</text>
+  <line x1="404" y1="256" x2="404" y2="371" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="400" y1="256" x2="408" y2="256" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="400" y1="371" x2="408" y2="371" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="413" y="315" font-size="8.5" text-anchor="middle" transform="rotate(-90 413 315)">950 (cu intrerupere)</text>
+</svg>
+<figcaption>Taietura verticala prin mijlocul geamului, de la talpa la cununa. Se vede tot lantul: talpa → bucata scurta → prag → toc + geam + sipci → lemnul de deasupra → bucata scurta → cununa.</figcaption>
+</figure>
+
+<figure>
+<svg viewBox="0 0 470 240" width="440" xmlns="http://www.w3.org/2000/svg">
+<text x="235" y="18" font-size="10.5" font-weight="bold" text-anchor="middle">Geamul, taiat orizontal (vazut de sus) — dublura · toc · geam · sipci</text>
+<rect x="90.0" y="110.0" width="22.5" height="22.5" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="357.5" y="110.0" width="22.5" height="22.5" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="112.5" y="110.0" width="22.5" height="22.5" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="335.0" y="110.0" width="22.5" height="22.5" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.2"/>
+<line x1="125.0" y1="121.2" x2="345.0" y2="121.2" stroke="#7fb2d6" stroke-width="2.5"/>
+<rect x="116.0" y="101.0" width="18.0" height="9.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+<rect x="116.0" y="132.5" width="18.0" height="9.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+<rect x="329.0" y="101.0" width="18.0" height="9.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+<rect x="329.0" y="132.5" width="18.0" height="9.0" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="0.8"/>
+<text x="235.0" y="80.0" font-size="1" fill="#1a1a1a" text-anchor="middle"></text>
+<text x="101.0" y="170.0" font-size="7.5" fill="#555" text-anchor="middle">verticala dubla</text>
+<text x="369.0" y="170.0" font-size="7.5" fill="#555" text-anchor="middle">verticala dubla</text>
+<text x="123.5" y="170.0" font-size="7.5" fill="#555" text-anchor="middle">toc</text>
+<text x="346.0" y="170.0" font-size="7.5" fill="#555" text-anchor="middle">toc</text>
+<text x="235.0" y="132.0" font-size="7.5" fill="#555" text-anchor="middle">lumina 400 — pe aici se vede</text>
+<text x="235.0" y="94.0" font-size="7.5" fill="#33708f" text-anchor="middle">geamul de plastic 440 (calca 20 pe fiecare toc)</text>
+<text x="150.0" y="76.0" font-size="7.5" fill="#555" text-anchor="middle">sipca 18×28, pe AMBELE fete</text>
+<line x1="150.0" y1="80.0" x2="125.0" y2="102.0" stroke="#555" stroke-width="0.6"/>
+<line x1="90.0" y1="166.5" x2="380.0" y2="166.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="90.0" y1="163.5" x2="90.0" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="112.5" y1="163.5" x2="112.5" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="135.0" y1="163.5" x2="135.0" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="335.0" y1="163.5" x2="335.0" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="357.5" y1="163.5" x2="357.5" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="380.0" y1="163.5" x2="380.0" y2="169.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="101.2" y="163.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle">45</text>
+<text x="123.8" y="163.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle">45</text>
+<text x="235.0" y="163.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle">400</text>
+<text x="346.2" y="163.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle">45</text>
+<text x="368.8" y="163.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle">45</text>
+<line x1="112.5" y1="184.5" x2="357.5" y2="184.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="112.5" y1="181.5" x2="112.5" y2="187.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="357.5" y1="181.5" x2="357.5" y2="187.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="235.0" y="181.5" font-size="8" fill="#1a1a1a" text-anchor="middle">golul: 490</text>
+<line x1="125.0" y1="202.5" x2="345.0" y2="202.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="125.0" y1="199.5" x2="125.0" y2="205.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="345.0" y1="199.5" x2="345.0" y2="205.5" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="235.0" y="199.5" font-size="8" fill="#1a1a1a" text-anchor="middle">geamul: 440</text>
+</svg>
+<figcaption>Aceeasi fereastra, taiata orizontal: lantul 45+45+400+45+45 = golul de 490, geamul de 440 calare cate 20 pe fiecare toc.</figcaption>
+</figure>
+
+
 
 <div class="pgbrk"></div>
-<h2>6 · In ce ordine construiesti</h2>
+<h2>7 · PERETELE DIN FATA — usa si fereastra</h2>
+
+<p>Peretele prin care se intra. Sta intre cei doi stalpi grosi de 9 cm, se construieste <b>direct pe platforma</b>, si e singurul cu fereastra care se deschide.</p>
+
+<figure>
+<svg viewBox="0 0 480 360" width="450" xmlns="http://www.w3.org/2000/svg">
+<text x="240" y="18" font-size="10.5" font-weight="bold" text-anchor="middle">FATA — elevatie cu toate cotele</text>
+<rect x="64.0" y="76.0" width="12.6" height="224.0" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.3"/>
+<rect x="331.4" y="76.0" width="12.6" height="224.0" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.3"/>
+<rect x="76.6" y="294.1" width="254.8" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="64.0" y="70.1" width="280.0" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="92.7" y="76.0" width="6.3" height="218.1" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="178.8" y="76.0" width="6.3" height="218.1" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="201.2" y="76.0" width="6.3" height="218.1" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="284.5" y="76.0" width="6.3" height="218.1" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="308.0" y="76.0" width="6.3" height="218.1" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.9"/>
+<rect x="99.0" y="167.0" width="79.8" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="99.0" y="81.3" width="79.8" height="5.9" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+<rect x="99.0" y="87.2" width="79.8" height="79.8" fill="#fff" stroke="#1a1a1a" stroke-width="1.3"/>
+<line x1="99.0" y1="87.2" x2="178.8" y2="167.0" stroke="#ccc" stroke-width="0.8"/>
+<line x1="178.8" y1="87.2" x2="99.0" y2="167.0" stroke="#ccc" stroke-width="0.8"/>
+<rect x="135.8" y="172.9" width="6.3" height="121.2" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.8"/>
+<rect x="135.8" y="76.0" width="6.3" height="5.3" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.8"/>
+<line x1="207.5" y1="76.0" x2="207.5" y2="300.0" stroke="#1a1a1a" stroke-width="0.9" stroke-dasharray="3 2"/>
+<line x1="284.5" y1="76.0" x2="284.5" y2="300.0" stroke="#1a1a1a" stroke-width="0.9" stroke-dasharray="3 2"/>
+<line x1="208.2" y1="297.0" x2="283.8" y2="297.0" stroke="#b3261e" stroke-width="2" stroke-dasharray="6 3"/>
+<text x="246.0" y="202.0" font-size="8.5" fill="#555" text-anchor="middle">USA — gol 550</text>
+<text x="246.0" y="216.0" font-size="8.5" fill="#555" text-anchor="middle">1600 liber</text>
+<text x="246.0" y="313.0" font-size="7.5" fill="#b3261e" text-anchor="middle">talpa se taie AICI, la final</text>
+<line x1="79.7" y1="90.0" x2="100.7" y2="78.0" stroke="#888" stroke-width="5"/>
+<line x1="328.3" y1="90.0" x2="307.3" y2="78.0" stroke="#888" stroke-width="5"/>
+<line x1="79.7" y1="252.1" x2="121.7" y2="292.1" stroke="#888" stroke-width="5"/>
+<line x1="328.3" y1="252.1" x2="286.3" y2="292.1" stroke="#888" stroke-width="5"/>
+<line x1="64.0" y1="330.0" x2="344.0" y2="330.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="64.0" y1="327.0" x2="64.0" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="99.0" y1="327.0" x2="99.0" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="178.8" y1="327.0" x2="178.8" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="207.5" y1="327.0" x2="207.5" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="284.5" y1="327.0" x2="284.5" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="331.4" y1="327.0" x2="331.4" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="344.0" y1="327.0" x2="344.0" y2="333.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="81.5" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">250</text>
+<text x="138.9" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">570</text>
+<text x="193.2" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">205</text>
+<text x="246.0" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">550</text>
+<text x="308.0" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">335</text>
+<text x="337.7" y="327.0" font-size="7.5" fill="#1a1a1a" text-anchor="middle">90</text>
+<line x1="64.0" y1="348.0" x2="344.0" y2="348.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="64.0" y1="345.0" x2="64.0" y2="351.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="344.0" y1="345.0" x2="344.0" y2="351.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="204.0" y="345.0" font-size="8" fill="#1a1a1a" text-anchor="middle">2000</text>
+<line x1="362.0" y1="300.0" x2="362.0" y2="70.1" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="359.0" y1="300.0" x2="365.0" y2="300.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="359.0" y1="167.0" x2="365.0" y2="167.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="359.0" y1="87.2" x2="365.0" y2="87.2" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="359.0" y1="70.1" x2="365.0" y2="70.1" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="370.0" y="233.5" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 370.0 233.5)">950</text>
+<text x="370.0" y="127.1" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 370.0 127.1)">570 gol</text>
+<text x="370.0" y="78.7" font-size="7.5" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 370.0 78.7)">122</text>
+<line x1="48.0" y1="300.0" x2="48.0" y2="70.1" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="45.0" y1="300.0" x2="51.0" y2="300.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="45.0" y1="70.1" x2="51.0" y2="70.1" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="56.0" y="185.1" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 56.0 185.1)">1642</text>
+<line x1="26.0" y1="300.0" x2="26.0" y2="76.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="23.0" y1="300.0" x2="29.0" y2="300.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<line x1="23.0" y1="76.0" x2="29.0" y2="76.0" stroke="#1a1a1a" stroke-width="0.7"/>
+<text x="34.0" y="188.0" font-size="8" fill="#1a1a1a" text-anchor="middle" transform="rotate(-90 34.0 188.0)">1600 stalp</text>
+<text x="138.9" y="244.0" font-size="7.5" fill="#555" text-anchor="middle" transform="rotate(-90 138.9 244.0)">1558</text>
+<text x="70.3" y="188.0" font-size="7" fill="#555" text-anchor="middle" transform="rotate(-90 70.3 188.0)">90×90</text>
+<text x="121.4" y="55.0" font-size="8" fill="#555" text-anchor="middle">fereastra PVC: gol 570×570</text>
+</svg>
+<figcaption>Peretele din fata, vazut de pe terasa. Usa spre o margine, fereastra in restul peretelui. Intre usa si stalp ramane o fasie de ~290, ca propteaua din coltul de jos sa aiba in ce se prinde.</figcaption>
+</figure>
+
+<ul>
+<li><b>Usa:</b> gol deschis (fara usa propriu-zisa — decis demult), ~550 lat, intre doua verticale dublate. <b>Fara lemn deasupra golului</b> — capul usii e chiar rigla de sus, asa iese 1600 liber. Dupa taierea talpii, peste capetele taiate se pune o sipca 18×28 × ~550 insurubata in dusumea — acopera taietura, nu e treapta.</li>
+<li><b>Fereastra PVC 56×56:</b> singura care se deschide — da spre terasa, nu spre gol. Golul ei in perete: <b>570 × 570</b> (tocul de 560 + joc de montaj), cu prag la 950 si lemn deasupra. Se prinde prin toc cu suruburi, silicon de exterior pe contur.</li>
+<li><b>Pozitia usii:</b> recomandat spre marginea dinspre acces (unde ajungi cand vii de pe terasa). Daca o vrei pe partea cealalta, oglindesti desenul — nimic altceva nu se schimba.</li>
+<li>Proptelele de sus se prind <b>si in stalpii 90×90</b> — leaga peretele de structura.</li>
+</ul>
+
+<h3>Materiale pentru peretele din FATA</h3>
+
+<table>
+<tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
+<tr><td>Lemnul de jos + lemnul de sus</td><td class="mono">42×90</td><td class="mono">2000</td><td class="mono">2</td></tr>
+<tr><td>Verticale (1642 − 2×42), inclusiv dublurile usii si ale ferestrei</td><td class="mono">45×45</td><td class="mono">1558</td><td class="mono">7</td></tr>
+<tr><td>Prag + lemn deasupra ferestrei (gol 570)</td><td class="mono">42×90</td><td class="mono">660</td><td class="mono">2</td></tr>
+<tr><td>Proptele de colt (cele de sus prinse si in stalpii 90×90)</td><td class="mono">45×45</td><td class="mono">2× 424 (jos) + 2× 212 (sus)</td><td class="mono">4</td></tr>
+<tr><td>Sipca-prag peste taietura talpii, la usa</td><td class="mono">18×28</td><td class="mono">~550</td><td class="mono">1</td></tr>
+<tr><td>Lambriu (fara golul usii si al ferestrei)</td><td class="mono">12,5×96</td><td class="mono">randuri pe panouri</td><td class="mono">~2,4 m²</td></tr>
+<tr><td>Suruburi</td><td colspan="3">5×80 rama · 6×120 colturi si proptele (+ 3 pe fiecare stalp 90×90) · 6×140 talpa in joiste · inox 3,5×40 lambriu</td></tr>
+</table>
+
+<h3>Unde cade fiecare lemn pe talpa (masurat de la capatul STANG, in mm)</h3>
+
+<table>
+<tr><th>De la</th><th>Pana la</th><th>Ce e acolo</th></tr>
+<tr><td class="mono">0</td><td class="mono">90</td><td>stalpul 90×90 (exista deja)</td></tr>
+<tr><td class="mono">205</td><td class="mono">250</td><td>verticala dubla — marginea stanga a ferestrei</td></tr>
+<tr><td class="mono">250</td><td class="mono">820</td><td><b>GOLUL FERESTREI (570)</b> — prag cu fata de sus la 950, lemn deasupra la 1520</td></tr>
+<tr><td class="mono">820</td><td class="mono">865</td><td>verticala dubla — marginea dreapta a ferestrei</td></tr>
+<tr><td class="mono">~535</td><td class="mono">—</td><td>bucata scurta de verticala sub prag si alta deasupra golului (din piesa taiata)</td></tr>
+<tr><td class="mono">980</td><td class="mono">1025</td><td>verticala dubla — marginea stanga a usii</td></tr>
+<tr><td class="mono">1025</td><td class="mono">1575</td><td><b>GOLUL USII (550)</b> — aici se taie talpa LA FINAL</td></tr>
+<tr><td class="mono">1575</td><td class="mono">1620</td><td>verticala dubla — marginea dreapta a usii</td></tr>
+<tr><td class="mono">~1765</td><td class="mono">—</td><td>verticala simpla, in mijlocul fasiei pline</td></tr>
+<tr><td class="mono">1910</td><td class="mono">2000</td><td>stalpul 90×90 (exista deja)</td></tr>
+</table>
+
+<div class="note">Cele 7 bucati de 1558 din tabelul de materiale: 4 dubluri + 1 verticala simpla (la ~1765) + 1 taiata in cele doua bucati scurte ale ferestrei + 1 rezerva.</div>
+
+<h3>Montaj FATA, pas cu pas (direct pe platforma)</h3>
+
+<ol>
+<li><b>Aseaza talpa si cununa</b> culcate pe punte si insemneaza pe AMANDOUA pozitiile din tabelul de mai sus.</li>
+<li><b>Prinde verticalele pline</b> (4 dubluri + cea de la 1765): 2× 5×80 sus si jos, pregaurit.</li>
+<li><b>Diagonalele ramei egale</b> ±3 mm — corecteaza acum.</li>
+<li><b>Fereastra:</b> pragul (fata de sus la 950) si lemnul de deasupra (660, intre dubluri), plus cele doua bucati scurte la ~535. Golul ramas: 570 × 570.</li>
+<li><b>Proptelele:</b> jos 2× 424, sus 2× 212.</li>
+<li><b>Lambriul</b> pe cele trei zone pline (stanga ferestrei, intre fereastra si usa, dreapta usii) — nu peste goluri. Lazura pe toate fetele, inainte.</li>
+<li><b>Ridici si prinzi:</b> 3× 6×120 in fiecare stalp 90×90 (+ proptelele de sus prinse si in stalpi) · colturile de peretii laterali · talpa cu 6×140 in joiste, <b>ocolind zona usii</b>. LA FINAL tai talpa intre 1025 si 1575 si pui sipca-prag peste capetele taiate.</li>
+<li><b>Fereastra PVC</b> intra in golul de 570: suruburi prin toc in dubluri si prag, silicon de exterior pe contur, verifici ca se deschide complet.</li>
+</ol>
+
+
+<figure>
+<svg viewBox="0 0 470 190" width="440" xmlns="http://www.w3.org/2000/svg">
+<text x="235" y="20" font-size="10.5" font-weight="bold" text-anchor="middle">Talpa la usa — se taie LA FINAL, intre dublurile usii</text>
+<rect x="45.0" y="95" width="380.0" height="8" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.2"/>
+<rect x="231.2" y="43" width="8.6" height="52" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1"/>
+<rect x="344.2" y="43" width="8.6" height="52" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1"/>
+<text x="235.4" y="37" font-size="7" fill="#555" text-anchor="middle">dublura 45</text>
+<text x="348.4" y="37" font-size="7" fill="#555" text-anchor="middle">dublura 45</text>
+<line x1="239.8" y1="99.0" x2="344.2" y2="99.0" stroke="#b3261e" stroke-width="2.4" stroke-dasharray="7 4"/>
+<text x="292.0" y="65" font-size="8.5" fill="#b3261e" font-weight="bold" text-anchor="middle">taie AICI, la final</text>
+<line x1="292.0" y1="69" x2="292.0" y2="93" stroke="#b3261e" stroke-width="0.8"/>
+<rect x="234.1" y="107" width="115.9" height="5" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="0.8"/>
+<text x="292.0" y="127" font-size="8" fill="#555" text-anchor="middle">apoi sipca-prag 18×28 × ~610, peste capetele taiate, in dusumea</text>
+<line x1="45.0" y1="147" x2="425.0" y2="147" stroke="#1a1a1a" stroke-width="0.7"/><line x1="45.0" y1="144" x2="45.0" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><line x1="231.2" y1="144" x2="231.2" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><line x1="239.8" y1="144" x2="239.8" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><line x1="344.2" y1="144" x2="344.2" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><line x1="352.8" y1="144" x2="352.8" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><line x1="425.0" y1="144" x2="425.0" y2="150" stroke="#1a1a1a" stroke-width="0.7"/><text x="138.1" y="144" font-size="7.5" text-anchor="middle">980</text><text x="235.5" y="144" font-size="7.5" text-anchor="middle">45</text><text x="292.0" y="144" font-size="7.5" text-anchor="middle">550 (golul usii)</text><text x="348.5" y="144" font-size="7.5" text-anchor="middle">45</text><text x="388.9" y="144" font-size="7.5" text-anchor="middle">380</text>
+<line x1="45.0" y1="165" x2="425.0" y2="165" stroke="#1a1a1a" stroke-width="0.7"/><line x1="45.0" y1="162" x2="45.0" y2="168" stroke="#1a1a1a" stroke-width="0.7"/><line x1="425.0" y1="162" x2="425.0" y2="168" stroke="#1a1a1a" stroke-width="0.7"/><text x="235.0" y="162" font-size="7.5" text-anchor="middle">2000</text>
+<line x1="33.0" y1="95" x2="33.0" y2="103" stroke="#1a1a1a" stroke-width="0.7"/><line x1="30.0" y1="95" x2="36.0" y2="95" stroke="#1a1a1a" stroke-width="0.7"/><line x1="30.0" y1="103" x2="36.0" y2="103" stroke="#1a1a1a" stroke-width="0.7"/><text x="40.0" y="99.0" font-size="6.5" text-anchor="middle" transform="rotate(-90 40.0 99.0)">42</text>
+<text x="121.0" y="75" font-size="8" fill="#555" text-anchor="middle">restul talpii ramane — 6×140 in joiste, ocolind golul</text>
+</svg>
+<figcaption>Talpa peretelui din fata, cu lantul complet de cote: 980 + 45 + 550 + 45 + 380 = 2000. Rama cu golurile e desenata mai sus, la elevatie.</figcaption>
+</figure>
+
+<div class="pgbrk"></div>
+<h2>8 · COLTURILE — cum se leaga peretii intre ei</h2>
+
+<p>Peretii sunt tari doar impreuna. Fiecare colt se prinde la ridicare, inainte de acoperis.</p>
+
+<figure>
+<svg viewBox="0 0 470 240" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- vedere DE SUS -->
+  <text x="120" y="26" font-size="10" font-weight="bold" text-anchor="middle">colt SPATE + LATERAL (vazut de sus)</text>
+  <!-- spate: banda orizontala -->
+  <rect x="40" y="60" width="160" height="20" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="120" y="55" font-size="8.5" fill="#555" text-anchor="middle">peretele din spate</text>
+  <!-- lateral: banda verticala care vine in el -->
+  <rect x="160" y="80" width="20" height="120" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="150" y="150" font-size="8.5" fill="#555" text-anchor="end">peretele lateral</text><text x="150" y="162" font-size="7.5" fill="#555" text-anchor="end">(verticale 45×45)</text>
+  <!-- suruburi 6x120 din lateral in spate -->
+  <line x1="170" y1="96" x2="170" y2="64" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="176" y1="96" x2="176" y2="64" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="212" y="94" font-size="8.5" fill="#555">4× 6×120 prin verticala</text>
+  <text x="212" y="106" font-size="8.5" fill="#555">de capat a lateralei, in</text>
+  <text x="212" y="118" font-size="8.5" fill="#555">verticala spatelui</text>
+  <line x1="208" y1="100" x2="180" y2="88" stroke="#555" stroke-width="0.6"/>
+  <!-- coltar interior -->
+  <path d="M160,80 L145,80 L145,95" fill="none" stroke="#1a6b3c" stroke-width="2.5"/>
+  <text x="52" y="100" font-size="8.5" fill="#1a6b3c">+ 2 coltare 100×100</text>
+  <text x="52" y="112" font-size="8.5" fill="#1a6b3c">pe interior, sus si jos</text>
+  <line x1="115" y1="103" x2="143" y2="90" stroke="#1a6b3c" stroke-width="0.6"/>
+  <!-- colt FATA cu stalp -->
+  <text x="355" y="26" font-size="10" font-weight="bold" text-anchor="middle">colt FATA + LATERAL, cu stalpul 90×90</text>
+  <rect x="330" y="60" width="26" height="26" fill="#bfbfbf" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="343" y="50" font-size="8.5" fill="#555" text-anchor="middle">stalpul</text>
+  <rect x="356" y="63" width="90" height="20" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="401" y="97" font-size="8.5" fill="#555" text-anchor="middle">peretele din fata</text>
+  <rect x="333" y="86" width="20" height="110" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="1.2"/>
+  <text x="322" y="150" font-size="8.5" fill="#555" text-anchor="end">peretele lateral</text>
+  <line x1="362" y1="70" x2="336" y2="70" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="362" y1="76" x2="336" y2="76" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="340" y1="92" x2="340" y2="66" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <line x1="346" y1="92" x2="346" y2="66" stroke="#555" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="360" y="120" font-size="8.5" fill="#555">cate 3× 6×120 din fiecare</text>
+  <text x="360" y="132" font-size="8.5" fill="#555">perete DIRECT in stalp</text>
+  <line x1="356" y1="116" x2="344" y2="84" stroke="#555" stroke-width="0.6"/>
+<line x1="206" y1="60" x2="206" y2="80" stroke="#1a1a1a" stroke-width="0.6"/><line x1="203" y1="60" x2="209" y2="60" stroke="#1a1a1a" stroke-width="0.6"/><line x1="203" y1="80" x2="209" y2="80" stroke="#1a1a1a" stroke-width="0.6"/><text x="213" y="70.0" font-size="6.5" text-anchor="middle" transform="rotate(-90 213 70.0)">90</text><line x1="330" y1="96" x2="356" y2="96" stroke="#1a1a1a" stroke-width="0.6"/><line x1="330" y1="93" x2="330" y2="99" stroke="#1a1a1a" stroke-width="0.6"/><line x1="356" y1="93" x2="356" y2="99" stroke="#1a1a1a" stroke-width="0.6"/><text x="343.0" y="93" font-size="6.5" text-anchor="middle">90</text></svg>
+<figcaption>Vazute de sus. In spate, peretii se prind unul de altul. In fata, amandoi se prind de stalpul de 90 — el e coltul.</figcaption>
+</figure>
+
+<ul>
+<li>Ordinea prinderii: <b>spate → laterale → fata</b>. Fiecare colt: verticalele lipite una de alta, verificate la fir cu plumb sau nivela, apoi suruburile.</li>
+<li>Dupa toate colturile: masori <b>diagonalele cutiei pe sus</b> (colt in colt) — egale la ±5 mm inseamna cutia dreapta.</li>
+<li>Abia dupa colturi + talpile prinse in joiste se scot proptelele provizorii ale stalpilor.</li>
+</ul>
+
+<h2>9 · ACOPERISUL si ordinea de ansamblu</h2>
 
 <div class="step">
 <div class="step-head">PASUL 1 — Peretele din spate se face JOS, pe iarba, complet imbracat</div>
@@ -360,34 +973,207 @@
 </div>
 
 <div class="step">
-<div class="step-head">PASUL 3 — Scandura groasa, acoperisul, geamurile</div>
+<div class="step-head">PASUL 3 — Scandura groasa si acoperisul, piesa cu piesa</div>
 <div class="step-body">
 <ul>
-<li>Pui scandura groasa (250) <b>pe muchie</b>, peste peretele din spate si peste capetele stalpilor de 4 m. O prinzi cu coltare metalice pe ambele fete, la fiecare 50 cm. <b>Propteste-o imediat</b> — pe muchie, singura, se rastoarna ca o carte.</li>
-<li>Pui cele <b>5 lemne inclinate ale acoperisului</b> (taiate la <b>1342</b>), de la scandura groasa pana peste peretele din fata, la 50 cm unul de altul. La fiecare capat al fiecaruia: <b>o piesa metalica contra vantului</b> (10 in total). Vantul care baga acoperisul sub el e mai periculos decat zapada.</li>
-<li>O sipca lunga pusa <b>in diagonala</b> peste lemnele inclinate — leaga tot acoperisul, sa nu se poata stramba.</li>
-<li>Sipci de-a latul la 45 cm, apoi <b>placile Onduline</b>, de jos in sus. Cuiele se bat <b>numai pe varful valului</b> — in adancitura curge apa.</li>
-<li>La final: geamurile si pragul mic la usa.</li>
+<li><b>Scandura groasa (dulapul):</b> o tai la <b>2200</b> (din bucata de 3000; restul e rezerva). O pui <b>pe muchie</b> (250 in sus), peste peretele din spate si peste capetele stalpilor de 4 m. O prinzi cu <b>coltare metalice pe ambele fete, la fiecare 50 cm (~10 bucati)</b>, plus <b>cate o placa metalica pe fiecare fata, deasupra fiecarui stalp de 4 m</b> (4 placi). <b>Propteste-o imediat</b> — pe muchie, singura, se rastoarna ca o carte.</li>
+<li><b>Cele 5 lemne inclinate</b> (42×90, taiate la <b>1342</b>, capetele taiate oblic la <b>15,6°</b> ca sa se aseze plan): la 50 cm unul de altul, aliniate cu verticalele peretilor. Asezare: sus se sprijina pe dulap si <b>ies 100 dincolo de el</b> (spre gard); jos se sprijina pe rigla peretelui din fata si <b>ies 100 in fata</b>. Fara crestaturi — le tin ancorele.</li>
+<li><b>La fiecare capat al fiecarui lemn inclinat: o ancora metalica contra vantului</b> (10 in total), insurubata si in lemnul inclinat si in dulap / rigla. Vantul care intra sub acoperis e mai periculos decat zapada.</li>
+<li><b>Intre lemnele inclinate, pe linia peretelui din fata si pe linia dulapului: cate un blocaj</b> — bucata de 42×90 taiata la ~410, pusa vertical intre doi capriori (8 bucati, din resturi). Inchide golurile pe unde ar intra pasari si ploaia impinsa de vant.</li>
+<li><b>Diagonala acoperisului:</b> rigla 45×45 × 2400, pe fata de sus a lemnelor inclinate, dintr-un colt in celalalt, 1× 6×100 la fiecare intersectie.</li>
+<li><b>Sipcile acoperisului:</b> 45×45 × 2200, de-a latul, la cel mult 45 cm una de alta (4 bucati + crestate 45 unde incaleca diagonala), 1× 6×100 la fiecare intersectie cu lemnul inclinat.</li>
+<li><b>Onduline: 3 placi</b> (2000×860), montate de jos in sus, <b>suprapuse lateral un val intreg</b>. Cuiele speciale cu capac, <b>numai pe varful valului</b>: pe randul de jos si pe marginile laterale in fiecare val, in camp din 2 in 2 (~60 cuie).</li>
+<li><b>Fronturile laterale:</b> intre lemnul de sus inclinat al peretelui lateral si placa de Onduline ramane o fasie deschisa cat grosimea lemnelor acoperisului. O inchizi cu <b>o scandura de lambriu pusa pe cant, taiata pe panta</b>, pe fiecare parte — altfel ploaia cu vant si viespile intra pe acolo.</li>
+<li>La final: geamurile laterale, fereastra PVC si sipca-prag de la usa.</li>
 </ul>
 </div>
 </div>
 
-<h2>7 · Ce cumperi (ce nu ai deja)</h2>
+
+<h3>Acoperisul vazut de sus — unde cade fiecare piesa</h3>
+
+<figure>
+<svg viewBox="0 0 470 300" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- k=0.13: 2200->286 (x 60..346); caprior 1342->174 -->
+  <!-- dulap sus -->
+  <rect x="60" y="40" width="286" height="8" fill="#c9dfd2" stroke="#1a6b3c" stroke-width="1.4"/>
+  <text x="356" y="47" font-size="8.5" fill="#1a6b3c">dulapul (spate)</text>
+  <!-- rigla fata jos -->
+  <rect x="73" y="200" width="260" height="7" fill="#d9d9d9" stroke="#1a1a1a" stroke-width="1.1"/>
+  <text x="356" y="207" font-size="8.5" fill="#555">peretele din fata</text>
+  <!-- 5 capriori la 500 (65px), overhang 13px sus/jos -->
+  <g fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1">
+    <rect x="70" y="27" width="6" height="193"/>
+    <rect x="135" y="27" width="6" height="193"/>
+    <rect x="200" y="27" width="6" height="193"/>
+    <rect x="265" y="27" width="6" height="193"/>
+    <rect x="330" y="27" width="6" height="193"/>
+  </g>
+  <!-- blocaje pe linia dulapului si a fetei -->
+  <g fill="#bfbfbf" stroke="#1a1a1a" stroke-width="0.8">
+    <rect x="80" y="50" width="51" height="5"/><rect x="145" y="50" width="51" height="5"/><rect x="210" y="50" width="51" height="5"/><rect x="275" y="50" width="51" height="5"/>
+    <rect x="80" y="193" width="51" height="5"/><rect x="145" y="193" width="51" height="5"/><rect x="210" y="193" width="51" height="5"/><rect x="275" y="193" width="51" height="5"/>
+  </g>
+  <text x="30" y="56" font-size="8" fill="#555" text-anchor="end">blocaje (~410)</text>
+  <line x1="33" y1="53" x2="78" y2="52" stroke="#555" stroke-width="0.6"/>
+  <!-- diagonala -->
+  <line x1="73" y1="215" x2="333" y2="32" stroke="#888" stroke-width="4" opacity="0.85"/>
+  <text x="150" y="135" font-size="8.5" fill="#555" transform="rotate(-33 150 135)">diagonala 45×45 × 2400</text>
+  <!-- sipci (peste, subtiri) -->
+  <g stroke="#1a1a1a" stroke-width="0.7" fill="#f2f2f2" opacity="0.9">
+    <rect x="60" y="70" width="286" height="5"/>
+    <rect x="60" y="112" width="286" height="5"/>
+    <rect x="60" y="154" width="286" height="5"/>
+    <rect x="60" y="188" width="286" height="5"/>
+  </g>
+  <text x="356" y="116" font-size="8.5" fill="#555">sipci la ≤450</text>
+  <!-- cote -->
+  <line x1="73" y1="240" x2="138" y2="240" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="73" y1="236" x2="73" y2="244" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="138" y1="236" x2="138" y2="244" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="105" y="252" font-size="8" text-anchor="middle">500 intre capriori</text>
+  <line x1="40" y1="27" x2="40" y2="220" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="36" y1="27" x2="44" y2="27" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="36" y1="220" x2="44" y2="220" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="30" y="124" font-size="8" text-anchor="middle" transform="rotate(-90 30 124)">caprior 42×90 × 1342</text>
+  <line x1="60" y1="270" x2="346" y2="270" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="60" y1="266" x2="60" y2="274" stroke="#1a1a1a" stroke-width="0.7"/>
+  <line x1="346" y1="266" x2="346" y2="274" stroke="#1a1a1a" stroke-width="0.7"/>
+  <text x="203" y="282" font-size="8" text-anchor="middle">dulapul: 2200</text>
+  <text x="352" y="30" font-size="8" fill="#555">iese 100 spre gard</text>
+  <line x1="350" y1="32" x2="336" y2="30" stroke="#555" stroke-width="0.6"/>
+  <text x="352" y="222" font-size="8" fill="#555">iese 100 spre terasa</text>
+  <line x1="350" y1="219" x2="336" y2="216" stroke="#555" stroke-width="0.6"/>
+</svg>
+<figcaption>Vedere de sus: 5 lemne inclinate la 500, blocaje pe ambele linii de sprijin, diagonala peste ele, apoi sipcile.</figcaption>
+</figure>
+
+<h3>Doua detalii care tin acoperisul pe casa</h3>
+
+<figure>
+<svg viewBox="0 0 470 220" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- stanga: ancora caprior-dulap (vedere laterala) -->
+  <rect x="80" y="80" width="16" height="110" fill="#c9dfd2" stroke="#1a6b3c" stroke-width="1.4"/>
+  <text x="88" y="205" font-size="8.5" text-anchor="middle" fill="#1a6b3c">dulapul</text><line x1="66" y1="80" x2="66" y2="190" stroke="#1a1a1a" stroke-width="0.6"/><line x1="63" y1="80" x2="69" y2="80" stroke="#1a1a1a" stroke-width="0.6"/><line x1="63" y1="190" x2="69" y2="190" stroke="#1a1a1a" stroke-width="0.6"/><text x="73" y="135.0" font-size="6.5" text-anchor="middle" transform="rotate(-90 73 135.0)">250</text>
+  <line x1="30" y1="88" x2="200" y2="46" stroke="#1a1a1a" stroke-width="9"/>
+  <text x="180" y="34" font-size="8.5" fill="#555">lemnul inclinat</text>
+  <path d="M96,70 L96,120 M96,70 L70,76" stroke="#b3261e" stroke-width="2.5" fill="none"/>
+  <text x="120" y="120" font-size="8.5" fill="#b3261e" font-weight="bold">ancora metalica —</text>
+  <text x="120" y="132" font-size="8.5" fill="#b3261e" font-weight="bold">pe AMBELE parti,</text>
+  <text x="120" y="144" font-size="8.5" fill="#b3261e" font-weight="bold">la AMBELE capete</text>
+  <line x1="116" y1="126" x2="98" y2="100" stroke="#b3261e" stroke-width="0.7"/>
+  <text x="115" y="196" font-size="9.5" font-weight="bold">detaliul 1: ancora contra vantului</text>
+  <!-- dreapta: fronton lateral -->
+  <line x1="280" y1="120" x2="450" y2="78" stroke="#1a1a1a" stroke-width="8"/>
+  <text x="452" y="70" font-size="8.5" fill="#555" text-anchor="end">Onduline + sipci</text>
+  <polygon points="280,138 450,96 450,110 280,152" fill="#e8e8e8" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="365" y="135" font-size="8" fill="#555" transform="rotate(-14 365 135)">lemnul de sus al lateralei</text>
+  <rect x="280" y="124" width="170" height="5" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="0.8" transform="rotate(-14 280 124)"/>
+  <path d="M292,131 L296,119" stroke="#b3261e" stroke-width="2"/>
+  <text x="290" y="170" font-size="8.5" fill="#b3261e" font-weight="bold">fasia se inchide cu o scandura</text>
+  <text x="290" y="182" font-size="8.5" fill="#b3261e" font-weight="bold">de lambriu pusa pe cant</text>
+  <text x="365" y="205" font-size="9.5" font-weight="bold" text-anchor="middle">detaliul 2: frontul lateral, inchis</text>
+</svg>
+<figcaption>Stanga: fiecare capat de lemn inclinat primeste ancora lui — vinclul tine la impins, ancora tine la smuls. Dreapta: golul dintre peretele lateral si invelitoare se inchide, altfel intra ploaia si viespile.</figcaption>
+</figure>
+
+<h3>Unde bati cuiele in Onduline</h3>
+
+<figure>
+<svg viewBox="0 0 470 190" width="440" xmlns="http://www.w3.org/2000/svg">
+  <!-- valuri: 10 arce -->
+  <g stroke="#1a1a1a" stroke-width="1.4" fill="none">
+    <path d="M40,60 Q60,40 80,60 Q100,80 120,60 Q140,40 160,60 Q180,80 200,60 Q220,40 240,60 Q260,80 280,60 Q300,40 320,60 Q340,80 360,60 Q380,40 400,60"/>
+    <path d="M40,110 Q60,90 80,110 Q100,130 120,110 Q140,90 160,110 Q180,130 200,110 Q220,90 240,110 Q260,130 280,110 Q300,90 320,110 Q340,130 360,110 Q380,90 400,110"/>
+    <path d="M40,160 Q60,140 80,160 Q100,180 120,160 Q140,140 160,160 Q180,180 200,160 Q220,140 240,160 Q260,180 280,160 Q300,140 320,160 Q340,140 360,160 Q380,140 400,160"/>
+  </g>
+  <!-- cuie: randul de jos (160) in FIECARE creasta; mijloc din 2 in 2 -->
+  <g fill="#b3261e">
+    <circle cx="60" cy="145" r="3"/><circle cx="140" cy="145" r="3"/><circle cx="220" cy="145" r="3"/><circle cx="300" cy="145" r="3"/><circle cx="380" cy="145" r="3"/>
+    <circle cx="100" cy="147" r="3"/><circle cx="180" cy="147" r="3"/><circle cx="260" cy="147" r="3"/><circle cx="340" cy="147" r="3"/>
+    <circle cx="60" cy="95" r="3"/><circle cx="220" cy="95" r="3"/><circle cx="380" cy="95" r="3"/>
+    <circle cx="60" cy="45" r="3"/><circle cx="140" cy="45" r="3"/><circle cx="220" cy="45" r="3"/><circle cx="300" cy="45" r="3"/><circle cx="380" cy="45" r="3"/>
+  </g>
+  <text x="410" y="48" font-size="8.5" fill="#555">randul de sus: fiecare creasta</text>
+  <text x="410" y="98" font-size="8.5" fill="#555">in camp: din 2 in 2</text>
+  <text x="410" y="148" font-size="8.5" fill="#555">randul de jos: fiecare creasta</text>
+  <text x="240" y="30" font-size="9" text-anchor="middle" font-weight="bold">cuiul intra NUMAI pe varful valului — in vale curge apa</text><text x="240" y="180" font-size="8" fill="#555" text-anchor="middle">placa: 2000 × 860 · suprapunere laterala: un val intreg</text>
+</svg>
+<figcaption>~60 de cuie pe tot acoperisul. Niciodata in adancitura valului.</figcaption>
+</figure>
+
+<div class="pgbrk"></div>
+<h2>10 · Greseli frecvente — si de ce dor</h2>
+
+<ol>
+<li><b>Lambriu fara lazura pe spate.</b> Dupa montaj nu mai ajungi acolo. Acolo incepe putrezirea. Fara exceptii: toate fetele, inainte de batut.</li>
+<li><b>Suruburi la capete fara pregaurire.</b> Capatul de lemn crapa si prinderea nu mai valoreaza nimic. 3,5 pentru 5×80, Ø5 pentru 6×120.</li>
+<li><b>Diagonalele ramei nemasurate inainte de proptele.</b> Propteaua ingheata forma. Rama stramba ramane stramba, si golul geamului iese paralelogram.</li>
+<li><b>Talpa taiata la usa INAINTE ca peretele sa fie prins.</b> Rama isi pierde rigiditatea exact cand o ridici. Talpa se taie ULTIMA.</li>
+<li><b>Geamul strans fix, fara jocul de 1 mm.</b> Prima zi cu soare il crapa. Gaura mai larga decat surubul, mereu.</li>
+<li><b>Cuie Onduline in vale.</b> In vale curge apa — fiecare cui de acolo e o gaura in acoperis. Numai pe creasta.</li>
+<li><b>Sipcile acoperisului mai rar de 45 cm.</b> Onduline se lasa intre ele la prima zapada si ramane valurit.</li>
+<li><b>Peretele din spate ridicat neimbracat.</b> Cu 30 cm pana la gard, nu mai bati niciun lambriu. Ce nu e gata jos ramane asa.</li>
+<li><b>Proptele lungi in colturile de sus.</b> Se bat cap in cap cu geamurile si cu fereastra — de asta sus sunt 212, nu 424.</li>
+<li><b>Talpa prinsa in scandurile podelei, nu in joiste.</b> Suruburile in dusumea de 28 nu tin nimic. Liniile joistelor se traseaza cu creta INAINTE.</li>
+</ol>
+
+<h2>11 · Verificarea finala — bifezi tot, apoi urca copiii</h2>
+
+<div class="gata"><b>SPATE:</b> ☐ diagonale rama ±3 la asamblare · ☐ 6 tirfoane in stalpii de 4 m · ☐ talpa cu 6×140 in joiste · ☐ lambriu complet, lazurat pe toate fetele · ☐ nicio atingere intre perete si gard.</div>
+<div class="gata"><b>LATERALE (×2):</b> ☐ cununa inclinata bine asezata · ☐ gol geam 490×490, diagonale egale · ☐ toc fixat cu 8× 5×80 · ☐ geam cu sipci pe AMBELE fete, gauri cu joc · ☐ colturi prinse (4× 6×120 + coltare).</div>
+<div class="gata"><b>FATA:</b> ☐ 3× 6×120 in fiecare stalp 90×90 · ☐ fereastra PVC montata, se deschide complet, silicon pe contur · ☐ talpa taiata intre dubluri, sipca-prag pusa · ☐ 1600 liber la usa, verificat cu ruleta.</div>
+<div class="gata"><b>CUTIA INTREAGA:</b> ☐ diagonalele pe sus ±5 · ☐ toate proptelele provizorii scoase · ☐ zero capete de surub iesite, zero varfuri strapunse · ☐ coltarele cu gaura peste tijele M12, piulite stranse.</div>
+<div class="gata"><b>ACOPERIS:</b> ☐ dulap cu ~10 coltare + 4 placi · ☐ 5 capriori cu cate 2 ancore · ☐ blocaje pe ambele linii · ☐ diagonala + sipci ≤450 · ☐ Onduline cu cuie pe creasta, indesite jos si pe margini · ☐ fronturile laterale inchise · ☐ muchia din fata tesita.</div>
+<div class="gata"><b>SIGURANTA:</b> ☐ golul luminii sub 90 mm oriunde apuca mana un copil · ☐ nicio treapta de catarare spre acoperis · ☐ geamurile laterale FIXE · ☐ sol moale ≥300 sub zona de cadere.</div>
+
+<div class="pgbrk"></div>
+<h2>12 · Ce cumperi — lista completa a casei</h2>
+
+<p>Tot ce trebuie pentru cei 4 pereti, acoperis si geamuri. Unele randuri (fereastra, Onduline) apar si pe lista veche din manual — <b>se cumpara o singura data</b>.</p>
+
+<h3>Lemn — preturi si stoc VERIFICATE LIVE la Leroy Bucuresti Colosseum, 11.08</h3>
 
 <table>
-<tr><th>Pe romaneste</th><th>Cum ceri in magazin</th><th>Cat</th><th>~Lei</th></tr>
-<tr><td>Scandurile de imbracat casa</td><td class="mono">lambriu exterior 12,5×96, ~13 m²</td><td class="mono">—</td><td class="mono">~850</td></tr>
-<tr><td>Suruburi care nu ruginesc, pentru lambriu</td><td class="mono">surub inox 3,5×40</td><td class="mono">2 cutii</td><td class="mono">80</td></tr>
-<tr><td>Plastic pentru geamuri (din fiecare placa iese un geam de 440×440)</td><td class="mono">placa acrilica 500×500×4 (NU 500×250 — e prea ingusta)</td><td class="mono">2</td><td class="mono">~80</td></tr>
-<tr><td>Lemn pentru proptelele din colturi (16 buc) + ramele geamurilor + diagonala acoperisului</td><td class="mono">rigla 45×45×3000</td><td class="mono">5</td><td class="mono">80</td></tr>
-<tr><th colspan="3">In plus fata de varianta veche cu placi OSB</th><th class="mono">~+680</th></tr>
+<tr><th>Pe romaneste</th><th>Produsul exact din magazin</th><th>Cat</th><th>~Lei</th></tr>
+<tr><td>Scandurile de imbracat casa</td><td class="prod">LEROY: Lambriu lemn rasinos A/B 12,5×96×3000, pachet 2,88 m² — 43,85/m² (126,30/pachet), stoc 217</td><td class="mono">5 pachete (14,4 m²)</td><td class="mono">~632</td></tr>
+<tr><td>Rigla pentru toate verticalele, proptelele, ramele geamurilor, diagonala si sipcile acoperisului</td><td class="prod">LEROY: Rigla nerindeluita A/B 46×46×3000 — 24,91, stoc 194 (45×45 NU exista; 46 e echivalent, cotele raman)</td><td class="mono">27</td><td class="mono">~673</td></tr>
+<tr><td>Lemn pentru talpi, rigle de sus, praguri, lemnele acoperisului si blocaje</td><td class="prod">HORNBACH: rigla 42×90×3000 — la Leroy NU exista sectiunea asta (verificat)</td><td class="mono">10</td><td class="mono">~280</td></tr>
+<tr><td>Sipci pentru prinderea geamurilor + pragul usii</td><td class="prod">LEROY: Sipca rindeluita 18×28×3000 — 8,29, stoc 714</td><td class="mono">3</td><td class="mono">~25</td></tr>
+<tr><td>Scandura groasa a spatelui</td><td class="mono">dulap 46×250 — <b>o ai</b> (de la scara)</td><td class="mono">0</td><td class="mono">0</td></tr>
 </table>
 
-<div class="fix"><b>Ce NU mai cumperi:</b> placile OSB (scoase din plan) · folia si sipcile de aerisire (nu mai trebuie — lambriul se bate direct pe rama) · scandurile pentru X-uri (proptelele iau locul lor) · stalp nou (ai stalpii) · scandura groasa (o ai, din cele 3 de la scara) · usa (ramane gol deschis) · jgheab si burlan (nu punem).</div>
+<div class="note"><b>Plan de taiere pentru cele 27 de rigle 45×45:</b> 22 dau cate o verticala lunga (5 spate + 7 fata + 6 laterale + 4 dubluri de geam), iar din <b>resturile lor</b> ies toate cele 16 proptele (8 lungi de 424 + 8 scurte de 212) si cele 8 piese ale tocurilor de geam; 1 rigla = diagonala acoperisului (2400); 4 rigle = sipcile acoperisului (2200). Din cele 10 bare de 42×90: 4 = talpi si rigle de sus fata+spate (2000, resturile dau pragurile), 2 = talpile si riglele lateralelor, 3 = 6 lemne de acoperis (2× 1342 pe bara — 5 + 1 rezerva), 1 = blocajele.</div>
+
+<h3>Feronerie, invelitoare si rest — verificat live 11.08</h3>
+
+<table>
+<tr><th>Pe romaneste</th><th>Produsul exact din magazin</th><th>Cat</th><th>~Lei</th></tr>
+<tr><td>Placile de acoperis</td><td class="prod">LEROY: Placa ondulata Onduline Base 2000×860×2,6 rosu — 27,53/m² (~47/placa), <b>stoc DOAR 15</b></td><td class="mono">3</td><td class="mono">~142</td></tr>
+<tr><td>Cuiele lor, cu capac</td><td class="prod">LEROY: Cuie metal 65×2,8 rosu, set 400 — 96,90, <b>stoc DOAR 1 — ia-l primul sau Hornbach</b></td><td class="mono">1 set</td><td class="mono">~97</td></tr>
+<tr><td>Piesele contra vantului, pentru lemnele acoperisului</td><td class="prod">HORNBACH: colt/ancora de caprior — la Leroy nu exista piesa dedicata; alternativ 2× vinclu 90×65 pe capat</td><td class="mono">12</td><td class="mono">~70</td></tr>
+<tr><td>Coltare mici, pentru dulap si talpi</td><td class="prod">LEROY: Vinclu imbinare otel 90×65×2,5 — 4,50, stoc 300</td><td class="mono">30</td><td class="mono">~135</td></tr>
+<tr><td>Coltare mari: colturile peretilor + cele 2 in care dai gaura Ø13 pentru tije</td><td class="prod">LEROY: Vinclu imbinare otel 100×90×3 — 8,70, stoc 345</td><td class="mono">10</td><td class="mono">~87</td></tr>
+<tr><td>Placi pentru dulap, deasupra stalpilor de 4 m</td><td class="prod">LEROY: Conector lemn imbinare 90×200×2,5 — 8,99, stoc 111</td><td class="mono">4</td><td class="mono">~36</td></tr>
+<tr><td>Suruburile groase, perete spate → stalpii de 4 m</td><td class="prod">HORNBACH: tirfon 10×120 — la Leroy hexagonalele vrac se opresc la Ø8</td><td class="mono">6</td><td class="mono">~30</td></tr>
+<tr><td>Suruburi pentru rame</td><td class="mono">5×80 (T25), cutie</td><td class="mono">~200</td><td class="mono">~35</td></tr>
+<tr><td>Suruburi pentru colturi si proptele</td><td class="mono">6×120 (T30)</td><td class="mono">~100</td><td class="mono">~60</td></tr>
+<tr><td>Suruburi pentru talpi, in joiste</td><td class="mono">6×140 (T30)</td><td class="mono">~40</td><td class="mono">~40</td></tr>
+<tr><td>Suruburi pentru sipcile si diagonala acoperisului</td><td class="mono">6×100 (T30)</td><td class="mono">~50</td><td class="mono">~30</td></tr>
+<tr><td>Suruburi pentru sipcile geamurilor</td><td class="mono">4×50 (T20)</td><td class="mono">~50</td><td class="mono">~15</td></tr>
+<tr><td>Suruburi care nu ruginesc, pentru lambriu</td><td class="mono">surub inox 3,5×40</td><td class="mono">2 cutii</td><td class="mono">~80</td></tr>
+<tr><td>Fereastra care se deschide (fata)</td><td class="prod">LEROY: Fereastra PVC termopan 4 camere 56×56, deschidere simpla, stanga, alba — 126,99, stoc 76</td><td class="mono">1</td><td class="mono">~127</td></tr>
+<tr><td>Plastic pentru AMBELE geamuri laterale (din placa de 500×1000 ies doua bucati de 440×440)</td><td class="prod">LEROY: Placa plexiglas Hobbyglass 500×1000×4 transparenta — 71,99, stoc 26</td><td class="mono">1</td><td class="mono">~72</td></tr>
+<tr><td>Etansare pe conturul geamurilor</td><td class="mono">silicon de exterior (raion vopsele/etansare)</td><td class="mono">2</td><td class="mono">~40</td></tr>
+<tr><td>Protectia lemnului</td><td class="prod">LEROY: lazura, ex. Sadolin Extra 2,5 L sau Luxens — in stoc (daca nu mai ai din faza 1)</td><td class="mono">—</td><td class="mono">~150</td></tr>
+<tr><th colspan="3">TOTAL CASA — Leroy ~2.400 + Hornbach ~380</th><th class="mono">~2.700–2.800</th></tr>
+</table>
+
+<div class="fix"><b>Ce NU cumperi:</b> placi OSB, folie, sipci de aerisire (eliminate din plan) · scanduri pentru X-uri (proptelele iau locul lor) · stalp nou (ai stalpii) · scandura groasa (o ai, din cele 3 de la scara) · usa (ramane gol deschis) · jgheab si burlan (nu punem) · lemn de scara (amanata).</div>
 
 <div class="warn"><b>Nu cumpara lambriul inca.</b> Intai masoara pe santier latimea intre stalpii de 4 m si adancimea pana la tijele din podea. Daca difera cu cativa cm de plan, se schimba cantitatea — si lambriul e pozitia cea mai scumpa de pe lista.</div>
 
-<h2>8 · Mic dictionar — cand citesti documentele tehnice</h2>
+<h2>13 · Mic dictionar — cand citesti documentele tehnice</h2>
 
 <table>
 <tr><th>Cuvantul din documente</th><th>Ce inseamna de fapt</th></tr>
