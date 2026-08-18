@@ -218,5 +218,39 @@ f.text(0,D5+280+90,'',size=FSS)
 f.text(-440,D5/2,'',size=FSS)
 figs['f5']=f.svg()
 
+# ================= F6: DETALIU — ANCORAREA STALPULUI DIN FATA (tija M12) =================
+def badge(fig,x,y,n):
+    fig.el.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="24" fill="{ACC}" stroke="{INK}" stroke-width="3"/>')
+    fig.el.append(f'<text x="{x:.0f}" y="{y+9:.0f}" font-family="ui-monospace,Menlo,monospace" font-size="28" fill="#ffffff" text-anchor="middle" font-weight="bold">{n}</text>')
+
+f=Fig(620,630,padl=110,padr=110,padt=70,padb=40)
+RX=400  # centrul tijei
+
+f.text(140,-25,'…continua pana la 1600',size=FSS-14,fill=MUT)
+f.rect(40,0,200,380,fill=WOOD2)                            # stalp
+f.rect(260,416,340,130,fill=WOOD2,stroke=LN)                # grinda
+f.rect(-60,380,680,36,fill=WOOD)                            # scandura podelei
+f.rect(RX-9,330,18,290,fill='#8a8578',stroke=INK,sw=3)       # tija
+f.rect(240,260,24,120,fill='#b8b2a6',stroke=INK,sw=4)        # coltar - latura verticala
+f.rect(240,368,260,12,fill='#b8b2a6',stroke=INK,sw=4)        # coltar - latura orizontala
+f.rect(RX-40,340,80,9,fill='#b8b2a6',stroke=INK,sw=3)        # saiba sus
+f.rect(RX-20,349,40,19,fill='#8a8578',stroke=INK,sw=3)       # piulita sus
+f.rect(RX-40,592,80,9,fill='#b8b2a6',stroke=INK,sw=3)        # saiba jos
+f.rect(RX-20,601,40,19,fill='#8a8578',stroke=INK,sw=3)       # piulita jos
+for ty in (275,300,325,350):
+    f.line(216,ty,240,ty,stroke=INK,sw=5)                    # suruburi coltar-stalp
+f.line(-60,416,620,416,stroke=LN,sw=3,dash='10,8')           # linia dedesubtul puntii
+
+badge(f,140,100,'1')
+badge(f,520,374,'2')
+badge(f,185,312,'3')
+badge(f,400,300,'4')
+badge(f,460,500,'5')
+badge(f,-30,398,'6')
+badge(f,555,480,'7')
+badge(f,460,610,'8')
+
+figs['f6']=f.svg()
+
 json.dump(figs,open('figs.json','w'))
 print('ok', {k:len(v) for k,v in figs.items()})
