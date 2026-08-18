@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PROIECT CASA — executie F4 · Casuta din copac</title>
+<title>PROIECT CASA — cum o construim, pas cu pas</title>
 <style>
   :root{
     --ink:#1c1b18; --muted:#6b675e; --paper:#faf9f6; --line:#e2ddd3;
@@ -48,7 +48,6 @@
   .chk li:before{content:"";position:absolute;left:0;top:3px;width:13px;height:13px;border:1.6px solid var(--ink);border-radius:2px}
   footer.doc{margin-top:56px;border-top:2px solid var(--ink);padding-top:14px;font-size:12.5px;color:var(--muted)}
   .tag{display:inline-block;font:600 10.5px/1 var(--mono);letter-spacing:.06em;padding:3px 7px;border-radius:3px;background:#e7e3d9;color:#514d43;vertical-align:1px}
-  .tag.leroy{background:#dcefe2;color:var(--acc)}
   .tag.risc{background:var(--stop-bg);color:var(--acc2)}
   @media print{
     body{background:#fff;font-size:12.5px}
@@ -56,7 +55,6 @@
     h2{break-after:avoid}
     h2,h3{page-break-after:avoid}
     table,.gate,.stop,.note{page-break-inside:avoid}
-    .sec{page-break-inside:auto}
     @page{size:A4;margin:16mm 15mm}
   }
 </style>
@@ -65,333 +63,290 @@
 <div class="page">
 
 <header class="doc">
-  <div class="kicker">Casuta din copac · Faza 2 · F4</div>
-  <h1>PROIECT CASA — executia, etapa cu etapa</h1>
-  <p class="sub">Ordinea de lucru, masuratorile care croiesc totul, fiecare perete cu lista si pasii lui, acoperisul, si cumparaturile — totul dintr-un singur magazin: Leroy Merlin Bucuresti Colosseum.</p>
+  <div class="kicker">Casuta din copac · casa de sus</div>
+  <h1>PROIECT CASA — cum o construim, pas cu pas</h1>
+  <p class="sub">Ordinea de lucru, masuratorile care hotarasc totul, fiecare perete cu lista si pasii lui, acoperisul, si cumparaturile — totul dintr-un singur magazin: Leroy Merlin Bucuresti Colosseum. Scris pe intelesul oricui; cotele sunt in milimetri.</p>
   <div class="meta">
-    <span>v1 · 17 august 2026</span>
-    <span>preturi + stoc: verificate LIVE 17.08, magazin Colosseum</span>
+    <span>v2 · 17 august 2026 · limbaj simplu</span>
+    <span>preturi + stoc: verificate pe site 17.08, magazinul Colosseum</span>
     <span>~5 zile de lucru · buget ~3.000–3.150 lei</span>
   </div>
 </header>
 
-<p class="lead">Precedenta: la orice contradictie de detaliu pe pereti castiga <b>GHID-SIMPLU-casa.html</b>, pe geometrie generala <b>MANUAL-FAZA-2 §F4</b>. Documentul asta le pune in ordine de executie si rezolva aprovizionarea Leroy-only — nu redeschide nicio decizie.</p>
+<p class="lead">Desenele sunt in documentul-pereche SCHEME-CASA. Detaliile fine de perete (geamul bucata cu bucata, straturile) raman in GHID-SIMPLU-casa — daca doua documente se contrazic pe o cota de gol, are dreptate GHID-ul. Documentul asta pune totul in ordinea de executie si rezolva cumparaturile dintr-un singur drum.</p>
 
 <!-- ============================================================ -->
-<h2 class="n-sec"><span class="n">§1</span>Ce construim — cifrele blocate</h2>
+<h2><span class="n">§1</span>Ce construim — cifrele hotarate</h2>
 <div class="grid2">
 <table>
-  <tr><th>Ce</th><th>Cota</th></tr>
-  <tr><td>Amprenta casei</td><td class="num">2100 × 1100, lipita de stalpii de 4 m</td></tr>
-  <tr><td>Perete spate</td><td class="num">1700 + dulap 46×250 pe muchie = reazem 1950</td></tr>
-  <tr><td>Perete fata</td><td class="num">1642 (stalpi 90×90 montati la 1600 — nu se taie)</td></tr>
-  <tr><td>Panta acoperis</td><td class="num">308 / 1100 = 15,6°, o apa spre terasa</td></tr>
-  <tr><td>Usa</td><td class="num">gol deschis 550, liber 1600 (talpa taiata la final)</td></tr>
+  <tr><th>Ce</th><th>Cat</th></tr>
+  <tr><td>Cat de mare e casa</td><td class="num">2100 × 1100, lipita de stalpii de 4 m</td></tr>
+  <tr><td>Inaltimea in spate</td><td class="num">perete 1700 + scandura groasa de 250 pusa pe muchie deasupra = 1950</td></tr>
+  <tr><td>Inaltimea in fata</td><td class="num">1644 — stalpii de 90×90 sunt deja montati la 1600, peste ei vine lemnul de sus</td></tr>
+  <tr><td>Inclinarea acoperisului</td><td class="num">~30 cm cadere pe 1,1 m (15,6°), apa curge spre terasa</td></tr>
+  <tr><td>Usa</td><td class="num">gol deschis de 550, cu 1600 loc liber — un copil de 1,60 intra fara sa se aplece</td></tr>
 </table>
 <table>
-  <tr><th>Ce</th><th>Cota</th></tr>
-  <tr><td>Streasina</td><td class="num">100 fata + 100 spate · caprior 1342 · FARA jgheab</td></tr>
-  <tr><td>Pereti</td><td class="num">lambriu 12,5×96 direct pe rama · contrafise · fara folie/OSB</td></tr>
-  <tr><td>Geamuri laterale</td><td class="num">FIXE, acrilic 440×440, gol 490 centrat, prag 950</td></tr>
-  <tr><td>Fereastra fata</td><td class="num">PVC 56×56, singura care se deschide (spre terasa)</td></tr>
-  <tr><td>Invelitoare</td><td class="num">Onduline Base, 3 placi 2000×860, cuie pe creasta</td></tr>
+  <tr><th>Ce</th><th>Cat</th></tr>
+  <tr><td>Cat iese acoperisul</td><td class="num">100 in fata + 100 in spate · FARA jgheab</td></tr>
+  <tr><td>Peretii</td><td class="num">scanduri de lambriu batute direct pe rama · fara folie, fara OSB</td></tr>
+  <tr><td>Geamurile laterale</td><td class="num">FIXE, plastic 440×440, in gol de 490, la mijlocul peretelui</td></tr>
+  <tr><td>Fereastra din fata</td><td class="num">PVC 56×56, singura care se deschide — spre terasa</td></tr>
+  <tr><td>Invelitoarea</td><td class="num">3 placi Onduline, cuiele se bat numai pe varful valului</td></tr>
 </table>
 </div>
 
 <h3>Regulile care nu se negociaza</h3>
 <ol class="pasi">
-  <li><b>Nu tai si nu cumperi nimic</b> inainte de masuratorile M2–M5 (§3). Lambriul e cea mai scumpa pozitie — se cumpara pe cote reale.</li>
-  <li><b>Proptelele stalpilor de 4 m raman</b> pana cand cutia e legata in colturi si prinsa de podea. Baza lor e articulata — cutia ii tine, nu invers.</li>
-  <li><b>Ridicarea peretilor: zi fara vant, minim 2 adulti</b> (spatele are ~70 kg), fiecare panou proptit inainte sa-i dai drumul.</li>
-  <li><b>Lambriul si acoperisul in aceeasi etapa</b> — schelet acoperit-neimbracat nu ramane peste sezonul de ploi.</li>
-  <li><b>Santier cu copii:</b> scara mobila JOS intre sesiuni; in timpul lucrului copiii nu stau sub sarcina; capetele de surub la ras, zero varfuri strapunse.</li>
+  <li><b>Nu tai si nu cumperi nimic</b> inainte de masuratorile M2–M5 (§3). Lambriul e cel mai scump rand de pe lista — se cumpara pe masuratori reale, nu din plan.</li>
+  <li><b>Proptelele de pe stalpii de 4 m raman la locul lor</b> pana cand toata cutia casei e legata in colturi si prinsa de podea. Cutia tine stalpii, nu invers.</li>
+  <li><b>Peretii se ridica intr-o zi fara vant, minim 2 adulti</b> (cel din spate are ~70 kg). Fiecare perete se propteste inainte sa-i dai drumul.</li>
+  <li><b>Scandurile si acoperisul se pun in aceeasi etapa</b> — scheletul nu ramane dezvelit peste sezonul de ploi.</li>
+  <li><b>Santier cu copii:</b> scara mobila sta JOS intre zilele de lucru; cand se lucreaza, copiii nu stau sub piese ridicate; capetele de surub la ras, niciun varf iesit prin lemn.</li>
 </ol>
 
 <!-- ============================================================ -->
 <h2><span class="n">§2</span>Harta etapelor</h2>
 <table class="stage-map">
-  <tr><th>Etapa</th><th>Ce se face</th><th>Durata</th><th>Poarta de iesire</th></tr>
-  <tr><td>S0</td><td>Curatenie F1 + masuratorile M1–M5 + decizia cioatei</td><td class="num">0,5 zi</td><td>toate cele 5 M scrise; niciun STOP activ</td></tr>
-  <tr><td>S1</td><td>Drumul Leroy Colosseum + laminarea 22×100 → 44×100</td><td class="num">0,5 zi</td><td>tot pe lista bifat; 14 perechi laminate</td></tr>
-  <tr><td>S2</td><td>Peretele din SPATE — jos pe iarba, imbracat complet, ridicat</td><td class="num">1 zi</td><td>prins de stalpii de 4 m + talpa in joiste</td></tr>
-  <tr><td>S3</td><td>Peretii LATERALI — construiti pe punte, ridicati, legati de spate</td><td class="num">1 zi</td><td>colturi spate prinse; talpi in joiste</td></tr>
-  <tr><td>S4</td><td>Peretele din FATA + lantul final al stalpilor + cutia in echer</td><td class="num">0,5–1 zi</td><td>diagonale ±5 · proptele scoase · talpa usii taiata</td></tr>
-  <tr><td>S5</td><td>Acoperisul: dulap, capriori, ancore, sipci, Onduline</td><td class="num">1 zi</td><td>cuie pe creasta peste tot; fronturi inchise</td></tr>
-  <tr><td>S6</td><td>Geamuri, fereastra, prag, lazura + verificarea finala</td><td class="num">0,5 zi</td><td>checklist §9 complet — abia apoi urca copiii</td></tr>
+  <tr><th>Etapa</th><th>Ce se face</th><th>Durata</th><th>Nu treci mai departe fara</th></tr>
+  <tr><td>S0</td><td>Restantele podelei + cele 5 masuratori + decizia cioatei</td><td class="num">0,5 zi</td><td>toate cele 5 masuratori scrise; niciun STOP aprins</td></tr>
+  <tr><td>S1</td><td>Drumul la Leroy + insurubarea scandurilor perechi</td><td class="num">0,5 zi</td><td>tot ce e pe lista bifat; 14 perechi facute</td></tr>
+  <tr><td>S2</td><td>Peretele din SPATE — jos pe iarba, imbracat complet, ridicat</td><td class="num">1 zi</td><td>prins de stalpii de 4 m + de podea</td></tr>
+  <tr><td>S3</td><td>Peretii LATERALI — facuti pe punte, ridicati, legati de spate</td><td class="num">1 zi</td><td>colturile din spate prinse; lemnul de jos in grinzi</td></tr>
+  <tr><td>S4</td><td>Peretele din FATA + prinderea finala a stalpilor + cutia dreapta</td><td class="num">0,5–1 zi</td><td>diagonalele egale · proptele scoase · pragul usii taiat</td></tr>
+  <tr><td>S5</td><td>Acoperisul: scandura groasa, lemnele inclinate, sipcile, Onduline</td><td class="num">1 zi</td><td>cuie pe varful valului peste tot; lateralele inchise</td></tr>
+  <tr><td>S6</td><td>Geamurile, fereastra, pragul + verificarea finala</td><td class="num">0,5 zi</td><td>tot §9 bifat — abia apoi urca copiii</td></tr>
 </table>
-<p class="why">De ce spatele primul: e singurul perete care nu mai poate fi atins dupa ridicare — intre el si gard raman 30 cm. Se face complet jos, pe iarba, cu lambriu si lazura cu tot. Fata si lateralele se construiesc lejer sus, pe punte. Ordinea colturilor: spate → laterale → fata.</p>
-<div class="note"><b>Dupa S6 urmeaza imediat F2 — balustrada.</b> Pana atunci puntea ramane santier: scara jos intre sesiuni, copiii sus doar cu adult langa ei. Casa terminata iti inchide latura din spate, dar terasa ramane cu margine libera la 2,2 m.</div>
+<p class="why">De ce spatele primul: e singurul perete la care nu mai ajungi dupa ce sta in picioare — intre el si gard raman 30 cm, nu incape nici mana, nici masina de gaurit. Se face complet jos, pe iarba, cu scanduri si vopsea cu tot. Fata si lateralele se fac lejer sus, pe punte. Colturile se prind in ordinea: spate → laterale → fata.</p>
+<div class="note"><b>Dupa S6 urmeaza imediat balustrada.</b> Pana atunci puntea ramane santier: scara jos intre zilele de lucru, copiii sus doar cu un adult langa ei. Casa terminata inchide latura din spate, dar terasa ramane cu margine libera la 2,2 m.</div>
 
 <!-- ============================================================ -->
-<h2><span class="n">§3</span>S0 — Pregatire si cele 5 masuratori <span class="tag">0,5 zi</span></h2>
+<h2><span class="n">§3</span>S0 — Pregatirea si cele 5 masuratori <span class="tag">0,5 zi</span></h2>
 
-<h3>Restante F1 — se inchid intai (30–45 min)</h3>
+<h3>Restantele podelei — se inchid intai (30–45 min)</h3>
 <ul class="chk">
-  <li>Suruburile lipsa pe scandurile late (pregaurile goale) — inox 5×60, GSR pe ambreiaj 8–12, T25. Niciodata cu impactul.</li>
-  <li>Capac sau banda groasa pe AMBELE tije M12 — ies din punte fix in zona de mers.</li>
-  <li>Receptia, o data pentru totdeauna: numara C2 ramase, inox 5×60, Heco 6×80, 6×100, 8×200. Ce ai in plus scade lista din §4.</li>
-  <li>Scara mobila: jos, culcata, intre orice doua sesiuni de lucru.</li>
+  <li>Suruburile lipsa de pe scandurile late (gaurile pregatite, fara surub) — surub inox 5×60, masina pe treapta blanda (8–12), varf T25. Niciodata cu masina de impact — rupe capul.</li>
+  <li>Numaratoarea cumparaturilor vechi, o data pentru totdeauna: cate coltare C2, suruburi inox 5×60, suruburi 6×80 si 6×100 au ramas. Ce ai deja scade lista de la §4.</li>
+  <li>Scara mobila: jos, culcata, intre orice doua zile de lucru.</li>
 </ul>
 
 <h3>Decizia cioatei — inainte de pereti</h3>
-<p>Cioata de 1,5 m de pe terasa are varful la ~110 mm sub muchia viitoare a acoperisului (1614 peste punte). Adica exact o treapta de urcat pe acoperis — ce interzice regula anti-catarare din GHID §11. <b>Recomandare: reteaz-o la ~600</b>, ca fusul principal (10 minute cu JR3070CT). Daca o pastrezi, e o decizie explicita de acceptare a riscului si o scrii in STATUS.</p>
+<p>Cioata de 1,5 m de pe terasa ajunge cu varful la ~11 cm sub marginea viitoare a acoperisului. Adica e o treapta perfecta de urcat pe acoperis — exact ce interzice regula "nicio treapta de catarare". <b>Recomandare: taie cioata la ~60 cm</b>, ca pe cea principala (10 minute cu fierastraul electric). Daca o pastrezi, e o decizie asumata si o scrii in STATUS.</p>
 
-<h3>Trasaje pe punte</h3>
+<h3>Liniile trase pe punte</h3>
 <ol class="pasi">
-  <li>Cu sfoara cu creta: <b>liniile celor 6 joiste</b> — axe la <span class="d">0 · 280 · 720 · 1120 · 1550 · 2100</span> de la S4. Sub talpi ai doar 28 mm de dusumea; tot ce tine, tine in joiste.</li>
-  <li><b>Conturul casei:</b> linia din spate lipita de stalpii de 4 m, linia din fata prin axele tijelor M12. Masoara diagonalele dreptunghiului — egale.</li>
-  <li>Verifica stalpii 90×90: verticali pe doua fete, fara joc. Daca joaca — mai strange coltarele existente.</li>
+  <li>Cu sfoara cu creta: <b>liniile grinzilor de sub podea</b> — sunt la <span class="d">0 · 280 · 720 · 1120 · 1550 · 2100</span> masurat de la marginea puntii. Scandurile podelei au doar 28 mm — tot ce se prinde de podea trebuie sa intre in grinzile de dedesubt, si fara linii nu le vezi.</li>
+  <li><b>Conturul casei:</b> linia din spate lipita de stalpii de 4 m, linia din fata prin mijlocul celor doi stalpi de 90×90 (deja montati). Masoara cele doua diagonale ale dreptunghiului — egale.</li>
+  <li>Verifica stalpii de 90×90: drepti pe doua fete (cu nivela), fara joc. Daca se misca, mai strange coltarele care ii tin.</li>
 </ol>
 
-<h3>Masuratorile M1–M5 — croiesc toata casa</h3>
+<h3>Cele 5 masuratori care hotarasc croiala</h3>
 <table>
-  <tr><th>#</th><th>Ce masori</th><th>Nominal</th><th>Real</th></tr>
-  <tr><td class="num">M1</td><td>Cat ies stalpii de 4 m peste dusumea (ambii; iei valoarea mai mica)</td><td class="num">1700</td><td class="num">1700 (masurat 11.08)</td></tr>
-  <tr><td class="num">M2</td><td>De la fata stalpilor din spate pana la axa tijelor M12 = adancimea casei</td><td class="num">1100</td><td class="num">______</td></tr>
-  <tr><td class="num">M3</td><td>Lumina intre stalpii de 4 m — masurata JOS si SUS</td><td class="num">2000</td><td class="num">______ / ______</td></tr>
-  <tr><td class="num">M4</td><td>Distanta intre axele celor doua tije M12</td><td class="num">2100</td><td class="num">______</td></tr>
-  <tr><td class="num">M5</td><td>Cat ies tijele M12 peste dusumea</td><td class="num">~100</td><td class="num">______</td></tr>
+  <tr><th>#</th><th>Ce masori</th><th>Din plan</th><th>Real</th></tr>
+  <tr><td class="num">M1</td><td>Cat ies stalpii de 4 m deasupra podelei (amandoi; iei valoarea mai mica)</td><td class="num">1700</td><td class="num">1700 (masurat 11.08)</td></tr>
+  <tr><td class="num">M2</td><td>De la stalpii din spate pana la mijlocul stalpilor din fata = adancimea casei</td><td class="num">1100</td><td class="num">______</td></tr>
+  <tr><td class="num">M3</td><td>Distanta libera intre stalpii de 4 m — masurata JOS si SUS</td><td class="num">2000</td><td class="num">______ / ______</td></tr>
+  <tr><td class="num">M4</td><td>Distanta dintre cei doi stalpi din fata, mijloc la mijloc</td><td class="num">2100</td><td class="num">______</td></tr>
+  <tr><td class="num">M5</td><td>Cat ies stalpii din fata deasupra podelei (amandoi; iei valoarea mai mica)</td><td class="num">1600</td><td class="num">______</td></tr>
 </table>
-<div class="stop"><b>STOP — suni inainte sa tai sau sa cumperi, daca:</b>
-M3 jos difera de M3 sus cu peste 15 mm (stalpii nu-s paraleli) · tijele nu cad pe axele joistelor de capat · M2 difera de 1100 cu peste 30 mm (se recroiesc lateralele si capriorii) · dulapul de reazem are sub 250 inaltime (panta scade sub 13°, marja Onduline dispare).</div>
-<div class="gate"><b>Gata cand</b> toate restantele bifate · cioata decisa · liniile trasate · cele 5 M scrise in tabel · niciun STOP activ.</div>
+<div class="note"><b>Corectie 18.08:</b> varianta veche masura M2/M4/M5 fata de doua tije cu filet in podea. Tijele alea nu exista pe santier (confirmat cu Vlad) — reperele reale sunt stalpii din fata, deja montati la 1600. Cifrele nu se schimba (1100 / 2100 / 1600), doar masori fata de ce e deja acolo, nu fata de ceva care lipseste.</div>
+<div class="stop"><b>STOP — ne oprim si vorbim inainte sa taiem sau sa cumparam, daca:</b>
+M3 jos si M3 sus difera cu peste 15 mm (stalpii nu-s paraleli) · stalpii din fata nu cad pe liniile grinzilor de capat · M2 difera de 1100 cu peste 30 mm (se recroiesc lateralele si lemnele acoperisului) · scandura groasa are sub 250 inaltime (acoperisul devine prea intins si Onduline nu mai etanseaza sigur).</div>
+<div class="gate"><b>Gata cand</b> restantele bifate · cioata decisa · liniile trase · cele 5 masuratori scrise in tabel · niciun STOP aprins.</div>
 
 <!-- ============================================================ -->
-<h2><span class="n">§4</span>S1 — Drumul Leroy Colosseum <span class="tag">0,5 zi</span></h2>
-<p class="lead">Un singur magazin, un singur drum. Trei randuri nu exista in gama Leroy (42×90, tirfon Ø10, ancora de caprior) — mai jos sunt substitutele lor, calculate, cu acelasi rol structural. Preturile si stocul: verificate live 17.08.</p>
+<h2><span class="n">§4</span>S1 — Drumul la Leroy Colosseum <span class="tag">0,5 zi</span></h2>
+<p class="lead">Un singur magazin, un singur drum. Trei lucruri din planul original nu exista in gama Leroy — mai jos sunt inlocuitorii lor, calculati, cu acelasi rol. Lista de cumparaturi completa, cu linkuri si casute de bifat, e in documentul LISTA-LEROY; aici e doar esenta.</p>
 
-<div class="note"><b>Ordinea in magazin:</b> intai <b>cuiele de Onduline</b> — un singur set in stoc din 11.08 (nu s-a miscat, dar e unul). Daca s-a dus: surub de acoperis cu saiba EPDM din acelasi raion (intreaba de fixare Onduline) sau alt magazin Leroy Bucuresti. Culoarea placilor: <b>rosu = stoc 15</b> (ajunge pentru 3, dar subtire) · <b>maro = stoc 153 si cu ~6 lei/placa mai ieftin</b>. Daca rosu s-a dus intre timp, maro e raspunsul fara drum in plus.</div>
+<div class="note"><b>Ordinea in magazin:</b> intai <b>cuiele de Onduline</b> — mai e UN singur set; daca s-a dus, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion, sau mergi la alt Leroy din Bucuresti. Apoi placile: <b>rosu mai sunt 15</b> (ajunge pentru 3, dar putin) · <b>maro sunt 153 si e mai ieftin cu ~6 lei placa</b>. Daca rosu s-a terminat, iei maro si mergi mai departe.</div>
 
-<h3>Lemn</h3>
+<h3>Cei trei inlocuitori — pe scurt</h3>
 <table>
-  <tr><th>Rol</th><th>Produs Leroy (Colosseum, 17.08)</th><th>Cat</th><th class="num">~Lei</th></tr>
-  <tr><td>Imbracamintea peretilor</td><td>Lambriu rasinos A/B 12,5×96×3000, pachet 2,88 m² — 43,85/m² <span class="tag leroy">stoc OK</span></td><td class="num">5 pachete (14,4 m²)</td><td class="num">632</td></tr>
-  <tr><td>Verticale, proptele, tocuri geam, diagonala, sipci acoperis</td><td>Rigla nerindeluita A/B 46×46×3000 — 24,91 <span class="tag leroy">stoc 193</span></td><td class="num">27</td><td class="num">673</td></tr>
-  <tr><td><b>Substitut 42×90:</b> talpi, cununi, praguri, capriori, blocaje</td><td>Scandura nerindeluita 22×100×4000 — 19,89 <span class="tag leroy">stoc 750</span>, cate DOUA laminate = 44×100</td><td class="num">14 (+1 rezerva)</td><td class="num">278</td></tr>
-  <tr><td>Sipcile geamurilor + pragul usii</td><td>Sipca rindeluita 18×28×3000 — 8,29</td><td class="num">3</td><td class="num">25</td></tr>
-  <tr><td>Reazemul din spate</td><td>dulap 46×250×3000 — <b>il ai</b> (de la scara veche)</td><td class="num">0</td><td class="num">0</td></tr>
+  <tr><th>Ce nu exista la Leroy</th><th>Cu ce il inlocuim</th><th>De ce e ok</th></tr>
+  <tr><td>Lemnul de 42×90 (pentru ramele peretilor si acoperis)</td><td>Scanduri de 22×100×4000, <b>insurubate cate doua, una peste alta → o bara de 44×100</b>. 14 bare din 28 de scanduri.</td><td>Bara dubla e chiar mai teapana decat lemnul original (+27%). Costa la fel (~278 lei). Pretul real: o seara de insurubat perechi.</td></tr>
+  <tr><td>Surubul foarte gros de 10 mm (peretele din spate → stalpii de 4 m)</td><td>Surub de dulgherie 8×140, <b>cate 4 la fiecare capat</b> in loc de 3</td><td>Unul de 8 duce cam doua treimi din unul de 10 — al patrulea acopera diferenta.</td></tr>
+  <tr><td>Piesa speciala care ancoreaza lemnele acoperisului</td><td><b>Cate 2 coltare metalice 90×65 la fiecare capat</b> de lemn inclinat (20 in total)</td><td>Coltarul simplu tine la impins; perechea, prinsa in ambele lemne, tine si la smuls de vant.</td></tr>
 </table>
-<p class="why">De ce merge laminarea: doua scanduri de 22×100 insurubate una peste alta fac o bara de 44×100 — asezata pe lat, ca lemnul original, e cu ~27% mai rigida decat 42×90 (I: 0,71 fata de 0,56 ×10⁶ mm⁴). Capriorii ies mai teapan, talpile la fel de bune. Costul real al variantei: ~2–3 ore de laminare si ~200 de suruburi mici. Asta e trade-ul Leroy-only fata de un drum la Hornbach: <b>+~200 lei si o seara de munca, minus un drum si un furnizor.</b> Consecinta de croiala: talpa/cununa au 44 grosime (nu 42) — corectia verticalelor e in fiecare tabel si in regula din subsol.</p>
+<p class="why">Asta e targul variantei "totul de la Leroy" fata de inca un drum la Hornbach: platesti ~200 lei in plus si o seara de munca, si scapi de al doilea drum si al doilea magazin. Consecinta pentru croiala: lemnul de jos si cel de sus al ramelor au acum 44 grosime (nu 42) → <b>toate lemnele verticale se taie cu 4 mm mai scurt</b> — cifrele corecte sunt deja in tabelele §5–§7.</p>
 
-<h3>Invelitoare si geamuri</h3>
-<table>
-  <tr><th>Rol</th><th>Produs</th><th>Cat</th><th class="num">~Lei</th></tr>
-  <tr><td>Placile acoperisului</td><td>Onduline Base 2000×860×2,6 — rosu 46,88 <span class="tag risc">stoc 15</span> / maro 41,23 <span class="tag leroy">stoc 153</span></td><td class="num">3</td><td class="num">124–141</td></tr>
-  <tr><td>Cuiele lor, cu capac</td><td>Cuie metal 65×2,8 rosu, set 400 — 96,90 <span class="tag risc">STOC 1 — primul in cos</span></td><td class="num">1 set</td><td class="num">97</td></tr>
-  <tr><td>Geamurile laterale (ambele din o placa)</td><td>Placa plexiglas Hobbyglass 500×1000×4 — 71,99 <span class="tag leroy">stoc 26</span></td><td class="num">1</td><td class="num">72</td></tr>
-  <tr><td>Fereastra care se deschide (fata)</td><td>Fereastra PVC termopan 56×56, deschidere simpla — 126,99 <span class="tag leroy">stoc 76 (11.08)</span></td><td class="num">1</td><td class="num">127</td></tr>
-  <tr><td>Etansare fereastra</td><td>Silicon de exterior</td><td class="num">2</td><td class="num">40</td></tr>
-</table>
-
-<h3>Feronerie — cu substitutele Leroy</h3>
-<table>
-  <tr><th>Rol</th><th>Produs</th><th>Cat</th><th class="num">~Lei</th></tr>
-  <tr><td><b>Substitut tirfon Ø10:</b> perete spate → stalpii de 4 m</td><td>Surub dulgherie cap inecat 8×140, vrac <span class="tag leroy">in stoc</span> — 4 buc/capat in loc de 3 (Ø8 duce ~64% din Ø10)</td><td class="num">8</td><td class="num">~20</td></tr>
-  <tr><td><b>Substitut ancora caprior:</b> anti-smulgere la capetele capriorilor</td><td>Vinclu otel 90×65×2,5 — 4,50, cate 2 pe capat (varianta validata in GHID §12)</td><td class="num">20</td><td class="num">90</td></tr>
-  <tr><td>Coltare dulap reazem + vincluri talpi (interior)</td><td>Vinclu otel 90×65×2,5 — 4,50 <span class="tag leroy">stoc 300 (11.08)</span></td><td class="num">30</td><td class="num">135</td></tr>
-  <tr><td>Colturile peretilor (2/colt) + cele 2 coltare cu gaura Ø13 pentru tije</td><td>Vinclu otel 100×90×3 — 8,70 <span class="tag leroy">stoc 345 (11.08)</span></td><td class="num">10</td><td class="num">87</td></tr>
-  <tr><td>Placi peste stalpii de 4 m, pe dulap</td><td>Conector imbinare 90×200×2,5 — 8,99</td><td class="num">4</td><td class="num">36</td></tr>
-</table>
-
-<h3>Suruburi <span class="tag">vrac dulgherie = la kg; unde exista cutie echivalenta (Standers), cutia e mai ieftina</span></h3>
-<table>
-  <tr><th>Rol</th><th>Ce ceri</th><th>Cat</th><th class="num">~Lei</th></tr>
-  <tr><td>Rame (montanti in talpa/cununa), pregaurit 4 mm</td><td>5×80 cutie sau dulgherie 6×80 vrac</td><td class="num">~200</td><td class="num">40</td></tr>
-  <tr><td>Colturi pereti + contrafise</td><td>Surub dulgherie 6×120 vrac</td><td class="num">~100 (≈2,3 kg)</td><td class="num">135</td></tr>
-  <tr><td>Talpile in joiste</td><td>Surub dulgherie 6×140 vrac</td><td class="num">~40 (≈1 kg)</td><td class="num">65</td></tr>
-  <tr><td>Sipci + diagonala acoperis</td><td>Surub dulgherie 6×100 vrac</td><td class="num">~50 (≈1 kg)</td><td class="num">60</td></tr>
-  <tr><td>Vincluri, coltare Ø13 (4× 6×60/stalp), placi dulap</td><td>6×40 / 6×60 cutie sau vrac</td><td class="num">~80</td><td class="num">35</td></tr>
-  <tr><td>Laminarea 22×100 (alternate pe fete)</td><td>4×40 zincat, cutie mare</td><td class="num">~200</td><td class="num">40</td></tr>
-  <tr><td>Sipcile geamurilor</td><td>4×50, cutie</td><td class="num">~50</td><td class="num">20</td></tr>
-  <tr><td>Lambriu (~450 buc)</td><td><b>alegere la raft:</b> zincat 3,5–4×40 vrac (~40 lei, posibile dungi de rugina — acceptabil pana in 2028) SAU seturi inox A2 (~160–200 lei, curat)</td><td class="num">~450</td><td class="num">40–200</td></tr>
-</table>
-
-<h3>Protectie</h3>
-<table>
-  <tr><th>Rol</th><th>Produs</th><th>Cat</th><th class="num">~Lei</th></tr>
-  <tr><td>Lazura — toate fetele lambriului INAINTE de montaj + rame</td><td>Sadolin Extra / Luxens 2,5 L (doar daca nu mai ai din faza 1)</td><td class="num">1</td><td class="num">150</td></tr>
-</table>
-
-<p><b>TOTAL: ~3.000–3.150 lei</b>, tot dintr-un magazin. <b>Ce NU cumperi:</b> OSB, folie, sipci de aerisire · 42×90 (nu exista — laminezi) · tirfoane Ø10 (nu exista — 8×140) · ancore de caprior (vincluri duble) · stalpi (ii ai) · dulap (il ai) · usa (gol deschis) · jgheab/burlan (nu punem) · lemn de scara (amanata) · nimic pentru joiste-sora (SKIP definitiv 06.08).</p>
-
-<h3>Laminarea — acasa, in aceeasi zi</h3>
+<h3>Insurubarea perechilor — acasa, in aceeasi zi</h3>
 <ol class="pasi">
-  <li>Imperecheaza cele 28 de scanduri 22×100 in 14 perechi; fetele curate una spre alta, capetele la ras.</li>
-  <li>Suruburi 4×40 in zigzag la ~300 mm, alternand fata de pe care intri (capetele ambelor scanduri prinse la ~50 mm). Cleme pana intra suruburile.</li>
-  <li>Rezultatul e "bara de 44×100" — peste tot in acest document unde scrie 44×100, e o astfel de pereche. Taierile pe lungime se fac DUPA laminare, ca un singur lemn.</li>
+  <li>Imperechezi cele 28 de scanduri in 14 perechi: fetele curate una spre alta, capetele la acelasi nivel.</li>
+  <li>Suruburi 4×40 in zigzag, cam la 30 cm unul de altul, intrand cand de pe o fata, cand de pe cealalta; capetele prinse la ~5 cm. Cleme pana intra suruburile.</li>
+  <li>Rezultatul e "bara de 44×100" — asa ii spunem peste tot mai jos. Taierile la lungime se fac DUPA imperechere, ca la un singur lemn.</li>
 </ol>
-<div class="gate"><b>Gata cand</b> tot tabelul bifat la casa de marcat · cuiele Onduline in portbagaj · 14 perechi laminate si stivuite la umbra, pe distantieri.</div>
+<div class="gate"><b>Gata cand</b> toata lista bifata la casa de marcat · cuiele de Onduline in portbagaj · 14 perechi facute, stivuite la umbra pe cateva sipci.</div>
 
 <!-- ============================================================ -->
 <h2><span class="n">§5</span>S2 — Peretele din SPATE <span class="tag">1 zi · primul, jos pe iarba</span></h2>
-<p class="lead">Singurul perete care se face COMPLET jos — rama, contrafise, lambriu, lazura — pentru ca dupa ridicare intre el si gard raman 30 cm: nu mai incape nici mana, nici masina. Ce nu e gata jos, ramane asa pentru totdeauna.</p>
+<p class="lead">Singurul perete care se face COMPLET jos — rama, proptelele, scandurile, vopseaua. Dupa ridicare, intre el si gard raman 30 cm: ce nu e gata jos, ramane asa pentru totdeauna.</p>
 
-<h3>Croiala</h3>
+<h3>Ce tai si la ce lungime</h3>
 <table>
-  <tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
-  <tr><td>Talpa + cununa</td><td class="num">44×100 (laminat)</td><td class="num">2000</td><td class="num">2</td></tr>
-  <tr><td>Verticale</td><td class="num">46×46</td><td class="num">1612&thinsp;*</td><td class="num">5</td></tr>
-  <tr><td>Contrafise colturi</td><td class="num">46×46</td><td class="num">2× 424 (jos) + 2× 212 (sus), capete 45°</td><td class="num">4</td></tr>
-  <tr><td>Lambriu</td><td class="num">12,5×96</td><td class="num">randuri de ~2000</td><td class="num">~4,6 m²</td></tr>
+  <tr><th>Piesa</th><th>Din ce</th><th>Taiat la</th><th>Buc</th></tr>
+  <tr><td>Lemnul de jos + lemnul de sus al ramei</td><td class="num">bara 44×100</td><td class="num">2000</td><td class="num">2</td></tr>
+  <tr><td>Lemnele verticale</td><td class="num">rigla 46×46</td><td class="num">1612&thinsp;*</td><td class="num">5</td></tr>
+  <tr><td>Proptelele din colturi</td><td class="num">rigla 46×46</td><td class="num">2× 424 (jos) + 2× 212 (sus), capete taiate la 45°</td><td class="num">4</td></tr>
+  <tr><td>Scandurile (lambriul)</td><td class="num">12,5×96</td><td class="num">randuri de ~2000</td><td class="num">~4,6 m²</td></tr>
 </table>
-<p class="why">* 1700 − 2×44 = 1612 — talpa si cununa laminate au 44 grosime (fata de 42 la lemnul original), deci verticalele scad cu 4 mm ca peretele sa iasa exact 1700 (dulapul trebuie sa calce si pe perete, si pe capul stalpilor — ambele la 1700). Regula generala a substitutiei: <b>verticale = inaltimea peretelui − 88.</b></p>
+<p class="why">* 1700 − 2×44 = 1612. Peretele trebuie sa iasa exact 1700, ca scandura groasa de deasupra sa calce si pe perete, si pe capetele stalpilor de 4 m — amandoua la aceeasi inaltime. Regula pentru toti peretii: <b>lemn vertical = inaltimea peretelui minus 88</b>.</p>
 
 <h3>Pasii</h3>
 <ol class="pasi">
-  <li>Talpa si cununa paralele pe iarba; insemneaza pe AMANDOUA interaxele verticalelor: <span class="d">0 · 500 · 1000 · 1500 · 2000</span>.</li>
-  <li>Prinde cele 5 verticale: cate 2 suruburi prin talpa si 2 prin cununa, <b>pregaurit 4 mm</b> — capetele de rigla crapa altfel.</li>
-  <li><b>Masoara AMBELE diagonale ale ramei — egale, voie 3 mm.</b> Corectezi acum, impingand de colturi. Contrafisele "ingheata" forma exact cum o gasesc.</li>
-  <li>Contrafisele: jos 2× 424, sus 2× 212, cate 2× 6×120 la fiecare capat.</li>
-  <li>Lazura pe TOATE fetele lambriului, apoi lambriul complet, cat panoul e jos: primul rand jos, fiecare rand suprapune 2 cm peste cel de sub el, un surub in fiecare verticala.</li>
-  <li><b>Ridicarea, in doi</b> (~70 kg): pe linie, proptit, verificat vertical.</li>
-  <li>Prinderea de stalpii de 4 m: <b>4× surub dulgherie 8×140 pe fiecare capat</b> (la ~200 jos, 2 pe mijloc, ~200 sus), pregaurit Ø6 in stalp, prin verticala de capat a peretelui. Apoi talpa: <b>6×140 la fiecare 400, pe liniile joistelor</b> + vincluri pe interior.</li>
+  <li>Lemnul de jos si cel de sus, paralele pe iarba; insemnezi pe AMANDOUA unde vin verticalele: <span class="d">0 · 500 · 1000 · 1500 · 2000</span>.</li>
+  <li>Prinzi cele 5 verticale: cate 2 suruburi prin lemnul de jos si 2 prin cel de sus, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</li>
+  <li><b>Masori AMBELE diagonale ale ramei — egale, voie 3 mm.</b> Corectezi acum, impingand de colturi. Proptelele "ingheata" forma exact cum o gasesc.</li>
+  <li>Proptelele: jos cele de 424, sus cele de 212, cate 2 suruburi 6×120 la fiecare capat.</li>
+  <li>Vopsea de protectie pe TOATE fetele scandurilor, apoi scandurile, cat peretele e jos: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</li>
+  <li><b>Ridicarea, in doi</b> (~70 kg): pe linie, proptit, verificat cu nivela.</li>
+  <li>Prinderea: <b>4 suruburi de dulgherie 8×140 pe fiecare capat</b>, in stalpii de 4 m (unul jos, doua pe mijloc, unul sus — gaura de 6 data inainte in stalp), apoi lemnul de jos prin podea in grinzi: <b>surub 6×140 la fiecare 40 cm, pe liniile trase cu creta</b> + coltare metalice pe interior.</li>
 </ol>
-<div class="gate"><b>Gata cand</b> diagonale egale la asamblare · 8× 8×140 in stalpi · talpa in joiste · lambriu complet, lazurat pe toate fetele · nicio atingere perete–gard.</div>
+<div class="gate"><b>Gata cand</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · lemnul de jos prins in grinzi · scandurile complete, vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
 
 <!-- ============================================================ -->
 <h2><span class="n">§6</span>S3 — Peretii LATERALI, cu geamurile lor <span class="tag">1 zi · pe punte</span></h2>
-<p class="lead">Doi pereti in oglinda, construiti culcat pe punte. Cununa e inclinata pe panta (15,6°); geamul sta pe prag, intre dubluri — nu in aer.</p>
+<p class="lead">Doi pereti la fel, unul in oglinda celuilalt, facuti culcat pe punte. Lemnul lor de sus e inclinat, dupa panta acoperisului. Geamul sta pe un prag, intre doua verticale dublate — nu atarna in aer.</p>
 
-<h3>Croiala — pentru UN perete (×2)</h3>
+<h3>Ce tai si la ce lungime — pentru UN perete (×2)</h3>
 <table>
-  <tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
-  <tr><td>Talpa</td><td class="num">44×100</td><td class="num">1010</td><td class="num">1</td></tr>
-  <tr><td>Cununa inclinata</td><td class="num">44×100</td><td class="num">~1050, capete taiate la 15,6°</td><td class="num">1</td></tr>
-  <tr><td>Verticale</td><td class="num">46×46</td><td class="num">1556 (fata) · 1709 (mijloc) · 1862 (spate)&thinsp;*</td><td class="num">3</td></tr>
-  <tr><td>Dubluri pe marginile golului de geam</td><td class="num">46×46</td><td class="num">pe loc, dupa panou</td><td class="num">2</td></tr>
-  <tr><td>Prag + lemn deasupra golului</td><td class="num">44×100</td><td class="num">490</td><td class="num">2</td></tr>
-  <tr><td>Contrafise</td><td class="num">46×46</td><td class="num">2× 424 + 2× 212</td><td class="num">4</td></tr>
-  <tr><td>Toc geam (se face separat, ca o rama de tablou)</td><td class="num">46×46</td><td class="num">2× 490 + 2× 398</td><td class="num">4</td></tr>
-  <tr><td>Geam</td><td class="num">acrilic 4 mm</td><td class="num">440 × 440 (din placa 500×1000 ies ambele)</td><td class="num">1</td></tr>
-  <tr><td>Sipci de retinere geam</td><td class="num">18×28</td><td class="num">~440</td><td class="num">8</td></tr>
-  <tr><td>Lambriu</td><td class="num">12,5×96</td><td class="num">randuri de ~1010, sus taiate pe panta</td><td class="num">~1,9 m²</td></tr>
+  <tr><th>Piesa</th><th>Din ce</th><th>Taiat la</th><th>Buc</th></tr>
+  <tr><td>Lemnul de jos</td><td class="num">bara 44×100</td><td class="num">~1010 — se taie pe loc, sa intre fix intre peretele din fata si cel din spate</td><td class="num">1</td></tr>
+  <tr><td>Lemnul de sus, inclinat</td><td class="num">bara 44×100</td><td class="num">~1050, capetele taiate oblic dupa panta</td><td class="num">1</td></tr>
+  <tr><td>Lemnele verticale</td><td class="num">rigla 46×46</td><td class="num">1556 (spre fata) · 1709 (mijloc) · 1862 (spre spate)</td><td class="num">3</td></tr>
+  <tr><td>Verticalele in plus, pe marginile golului de geam</td><td class="num">rigla 46×46</td><td class="num">pe loc, dupa perete</td><td class="num">2</td></tr>
+  <tr><td>Pragul + lemnul de deasupra golului</td><td class="num">bara 44×100</td><td class="num">490</td><td class="num">2</td></tr>
+  <tr><td>Proptelele din colturi — toate scurte aici&thinsp;**</td><td class="num">rigla 46×46</td><td class="num">4× 212 (brate de 150)</td><td class="num">4</td></tr>
+  <tr><td>Rama geamului (se face separat, ca o rama de tablou)</td><td class="num">rigla 46×46</td><td class="num">2× 490 + 2× 398</td><td class="num">4</td></tr>
+  <tr><td>Geamul</td><td class="num">plastic 4 mm</td><td class="num">440 × 440 (amandoua ies din placa de 500×1000)</td><td class="num">1</td></tr>
+  <tr><td>Sipcile care tin geamul</td><td class="num">sipca 18×28</td><td class="num">~440</td><td class="num">8</td></tr>
+  <tr><td>Scandurile (lambriul)</td><td class="num">12,5×96</td><td class="num">randuri de ~1010, sus taiate pe panta</td><td class="num">~1,9 m²</td></tr>
 </table>
-<p class="why">* Corectia de laminat fata de cifrele GHID (1558/1712/1866): reazemul din fata devine 1644 (stalp 1600 + cununa 44), panta 306/1100 ≈ 15,5° — practic aceeasi. Golul geamului ramane <b>490×490</b>, centrat, cu fata pragului la 950 — cotele golurilor NU se schimba niciodata. Tocul: exterior exact 490×490, deci cu rigla de 46 barele scurte ies 398 (490 − 2×46).</p>
+<p class="why">** Corectie prinsa la desenarea la scara: proptelele lungi (brate de 300) NU incap aici — verticala dublata a golului e la doar 17 cm de colt. Toate cele 4 proptele ale unui perete lateral se fac scurte (brate de 150). Peretele nu are de suferit: colturile lui se leaga oricum de peretele din spate si de stalpii grosi.</p>
 
 <h3>Pasii</h3>
 <ol class="pasi">
-  <li>Rama culcata pe punte: talpa, cele 3 verticale (cea inalta spre spate), cununa inclinata peste ele. Diagonale egale ±3.</li>
-  <li>Golul geamului: dublurile pe margini, pragul cu fata de sus la 950, lemnul de deasupra. Gol final <b>490×490</b>. Verticala din mijloc se taie: bucata de jos sprijina pragul, bucata de sus sta deasupra golului.</li>
-  <li>Contrafisele: jos 424, sus 212 (cele scurte nu ating geamul).</li>
-  <li>Lambriul cat panoul e culcat — de jos in sus, randurile de sus taiate pe panta. Lazura pe toate fetele, inainte.</li>
-  <li>Ridici si prinzi: capatul din spate de peretele din spate — <b>4× 6×120 prin verticala de capat + 2 vincluri 100×90 pe interior (sus si jos)</b>; talpa cu 6×140 in joista de capat (linia trasata cu creta!).</li>
-  <li>Geamul, la S6 — intai cutia intreaga si acoperisul.</li>
+  <li>Rama, culcata pe punte: lemnul de jos, cele 3 verticale (cea inalta spre spate), lemnul inclinat peste ele. Diagonalele egale, voie 3 mm.</li>
+  <li>Golul geamului: verticalele dublate pe margini, pragul cu fata de sus la <span class="d">950</span>, lemnul de deasupra. Golul ramas: <b>490 × 490</b>, la mijlocul peretelui. Verticala din mijloc se taie: bucata de jos sprijina pragul, bucata de sus sta deasupra golului.</li>
+  <li>Proptelele: toate 4 scurte (212).</li>
+  <li>Scandurile, cat peretele e culcat — de jos in sus, randurile de sus taiate oblic dupa panta. Vopsea pe toate fetele, inainte.</li>
+  <li>Il ridici si il prinzi: capatul din spate de peretele din spate — <b>4 suruburi 6×120 prin verticala de capat + 2 coltare metalice pe interior (sus si jos)</b>; lemnul de jos prin podea, in grinda de sub el (linia cu creta!), cu suruburi 6×140.</li>
+  <li>Geamul vine la S6 — intai toata cutia si acoperisul.</li>
 </ol>
-<div class="gate"><b>Gata cand</b> ambele laterale sus, prinse de spate, talpile in joiste · goluri de geam 490×490 cu diagonale egale · capatul din fata ramane liber, il ia S4.</div>
+<div class="gate"><b>Gata cand</b> ambele laterale sus si prinse de spate · lemnele de jos in grinzi · golurile de geam de 490×490, cu diagonale egale · capatul din fata ramane liber — il prinde S4.</div>
 
 <!-- ============================================================ -->
 <h2><span class="n">§7</span>S4 — Peretele din FATA + inchiderea cutiei <span class="tag">0,5–1 zi</span></h2>
-<p class="lead">Peretele prin care se intra: gol de usa de 550 cu 1600 liber, fereastra PVC care se deschide spre terasa. Sta intre cei doi stalpi de 90 — ei sunt colturile din fata. Aici se inchide si lantul final al stalpilor: coltarele cu gaura peste tijele M12.</p>
+<p class="lead">Peretele prin care se intra: golul usii cu 1600 liber si fereastra care se deschide spre terasa. Sta intre cei doi stalpi grosi de 9 cm — ei sunt colturile din fata. Tot acum se face si prinderea finala a stalpilor — vezi mai jos, planul s-a schimbat fata de tijele din varianta veche.</p>
 
-<h3>Croiala</h3>
+<h3>Ce tai si la ce lungime</h3>
 <table>
-  <tr><th>Piesa</th><th>Material</th><th>Taiat la</th><th>Buc</th></tr>
-  <tr><td>Talpa + cununa</td><td class="num">44×100</td><td class="num">2000</td><td class="num">2</td></tr>
-  <tr><td>Verticale (dubluri usa+fereastra, 1 plina, 1 de taiat in bucatile scurte)</td><td class="num">46×46</td><td class="num">1556&thinsp;*</td><td class="num">7</td></tr>
-  <tr><td>Prag + lemn deasupra ferestrei (gol 570)</td><td class="num">44×100</td><td class="num">660</td><td class="num">2</td></tr>
-  <tr><td>Contrafise (cele de sus prinse SI in stalpii 90×90)</td><td class="num">46×46</td><td class="num">2× 424 + 2× 212</td><td class="num">4</td></tr>
-  <tr><td>Sipca-prag peste taietura talpii, la usa</td><td class="num">18×28</td><td class="num">~610</td><td class="num">1</td></tr>
-  <tr><td>Lambriu (doar zonele pline)</td><td class="num">12,5×96</td><td class="num">pe panouri</td><td class="num">~2,4 m²</td></tr>
+  <tr><th>Piesa</th><th>Din ce</th><th>Taiat la</th><th>Buc</th></tr>
+  <tr><td>Lemnul de jos + lemnul de sus</td><td class="num">bara 44×100</td><td class="num">2000</td><td class="num">2</td></tr>
+  <tr><td>Lemnele verticale (cu dublurile de la usa si fereastra)</td><td class="num">rigla 46×46</td><td class="num">1556</td><td class="num">7</td></tr>
+  <tr><td>Pragul + lemnul de deasupra ferestrei</td><td class="num">bara 44×100</td><td class="num">660</td><td class="num">2</td></tr>
+  <tr><td>Proptele: sus 2 scurte (prinse SI in stalpi) · jos doar pe dreapta&thinsp;*</td><td class="num">rigla 46×46</td><td class="num">2× 212 + 1× ~350 (brate de 250)</td><td class="num">3</td></tr>
+  <tr><td>Sipca-prag peste taietura, la usa</td><td class="num">sipca 18×28</td><td class="num">~610</td><td class="num">1</td></tr>
+  <tr><td>Scandurile (doar pe zonele pline)</td><td class="num">12,5×96</td><td class="num">pe bucati</td><td class="num">~2,4 m²</td></tr>
 </table>
-<p class="why">* Montantul din fata = 1600 (capul stalpului, unde trebuie sa ajunga fata de jos a cununii) − talpa 44 = 1556. Usa ramane 1600 liber — cununa de deasupra golului sta pe capul stalpilor, exact ca inainte. Nota BOM: pragul si buiandrugul ferestrei sunt DOUA piese de 660 (in MANUAL scrie din greseala una — GHID, canonic, cere 2).</p>
+<p class="why">* Aceeasi corectie de la desenare: in stanga jos, intre stalp si marginea ferestrei sunt doar 11,5 cm — propteaua nu incape deloc, si nici nu e nevoie de ea: coltul ala E stalpul de 90×90, ancorat in grinda. In dreapta jos e loc (~29 cm) — acolo intra o proptea cu brate de 250.</p>
 
-<h3>Unde cade fiecare lemn pe talpa (de la capatul stang, in mm)</h3>
+<h3>Unde cade fiecare lemn (masurat de la capatul stang, in mm)</h3>
 <table>
   <tr><th>De la</th><th>Pana la</th><th>Ce e acolo</th></tr>
-  <tr><td class="num">0</td><td class="num">90</td><td>stalpul 90×90 (exista)</td></tr>
-  <tr><td class="num">205</td><td class="num">250</td><td>dublura — marginea stanga a ferestrei</td></tr>
+  <tr><td class="num">0</td><td class="num">90</td><td>stalpul de 90×90 (exista deja)</td></tr>
+  <tr><td class="num">205</td><td class="num">250</td><td>verticala dubla — marginea stanga a ferestrei</td></tr>
   <tr><td class="num">250</td><td class="num">820</td><td><b>GOLUL FERESTREI (570)</b> — prag la 950, lemn deasupra la 1520</td></tr>
-  <tr><td class="num">820</td><td class="num">865</td><td>dublura — marginea dreapta a ferestrei</td></tr>
-  <tr><td class="num">980</td><td class="num">1025</td><td>dublura — marginea stanga a usii</td></tr>
-  <tr><td class="num">1025</td><td class="num">1575</td><td><b>GOLUL USII (550)</b> — aici se taie talpa, LA FINAL</td></tr>
-  <tr><td class="num">1575</td><td class="num">1620</td><td>dublura — marginea dreapta a usii</td></tr>
-  <tr><td class="num">~1765</td><td class="num">—</td><td>verticala simpla in fasia plina</td></tr>
-  <tr><td class="num">1910</td><td class="num">2000</td><td>stalpul 90×90 (exista)</td></tr>
+  <tr><td class="num">820</td><td class="num">865</td><td>verticala dubla — marginea dreapta a ferestrei</td></tr>
+  <tr><td class="num">980</td><td class="num">1025</td><td>verticala dubla — marginea stanga a usii</td></tr>
+  <tr><td class="num">1025</td><td class="num">1575</td><td><b>GOLUL USII (550)</b> — aici se taie lemnul de jos, LA FINAL</td></tr>
+  <tr><td class="num">1575</td><td class="num">1620</td><td>verticala dubla — marginea dreapta a usii</td></tr>
+  <tr><td class="num">~1765</td><td class="num">—</td><td>o verticala simpla, in fasia plina</td></tr>
+  <tr><td class="num">1910</td><td class="num">2000</td><td>stalpul de 90×90 (exista deja)</td></tr>
 </table>
 
 <h3>Pasii</h3>
 <ol class="pasi">
-  <li>Rama culcata pe punte, pozitiile din tabel pe talpa SI pe cununa. Verticalele pline prinse, diagonale egale, apoi prag + buiandrug fereastra + bucatile scurte, apoi contrafisele.</li>
-  <li><b>Talpa ramane INTREAGA in dreptul usii</b> — tine panoul drept la ridicare. Se taie ultima.</li>
-  <li>Lambriul pe cele trei zone pline, lazurat pe toate fetele, cat panoul e jos.</li>
-  <li>Ridici intre stalpi: <b>3× 6×120 din fiecare capat direct in stalpul 90×90</b> + contrafisele de sus prinse si ele in stalpi; colturile spre laterale: 4× 6×120 + vincluri.</li>
-  <li><b>Lantul final al stalpilor (obligatoriu, acum):</b> pe fiecare stalp din fata, vinclul 100×90 cu gaura Ø13 in talpa metalica peste tija M12, saiba lata + piulita stransa, bratul vertical in stalp cu 4× 6×60 pregaurit. Coltarele-L existente raman (forfecare); astea tin la smulgere.</li>
-  <li>Talpile in joiste: 6×140 la 400, ocolind golul usii; vincluri pe interior.</li>
-  <li><b>Cutia in echer:</b> diagonalele pe sus colt-in-colt egale ±5 mm, colturile verticale, cununile la nivel. Abia acum <b>scoti proptelele provizorii</b> de pe stalpii de 4 m.</li>
-  <li><b>Ultima operatie:</b> tai talpa intre 1025 si 1575 la ras cu podeaua (circular + finisare cu fierastraul de mana), pui sipca-prag 18×28 peste capetele taiate, in dusumea. Liber la usa: 1600, verificat cu ruleta.</li>
+  <li>Rama, culcata pe punte: pozitiile din tabel insemnate pe lemnul de jos SI pe cel de sus. Verticalele prinse, diagonalele egale, apoi pragul, lemnul de deasupra ferestrei si bucatile scurte, apoi proptelele.</li>
+  <li><b>Lemnul de jos ramane INTREG in dreptul usii</b> — tine peretele drept la ridicare. Se taie ultimul.</li>
+  <li>Scandurile pe cele trei zone pline, vopsite pe toate fetele, cat peretele e jos.</li>
+  <li>Il ridici intre stalpi: <b>3 suruburi 6×120 din fiecare capat, direct in stalp</b> + proptelele de sus prinse si ele in stalpi; colturile spre laterale: 4 suruburi 6×120 + coltare.</li>
+  <li><b>Prinderea finala a stalpilor (obligatorie, acum):</b> tijele din varianta veche a planului nu exista pe santier. In loc, la fiecare stalp, alegi pe loc: <b>daca ai loc de mana pe sub punte</b> — gauresti Ø13 prin podea, langa stalp, drept in grinda de dedesubt, si pui o tija filetata M12 (sau bulon M12×200 cu cap; verifici pe raft la Leroy, feronerie) de sus, cu saiba lata + piulita bine stransa de jos; coltarul metalic cu gaura de 13 se pune peste capul ei, ca in planul vechi. <b>Daca NU ai loc pe dedesubt</b> — fara piulita: 4 suruburi de dulgherie 8×140 (din setul de la pereti) infiletate oblic, la ~15-20°, din varful podelei in grinda de dedesubt (2 de-o parte a stalpului, 2 de cealalta — nu drept in jos, oblic musca mai mult lemn), plus un coltar 90×65 pe fiecare fata a stalpului, prins si in stalp si in podea. Placile care tin stalpii acum raman in ambele variante — ele tin la impins; prinderea noua tine sa nu ridice vantul casa.</li>
+  <li>Lemnul de jos prin podea in grinzi: 6×140 la 40 cm, ocolind golul usii; coltare pe interior.</li>
+  <li><b>Cutia dreapta:</b> diagonalele masurate pe sus, colt in colt — egale, voie 5 mm; colturile la nivela; abia acum <b>se scot proptelele de pe stalpii de 4 m</b>.</li>
+  <li><b>Ultima operatie:</b> tai lemnul de jos intre 1025 si 1575, la ras cu podeaua (fierastrau circular + finisare de mana), si pui sipca-prag peste capetele taiate. Loc liber la usa: 1600, verificat cu ruleta.</li>
 </ol>
-<div class="gate"><b>Gata cand</b> 6× 6×120 in stalpi · colturi legate · 2 coltare Ø13 cu piulite stranse pe tije · talpi in joiste · diagonale ±5 · proptele scoase · talpa usii taiata si acoperita · 1600 liber masurat.</div>
+<div class="gate"><b>Gata cand</b> 6 suruburi in stalpi · colturile legate · prinderea finala facuta la ambii stalpi din fata (varianta cu piulita sau varianta cu suruburi oblice) · lemnele de jos in grinzi · diagonalele egale · proptelele scoase · usa taiata si acoperita cu sipca · 1600 liber, masurat.</div>
 
 <!-- ============================================================ -->
 <h2><span class="n">§8</span>S5 — Acoperisul <span class="tag">1 zi</span></h2>
-<p class="lead">O apa, 15,6°, spre terasa. Ordinea: dulapul de reazem → capriorii → ancorele → blocajele → diagonala → sipcile → Onduline. Contra-intuitiv dar verificat: cel mai rau caz de smulgere e acoperisul FARA zapada, cu vant — de asta lantul de ancore nu e optional.</p>
+<p class="lead">O singura apa, inclinata spre terasa. Ordinea: scandura groasa → lemnele inclinate → ancorele → inchiderile → sipca lunga in diagonala → sipcile → Onduline. Suna ciudat dar e verificat: momentul cel mai periculos pentru un acoperis usor e vantul FARA zapada — de asta ancorele nu sunt optionale.</p>
 <ol class="pasi">
-  <li><b>Dulapul de reazem</b> (46×250, il ai): taiat la <span class="d">2200</span>, pe muchie (250 in sus), peste capul stalpilor de 4 m SI peste cununa peretelui din spate — ambele la 1700, reazem continuu la 1950. Fixare: vinclu 90×65 pe ambele fete la ~500 (~10 buc) + conector-placa 90×200 pe fiecare fata deasupra fiecarui stalp (4 placi). <b>Propteste-l imediat</b> — 250 pe 46 se rastoarna ca o carte pana are capriori.</li>
-  <li><b>5 capriori</b> 44×100 (laminati) × <span class="d">1342</span>, capetele taiate oblic la 15,6° ca sa se aseze plan: la 500 interax, aliniati cu verticalele peretilor. Sus se sprijina pe dulap si ies 100 spre gard; jos pe cununa fetei si ies 100 spre terasa. Fara crestaturi.</li>
-  <li><b>Ancorele-substitut:</b> la FIECARE capat al FIECARUI caprior, 2× vinclu 90×65 (unul pe fiecare parte a capriorului), insurubate si in caprior si in dulap / cununa — 20 vincluri. Vinclul simplu tine la impins; perechea pe ambele parti + suruburile in ambele piese tin la smuls.</li>
-  <li><b>Blocaje</b> intre capriori, pe linia cununii din fata si pe linia dulapului: bucati de 44×100 taiate la ~<span class="d">400</span> (500 interax − 100 latimea capriorului), vertical, 8 buc (din resturi). Inchid golurile pe unde intra pasari si ploaia impinsa de vant.</li>
-  <li><b>Diagonala</b> 46×46 × <span class="d">2400</span> pe fata de sus a capriorilor, dintr-un colt in celalalt, 1× 6×100 la fiecare intersectie.</li>
-  <li><b>Sipcile</b> 46×46 × <span class="d">2200</span>, de-a latul, la <b>cel mult 450</b> una de alta (4 buc + crestate 46 unde incaleca diagonala), 1× 6×100 la fiecare intersectie. Mai rar de 450 = Onduline valurit la prima zapada.</li>
-  <li><b>Onduline:</b> 3 placi, de jos in sus, suprapuse lateral un val intreg. Cuiele cu capac NUMAI pe varful valului: randul de jos si marginile laterale — fiecare val; in camp — din 2 in 2 (~60 cuie). In vale curge apa: fiecare cui de acolo e o gaura in acoperis.</li>
-  <li><b>Fronturile laterale:</b> fasia deschisa dintre cununa inclinata a lateralei si placa se inchide cu o scandura de lambriu pe cant, taiata pe panta, pe fiecare parte — altfel intra ploaia si viespile.</li>
-  <li><b>Muchia din fata: teseste-o.</b> E la ~1,61 peste punte — nivelul capului unui copil. FARA jgheab (ar atarna exact acolo); apa pica pe terasa si se scurge printre scandurile de larice.</li>
+  <li><b>Scandura groasa</b> (46×250, o ai de la scara): taiata la <span class="d">2200</span>, pusa pe muchie (250 in sus), peste capetele stalpilor de 4 m SI peste lemnul de sus al peretelui din spate — amandoua la 1700, deci sta continuu, nu doar in doua puncte. Prindere: coltar metalic 90×65 pe ambele fete, cam la 50 cm (~10 bucati) + o placa metalica pe fiecare fata, deasupra fiecarui stalp (4 placi). <b>Propteste-o imediat</b> — pe muchie, singura, se rastoarna ca o carte.</li>
+  <li><b>5 lemne inclinate</b> (bara 44×100, taiate la <span class="d">1342</span>, capetele oblic dupa panta, ca sa se aseze plan): la 50 cm unul de altul, in dreptul verticalelor din pereti. Sus stau pe scandura groasa si ies 100 spre gard; jos stau pe lemnul de sus al peretelui din fata si ies 100 spre terasa. Fara crestaturi — le tin ancorele.</li>
+  <li><b>Ancorele:</b> la FIECARE capat al FIECARUI lemn inclinat, cate 2 coltare 90×65 (unul pe fiecare parte), insurubate si in lemnul inclinat, si in ce sta el — 20 de coltare. Unul singur tine la impins; perechea tine si cand vantul trage in sus.</li>
+  <li><b>Inchiderile</b> dintre lemnele inclinate, pe linia peretelui din fata si pe linia scandurii groase: bucati de bara 44×100 taiate la ~<span class="d">400</span>, puse vertical, 8 bucati (din resturi). Astupa golurile pe unde ar intra pasari si ploaia batuta de vant.</li>
+  <li><b>Sipca lunga in diagonala</b> (rigla 46×46 × <span class="d">2400</span>): pe fata de sus a lemnelor inclinate, dintr-un colt in celalalt, cate un surub 6×100 la fiecare incrucisare. Tine acoperisul sa nu se strambe.</li>
+  <li><b>Sipcile</b> (rigla 46×46 × <span class="d">2200</span>): de-a latul, la <b>cel mult 45 cm</b> una de alta (4 bucati; crestate putin unde trec peste diagonala), un surub 6×100 la fiecare incrucisare. Mai rare de-atat, si Onduline se lasa la prima zapada si ramane valurit.</li>
+  <li><b>Onduline:</b> 3 placi, de jos in sus, fiecare calcand peste vecina un val intreg. Cuiele cu capac NUMAI pe varful valului: pe randul de jos si pe marginile laterale — in fiecare val; in mijloc — din 2 in 2 (~60 de cuie). In adancitura valului curge apa: fiecare cui de acolo e o gaura in acoperis.</li>
+  <li><b>Lateralele acoperisului:</b> intre lemnul inclinat al peretelui lateral si placa ramane o fasie deschisa. O inchizi cu o scandura de lambriu pusa pe cant, taiata dupa panta, pe fiecare parte — altfel intra ploaia si viespile.</li>
+  <li><b>Marginea din fata: rotunjeste-o cu rindeaua sau slefuitorul.</b> E la ~1,61 m deasupra puntii — fix la nivelul capului unui copil. FARA jgheab (ar atarna exact acolo); apa pica pe terasa si se scurge printre scandurile podelei.</li>
 </ol>
-<div class="gate"><b>Gata cand</b> dulap proptit + placi metalice · 5 capriori cu cate 4 vincluri (2/capat) · blocaje pe ambele linii · diagonala + sipci ≤450 · Onduline complet, cuie pe creasta, indesite jos si pe margini · fronturi inchise · muchia tesita.</div>
+<div class="gate"><b>Gata cand</b> scandura groasa proptita + 4 placi metalice · 5 lemne inclinate cu cate 4 coltare (2 la fiecare capat) · inchideri pe ambele linii · diagonala + sipci la cel mult 45 cm · Onduline complet, cuie doar pe varf, indesite jos si pe margini · lateralele inchise · marginea din fata rotunjita.</div>
 
 <!-- ============================================================ -->
-<h2><span class="n">§9</span>S6 — Inchideri si verificarea finala <span class="tag">0,5 zi</span></h2>
+<h2><span class="n">§9</span>S6 — Geamurile si verificarea finala <span class="tag">0,5 zi</span></h2>
 <ol class="pasi">
-  <li><b>Geamurile laterale (FIXE):</b> tocul 46×46 (exterior exact 490×490, lumina ~398) intra in gol, 2× 5×80 pe fiecare latura, capete la ras. Acrilicul 440×440 calca 20 pe toc si e strans intre sipci 18×28 pe AMBELE fete (copiii nu-l pot impinge afara). <b>Gaurile prin acrilic cu 1 mm mai largi decat surubul</b> — la soare se dilata si crapa daca e strans fix.</li>
-  <li><b>Fereastra PVC 56×56</b> in golul de 570: suruburi prin toc in dubluri si prag, silicon de exterior pe contur, verifici ca se deschide complet — spre terasa, nu spre gol.</li>
-  <li><b>Usa:</b> sipca-prag pusa, muchii rotunjite, 1600 liber.</li>
-  <li><b>Fanta din spate</b> (casa–gard, ~30 cm): inchisa la AMBELE capete — un copil care intra acolo si se blocheaza nu se scoate usor.</li>
-  <li><b>Lazura</b> de completare: capetele taiate, muchiile, tot ce a ramas crud.</li>
+  <li><b>Geamurile laterale (FIXE):</b> rama de lemn facuta separat (exact 490×490 pe exterior) intra in gol si se prinde cu 2 suruburi 5×80 pe fiecare latura, capetele la ras. Plasticul de 440×440 calca 2 cm pe rama si e strans intre sipci puse pe AMBELE fete — asa copiii nu-l pot impinge afara. <b>Gaurile prin plastic, cu 1 mm mai largi decat surubul</b> — plasticul se umfla la soare si crapa daca e strans fix.</li>
+  <li><b>Fereastra PVC 56×56</b> in golul de 570: suruburi prin toc in verticalele dublate si in prag, silicon de exterior pe contur. Verifici ca se deschide complet — spre terasa, nu spre gol.</li>
+  <li><b>Usa:</b> sipca-prag pusa, muchiile rotunjite, 1600 liber.</li>
+  <li><b>Fanta din spate</b> (intre casa si gard, ~30 cm): inchisa la AMBELE capete — un copil care intra acolo si se intepeneste nu iese usor.</li>
+  <li><b>Vopsea de protectie</b> pe ce a ramas crud: capete taiate, muchii.</li>
 </ol>
 <h3>Verificarea finala — bifezi tot, abia apoi urca copiii</h3>
 <ul class="chk">
-  <li>SPATE: 8× 8×140 in stalpi · talpa in joiste · lambriu complet lazurat · zero atingere cu gardul</li>
-  <li>LATERALE ×2: cununa inclinata asezata plan · gol geam 490 cu diagonale egale · toc fixat 8× 5×80 · geam cu sipci pe ambele fete, gauri cu joc · colturi 4× 6×120 + vincluri</li>
-  <li>FATA: 3× 6×120 in fiecare stalp · fereastra montata, se deschide complet, silicon pe contur · talpa taiata intre dubluri, sipca-prag pusa · 1600 liber, cu ruleta</li>
-  <li>CUTIA: diagonale sus ±5 · proptele provizorii scoase toate · zero capete de surub iesite, zero varfuri strapunse · coltare Ø13 cu piulite stranse pe ambele tije</li>
-  <li>ACOPERIS: dulap cu ~10 vincluri + 4 placi · 5 capriori × 4 vincluri · blocaje ambele linii · sipci ≤450 · cuie doar pe creasta · fronturi inchise · muchie tesita</li>
-  <li>SIGURANTA: gol de lumina sub 90 mm oriunde apuca o mana de copil · <b>nicio treapta de catarare spre acoperis — inclusiv cioata (§3)</b> · geamuri laterale FIXE · sol moale ≥300 sub zona de cadere · scara jos intre sesiuni pana la balustrada</li>
+  <li>SPATE: 8 suruburi groase in stalpi · lemnul de jos in grinzi · scanduri complete, vopsite peste tot · zero atingere cu gardul</li>
+  <li>LATERALE ×2: lemnul de sus asezat plan pe panta · gol de geam 490, diagonale egale · rama prinsa cu 8 suruburi · geam cu sipci pe ambele fete, gauri cu joc · colturi prinse (4 suruburi + coltare)</li>
+  <li>FATA: 3 suruburi in fiecare stalp · fereastra montata, se deschide complet, silicon pe contur · lemnul de jos taiat la usa, sipca-prag pusa · 1600 liber, cu ruleta</li>
+  <li>CUTIA: diagonalele pe sus egale (voie 5 mm) · toate proptelele provizorii scoase · zero capete de surub iesite, zero varfuri prin lemn · prinderea finala facuta la ambii stalpi din fata (piulita sau suruburi oblice)</li>
+  <li>ACOPERIS: scandura groasa cu ~10 coltare + 4 placi · 5 lemne inclinate cu cate 4 coltare · inchideri pe ambele linii · sipci la cel mult 45 cm · cuie doar pe varful valului · lateralele inchise · marginea rotunjita</li>
+  <li>SIGURANTA: niciun gol mai mare de 9 cm unde ar incapea capul sau mana unui copil · <b>nicio treapta de catarare spre acoperis — inclusiv cioata (§3)</b> · geamurile laterale nu se deschid · pamant moale, cel putin 30 cm, sub zona de cadere · scara jos intre zilele de lucru, pana la balustrada</li>
 </ul>
-<div class="note"><b>Imediat dupa S6: F2 — balustrada</b> (1000 general / 1100 pe consola, stalpisori pe axele joistelor, M10 strapuns). De re-decis atunci, cu casa in picioare: capetele dinspre casa ale lateralelor se pot prinde de structura casei — posibil 6 stalpisori + 12 M10 in loc de 8 + 16.</div>
+<div class="note"><b>Imediat dupa S6: balustrada</b> (1 m inaltime, 1,1 m pe marginea iesita; stalpisorii prinsi cu buloane prin grinzi). Un lucru de re-judecat atunci, cu casa gata: capetele balustradei dinspre casa s-ar putea prinde direct de casa — poate scapi de 2 stalpisori si 4 buloane.</div>
 
 <!-- ============================================================ -->
 <h2><span class="n">§10</span>Planul de taiere — din ce bara iese fiecare piesa</h2>
-<h3>27× rigla 46×46×3000</h3>
+<h3>27 de rigle 46×46 de 3 m</h3>
 <ul class="tight">
-  <li><b>22 bare</b> → cate o verticala lunga fiecare: 5× 1612 (spate) + 7× 1556 (fata) + 6× laterale (2× 1556 · 2× 1709 · 2× 1862) + 4 dubluri de geam; din resturile lor ies toate cele <b>16 contrafise</b> (8× 424 + 8× 212) si cele <b>8 piese de toc</b> (4× 490 + 4× 398).</li>
-  <li><b>1 bara</b> → diagonala acoperisului (2400).</li>
-  <li><b>4 bare</b> → sipcile acoperisului (2200).</li>
+  <li><b>22 de rigle</b> → cate un lemn vertical lung fiecare: 5× 1612 (spate) + 7× 1556 (fata) + 6 pentru laterale (2× 1556 · 2× 1709 · 2× 1862) + 4 verticale dublate la geamuri; din resturile lor ies toate cele <b>15 proptele</b> (2× 424 la spate-jos · 1× ~350 la fata-jos-dreapta · 12× 212) si cele <b>8 piese ale ramelor de geam</b> (4× 490 + 4× 398).</li>
+  <li><b>1 rigla</b> → sipca lunga in diagonala a acoperisului (2400).</li>
+  <li><b>4 rigle</b> → sipcile acoperisului (2200).</li>
 </ul>
-<h3>14× "44×100" (perechi laminate din 28× scandura 22×100×4000)</h3>
+<h3>14 bare de 44×100 (din 28 de scanduri 22×100 de 4 m, insurubate perechi)</h3>
 <ul class="tight">
-  <li><b>2 perechi</b> → talpa + cununa SPATE (2000 fiecare; din fiecare bara de 4000 ies doua).</li>
-  <li><b>2 perechi</b> → talpa + cununa FATA (2000).</li>
-  <li><b>3 perechi</b> → talpile si cununile LATERALELOR (cate 3 piese de ~1010–1050 dintr-o pereche; a 9-a piesa = rezerva).</li>
-  <li><b>2 perechi</b> → praguri + buiandrugi: 2× 660 (fereastra fata) + 4× 490 (geamuri laterale); restul → blocaje.</li>
-  <li><b>5 perechi</b> → 10 piese... corect: <b>5 perechi dau cate 2 capriori de 1342</b> = 10; folosesti 5, iar din resturile de ~1300 si perechile ramase ies cele <b>8 blocaje de ~410</b> + rezerva. (Da, raman ~4 perechi-echivalent rezerva — asta e marja reala a listei, nu risipa: capriorii se taie DUPA masuratoarea M2.)</li>
+  <li><b>2 bare</b> → lemnul de jos + de sus la SPATE (cate 2000; dintr-o bara de 4 m ies amandoua bucatile).</li>
+  <li><b>2 bare</b> → lemnul de jos + de sus la FATA (2000).</li>
+  <li><b>3 bare</b> → lemnele de jos si de sus ale LATERALELOR (cate 3 bucati de ~1010–1050 dintr-o bara; a 9-a bucata = rezerva).</li>
+  <li><b>2 bare</b> → praguri si lemne de deasupra golurilor: 2× 660 (fereastra din fata) + 4× 490 (geamurile laterale); restul → inchiderile acoperisului.</li>
+  <li><b>5 bare</b> → cate 2 lemne inclinate de 1342 fiecare = 10 bucati; folosesti 5, iar din resturi si din bucatile ramase ies cele <b>8 inchideri de ~400</b> + rezerva. (Da, raman vreo 4 bare rezerva — asta e marja reala a listei, nu risipa: lemnele inclinate se taie DUPA masuratoarea M2.)</li>
 </ul>
-<p class="why">Sipca 18×28×3000 ×3: 16 sipci de geam (~440) + sipca-prag usa (~610) + rezerva.</p>
+<p class="why">Sipca 18×28 de 3 m, 3 bucati: 16 sipci de geam (~440) + sipca-prag de la usa (~610) + rezerva.</p>
 
 <!-- ============================================================ -->
 <h2><span class="n">§11</span>Ce ramane deschis (si al cui e)</h2>
 <table>
-  <tr><th>Decizie / actiune</th><th>Cand</th><th>Al cui</th></tr>
-  <tr><td>Cioata de 1,5 m: retezata la ~600 (recomandat) sau acceptata explicit</td><td>S0, inainte de pereti</td><td>Vlad</td></tr>
-  <tr><td>Culoarea Onduline: rosu (stoc 15) vs maro (stoc 153, mai ieftin)</td><td>S1, la raft</td><td>Vlad</td></tr>
-  <tr><td>Lambriu: suruburi zincate (~40 lei, dungi posibile) vs inox (~160–200)</td><td>S1, la raft</td><td>Vlad</td></tr>
-  <tr><td>Masuratorile M2–M5 + STOP-urile</td><td>S0</td><td>Vlad, pe santier</td></tr>
-  <tr><td>Balustrada: 8 stalpisori/16 M10 sau varianta redusa cu prindere in casa</td><td>la F2, cu casa gata</td><td>Vlad + o sesiune scurta</td></tr>
-  <tr><td>MANUAL §2/§4 inca tin ordinea veche F1→F2→F3→F4 — de aliniat la ordinea reala (casa inaintea balustradei) intr-un brief mic de continut</td><td>oricand</td><td>Builder</td></tr>
+  <tr><th>Decizie / treaba</th><th>Cand</th><th>Al cui</th></tr>
+  <tr><td>Cioata de 1,5 m: taiata la ~60 cm (recomandat) sau pastrata cu buna stiinta</td><td>S0, inainte de pereti</td><td>Vlad</td></tr>
+  <tr><td>Culoarea Onduline: rosu (stoc 15) sau maro (stoc 153, mai ieftin)</td><td>S1, la raft</td><td>Vlad</td></tr>
+  <tr><td>Suruburile scandurilor: zincate (~40 lei, pot lasa dungi de rugina) sau inox (~160–200, curat)</td><td>S1, la raft</td><td>Vlad</td></tr>
+  <tr><td>Masuratorile M2–M5 + verificarea STOP-urilor</td><td>S0</td><td>Vlad, pe santier</td></tr>
+  <tr><td>Balustrada: 8 stalpisori, sau mai putini daca se prinde de casa</td><td>dupa casa</td><td>Vlad + o discutie scurta</td></tr>
+  <tr><td>Documentele mai vechi (MANUAL, GHID) tin inca ordinea veche a fazelor si proptelele lungi peste tot — de aliniat la ce e aici, intr-o corectura viitoare</td><td>oricand</td><td>Builder</td></tr>
 </table>
 
 <footer class="doc">
-  <p><b>Regula de precedenta:</b> pereti in detaliu = GHID-SIMPLU-casa.html · geometrie generala = MANUAL-FAZA-2 · ordinea de executie si aprovizionarea Leroy-only = documentul asta. La contradictie pe cote de gol (usa 550/1600, geam 490/950, fereastra 570) castiga GHID.<br>
-  Corectia sistematica a substitutiei de laminat: talpa/cununa au 44 grosime (nu 42) → <b>toate verticalele = inaltimea peretelui − 88</b> (spate 1612, fata 1556, laterale 1556/1709/1862); reazemul din fata devine 1644, panta 306/1100 ≈ 15,5°, caprior tot 1342. Golurile si cotele de siguranta (1600 usa, 950 prag, 490 gol geam, muchia ~1,61) NU se schimba.</p>
-  <p>PROIECT-CASA-2026-08-17 · scris in Cowork (Main) pe baza GHID-SIMPLU-casa (canonic pereti), MANUAL-FAZA-2 §F4, AUDIT-2026-08-17 si verificarea live Leroy Colosseum din 17.08.2026.</p>
+  <p><b>Cine are dreptate la contradictie:</b> pe golurile si cotele de siguranta (usa 550/1600, geam 490/prag 950, fereastra 570) — GHID-SIMPLU-casa; pe ordinea de lucru si cumparaturi — documentul asta; desenele — SCHEME-CASA.<br>
+  <b>Regula barei duble</b> (inlocuitorul lemnului de 42×90): lemnul de jos si de sus au 44 grosime → toate verticalele = inaltimea peretelui − 88 (spate 1612 · fata 1556 · laterale 1556/1709/1862); inaltimea din fata devine 1644; lemnul inclinat tot 1342. Golurile si cotele de siguranta NU se schimba.</p>
+  <p>PROIECT-CASA-2026-08-17 v2 (limbaj simplu) · scris in Cowork pe baza GHID-SIMPLU-casa, MANUAL-FAZA-2, AUDIT-2026-08-17 si verificarea pe site Leroy Colosseum din 17.08.2026.</p>
 </footer>
 
 </div>
