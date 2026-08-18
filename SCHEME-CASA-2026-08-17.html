@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCHEME CASA — constructie pe etape</title><style>
+  :root{--ink:#1c1b18;--muted:#6b675e;--paper:#faf9f6;--line:#e2ddd3;--acc:#14532d;--acc2:#8a3016;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;--sans:"Avenir Next","Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif;--serif:Georgia,serif}
+  *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 var(--sans)}
+  .page{max-width:880px;margin:0 auto;padding:48px 40px 80px}
+  header.doc{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:8px}
+  .kicker{font:600 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+  h1{font:700 32px/1.1 var(--sans);margin:10px 0 6px;letter-spacing:-.01em}
+  .sub{font:italic 15px/1.5 var(--serif);color:var(--muted);max-width:62ch}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font:12px var(--mono);color:var(--muted)}
+  h2{font:700 20px/1.2 var(--sans);margin:40px 0 4px;padding-top:16px;border-top:1px solid var(--line)}
+  h2 .n{color:var(--acc);font-family:var(--mono);font-weight:600;margin-right:8px}
+  .cap{font:italic 13.5px/1.5 var(--serif);color:var(--muted);margin:8px 0 0}
+  .fig-tall svg{max-width:470px;margin:0 auto}
+  .fig{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px;margin:14px 0}
+  .strip{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap}
+  .st{flex:1 1 100px;border:1.5px solid var(--ink);border-radius:6px;padding:10px 10px;min-width:104px}
+  .st b{font-family:var(--mono);color:var(--acc);font-size:12px;display:block}
+  .st span{font-size:12.5px;line-height:1.35;display:block;margin-top:4px}
+  .st i{font:11px var(--mono);color:var(--muted);display:block;margin-top:6px;font-style:normal}
+  .note{background:#fdf3e7;border-left:4px solid #b45309;padding:10px 14px;margin:14px 0;font-size:13.5px}
+  footer.doc{margin-top:48px;border-top:2px solid var(--ink);padding-top:14px;font-size:12.5px;color:var(--muted)}
+  @media print{body{background:#fff}.page{max-width:none;padding:0}
+  .fig{page-break-inside:avoid;border:none;padding:6px 0}h2{page-break-after:avoid;break-after:avoid}
+  @page{size:A4;margin:14mm 13mm}}
+</style></head><body><div class="page">
+<header class="doc"><div class="kicker">Casuta din copac · F4 · anexa vizuala la PROIECT-CASA</div>
+<h1>SCHEME — casa, etapa cu etapa</h1>
+<p class="sub">Cinci desene la scara, facute din cotele reale, plus harta etapelor. Perechea acestui document este PROIECT-CASA (pasii si cumparaturile); pentru detaliile fine de perete ramane de baza GHID-SIMPLU-casa. Cotele sunt in milimetri.</p>
+<div class="meta"><span>v1 · 17 august 2026</span><span>cote in mm · bara dubla 44×100 (inlocuitorul lemnului de 42×90) inclusa</span></div></header>
+
+<h2><span class="n">0</span>Harta etapelor</h2>
+<div class="strip"><div class="st"><b>S0</b><span>Pregatire + masuratori</span><span style="color:#6b675e">restantele podelei · cioata · linii trase · M1–M5</span><i>0,5 zi</i></div><div class="st"><b>S1</b><span>Drum Leroy + laminare</span><span style="color:#6b675e">lista pe categorii · 14 bare duble</span><i>0,5 zi</i></div><div class="st"><b>S2</b><span>Perete SPATE</span><span style="color:#6b675e">jos pe iarba, imbracat complet, ridicat</span><i>1 zi</i></div><div class="st"><b>S3</b><span>Pereti LATERALI</span><span style="color:#6b675e">pe punte, gol de geam 490, legati de spate</span><i>1 zi</i></div><div class="st"><b>S4</b><span>Perete FATA</span><span style="color:#6b675e">intre stalpi · prinderea finala a stalpilor · usa taiata ultima</span><i>0,5–1 zi</i></div><div class="st"><b>S5</b><span>ACOPERIS</span><span style="color:#6b675e">scandura groasa → lemnele inclinate → sipci → Onduline</span><i>1 zi</i></div><div class="st"><b>S6</b><span>Inchideri + verificare</span><span style="color:#6b675e">geamuri · fereastra · prag · verificare</span><i>0,5 zi</i></div></div>
+
+<h2><span class="n">1</span>Casa vazuta din lateral — cum sta pe punte</h2>
+<div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-420 -260 2840 2660" style="width:100%;height:auto;display:block"><rect x="-260" y="2050" width="2500" height="56" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<text x="-400" y="2200" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="start" font-weight="normal">puntea</text>
+<rect x="1100" y="350" width="90" height="1840" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<text x="1145" y="1350" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1145 1350)">stalp 4 m</text>
+<rect x="1102" y="350" width="96" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1102" y="2006" width="96" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1127" y="394" width="46" height="1612" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1122" y="100" width="46" height="250" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="450" width="90" height="1600" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="-5" y="406" width="100" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<text x="126" y="1350" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 126 1350)">stalp 90×90</text>
+<polygon points="1245,73 -100,433 -89,475 1256,116" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<polygon points="1256,116 -89,475 -82,500 1263,141" fill="#8a3016" stroke="#1c1b18" stroke-width="6"/>
+<text x="601" y="411" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#1c1b18" text-anchor="middle" font-weight="normal" transform="rotate(-14.895749989322798 601 411)">lemn inclinat 44×100 × 1342 · Onduline pe sipci</text>
+<text x="890" y="506" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">inclinare 15,6°</text>
+<line x1="-100" y1="453" x2="-170" y2="583" stroke="#8a3016" stroke-width="3" stroke-linecap="round"/>
+<text x="-180" y="643" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#8a3016" text-anchor="start" font-weight="normal">marginea la ~1614 — rotunjita, FARA jgheab</text>
+<rect x="1560" y="250" width="36" height="1940" fill="#b8b2a6" stroke="#1c1b18" stroke-width="6"/>
+<text x="1578" y="1000" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1578 1000)">gard</text>
+<line x1="-190" y1="2050" x2="-190" y2="450" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="2050" x2="-164" y2="2050" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="450" x2="-164" y2="450" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-212" y="1250" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -212 1250)">1600 stalp / usa</text>
+<line x1="-320" y1="2050" x2="-320" y2="406" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-346" y1="2050" x2="-294" y2="2050" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-346" y1="406" x2="-294" y2="406" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-342" y="1228" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -342 1228)">1644 sus, in fata</text>
+<line x1="1320" y1="2050" x2="1320" y2="350" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1294" y1="2050" x2="1346" y2="2050" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1294" y1="350" x2="1346" y2="350" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1298" y="1200" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1298 1200)">1700 perete</text>
+<line x1="1450" y1="2050" x2="1450" y2="100" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1424" y1="2050" x2="1476" y2="2050" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1424" y1="100" x2="1476" y2="100" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1428" y="1075" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1428 1075)">1950 sus, in spate</text>
+<line x1="0" y1="2230" x2="1100" y2="2230" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="2204" x2="0" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1100" y1="2204" x2="1100" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="550" y="2208" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">1100 adancimea casei</text>
+<line x1="1190" y1="2230" x2="1560" y2="2230" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1190" y1="2204" x2="1190" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1560" y1="2204" x2="1560" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1375" y="2208" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">~300 gard</text>
+<text x="1870" y="1300" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#1c1b18" text-anchor="middle" font-weight="normal">in loc de lemn 42×90:</text>
+<rect x="1700" y="1390" width="340" height="60" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1700" y="1450" width="340" height="60" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<text x="1870" y="1590" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="middle" font-weight="bold">2× 22×100 = 44×100</text>
+<text x="1870" y="1650" font-family="ui-monospace,Menlo,monospace" font-size="40" fill="#6b675e" text-anchor="middle" font-weight="normal">suruburi 4×40, in zigzag</text></svg></div>
+<p class="cap">Vedere din lateral, cu spatele casei la dreapta. In spate, acoperisul sta pe peretele de 1700 plus scandura groasa de 250 pusa pe muchie — impreuna 1950, calcand si pe capetele stalpilor de 4 m. In fata, sta pe stalpul de 90×90 (1600) plus lemnul de sus — 1644. Apa curge spre terasa; marginea din fata, la ~1,61 m deasupra puntii, se rotunjeste si NU primeste jgheab. In dreapta: bara dubla care inlocuieste lemnul de 42×90.</p>
+
+<h2><span class="n">2</span>S2 · Peretele din SPATE — se face jos, complet</h2>
+<div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-340 -140 2900 2180" style="width:100%;height:auto;display:block"><rect x="0" y="1656" width="2000" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="0" width="2000" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="44" width="46" height="1612" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="477" y="44" width="46" height="1612" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="977" y="44" width="46" height="1612" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1477" y="44" width="46" height="1612" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1954" y="44" width="46" height="1612" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<line x1="346" y1="1656" x2="46" y2="1356" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="1654" y1="1656" x2="1954" y2="1356" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="196" y1="44" x2="46" y2="194" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="1804" y1="44" x2="1954" y2="194" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<text x="430" y="1370" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="start" font-weight="normal">proptele jos: brate 300 (424)</text>
+<text x="430" y="260" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="start" font-weight="normal">proptele sus: brate 150 (212)</text>
+<line x1="0" y1="1850" x2="500" y2="1850" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="1824" x2="0" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="500" y1="1824" x2="500" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="250" y="1828" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="500" y1="1850" x2="1000" y2="1850" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="500" y1="1824" x2="500" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1000" y1="1824" x2="1000" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="750" y="1828" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="1000" y1="1850" x2="1500" y2="1850" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1000" y1="1824" x2="1000" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1500" y1="1824" x2="1500" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1250" y="1828" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="1500" y1="1850" x2="2000" y2="1850" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1500" y1="1824" x2="1500" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2000" y1="1824" x2="2000" y2="1876" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1750" y="1828" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="0" y1="1980" x2="2000" y2="1980" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="1954" x2="0" y2="2006" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2000" y1="1954" x2="2000" y2="2006" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1000" y="1958" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">2000</text>
+<line x1="-190" y1="0" x2="-190" y2="1700" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="0" x2="-164" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="1700" x2="-164" y2="1700" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-212" y="850" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -212 850)">1700</text>
+<line x1="2190" y1="44" x2="2190" y2="1656" stroke="#14532d" stroke-width="3" stroke-linecap="round"/>
+<line x1="2164" y1="44" x2="2216" y2="44" stroke="#14532d" stroke-width="3" stroke-linecap="round"/>
+<line x1="2164" y1="1656" x2="2216" y2="1656" stroke="#14532d" stroke-width="3" stroke-linecap="round"/>
+<text x="2160" y="850" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#14532d" text-anchor="middle" font-weight="normal" transform="rotate(-90 2160 850)">lemne verticale 1612 ×5</text>
+<text x="2400" y="1200" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 2400 1200)">lemnul de jos si de sus: bara 44×100</text></svg></div>
+<p class="cap">Rama de 2000×1700: lemne verticale din 50 in 50 cm, taiate la 1612, si cate o proptea inclinata in fiecare colt (jos cele lungi, sus cele scurte). Inainte de proptele, cele doua diagonale ale ramei trebuie sa fie egale — voie 3 mm. Scandurile si vopseaua se termina jos, pe iarba: dupa ridicare, gardul e la 30 cm si nu mai ajungi. La ridicare: 4 suruburi groase (8×140) la fiecare capat, in stalpii de 4 m, si lemnul de jos prins prin podea in grinzi cu suruburi de 140.</p>
+
+<h2><span class="n">3</span>S3 · Peretele lateral — doua bucati, in oglinda</h2>
+<div class="fig fig-tall"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-420 -170 1770 2498" style="width:100%;height:auto;display:block"><rect x="0" y="1906" width="1010" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<polygon points="0,306 1010,0 1010,48 0,354" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="354" width="46" height="1552" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="964" y="48" width="46" height="1858" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="214" y="282" width="46" height="1624" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="750" y="120" width="46" height="1786" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="260" y="1000" width="490" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="260" y="466" width="490" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="260" y="510" width="490" height="490" fill="#dce8ea" stroke="#14532d" stroke-width="6"/>
+<text x="505" y="770" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#14532d" text-anchor="middle" font-weight="bold">GOL 490×490</text>
+<rect x="482" y="1044" width="46" height="862" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="482" y="201" width="46" height="265" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<line x1="196" y1="1906" x2="46" y2="1756" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="814" y1="1906" x2="964" y2="1756" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="196" y1="373" x2="46" y2="523" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="814" y1="125" x2="964" y2="275" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<text x="30" y="156" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="start" font-weight="normal">proptelele: toate scurte (212)</text>
+<text x="30" y="216" font-family="ui-monospace,Menlo,monospace" font-size="40" fill="#14532d" text-anchor="start" font-weight="normal">— cele lungi nu incap langa gol</text>
+<line x1="0" y1="2100" x2="260" y2="2100" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="2074" x2="0" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="260" y1="2074" x2="260" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="130" y="2078" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">260</text>
+<line x1="260" y1="2100" x2="750" y2="2100" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="260" y1="2074" x2="260" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="750" y1="2074" x2="750" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="505" y="2078" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">490</text>
+<line x1="750" y1="2100" x2="1010" y2="2100" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="750" y1="2074" x2="750" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1010" y1="2074" x2="1010" y2="2126" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="880" y="2078" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">260</text>
+<line x1="0" y1="2230" x2="1010" y2="2230" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="2204" x2="0" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1010" y1="2204" x2="1010" y2="2256" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="505" y="2208" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">lemnul de jos ~1010 (taiat pe loc)</text>
+<line x1="-190" y1="1950" x2="-190" y2="1000" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="1950" x2="-164" y2="1950" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="1000" x2="-164" y2="1000" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-212" y="1475" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -212 1475)">950 prag</text>
+<line x1="-330" y1="1950" x2="-330" y2="306" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-356" y1="1950" x2="-304" y2="1950" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-356" y1="306" x2="-304" y2="306" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-352" y="1128" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -352 1128)">1644 fata</text>
+<line x1="1180" y1="1950" x2="1180" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1154" y1="1950" x2="1206" y2="1950" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1154" y1="0" x2="1206" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1158" y="975" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1158 975)">1950 spate</text>
+<text x="505" y="63" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">lemnul de sus, inclinat</text></svg></div>
+<p class="cap">Lemnul de jos are ~1010 si se taie pe loc, sa intre exact intre peretele din fata si cel din spate. Lemnul de sus e inclinat, cu capetele taiate oblic dupa panta. Golul geamului: 490×490, la mijlocul peretelui (260 pe fiecare parte), cu pragul la 950 si cate o verticala dublata pe fiecare margine; verticala din mijloc se taie — bucata de jos sprijina pragul, cea de sus sta deasupra golului. Geamul (rama + plastic 440 + sipci pe ambele fete) se monteaza la S6.</p>
+
+<h2><span class="n">4</span>S4 · Peretele din FATA — usa si fereastra</h2>
+<div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-420 -150 2760 2224" style="width:100%;height:auto;display:block"><rect x="0" y="1600" width="2000" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="0" width="2000" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="0" y="44" width="90" height="1556" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1910" y="44" width="90" height="1556" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="205" y="44" width="45" height="1556" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="820" y="44" width="45" height="1556" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="980" y="44" width="45" height="1556" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1575" y="44" width="45" height="1556" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1742" y="44" width="46" height="1556" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="250" y="694" width="570" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="250" y="80" width="570" height="44" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="250" y="124" width="570" height="570" fill="#dce8ea" stroke="#14532d" stroke-width="6"/>
+<text x="535" y="414" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#14532d" text-anchor="middle" font-weight="bold">FEREASTRA 570×570</text>
+<rect x="1025" y="44" width="550" height="1556" fill="#f5f1e8" stroke="#8a3016" stroke-width="6"/>
+<text x="1300" y="820" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#8a3016" text-anchor="middle" font-weight="bold">USA 550</text>
+<text x="1300" y="900" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#8a3016" text-anchor="middle" font-weight="normal">liber 1600</text>
+<text x="1300" y="1739" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#8a3016" text-anchor="middle" font-weight="normal">lemnul de jos se taie aici — LA FINAL</text>
+<line x1="1660" y1="1600" x2="1910" y2="1350" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<text x="1815" y="1314" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="middle" font-weight="normal">250</text>
+<line x1="240" y1="44" x2="90" y2="194" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<line x1="1760" y1="44" x2="1910" y2="194" stroke="#14532d" stroke-width="26" stroke-linecap="round"/>
+<text x="0" y="2044" font-family="ui-monospace,Menlo,monospace" font-size="40" fill="#6b675e" text-anchor="start" font-weight="normal">stanga-jos: fara proptea (nu incape) — e stalpul</text>
+<line x1="0" y1="1844" x2="250" y2="1844" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="1818" x2="0" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="250" y1="1818" x2="250" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="125" y="1822" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">250</text>
+<line x1="250" y1="1844" x2="820" y2="1844" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="250" y1="1818" x2="250" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="820" y1="1818" x2="820" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="535" y="1822" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">570</text>
+<line x1="820" y1="1844" x2="1025" y2="1844" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="820" y1="1818" x2="820" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1025" y1="1818" x2="1025" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="922" y="1822" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">205</text>
+<line x1="1025" y1="1844" x2="1575" y2="1844" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1025" y1="1818" x2="1025" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1575" y1="1818" x2="1575" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1300" y="1822" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">550</text>
+<line x1="1575" y1="1844" x2="2000" y2="1844" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1575" y1="1818" x2="1575" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2000" y1="1818" x2="2000" y2="1870" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1788" y="1822" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">425</text>
+<line x1="0" y1="1974" x2="2000" y2="1974" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="0" y1="1948" x2="0" y2="2000" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2000" y1="1948" x2="2000" y2="2000" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1000" y="1952" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">2000 intre fetele stalpilor</text>
+<line x1="-190" y1="1644" x2="-190" y2="694" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="1644" x2="-164" y2="1644" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-216" y1="694" x2="-164" y2="694" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-212" y="1169" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -212 1169)">950 prag</text>
+<line x1="-330" y1="1644" x2="-330" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-356" y1="1644" x2="-304" y2="1644" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="-356" y1="0" x2="-304" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="-352" y="822" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 -352 822)">1644</text>
+<line x1="2180" y1="1600" x2="2180" y2="44" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2154" y1="1600" x2="2206" y2="1600" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2154" y1="44" x2="2206" y2="44" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="2158" y="822" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 2158 822)">1600 stalp</text>
+<text x="45" y="824" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 45 824)">3 suruburi in stalp</text>
+<text x="1955" y="824" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 1955 824)">ancora anti-vant, 2 variante</text></svg></div>
+<p class="cap">Sta intre cei doi stalpi de 90×90 — ei sunt colturile din fata. Fereastra: gol de 570×570 (de la 250 la 820), cu prag la 950. Usa: gol de 550 (1025→1575), fara lemn deasupra — capul usii e chiar lemnul de sus al peretelui, asa ramane 1600 liber. Lemnul de jos ramane INTREG in dreptul usii pana toata cutia e prinsa si dreapta; abia atunci se taie si primeste sipca-prag. Proptele: sus doua scurte (prinse si in stalpi), jos doar in dreapta (acolo e loc, ~29 cm) — in stanga nu incape si nici nu trebuie: coltul e chiar stalpul, bine ancorat. Tot aici se inchide prinderea finala a stalpilor — tija filetata M12 prin podea + piulita de jos (daca e loc pe dedesubt) sau suruburi oblice 8×140 + coltar (daca nu e loc); detaliile complete sunt in PROIECT-CASA S4.</p>
+
+<h2><span class="n">5</span>S5 · Acoperisul — vazut de sus</h2>
+<div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-470 -260 3140 1932" style="width:100%;height:auto;display:block"><rect x="0" y="0" width="2200" height="1342" fill="#f5f1e8" stroke="#cfc9bc" stroke-width="3"/>
+<rect x="0" y="0" width="2200" height="60" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<text x="1100" y="-170" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">SPATE / GARD</text>
+<text x="1100" y="-100" font-family="ui-monospace,Menlo,monospace" font-size="42" fill="#6b675e" text-anchor="middle" font-weight="normal">scandura groasa 46×250 × 2200, sub linia asta (iese 10 cm lateral)</text>
+<rect x="50" y="0" width="100" height="1342" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="550" y="0" width="100" height="1342" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1050" y="0" width="100" height="1342" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1550" y="0" width="100" height="1342" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="2050" y="0" width="100" height="1342" fill="#e8dfcc" stroke="#1c1b18" stroke-width="6"/>
+<rect x="328" y="70" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="328" y="1092" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="828" y="70" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="828" y="1092" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1328" y="70" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1328" y="1092" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1828" y="70" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<rect x="1828" y="1092" width="44" height="110" fill="#d9cdb2" stroke="#1c1b18" stroke-width="6"/>
+<text x="350" y="300" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal">inchideri ~400</text>
+<line x1="70" y1="1302" x2="2130" y2="90" stroke="#14532d" stroke-width="30" stroke-linecap="round"/>
+<text x="1280" y="801" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#14532d" text-anchor="middle" font-weight="normal" transform="rotate(-30 1280 801)">sipca in diagonala, 2400</text>
+<rect x="0" y="117" width="2200" height="46" fill="none" stroke="#8a3016" stroke-width="4"/>
+<rect x="0" y="517" width="2200" height="46" fill="none" stroke="#8a3016" stroke-width="4"/>
+<rect x="0" y="917" width="2200" height="46" fill="none" stroke="#8a3016" stroke-width="4"/>
+<rect x="0" y="1267" width="2200" height="46" fill="none" stroke="#8a3016" stroke-width="4"/>
+<text x="-30" y="540" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#8a3016" text-anchor="end" font-weight="normal" transform="rotate(-90 -30 540)">sipci 2200, la ≤450</text>
+<line x1="100" y1="1492" x2="600" y2="1492" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="100" y1="1466" x2="100" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="600" y1="1466" x2="600" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="350" y="1470" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="600" y1="1492" x2="1100" y2="1492" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="600" y1="1466" x2="600" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1100" y1="1466" x2="1100" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="850" y="1470" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="1100" y1="1492" x2="1600" y2="1492" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1100" y1="1466" x2="1100" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1600" y1="1466" x2="1600" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1350" y="1470" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="1600" y1="1492" x2="2100" y2="1492" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="1600" y1="1466" x2="1600" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2100" y1="1466" x2="2100" y2="1518" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1850" y="1470" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">500</text>
+<line x1="100" y1="1622" x2="2100" y2="1622" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="100" y1="1596" x2="100" y2="1648" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2100" y1="1596" x2="2100" y2="1648" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="1100" y="1600" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal">lemnele inclinate — in dreptul verticalelor din pereti</text>
+<line x1="2330" y1="0" x2="2330" y2="1342" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2304" y1="0" x2="2356" y2="0" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<line x1="2304" y1="1342" x2="2356" y2="1342" stroke="#6b675e" stroke-width="3" stroke-linecap="round"/>
+<text x="2308" y="671" font-family="ui-monospace,Menlo,monospace" font-size="56" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 2308 671)">lemn inclinat 1342</text>
+<text x="2530" y="671" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#6b675e" text-anchor="middle" font-weight="normal" transform="rotate(-90 2530 671)">TERASA in jos</text>
+<text x="0" y="1712" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#1c1b18" text-anchor="middle" font-weight="normal"></text>
+<text x="-440" y="671" font-family="ui-monospace,Menlo,monospace" font-size="48" fill="#1c1b18" text-anchor="middle" font-weight="normal"></text></svg></div>
+<p class="cap">5 lemne inclinate de 1342, din 50 in 50 cm, in dreptul verticalelor din pereti. Intre ele, pe ambele linii de sprijin, bucati de inchidere. Peste ele: o sipca lunga in diagonala, dintr-un colt in celalalt, apoi sipcile orizontale la cel mult 45 cm. Onduline: 3 placi puse de jos in sus, fiecare calcand un val peste vecina; cuiele doar pe varful valului. La fiecare capat de lemn inclinat: 2 coltare metalice — unul tine la impins, perechea tine si cand vantul trage acoperisul in sus.</p>
+
+<div class="note"><b>Ce NU e in desenele astea</b> (e in GHID-SIMPLU-casa): geamul desenat piesa cu piesa, straturile peretelui, pozitia exacta a cuielor pe placa Onduline, colturile vazute de sus. Desenele de aici dau ansamblul si cotele de trasat; GHID-ul da detaliul marunt.</div>
+
+<footer class="doc">SCHEME-CASA-2026-08-17 v2 (limbaj simplu) · desenele sunt facute din cotele PROIECT-CASA (cu bara dubla: verticalele = inaltimea − 88) · la contradictie pe goluri are dreptate GHID-SIMPLU-casa.</footer>
+</div></body></html>
