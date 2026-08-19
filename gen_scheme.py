@@ -247,5 +247,37 @@ badge(f,560,500,'5')
 
 figs['f6']=f.svg()
 
+# ================= F7: DETALIU — GOLUL DE PODEA LA COLTUL DIN SPATE =================
+f=Fig(480,400,padl=90,padr=90,padt=120,padb=70)
+
+f.text(240,-70,'colt spate — vedere de sus',size=FSS-14,fill=MUT)
+
+# perete spate, deja imbracat — context, neatins
+f.rect(170,0,310,60,fill=LN)
+# perete lateral — context, neatins
+f.rect(0,170,60,230,fill=LN)
+# stalpul de colt — infipt in pamant, langa marginea podelei, nu pe ea
+f.rect(60,60,110,110,fill=WOOD2)
+# podeaua existenta, buna — se opreste inainte sa ajunga la stalp (L)
+f.poly([(270,60),(480,60),(480,400),(60,400),(60,270),(270,270)],fill=WOOD)
+# blocaj + scandura noua — umple golul (L, in oglinda cu golul)
+f.rect(170,60,100,210,fill=WOOD,stroke=ACC2,sw=SW)
+f.rect(60,170,210,100,fill=WOOD,stroke=ACC2,sw=SW)
+# coltar metalic, prins si in stalp si in blocaj
+f.rect(145,130,60,35,fill='#b8b2a6',stroke=INK,sw=4)
+f.line(150,140,200,140,stroke=INK,sw=5)
+f.line(150,148,200,148,stroke=INK,sw=5)
+f.line(150,156,200,156,stroke=INK,sw=5)
+# gol masurat
+f.dim(170,300,270,300,'~100',size=FSS-14,fill=MUT,toff=-22)
+
+badge(f,90,110,'1')
+badge(f,320,320,'2')
+badge(f,160,225,'3')
+badge(f,200,155,'4')
+badge(f,400,30,'5')
+
+figs['f7']=f.svg()
+
 json.dump(figs,open('figs.json','w'))
 print('ok', {k:len(v) for k,v in figs.items()})
