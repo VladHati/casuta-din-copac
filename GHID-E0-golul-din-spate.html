@@ -1,0 +1,690 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E0 · Scandura care lipseste</title>
+<style>
+:root{
+ --bg:#faf8f3;--card:#fff;--ink:#1c1b18;--mut:#6b675e;--ln:#e3ddd0;
+ --warn:#a8541c;--acc:#14532d;--chip:#f0ebdf;
+}
+html[data-t="d"]{
+ --bg:#17181a;--card:#1e2023;--ink:#e9e5db;--mut:#9a958a;--ln:#2e3135;
+ --warn:#d98b4a;--acc:#7fb894;--chip:#24272b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;
+ -webkit-text-size-adjust:100%;transition:background .2s,color .2s}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;
+ max-width:1180px;margin:0 auto;padding:40px 26px 120px}
+nav{position:sticky;top:32px;align-self:start}
+nav .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+nav a{display:flex;gap:10px;padding:7px 0;color:var(--mut);text-decoration:none;font-size:14px;line-height:1.35}
+nav a i{font-style:normal;opacity:.5;min-width:14px}
+nav a:hover{color:var(--ink)}
+nav a.on{color:var(--ink);font-weight:600} nav a.on i{opacity:1;color:var(--warn)}
+.prog{margin-top:24px;padding-top:18px;border-top:1px solid var(--ln);font-size:12px;color:var(--mut)}
+.bar{height:2px;background:var(--ln);margin-top:8px;border-radius:2px;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
+header{margin-bottom:14px}
+h1{font:600 clamp(28px,4.4vw,42px)/1.1 ui-monospace,Menlo,monospace;margin:0 0 10px;letter-spacing:-.025em}
+.sub{color:var(--mut);font-size:15px;margin:0 0 8px}
+.meta{color:var(--mut);font-size:12px;letter-spacing:.06em}
+section{margin-top:64px;scroll-margin-top:28px}
+h2{display:flex;gap:14px;align-items:baseline;font-size:22px;margin:0 0 22px;
+ padding-bottom:14px;border-bottom:1px solid var(--ln);font-weight:600;letter-spacing:-.01em}
+h2 i{font-style:normal;font-size:13px;color:var(--warn);opacity:.9}
+h3{font-size:16px;margin:44px 0 14px;font-weight:600;letter-spacing:.01em}
+h3:first-of-type{margin-top:8px}
+p{margin:0 0 15px} .lead{color:var(--mut)}
+figure{margin:24px 0 10px;background:var(--card);border:1px solid var(--ln);
+ border-radius:3px;padding:20px}
+figcaption{color:var(--mut);font-size:13px;line-height:1.5;margin:14px 2px 0}
+html[data-t="d"] figure{background:#f3f0e7;border-color:#33363a}
+html[data-t="d"] figcaption{color:var(--mut)}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--ln)}
+th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.box{border-left:2px solid var(--ln);padding:2px 0 2px 18px;margin:24px 0;font-size:15px}
+.box.warn{border-left-color:var(--warn)} .box.warn b{color:var(--warn)}
+.box.ok{border-left-color:var(--acc)} .box.ok b{color:var(--acc)}
+code{background:var(--chip);padding:2px 6px;border-radius:2px;font-size:13px}
+.b{display:flex;gap:12px;align-items:flex-start;margin:12px 0;cursor:pointer;font-size:15px}
+.b input{display:none}
+.b span{flex:0 0 17px;height:17px;margin-top:3px;border:1.5px solid var(--ln);border-radius:2px;
+ position:relative;transition:.15s}
+.b input:checked+span{background:var(--acc);border-color:var(--acc)}
+.b input:checked+span:after{content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+ border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(43deg)}
+.b em{font-style:normal} .b input:checked~em{color:var(--mut);text-decoration:line-through}
+.tog{position:fixed;right:20px;bottom:20px;z-index:9;background:var(--card);color:var(--mut);
+ border:1px solid var(--ln);border-radius:3px;padding:8px 13px;font:12px ui-monospace,Menlo,monospace;
+ cursor:pointer;letter-spacing:.06em}
+footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--ln);color:var(--mut);font-size:12px;line-height:1.7}
+@media(max-width:880px){
+ .shell{grid-template-columns:1fr;gap:0;padding:26px 18px 90px}
+ nav{position:static;margin-bottom:34px;padding-bottom:20px;border-bottom:1px solid var(--ln)}
+ nav a{display:inline-flex;margin-right:16px}
+ section{margin-top:48px}
+}
+</style></head><body>
+<button class="tog" onclick="tg()">lumina / intuneric</button>
+<div class="shell">
+<nav>
+ <div class="kicker">E0 · cuprins</div>
+ <a href="#situatia"><i>1</i>Situatia</a>
+<a href="#principiu"><i>2</i>De ce nu doar o scandura</a>
+<a href="#piese"><i>3</i>Piesele</a>
+<a href="#pasi"><i>4</i>Pas cu pas</a>
+<a href="#gata"><i>5</i>Gata</a>
+ <div class="prog">progres <b id="pn">0</b>/7<div class="bar"><i id="pb"></i></div></div>
+</nav>
+<main>
+<header>
+ <h1>Scandura care lipseste</h1>
+ <p class="sub">Golul de la colturile din spate, de la ce e acum pana la podea intreaga.</p>
+ <p class="meta">20 august 2026 &middot; cote in mm &middot; se face de doua ori, cate o data pe colt</p>
+</header>
+<section id="situatia"><h2><i>1</i>Situatia</h2>
+<p class="lead">La fiecare dintre cele doua colturi din spate, dusumea se opreste inainte
+de stalp. Ramane un sant in forma de L, in jurul stalpului. Sub el nu e sprijin.</p>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-393 -444 931 560" style="width:100%;height:auto;display:block"><defs><pattern id="h1" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h2" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h3" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h4" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="0.0" y="-275.4" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-259.2" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-243.0" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-226.8" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-210.6" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-194.4" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-178.2" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-162.0" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-145.8" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-129.6" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-113.4" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-97.2" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-81.0" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-64.8" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-48.6" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-32.4" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-16.2" width="226.8" height="15.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-275.4" width="21.6" height="21.6" fill="#faf8f3" fill-opacity="1" stroke="none" stroke-width="1.5"/>
+<rect x="0.0" y="-275.4" width="21.6" height="21.6" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="-253.8" x2="21.6" y2="-275.4" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-275.4" x2="21.6" y2="-253.8" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="205.2" y="-275.4" width="21.6" height="21.6" fill="#faf8f3" fill-opacity="1" stroke="none" stroke-width="1.5"/>
+<rect x="205.2" y="-275.4" width="21.6" height="21.6" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="205.2" y1="-253.8" x2="226.8" y2="-275.4" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="205.2" y1="-275.4" x2="226.8" y2="-253.8" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="0.0" y="-275.4" width="10.8" height="10.8" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-275.4" width="10.8" height="10.8" fill="url(#h1)" stroke="none"/>
+<rect x="0.5" y="-84.2" width="8.6" height="8.6" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.5" y="-84.2" width="8.6" height="8.6" fill="url(#h2)" stroke="none"/>
+<rect x="216.0" y="-275.4" width="10.8" height="10.8" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="216.0" y="-275.4" width="10.8" height="10.8" fill="url(#h3)" stroke="none"/>
+<rect x="216.5" y="-84.2" width="8.6" height="8.6" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="216.5" y="-84.2" width="8.6" height="8.6" fill="url(#h4)" stroke="none"/>
+<rect x="0.0" y="-275.4" width="226.8" height="275.4" fill="none" fill-opacity="1" stroke="#1c1b18" stroke-width="2.4"/>
+<line x1="0.0" y1="0.0" x2="0.0" y2="80.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="226.8" y1="0.0" x2="226.8" y2="80.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="0.0" y1="76.0" x2="226.8" y2="76.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="71.0" x2="0.0" y2="81.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="226.8" y1="71.0" x2="226.8" y2="81.0" stroke="#8a857a" stroke-width="1"/>
+<text x="113.4" y="69.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">2100</text>
+<line x1="226.8" y1="0.0" x2="264.8" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="226.8" y1="-275.4" x2="264.8" y2="-275.4" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="268.8" y1="0.0" x2="268.8" y2="-275.4" stroke="#8a857a" stroke-width="1"/>
+<line x1="263.8" y1="0.0" x2="273.8" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="263.8" y1="-275.4" x2="273.8" y2="-275.4" stroke="#8a857a" stroke-width="1"/>
+<text x="262.8" y="-137.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 262.8 -137.7)">2550</text>
+<text x="113.4" y="-285.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">SPATE  —  spre vecin</text>
+<text x="113.4" y="17.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">FATA  —  spre curte</text>
+<line x1="10.8" y1="-265.7" x2="-139.2" y2="-305.7" stroke="#a8541c" stroke-width="1"/>
+<circle cx="10.8" cy="-265.7" r="2.6" fill="#a8541c"/>
+<text x="-144.2" y="-308.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="end" font-weight="700">golul, aici</text>
+<line x1="216.0" y1="-265.7" x2="366.0" y2="-305.7" stroke="#a8541c" stroke-width="1"/>
+<circle cx="216.0" cy="-265.7" r="2.6" fill="#a8541c"/>
+<text x="371.0" y="-308.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="start" font-weight="700">si aici, in oglinda</text>
+<line x1="5.4" y1="-81.0" x2="-144.6" y2="-51.0" stroke="#6b675e" stroke-width="1"/>
+<circle cx="5.4" cy="-81.0" r="2.6" fill="#6b675e"/>
+<text x="-149.6" y="-54.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="end" font-weight="400">stalpii din fata</text>
+<line x1="4.3" y1="-115.7" x2="-145.7" y2="-115.7" stroke="#6b675e" stroke-width="1"/>
+<circle cx="4.3" cy="-115.7" r="2.6" fill="#6b675e"/>
+<text x="-150.7" y="-118.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="end" font-weight="400">dusumea existenta, 17 scanduri</text>
+<text x="71.9" y="-360.7" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">UNDE</text>
+<text x="71.9" y="-342.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">puntea vazuta de sus  ·  golul e la cele doua colturi din spate</text></svg><figcaption>Puntea vazuta de sus. Cele doua colturi din spate sunt identice, in oglinda. Tot ce urmeaza se face de doua ori.</figcaption></figure>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-422 -545 876 579" style="width:100%;height:auto;display:block"><defs><pattern id="h5" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="0.0" y="-372.0" width="420.0" height="87.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-282.0" width="420.0" height="87.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-192.0" width="420.0" height="87.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-102.0" width="420.0" height="87.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-12.0" width="420.0" height="12.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-372.0" width="120.0" height="120.0" fill="#faf8f3" fill-opacity="1" stroke="none" stroke-width="1.5"/>
+<rect x="0.0" y="-312.0" width="60.0" height="60.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="-252.0" x2="60.0" y2="-312.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-312.0" x2="60.0" y2="-252.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="60.0" y="-372.0" width="60.0" height="120.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="60.0" y1="-252.0" x2="120.0" y2="-372.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="60.0" y1="-372.0" x2="120.0" y2="-252.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="0.0" y="-372.0" width="60.0" height="60.0" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-372.0" width="60.0" height="60.0" fill="url(#h5)" stroke="none"/>
+<text x="30.0" y="-345.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">STALP</text>
+<line x1="0.0" y1="0.0" x2="0.0" y2="-372.0" stroke="#1c1b18" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="0.0" y1="-372.0" x2="420.0" y2="-372.0" stroke="#1c1b18" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="-3.6" y1="-252.0" x2="-29.6" y2="-252.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="-3.6" y1="-312.0" x2="-29.6" y2="-312.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="-33.6" y1="-252.0" x2="-33.6" y2="-312.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="-38.6" y1="-252.0" x2="-28.6" y2="-252.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="-38.6" y1="-312.0" x2="-28.6" y2="-312.0" stroke="#a8541c" stroke-width="1"/>
+<text x="-39.6" y="-282.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 -39.6 -282.0)">A = 100</text>
+<line x1="60.0" y1="-252.0" x2="60.0" y2="-218.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="120.0" y1="-252.0" x2="120.0" y2="-218.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="60.0" y1="-222.0" x2="120.0" y2="-222.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="60.0" y1="-227.0" x2="60.0" y2="-217.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="120.0" y1="-227.0" x2="120.0" y2="-217.0" stroke="#a8541c" stroke-width="1"/>
+<text x="90.0" y="-229.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">B = 100</text>
+<line x1="0.0" y1="-372.0" x2="0.0" y2="-406.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="60.0" y1="-372.0" x2="60.0" y2="-406.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="0.0" y1="-402.0" x2="60.0" y2="-402.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="-407.0" x2="0.0" y2="-397.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="60.0" y1="-407.0" x2="60.0" y2="-397.0" stroke="#8a857a" stroke-width="1"/>
+<text x="30.0" y="-409.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">100</text>
+<text x="277.2" y="-111.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea existenta</text>
+<text x="243.6" y="-410.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">spre vecin</text>
+<line x1="30.0" y1="-276.0" x2="-160.0" y2="-186.0" stroke="#a8541c" stroke-width="1"/>
+<circle cx="30.0" cy="-276.0" r="2.6" fill="#a8541c"/>
+<text x="-165.0" y="-189.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="end" font-weight="700">golul: o fasie in fata stalpului</text>
+<line x1="90.0" y1="-342.0" x2="300.0" y2="-382.0" stroke="#a8541c" stroke-width="1"/>
+<circle cx="90.0" cy="-342.0" r="2.6" fill="#a8541c"/>
+<text x="305.0" y="-385.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="start" font-weight="700">si una langa el</text>
+<text x="16.1" y="-462.4" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">ACUM · vedere de sus</text>
+<text x="16.1" y="-444.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">A si B sunt cele doua numere de masurat   ·   forma e corecta, numerele sunt nominale</text></svg><figcaption>Coltul, marit. Golul e o fasie in fata stalpului si una langa el. A si B sunt cele doua numere de masurat.</figcaption></figure>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-331 -158 806 547" style="width:100%;height:auto;display:block"><defs><pattern id="h6" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="-50.0" y="0.0" width="50.0" height="350.0" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="-50.0" y="0.0" width="50.0" height="350.0" fill="url(#h6)" stroke="none"/>
+<text x="-25.0" y="190.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 -25.0 190.0)">stalp 100</text>
+<rect x="50.0" y="0.0" width="72.5" height="14.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.2"/>
+<rect x="125.0" y="0.0" width="72.5" height="14.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.2"/>
+<rect x="200.0" y="0.0" width="72.5" height="14.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.2"/>
+<rect x="275.0" y="0.0" width="72.5" height="14.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.2"/>
+<rect x="0.0" y="0.0" width="50.0" height="350.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="350.0" x2="50.0" y2="0.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="0.0" x2="50.0" y2="350.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="-190.0" y1="0.0" x2="370.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<text x="-195.0" y="2.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="end" font-weight="400">0 = fata podelei</text>
+<line x1="0.0" y1="14.0" x2="0.0" y2="-18.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="50.0" y1="14.0" x2="50.0" y2="-18.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="0.0" y1="-14.0" x2="50.0" y2="-14.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="0.0" y1="-19.0" x2="0.0" y2="-9.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="50.0" y1="-19.0" x2="50.0" y2="-9.0" stroke="#a8541c" stroke-width="1"/>
+<text x="25.0" y="-21.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">A = 100</text>
+<line x1="360.0" y1="14.0" x2="384.0" y2="14.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="360.0" y1="0.0" x2="384.0" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="388.0" y1="14.0" x2="388.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="383.0" y1="14.0" x2="393.0" y2="14.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="383.0" y1="0.0" x2="393.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<text x="382.0" y="7.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 382.0 7.0)">28</text>
+<text x="192.5" y="74.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea 28×145, cu rost de 5</text>
+<text x="190.0" y="210.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#a8541c" fill-opacity="1" text-anchor="start" font-weight="700">AICI NU STIM CE E.</text>
+<text x="190.0" y="240.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="start" font-weight="400">Poate grinda, poate joista de capat,</text>
+<text x="190.0" y="270.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="start" font-weight="400">poate nimic. Asta masori cu C.</text>
+<text x="190.0" y="320.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="start" font-weight="400">Fara raspunsul asta nu se poate</text>
+<text x="190.0" y="350.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="start" font-weight="400">alege in ce se insurubeaza vinclul.</text>
+<line x1="180.0" y1="250.0" x2="50.4" y2="211.6" stroke="#a8541c" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="45.0,210.0 52.0,209.2 50.4,214.4" fill="#a8541c"/>
+<text x="71.7" y="-75.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">ACUM · sectiune prin gol</text>
+<text x="71.7" y="-57.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">taiat perpendicular pe marginea puntii</text></svg><figcaption>Sectiune prin gol. Ce e sub el nu se stie inca — asta e al treilea numar, C.</figcaption></figure>
+
+<div class="box warn">
+<b>Trei numere lipsesc, si desenele sunt nominale pana le primesc.</b>
+Formele sunt corecte — proportiile nu. Vezi <code>MASOARA-GOL.html</code>:
+<b>A</b> (latimea golului in fata stalpului), <b>B</b> (latimea langa stalp),
+<b>C</b> (adancimea). Schimb trei numere in generator si toate desenele de mai jos
+se refac la scara reala.
+</div>
+</section>
+<section id="principiu"><h2><i>2</i>De ce nu doar o scandura</h2>
+<p class="lead">Prima idee e sa pui o scandura peste sant si sa treci mai departe. Nu tine,
+si merita treizeci de secunde sa intelegi de ce.</p>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-148 -267 1208 675" style="width:100%;height:auto;display:block"><defs><pattern id="h7" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h8" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h9" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="133.2" y="20.7" width="133.2" height="74.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="133.2" y="20.7" width="133.2" height="74.0" fill="url(#h7)" stroke="none"/>
+<rect x="133.2" y="0.0" width="133.2" height="20.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4"/>
+<text x="199.8" y="57.7" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<rect x="-22.2" y="20.7" width="155.4" height="162.8" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="-22.2" y1="183.5" x2="133.2" y2="20.7" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="-22.2" y1="20.7" x2="133.2" y2="183.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<text x="42.6" y="139.1" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul</text>
+<line x1="-70.3" y1="205.7" x2="-70.3" y2="-45.9" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-70.3" y="246.4" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-70.3" y="279.7" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<rect x="-22.2" y="0.0" width="155.4" height="20.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.6"/>
+<line x1="46.6" y1="-103.6" x2="46.6" y2="-33.7" stroke="#8a3016" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="46.6,-28.1 43.9,-34.6 49.3,-34.6" fill="#8a3016"/>
+<text x="46.6" y="-131.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" fill-opacity="1" text-anchor="middle" font-weight="400">greutate</text>
+<polyline points="-22.2,109.5 66.6,72.5 133.2,20.7" fill="none" fill-opacity="1" stroke="#8a3016" stroke-width="1.8" stroke-dasharray="6,4" stroke-linejoin="round"/>
+<text x="21.3" y="194.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" fill-opacity="1" text-anchor="middle" font-weight="400">se lasa in gol</text>
+<text x="66.6" y="287.1" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8a3016" fill-opacity="1" text-anchor="middle" font-weight="700">GRESIT</text>
+<text x="66.6" y="333.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">scandura peste sant: un capat</text>
+<text x="66.6" y="370.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">pe muchie, celalalt pe nimic</text>
+<rect x="695.6" y="20.7" width="133.2" height="74.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="695.6" y="20.7" width="133.2" height="74.0" fill="url(#h8)" stroke="none"/>
+<rect x="695.6" y="0.0" width="133.2" height="20.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4"/>
+<text x="762.2" y="57.7" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<rect x="540.2" y="20.7" width="155.4" height="162.8" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="540.2" y1="183.5" x2="695.6" y2="20.7" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="540.2" y1="20.7" x2="695.6" y2="183.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<text x="605.0" y="139.1" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul</text>
+<line x1="492.1" y1="205.7" x2="492.1" y2="-45.9" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="492.1" y="246.4" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="492.1" y="279.7" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<polygon points="695.6,95.5 647.5,95.5 647.5,87.3 687.5,87.3 687.5,28.9 695.6,28.9" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="562.4" y="20.7" width="133.2" height="66.6" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="562.4" y="20.7" width="133.2" height="66.6" fill="url(#h9)" stroke="none"/>
+<rect x="540.2" y="0.0" width="155.4" height="20.7" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.6"/>
+<text x="629.0" y="59.3" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">blocaj</text>
+<line x1="609.0" y1="-103.6" x2="609.0" y2="-33.7" stroke="#14532d" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="609.0,-28.1 606.3,-34.6 611.7,-34.6" fill="#14532d"/>
+<text x="609.0" y="-131.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" fill-opacity="1" text-anchor="middle" font-weight="400">greutate</text>
+<line x1="671.5" y1="65.1" x2="671.5" y2="79.5" stroke="#14532d" stroke-width="1.7" stroke-linecap="round"/>
+<polygon points="671.5,85.1 668.8,78.7 674.3,78.7" fill="#14532d"/>
+<line x1="681.9" y1="91.4" x2="738.8" y2="91.4" stroke="#14532d" stroke-width="1.7" stroke-linecap="round"/>
+<polygon points="744.4,91.4 738.0,94.1 738.0,88.7" fill="#14532d"/>
+<text x="629.0" y="287.1" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#14532d" fill-opacity="1" text-anchor="middle" font-weight="700">CORECT</text>
+<text x="629.0" y="333.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">blocajul sta pe polita de metal,</text>
+<text x="629.0" y="370.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">prinsa in lemnul portant al puntii</text>
+<line x1="671.5" y1="95.5" x2="861.5" y2="205.5" stroke="#6f7683" stroke-width="1"/>
+<circle cx="671.5" cy="95.5" r="2.6" fill="#6f7683"/>
+<text x="866.5" y="202.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="700">vinclul</text>
+<text x="866.5" y="218.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="400">bratul scurt orizontal,</text>
+<text x="866.5" y="234.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="400">ca o polita de raft</text>
+<text x="456.4" y="-183.7" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PRINCIPIUL</text>
+<text x="456.4" y="-165.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">de ce vinclu si nu doar o scandura  ·  schema, nu la scara</text></svg><figcaption>Stanga: scandura peste sant. Un capat sta pe muchia dusumelei, celalalt pe nimic — dincolo e marginea puntii. Dreapta: blocajul sta pe o polita de metal prinsa in lemnul portant.</figcaption></figure>
+
+<p>Santul are lemn <b>doar pe o latura</b>. Pe cealalta e marginea puntii, adica aer.
+O scandura pusa peste el nu e o grinda pe doua reazeme — e o consola sprijinita pe o
+muchie de 28 mm. Tine cateva luni. Apoi ploua, lemnul se umfla si se usuca de cateva
+ori, si scandura incepe sa scartaie si sa se lase.</p>
+
+<p>Vinclul schimba complet situatia: bratul lui scurt devine o polita, blocajul se aseaza
+pe ea, si greutatea pleaca lateral in lemnul care tine deja toata puntea.</p>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-34 -169 693 577" style="width:100%;height:auto;display:block"><rect x="0.0" y="-45.9" width="323.0" height="45.9" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="-15.3" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">calci pe scandura</text>
+<line x1="161.5" y1="5.1" x2="161.5" y2="23.3" stroke="#14532d" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="161.5,28.9 158.8,22.5 164.2,22.5" fill="#14532d"/>
+<rect x="0.0" y="28.9" width="323.0" height="45.9" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="59.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">blocaj</text>
+<line x1="161.5" y1="79.9" x2="161.5" y2="98.1" stroke="#14532d" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="161.5,103.7 158.8,97.3 164.2,97.3" fill="#14532d"/>
+<rect x="0.0" y="103.7" width="323.0" height="45.9" fill="#9aa1ad" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="134.3" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">vinclu</text>
+<line x1="161.5" y1="154.7" x2="161.5" y2="172.9" stroke="#14532d" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="161.5,178.5 158.8,172.1 164.2,172.1" fill="#14532d"/>
+<rect x="0.0" y="178.5" width="323.0" height="45.9" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="209.1" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">lemnul portant al puntii</text>
+<line x1="161.5" y1="229.5" x2="161.5" y2="247.7" stroke="#14532d" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="161.5,253.3 158.8,246.9 164.2,246.9" fill="#14532d"/>
+<rect x="0.0" y="253.3" width="323.0" height="45.9" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="283.9" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">stalpii puntii</text>
+<line x1="161.5" y1="304.3" x2="161.5" y2="322.5" stroke="#14532d" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="161.5,328.1 158.8,321.7 164.2,321.7" fill="#14532d"/>
+<rect x="0.0" y="328.1" width="323.0" height="45.9" fill="#c8c2b4" fill-opacity="1" stroke="#1c1b18" stroke-width="1.4" rx="3"/>
+<text x="161.5" y="358.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">pamant</text>
+<line x1="323.0" y1="97.8" x2="383.0" y2="97.8" stroke="#14532d" stroke-width="1"/>
+<circle cx="323.0" cy="97.8" r="2.6" fill="#14532d"/>
+<text x="388.0" y="94.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" fill-opacity="1" text-anchor="start" font-weight="700">nodul care conteaza</text>
+<line x1="323.0" y1="172.5" x2="383.0" y2="172.5" stroke="#14532d" stroke-width="1"/>
+<circle cx="323.0" cy="172.5" r="2.6" fill="#14532d"/>
+<text x="388.0" y="169.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" fill-opacity="1" text-anchor="start" font-weight="400">lemnul pe care calci in fiecare zi</text>
+<text x="312.3" y="-85.9" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">DRUMUL GREUTATII</text>
+<text x="312.3" y="-67.9" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">de la talpa ta pana in pamant</text></svg><figcaption>Drumul greutatii, de la talpa pana in pamant. Vinclul e nodul care scoate sarcina din sant.</figcaption></figure>
+</section>
+<section id="piese"><h2><i>3</i>Piesele</h2>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-142 -300 908 779" style="width:100%;height:auto;display:block"><defs><pattern id="h10" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><polygon points="-26.0,0.0 26.0,0.0 26.0,-2.4 -23.6,-2.4 -23.6,-72.0 -26.0,-72.0" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.6" stroke-linejoin="round"/>
+<line x1="-29.2" y1="0.0" x2="-49.2" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="-29.2" y1="-72.0" x2="-49.2" y2="-72.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="-53.2" y1="0.0" x2="-53.2" y2="-72.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-58.2" y1="0.0" x2="-48.2" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-58.2" y1="-72.0" x2="-48.2" y2="-72.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-59.2" y="-36.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 -59.2 -36.0)">90</text>
+<line x1="-26.0" y1="0.0" x2="-26.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="26.0" y1="0.0" x2="26.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="-26.0" y1="26.0" x2="26.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-26.0" y1="21.0" x2="-26.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="26.0" y1="21.0" x2="26.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="0.0" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">65</text>
+<text x="0.0" y="-164.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">VINCLU 90×65</text>
+<text x="0.0" y="-137.6" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">×2 pe latura · deja pe lista Leroy</text>
+<rect x="248.0" y="-72.0" width="80.0" height="72.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="248.0" y="-72.0" width="80.0" height="72.0" fill="url(#h10)" stroke="none"/>
+<line x1="248.0" y1="0.0" x2="248.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="328.0" y1="0.0" x2="328.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="248.0" y1="26.0" x2="328.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="248.0" y1="21.0" x2="248.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="328.0" y1="21.0" x2="328.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="288.0" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">100</text>
+<line x1="331.2" y1="0.0" x2="353.2" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="331.2" y1="-72.0" x2="353.2" y2="-72.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="357.2" y1="0.0" x2="357.2" y2="-72.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="352.2" y1="0.0" x2="362.2" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="352.2" y1="-72.0" x2="362.2" y2="-72.0" stroke="#8a857a" stroke-width="1"/>
+<text x="351.2" y="-36.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 351.2 -36.0)">90</text>
+<text x="288.0" y="-164.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">BLOCAJ</text>
+<text x="288.0" y="-137.6" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">taiat pe loc, din offcut</text>
+<rect x="520.0" y="-22.4" width="176.0" height="22.4" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="520.0" y1="0.0" x2="520.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="696.0" y1="0.0" x2="696.0" y2="30.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="520.0" y1="26.0" x2="696.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="520.0" y1="21.0" x2="520.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="696.0" y1="21.0" x2="696.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="608.0" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">pe masura</text>
+<line x1="699.2" y1="0.0" x2="721.2" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="699.2" y1="-22.4" x2="721.2" y2="-22.4" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="725.2" y1="0.0" x2="725.2" y2="-22.4" stroke="#8a857a" stroke-width="1"/>
+<line x1="720.2" y1="0.0" x2="730.2" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="720.2" y1="-22.4" x2="730.2" y2="-22.4" stroke="#8a857a" stroke-width="1"/>
+<text x="719.2" y="-11.2" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 719.2 -11.2)">28</text>
+<text x="608.0" y="-164.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">SCANDURA</text>
+<text x="608.0" y="-137.6" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">larice 28, ca restul podelei</text>
+<line x1="-48.0" y1="120.0" x2="-16.0" y2="120.0" stroke="#6f7683" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="-51.0" y1="115.0" x2="-51.0" y2="125.0" stroke="#6f7683" stroke-width="3.5200000000000005" stroke-linecap="round"/>
+<polygon points="-16.0,120.0 -21.8,118.3 -21.8,121.7" fill="#6f7683"/>
+<text x="144.0" y="123.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" fill-opacity="1" text-anchor="start" font-weight="400">5×40   ×8   —   vincluri in lemn</text>
+<line x1="-48.0" y1="192.0" x2="64.0" y2="192.0" stroke="#6f7683" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="-51.0" y1="187.0" x2="-51.0" y2="197.0" stroke="#6f7683" stroke-width="3.5200000000000005" stroke-linecap="round"/>
+<polygon points="64.0,192.0 58.2,190.3 58.2,193.7" fill="#6f7683"/>
+<text x="144.0" y="195.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" fill-opacity="1" text-anchor="start" font-weight="400">8×140   ×5   —   blocaj, dulgherie</text>
+<line x1="-48.0" y1="264.0" x2="0.0" y2="264.0" stroke="#6f7683" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="-51.0" y1="259.0" x2="-51.0" y2="269.0" stroke="#6f7683" stroke-width="3.5200000000000005" stroke-linecap="round"/>
+<polygon points="0.0,264.0 -5.8,262.3 -5.8,265.7" fill="#6f7683"/>
+<text x="144.0" y="267.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" fill-opacity="1" text-anchor="start" font-weight="400">5×60   ×4   —   scandura de calcat</text>
+<text x="304.0" y="400.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="700">Cantitatile sunt pentru O LATURA. Golul are doua laturi,</text>
+<text x="304.0" y="440.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="700">si sunt doua colturi  →  totul ×4.</text>
+<text x="311.4" y="-217.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PIESELE</text>
+<text x="311.4" y="-199.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">la scara, una langa alta</text></svg><figcaption>Piesele, la scara. Blocajul si scandura se taie pe loc, dupa masuratoare.</figcaption></figure>
+
+<table>
+<tr><th>Piesa</th><th>Cantitate pe colt</th><th>Total (2 colturi)</th><th>Nota</th></tr>
+<tr><td>Vinclu 90×65</td><td>3</td><td>6</td><td>deja pe lista Leroy</td></tr>
+<tr><td>Blocaj de lemn</td><td>2</td><td>4</td><td>din offcut de 100, taiat pe loc</td></tr>
+<tr><td>Scandura de calcat</td><td>2</td><td>4</td><td>larice 28, ca restul podelei</td></tr>
+<tr><td>Surub 5×40</td><td>12</td><td>24</td><td>4 pe vinclu</td></tr>
+<tr><td>Surub 8×140</td><td>10</td><td>20</td><td>5 pe fasie</td></tr>
+<tr><td>Surub 5×60</td><td>8</td><td>16</td><td>4 pe scandura</td></tr>
+</table>
+
+<div class="box">
+<b>Numarul de vincluri depinde de A si B.</b> Regula: unul la fiecare ~150 mm de sant,
+si minimum unul sub fiecare capat de blocaj. Cu A si B la 100 mm ies trei pe colt.
+Daca golul e mai lung, ies mai multe.
+</div>
+
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-254 -576 782 610" style="width:100%;height:auto;display:block"><defs><pattern id="h11" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="0.0" y="-451.5" width="493.5" height="152.2" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-294.0" width="493.5" height="152.2" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-136.5" width="493.5" height="136.5" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.0"/>
+<rect x="0.0" y="-451.5" width="210.0" height="210.0" fill="#faf8f3" fill-opacity="1" stroke="none" stroke-width="1.5"/>
+<rect x="0.0" y="-346.5" width="105.0" height="105.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="-241.5" x2="105.0" y2="-346.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-346.5" x2="105.0" y2="-241.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="105.0" y="-451.5" width="105.0" height="210.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="105.0" y1="-241.5" x2="210.0" y2="-451.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="105.0" y1="-451.5" x2="210.0" y2="-241.5" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<rect x="0.0" y="-451.5" width="105.0" height="105.0" fill="#c4b696" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-451.5" width="105.0" height="105.0" fill="url(#h11)" stroke="none"/>
+<text x="52.5" y="-404.2" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">STALP</text>
+<line x1="0.0" y1="0.0" x2="0.0" y2="-451.5" stroke="#1c1b18" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="0.0" y1="-451.5" x2="493.5" y2="-451.5" stroke="#1c1b18" stroke-width="2.6" stroke-linecap="round"/>
+<rect x="34.6" y="-309.8" width="35.7" height="68.2" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.4"/>
+<line x1="5.2" y1="-241.5" x2="99.8" y2="-241.5" stroke="#6f7683" stroke-width="3.6" stroke-linecap="round"/>
+<rect x="141.8" y="-311.9" width="68.2" height="35.7" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.4"/>
+<line x1="210.0" y1="-246.8" x2="210.0" y2="-341.2" stroke="#6f7683" stroke-width="3.6" stroke-linecap="round"/>
+<rect x="141.8" y="-416.9" width="68.2" height="35.7" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.4"/>
+<line x1="210.0" y1="-351.8" x2="210.0" y2="-446.2" stroke="#6f7683" stroke-width="3.6" stroke-linecap="round"/>
+<line x1="175.9" y1="-399.0" x2="365.9" y2="-439.0" stroke="#6f7683" stroke-width="1"/>
+<circle cx="175.9" cy="-399.0" r="2.6" fill="#6f7683"/>
+<text x="370.9" y="-442.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="700">vinclu</text>
+<line x1="52.5" y1="-275.6" x2="-17.5" y2="-125.6" stroke="#6f7683" stroke-width="1"/>
+<circle cx="52.5" cy="-275.6" r="2.6" fill="#6f7683"/>
+<text x="-22.5" y="-128.6" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="end" font-weight="700">3 vincluri pe colt</text>
+<text x="-22.5" y="-112.6" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="end" font-weight="400">unul la fiecare ~150 mm de sant</text>
+<text x="136.6" y="-493.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">UNDE VIN VINCLURILE</text>
+<text x="136.6" y="-475.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">vedere de sus  ·  3 pe colt: 1 pe fasia din fata stalpului, restul pe cea laterala</text></svg><figcaption>Unde vin vinclurile, vazute de sus. Bratul scurt intra in sant; cel lung se prinde de lemnul portant, sub dusumea.</figcaption></figure>
+</section>
+<section id="pasi"><h2><i>4</i>Pas cu pas</h2>
+<h3>Pasul 1 &middot; vinclurile</h3>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-229 -171 864 625" style="width:100%;height:auto;display:block"><defs><pattern id="h12" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="150.0" y="42.0" width="450.0" height="150.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="150.0" y="42.0" width="450.0" height="150.0" fill="url(#h12)" stroke="none"/>
+<rect x="150.0" y="0.0" width="450.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="429.0" y="117.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<text x="429.0" y="24.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea</text>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="333.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="375.0" x2="150.0" y2="42.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="42.0" x2="150.0" y2="375.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-48.0" x2="0.0" y2="420.0" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-97.5" y="120.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-97.5" y="189.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<text x="75.0" y="330.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul continua in jos</text>
+<polygon points="150.0,181.5 52.5,181.5 52.5,177.0 145.5,177.0 145.5,46.5 150.0,46.5" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.7" stroke-linejoin="round"/>
+<line x1="153.0" y1="154.5" x2="216.0" y2="154.5" stroke="#6f7683" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="150.0" y1="149.5" x2="150.0" y2="159.5" stroke="#6f7683" stroke-width="2.64" stroke-linecap="round"/>
+<polygon points="216.0,154.5 210.2,152.8 210.2,156.2" fill="#6f7683"/>
+<line x1="153.0" y1="85.5" x2="216.0" y2="85.5" stroke="#6f7683" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="150.0" y1="80.5" x2="150.0" y2="90.5" stroke="#6f7683" stroke-width="2.64" stroke-linecap="round"/>
+<polygon points="216.0,85.5 210.2,83.8 210.2,87.2" fill="#6f7683"/>
+<line x1="285.0" y1="181.5" x2="307.0" y2="181.5" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="285.0" y1="46.5" x2="307.0" y2="46.5" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="311.0" y1="181.5" x2="311.0" y2="46.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="306.0" y1="181.5" x2="316.0" y2="181.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="306.0" y1="46.5" x2="316.0" y2="46.5" stroke="#8a857a" stroke-width="1"/>
+<text x="305.0" y="114.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 305.0 114.0)">90</text>
+<line x1="52.5" y1="181.5" x2="52.5" y2="215.5" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="150.0" y1="181.5" x2="150.0" y2="215.5" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="52.5" y1="211.5" x2="150.0" y2="211.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="52.5" y1="206.5" x2="52.5" y2="216.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="150.0" y1="206.5" x2="150.0" y2="216.5" stroke="#8a857a" stroke-width="1"/>
+<text x="101.2" y="204.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400">65</text>
+<line x1="0.0" y1="0.0" x2="0.0" y2="-30.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="150.0" y1="0.0" x2="150.0" y2="-30.0" stroke="#a8541c" stroke-width="0.7" opacity="0.6"/>
+<line x1="0.0" y1="-26.0" x2="150.0" y2="-26.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="0.0" y1="-31.0" x2="0.0" y2="-21.0" stroke="#a8541c" stroke-width="1"/>
+<line x1="150.0" y1="-31.0" x2="150.0" y2="-21.0" stroke="#a8541c" stroke-width="1"/>
+<text x="75.0" y="-33.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">A = 100</text>
+<line x1="195.0" y1="85.5" x2="405.0" y2="203.5" stroke="#6f7683" stroke-width="1"/>
+<circle cx="195.0" cy="85.5" r="2.6" fill="#6f7683"/>
+<text x="410.0" y="200.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="400">4 × surub 5×40, pregaurit 3 mm</text>
+<line x1="101.2" y1="181.5" x2="61.2" y2="245.5" stroke="#6f7683" stroke-width="1"/>
+<circle cx="101.2" cy="181.5" r="2.6" fill="#6f7683"/>
+<text x="56.2" y="242.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="end" font-weight="400">bratul scurt, orizontal — polita</text>
+<text x="203.2" y="-88.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PASUL 1 · vinclul</text>
+<text x="203.2" y="-70.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">sectiune  ·  bratul lung se prinde in lemnul portant</text></svg><figcaption>Sectiune. Bratul lung (90) urca pe fata lemnului portant; cel scurt (65) iese orizontal in sant.</figcaption></figure>
+<p>Tine vinclul in pozitie si marcheaza gaurile cu creionul. <b>Pregauresti 3 mm</b> —
+lemnul de la marginea dusumelei e la capat de fibra si crapa daca bagi surubul direct.
+Patru suruburi 5&times;40 pe vinclu.</p>
+<p>Fata de sus a bratului scurt trebuie sa ajunga la <b>118 mm sub podea</b>: 28 pentru
+scandura de calcat, 90 pentru blocaj. Masoara de la fata dusumelei in jos, nu de la
+altceva.</p>
+<label class="b"><input type="checkbox" data-i="0"><span></span><em>Toate vinclurile montate, la acelasi nivel</em></label>
+
+<h3>Pasul 2 &middot; blocajele</h3>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-229 -215 863 669" style="width:100%;height:auto;display:block"><defs><pattern id="h13" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h14" width="6" height="6" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="150.0" y="42.0" width="450.0" height="150.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="150.0" y="42.0" width="450.0" height="150.0" fill="url(#h13)" stroke="none"/>
+<rect x="150.0" y="0.0" width="450.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="429.0" y="117.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<text x="429.0" y="24.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea</text>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="333.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="375.0" x2="150.0" y2="42.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="42.0" x2="150.0" y2="375.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-48.0" x2="0.0" y2="420.0" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-97.5" y="120.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-97.5" y="189.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<text x="75.0" y="330.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul continua in jos</text>
+<polygon points="150.0,181.5 52.5,181.5 52.5,177.0 145.5,177.0 145.5,46.5 150.0,46.5" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.7" stroke-linejoin="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="url(#h14)" stroke="none"/>
+<text x="67.5" y="116.2" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">blocaj</text>
+<line x1="-29.2" y1="177.0" x2="-51.2" y2="177.0" stroke="#14532d" stroke-width="0.7" opacity="0.6"/>
+<line x1="-29.2" y1="42.0" x2="-51.2" y2="42.0" stroke="#14532d" stroke-width="0.7" opacity="0.6"/>
+<line x1="-55.2" y1="177.0" x2="-55.2" y2="42.0" stroke="#14532d" stroke-width="1"/>
+<line x1="-60.2" y1="177.0" x2="-50.2" y2="177.0" stroke="#14532d" stroke-width="1"/>
+<line x1="-60.2" y1="42.0" x2="-50.2" y2="42.0" stroke="#14532d" stroke-width="1"/>
+<text x="-61.2" y="109.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#14532d" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 -61.2 109.5)">90</text>
+<line x1="285.0" y1="42.0" x2="307.0" y2="42.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="285.0" y1="0.0" x2="307.0" y2="0.0" stroke="#8a857a" stroke-width="0.7" opacity="0.6"/>
+<line x1="311.0" y1="42.0" x2="311.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="306.0" y1="42.0" x2="316.0" y2="42.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="306.0" y1="0.0" x2="316.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<text x="305.0" y="21.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" fill-opacity="1" text-anchor="middle" font-weight="400" transform="rotate(-90 305.0 21.0)">28</text>
+<line x1="67.5" y1="177.0" x2="27.5" y2="327.0" stroke="#14532d" stroke-width="1"/>
+<circle cx="67.5" cy="177.0" r="2.6" fill="#14532d"/>
+<text x="22.5" y="324.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#14532d" fill-opacity="1" text-anchor="end" font-weight="700">se lasa singur pe cele doua polite</text>
+<line x1="75.0" y1="42.0" x2="285.0" y2="-78.0" stroke="#8a3016" stroke-width="1"/>
+<circle cx="75.0" cy="42.0" r="2.6" fill="#8a3016"/>
+<text x="290.0" y="-81.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a3016" fill-opacity="1" text-anchor="start" font-weight="400">ramane 28 pana la fata podelei</text>
+<text x="202.5" y="-132.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PASUL 2 · blocajul</text>
+<text x="202.5" y="-114.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">sectiune  ·  inca nu se insurubeaza — doar se aseaza</text></svg><figcaption>Blocajul se lasa pe polite. Deasupra lui raman exact 28 mm, cat grosimea scandurii de calcat.</figcaption></figure>
+<p>Taie blocajul pe loc, dintr-un offcut. Latimea = latimea santului pe fasia aia.
+Inaltimea = 90.</p>
+<p><b>Proba:</b> blocajul trebuie sa se aseze singur pe vincluri. Daca trebuie sa-l bati
+cu ciocanul, e prea mare — mai da-i un milimetru la rindea. Un blocaj fortat impinge
+vinclurile si le desface din suruburi.</p>
+<label class="b"><input type="checkbox" data-i="1"><span></span><em>Blocajele taiate si asezate, fara joc si fara forta</em></label>
+
+<h3>Pasul 3 &middot; suruburile</h3>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-229 -187 863 641" style="width:100%;height:auto;display:block"><defs><pattern id="h15" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h16" width="6" height="6" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="150.0" y="42.0" width="450.0" height="150.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="150.0" y="42.0" width="450.0" height="150.0" fill="url(#h15)" stroke="none"/>
+<rect x="150.0" y="0.0" width="450.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="429.0" y="117.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<text x="429.0" y="24.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea</text>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="333.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="375.0" x2="150.0" y2="42.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="42.0" x2="150.0" y2="375.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-48.0" x2="0.0" y2="420.0" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-97.5" y="120.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-97.5" y="189.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<text x="75.0" y="330.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul continua in jos</text>
+<polygon points="150.0,181.5 52.5,181.5 52.5,177.0 145.5,177.0 145.5,46.5 150.0,46.5" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.7" stroke-linejoin="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="url(#h16)" stroke="none"/>
+<text x="63.0" y="136.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="400">blocaj</text>
+<line x1="45.0" y1="45.0" x2="138.8" y2="195.1" stroke="#6f7683" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="47.7" y1="39.8" x2="39.2" y2="45.1" stroke="#6f7683" stroke-width="3.08" stroke-linecap="round"/>
+<polygon points="138.8,195.1 137.1,189.3 134.3,191.1" fill="#6f7683"/>
+<line x1="45.0" y1="45.0" x2="45.0" y2="199.5" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<text x="90.0" y="180.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">~30°</text>
+<line x1="45.0" y1="45.0" x2="5.0" y2="-50.0" stroke="#6f7683" stroke-width="1"/>
+<circle cx="45.0" cy="45.0" r="2.6" fill="#6f7683"/>
+<text x="0.0" y="-53.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="end" font-weight="700">se da de sus, stand pe punte</text>
+<line x1="138.0" y1="195.0" x2="348.0" y2="255.0" stroke="#6f7683" stroke-width="1"/>
+<circle cx="138.0" cy="195.0" r="2.6" fill="#6f7683"/>
+<text x="353.0" y="252.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6f7683" fill-opacity="1" text-anchor="start" font-weight="400">varful ajunge in lemnul portant</text>
+<text x="202.5" y="-104.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PASUL 3 · suruburile 8×140</text>
+<text x="202.5" y="-86.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">sectiune  ·  3 oblic in punte + 2 in stalp, pe fasie</text></svg><figcaption>Suruburile 8×140, date oblic de sus. Varful trebuie sa treaca prin blocaj si sa intre in lemnul portant.</figcaption></figure>
+<p>Trei suruburi oblic in lemnul portant al puntii, doua in stalp. Toate se dau
+<b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p>
+<p>Unghiul: <b>~30&deg; fata de verticala</b>. Prea drept si surubul ramane in blocaj,
+fara sa prinda nimic. Prea culcat si iese prin lateral. Pregauresti 5 mm prin blocaj,
+ca sa nu-l crape si ca surubul sa traga blocajul spre lemn, nu sa-l impinga.</p>
+<label class="b"><input type="checkbox" data-i="2"><span></span><em>Cinci suruburi 8×140 pe fiecare fasie</em></label>
+<label class="b"><input type="checkbox" data-i="3"><span></span><em>Blocajul nu se mai misca deloc cand il impingi cu mana</em></label>
+
+<h3>Pasul 4 &middot; scandura de calcat</h3>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-229 -226 863 680" style="width:100%;height:auto;display:block"><defs><pattern id="h17" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h18" width="6" height="6" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="150.0" y="42.0" width="450.0" height="150.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="150.0" y="42.0" width="450.0" height="150.0" fill="url(#h17)" stroke="none"/>
+<rect x="150.0" y="0.0" width="450.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="429.0" y="117.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<text x="429.0" y="24.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea</text>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="333.0" fill="#f2ede2" fill-opacity="1" stroke="#a8541c" stroke-width="1.4" stroke-dasharray="6,4"/>
+<line x1="0.0" y1="375.0" x2="150.0" y2="42.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="42.0" x2="150.0" y2="375.0" stroke="#a8541c" stroke-width="0.9" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="0.0" y1="-48.0" x2="0.0" y2="420.0" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-97.5" y="120.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-97.5" y="189.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<text x="75.0" y="330.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#a8541c" fill-opacity="1" text-anchor="middle" font-weight="400">santul continua in jos</text>
+<polygon points="150.0,181.5 52.5,181.5 52.5,177.0 145.5,177.0 145.5,46.5 150.0,46.5" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.7" stroke-linejoin="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="url(#h18)" stroke="none"/>
+<rect x="0.0" y="0.0" width="150.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.8"/>
+<line x1="75.0" y1="0.0" x2="75.0" y2="82.5" stroke="#6f7683" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="80.0" y1="-3.0" x2="70.0" y2="-3.0" stroke="#6f7683" stroke-width="2.64" stroke-linecap="round"/>
+<polygon points="75.0,82.5 76.7,76.7 73.3,76.7" fill="#6f7683"/>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#14532d" stroke-width="1.6" stroke-dasharray="9,5" stroke-linecap="round"/>
+<line x1="75.0" y1="21.0" x2="15.0" y2="-89.0" stroke="#14532d" stroke-width="1"/>
+<circle cx="75.0" cy="21.0" r="2.6" fill="#14532d"/>
+<text x="10.0" y="-92.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#14532d" fill-opacity="1" text-anchor="end" font-weight="700">scandura de calcat, 28</text>
+<line x1="352.5" y1="0.0" x2="322.5" y2="-70.0" stroke="#14532d" stroke-width="1"/>
+<circle cx="352.5" cy="0.0" r="2.6" fill="#14532d"/>
+<text x="317.5" y="-73.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#14532d" fill-opacity="1" text-anchor="middle" font-weight="400">acelasi nivel — verifica cu dreptarul</text>
+<text x="202.5" y="-143.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">PASUL 4 · scandura</text>
+<text x="202.5" y="-125.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">sectiune  ·  la nivel cu restul podelei</text></svg><figcaption>Ultima piesa. La nivel cu restul podelei, cu acelasi rost de 5 mm fata de scandurile vecine.</figcaption></figure>
+<p>Doua bucati de larice 28, taiate exact pe forma fasiei. Patru suruburi 5&times;60
+pe bucata.</p>
+<p>Verifica nivelul cu o dreptare pusa peste scandurile vecine, nu din ochi.
+O diferenta de 2 mm se simte cu piciorul gol si se vede la lumina joasa.</p>
+<label class="b"><input type="checkbox" data-i="4"><span></span><em>Scandurile taiate, la nivel, cu rost de 5 mm</em></label>
+</section>
+<section id="gata"><h2><i>5</i>Gata</h2>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-229 -261 863 715" style="width:100%;height:auto;display:block"><defs><pattern id="h19" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern><pattern id="h20" width="6" height="6" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#6b675e" stroke-width="0.9" opacity="0.55"/></pattern></defs><rect x="150.0" y="42.0" width="450.0" height="150.0" fill="#d9cdb2" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="150.0" y="42.0" width="450.0" height="150.0" fill="url(#h19)" stroke="none"/>
+<rect x="150.0" y="0.0" width="450.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="429.0" y="117.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">lemn portant</text>
+<text x="429.0" y="24.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">dusumea</text>
+<line x1="-195.0" y1="0.0" x2="600.0" y2="0.0" stroke="#8a857a" stroke-width="0.9" stroke-dasharray="7,5" stroke-linecap="round"/>
+<line x1="0.0" y1="-48.0" x2="0.0" y2="420.0" stroke="#6b675e" stroke-width="1" stroke-dasharray="5,5" stroke-linecap="round"/>
+<text x="-97.5" y="120.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">marginea puntii</text>
+<text x="-97.5" y="189.0" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">(dincolo: aer)</text>
+<polygon points="150.0,181.5 52.5,181.5 52.5,177.0 145.5,177.0 145.5,46.5 150.0,46.5" fill="#9aa1ad" fill-opacity="1" stroke="#6f7683" stroke-width="1.7" stroke-linejoin="round"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="#b1a281" fill-opacity="1" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="42.0" width="150.0" height="135.0" fill="url(#h20)" stroke="none"/>
+<rect x="0.0" y="0.0" width="150.0" height="42.0" fill="#e8dfcc" fill-opacity="1" stroke="#1c1b18" stroke-width="1.8"/>
+<line x1="75.0" y1="-81.0" x2="75.0" y2="-59.6" stroke="#14532d" stroke-width="2.6" stroke-linecap="round"/>
+<polygon points="75.0,-54.0 72.3,-60.4 77.7,-60.4" fill="#14532d"/>
+<line x1="75.0" y1="126.0" x2="75.0" y2="169.9" stroke="#14532d" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="75.0,175.5 72.3,169.1 77.7,169.1" fill="#14532d"/>
+<line x1="122.2" y1="179.2" x2="240.4" y2="179.2" stroke="#14532d" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="246.0,179.2 239.6,182.0 239.6,176.5" fill="#14532d"/>
+<text x="75.0" y="-126.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" fill-opacity="1" text-anchor="middle" font-weight="700">calci aici</text>
+<line x1="246.0" y1="179.2" x2="396.0" y2="243.2" stroke="#14532d" stroke-width="1"/>
+<circle cx="246.0" cy="179.2" r="2.6" fill="#14532d"/>
+<text x="401.0" y="240.2" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#14532d" fill-opacity="1" text-anchor="start" font-weight="700">greutatea pleaca in punte</text>
+<line x1="81.8" y1="181.5" x2="41.8" y2="271.5" stroke="#6b675e" stroke-width="1"/>
+<circle cx="81.8" cy="181.5" r="2.6" fill="#6b675e"/>
+<text x="36.8" y="268.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" fill-opacity="1" text-anchor="end" font-weight="400">vinclurile raman ascunse dedesubt</text>
+<text x="202.5" y="-178.0" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#1c1b18" fill-opacity="1" text-anchor="middle" font-weight="700">GATA</text>
+<text x="202.5" y="-160.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" fill-opacity="1" text-anchor="middle" font-weight="400">sectiune  ·  totul la nivel, nimic nu se vede de sus</text></svg><figcaption>Sectiunea finala. Vinclurile raman ascunse dedesubt; de sus se vede doar podea.</figcaption></figure>
+
+<p><b>Proba finala:</b> calca pe scandura cu toata greutatea, langa stalp si la mijloc.
+Nu trebuie sa se miste, sa scartaie sau sa sune a gol. Daca suna, blocajul nu sta pe
+ambele vincluri — scoate scandura si verifica.</p>
+
+<div class="box ok">
+<b>Poarta de faza.</b> Asta se face inainte de peretele din spate. Talpa peretelui se
+prinde exact pe zona asta &mdash; daca golul e inca acolo, talpa nu are in ce se insuruba
+la capete.
+</div>
+
+<label class="b"><input type="checkbox" data-i="5"><span></span><em>Am calcat pe amandoua colturile. Nu se misca, nu suna a gol.</em></label>
+<label class="b"><input type="checkbox" data-i="6"><span></span><em>Gata — se poate trece la peretele din spate</em></label>
+</section>
+<footer>
+GHID E0 &middot; toate desenele sunt generate din acelasi model numeric (<code>gen_e0.py</code>);
+cotele nu sunt scrise de mana.<br>
+A, B si C sunt inca nominale &mdash; vezi <code>MASOARA-GOL.html</code>. Cand vin numerele,
+desenele se refac la scara reala.<br>
+Inlocuieste Detaliul 7 din SCHEME-CASA si versiunea in izometrie din BLOCAJ-COLT.
+</footer>
+</main></div>
+<script>
+function tg(){const h=document.documentElement;
+ h.dataset.t = h.dataset.t==='d' ? '' : 'd';}
+const boxes=[...document.querySelectorAll('.b input')],pn=document.getElementById('pn'),pb=document.getElementById('pb');
+function upd(){const n=boxes.filter(b=>b.checked).length;
+ pn.textContent=n;pb.style.width=(n/boxes.length*100)+'%';}
+boxes.forEach(b=>b.addEventListener('change',upd));
+const links=[...document.querySelectorAll('nav a')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)
+ links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));});},
+ {rootMargin:'-15% 0px -70% 0px'});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+</script></body></html>
