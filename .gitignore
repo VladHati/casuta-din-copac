@@ -19,7 +19,6 @@ tools-fise/book.html
 bin/
 
 # artefacte intermediare ale generatoarelor de desene (regenerate de gen_*.py)
-figs.json
-figs_ikea.json
+figs*.json
 verificare_svg.txt
 _to_delete/

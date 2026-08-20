@@ -300,6 +300,79 @@ g.dimv(0,100,0,'100',off=-22); g.dimv(100,112,0,'12',off=-22)
 g.tx(260,-90,'DETALIU ACOPERIS — sectiune prin straturi (scara 1:1,6)',size=13,fill=MUT)
 F['strat']=g.svg()
 
+
+# ═══════════ 8. COLT SPATE — plan (principiu) ═══════════
+g=D(0.62)
+g.bar(0,0,420,100,fill=W2); g.tx(210,50,'grinda de margine',size=11,fill=MUT)
+g.bar(0,100,420,240,fill=W1); g.tx(210,230,'dusumea',size=11,fill=MUT)
+g.bar(460,0,90,90,fill=W3); g.tx(505,45,'stalp',size=11,fill=MUT)
+g.bar(420,0,40,100,fill=HATCH,stroke=ACC2,sw=1.4,dash='5,4')
+g.bar(420,100,130,40,fill=HATCH,stroke=ACC2,sw=1.4,dash='5,4')
+g.tx(660,60,'GOL',size=13,fill=ACC2,anchor='start')
+g.tx(660,10,'latura A',size=11,fill=ACC2,anchor='start')
+g.tx(660,110,'latura B',size=11,fill=ACC2,anchor='start')
+g.dimh(420,460,0,'~100',off=30,fill=ACC2)
+g.tx(275,-420,'COLT SPATE — PLAN, vedere de sus  ·  schema de principiu',size=13,fill=MUT)
+g.tx(275,-510,'golul e in L in jurul stalpului · se face pe amandoua laturile, la amandoua colturile',size=12,fill=DIM)
+F['colt_plan']=g.svg()
+
+# ═══════════ 9. COLT SPATE — sectiune (principiu) ═══════════
+g=D(0.62)
+g.bar(-40,-120,760,120,fill=GROUND,stroke='none')
+g.bar(0,0,420,200,fill=W2)
+g.bar(0,200,420,28,fill=W1)
+g.bar(460,-200,90,760,fill=W3)
+# vinclu, ca polita
+g.bar(388,152,32,9,fill=METAL,stroke=METAL2)
+g.bar(420,152,46,9,fill=METAL,stroke=METAL2)
+# blocaj + scandura
+g.bar(420,161,40,67,fill='#cdbf9c')
+g.bar(388,228,132,28,fill=W1)
+# suruburi
+for sx in (412,436,456): g.ln(sx,228,sx-78,66,stroke=METAL2,sw=2.2)
+for sy in (330,430): g.ln(462,sy,406,sy-46,stroke=METAL2,sw=2.2)
+# cote si etichete, toate in afara conturului
+g.dimh(420,460,-120,'~100',off=30,fill=ACC2)
+g.dimv(0,228,-40,'228',off=-26)
+g.note(210,100,'grinda de margine',dx=-60,dy=60,anchor='end')
+g.note(505,300,'stalpul de colt',dx=90,dy=0)
+g.note(443,157,'vinclu 90×65 — polita',dx=150,dy=-110)
+g.note(440,195,'blocaj, taiat pe loc',dx=190,dy=-56)
+g.note(454,242,'scandura de calcat',dx=210,dy=6)
+g.note(390,150,'3× 8×140 oblic in grinda',dx=-70,dy=-70,anchor='end',fill=METAL2)
+g.note(430,400,'2× 8×140 in stalp',dx=120,dy=64,fill=METAL2)
+g.tx(300,-420,'COLT SPATE — SECTIUNE  ·  schema de principiu, cotele se iau pe teren',size=13,fill=MUT)
+g.tx(300,-510,'greutatea: scandura → blocaj → vinclu → grinda → stalpii puntii → pamant',size=12,fill=ACC)
+F['colt_sect']=g.svg()
+
+# ═══════════ 10. PRINDEREA PERETELUI IN STALP ═══════════
+g=D(0.30)
+g.bar(0,0,100,1700,fill=W3); g.tx(50,1780,'stalp de 4 m',size=12,fill=MUT)
+g.bar(100,46,46,1608,fill=W1); g.tx(123,900,'verticala de capat',size=11,fill=MUT,rot=-90)
+g.bar(100,0,420,46,fill=W2); g.bar(100,1654,420,46,fill=W2)
+for zz in (150,700,900,1560):
+    g.ln(146,zz,20,zz,stroke=METAL2,sw=2.6)
+    g.ln(40,zz-14,20,zz,stroke=METAL2,sw=2.6); g.ln(40,zz+14,20,zz,stroke=METAL2,sw=2.6)
+g.note(60,900,'4× surub 8×140  ·  unul jos, doua la mijloc, unul sus',dx=-40,dy=-90,anchor='end',fill=METAL2)
+g.note(50,150,'gaura de 6 mm data inainte in stalp — altfel crapa',dx=-40,dy=150,anchor='end',fill=ACC2)
+g.dimv(46,1654,560,'1608',off=24)
+g.tx(300,-320,'PRINDEREA PERETELUI DIN SPATE IN STALP — elevatie',size=13,fill=MUT)
+F['prindere']=g.svg()
+
+# ═══════════ 11. TAIEREA DULAPULUI IN LUNG ═══════════
+g=D(1.15)
+g.bar(0,0,46,250,fill=W1)
+g.ln(-14,100,60,100,stroke=ACC2,sw=2,dash='7,5'); g.ln(-14,204,60,204,stroke=ACC2,sw=2,dash='7,5')
+g.tx(23,50,'100',size=13,fill=ACC,rot=-90); g.tx(23,152,'100',size=13,fill=ACC,rot=-90)
+g.tx(23,227,'~42',size=11,fill=MUT,rot=-90)
+g.dimv(0,250,0,'250',off=-26); g.dimh(0,46,0,'46',off=28)
+g.note(60,204,'doua taieturi in lung, cu rigla prinsa cu cleme',dx=40,dy=-30,fill=ACC2)
+g.note(60,50,'fasiile de 100 → rama peretilor si capriorii',dx=40,dy=30)
+g.note(60,227,'fasia de ~42 → verticale, in loc de rigla 46×46',dx=40,dy=70)
+g.tx(23,-70,'DULAP 46×250 — sectiune, cum se taie',size=13,fill=MUT)
+g.tx(23,-120,'adancime de taiere 46 mm · circularul taie 65',size=11,fill=DIM)
+F['taiere']=g.svg()
+
 json.dump(F,open('figs_2d.json','w'))
 
 # ─────────────────── AUTO-VERIFICARE ───────────────────

@@ -3,8 +3,8 @@
 """Asambleaza GHID-CONSTRUCTIE-casa.html — ghid de santier, capitole + cuprins lateral."""
 import json
 
-IK = json.load(open('figs_ikea.json'))
 GH = json.load(open('figs_ghid.json'))
+D2 = json.load(open('figs_2d.json'))
 
 def fig(svg, cap='', wide=False):
     c = f'<figcaption>{cap}</figcaption>' if cap else ''
@@ -24,14 +24,18 @@ CH = []
 # ══════════════════════════════ E0 ══════════════════════════════
 CH.append(dict(id='e0', n='E0', titlu='Scandura care lipseste',
     sub='Golul de la cele doua colturi din spate. Patru locuri identice.',
-    zi='2–3 ore', body=f'''
-<p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea. De-aia a ramas asa.</p>
+    zi='2–3 ore', body=f"""
+<p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea.</p>
 
 <div class="gate">
 <b>De ce e primul lucru:</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa se prinda. Dupa ce peretele e ridicat, la coltul ala nu mai ajungi niciodata.
 </div>
 
-{fig(IK['acum'], 'Asa arata acum. Golul, si nimic dedesubt.')}
+<div class="stop">
+<b>Capitolul asta nu are inca desene — si nu le inventez.</b><br>
+Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in acelasi cadru. Desenele facute pana acum au fost reconstituite din descriere; erau gresite si au fost scoase.<br><br>
+<b>Ce imi trebuie:</b> doua poze, cate una pe colt. Din picioare, de pe punte, incadrand simultan stalpul, marginea podelei si golul, cu <b>ruleta intinsa peste gol</b> ca sa se vada latimea reala. Dupa ele desenez planul si sectiunea, la scara.
+</div>
 
 <div class="need">
 <h4>Ai nevoie — pentru <em>o latura</em></h4>
@@ -51,34 +55,21 @@ CH.append(dict(id='e0', n='E0', titlu='Scandura care lipseste',
 
 {steps([
  ('Doua vincluri pe grinda',
-  '<p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p>',
-  IK['coltare']),
+  '<p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p>', None),
  ('Blocajul se lasa pe vincluri',
-  '<p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p>',
-  IK['blocaj']),
+  '<p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p>', None),
  ('Suruburi oblice, de sus',
-  '<p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt. Dupa ele blocajul nu se mai misca deloc.</p>',
-  IK['suruburi']),
+  '<p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p>', None),
  ('Scandura de calcat',
-  '<p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>. Daca o scoti maine, blocajul ramane exact unde e.</p>',
-  IK['scandura']),
- ('Gata — si verifici',
-  '<p>Totul la nivel cu podeaua, vinclurile raman ascunse dedesubt.</p>',
-  IK['gata']),
+  '<p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>.</p>', None),
 ])}
 
-<div class="why">
-{fig(IK['detaliu'], 'Acelasi colt, vazut din afara puntii, cu blocajul taiat in doua. Latura orizontala a vinclului sta SUB blocaj si il duce pe dedesubt — nu e un coltar lipit pe lateral, e o polita.')}
-<p><b>Unde se duce greutatea:</b> calci pe scandura → blocaj → vinclu → grinda groasa → stalpii puntii → pamant. Nimic nu se lasa pe gol.</p>
-</div>
-
 <div class="warn">
-{fig(IK['nu'], 'Asa NU.')}
 <p><b>Nu pune doar o scandura peste gol.</b> Se sprijina pe marginile ei si pe nimic altceva. Tine cateva luni, apoi se lasa, scartaie si iese din plan — mai ales cand se umfla si se usuca de la ploaie. Vinclurile costa cativa lei si rezolva definitiv.</p>
 </div>
 
-<div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei — nu se impiedica nimeni de ea.</div>
-'''))
+<div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei.</div>
+"""))
 
 # ══════════════════════════════ E1 ══════════════════════════════
 CH.append(dict(id='e1', n='E1', titlu='Restantele podelei si cioata',
@@ -146,7 +137,7 @@ CH.append(dict(id='e3', n='E3', titlu='Fasiile',
     zi='o dupa-amiaza', body=f'''
 <p class="lead">Rama peretilor si lemnele acoperisului cer o sectiune de aproximativ <b>46×100</b>. Leroy nu are asa ceva — gama sare de la 46×46 direct la 46×250. Deci o faci din dulapul de 250, taiat in lung.</p>
 
-{fig(GH['e3_taiere'], 'Un dulap de 46×250×4000 da doua fasii de 100 pentru rama, plus o fasie de ~42×46 care merge la verticale. Adancimea de taiere e 46 mm — circularul taie 65, deci trece lejer.')}
+{fig(D2['taiere'], 'Sectiune prin dulap. Doua fasii de 100 pentru rama si capriori, una de ~42 care inlocuieste rigla la verticale.')}
 
 {steps([
  ('Pregatesti ghidajul',
@@ -191,7 +182,7 @@ CH.append(dict(id='e4', n='E4', titlu='Peretele din spate',
 <p class="why-inline"><b>1990</b> = distanta libera masurata intre stalpii de 4 m (1995) minus 5 mm joc de montaj. Peretele se strecoara <em>intre</em> stalpi — la cota exacta nu intra.<br>
 <b>1608</b> = 1700 minus cele doua talpi de 46. Peretele trebuie sa iasa exact 1700, ca scandura groasa de deasupra sa calce si pe el, si pe capetele stalpilor.</p>
 
-{fig(GH['e4_perete'], 'Rama, la scara. Verticalele la ~498 una de alta, proptele lungi jos si scurte sus.')}
+{fig(D2['spate'], 'Elevatie la scara, din exterior. Verticalele la ~498, proptele lungi jos si scurte sus.')}
 
 {steps([
  ('Rama pe iarba',
@@ -221,7 +212,7 @@ CH.append(dict(id='e4', n='E4', titlu='Peretele din spate',
  ('Prinderea de stalpi',
   '<p><b>4 suruburi de dulgherie 8×140</b> pe fiecare capat, in stalpii de 4 m: unul jos, doua pe mijloc, unul sus. '
   '<b>Gaura de 6 mm data inainte in stalp.</b></p>',
-  GH['e4_prindere']),
+  D2['prindere']),
  ('Talpa in grinzi',
   '<p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p>'
   '<p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. Tot ce se prinde de podea trebuie sa intre in grinda de dedesubt. La colturile din spate, in blocajele facute la E0.</p>',
