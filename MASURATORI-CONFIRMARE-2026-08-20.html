@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Masuratori — confirmare · casa de sus</title>
+<style>
+:root{
+  --bg:#16161a; --card:#1d1d22; --card2:#212127; --line:#2e2e36;
+  --ink:#e9e7e2; --mut:#8e8a82; --dim:#6a675f;
+  --acc:#6fbf95; --acc-d:#2b4d3c;
+  --warn:#e0834f; --warn-d:#4a2f1e;
+  --bad:#e0605f; --bad-d:#4a2323;
+  --mono:ui-monospace,"SF Mono",Menlo,"DejaVu Sans Mono",monospace;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style",Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 26px 120px}
+header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:38px}
+.kick{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+h1{font:600 38px/1.1 var(--sans);letter-spacing:-.02em;margin:0 0 12px}
+.sub{font:italic 17px/1.5 var(--serif);color:var(--mut);max-width:62ch;margin:0}
+.meta{margin-top:18px;font:12px/1.5 var(--mono);color:var(--dim)}
+h2{font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);
+   margin:52px 0 6px;display:flex;align-items:baseline;gap:12px}
+h2 .n{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.lede{color:var(--mut);margin:0 0 20px;max-width:70ch;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:16px}
+.card.warn{border-color:var(--warn-d);background:#1e1a17}
+.card.bad{border-color:var(--bad-d);background:#1e1717}
+.card.ok{border-color:var(--acc-d);background:#171d1a}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;
+   color:var(--dim);padding:0 10px 10px 0;border-bottom:1px solid var(--line)}
+td{padding:9px 10px 9px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-family:var(--mono);text-align:right;white-space:nowrap}
+td.lbl{color:var(--mut)}
+input[type=number]{width:88px;background:var(--card2);border:1px solid var(--line);border-radius:6px;
+  color:var(--ink);font:14px var(--mono);padding:6px 8px;text-align:right}
+input[type=number]:focus{outline:none;border-color:var(--acc);background:#1a221d}
+input.edited{border-color:var(--warn);background:#221c17}
+.out{font-family:var(--mono);color:var(--ink)}
+.out.big{font-size:26px;letter-spacing:-.01em}
+.was{color:var(--dim);font-family:var(--mono);font-size:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:880px){.grid2{grid-template-columns:1fr}}
+.pill{display:inline-block;font:600 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 9px;border-radius:999px;border:1px solid currentColor}
+.pill.ok{color:var(--acc)} .pill.warn{color:var(--warn)} .pill.bad{color:var(--bad)}
+.band{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font:11px/1.3 var(--mono);color:var(--dim)}
+.band div{padding:9px 8px;border-radius:7px;background:var(--card2);border:1px solid var(--line);text-align:center}
+.band div.on{border-color:currentColor;color:var(--ink);background:#232a26}
+.band div.on.w{background:#2a221c}
+svg{width:100%;height:auto;display:block}
+.fig{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+.figttl{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.figcap{font:12px/1.5 var(--mono);color:var(--dim);margin-top:10px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+.chk:last-child{border-bottom:none}
+.chk input{margin-top:3px;width:19px;height:19px;accent-color:var(--acc);flex:none}
+.chk label{cursor:pointer}
+.chk .q{display:block;font-weight:600}
+.chk .w{display:block;color:var(--mut);font-size:13px;margin-top:3px}
+.copybox{width:100%;min-height:210px;background:var(--card2);border:1px solid var(--line);border-radius:10px;
+  color:var(--ink);font:12.5px/1.6 var(--mono);padding:16px;resize:vertical}
+button{background:var(--acc);color:#10231a;border:none;border-radius:8px;padding:11px 18px;
+  font:600 13px var(--sans);cursor:pointer;letter-spacing:.02em}
+button:hover{filter:brightness(1.08)}
+button.ghost{background:transparent;color:var(--mut);border:1px solid var(--line)}
+.note{font-size:13px;color:var(--mut);border-left:2px solid var(--line);padding-left:14px;margin:16px 0}
+.note strong{color:var(--ink)}
+.tog{display:flex;align-items:center;gap:9px;font:12px var(--mono);color:var(--mut);cursor:pointer;user-select:none}
+.tog input{accent-color:var(--warn);width:16px;height:16px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid var(--line);font:12px/1.6 var(--mono);color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kick">Casuta din copac · casa de sus</div>
+  <h1>Masuratorile reale — de confirmat</h1>
+  <p class="sub">Tot ce urmeaza e calculat din cifrele pe care le-ai masurat. Schimba orice numar si toate cotele se recalculeaza pe loc. Cand arata corect, bifezi jos si copiezi rezumatul inapoi in chat.</p>
+  <div class="meta">20 august 2026 · cote in mm, lumina intre fetele stalpilor · <span id="stamp">nimic modificat inca</span></div>
+</header>
+
+<!-- ============ 1 ============ -->
+<h2><span class="n">01</span>Cele doua plane, separat</h2>
+<p class="lede">Fiecare desen e facut <strong>numai din cifrele planului lui</strong>. Nu amestec sus cu jos — sunt doua forme diferite, si diferenta dintre ele iti spune cat sunt inclinati stalpii. Orientarea si etichetele S1–S4 sunt exact ca in desenul tau.</p>
+
+<div class="grid2">
+  <div class="card">
+    <table>
+      <tr><th>Sus · varful stalpilor</th><th class="num">mm</th></tr>
+      <tr><td class="lbl">S1–S2 · latime <strong>spate</strong></td><td class="num"><input type="number" id="wbt" value="2000"></td></tr>
+      <tr><td class="lbl">S3–S4 · latime <strong>fata</strong></td><td class="num"><input type="number" id="wft" value="1975"></td></tr>
+      <tr><td class="lbl">S1–S3 · adancime <strong>jos in desen</strong></td><td class="num"><input type="number" id="drt" value="1600"></td></tr>
+      <tr><td class="lbl">S2–S4 · adancime <strong>sus in desen</strong></td><td class="num"><input type="number" id="dlt" value="1570"></td></tr>
+      <tr><td class="lbl">diagonala S2–S3</td><td class="num"><input type="number" id="dat" value="2550"></td></tr>
+      <tr><td class="lbl">diagonala S1–S4</td><td class="num"><input type="number" id="dbt" value="2530"></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <table>
+      <tr><th>Jos · la podea</th><th class="num">mm</th></tr>
+      <tr><td class="lbl">S1–S2 · latime <strong>spate</strong></td><td class="num"><input type="number" id="wbb" value="1995"></td></tr>
+      <tr><td class="lbl">S3–S4 · latime <strong>fata</strong></td><td class="num"><input type="number" id="wfb" value="1985"></td></tr>
+      <tr><td class="lbl">S1–S3 · adancime <strong>jos in desen</strong></td><td class="num"><input type="number" id="drb" value="1580"></td></tr>
+      <tr><td class="lbl">S2–S4 · adancime <strong>sus in desen</strong></td><td class="num"><input type="number" id="dlb" value="1570"></td></tr>
+      <tr><td class="lbl">diagonala S2–S3</td><td class="num"><input type="number" id="dab" value="2550"></td></tr>
+      <tr><td class="lbl">diagonala S1–S4</td><td class="num"><input type="number" id="dbb" value="2530"></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card warn" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+  <div style="font-size:13px;color:var(--mut);max-width:64ch">
+    In desenul tau <strong>ambele plane au aceleasi diagonale</strong> (2550 / 2530). Probabil le-ai masurat o singura data. Daca da, verificarea de mai jos e valabila doar pentru planul in care ai masurat efectiv.
+  </div>
+  <label class="tog"><input type="checkbox" id="exag"> exagereaza abaterile ×10 in desene</label>
+</div>
+
+<div class="grid2">
+  <div class="fig">
+    <div class="figttl">Sus · varful stalpilor</div>
+    <svg id="planT" viewBox="0 0 520 560"></svg>
+    <div class="figcap" id="capT">–</div>
+  </div>
+  <div class="fig">
+    <div class="figttl">Jos · la podea</div>
+    <svg id="planB" viewBox="0 0 520 560"></svg>
+    <div class="figcap" id="capB">–</div>
+  </div>
+</div>
+
+<div class="card" id="cons">
+  <table>
+    <tr><th>Verificare per plan</th><th class="num">latime fata masurata</th><th class="num">calculata din restul cotelor</th><th class="num">diferenta</th><th>verdict</th></tr>
+    <tr><td class="lbl">SUS</td><td class="num was" id="ctm">–</td><td class="num out" id="ctc">–</td><td class="num out" id="ctd">–</td><td id="ctv">–</td></tr>
+    <tr><td class="lbl">JOS</td><td class="num was" id="cbm">–</td><td class="num out" id="cbc">–</td><td class="num out" id="cbd">–</td><td id="cbv">–</td></tr>
+  </table>
+  <div class="note" id="consnote"></div>
+</div>
+
+<div class="card">
+  <table>
+    <tr><th>Cat sunt inclinati stalpii</th><th class="num">jos</th><th class="num">sus</th><th class="num">abatere</th></tr>
+    <tr><td class="lbl">latime spate</td><td class="num was" id="tb1">–</td><td class="num was" id="tb2">–</td><td class="num out" id="tb3">–</td></tr>
+    <tr><td class="lbl">latime fata</td><td class="num was" id="tf1">–</td><td class="num was" id="tf2">–</td><td class="num out" id="tf3">–</td></tr>
+    <tr><td class="lbl">adancime S1–S3</td><td class="num was" id="td1">–</td><td class="num was" id="td2">–</td><td class="num out" id="td3">–</td></tr>
+    <tr><td class="lbl">adancime S2–S4</td><td class="num was" id="te1">–</td><td class="num was" id="te2">–</td><td class="num out" id="te3">–</td></tr>
+  </table>
+  <div class="note" id="leannote"></div>
+</div>
+
+<!-- ============ 2 ============ -->
+<h2><span class="n">02</span>Cotele pe care se taie</h2>
+<p class="lede">Aici — si <em>numai</em> aici — cele doua plane se combina. Un perete trebuie sa intre si jos, si sus, deci se taie pe <strong>cea mai mica citire</strong> a fiecarei cote. Asta e regula; daca vrei alta, spune.</p>
+
+<div class="card ok">
+  <table>
+    <tr><th>Cota</th><th class="num">sus</th><th class="num">jos</th><th class="num">se taie pe</th><th>unde intra</th></tr>
+    <tr><td class="lbl">latime spate</td><td class="num was" id="pb1">–</td><td class="num was" id="pb2">–</td><td class="num out" id="pb3">–</td><td class="lbl">talpa + cununa perete spate</td></tr>
+    <tr><td class="lbl">latime fata</td><td class="num was" id="pf1">–</td><td class="num was" id="pf2">–</td><td class="num out" id="pf3">–</td><td class="lbl">talpa perete fata</td></tr>
+    <tr><td class="lbl">adancime S1–S3</td><td class="num was" id="pd1">–</td><td class="num was" id="pd2">–</td><td class="num out" id="pd3">–</td><td class="lbl">lateralul de pe partea aia</td></tr>
+    <tr><td class="lbl">adancime S2–S4</td><td class="num was" id="pe1">–</td><td class="num was" id="pe2">–</td><td class="num out" id="pe3">–</td><td class="lbl">lateralul celalalt</td></tr>
+  </table>
+</div>
+
+<!-- ============ 3 ============ -->
+<h2><span class="n">03</span>Ce nu ai masurat — presupun</h2>
+<p class="lede">Astea nu sunt in desen. Grosimea stalpilor intra direct in span-ul acoperisului, deci in panta.</p>
+<div class="card warn">
+  <table>
+    <tr><th>Marime</th><th class="num">presupus</th><th>de unde</th></tr>
+    <tr><td class="lbl">sectiune stalp <strong>spate</strong> (cei de 4 m)</td><td class="num"><input type="number" id="bp" value="100"></td><td class="lbl">documente, neverificat</td></tr>
+    <tr><td class="lbl">sectiune stalp <strong>fata</strong></td><td class="num"><input type="number" id="fp" value="90"></td><td class="lbl">as-built 11.08</td></tr>
+    <tr><td class="lbl">stalpi spate peste podea</td><td class="num"><input type="number" id="hb" value="1700"></td><td class="lbl">M1, masurat 11.08</td></tr>
+    <tr><td class="lbl">stalpi fata peste podea</td><td class="num"><input type="number" id="hf" value="1600"></td><td class="lbl">as-built, neremasurat</td></tr>
+    <tr><td class="lbl">dulap acoperis, pe muchie</td><td class="num"><input type="number" id="db" value="200"></td><td class="lbl">lemn real, 200×50</td></tr>
+    <tr><td class="lbl">bara de sus, fata (100×60)</td><td class="num"><input type="number" id="fb" value="60"></td><td class="lbl">latura de 60 in sus</td></tr>
+  </table>
+</div>
+
+<!-- ============ 4 ============ -->
+<h2><span class="n">04</span>Geometria care iese</h2>
+<div class="grid2">
+  <div class="card">
+    <table>
+      <tr><th>Acoperis</th><th class="num">acum</th><th class="num">in plan</th></tr>
+      <tr><td class="lbl">reazem spate</td><td class="num out" id="rb">–</td><td class="num was">1900</td></tr>
+      <tr><td class="lbl">reazem fata</td><td class="num out" id="rf">–</td><td class="num was">1660</td></tr>
+      <tr><td class="lbl">cadere</td><td class="num out" id="drop">–</td><td class="num was">240</td></tr>
+      <tr><td class="lbl">span intre reazeme</td><td class="num out" id="span">–</td><td class="num was">1100</td></tr>
+      <tr><td class="lbl"><strong>panta</strong></td><td class="num out" id="pitch">–</td><td class="num was">12,3°</td></tr>
+      <tr><td class="lbl"><strong>caprior</strong> (streasini 100+100)</td><td class="num out" id="raft">–</td><td class="num was">1331</td></tr>
+      <tr><td class="lbl">muchia din fata, peste podea</td><td class="num out" id="edge">–</td><td class="num was">1638</td></tr>
+    </table>
+  </div>
+  <div class="card" id="bandcard">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+      <span style="font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)">Ce cere Onduline la panta asta</span>
+      <span class="pill" id="bandpill">–</span>
+    </div>
+    <div class="band">
+      <div id="b0">&lt; 5°<br>refuzat</div><div id="b1">5–10°<br>astereala</div>
+      <div id="b2">10–15°<br>sipci ≤45</div><div id="b3">&gt; 15°<br>sipci ≤61</div>
+    </div>
+    <div class="note" id="bandnote"></div>
+  </div>
+</div>
+
+<div class="fig">
+  <div class="figttl">Sectiune · spatele in dreapta</div>
+  <svg id="sect" viewBox="0 0 900 430"></svg>
+  <div class="figcap">Panta desenata e panta calculata, nu una decorativa.</div>
+</div>
+
+<!-- ============ 5 ============ -->
+<h2><span class="n">05</span>Lungimile de taiere</h2>
+<div class="card">
+  <table>
+    <tr><th>Perete</th><th>Piesa</th><th class="num">lungime</th><th class="num">buc</th></tr>
+    <tr><td class="lbl" rowspan="2"><strong>SPATE</strong></td><td class="lbl">talpa + cununa (bara 44×100)</td><td class="num out" id="cbw">–</td><td class="num">2</td></tr>
+    <tr><td class="lbl">verticale (rigla 46×46)</td><td class="num out" id="cbv">–</td><td class="num" id="cbvn">5</td></tr>
+    <tr><td class="lbl" rowspan="3"><strong>FATA</strong></td><td class="lbl">talpa (bara 44×100)</td><td class="num out" id="cfw">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">bara de sus 100×60 (a ta)</td><td class="num out" id="cft">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">verticale (rigla 46×46)</td><td class="num out" id="cfv">–</td><td class="num">7</td></tr>
+    <tr><td class="lbl" rowspan="3"><strong>LATERAL S1–S3</strong></td><td class="lbl">talpa</td><td class="num out" id="crw">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">cununa inclinata</td><td class="num out" id="crt">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">verticale, dinspre fata spre spate</td><td class="num out" id="crv">–</td><td class="num">4</td></tr>
+    <tr><td class="lbl" rowspan="3"><strong>LATERAL S2–S4</strong></td><td class="lbl">talpa</td><td class="num out" id="clw">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">cununa inclinata</td><td class="num out" id="clt">–</td><td class="num">1</td></tr>
+    <tr><td class="lbl">verticale, dinspre fata spre spate</td><td class="num out" id="clv">–</td><td class="num">4</td></tr>
+    <tr><td class="lbl" rowspan="3"><strong>ACOPERIS</strong></td><td class="lbl">capriori 44×100</td><td class="num out" id="cra">–</td><td class="num">5</td></tr>
+    <tr><td class="lbl">pas intre capriori</td><td class="num out" id="crp">–</td><td class="num">–</td></tr>
+    <tr><td class="lbl">blocaje intre capriori</td><td class="num out" id="crb">–</td><td class="num">8</td></tr>
+  </table>
+  <div class="note">Golurile <strong>nu se schimba</strong>: usa 550 cu 1600 liber · geam lateral 490×490 cu pragul la 950 · fereastra fata gol 570×570. Sunt cote de siguranta, nu depind de adancime.</div>
+</div>
+
+<!-- ============ 6 ============ -->
+<h2><span class="n">06</span>Ce se schimba la cumparaturi</h2>
+<div class="card">
+  <table>
+    <tr><th>Articol</th><th class="num">in lista</th><th class="num">necesar</th><th>de ce</th></tr>
+    <tr><td class="lbl">Lambriu 12,5×96 (pachet 2,88 m²)</td><td class="num was">5</td><td class="num out" id="qlam">–</td><td class="lbl">peretii laterali mult mai lungi</td></tr>
+    <tr><td class="lbl">OSB3 12 mm, placa 2500×1250</td><td class="num was">0</td><td class="num out" id="qosb">–</td><td class="lbl">astereala continua sub 10°</td></tr>
+    <tr><td class="lbl">Rigla 46×46×3000</td><td class="num was">27</td><td class="num out" id="qrig">–</td><td class="lbl">dispar sipcile de acoperis</td></tr>
+    <tr><td class="lbl">Scandura 22×100×4000</td><td class="num was">28</td><td class="num out" id="qsc">–</td><td class="lbl">capriori si laterale mai lungi</td></tr>
+    <tr><td class="lbl">Vinclu 90×65</td><td class="num was">52</td><td class="num out" id="qvin">–</td><td class="lbl">+4 stalpi fata, +8 golul de colt</td></tr>
+    <tr><td class="lbl">Surub dulgherie 8×140</td><td class="num was">16</td><td class="num out" id="q814">–</td><td class="lbl">+20 la blocajele de colt</td></tr>
+    <tr><td class="lbl">Placa Onduline 2000×860</td><td class="num was">3</td><td class="num out" id="qond">–</td><td class="lbl">panta intra dintr-o bucata acum</td></tr>
+  </table>
+  <div class="note" id="qnote"></div>
+</div>
+
+<!-- ============ 7 ============ -->
+<h2><span class="n">07</span>Confirma sau corecteaza</h2>
+<p class="lede">Bifeaza doar ce stii sigur. Ce ramane nebifat, nu intra in documente.</p>
+<div class="card">
+  <div class="chk"><input type="checkbox" id="k1"><label for="k1"><span class="q">Cifrele din 01 sunt corecte</span><span class="w">Asa ai masurat, asa le-am citit din desen — inclusiv care cota e pe ce latura.</span></label></div>
+  <div class="chk"><input type="checkbox" id="k2"><label for="k2"><span class="q">Diagonalele au fost masurate o singura data</span><span class="w">Daca da, spune la ce nivel: jos, la podea, sau sus.</span></label></div>
+  <div class="chk"><input type="checkbox" id="k3"><label for="k3"><span class="q">Stalpii sunt 100×100 in spate si 90×90 in fata</span><span class="w">Daca n-ai verificat cu ruleta, lasa nebifat — intra direct in panta.</span></label></div>
+  <div class="chk"><input type="checkbox" id="k4"><label for="k4"><span class="q">Casa ramane adanca cat e</span><span class="w">Nu mutam stalpii din fata inapoi la 1100. Casa iese <span class="out" id="areatxt">–</span> in loc de 2,19 m².</span></label></div>
+  <div class="chk"><input type="checkbox" id="k5"><label for="k5"><span class="q">Acoperisul: OSB peste capriori</span><span class="w">Fara sipci, fara sipca diagonala. Alternativa era al doilea dulap la spate — mai ieftin cu 158 lei, dar cu o stiva de 400 mm de echilibrat la 2,1 m.</span></label></div>
+  <div class="chk"><input type="checkbox" id="k6"><label for="k6"><span class="q">Merg mai departe: regenerez PROIECT-CASA, SCHEME si LISTA</span><span class="w">Un singur lot. Pana atunci nu cumperi si nu tai.</span></label></div>
+</div>
+
+<h2><span class="n">08</span>Rezumat de trimis inapoi</h2>
+<textarea class="copybox" id="summary" readonly></textarea>
+<div style="margin-top:12px;display:flex;gap:10px">
+  <button onclick="copySum(event)">Copiaza rezumatul</button>
+  <button class="ghost" onclick="resetAll()">Inapoi la valorile masurate</button>
+</div>
+
+<footer>
+  MASURATORI-CONFIRMARE-2026-08-20 · anexa la AUDIT-2026-08-20.md<br>
+  Sursa cifrelor: FREEFORM-PNG/03-verificare/patratura-stalpi.png · praguri Onduline: uk.onduline.com, FAQ montaj
+</footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const IN = ['wbt','wft','drt','dlt','dat','dbt','wbb','wfb','drb','dlb','dab','dbb','bp','fp','hb','hf','db','fb'];
+const DEF = {}; IN.forEach(k => DEF[k] = +$(k).value);
+const CHK = ['k1','k2','k3','k4','k5','k6'];
+const v = k => +$(k).value || 0;
+const r0 = n => Math.round(n);
+const mm = n => r0(n)+'';
+const deg = r => r*180/Math.PI;
+const ro = n => n.toFixed(1).replace('.',',');
+
+// rezolva patrulaterul: S1=(0,0) S2=(0,WB) ; x=adancime, y=latime
+// S3: |S1S3|=DR (latura de jos in desen), |S2S3|=dA
+// S4: |S2S4|=DL (latura de sus),          |S1S4|=dB
+function quad(WB,DR,DL,dA,dB){
+  const y3=(WB*WB+DR*DR-dA*dA)/(2*WB), x3=Math.sqrt(Math.max(DR*DR-y3*y3,0));
+  const y4=(WB*WB+dB*dB-DL*DL)/(2*WB), x4=Math.sqrt(Math.max(dB*dB-y4*y4,0));
+  return {S1:[0,0],S2:[0,WB],S3:[x3,y3],S4:[x4,y4],wf:Math.hypot(x4-x3,y4-y3)};
+}
+
+function svgEl(t,a){const e=document.createElementNS('http://www.w3.org/2000/svg',t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function tx(p,x,y,s,o){const t=svgEl('text',Object.assign({x:x,y:y,fill:'#8e8a82','font-family':'ui-monospace,Menlo,monospace','font-size':13,'text-anchor':'middle'},o||{}));t.textContent=s;p.appendChild(t);}
+
+// deseneaza un plan. x = adancime (orizontal), y = latime (vertical, ca in desenul lui Vlad)
+function drawPlan(el,q,WB,WF,DR,DL,bp,fp,exag){
+  const p=$(el); p.innerHTML='';
+  const PAD=74, W=520-2*PAD, H=560-2*PAD;
+  // exagerare: amplifica abaterile fata de dreptunghiul ideal
+  let P={S1:q.S1.slice(),S2:q.S2.slice(),S3:q.S3.slice(),S4:q.S4.slice()};
+  if(exag){
+    const dep=(q.S3[0]+q.S4[0])/2, K=10;
+    P.S3=[dep+(q.S3[0]-dep)*K, 0+(q.S3[1]-0)*K];
+    P.S4=[dep+(q.S4[0]-dep)*K, WB+(q.S4[1]-WB)*K];
+  }
+  const xs=[P.S1[0],P.S2[0],P.S3[0],P.S4[0]], ys=[P.S1[1],P.S2[1],P.S3[1],P.S4[1]];
+  const spanx=Math.max(...xs)-Math.min(...xs), spany=Math.max(...ys)-Math.min(...ys);
+  const k=Math.min(W/(spanx+ (bp+fp)), H/(spany+bp));
+  const ox=PAD+ (bp+fp)/2*k - Math.min(...xs)*k, oy=PAD+bp/2*k - Math.min(...ys)*k;
+  const X=a=>ox+a[0]*k, Y=a=>oy+a[1]*k;
+  // in desenul lui Vlad latimea creste in sus -> inversez y
+  const Yi=a=>PAD+H - (oy+a[1]*k - PAD);
+  const pt=a=>[X(a),Yi(a)];
+  const poly=[pt(P.S1),pt(P.S2),pt(P.S4),pt(P.S3)];
+  p.appendChild(svgEl('polygon',{points:poly.map(a=>a.map(n=>n.toFixed(1)).join(',')).join(' '),fill:'#1f2a24',stroke:'#6fbf95','stroke-width':2}));
+  p.appendChild(svgEl('line',{x1:pt(P.S2)[0],y1:pt(P.S2)[1],x2:pt(P.S3)[0],y2:pt(P.S3)[1],stroke:'#e0834f','stroke-width':1,'stroke-dasharray':'5 5'}));
+  p.appendChild(svgEl('line',{x1:pt(P.S1)[0],y1:pt(P.S1)[1],x2:pt(P.S4)[0],y2:pt(P.S4)[1],stroke:'#e0834f','stroke-width':1,'stroke-dasharray':'5 5'}));
+  const nodes=[['S1',P.S1,bp,-1,1],['S2',P.S2,bp,-1,-1],['S3',P.S3,fp,1,1],['S4',P.S4,fp,1,-1]];
+  nodes.forEach(([n,a,sz,dx,dy])=>{
+    const [cx,cy]=pt(a), s=sz*k;
+    p.appendChild(svgEl('rect',{x:cx-s/2,y:cy-s/2,width:s,height:s,fill:'#d9cdb2',stroke:'#16161a','stroke-width':1.5}));
+    tx(p,cx+dx*30,cy+(dy>0?24:-16),n,{fill:'#e9e7e2','font-size':13});
+  });
+  const mid=(a,b)=>[(pt(a)[0]+pt(b)[0])/2,(pt(a)[1]+pt(b)[1])/2];
+  let m=mid(P.S1,P.S2); tx(p,m[0]-38,m[1],WB+'',{fill:'#e9e7e2',transform:`rotate(-90 ${m[0]-38} ${m[1]})`});
+  m=mid(P.S3,P.S4);      tx(p,m[0]+38,m[1],WF+'',{fill:'#e9e7e2',transform:`rotate(90 ${m[0]+38} ${m[1]})`});
+  m=mid(P.S1,P.S3);      tx(p,m[0],m[1]+30,DR+'',{fill:'#e9e7e2'});
+  m=mid(P.S2,P.S4);      tx(p,m[0],m[1]-20,DL+'',{fill:'#e9e7e2'});
+  tx(p,PAD+W/2,560-16,'GARD in stanga · TERASA in dreapta',{fill:'#6a675f','font-size':11});
+}
+
+function calc(){
+  const bp=v('bp'), fp=v('fp'), hb=v('hb'), hf=v('hf'), db=v('db'), fb=v('fb');
+  const exag=$('exag').checked;
+
+  const T={WB:v('wbt'),WF:v('wft'),DR:v('drt'),DL:v('dlt'),dA:v('dat'),dB:v('dbt')};
+  const B={WB:v('wbb'),WF:v('wfb'),DR:v('drb'),DL:v('dlb'),dA:v('dab'),dB:v('dbb')};
+  const qT=quad(T.WB,T.DR,T.DL,T.dA,T.dB), qB=quad(B.WB,B.DR,B.DL,B.dA,B.dB);
+
+  drawPlan('planT',qT,T.WB,T.WF,T.DR,T.DL,bp,fp,exag);
+  drawPlan('planB',qB,B.WB,B.WF,B.DR,B.DL,bp,fp,exag);
+
+  function chk(q,m,cm,cc,cd,cv,cap,nume){
+    const d=q.wf-m;
+    $(cm).textContent=mm(m); $(cc).textContent=mm(q.wf); $(cd).textContent=(d>=0?'+':'')+mm(d);
+    const ok=Math.abs(d)<=15;
+    $(cv).innerHTML = ok?'<span class="pill ok">se leaga</span>':'<span class="pill bad">nu se leaga</span>';
+    $(cap).textContent = ok
+      ? `Forma se inchide: cele 4 laturi + diagonalele dau o latime de fata de ${mm(q.wf)}, iar tu ai masurat ${mm(m)}. Diferenta ${Math.abs(r0(d))} mm = eroare de ruleta.`
+      : `Nu se inchide: din laturi + diagonale iese ${mm(q.wf)}, tu ai masurat ${mm(m)}. ${Math.abs(r0(d))} mm diferenta — o cifra e gresita.`;
+    return ok;
+  }
+  const okT=chk(qT,T.WF,'ctm','ctc','ctd','ctv','capT','SUS');
+  const okB=chk(qB,B.WF,'cbm','cbc','cbd','cbv','capB','JOS');
+  $('cons').className='card '+((okT&&okB)?'ok':'bad');
+  $('consnote').innerHTML = (okT&&okB)
+    ? 'Ambele plane se inchid geometric. <strong>Masuratorile sunt reale si utilizabile.</strong> Strambatura de echer e reala, nu eroare — peretii sunt trapeze usoare, deci fiecare talpa se taie la fata locului, pe cota ei.'
+    : 'Cel putin un plan nu se inchide. Remasoara cotele marcate inainte sa taiem ceva.';
+
+  // inclinare stalpi
+  const rows=[['tb',B.WB,T.WB],['tf',B.WF,T.WF],['td',B.DR,T.DR],['te',B.DL,T.DL]];
+  let maxlean=0;
+  rows.forEach(([p,jos,sus])=>{ $(p+'1').textContent=mm(jos); $(p+'2').textContent=mm(sus);
+    const d=sus-jos; $(p+'3').textContent=(d>=0?'+':'')+mm(d); maxlean=Math.max(maxlean,Math.abs(d)); });
+  $('leannote').innerHTML = maxlean<=25
+    ? `Cea mai mare diferenta sus-jos e de <strong>${mm(maxlean)} mm</strong> pe ~1,6 m inaltime. Stalpii sunt practic verticali — nu trebuie indreptati, doar taiat pe cota mai mica.`
+    : `Diferenta sus-jos ajunge la <strong>${mm(maxlean)} mm</strong>. E mult: un stalp e vizibil inclinat. De indreptat inainte de pereti, sau peretele nu va sta plan.`;
+
+  // cote de proiectare
+  const WB=Math.min(T.WB,B.WB), WF=Math.min(T.WF,B.WF);
+  const DR=Math.min(T.DR,B.DR), DL=Math.min(T.DL,B.DL);
+  [['pb',T.WB,B.WB,WB],['pf',T.WF,B.WF,WF],['pd',T.DR,B.DR,DR],['pe',T.DL,B.DL,DL]]
+    .forEach(([p,a,b,c])=>{$(p+'1').textContent=mm(a);$(p+'2').textContent=mm(b);$(p+'3').textContent=mm(c);});
+
+  const DEP=(DR+DL)/2;
+  const rb=hb+db, rf=hf+fb, drop=rb-rf, span=DEP+bp/2+fp/2;
+  const s=Math.atan2(drop,span), pitch=deg(s);
+  const raft=(span+200)/Math.cos(s), edge=rf-100*Math.tan(s);
+  $('rb').textContent=mm(rb); $('rf').textContent=mm(rf); $('drop').textContent=mm(drop);
+  $('span').textContent=mm(span); $('pitch').innerHTML='<span class="big">'+ro(pitch)+'°</span>';
+  $('raft').textContent=mm(raft); $('edge').textContent=mm(edge);
+
+  let bi,txt2,cls;
+  if(pitch<5){bi=0;cls='bad';txt2='Sub 5° producatorul nu accepta Onduline deloc.';}
+  else if(pitch<10){bi=1;cls='warn';txt2='Intre 5° si 10° Onduline cere <strong>astereala continua</strong> (OSB, placaj) — nu sipci. Cele 4 sipci si sipca diagonala ies din lista; intra 2 placi OSB.';}
+  else if(pitch<15){bi=2;cls='ok';txt2='Intre 10° si 15°: sipci la maxim 45 cm. Exact ce e in plan.';}
+  else {bi=3;cls='ok';txt2='Peste 15°: sipcile pot merge pana la 61 cm.';}
+  for(let i=0;i<4;i++) $('b'+i).className = (i===bi?'on'+(cls!=='ok'?' w':''):'');
+  $('bandpill').className='pill '+cls;
+  $('bandpill').textContent = bi===0?'refuzat':bi===1?'astereala':'sipci';
+  $('bandnote').innerHTML=txt2; $('bandcard').className='card '+(cls==='ok'?'ok':cls);
+
+  const T44=44;
+  $('cbw').textContent=mm(WB-5); $('cbv').textContent=mm(hb-2*T44);
+  $('cbvn').textContent=Math.max(4,Math.round((WB-5)/500)+1);
+  $('cfw').textContent=mm(WF-5); $('cft').textContent=mm(WF+2*fp); $('cfv').textContent=mm(hf-T44);
+  const hFront=rf+(fp/2)*Math.tan(s), hBack=rb-(bp/2)*Math.tan(s);
+  function lat(dep,a,b,c){ $(a).textContent=mm(dep); $(b).textContent=mm(dep/Math.cos(s));
+    const out=[]; for(let i=0;i<4;i++){const x=i*dep/3; out.push(mm(hFront+(hBack-hFront)*x/dep-2*T44));} $(c).textContent=out.join(' · '); }
+  lat(DR,'crw','crt','crv'); lat(DL,'clw','clt','clv');
+  const pas=(WB-5)/4;
+  $('cra').textContent=mm(raft); $('crp').textContent=mm(pas); $('crb').textContent=mm(pas-T44);
+
+  const ov=96/76;
+  const latA=(DEP/1000)*(((rf+rb)/2)/1000)-0.49*0.49;
+  const net=(WB-5)/1000*(hb/1000)+2*latA+((WF-5)/1000*(hf/1000)-0.55*1.60-0.57*0.57);
+  $('qlam').textContent=Math.ceil((net*ov+1.3)/2.88);
+  const roofA=(raft/1000)*((WB+2*bp)/1000);
+  $('qosb').textContent=(bi<=1)?Math.ceil(roofA/3.125):0;
+  const vertTot=5*(hb-2*T44)+7*(hf-T44)+8*((hFront+hBack)/2-2*T44)+4*1600;
+  $('qrig').textContent=Math.ceil(vertTot/3000)+2+((bi>=2)?5:0);
+  const lin=2*(WB-5)+(WF-5)+DR+DL+(DR+DL)/Math.cos(s)+2*660+4*490+5*raft+8*(pas-T44);
+  $('qsc').textContent=(Math.ceil(lin/4000)+2)*2;
+  $('qvin').textContent=64; $('q814').textContent=36; $('qond').textContent=3;
+  $('qnote').innerHTML=(bi<=1)
+    ? `OSB inlocuieste sipcile <em>si</em> sipca diagonala — placa face bracajul singura. Net: ~+160 lei OSB, −5 rigle. Onduline: placa are 2000, panta ${mm(raft)} → <strong>intra dintr-o bucata</strong>, rest ${mm(2000-raft)} mm.`
+    : `Sipcile raman: ${Math.ceil(raft/450)+1} randuri la pas ${mm(raft/Math.ceil(raft/450))}. Onduline: panta ${mm(raft)} → ${raft<=2000?'intra dintr-o bucata':'<strong>nu intra, trebuie doua randuri</strong>'}.`;
+
+  const area=(DEP/1000)*((WB+WF)/2/1000);
+  $('areatxt').textContent=area.toFixed(2).replace('.',',')+' m²';
+  drawSect(span,rf,rb,raft,s,hf,hb,db,fb);
+  summary(WB,WF,DR,DL,DEP,span,pitch,raft,bi,area,okT,okB,maxlean);
+}
+
+function drawSect(span,rf,rb,raft,s,hf,hb,db,fb){
+  const p=$('sect'); p.innerHTML='';
+  const PAD=80, w=900-2*PAD, h=430-2*PAD;
+  const k=Math.min(w/(span+400), h/(rb+220));
+  const x0=PAD+120, yBase=430-PAD, Y=val=>yBase-val*k;
+  p.appendChild(svgEl('line',{x1:PAD,y1:yBase,x2:900-PAD,y2:yBase,stroke:'#4a4740','stroke-width':3}));
+  p.appendChild(svgEl('rect',{x:x0-5,y:Y(hf),width:10,height:hf*k,fill:'#d9cdb2'}));
+  p.appendChild(svgEl('rect',{x:x0+span*k-6,y:Y(hb),width:12,height:hb*k,fill:'#d9cdb2'}));
+  p.appendChild(svgEl('rect',{x:x0-9,y:Y(rf),width:18,height:fb*k,fill:'#6fbf95'}));
+  p.appendChild(svgEl('rect',{x:x0+span*k-12,y:Y(rb),width:24,height:db*k,fill:'#6fbf95'}));
+  const ex=100*k;
+  const ax=x0-ex, ay=Y(rf)+ex*Math.tan(s), bx=x0+span*k+ex, by=Y(rb)-ex*Math.tan(s);
+  p.appendChild(svgEl('line',{x1:ax,y1:ay,x2:bx,y2:by,stroke:'#e0834f','stroke-width':7,'stroke-linecap':'round'}));
+  const mx=(ax+bx)/2,my=(ay+by)/2-20;
+  tx(p,mx,my,'caprior '+r0(raft),{fill:'#e0834f','font-size':14,transform:`rotate(${(-deg(s)).toFixed(2)} ${mx} ${my})`});
+  tx(p,x0-52,Y(rf/2),r0(rf)+'',{fill:'#e9e7e2'});
+  tx(p,x0+span*k+58,Y(rb/2),r0(rb)+'',{fill:'#e9e7e2'});
+  tx(p,x0+span*k/2,yBase+28,'span '+r0(span),{fill:'#e9e7e2'});
+  tx(p,x0+span*k/2,Y(rb)-34,'panta '+ro(deg(s))+'°',{fill:'#6fbf95','font-size':15});
+  tx(p,x0-56,yBase-8,'TERASA',{fill:'#6a675f','font-size':11});
+  tx(p,900-PAD-26,yBase-8,'GARD',{fill:'#6a675f','font-size':11});
+}
+
+function summary(WB,WF,DR,DL,DEP,span,pitch,raft,bi,area,okT,okB,lean){
+  const edited=IN.filter(k=>v(k)!==DEF[k]).map(k=>`${k}: ${DEF[k]} -> ${v(k)}`);
+  const marked=CHK.filter(k=>$(k).checked);
+  const L={k1:'cifrele masurate sunt corecte',k2:'diagonalele masurate o singura data',
+    k3:'stalpi 100x100 spate / 90x90 fata, verificati cu ruleta',k4:'casa ramane adanca cat e',
+    k5:'acoperis = OSB peste capriori',k6:'GO: regenereaza PROIECT-CASA + SCHEME + LISTA'};
+  const band=['sub 5 grade - refuzat','5-10 grade - astereala continua','10-15 grade - sipci max 45','peste 15 grade - sipci max 61'][bi];
+  $('summary').value=
+`CONFIRMARE MASURATORI — 20.08.2026
+
+Verificare geometrica:
+  planul de SUS ..... ${okT?'se inchide':'NU SE INCHIDE'}
+  planul de JOS ..... ${okB?'se inchide':'NU SE INCHIDE'}
+  inclinare stalpi .. max ${r0(lean)} mm intre sus si jos
+
+Cote de taiere (cea mai mica citire din cele doua plane):
+  latime spate ....... ${r0(WB)}   -> talpa/cununa ${r0(WB-5)}
+  latime fata ........ ${r0(WF)}   -> talpa ${r0(WF-5)}
+  adancime S1-S3 ..... ${r0(DR)}
+  adancime S2-S4 ..... ${r0(DL)}
+
+Geometrie rezultata:
+  span intre reazeme . ${r0(span)}   (plan vechi: 1100)
+  panta .............. ${ro(pitch)} grade   (plan vechi: 12,3)
+  caprior ............ ${r0(raft)}   (plan vechi: 1331)
+  banda Onduline ..... ${band}
+  suprafata casa ..... ${area.toFixed(2).replace('.',',')} m2
+
+Modificat de mine in document:
+${edited.length?'  '+edited.join('\n  '):'  nimic — am lasat cifrele citite din desen'}
+
+Confirmat:
+${marked.length?marked.map(k=>'  [x] '+L[k]).join('\n'):'  nimic bifat inca'}
+${CHK.filter(k=>!$(k).checked).map(k=>'  [ ] '+L[k]).join('\n')}`;
+}
+
+function copySum(e){const t=$('summary');t.select();document.execCommand('copy');
+  const b=e.target,o=b.textContent;b.textContent='Copiat';setTimeout(()=>b.textContent=o,1400);}
+function resetAll(){IN.forEach(k=>{$(k).value=DEF[k];$(k).classList.remove('edited')});$('stamp').textContent='nimic modificat inca';calc();}
+
+IN.forEach(k=>$(k).addEventListener('input',()=>{
+  $(k).classList.toggle('edited',v(k)!==DEF[k]);
+  const n=IN.filter(x=>v(x)!==DEF[x]).length;
+  $('stamp').textContent=n?n+' cifre modificate fata de desen':'nimic modificat inca';
+  calc();}));
+CHK.forEach(k=>$(k).addEventListener('change',calc));
+$('exag').addEventListener('change',calc);
+calc();
+</script>
+</body>
+</html>
