@@ -17,3 +17,9 @@ tools-fise/*.pkl
 tools-fise/book.html
 # env de build (micromamba) — nu se comite
 bin/
+
+# artefacte intermediare ale generatoarelor de desene (regenerate de gen_*.py)
+figs.json
+figs_ikea.json
+verificare_svg.txt
+_to_delete/

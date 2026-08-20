@@ -247,35 +247,66 @@ badge(f,560,500,'5')
 
 figs['f6']=f.svg()
 
-# ================= F7: DETALIU — GOLUL DE PODEA LA COLTUL DIN SPATE =================
-f=Fig(480,400,padl=90,padr=90,padt=120,padb=70)
+# ================= F7 v3: DETALIU — GOLUL DE PODEA LA COLTUL DIN SPATE (corectat 19.08: sprijin real, numerotare unificata A+B) =================
+# Numerotare unica pe ambele panouri (acelasi element = acelasi numar in A si in B):
+# 1 stalp · 2 dusumea existenta · 3 blocaj nou · 4 coltar tip etajera · 5 suruburi sistrate
+# 6 grinda veche (capat) · 7 scandura cosmetica noua · 8 perete spate · 9 aer, fara sprijin
+XB = 760  # offset panoul B (sectiune) fata de panoul A (plan)
+f=Fig(XB+400, 460, padl=90, padr=110, padt=130, padb=60)
 
-f.text(240,-70,'colt spate — vedere de sus',size=FSS-14,fill=MUT)
+# ---------- PANOUL A: PLAN (vedere de sus) ----------
+f.text(240,-90,'A · PLAN, vedere de sus',size=FSS-16,fill=INK,weight='bold')
+f.text(240,-56,'(schema, nu la scara)',size=FSS-18,fill=MUT)
 
-# perete spate, deja imbracat — context, neatins
-f.rect(170,0,310,60,fill=LN)
-# perete lateral — context, neatins
-f.rect(0,170,60,230,fill=LN)
-# stalpul de colt — infipt in pamant, langa marginea podelei, nu pe ea
-f.rect(60,60,110,110,fill=WOOD2)
-# podeaua existenta, buna — se opreste inainte sa ajunga la stalp (L)
-f.poly([(270,60),(480,60),(480,400),(60,400),(60,270),(270,270)],fill=WOOD)
-# blocaj + scandura noua — umple golul (L, in oglinda cu golul)
-f.rect(170,60,100,210,fill=WOOD,stroke=ACC2,sw=SW)
-f.rect(60,170,210,100,fill=WOOD,stroke=ACC2,sw=SW)
-# coltar metalic, prins si in stalp si in blocaj
-f.rect(145,130,60,35,fill='#b8b2a6',stroke=INK,sw=4)
+f.rect(170,0,310,60,fill=LN)                                  # 8 perete spate, deja imbracat — context
+f.rect(0,170,60,230,fill=LN)                                  # perete lateral — context (acelasi perete)
+f.rect(60,60,110,110,fill=WOOD2)                               # 1 stalpul de colt
+f.poly([(270,60),(480,60),(480,400),(60,400),(60,270),(270,270)],fill=WOOD)   # 2 podeaua existenta, buna
+f.poly([(170,60),(270,60),(270,270),(60,270),(60,170),(170,170)],fill=WOOD,stroke=ACC2,sw=SW)  # 3 blocaj nou — o singura piesa in L
+f.rect(145,130,60,35,fill='#b8b2a6',stroke=INK,sw=4)            # 4 coltar la stalp (vezi panoul B pt orientare reala)
 f.line(150,140,200,140,stroke=INK,sw=5)
 f.line(150,148,200,148,stroke=INK,sw=5)
 f.line(150,156,200,156,stroke=INK,sw=5)
-# gol masurat
-f.dim(170,300,270,300,'~100',size=FSS-14,fill=MUT,toff=-22)
+f.line(260,160,282,160,stroke=INK,sw=5)                         # 5 suruburi blocaj -> grinda veche (sistrat)
+f.line(260,180,282,180,stroke=INK,sw=5)
+f.dim(170,305,270,305,'~100',size=FSS-14,fill=MUT,toff=-22)     # gol masurat
 
 badge(f,90,110,'1')
-badge(f,320,320,'2')
+badge(f,340,330,'2')
 badge(f,160,225,'3')
-badge(f,200,155,'4')
-badge(f,400,30,'5')
+badge(f,192,148,'4')
+badge(f,300,210,'5')
+badge(f,400,30,'8')
+
+# ---------- PANOUL B: SECTIUNE VERTICALA prin blocaj ----------
+bx = lambda v: XB+v
+f.text(bx(200),-90,'B · SECTIUNE VERTICALA',size=FSS-16,fill=INK,weight='bold')
+f.text(bx(200),-56,'ce tine blocajul, de fapt',size=FSS-18,fill=MUT)
+
+f.rect(bx(20),20,110,300,fill=WOOD2)                             # 1 stalp, taiat — continua in pamant
+f.rect(bx(290),140,110,90,fill=WOOD,stroke=LN)                   # 6 capatul grinzii vechi, existent
+f.rect(bx(130),140,160,110,fill=WOOD2,stroke=ACC2,sw=SW)         # 3 blocaj nou — structural
+f.rect(bx(90),105,300,30,fill=WOOD,stroke=ACC2,sw=SWT)           # 7 scandura cosmetica noua, deasupra
+f.rect(bx(103),190,30,90,fill='#b8b2a6',stroke=INK,sw=4)         # 4 coltar — latura verticala, in stalp
+f.rect(bx(130),250,80,20,fill='#b8b2a6',stroke=INK,sw=4)         # 4 coltar — latura orizontala, POLITA sub blocaj
+for ty in (205,225,245):
+    f.line(bx(108),ty,bx(133),ty,stroke=INK,sw=4)                 # suruburi coltar -> stalp
+for tx in (150,170,190):
+    f.line(bx(tx),243,bx(tx),257,stroke=INK,sw=4)                  # suruburi blocaj -> polita coltarului
+f.line(bx(280),160,bx(300),160,stroke=INK,sw=5)                   # 5 suruburi blocaj -> grinda veche (sistrat)
+f.line(bx(280),190,bx(300),190,stroke=INK,sw=5)
+for ax,ay in [(150,330),(180,350),(210,330),(240,350)]:
+    f.line(bx(ax),ay,bx(ax)+22,ay+22,stroke=LN,sw=3,dash='6,6')   # 9 aer — hatch
+f.text(bx(75),355,'stalp -> pamant',size=FSS-20,fill=MUT)
+f.text(bx(210),430,'aer, fara sprijin',size=FSS-16,fill=MUT)
+
+badge(f,bx(75),160,'1')
+badge(f,bx(118),262,'4')
+badge(f,bx(210),178,'3')
+badge(f,bx(345),178,'6')
+badge(f,bx(115),120,'7')
+badge(f,bx(290),225,'5')
+badge(f,bx(210),390,'9')
 
 figs['f7']=f.svg()
 

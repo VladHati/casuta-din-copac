@@ -1,0 +1,34 @@
+DESENE PENTRU FREEFORM — casuta din copac
+==========================================
+
+Toate PNG-urile au fundal TRANSPARENT si ~2200 px pe latura lunga.
+Se trag direct pe tabla din Freeform, se scaleaza fara sa se pixeleze
+la zoom normal, si poti desena / scrie peste ele.
+
+CE MERGE IN FREEFORM
+  PNG       da — se aseaza ca imagine pe tabla. Asta folosesti.
+  JPEG      da, dar are fundal alb. PNG-ul e mai bun.
+  PDF       da, dar ca fisier atasat cu previzualizare Quick Look,
+            nu ca desen pe tabla. Bun pentru documentul intreg.
+  SVG       NU. Freeform il pune ca iconita de fisier, nu il deseneaza.
+  EPS / AI  NU.
+
+Freeform nu importa vectori editabili din nicio aplicatie — orice
+lipesti din Illustrator / Figma ajunge imagine. Deci PNG e drumul bun.
+
+FISIERE
+  00-TABLA-gol-colt.png
+                   tabla gata compusa: cei 6 pasi, detaliul, piesele si
+                   un tabel de bifat (2 laturi x 2 colturi). Trage-o pe
+                   tabla goala si ai tot ce-ti trebuie intr-o imagine.
+                   4520 x 3062 px.
+
+  01-gol-colt/     reparatia golului de la coltul din spate (documentul nou)
+                   01..08 = pasii de montaj, in ordine
+                   09     = planul coltului, laturile A si B
+                   10, 11 = piesele, separat (vinclu, blocaj)
+  02-casa/         desenele de ansamblu ale casutei (F1-F6)
+  03-verificare/   masuratorile de patratura ale celor 4 stalpi
+
+Detaliul 7 vechi din SCHEME-CASA nu e aici: e depasit.
+Foloseste 01-gol-colt/ in locul lui.
