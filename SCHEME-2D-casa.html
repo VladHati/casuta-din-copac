@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Scheme 2D — casa de sus</title><style>
+:root{--bg:#faf9f6;--card:#fff;--ink:#1c1b18;--mut:#6b675e;--dim:#8f8b83;--line:#e2ddd3;--acc:#14532d;
+--mono:ui-monospace,Menlo,monospace;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--serif:"Iowan Old Style",Georgia,serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+.w{max-width:1080px;margin:0 auto;padding:44px 24px 120px}
+h1{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:0 0 8px}
+.kick{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.sub{font:italic 17px/1.5 var(--serif);color:var(--mut);max-width:62ch;margin:0 0 6px}
+.meta{font:12px/1.6 var(--mono);color:var(--dim);margin:16px 0 30px}
+ul.n{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 34px}
+ul.n a{display:block;font:12px var(--mono);color:var(--ink);text-decoration:none;border:1px solid var(--line);
+border-radius:999px;padding:7px 13px;background:var(--card)}
+ul.n a:hover{border-color:var(--acc);color:var(--acc)}
+section{margin:0 0 54px;scroll-margin-top:16px}
+h2{font:600 20px/1.3 var(--sans);margin:0 0 6px;letter-spacing:-.01em}
+section p{color:var(--mut);margin:0 0 16px;max-width:70ch;font-size:15px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font:12px/1.7 var(--mono);color:var(--dim)}
+</style></head><body><div class="w">
+<div class="kick">Casuta din copac · casa de sus</div>
+<h1>Scheme 2D</h1>
+<p class="sub">Sapte vederi ortogonale, fiecare derivata din acelasi model numeric. Nicio cota nu e scrisa de mana — toate sunt calculate din masuratorile de santier si verificate automat la generare.</p>
+<div class="meta">20 august 2026 · cote in mm · geometrie masurata 20.08 · generate din <code>gen_2d.py</code></div>
+<ul class="n"><li><a href="#plan">Plan</a></li><li><a href="#sectiune">Sectiune longitudinala</a></li><li><a href="#spate">Elevatie</a></li><li><a href="#lateral">Elevatie</a></li><li><a href="#fata">Elevatie</a></li><li><a href="#acoperis">Plan acoperis</a></li><li><a href="#strat">Detaliu</a></li></ul>
+<section id="plan"><h2>Plan — casa vazuta de sus</h2><p>Ce e unde, in plan. Peretii din fata si din spate stau in banda stalpilor; lateralele traverseaza cei 1575 dintre ei.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-290 -379 818 595" style="width:100%;height:auto;display:block"><rect x="0.0" y="-11.5" width="11.5" height="11.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="240.9" y="-11.5" width="11.5" height="11.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="2.3" y="-203.0" width="10.3" height="10.3" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="239.8" y="-203.0" width="10.3" height="10.3" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="11.8" y="-11.5" width="228.9" height="11.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="12.9" y="-204.1" width="226.6" height="11.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="11.5" y="-192.6" width="11.5" height="181.1" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="229.4" y="-192.6" width="11.5" height="181.1" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="120.8" y="-200.7" width="63.2" height="4.6" fill="#d7e6e8" stroke="#8a3016" stroke-width="1.5"/>
+<text x="152.4" y="-237.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="middle" font-weight="400">usa 550</text>
+<rect x="31.5" y="-200.7" width="65.5" height="4.6" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<text x="64.2" y="-237.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400">fereastra 570</text>
+<rect x="15.0" y="-130.2" width="4.6" height="56.4" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<rect x="232.9" y="-130.2" width="4.6" height="56.4" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<line x1="11.5" y1="34.0" x2="240.9" y2="34.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="11.5" y1="29.0" x2="11.5" y2="39.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="240.9" y1="29.0" x2="240.9" y2="39.0" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="27.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">1995  lumina spate (masurat)</text>
+<line x1="0.0" y1="64.0" x2="252.4" y2="64.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="59.0" x2="0.0" y2="69.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="252.4" y1="59.0" x2="252.4" y2="69.0" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="57.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">2195  exteriorul stalpilor din spate</text>
+<line x1="12.7" y1="-237.0" x2="239.8" y2="-237.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="12.7" y1="-242.0" x2="12.7" y2="-232.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="239.8" y1="-242.0" x2="239.8" y2="-232.0" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="-244.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">1975  lumina fata (masurat)</text>
+<line x1="-30.0" y1="-11.5" x2="-30.0" y2="-192.6" stroke="#8a857a" stroke-width="1"/>
+<line x1="-35.0" y1="-11.5" x2="-25.0" y2="-11.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="-35.0" y1="-192.6" x2="-25.0" y2="-192.6" stroke="#8a857a" stroke-width="1"/>
+<text x="-36.0" y="-102.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -36.0 -102.1)">1575  adancime</text>
+<text x="126.2" y="112.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">SPATE  ·  spre gard</text>
+<text x="126.2" y="-274.3" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">FATA  ·  spre terasa</text>
+<line x1="17.2" y1="-59.8" x2="-52.8" y2="-53.8" stroke="#6b675e" stroke-width="1"/>
+<circle cx="17.2" cy="-59.8" r="2.6" fill="#6b675e"/>
+<text x="-57.8" y="-56.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="end" font-weight="400">perete lateral · 100 adancime</text>
+<line x1="235.2" y1="-115.0" x2="305.2" y2="-109.0" stroke="#6b675e" stroke-width="1"/>
+<circle cx="235.2" cy="-115.0" r="2.6" fill="#6b675e"/>
+<text x="310.2" y="-112.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">geam fix 490×490, la mijloc</text>
+<line x1="69.0" y1="-5.8" x2="39.0" y2="184.2" stroke="#6b675e" stroke-width="1"/>
+<circle cx="69.0" cy="-5.8" r="2.6" fill="#6b675e"/>
+<text x="34.0" y="181.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="end" font-weight="400">perete spate, in banda stalpilor</text>
+<text x="126.2" y="-335.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">PLAN — casa vazuta de sus</text></svg></figure></section><section id="sectiune"><h2>Sectiune longitudinala — fata in stanga, spate in dreapta</h2><p>Taietura prin adancimea casei. Aici se vede de unde vine panta: 240 mm cadere pe 1670 intre reazeme.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-355 -324 703 429" style="width:100%;height:auto;display:block"><rect x="-57.5" y="0.0" width="330.1" height="6.9" fill="#c8c2b4" stroke="none" stroke-width="1.5"/>
+<text x="-52.9" y="15.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">puntea</text>
+<rect x="-5.2" y="-184.0" width="10.3" height="184.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="-5.8" y="-190.9" width="11.5" height="6.9" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="186.3" y="-195.5" width="11.5" height="195.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="189.2" y="-218.5" width="5.8" height="23.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<polygon points="-11.5,-189.2 203.6,-220.2 205.2,-231.5 -9.9,-200.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="-9.9,-200.6 205.2,-231.5 206.1,-237.8 -9.0,-206.9" fill="#8a3016" stroke="#1c1b18" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="80.7" y="-231.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#1c1b18" text-anchor="middle" font-weight="400" transform="rotate(-8.178128981225617 80.7 -231.2)">caprior 44×100 × 1889</text>
+<text x="80.7" y="-221.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="middle" font-weight="400" transform="rotate(-8.178128981225617 80.7 -221.5)">OSB 12 + Onduline</text>
+<text x="119.1" y="-181.6" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#14532d" text-anchor="middle" font-weight="400">panta 8,2°</text>
+<line x1="-51.9" y1="0.0" x2="-51.9" y2="-184.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-56.9" y1="0.0" x2="-46.9" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-56.9" y1="-184.0" x2="-46.9" y2="-184.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-57.9" y="-92.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -57.9 -92.0)">1600 stalp fata</text>
+<line x1="-68.0" y1="0.0" x2="-68.0" y2="-190.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="-73.0" y1="0.0" x2="-63.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-73.0" y1="-190.9" x2="-63.0" y2="-190.9" stroke="#8a857a" stroke-width="1"/>
+<text x="-74.0" y="-95.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -74.0 -95.5)">1660 reazem fata</text>
+<line x1="248.6" y1="0.0" x2="248.6" y2="-195.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="243.6" y1="0.0" x2="253.6" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="243.6" y1="-195.5" x2="253.6" y2="-195.5" stroke="#8a857a" stroke-width="1"/>
+<text x="242.6" y="-97.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 242.6 -97.8)">1700 perete spate</text>
+<line x1="264.6" y1="0.0" x2="264.6" y2="-218.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="259.6" y1="0.0" x2="269.6" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="259.6" y1="-218.5" x2="269.6" y2="-218.5" stroke="#8a857a" stroke-width="1"/>
+<text x="258.6" y="-109.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 258.6 -109.2)">1900 reazem spate</text>
+<line x1="0.0" y1="40.9" x2="192.1" y2="40.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="35.9" x2="0.0" y2="45.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="192.1" y1="35.9" x2="192.1" y2="45.9" stroke="#8a857a" stroke-width="1"/>
+<text x="96.0" y="33.9" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">1670  intre reazeme</text>
+<line x1="-5.2" y1="68.9" x2="186.3" y2="68.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="-5.2" y1="63.9" x2="-5.2" y2="73.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="186.3" y1="63.9" x2="186.3" y2="73.9" stroke="#8a857a" stroke-width="1"/>
+<text x="90.6" y="61.9" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">1575 lumina intre stalpi</text>
+<line x1="-11.5" y1="-229.9" x2="0.0" y2="-229.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="-11.5" y1="-234.9" x2="-11.5" y2="-224.9" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="-234.9" x2="0.0" y2="-224.9" stroke="#8a857a" stroke-width="1"/>
+<text x="-5.8" y="-236.9" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">100</text>
+<line x1="192.1" y1="-257.5" x2="203.6" y2="-257.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="192.1" y1="-262.5" x2="192.1" y2="-252.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="203.6" y1="-262.5" x2="203.6" y2="-252.5" stroke="#8a857a" stroke-width="1"/>
+<text x="197.8" y="-264.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">100</text>
+<line x1="-11.5" y1="-189.2" x2="-41.5" y2="-279.2" stroke="#8a3016" stroke-width="1"/>
+<circle cx="-11.5" cy="-189.2" r="2.6" fill="#8a3016"/>
+<text x="-46.5" y="-282.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="end" font-weight="400">muchia la 1646 peste podea · FARA jgheab</text></svg></figure></section><section id="spate"><h2>Elevatie — peretele din SPATE, din exterior</h2><p>Se face complet jos, pe iarba. Dupa ridicare, intre el si gard raman 30 cm.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-76 -368 454 458" style="width:100%;height:auto;display:block"><rect x="0.0" y="-6.2" width="268.7" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-229.5" width="268.7" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="64.1" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="131.2" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="198.3" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="262.4" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="46.7" y1="-6.2" x2="6.2" y2="-46.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="221.9" y1="-6.2" x2="262.4" y2="-46.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="26.5" y1="-223.3" x2="6.2" y2="-203.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="242.2" y1="-223.3" x2="262.4" y2="-203.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="0.0" y1="26.0" x2="67.2" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="67.2" y1="21.0" x2="67.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="33.6" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="67.2" y1="26.0" x2="134.3" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="67.2" y1="21.0" x2="67.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="134.3" y1="21.0" x2="134.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="100.8" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="134.3" y1="26.0" x2="201.4" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="134.3" y1="21.0" x2="134.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="201.4" y1="21.0" x2="201.4" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="167.9" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="201.4" y1="26.0" x2="268.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="201.4" y1="21.0" x2="201.4" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="268.7" y1="21.0" x2="268.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="235.0" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="0.0" y1="54.0" x2="268.7" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="49.0" x2="0.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="268.7" y1="49.0" x2="268.7" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="134.3" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">1990   =  lumina masurata 1995 − 5 mm joc</text>
+<line x1="-26.0" y1="0.0" x2="-26.0" y2="-229.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="-229.5" x2="-21.0" y2="-229.5" stroke="#8a857a" stroke-width="1"/>
+<text x="-32.0" y="-114.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -114.8)">1700</text>
+<line x1="294.7" y1="-6.2" x2="294.7" y2="-223.3" stroke="#14532d" stroke-width="1"/>
+<line x1="289.7" y1="-6.2" x2="299.7" y2="-6.2" stroke="#14532d" stroke-width="1"/>
+<line x1="289.7" y1="-223.3" x2="299.7" y2="-223.3" stroke="#14532d" stroke-width="1"/>
+<text x="288.7" y="-114.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 288.7 -114.8)">verticale 1608 ×5</text>
+<text x="134.3" y="-324.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE SPATE — vazut din exterior</text>
+<line x1="26.5" y1="-26.5" x2="86.5" y2="-56.5" stroke="#14532d" stroke-width="1"/>
+<circle cx="26.5" cy="-26.5" r="2.6" fill="#14532d"/>
+<text x="91.5" y="-59.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">proptea jos: brate 300 (424)</text>
+<line x1="252.3" y1="-213.2" x2="192.3" y2="-253.2" stroke="#14532d" stroke-width="1"/>
+<circle cx="252.3" cy="-213.2" r="2.6" fill="#14532d"/>
+<text x="187.3" y="-256.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="end" font-weight="400">proptea sus: brate 150 (212)</text></svg></figure></section><section id="lateral"><h2>Elevatie — peretele LATERAL, din exterior</h2><p>Cununa e inclinata, deci fiecare verticala are alta lungime. Cele doua laterale difera intre ele cu 10 mm.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-165 -393 543 539" style="width:100%;height:auto;display:block"><rect x="0.0" y="-6.2" width="213.3" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<polygon points="0.0,-218.8 213.3,-249.3 213.3,-255.5 0.0,-225.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5" stroke-linejoin="round"/>
+<rect x="0.0" y="-219.2" width="6.2" height="213.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="67.1" y="-228.8" width="6.2" height="222.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="139.5" y="-239.2" width="6.2" height="233.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="207.1" y="-248.9" width="6.2" height="242.7" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-128.2" width="66.2" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-200.6" width="66.2" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-194.4" width="66.2" height="66.2" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<text x="106.7" y="-161.3" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="600">GOL 490×490</text>
+<line x1="26.5" y1="-6.2" x2="6.2" y2="-26.5" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="186.8" y1="-6.2" x2="207.1" y2="-26.5" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="26.5" y1="-221.1" x2="6.2" y2="-200.8" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="186.8" y1="-247.0" x2="207.1" y2="-226.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="0.0" y1="26.0" x2="73.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="73.6" y1="21.0" x2="73.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="36.8" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">545</text>
+<line x1="73.6" y1="26.0" x2="139.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="73.6" y1="21.0" x2="73.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="139.7" y1="21.0" x2="139.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="106.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">490</text>
+<line x1="139.7" y1="26.0" x2="213.3" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="139.7" y1="21.0" x2="139.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="213.3" y1="21.0" x2="213.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="176.5" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">545</text>
+<line x1="0.0" y1="54.0" x2="213.3" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="49.0" x2="0.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="213.3" y1="49.0" x2="213.3" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="106.7" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">talpa 1580  —  cealalta laterala e 1570</text>
+<line x1="-26.0" y1="0.0" x2="-26.0" y2="-225.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="-225.0" x2="-21.0" y2="-225.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-32.0" y="-112.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -112.5)">1666 in fata</text>
+<line x1="239.3" y1="0.0" x2="239.3" y2="-255.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="234.3" y1="0.0" x2="244.3" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="234.3" y1="-255.5" x2="244.3" y2="-255.5" stroke="#8a857a" stroke-width="1"/>
+<text x="233.3" y="-127.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 233.3 -127.8)">1893 in spate</text>
+<line x1="47.6" y1="0.0" x2="47.6" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<line x1="42.6" y1="0.0" x2="52.6" y2="0.0" stroke="#14532d" stroke-width="1"/>
+<line x1="42.6" y1="-128.2" x2="52.6" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<text x="41.6" y="-64.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 41.6 -64.1)">prag 950</text>
+<text x="106.7" y="-350.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE LATERAL — din exterior · FATA in stanga, SPATE in dreapta</text>
+<text x="106.7" y="110.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">verticale, de la fata spre spate:  1578 · 1649 · 1726 · 1798</text></svg></figure></section><section id="fata"><h2>Elevatie — peretele din FATA, din exterior</h2><p>Bara de sus e mai lunga decat rama: trece peste amandoi stalpii, altfel nu-i leaga.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-109 -415 464 561" style="width:100%;height:auto;display:block"><rect x="-12.2" y="-216.0" width="12.2" height="216.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="266.0" y="-216.0" width="12.2" height="216.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="-12.2" y="-224.1" width="290.9" height="8.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-6.2" width="266.0" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="15.5" y="-216.0" width="6.2" height="209.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="98.7" y="-216.0" width="6.2" height="209.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="120.4" y="-216.0" width="6.2" height="209.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="200.9" y="-216.0" width="6.2" height="209.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="222.8" y="-216.0" width="6.2" height="209.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-128.2" width="77.0" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-211.4" width="77.0" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-205.2" width="77.0" height="77.0" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<text x="60.2" y="-166.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="600">GOL 570</text>
+<rect x="126.6" y="-216.0" width="74.2" height="216.0" fill="#f7f3ea" stroke="#8a3016" stroke-width="1.5"/>
+<text x="163.8" y="-108.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#8a3016" text-anchor="middle" font-weight="600">USA 550</text>
+<text x="163.8" y="-86.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="middle" font-weight="400">liber 1600</text>
+<line x1="232.2" y1="-6.2" x2="266.0" y2="-40.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="20.2" y1="-6.2" x2="0.0" y2="-26.5" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="245.7" y1="-6.2" x2="266.0" y2="-26.5" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="0.0" y1="26.0" x2="21.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="21.7" y1="21.0" x2="21.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="10.9" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">161</text>
+<line x1="21.7" y1="26.0" x2="98.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="21.7" y1="21.0" x2="21.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="98.7" y1="21.0" x2="98.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="60.2" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">570</text>
+<line x1="98.7" y1="26.0" x2="126.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="98.7" y1="21.0" x2="98.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.6" y1="21.0" x2="126.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="112.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">207</text>
+<line x1="126.6" y1="26.0" x2="200.9" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.6" y1="21.0" x2="126.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="200.9" y1="21.0" x2="200.9" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="163.8" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">550</text>
+<line x1="200.9" y1="26.0" x2="266.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="200.9" y1="21.0" x2="200.9" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="266.0" y1="21.0" x2="266.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="233.4" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">482</text>
+<line x1="0.0" y1="54.0" x2="266.0" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="49.0" x2="0.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="266.0" y1="49.0" x2="266.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="133.0" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">rama 1970  =  lumina masurata 1975 − 5</text>
+<line x1="-12.2" y1="-254.1" x2="278.1" y2="-254.1" stroke="#14532d" stroke-width="1"/>
+<line x1="-12.2" y1="-259.1" x2="-12.2" y2="-249.1" stroke="#14532d" stroke-width="1"/>
+<line x1="278.1" y1="-259.1" x2="278.1" y2="-249.1" stroke="#14532d" stroke-width="1"/>
+<text x="133.0" y="-261.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400">bara de sus 100×60  ×  2155  — calca pe amandoi stalpii</text>
+<line x1="-38.1" y1="0.0" x2="-38.1" y2="-216.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-43.1" y1="0.0" x2="-33.1" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-43.1" y1="-216.0" x2="-33.1" y2="-216.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-44.1" y="-108.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -44.1 -108.0)">1600 stalp</text>
+<line x1="-4.3" y1="0.0" x2="-4.3" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<line x1="-9.3" y1="0.0" x2="0.7" y2="0.0" stroke="#14532d" stroke-width="1"/>
+<line x1="-9.3" y1="-128.2" x2="0.7" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<text x="-10.3" y="-64.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 -10.3 -64.1)">prag 950</text>
+<text x="133.0" y="110.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400">verticale 1554 ×5  ·  talpa se taie la usa LA FINAL</text>
+<text x="133.0" y="-371.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE FATA — din exterior</text></svg></figure></section><section id="acoperis"><h2>Plan acoperis — vazut de sus</h2><p>Cinci lemne inclinate, doua placi de OSB. Fara sipci: la 8,2° producatorul cere suport continuu.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-92 -296 436 386" style="width:100%;height:auto;display:block"><rect x="0.0" y="-217.3" width="252.4" height="217.3" fill="#efeadf" stroke="#d6d0c4" stroke-width="1.5"/>
+<rect x="0.0" y="-217.3" width="252.4" height="6.9" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="9.2" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="66.5" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="123.6" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="180.8" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="238.1" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="14.3" y="-192.0" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="14.3" y="-29.9" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="71.5" y="-192.0" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="71.5" y="-29.9" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="128.7" y="-192.0" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="128.7" y="-29.9" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="185.8" y="-192.0" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="185.8" y="-29.9" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="0.0" y1="-143.8" x2="252.4" y2="-143.8" stroke="#14532d" stroke-width="2.5" stroke-dasharray="14,9" stroke-linecap="round"/>
+<text x="126.2" y="-154.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400">imbinarea placilor de OSB   ·   2200×1250  +  2200×639</text>
+<line x1="11.7" y1="26.0" x2="69.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="11.7" y1="21.0" x2="11.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="69.0" y1="21.0" x2="69.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="40.4" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="69.0" y1="26.0" x2="126.2" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="69.0" y1="21.0" x2="69.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.2" y1="21.0" x2="126.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="97.6" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="126.2" y1="26.0" x2="183.3" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.2" y1="21.0" x2="126.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="183.3" y1="21.0" x2="183.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="154.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="183.3" y1="26.0" x2="240.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="183.3" y1="21.0" x2="183.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="240.6" y1="21.0" x2="240.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="211.9" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="11.7" y1="54.0" x2="240.6" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="11.7" y1="49.0" x2="11.7" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="240.6" y1="49.0" x2="240.6" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">capriorii, in dreptul verticalelor din pereti</text>
+<line x1="278.4" y1="0.0" x2="278.4" y2="-217.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="273.4" y1="0.0" x2="283.4" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="273.4" y1="-217.3" x2="283.4" y2="-217.3" stroke="#8a857a" stroke-width="1"/>
+<text x="272.4" y="-108.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 272.4 -108.6)">caprior 1889</text>
+<line x1="0.0" y1="-247.3" x2="252.4" y2="-247.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="-252.3" x2="0.0" y2="-242.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="252.4" y1="-252.3" x2="252.4" y2="-242.3" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="-254.3" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">2195  =  dulapul de 2200, taiat</text>
+<text x="126.2" y="-242.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">SPATE / GARD</text>
+<text x="126.2" y="26.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">TERASA</text>
+<text x="40.4" y="-164.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">inchideri 452</text></svg></figure></section><section id="strat"><h2>Detaliu — straturile acoperisului</h2><p>De ce cuiele stau pe varful valului si nu in adancitura.</p><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="-324 -177 745 268" style="width:100%;height:auto;display:block"><rect x="0.0" y="-62.0" width="322.4" height="62.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="161.2" y="-31.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" text-anchor="middle" font-weight="400">caprior 44×100</text>
+<rect x="0.0" y="-69.4" width="322.4" height="7.4" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="266.6" y1="-65.7" x2="316.6" y2="-89.7" stroke="#14532d" stroke-width="1"/>
+<circle cx="266.6" cy="-65.7" r="2.6" fill="#14532d"/>
+<text x="321.6" y="-92.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">OSB3 12 mm</text>
+<polygon points="0.0,-69.4 0.0,-69.4 7.4,-85.6 14.9,-85.6 21.7,-69.4 29.1,-69.4 36.6,-85.6 44.0,-85.6 50.8,-69.4 58.3,-69.4 65.7,-85.6 73.2,-85.6 80.0,-69.4 87.4,-69.4 94.9,-85.6 102.3,-85.6 109.1,-69.4 116.6,-69.4 124.0,-85.6 131.4,-85.6 138.3,-69.4 145.7,-69.4 153.1,-85.6 160.6,-85.6 167.4,-69.4 174.8,-69.4 182.3,-85.6 189.7,-85.6 196.5,-69.4 204.0,-69.4 211.4,-85.6 218.9,-85.6 225.7,-69.4 233.1,-69.4 240.6,-85.6 248.0,-85.6 254.8,-69.4 262.3,-69.4 269.7,-85.6 277.1,-85.6 284.0,-69.4 291.4,-69.4 298.8,-85.6 306.3,-85.6 313.1,-69.4 322.4,-69.4" fill="#8a3016" stroke="#8a3016" stroke-width="1" stroke-linejoin="round"/>
+<line x1="86.8" y1="-85.6" x2="126.8" y2="-131.6" stroke="#8a3016" stroke-width="1"/>
+<circle cx="86.8" cy="-85.6" r="2.6" fill="#8a3016"/>
+<text x="131.8" y="-134.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="start" font-weight="400">Onduline — cuiele NUMAI pe varf</text>
+<line x1="124.0" y1="-69.4" x2="94.0" y2="-5.4" stroke="#6b675e" stroke-width="1"/>
+<circle cx="124.0" cy="-69.4" r="2.6" fill="#6b675e"/>
+<text x="89.0" y="-8.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="end" font-weight="400">in adancitura curge apa: fiecare cui de acolo e o gaura</text>
+<line x1="-22.0" y1="0.0" x2="-22.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="0.0" x2="-17.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-62.0" x2="-17.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-28.0" y="-31.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -28.0 -31.0)">100</text>
+<line x1="-22.0" y1="-62.0" x2="-22.0" y2="-69.4" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-62.0" x2="-17.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-69.4" x2="-17.0" y2="-69.4" stroke="#8a857a" stroke-width="1"/>
+<text x="-28.0" y="-65.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -28.0 -65.7)">12</text>
+<text x="161.2" y="55.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">DETALIU ACOPERIS — sectiune prin straturi (scara 1:1,6)</text></svg></figure></section>
+<footer>SCHEME-2D-casa · inlocuieste izometriile din GHID-CONSTRUCTIE si Detaliul 7 din SCHEME-CASA.<br>
+Sursa cotelor: MASURATORI-CONFIRMARE-2026-08-20. Model + auto-verificare: gen_2d.py.</footer>
+</div></body></html>

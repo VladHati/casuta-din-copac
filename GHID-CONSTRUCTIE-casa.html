@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ghid de constructie — casa de sus</title>
+<style>
+:root{
+ --bg:#faf9f6; --card:#fff; --ink:#1c1b18; --mut:#6b675e; --dim:#8f8b83; --line:#e2ddd3;
+ --acc:#14532d; --acc-s:#eef4ef; --acc2:#8a3016; --acc2-s:#fdf3ee; --warn-s:#fdf8ec; --warn:#8a6b16;
+ --mono:ui-monospace,"SF Mono",Menlo,monospace;
+ --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+ --serif:"Iowan Old Style",Georgia,serif;
+}
+html[data-t="dark"]{
+ --bg:#16161a; --card:#1d1d22; --ink:#e9e7e2; --mut:#8e8a82; --dim:#6a675f; --line:#2e2e36;
+ --acc:#6fbf95; --acc-s:#18211c; --acc2:#e0834f; --acc2-s:#221a15; --warn-s:#221e14; --warn:#d9b45e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans)}
+img,svg{max-width:100%}
+
+.wrap{display:grid;grid-template-columns:264px 1fr;gap:0;max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 22px 60px;border-right:1px solid var(--line)}
+nav .brand{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+nav h1{font:600 21px/1.25 var(--sans);letter-spacing:-.01em;margin:0 0 4px}
+nav .meta{font:11px/1.5 var(--mono);color:var(--dim);margin-bottom:24px}
+nav ol{list-style:none;margin:0;padding:0}
+nav li a{display:block;padding:11px 12px;border-radius:9px;text-decoration:none;color:var(--ink);font-size:14.5px;line-height:1.35}
+nav li a:hover{background:var(--acc-s)}
+nav li a.on{background:var(--acc-s);box-shadow:inset 3px 0 0 var(--acc)}
+nav .cn{display:block;font:600 10px/1 var(--mono);letter-spacing:.14em;color:var(--acc);margin-bottom:3px}
+nav li a em{display:block;font:italic 12px/1.4 var(--serif);color:var(--dim);margin-top:2px}
+.prog{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font:11px/1.6 var(--mono);color:var(--dim)}
+.bar{height:5px;border-radius:3px;background:var(--line);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .25s}
+.tgl{margin-top:16px;font:11px var(--mono);color:var(--dim);background:none;border:1px solid var(--line);
+ border-radius:7px;padding:6px 10px;cursor:pointer}
+
+main{padding:34px 46px 140px;min-width:0}
+@media(max-width:900px){
+ .wrap{grid-template-columns:1fr}
+ nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:22px}
+ main{padding:22px 18px 90px}
+}
+
+section{scroll-margin-top:14px;padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:none}
+header.ch{margin-bottom:22px}
+.cn-big{font:600 12px/1 var(--mono);letter-spacing:.2em;color:var(--acc)}
+header.ch h2{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:8px 0 8px}
+.chsub{font:italic 17px/1.5 var(--serif);color:var(--mut);margin:0;max-width:60ch}
+.zi{display:inline-block;margin-top:12px;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+ color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+
+h3{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:36px 0 12px}
+h4{font:600 17px/1.35 var(--sans);margin:0 0 8px}
+p{margin:0 0 12px;max-width:70ch}
+.lead{font-size:17px;color:var(--mut);max-width:66ch}
+.small{font-size:13.5px;color:var(--mut)}
+code{font:13.5px var(--mono);background:var(--acc-s);padding:2px 6px;border-radius:5px}
+.mono{font-family:var(--mono)}
+b.bad{color:var(--acc2)}
+
+figure{margin:20px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;overflow:hidden}
+figure svg{display:block;margin:0 auto;max-height:480px}
+figcaption{margin-top:14px;font:13px/1.6 var(--mono);color:var(--dim);max-width:74ch}
+
+ol.steps{list-style:none;margin:22px 0;padding:0;counter-reset:s}
+ol.steps>li{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+ol.steps>li:last-child{border-bottom:1px solid var(--line)}
+.stepbody{min-width:0;flex:1}
+.stepbody h4::before{counter-increment:s;content:counter(s) "  ";font-family:var(--mono);color:var(--acc);font-weight:600}
+.stepfig{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.stepfig svg{max-height:400px;display:block;margin:0 auto}
+.tick{flex:none;cursor:pointer;padding-top:2px}
+.tick input{position:absolute;opacity:0;width:0;height:0}
+.tick span{display:block;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;transition:.15s}
+.tick input:checked+span{background:var(--acc);border-color:var(--acc);
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+ background-size:18px;background-position:center;background-repeat:no-repeat}
+li.done .stepbody{opacity:.45}
+
+.gate,.stop,.ok,.need,.warn,.why{border-radius:12px;padding:16px 18px;margin:20px 0;font-size:15px}
+.gate{background:var(--acc-s);border-left:3px solid var(--acc)}
+.stop{background:var(--acc2-s);border-left:3px solid var(--acc2)}
+.ok{background:var(--acc-s);border:1px solid var(--line);border-left:3px solid var(--acc)}
+.need{background:var(--card);border:1px solid var(--line)}
+.need h4{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.need ul{margin:0;padding-left:20px} .need li{margin:4px 0}
+.warn{background:var(--acc2-s);border:1px solid var(--line)}
+.why{background:var(--card);border:1px solid var(--line)}
+.why-inline{font:italic 15px/1.6 var(--serif);color:var(--mut);border-left:2px solid var(--line);padding-left:14px;margin:12px 0}
+.tool{font-size:14.5px;background:var(--warn-s);border-radius:9px;padding:11px 14px}
+
+table.t{width:100%;border-collapse:collapse;font-size:14.5px;margin:14px 0}
+table.t th{text-align:left;font:600 10.5px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;
+ color:var(--dim);padding:0 10px 10px 0;border-bottom:1px solid var(--line)}
+table.t td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+table.t .q{font-family:var(--mono);text-align:right;white-space:nowrap}
+table.t td.mono{font-family:var(--mono)}
+footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
+</style></head><body>
+<div class="wrap">
+<nav>
+ <div class="brand">Casuta din copac</div>
+ <h1>Ghid de constructie<br>casa de sus</h1>
+ <div class="meta">20 august 2026 · cote in mm<br>geometrie masurata pe santier</div>
+ <ol><li><a href="#e0"><span class="cn">E0</span>Scandura care lipseste<em>2–3 ore</em></a></li>
+<li><a href="#e1"><span class="cn">E1</span>Restantele podelei si cioata<em>2–3 ore</em></a></li>
+<li><a href="#e2"><span class="cn">E2</span>Drumul la Leroy<em>o jumatate de zi</em></a></li>
+<li><a href="#e3"><span class="cn">E3</span>Fasiile<em>o dupa-amiaza</em></a></li>
+<li><a href="#e4"><span class="cn">E4</span>Peretele din spate<em>o zi</em></a></li></ol>
+ <div class="prog">progres <span id="pt">0 / 0</span><div class="bar"><i id="pb"></i></div></div>
+ <button class="tgl" onclick="tt()">lumina / intuneric</button>
+</nav>
+<main>
+<section id="e0">
+<header class="ch"><div class="cn-big">E0</div><h2>Scandura care lipseste</h2><p class="chsub">Golul de la cele doua colturi din spate. Patru locuri identice.</p><span class="zi">2–3 ore</span></header>
+
+<p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea. De-aia a ramas asa.</p>
+
+<div class="gate">
+<b>De ce e primul lucru:</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa se prinda. Dupa ce peretele e ridicat, la coltul ala nu mai ajungi niciodata.
+</div>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-467 -210 884 985" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<line x1="-216.5" y1="215.0" x2="-129.9" y2="265.0" stroke="#6b675e" stroke-width="5" stroke-linecap="round"/>
+<line x1="-216.5" y1="233.0" x2="-216.5" y2="197.0" stroke="#6b675e" stroke-width="5" stroke-linecap="round"/>
+<line x1="-129.9" y1="283.0" x2="-129.9" y2="247.0" stroke="#6b675e" stroke-width="5" stroke-linecap="round"/>
+<line x1="-173.2" y1="266.0" x2="-269.2" y2="332.0" stroke="#6b675e" stroke-width="4" stroke-linecap="round"/>
+<text x="-283.2" y="346.0" font-family="ui-monospace,Menlo,monospace" font-size="38" fill="#6b675e" text-anchor="end" font-weight="bold">gol ~100</text>
+<line x1="-95.3" y1="365.0" x2="-95.3" y2="615.0" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<line x1="-95.3" y1="615.0" x2="-110.9" y2="591.8" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<line x1="-95.3" y1="615.0" x2="-79.6" y2="591.8" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<text x="-95.3" y="679.0" font-family="ui-monospace,Menlo,monospace" font-size="40" fill="#8a3016" text-anchor="middle" font-weight="bold">nimic dedesubt</text></svg><figcaption>Asa arata acum. Golul, si nimic dedesubt.</figcaption></figure>
+
+<div class="need">
+<h4>Ai nevoie — pentru <em>o latura</em></h4>
+<ul>
+<li><b>2</b> × vinclu 90×65</li>
+<li><b>1</b> × blocaj de lemn, taiat pe loc</li>
+<li><b>8</b> × surub scurt 5×40 (pentru vincluri)</li>
+<li><b>5</b> × surub dulgherie 8×140</li>
+<li><b>1</b> × scandura de calcat</li>
+</ul>
+<p class="small">Golul e in forma de L in jurul stalpului: latura A si latura B. Se face identic pe amandoua, apoi identic la celalalt colt — <b>de patru ori in total</b>. Deci 8 vincluri, 20 de suruburi 8×140, 32 de suruburi 5×40.</p>
+</div>
+
+<div class="stop">
+<b>STOP inainte sa incepi:</b> ai 8 vincluri 90×65? Verifica intai ce a ramas din faza 1 — receptia n-a fost niciodata numarata. Daca nu ai, capitolul asta se face <b>dupa</b> drumul la Leroy (E2), nu inainte.
+</div>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Doua vincluri pe grinda</h4><p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -210 714 730" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,295.0 8.7,325.0 8.7,313.0 60.6,283.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-62.4,284.0 8.7,325.0 8.7,313.0 -62.4,272.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-10.4,242.0 60.6,283.0 8.7,313.0 -62.4,272.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.6,283.0 8.7,313.0 8.7,223.0 60.6,193.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-1.7,307.0 8.7,313.0 8.7,223.0 -1.7,217.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="50.2,187.0 60.6,193.0 8.7,223.0 -1.7,217.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,352.5 -90.9,382.5 -90.9,370.5 -39.0,340.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-161.9,341.5 -90.9,382.5 -90.9,370.5 -161.9,329.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-110.0,299.5 -39.0,340.5 -90.9,370.5 -161.9,329.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,340.5 -90.9,370.5 -90.9,280.5 -39.0,250.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-101.3,364.5 -90.9,370.5 -90.9,280.5 -101.3,274.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-49.4,244.5 -39.0,250.5 -90.9,280.5 -101.3,274.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<line x1="24.2" y1="266.0" x2="32.4" y2="270.7" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="32.4" y1="270.7" x2="69.3" y2="292.0" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="24.2" cy="266.0" r="12" fill="#43403a"/>
+<line x1="24.2" y1="228.0" x2="32.4" y2="232.7" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="32.4" y1="232.7" x2="69.3" y2="254.0" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="24.2" cy="228.0" r="12" fill="#43403a"/>
+<line x1="-75.3" y1="323.5" x2="-67.2" y2="328.2" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="-67.2" y1="328.2" x2="-30.3" y2="349.5" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="-75.3" cy="323.5" r="12" fill="#43403a"/>
+<line x1="-75.3" y1="285.5" x2="-67.2" y2="290.2" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="-67.2" y1="290.2" x2="-30.3" y2="311.5" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="-75.3" cy="285.5" r="12" fill="#43403a"/></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Blocajul se lasa pe vincluri</h4><p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -432 714 952" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,295.0 8.7,325.0 8.7,313.0 60.6,283.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-62.4,284.0 8.7,325.0 8.7,313.0 -62.4,272.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-10.4,242.0 60.6,283.0 8.7,313.0 -62.4,272.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.6,283.0 8.7,313.0 8.7,223.0 60.6,193.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-1.7,307.0 8.7,313.0 8.7,223.0 -1.7,217.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="50.2,187.0 60.6,193.0 8.7,223.0 -1.7,217.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,352.5 -90.9,382.5 -90.9,370.5 -39.0,340.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-161.9,341.5 -90.9,382.5 -90.9,370.5 -161.9,329.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-110.0,299.5 -39.0,340.5 -90.9,370.5 -161.9,329.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,340.5 -90.9,370.5 -90.9,280.5 -39.0,250.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-101.3,364.5 -90.9,370.5 -90.9,280.5 -101.3,274.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-49.4,244.5 -39.0,250.5 -90.9,280.5 -101.3,274.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="136.8,227.0 -114.3,372.0 -114.3,272.0 136.8,127.0" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="-190.5,328.0 -114.3,372.0 -114.3,272.0 -190.5,228.0" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="60.6,83.0 136.8,127.0 -114.3,272.0 -190.5,228.0" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="136.8,-93.0 -114.3,52.0 -114.3,-48.0 136.8,-193.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-190.5,8.0 -114.3,52.0 -114.3,-48.0 -190.5,-92.0" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,-237.0 136.8,-193.0 -114.3,-48.0 -190.5,-92.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<line x1="-190.5" y1="8.0" x2="-190.5" y2="328.0" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="-114.3" y1="52.0" x2="-114.3" y2="372.0" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="136.8" y1="-93.0" x2="136.8" y2="227.0" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="-26.8" y1="-352.5" x2="-26.8" y2="-206.5" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/>
+<line x1="-26.8" y1="-206.5" x2="-44.7" y2="-233.1" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/>
+<line x1="-26.8" y1="-206.5" x2="-9.0" y2="-233.1" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Suruburi oblice, de sus</h4><p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt. Dupa ele blocajul nu se mai misca deloc.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -210 714 730" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,295.0 8.7,325.0 8.7,313.0 60.6,283.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-62.4,284.0 8.7,325.0 8.7,313.0 -62.4,272.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-10.4,242.0 60.6,283.0 8.7,313.0 -62.4,272.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.6,283.0 8.7,313.0 8.7,223.0 60.6,193.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-1.7,307.0 8.7,313.0 8.7,223.0 -1.7,217.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="50.2,187.0 60.6,193.0 8.7,223.0 -1.7,217.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,352.5 -90.9,382.5 -90.9,370.5 -39.0,340.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-161.9,341.5 -90.9,382.5 -90.9,370.5 -161.9,329.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-110.0,299.5 -39.0,340.5 -90.9,370.5 -161.9,329.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,340.5 -90.9,370.5 -90.9,280.5 -39.0,250.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-101.3,364.5 -90.9,370.5 -90.9,280.5 -101.3,274.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-49.4,244.5 -39.0,250.5 -90.9,280.5 -101.3,274.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="136.8,227.0 -114.3,372.0 -114.3,272.0 136.8,127.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-190.5,328.0 -114.3,372.0 -114.3,272.0 -190.5,228.0" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,83.0 136.8,127.0 -114.3,272.0 -190.5,228.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<line x1="62.4" y1="144.0" x2="77.3" y2="169.6" stroke="#43403a" stroke-width="9" stroke-linecap="round"/>
+<line x1="77.3" y1="169.6" x2="145.5" y2="286.0" stroke="#43403a" stroke-width="9" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="62.4" cy="144.0" r="12" fill="#43403a"/>
+<line x1="-11.3" y1="186.5" x2="3.7" y2="212.1" stroke="#43403a" stroke-width="9" stroke-linecap="round"/>
+<line x1="3.7" y1="212.1" x2="71.9" y2="328.5" stroke="#43403a" stroke-width="9" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="-11.3" cy="186.5" r="12" fill="#43403a"/>
+<line x1="-84.9" y1="229.0" x2="-69.9" y2="254.6" stroke="#43403a" stroke-width="9" stroke-linecap="round"/>
+<line x1="-69.9" y1="254.6" x2="-1.7" y2="371.0" stroke="#43403a" stroke-width="9" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="-84.9" cy="229.0" r="12" fill="#43403a"/>
+<line x1="45.0" y1="114.0" x2="31.6" y2="122.5" stroke="#43403a" stroke-width="9" stroke-linecap="round"/>
+<line x1="31.6" y1="122.5" x2="-29.4" y2="161.0" stroke="#43403a" stroke-width="9" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="45.0" cy="114.0" r="12" fill="#43403a"/>
+<line x1="1.7" y1="139.0" x2="-11.7" y2="147.5" stroke="#43403a" stroke-width="9" stroke-linecap="round"/>
+<line x1="-11.7" y1="147.5" x2="-72.7" y2="186.0" stroke="#43403a" stroke-width="9" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="1.7" cy="139.0" r="12" fill="#43403a"/></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Scandura de calcat</h4><p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>. Daca o scoti maine, blocajul ramane exact unde e.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -380 714 900" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,295.0 8.7,325.0 8.7,313.0 60.6,283.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-62.4,284.0 8.7,325.0 8.7,313.0 -62.4,272.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-10.4,242.0 60.6,283.0 8.7,313.0 -62.4,272.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.6,283.0 8.7,313.0 8.7,223.0 60.6,193.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-1.7,307.0 8.7,313.0 8.7,223.0 -1.7,217.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="50.2,187.0 60.6,193.0 8.7,223.0 -1.7,217.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,352.5 -90.9,382.5 -90.9,370.5 -39.0,340.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-161.9,341.5 -90.9,382.5 -90.9,370.5 -161.9,329.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-110.0,299.5 -39.0,340.5 -90.9,370.5 -161.9,329.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,340.5 -90.9,370.5 -90.9,280.5 -39.0,250.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-101.3,364.5 -90.9,370.5 -90.9,280.5 -101.3,274.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-49.4,244.5 -39.0,250.5 -90.9,280.5 -101.3,274.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="136.8,227.0 -114.3,372.0 -114.3,272.0 136.8,127.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-190.5,328.0 -114.3,372.0 -114.3,272.0 -190.5,228.0" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,83.0 136.8,127.0 -114.3,272.0 -190.5,228.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="142.9,125.5 -116.9,275.5 -116.9,247.5 142.9,97.5" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="-196.6,229.5 -116.9,275.5 -116.9,247.5 -196.6,201.5" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="63.2,51.5 142.9,97.5 -116.9,247.5 -196.6,201.5" fill="none" stroke="#b9b1a0" stroke-width="4" stroke-linejoin="round" stroke-dasharray="14,10"/>
+<polygon points="142.9,-134.5 -116.9,15.5 -116.9,-12.5 142.9,-162.5" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-196.6,-30.5 -116.9,15.5 -116.9,-12.5 -196.6,-58.5" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="63.2,-208.5 142.9,-162.5 -116.9,-12.5 -196.6,-58.5" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<line x1="-196.6" y1="-30.5" x2="-196.6" y2="229.5" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="-116.9" y1="15.5" x2="-116.9" y2="275.5" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="142.9" y1="-134.5" x2="142.9" y2="125.5" stroke="#b9b1a0" stroke-width="3" stroke-dasharray="13,10" stroke-linecap="round"/>
+<line x1="-26.8" y1="-300.5" x2="-26.8" y2="-166.5" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/>
+<line x1="-26.8" y1="-166.5" x2="-44.7" y2="-193.1" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/>
+<line x1="-26.8" y1="-166.5" x2="-9.0" y2="-193.1" stroke="#8a3016" stroke-width="12" stroke-linecap="round"/></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Gata — si verifici</h4><p>Totul la nivel cu podeaua, vinclurile raman ascunse dedesubt.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -210 714 730" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,295.0 8.7,325.0 8.7,313.0 60.6,283.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-62.4,284.0 8.7,325.0 8.7,313.0 -62.4,272.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-10.4,242.0 60.6,283.0 8.7,313.0 -62.4,272.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="60.6,283.0 8.7,313.0 8.7,223.0 60.6,193.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-1.7,307.0 8.7,313.0 8.7,223.0 -1.7,217.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="50.2,187.0 60.6,193.0 8.7,223.0 -1.7,217.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,352.5 -90.9,382.5 -90.9,370.5 -39.0,340.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-161.9,341.5 -90.9,382.5 -90.9,370.5 -161.9,329.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-110.0,299.5 -39.0,340.5 -90.9,370.5 -161.9,329.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-39.0,340.5 -90.9,370.5 -90.9,280.5 -39.0,250.5" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-101.3,364.5 -90.9,370.5 -90.9,280.5 -101.3,274.5" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-49.4,244.5 -39.0,250.5 -90.9,280.5 -101.3,274.5" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="136.8,227.0 -114.3,372.0 -114.3,272.0 136.8,127.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-190.5,328.0 -114.3,372.0 -114.3,272.0 -190.5,228.0" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="60.6,83.0 136.8,127.0 -114.3,272.0 -190.5,228.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="142.9,125.5 -116.9,275.5 -116.9,247.5 142.9,97.5" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-196.6,229.5 -116.9,275.5 -116.9,247.5 -196.6,201.5" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="63.2,51.5 142.9,97.5 -116.9,247.5 -196.6,201.5" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/></svg></div></div></li>
+</ol>
+
+<div class="why">
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-288 -188 474 651" style="width:100%;height:auto;display:block"><defs><pattern id="cuth" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="20" height="20" fill="#ded6c6"/><line x1="0" y1="0" x2="0" y2="20" stroke="#a89d87" stroke-width="4"/></pattern></defs><polygon points="-129.9,243.0 52.0,348.0 52.0,248.0 -129.9,143.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="52.0,348.0 -8.7,383.0 -8.7,283.0 52.0,248.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,143.0 -190.5,178.0 -8.7,283.0 52.0,248.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,143.0 52.0,248.0 52.0,220.0 -129.9,115.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="52.0,248.0 -26.0,293.0 -26.0,265.0 52.0,220.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,115.0 -207.8,160.0 -26.0,265.0 52.0,220.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="53.7,279.0 105.7,309.0 105.7,297.0 53.7,267.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="105.7,309.0 34.6,350.0 34.6,338.0 105.7,297.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="53.7,267.0 -17.3,308.0 34.6,338.0 105.7,297.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-6.9,302.0 45.0,332.0 45.0,242.0 -6.9,212.0" fill="#b6b0a3" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="45.0,332.0 34.6,338.0 34.6,248.0 45.0,242.0" fill="#9c9587" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-6.9,212.0 -17.3,218.0 34.6,248.0 45.0,242.0" fill="#cfcabe" stroke="#8a3016" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="-43.3,193.0 52.0,248.0 52.0,148.0 -43.3,93.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="52.0,248.0 -24.2,292.0 -24.2,192.0 52.0,148.0" fill="url(#cuth)" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-43.3,93.0 -119.5,137.0 -24.2,192.0 52.0,148.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-46.8,89.0 53.7,147.0 53.7,119.0 -46.8,61.0" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="53.7,147.0 -26.0,193.0 -26.0,165.0 53.7,119.0" fill="url(#cuth)" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-46.8,61.0 -126.4,107.0 -26.0,165.0 53.7,119.0" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<line x1="19.1" y1="291.0" x2="10.0" y2="296.2" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="10.0" y1="296.2" x2="-31.2" y2="320.0" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="19.1" cy="291.0" r="12" fill="#43403a"/>
+<line x1="19.1" y1="249.0" x2="10.0" y2="254.2" stroke="#43403a" stroke-width="8" stroke-linecap="round"/>
+<line x1="10.0" y1="254.2" x2="-31.2" y2="278.0" stroke="#43403a" stroke-width="8" stroke-dasharray="16,12" stroke-linecap="round"/>
+<circle cx="19.1" cy="249.0" r="12" fill="#43403a"/>
+<line x1="13.9" y1="-108.0" x2="13.9" y2="96.0" stroke="#8a3016" stroke-width="14" stroke-linecap="round"/>
+<line x1="13.9" y1="96.0" x2="-7.3" y2="64.5" stroke="#8a3016" stroke-width="14" stroke-linecap="round"/>
+<line x1="13.9" y1="96.0" x2="35.0" y2="64.5" stroke="#8a3016" stroke-width="14" stroke-linecap="round"/></svg><figcaption>Acelasi colt, vazut din afara puntii, cu blocajul taiat in doua. Latura orizontala a vinclului sta SUB blocaj si il duce pe dedesubt — nu e un coltar lipit pe lateral, e o polita.</figcaption></figure>
+<p><b>Unde se duce greutatea:</b> calci pe scandura → blocaj → vinclu → grinda groasa → stalpii puntii → pamant. Nimic nu se lasa pe gol.</p>
+</div>
+
+<div class="warn">
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-297 -210 714 801" style="width:100%;height:auto;display:block"><polygon points="77.9,45.0 164.5,95.0 -129.9,265.0 -216.5,215.0" fill="#463f35" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<polygon points="43.3,395.0 -34.6,440.0 -34.6,-40.0 43.3,-85.0" fill="#c2b492" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-112.6,395.0 -34.6,440.0 -34.6,-40.0 -112.6,-85.0" fill="#ad9d78" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-34.6,-130.0 43.3,-85.0 -34.6,-40.0 -112.6,-85.0" fill="#d9cdb2" stroke="#5f5748" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="225.2,258.0 -69.3,428.0 -69.3,328.0 225.2,158.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,393.0 -69.3,428.0 -69.3,328.0 -129.9,293.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,123.0 225.2,158.0 -69.3,328.0 -129.9,293.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="337.7,223.0 43.3,393.0 43.3,365.0 337.7,195.0" fill="#d2c6aa" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-129.9,293.0 43.3,393.0 43.3,365.0 -129.9,265.0" fill="#bdae8d" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="164.5,95.0 337.7,195.0 43.3,365.0 -129.9,265.0" fill="#e6ddc9" stroke="#8f8878" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="142.9,125.5 -116.9,275.5 -116.9,247.5 142.9,97.5" fill="#d2c6aa" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="-196.6,229.5 -116.9,275.5 -116.9,247.5 -196.6,201.5" fill="#bdae8d" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="63.2,51.5 142.9,97.5 -116.9,247.5 -196.6,201.5" fill="#e6ddc9" stroke="#8a3016" stroke-width="5" stroke-linejoin="round"/>
+<line x1="-157.6" y1="291.0" x2="-157.6" y2="511.0" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<line x1="-157.6" y1="511.0" x2="-173.2" y2="487.8" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<line x1="-157.6" y1="511.0" x2="-142.0" y2="487.8" stroke="#8a3016" stroke-width="10" stroke-linecap="round"/>
+<line x1="-202.8" y1="29.5" x2="149.2" y2="269.5" stroke="#8a3016" stroke-width="20" stroke-linecap="round"/>
+<line x1="149.2" y1="29.5" x2="-202.8" y2="269.5" stroke="#8a3016" stroke-width="20" stroke-linecap="round"/></svg><figcaption>Asa NU.</figcaption></figure>
+<p><b>Nu pune doar o scandura peste gol.</b> Se sprijina pe marginile ei si pe nimic altceva. Tine cateva luni, apoi se lasa, scartaie si iese din plan — mai ales cand se umfla si se usuca de la ploaie. Vinclurile costa cativa lei si rezolva definitiv.</p>
+</div>
+
+<div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei — nu se impiedica nimeni de ea.</div>
+
+</section>
+<section id="e1">
+<header class="ch"><div class="cn-big">E1</div><h2>Restantele podelei si cioata</h2><p class="chsub">Lucruri mici ramase in urma. Toate se inchid intr-o dimineata.</p><span class="zi">2–3 ore</span></header>
+
+<p class="lead">Trei restante de pe podea, plus decizia cu cioata. Niciuna nu e grea, dar toate blocheaza ceva mai departe.</p>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Suruburile lipsa de pe scandurile late</h4><p>Pe scandurile late sunt multe gauri pregatite, fara surub. Se completeaza cu <b>surub inox 5×60</b>.</p><p class="tool">Masina: <b>GSR</b>, treapta de ambreiaj <b>8–12</b>, varf <b>T25</b>. <b class="bad">Niciodata cu masina de impact</b> — inoxul e moale, rupe capul si nu-l mai scoti din larice.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Numaratoarea cumparaturilor vechi</h4><p>O data pentru totdeauna: cate <b>coltare C2</b>, suruburi <b>inox 5×60</b>, <b>6×80</b> si <b>6×100</b> au mai ramas. Ce ai deja scade din lista de la E2 — si tot aici afli daca ai cele 8 vincluri pentru E0.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Cioata de 1,5 m → masuta</h4><p>Se retează la <b>600–750</b> si primeste un blat. 10 minute cu fierastraul electric (JR3070CT).</p><p>Motivul e in desen: la 1500, varful ei ajunge la <b>138 mm sub muchia viitoare a acoperisului</b>. Ca butuc te catari greu pe el. Ca masuta devine o treapta plata, la fix — si de acolo se urca pe Onduline, care nu tine greutate. Cadere ~1,9 m pe terasa, iar terasa n-are inca balustrada.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-88.78999999999999 -338.15 511.7 381.75" style="width:100%;height:auto;display:block"><rect x="-18.6" y="0.0" width="387.5" height="4.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<text x="-17.1" y="7.1" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="start" font-weight="400">puntea</text>
+<rect x="46.5" y="-248.0" width="13.9" height="248.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="45.7" y="-257.3" width="15.5" height="9.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="305.4" y="-263.5" width="15.5" height="263.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="305.4" y="-294.5" width="7.8" height="31.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<polygon points="38.0,-256.1 328.6,-297.9 328.6,-304.7 38.0,-262.9" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="178.2" y="-299.1" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">acoperisul</text>
+<line x1="38.0" y1="-255.1" x2="21.7" y2="-239.9" stroke="#8a3016" stroke-width="1.4" stroke-linecap="round"/>
+<text x="20.1" y="-236.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="end" font-weight="400">muchia 1646</text>
+<rect x="108.5" y="-232.5" width="23.2" height="232.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
+<line x1="107.0" y1="-232.5" x2="167.4" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="107.0" y1="-255.1" x2="167.4" y2="-255.1" stroke="#8a3016" stroke-width="1" stroke-dasharray="4,4" stroke-linecap="round"/>
+<line x1="168.9" y1="-255.1" x2="168.9" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<line x1="162.9" y1="-255.1" x2="174.9" y2="-255.1" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<line x1="162.9" y1="-232.5" x2="174.9" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<text x="157.9" y="-243.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400" transform="rotate(-90 157.9 -243.8)">138</text>
+<text x="178.2" y="-243.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="start" font-weight="400">= treapta directa pe acoperis</text>
+<line x1="102.3" y1="-232.5" x2="102.3" y2="0.0" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<line x1="96.3" y1="-232.5" x2="108.3" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<line x1="96.3" y1="0.0" x2="108.3" y2="0.0" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
+<text x="91.3" y="-116.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400" transform="rotate(-90 91.3 -116.2)">1500 acum</text>
+<rect x="217.0" y="-108.5" width="23.2" height="108.5" fill="#cdbf9c" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="206.9" y="-115.0" width="43.4" height="6.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<line x1="257.3" y1="-115.0" x2="257.3" y2="0.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<line x1="251.3" y1="-115.0" x2="263.3" y2="-115.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<line x1="251.3" y1="0.0" x2="263.3" y2="0.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<text x="246.3" y="-57.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 246.3 -57.5)">700 dupa</text>
+<text x="228.6" y="-128.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">masuta</text>
+<text x="228.6" y="12.4" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">taiat la 600–750</text></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Scara mobila jos</h4><p>Culcata, intre orice doua zile de lucru. Cat timp sta rezemata, puntea e accesibila copiilor si n-are balustrada.</p></div></li>
+</ol>
+
+<div class="ok"><b>E bine daca:</b> nicio gaura fara surub pe scandurile late · stiu cate piese am pe stoc · cioata e la 600–750 · scara e jos.</div>
+
+</section>
+<section id="e2">
+<header class="ch"><div class="cn-big">E2</div><h2>Drumul la Leroy</h2><p class="chsub">Un singur magazin, un singur drum. Colosseum.</p><span class="zi">o jumatate de zi</span></header>
+
+<p class="lead">Lista completa, cu linkuri si casute de bifat, e in <code>LISTA-LEROY-2026-08-17</code>. Aici e doar ce s-a schimbat si ce trebuie intrebat la fata locului.</p>
+
+<div class="stop">
+<b>Intrebarea care schimba tot:</b> la raionul de lemn — <b>taiati pe lungime?</b> (nu la capat, in lung). Daca da, ceri fasii de 100 mm din dulapii de 46×250 si scapi complet de E3. Daca nu, tai tu acasa, cu ghidaj.
+</div>
+
+<div class="need">
+<h4>Ce s-a schimbat fata de lista veche</h4>
+<table class="t">
+<tr><th>Articol</th><th>Cat</th><th>De ce</th></tr>
+<tr><td>Dulap nerindeluit 46×250×4000</td><td class="q">5</td><td>inlocuieste cele 20 de scanduri de 22×100 — se taie in lung in fasii de 100, fara laminare</td></tr>
+<tr><td>Placa OSB3 12 mm, 2500×1250</td><td class="q">2</td><td>astereala acoperisului; sub 10° Onduline nu accepta sipci</td></tr>
+<tr><td>Lambriu 12,5×96, pachet 2,88 m²</td><td class="q">6</td><td>era 5; peretii laterali sunt mult mai lungi decat in planul vechi</td></tr>
+<tr><td>Rigla 46×46×3000</td><td class="q">10</td><td>era 20; fasiile de rest din dulapi acopera jumatate din verticale</td></tr>
+<tr><td>Vinclu 90×65</td><td class="q">64</td><td>era 52; +8 pentru colturile din spate, +4 la stalpii din fata</td></tr>
+<tr><td>Surub dulgherie 8×140</td><td class="q">36</td><td>era 16; +20 la blocajele de colt</td></tr>
+</table>
+</div>
+
+<div class="gate">
+<b>Ordinea in magazin:</b> intai <b>cuiele de Onduline</b> — la ultima verificare mai era <b>un singur set</b>. Daca s-a dus, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion. Apoi placile: rosu erau 15, maro 153 si mai ieftin cu ~6 lei bucata.
+</div>
+
+<div class="ok"><b>E bine daca:</b> tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj · stii daca taie in lung sau nu.</div>
+
+</section>
+<section id="e3">
+<header class="ch"><div class="cn-big">E3</div><h2>Fasiile</h2><p class="chsub">Din dulapi de 250 ies barele de rama. Se sare peste, daca a taiat magazinul.</p><span class="zi">o dupa-amiaza</span></header>
+
+<p class="lead">Rama peretilor si lemnele acoperisului cer o sectiune de aproximativ <b>46×100</b>. Leroy nu are asa ceva — gama sare de la 46×46 direct la 46×250. Deci o faci din dulapul de 250, taiat in lung.</p>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-286 -64.80000000000001 938.6077555205801 517.0" style="width:100%;height:auto;display:block"><polygon points="0.0,-25.3 619.2,332.2 500.1,400.9 -119.1,43.4" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="0.0,-25.3 619.2,332.2 619.2,357.5 0.0,0.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="619.2,332.2 500.1,400.9 500.1,426.2 619.2,357.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="-47.6" y1="2.2" x2="571.6" y2="359.7" stroke="#8a3016" stroke-width="2.2" stroke-dasharray="9,6" stroke-linecap="round"/>
+<line x1="-97.2" y1="30.8" x2="522.0" y2="388.3" stroke="#8a3016" stroke-width="2.2" stroke-dasharray="9,6" stroke-linecap="round"/>
+<text x="285.8" y="161.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#14532d" text-anchor="middle" font-weight="400">fasia 1 — 100</text>
+<text x="237.2" y="189.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#14532d" text-anchor="middle" font-weight="400">fasia 2 — 100</text>
+<text x="201.0" y="212.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">rest ~42</text>
+<text x="-100.1" y="5.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="end" font-weight="400">46</text>
+<text x="602.2" y="395.7" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="start" font-weight="400">250</text>
+<rect x="1.6" y="-38.8" width="92.0" height="60.0" fill="#9aa1ad" stroke="#6f7683" stroke-width="1.6" rx="6"/>
+<text x="47.6" y="-2.8" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#fff" text-anchor="middle" font-weight="400">circular</text>
+<line x1="-22.4" y1="27.2" x2="227.6" y2="27.2" stroke="#6f7683" stroke-width="5" stroke-linecap="round"/>
+<text x="247.6" y="23.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6f7683" text-anchor="start" font-weight="400">rigla dreapta, prinsa cu cleme</text>
+<text x="-260.0" y="250.0" font-family="system-ui,-apple-system,Helvetica,sans-serif" font-size="15" fill="#1c1b18" text-anchor="start" font-weight="400">un dulap 46×250×4000 → 2 fasii de 100 (rama) + 1 fasie de ~42×46 (verticale)</text>
+<text x="-260.0" y="274.0" font-family="system-ui,-apple-system,Helvetica,sans-serif" font-size="13" fill="#6b675e" text-anchor="start" font-weight="400">adancime de taiere 46 mm — circularul taie 65, merge lejer</text></svg><figcaption>Un dulap de 46×250×4000 da doua fasii de 100 pentru rama, plus o fasie de ~42×46 care merge la verticale. Adancimea de taiere e 46 mm — circularul taie 65, deci trece lejer.</figcaption></figure>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Pregatesti ghidajul</h4><p>O rigla dreapta prinsa cu cleme pe dulap, paralela cu marginea, la distanta corecta fata de talpa circularului. <b class="bad">Nu taia din ochi.</b> Patru metri de taietura care fuge cu 3 mm inseamna o fasie de aruncat.</p><p class="tool">Masina: <b>HS7611K</b>, adancime de taiere reglata la ~50 mm.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Doua taieturi per dulap</h4><p>Prima la 100 de la margine, a doua la inca 100. Ce ramane — o fasie de ~42 — nu e rest, e material: are aproape aceeasi sectiune ca rigla de 46×46 si intra la verticale.</p><p><b>5 dulapi × 2 taieturi = 10 taieturi de 4 m.</b> Rezultat: 10 fasii de 100 (9 necesare + 1 rezerva) si 5 fasii de ~42.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Stivuiesti plat si astepti</h4><p>Lemnul masiv taiat in lung <b>elibereaza tensiuni interne</b> si se poate arcui. O fasie de 4 m se misca vizibil in cateva zile.</p><p>Le stivuiesti <b>plat, cu distantieri intre ele</b>, la umbra, si le lasi cateva zile inainte sa le folosesti. Cele care se arcuiesc mai tare le tai in piese scurte — inchideri, praguri — unde arcuirea nu conteaza.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Cei doi dulapi de rezerva ai tai</h4><p>Tot acum, cat ai ghidajul prins: cele doua bare de <b>200×50×4000</b> ramase se taie in lung in <b>3 fasii de ~65×50</b> fiecare. Ies 6 fasii, ~24 m — inca material pentru verticale.</p><p class="small">Sugestie: taie <b>una singura</b> intai si vezi cum se comporta. A doua o lasi intreaga — e singura ta rezerva de sectiune mare daca se rupe ceva.</p></div></li>
+</ol>
+
+<div class="ok"><b>E bine daca:</b> ai 10 fasii de 100 drepte si de aceeasi latime · sunt stivuite plat, la umbra · fasiile de rest sunt puse deoparte, nu aruncate.</div>
+
+</section>
+<section id="e4">
+<header class="ch"><div class="cn-big">E4</div><h2>Peretele din spate</h2><p class="chsub">Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.</p><span class="zi">o zi</span></header>
+
+<p class="lead">Intre peretele din spate si gard raman <b>30 cm</b>. Ce nu e gata cand il ridici — scanduri, vopsea, suruburi — ramane asa pentru totdeauna. De asta se face complet jos.</p>
+
+<h3>Ce tai</h3>
+<table class="t">
+<tr><th>Piesa</th><th>Din ce</th><th>Taiat la</th><th class="q">Buc</th></tr>
+<tr><td>Talpa + cununa</td><td>fasie 46×100</td><td class="mono">1990</td><td class="q">2</td></tr>
+<tr><td>Lemnele verticale</td><td>rigla 46×46 sau fasie de rest</td><td class="mono">1608</td><td class="q">5</td></tr>
+<tr><td>Proptelele din colturi</td><td>rigla 46×46</td><td class="mono">2× 424 (jos) + 2× 212 (sus)</td><td class="q">4</td></tr>
+<tr><td>Scandurile (lambriul)</td><td>12,5×96</td><td class="mono">randuri de ~1990</td><td class="q">~4,3 m²</td></tr>
+</table>
+<p class="why-inline"><b>1990</b> = distanta libera masurata intre stalpii de 4 m (1995) minus 5 mm joc de montaj. Peretele se strecoara <em>intre</em> stalpi — la cota exacta nu intra.<br>
+<b>1608</b> = 1700 minus cele doua talpi de 46. Peretele trebuie sa iasa exact 1700, ca scandura groasa de deasupra sa calce si pe el, si pe capetele stalpilor.</p>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-78.88 -420.84 525.05 562.92" style="width:100%;height:auto;display:block"><rect x="0.0" y="-7.9" width="342.3" height="7.9" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="0.0" y="-292.4" width="342.3" height="7.9" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="0.0" y="-284.5" width="7.9" height="276.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="81.7" y="-284.5" width="7.9" height="276.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="167.2" y="-284.5" width="7.9" height="276.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="252.7" y="-284.5" width="7.9" height="276.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="334.4" y="-284.5" width="7.9" height="276.6" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
+<line x1="59.5" y1="-7.9" x2="7.9" y2="-59.5" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+<line x1="282.8" y1="-7.9" x2="334.4" y2="-59.5" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+<line x1="33.7" y1="-284.5" x2="7.9" y2="-258.7" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+<line x1="308.6" y1="-284.5" x2="334.4" y2="-258.7" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+<text x="171.1" y="-381.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">proptele: jos brate de 300 (424) · sus brate de 150 (212)</text>
+<line x1="0.0" y1="56.8" x2="85.7" y2="56.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="0.0" y1="50.8" x2="0.0" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="85.7" y1="50.8" x2="85.7" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="42.8" y="47.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">498</text>
+<line x1="85.7" y1="56.8" x2="171.1" y2="56.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="85.7" y1="50.8" x2="85.7" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="171.1" y1="50.8" x2="171.1" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="128.4" y="47.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">497</text>
+<line x1="171.1" y1="56.8" x2="256.6" y2="56.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="171.1" y1="50.8" x2="171.1" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="256.6" y1="50.8" x2="256.6" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="213.9" y="47.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">497</text>
+<line x1="256.6" y1="56.8" x2="342.3" y2="56.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="256.6" y1="50.8" x2="256.6" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="342.3" y1="50.8" x2="342.3" y2="62.8" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="299.5" y="47.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">498</text>
+<line x1="0.0" y1="110.1" x2="342.3" y2="110.1" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="0.0" y1="104.1" x2="0.0" y2="116.1" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="342.3" y1="104.1" x2="342.3" y2="116.1" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="171.1" y="101.1" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">1990   —   M3 real 1995, minus 5 mm joc</text>
+<line x1="-25.8" y1="0.0" x2="-25.8" y2="-292.4" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="-31.8" y1="0.0" x2="-19.8" y2="0.0" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<line x1="-31.8" y1="-292.4" x2="-19.8" y2="-292.4" stroke="#6b675e" stroke-width="1" stroke-linecap="round"/>
+<text x="-37.8" y="-146.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400" transform="rotate(-90 -37.8 -146.2)">1700</text>
+<line x1="368.1" y1="-7.9" x2="368.1" y2="-284.5" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<line x1="362.1" y1="-7.9" x2="374.1" y2="-7.9" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<line x1="362.1" y1="-284.5" x2="374.1" y2="-284.5" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
+<text x="356.1" y="-146.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 356.1 -146.2)">verticale 1608 ×5</text>
+<text x="171.1" y="-337.1" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">talpa si cununa: fasie de 46×100</text></svg><figcaption>Rama, la scara. Verticalele la ~498 una de alta, proptele lungi jos si scurte sus.</figcaption></figure>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Rama pe iarba</h4><p>Talpa si cununa paralele. Insemnezi pe <b>amandoua</b> unde vin verticalele: <span class="mono">0 · 498 · 995 · 1493 · 1990</span>.</p><p>Prinzi cele 5 verticale cu cate 2 suruburi prin talpa si 2 prin cununa, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Diagonalele — inainte de orice altceva</h4><p>Masori ambele diagonale ale ramei. Trebuie sa fie egale, <b>voie 3 mm</b>. Corectezi acum, impingand de colturi.</p><p class="why-inline">Proptelele ingheata forma exact cum o gasesc. Daca rama e stramba cand le pui, ramane stramba, si se vede la lambriu.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Proptelele</h4><p>Jos cele de 424, sus cele de 212. Cate 2 suruburi 6×120 la fiecare capat.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Vopsea, apoi scandurile</h4><p>Vopsea de protectie pe <b>toate fetele</b> scandurilor, inclusiv cele care nu se mai vad niciodata. Apoi lambriul, cat peretele e culcat: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</p></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Ridicarea — pasul periculos</h4><p>Panoul are <b>2,0 × 1,7 m</b> si cantareste <b>~50 kg</b> cu lambriu si vopsea. Trebuie sa ajunga de pe iarba pe punte, la <b>2,2 m</b>. Puntea nu are inca balustrada.</p><ul><li><b>Zi fara vant.</b> Panoul e o suprafata de vela de 3,4 m².</li><li><b>Doi adulti.</b> Unul jos impinge, unul sus trage. Nu se face singur.</li><li><b>Doua scanduri ca rampa</b>, sprijinite de marginea puntii. Panoul urca pe cant, alunecand, nu ridicat pe brate.</li><li><b>O franghie</b> legata de stalpul de 4 m si de rama. Daca scapa, nu pleaca peste margine.</li><li><b>Copiii nu sunt pe punte</b> si nu sunt sub panou.</li></ul><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-254.29999999999998 -334.464 803.16 422.624" style="width:100%;height:auto;display:block"><rect x="-120.9" y="0.0" width="479.7" height="4.7" fill="#b9b2a3" stroke="none" stroke-width="1.6"/>
+<rect x="175.5" y="-173.8" width="7.8" height="173.8" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="319.8" y="-173.8" width="7.8" height="173.8" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="167.7" y="-173.8" width="167.7" height="5.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<rect x="175.5" y="-306.4" width="7.8" height="132.6" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
+<polygon points="-97.5,-4.7 167.7,-173.8 167.7,-164.4 -97.5,4.7" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6" stroke-linejoin="round"/>
+<g transform="translate(35.1 -102.5) rotate(-32.5)"><rect x="-92" y="-17" width="184" height="34" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.8"/><text x="0" y="5.5" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#1c1b18" text-anchor="middle">panoul ~50 kg</text></g>
+<path d="M 179.4 -275.2 Q 132.6 -193.3 35.1 -102.5" fill="none" stroke="#8a3016" stroke-width="2.2" stroke-dasharray="8,6" stroke-linecap="round"/>
+<circle cx="-70.2" cy="-36.7" r="10" fill="#6f7683"/>
+<line x1="-70.2" y1="-26.7" x2="-70.2" y2="-7.7" stroke="#6f7683" stroke-width="3.4" stroke-linecap="round"/>
+<text x="-70.2" y="-50.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">unul jos, impinge</text>
+<circle cx="241.8" cy="-211.2" r="10" fill="#6f7683"/>
+<line x1="241.8" y1="-201.2" x2="241.8" y2="-182.2" stroke="#6f7683" stroke-width="3.4" stroke-linecap="round"/>
+<text x="241.8" y="-225.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">unul sus, trage</text>
+<text x="39.0" y="25.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">doua scanduri de 4 m, ca rampa  —  panta ~34°</text>
+<text x="265.2" y="-141.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">puntea, 2,2 m</text>
+<text x="191.1" y="-295.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="start" font-weight="400">franghie legata de stalpul de 4 m si de rama</text>
+<text x="191.1" y="-283.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">daca scapa, nu pleaca peste margine</text>
+<text x="93.6" y="56.2" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8a3016" text-anchor="middle" font-weight="700">zi fara vant  ·  2 adulti  ·  copiii nu sunt pe punte si nu sunt sub panou</text></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Prinderea de stalpi</h4><p><b>4 suruburi de dulgherie 8×140</b> pe fiecare capat, in stalpii de 4 m: unul jos, doua pe mijloc, unul sus. <b>Gaura de 6 mm data inainte in stalp.</b></p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-286 -537.25 680.5212874366485 818.85" style="width:100%;height:auto;display:block"><polygon points="0.0,-495.0 47.6,-467.5 0.0,-440.0 -47.6,-467.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="0.0,-495.0 47.6,-467.5 47.6,27.5 0.0,0.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="47.6,-467.5 0.0,-440.0 0.0,55.0 47.6,27.5" fill="#b6a888" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="42.9,-398.8 290.6,-255.8 252.4,-233.8 4.8,-376.8" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="42.9,-398.8 290.6,-255.8 290.6,107.2 42.9,-35.8" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="290.6,-255.8 252.4,-233.8 252.4,129.2 290.6,107.2" fill="#c4b696" stroke="#1c1b18" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="21.8" y1="-63.3" x2="51.7" y2="-66.4" stroke="#6f7683" stroke-width="3" stroke-linecap="round"/>
+<line x1="42.7" y1="-65.4" x2="51.7" y2="-66.4" stroke="#6f7683" stroke-width="6" stroke-linecap="round"/>
+<line x1="21.8" y1="-184.3" x2="51.7" y2="-187.4" stroke="#6f7683" stroke-width="3" stroke-linecap="round"/>
+<line x1="42.7" y1="-186.4" x2="51.7" y2="-187.4" stroke="#6f7683" stroke-width="6" stroke-linecap="round"/>
+<line x1="21.8" y1="-206.3" x2="51.7" y2="-209.4" stroke="#6f7683" stroke-width="3" stroke-linecap="round"/>
+<line x1="42.7" y1="-208.4" x2="51.7" y2="-209.4" stroke="#6f7683" stroke-width="6" stroke-linecap="round"/>
+<line x1="21.8" y1="-316.2" x2="51.7" y2="-319.4" stroke="#6f7683" stroke-width="3" stroke-linecap="round"/>
+<line x1="42.7" y1="-318.4" x2="51.7" y2="-319.4" stroke="#6f7683" stroke-width="6" stroke-linecap="round"/>
+<text x="13.8" y="-496.3" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#6f7683" text-anchor="middle" font-weight="400">4 suruburi 8×140</text>
+<text x="13.8" y="-461.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">unul jos · doua la mijloc · unul sus</text>
+<text x="0.0" y="104.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">stalpul de 4 m</text>
+<text x="240.3" y="-263.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="start" font-weight="400">capatul peretelui</text>
+<text x="-260.0" y="250.0" font-family="system-ui,-apple-system,Helvetica,sans-serif" font-size="14" fill="#8a3016" text-anchor="start" font-weight="400">gaura de 6 mm data inainte in stalp — altfel crapa</text></svg></div></div></li>
+<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Talpa in grinzi</h4><p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p><p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. Tot ce se prinde de podea trebuie sa intre in grinda de dedesubt. La colturile din spate, in blocajele facute la E0.</p></div></li>
+</ol>
+
+<div class="ok"><b>E bine daca:</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · talpa prinsa in grinzi pe toata lungimea, inclusiv la colturi · scandurile complete si vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
+
+<div class="gate"><b>Urmeaza:</b> peretii laterali, tot pe punte. Dar aia e alt capitol — ghidul asta se opreste aici, ca sa vedem intai daca formatul e bun.</div>
+
+</section>
+<footer class="doc">
+GHID-CONSTRUCTIE-casa · 20.08.2026 · E0–E4<br>
+Cotele vin din masuratorile de santier confirmate pe 20.08 (<code>MASURATORI-CONFIRMARE-2026-08-20</code>).<br>
+Referinta completa: <code>PROIECT-CASA-2026-08-17</code> · desene la scara: <code>SCHEME-CASA-2026-08-17</code> · cumparaturi: <code>LISTA-LEROY-2026-08-17</code>.<br>
+Bifele se pierd la reincarcarea paginii — sunt pentru o sesiune de lucru, nu pentru evidenta.
+</footer>
+</main>
+</div>
+<script>
+function tt(){const h=document.documentElement;h.dataset.t = h.dataset.t==='dark'?'':'dark';}
+const boxes=[...document.querySelectorAll('.tick input')];
+function upd(){
+ const n=boxes.filter(b=>b.checked).length;
+ document.getElementById('pt').textContent=n+' / '+boxes.length;
+ document.getElementById('pb').style.width=(boxes.length?100*n/boxes.length:0)+'%';
+}
+boxes.forEach(b=>b.addEventListener('change',()=>{b.closest('li').classList.toggle('done',b.checked);upd();}));
+upd();
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+new IntersectionObserver(es=>{
+ es.forEach(e=>{ if(e.isIntersecting){
+   links.forEach(l=>l.classList.remove('on'));
+   const i=secs.indexOf(e.target); if(i>=0) links[i].classList.add('on');
+ }});
+},{rootMargin:'-10% 0px -75% 0px'}).observe.length;
+const obs=new IntersectionObserver(es=>{
+ es.forEach(e=>{ if(e.isIntersecting){
+   links.forEach(l=>l.classList.remove('on'));
+   const i=secs.indexOf(e.target); if(i>=0) links[i].classList.add('on');
+ }});
+},{rootMargin:'-10% 0px -75% 0px'});
+secs.forEach(s=>s&&obs.observe(s));
+</script>
+</body></html>
