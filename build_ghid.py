@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Asambleaza GHID-CONSTRUCTIE-casa.html — documentul de executie al casei.
-8 capitole (E0-E7), cuprins lateral, bon de taiere si scule per capitol,
-strat interactiv (localStorage, progres pe capitol, poarta e0->e3, reset)."""
+6 capitole (E1-E6), cuprins lateral, bon de taiere si scule per capitol,
+strat interactiv (localStorage, progres pe capitol, reset)."""
 import json
 
 GH = json.load(open('figs_ghid.json'))
@@ -34,7 +34,7 @@ def bon(rows):
 # ══════════════ MATERIALE PE ETAPA ══════════════
 # (nume, cantitate, unitate, nota).  Cantitatile sunt NETE, calculate din bonul de taiere.
 MAT = {
- 'e3': dict(buy=[
+ 'e2': dict(buy=[
     ('Rigla 48×48×4000',      3.3, 'bare',  'talpa+cununa 2×1990, verticale 5×1604, contrafise 2×424+2×212'),
     ('Lambriu 12,5×96',       4.3, 'm²',    'randuri de 1990, toata inaltimea'),
     ('Surub dulgherie 8×140', 8,   'buc',   'cate 4 la fiecare capat, in stalpii de 4 m'),
@@ -45,7 +45,7 @@ MAT = {
  ], have=[
     ('Dulap 200×50×4000', 1, 'bara', 'reazemul acoperisului — se taie la 2200, pe muchie, 200 in sus'),
  ]),
- 'e4': dict(buy=[
+ 'e3': dict(buy=[
     ('Rigla 48×48×4000',      5.9, 'bare',  'ambii pereti: talpi 1580+1570, cununi 1596+1586, 8 verticale, praguri, 8 contrafise'),
     ('Lambriu 12,5×96',       5.6, 'm²',    'ambii pereti, minus golurile de geam'),
     ('Rigla 46×46×3000',      2,   'bare',  'tocurile celor doua geamuri — gol 490, 4×490 pe toc'),
@@ -54,7 +54,7 @@ MAT = {
     ('Surub dulgherie 6×140', 10,  'buc',   'talpile prin podea, la 400'),
     ('Surub de lambriu',      145, 'buc',   ''),
  ], have=[]),
- 'e5': dict(buy=[
+ 'e4': dict(buy=[
     ('Rigla 48×48×4000',      2.9, 'bare',  'talpa 1970, 5 verticale 1552, prag+buiandrug 570, 3 contrafise'),
     ('Lambriu 12,5×96',       2.4, 'm²',    'fara zona usii'),
     ('Fereastra PVC 56×56',   1,   'buc',   'singura care se deschide'),
@@ -65,7 +65,7 @@ MAT = {
  ], have=[
     ('Bara 100×60×3000', 1, 'bara', 'lemnul de sus — se taie la 2155, latura de 60 in sus'),
  ]),
- 'e6': dict(buy=[
+ 'e5': dict(buy=[
     ('Scandura 22×100×4000',  7,   'bare',  '5 capriori laminati de 1889 (5 bare, 2 straturi pe caprior) + 4 inchideri de 454 (a 6-a); a 7-a rezerva'),
     ('Placa OSB3 12 mm',      2,   'placi', 'taiate 2200×1250 si 2200×639'),
     ('Onduline 2000×860',     3,   'placi', 'intregi, una langa alta — panta 1889 < 2000'),
@@ -74,7 +74,7 @@ MAT = {
     ('Surub 4×45',            150, 'buc',   'OSB in capriori, la 250'),
     ('Surub 4×40',            110, 'buc',   'laminarea capriorilor, zigzag la 300'),
  ], have=[]),
- 'e7': dict(buy=[
+ 'e6': dict(buy=[
     ('Sipca 18×28',           6,   'm',     'strang geamurile pe ambele fete'),
     ('Silicon de exterior',   2,   'tuburi',''),
     ('Surub 4×50',            50,  'buc',   'sipcile de geam'),
@@ -94,9 +94,9 @@ CUMPERI = [
  ('Fereastra PVC 56×56',        '1',   '127 lei',  'peretele din fata.'),
  ('Sipca 18×28',                '6 m', '~17 lei',  'strange geamurile pe ambele fete. 8,29 lei/3 m, verificat 06.08.'),
  ('Silicon de exterior',        '2 tuburi', '~30 lei', 'rosturile geamurilor laterale si ale ferestrei din fata.'),
- ('Vinclu 90×65',               '56',  '~200 lei', 'spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele E0 8.'),
+ ('Vinclu 90×65',               '56',  '~200 lei', 'spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele de colt 8.'),
  ('Conector lemn 90×200×2,5',   '4',   '~36 lei',  'placile de deasupra fiecarui stalp, sub reazem.'),
- ('Surub dulgherie 8×140',      '36',  '~72 lei',  'spate in stalpi 8 · stalpii din fata 8 · blocajele E0 20.'),
+ ('Surub dulgherie 8×140',      '36',  '~72 lei',  'spate in stalpi 8 · stalpii din fata 8 · blocajele de colt 20.'),
  ('Surub dulgherie 6×140',      '~30', '~48 lei',  'talpile prin podea, in grinzi, la 400.'),
  ('Surub dulgherie 6×100',      '~60', '~30 lei',  'contrafisele si proptelele, 2 la fiecare capat. Ai 20 Heco 6×100 in stoc.'),
  ('Surub de lambriu, inox A2',  '~450','~160 lei', 'nu ai niciunul — stocul din faza 1 s-a dus tot in podea.'),
@@ -128,90 +128,8 @@ def cumperi_tabel():
 
 CH = []
 
-# ══════════════════════════════ E0 ══════════════════════════════
-CH.append(dict(id='e0', n='E0', titlu='Scandura care lipseste',
-    sub='Golul de la cele doua colturi din spate. Patru locuri identice.',
-    zi='2–3 ore',
-    scule='GSR — gaura pilot 6 mm + suruburile scurte (ambreiaj) · GDR — cele 8×140 in grinda si stalp · fierastrau sabie pentru blocaj',
-    body=f"""
-<p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea.</p>
-
-<div class="gate">
-<b>De ce e primul lucru:</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa se prinda. Dupa ce peretele e ridicat, la coltul ala nu mai ajungi niciodata.
-</div>
-
-<div class="gate">
-<b>Desenele pas cu pas sunt intr-un document separat:</b> <a href="GHID-E0-golul-din-spate.html">GHID-E0 · golul din spate</a> — planul coltului, sectiunea prin gol, drumul greutatii prin vinclu si cele patru piese la scara. Deschide-l inainte sa tai blocajul.
-</div>
-
-<div class="need">
-<h4>Ai nevoie — pentru <em>o latura</em></h4>
-<ul>
-<li><b>2</b> × vinclu 90×65</li>
-<li><b>1</b> × blocaj de lemn, taiat pe loc</li>
-<li><b>8</b> × surub scurt 5×40 (pentru vincluri)</li>
-<li><b>5</b> × surub dulgherie 8×140</li>
-<li><b>1</b> × scandura de calcat</li>
-</ul>
-<p class="small">Golul e in forma de L in jurul stalpului: latura A si latura B. Se face identic pe amandoua, apoi identic la celalalt colt — <b>de patru ori in total</b>. Deci 8 vincluri, 20 de suruburi 8×140, 32 de suruburi 5×40.</p>
-</div>
-
-<div class="stop">
-<b>STOP inainte sa incepi:</b> ai 8 vincluri 90×65? Verifica intai ce a ramas din faza 1 — receptia n-a fost niciodata numarata. Daca nu ai, capitolul asta se face <b>dupa</b> drumul la Leroy (E2), nu inainte.
-</div>
-
-{steps([
- ('Doua vincluri pe grinda',
-  '<p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p>', None),
- ('Blocajul se lasa pe vincluri',
-  '<p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p>', None),
- ('Suruburi oblice, de sus',
-  '<p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p>', None),
- ('Scandura de calcat',
-  '<p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>.</p>', None),
-])}
-
-<div class="warn">
-<p><b>Nu pune doar o scandura peste gol.</b> Se sprijina pe marginile ei si pe nimic altceva. Tine cateva luni, apoi se lasa, scartaie si iese din plan — mai ales cand se umfla si se usuca de la ploaie. Vinclurile costa cativa lei si rezolva definitiv.</p>
-</div>
-
-<div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei.</div>
-"""))
-
-# ══════════════════════════════ E1 ══════════════════════════════
-CH.append(dict(id='e1', n='E1', titlu='Restantele podelei si cioata',
-    sub='Lucruri mici ramase in urma. Toate se inchid intr-o dimineata.',
-    zi='2–3 ore',
-    scule='GSR — suruburile inox 5×60 (ambreiaj 8–12, T25, NU impact) · fierastrau sabie JR3070CT — cioata',
-    body=f'''
-<p class="lead">Trei restante de pe podea, plus decizia cu cioata. Niciuna nu e grea, dar toate blocheaza ceva mai departe.</p>
-
-{steps([
- ('Suruburile lipsa de pe scandurile late',
-  '<p>Pe scandurile late sunt multe gauri pregatite, fara surub. Se completeaza cu <b>surub inox 5×60</b>.</p>'
-  '<p class="tool">Masina: <b>GSR</b>, treapta de ambreiaj <b>8–12</b>, varf <b>T25</b>. '
-  '<b class="bad">Niciodata cu masina de impact</b> — inoxul e moale, rupe capul si nu-l mai scoti din larice.</p>',
-  None),
- ('Numaratoarea cumparaturilor vechi',
-  '<p>O data pentru totdeauna: cate <b>coltare C2</b>, suruburi <b>inox 5×60</b>, <b>6×80</b> si <b>6×100</b> au mai ramas. '
-  'Ce ai deja scade din lista de la E2 — si tot aici afli daca ai cele 8 vincluri pentru E0.</p>',
-  None),
- ('Cioata de 1,5 m → masuta',
-  '<p>Se retează la <b>600–750</b> si primeste un blat. 10 minute cu fierastraul electric (JR3070CT).</p>'
-  '<p>Motivul e in desen: la 1500, varful ei ajunge la <b>138 mm sub muchia viitoare a acoperisului</b>. '
-  'Ca butuc te catari greu pe el. Ca masuta devine o treapta plata, la fix — si de acolo se urca pe Onduline, '
-  'care nu tine greutate. Cadere ~1,9 m pe terasa, iar terasa n-are inca balustrada.</p>',
-  GH['e1_cioata']),
- ('Scara mobila jos',
-  '<p>Culcata, intre orice doua zile de lucru. Cat timp sta rezemata, puntea e accesibila copiilor si n-are balustrada.</p>',
-  None),
-])}
-
-<div class="ok"><b>E bine daca:</b> nicio gaura fara surub pe scandurile late · stiu cate piese am pe stoc · cioata e la 600–750 · scara e jos.</div>
-'''))
-
-# ══════════════════════════════ E2 · Leroy ══════════════════════════════
-CH.append(dict(id='e2', n='E2', titlu='Drumul la Leroy',
+# ══════════════════════════════ E1 · Leroy ══════════════════════════════
+CH.append(dict(id='e1', n='E1', titlu='Drumul la Leroy',
     sub='Un singur magazin, un singur drum. Colosseum.',
     zi='o jumatate de zi',
     body=f'''
@@ -245,13 +163,11 @@ CH.append(dict(id='e2', n='E2', titlu='Drumul la Leroy',
 <div class="ok"><b>E bine daca:</b> cele 13 rigle de 48×48 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
 '''))
 
-# ══════════════════════════════ E3 · peretele din spate ══════════════════════════════
-CH.append(dict(id='e3', n='E3', titlu='Peretele din spate',
+# ══════════════════════════════ E2 · peretele din spate ══════════════════════════════
+CH.append(dict(id='e2', n='E2', titlu='Peretele din spate',
     sub='Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.',
     zi='o zi',
     scule='HS7611K — rigla si dulapul la lungime · GSR — gauri pilot 4 mm + suruburile · GDR — cele 8×140 in stalpi · doi oameni la ridicare',
-    blocat_de='e0',
-    blocat_motiv='talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa intre. Dupa ce peretele e ridicat, la coltul ala nu se mai ajunge niciodata. Deci golul din colt (E0) se inchide inainte.',
     bon=[
      ('Talpa + cununa','rigla 48×48','1990','2'),
      ('Verticale','rigla 48×48','1604','5'),
@@ -294,7 +210,7 @@ CH.append(dict(id='e3', n='E3', titlu='Peretele din spate',
   D2['reazem']),
  ('Talpa in grinzi',
   '<p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p>'
-  '<p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. La colturile din spate, talpa se prinde in <b>blocajele facute la E0</b>. De aia E0 e obligatoriu inainte.</p>', None),
+  '<p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. La colturile din spate, talpa se prinde in <b>blocajele montate</b>.</p>', None),
 ])}
 
 <div class="ok"><b>E bine daca:</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · reazemul de 200×50 calca si pe cununa si pe stalpi · talpa prinsa in grinzi pe toata lungimea, inclusiv la colturi · scandurile complete si vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
@@ -302,8 +218,8 @@ CH.append(dict(id='e3', n='E3', titlu='Peretele din spate',
 {fig(GH['nod_colt_spate'], 'Coltul din spate, in plan. Peretele din spate si cel lateral nu se ating — fiecare se prinde in stalp, cu 8×140 oblice. Bagheta de colt acopera imbinarea lambriului.')}
 '''))
 
-# ══════════════════════════════ E4 · peretii laterali ══════════════════════════════
-CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
+# ══════════════════════════════ E3 · peretii laterali ══════════════════════════════
+CH.append(dict(id='e3', n='E3', titlu='Peretii laterali',
     sub='Doi pereti, fiecare pe cota lui. Se asambleaza pe punte — sunt prea lungi ca sa fie urcati gata.',
     zi='o zi',
     scule='HS7611K — rigla la lungime · GSR — gauri pilot + suruburi + tocul geamului · fierastrau vertical PST 700 E — golul de geam',
@@ -345,7 +261,7 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
  ('Vopsea si lambriu',
   '<p>Vopsea pe toate fetele, apoi lambriul — la fel ca la spate. Golul de geam ramane liber.</p>', None),
  ('Tocul geamului',
-  '<p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E7, din exterior.</p>', None),
+  '<p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E6, din exterior.</p>', None),
  ('Prinderea peretelui',
   '<p>Talpa in grinzile de dedesubt: <b>6×140 la fiecare 40 cm</b>. La colturi, unde se intalneste cu peretele din spate si cu cel din fata: cate <b>2 vincluri 90×65 pe colt</b>.</p>', None),
 ])}
@@ -358,8 +274,8 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
 {fig(GH['nod_sus_fata'], 'Capatul din fata. Se opreste sub caprior, langa bara de 100×60. Cununa inclinata se taie lunga si se scrie la fata locului — asa inghite si cei 20 mm de echer.')}
 '''))
 
-# ══════════════════════════════ E5 · peretele din fata ══════════════════════════════
-CH.append(dict(id='e5', n='E5', titlu='Peretele din fata',
+# ══════════════════════════════ E4 · peretele din fata ══════════════════════════════
+CH.append(dict(id='e4', n='E4', titlu='Peretele din fata',
     sub='Peretele cu usa si fereastra. Doua lucruri se fac altfel: bara de sus e solida, iar usa se taie la final.',
     zi='o zi',
     scule='HS7611K — rigla si bara de sus 100×60 · GSR — gauri pilot + suruburile oblice · fierastrau sabie — taierea talpii la usa, la final',
@@ -382,7 +298,7 @@ CH.append(dict(id='e5', n='E5', titlu='Peretele din fata',
  ('Rama — cu talpa INTREAGA',
   '<p>Talpa (rigla 48×48) taiata la <b>1970</b>, <b>necrestata inca pentru usa</b>. Cinci verticale de <b>1552</b> (= 1600 − o singura talpa de 48; sus nu e cununa, e bara solida). Masurate de la fata interioara a stalpului stang: <span class="mono">115 · fereastra 161→731 · usa 938→1488 · montant de camp 1650→1696</span>, plus coltul de <b>274</b> pentru propteaua de jos.</p>', None),
  ('Fereastra',
-  '<p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E7.</p>', None),
+  '<p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E6.</p>', None),
  ('Bara de sus',
   '<p>Nu rama, nu laminat: <b>bara solida 100×60</b> (o ai), cu latura de <b>60 in sus</b>, taiata la <b>2155</b>. Trebuie sa calce pe rama SI pe amandoi stalpii — de aia e mai lunga decat peretele. Nu se inlocuieste cu rigla.</p>', None),
  ('Contrafisele',
@@ -402,8 +318,8 @@ CH.append(dict(id='e5', n='E5', titlu='Peretele din fata',
 {fig(GH['nod_colt_fata'], 'Coltul din fata, in plan. Acelasi nod ca la spate, pe stalp de 90×90.')}
 '''))
 
-# ══════════════════════════════ E6 · acoperisul ══════════════════════════════
-CH.append(dict(id='e6', n='E6', titlu='Acoperisul',
+# ══════════════════════════════ E5 · acoperisul ══════════════════════════════
+CH.append(dict(id='e5', n='E5', titlu='Acoperisul',
     sub='Cinci lemne inclinate, doua placi de OSB, trei placi de Onduline. Sub 10° nu merg sipci.',
     zi='o zi',
     scule='HS7611K — capriorii si placile OSB · GDR/GSR — laminarea (4×40) + OSB (4×45) · suruburi de acoperis cu saiba (GSR) sau cuie cu capac pentru Onduline',
@@ -438,8 +354,8 @@ CH.append(dict(id='e6', n='E6', titlu='Acoperisul',
 <div class="ok"><b>E bine daca:</b> capriorii sunt cu 100 pe verticala · OSB acopera tot, insurubat des · Onduline intreg, cuiele pe varf, streasina egala fata-spate.</div>
 '''))
 
-# ══════════════════════════════ E7 · geamurile si verificarea finala ══════════════════════════════
-CH.append(dict(id='e7', n='E7', titlu='Geamurile si verificarea finala',
+# ══════════════════════════════ E6 · geamurile si verificarea finala ══════════════════════════════
+CH.append(dict(id='e6', n='E6', titlu='Geamurile si verificarea finala',
     sub='Ultimele piese, apoi lista care spune daca s-a terminat cu adevarat.',
     zi='o jumatate de zi',
     scule='GSR — sipcile geamurilor (ambreiaj, delicat) · silicon de exterior la rosturi · fereastra PVC se prinde in jambe',
@@ -453,7 +369,7 @@ CH.append(dict(id='e7', n='E7', titlu='Geamurile si verificarea finala',
 
 {steps([
  ('Geamurile laterale',
-  '<p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E4. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p>', None),
+  '<p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E3. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p>', None),
  ('Fereastra din fata',
   '<p>Fereastra PVC de <b>56×56</b> in golul de 570×570, prinsa in jambe, siliconata pe contur. Se deschide spre terasa — singura care se deschide.</p>', None),
 ])}
@@ -466,7 +382,7 @@ CH.append(dict(id='e7', n='E7', titlu='Geamurile si verificarea finala',
 
 {steps([
  ('Colturile din spate au blocaj',
-  '<p>Toate 4, facute la E0. Talpa peretelui din spate se prinde in ele.</p>', None),
+  '<p>Toate 4 montate — podeaua inchisa integral. Talpa peretelui din spate se prinde in ele.</p>', None),
  ('Peretele din spate — prins si rezemat',
   '<p>8 suruburi in stalpi, talpa in grinzi pe toata lungimea, reazemul de 200×50 pe cununa si pe stalpi.</p>', None),
  ('Peretii laterali — la echer, prinsi',
@@ -538,15 +454,6 @@ header.ch h2{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:8px 0 8
 .scule{font:12px/1.5 var(--mono);color:var(--mut);max-width:70ch}
 .scule b{color:var(--ink)}
 
-section.locked .chbody{opacity:.4}
-.gatebar{display:flex;gap:14px;align-items:center;justify-content:space-between;background:var(--acc2-s);
- border:1px solid var(--acc2);border-left:3px solid var(--acc2);border-radius:12px;padding:14px 16px;margin:16px 0}
-.gatebar .gb-txt{font-size:14.5px}
-.gb-skip{flex:none;font:12px var(--mono);color:var(--acc2);background:none;border:1px solid var(--acc2);
- border-radius:7px;padding:8px 13px;cursor:pointer}
-.skipwarn{background:var(--warn-s);border:1px solid var(--warn);border-left:3px solid var(--warn);
- border-radius:10px;padding:12px 15px;margin:14px 0;font-size:14px}
-
 
 .mat{margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .mat .mhead{padding:13px 16px;font:600 12px/1.3 var(--sans);letter-spacing:.06em;
@@ -595,7 +502,6 @@ p{margin:0 0 12px;max-width:70ch}
 code{font:13.5px var(--mono);background:var(--acc-s);padding:2px 6px;border-radius:5px}
 main a{color:var(--acc);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 main a:hover{color:var(--acc2)}
-.gatebar a{color:var(--acc2);white-space:nowrap;font:12px var(--mono)}
 .matlinks{margin-top:2px;font:11px/1.5 var(--mono);color:var(--dim)}
 .matlinks a{color:var(--acc)}
 td.q a,.cump a{font-family:var(--mono);font-size:12px;white-space:nowrap}
@@ -700,27 +606,11 @@ SCRIPT = """<script>
    });
  }
 
- function updGates(){
-   secs.forEach(function(sec){
-     var bar=sec.querySelector('.gatebar'); if(!bar) return;
-     var skipped=get('skip.'+sec.dataset.ch)==='1';
-     var locked=!chComplete(bar.dataset.gate) && !skipped;
-     sec.classList.toggle('locked', locked);
-     bar.style.display=locked?'':'none';
-     var sw=sec.querySelector('.skipwarn'); if(sw) sw.style.display=skipped?'':'none';
-     [].slice.call(sec.querySelectorAll('.chbody input.bx')).forEach(function(i){ i.disabled=locked; });
-   });
- }
-
  allBoxes.forEach(function(inp){
    inp.addEventListener('change',function(){
      if(inp.checked) set(inp.dataset.key,'1'); else del(inp.dataset.key);
-     updProgress(); updGates();
+     updProgress();
    });
- });
-
- [].slice.call(document.querySelectorAll('.gb-skip')).forEach(function(btn){
-   btn.addEventListener('click',function(){ set('skip.'+btn.closest('section').dataset.ch,'1'); updGates(); });
  });
 
  function confirmInline(host, onYes){
@@ -744,8 +634,7 @@ SCRIPT = """<script>
  if(ra) ra.addEventListener('click',function(){
    confirmInline(ra.parentNode,function(){
      allBoxes.forEach(function(i){ i.checked=false; del(i.dataset.key); });
-     secs.forEach(function(sec){ del('skip.'+sec.dataset.ch); });
-     updProgress(); updGates();
+     updProgress();
    });
  });
 
@@ -761,7 +650,7 @@ SCRIPT = """<script>
  },{rootMargin:'-10% 0px -75% 0px'});
  secs.forEach(function(s){obs.observe(s);});
 
- updProgress(); updGates();
+ updProgress();
 })();
 function tt(){var h=document.documentElement;h.dataset.t=h.dataset.t==='dark'?'':'dark';}
 </script>"""
@@ -818,7 +707,7 @@ HTML = f'''<!DOCTYPE html>
 <main>
 {secs}
 <footer class="doc">
-GHID-CONSTRUCTIE-casa · 21.08.2026 · E0–E7 · documentul de executie al casei.<br>
+GHID-CONSTRUCTIE-casa · 21.08.2026 · E1–E6 · documentul de executie al casei.<br>
 Cotele vin din masuratorile de santier (<code>MASURATORI-CONFIRMARE-2026-08-20</code>).<br>
 Desene la scara: <code>SCHEME-2D-casa.html</code> · cumparaturi: <code>LISTA-LEROY-2026-08-17</code>.<br>
 Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul „sterge toate bifele" le sterge.

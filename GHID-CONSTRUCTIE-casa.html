@@ -55,15 +55,6 @@ header.ch h2{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:8px 0 8
 .scule{font:12px/1.5 var(--mono);color:var(--mut);max-width:70ch}
 .scule b{color:var(--ink)}
 
-section.locked .chbody{opacity:.4}
-.gatebar{display:flex;gap:14px;align-items:center;justify-content:space-between;background:var(--acc2-s);
- border:1px solid var(--acc2);border-left:3px solid var(--acc2);border-radius:12px;padding:14px 16px;margin:16px 0}
-.gatebar .gb-txt{font-size:14.5px}
-.gb-skip{flex:none;font:12px var(--mono);color:var(--acc2);background:none;border:1px solid var(--acc2);
- border-radius:7px;padding:8px 13px;cursor:pointer}
-.skipwarn{background:var(--warn-s);border:1px solid var(--warn);border-left:3px solid var(--warn);
- border-radius:10px;padding:12px 15px;margin:14px 0;font-size:14px}
-
 
 .mat{margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .mat .mhead{padding:13px 16px;font:600 12px/1.3 var(--sans);letter-spacing:.06em;
@@ -112,7 +103,6 @@ p{margin:0 0 12px;max-width:70ch}
 code{font:13.5px var(--mono);background:var(--acc-s);padding:2px 6px;border-radius:5px}
 main a{color:var(--acc);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 main a:hover{color:var(--acc2)}
-.gatebar a{color:var(--acc2);white-space:nowrap;font:12px var(--mono)}
 .matlinks{margin-top:2px;font:11px/1.5 var(--mono);color:var(--dim)}
 .matlinks a{color:var(--acc)}
 td.q a,.cump a{font-family:var(--mono);font-size:12px;white-space:nowrap}
@@ -187,124 +177,20 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
  <div class="brand">Casuta din copac</div>
  <h1>Ghid de constructie<br>casa de sus</h1>
  <div class="meta">21 august 2026 · cote in mm<br>geometrie masurata pe santier</div>
- <label class="phone-jump"><select id="jump"><option value="e0">E0 — Scandura care lipseste</option><option value="e1">E1 — Restantele podelei si cioata</option><option value="e2">E2 — Drumul la Leroy</option><option value="e3">E3 — Peretele din spate</option><option value="e4">E4 — Peretii laterali</option><option value="e5">E5 — Peretele din fata</option><option value="e6">E6 — Acoperisul</option><option value="e7">E7 — Geamurile si verificarea finala</option></select></label>
- <ol><li><a href="#e0" data-ch="e0"><span class="cn">E0</span>Scandura care lipseste<em>2–3 ore</em><span class="chprog"></span></a></li>
-<li><a href="#e1" data-ch="e1"><span class="cn">E1</span>Restantele podelei si cioata<em>2–3 ore</em><span class="chprog"></span></a></li>
-<li><a href="#e2" data-ch="e2"><span class="cn">E2</span>Drumul la Leroy<em>o jumatate de zi</em><span class="chprog"></span></a></li>
-<li><a href="#e3" data-ch="e3"><span class="cn">E3</span>Peretele din spate<em>o zi</em><span class="chprog"></span></a></li>
-<li><a href="#e4" data-ch="e4"><span class="cn">E4</span>Peretii laterali<em>o zi</em><span class="chprog"></span></a></li>
-<li><a href="#e5" data-ch="e5"><span class="cn">E5</span>Peretele din fata<em>o zi</em><span class="chprog"></span></a></li>
-<li><a href="#e6" data-ch="e6"><span class="cn">E6</span>Acoperisul<em>o zi</em><span class="chprog"></span></a></li>
-<li><a href="#e7" data-ch="e7"><span class="cn">E7</span>Geamurile si verificarea finala<em>o jumatate de zi</em><span class="chprog"></span></a></li></ol>
+ <label class="phone-jump"><select id="jump"><option value="e1">E1 — Drumul la Leroy</option><option value="e2">E2 — Peretele din spate</option><option value="e3">E3 — Peretii laterali</option><option value="e4">E4 — Peretele din fata</option><option value="e5">E5 — Acoperisul</option><option value="e6">E6 — Geamurile si verificarea finala</option></select></label>
+ <ol><li><a href="#e1" data-ch="e1"><span class="cn">E1</span>Drumul la Leroy<em>o jumatate de zi</em><span class="chprog"></span></a></li>
+<li><a href="#e2" data-ch="e2"><span class="cn">E2</span>Peretele din spate<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e3" data-ch="e3"><span class="cn">E3</span>Peretii laterali<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e4" data-ch="e4"><span class="cn">E4</span>Peretele din fata<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e5" data-ch="e5"><span class="cn">E5</span>Acoperisul<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e6" data-ch="e6"><span class="cn">E6</span>Geamurile si verificarea finala<em>o jumatate de zi</em><span class="chprog"></span></a></li></ol>
  <div class="prog">progres global <span id="pt">0 / 0</span><div class="bar"><i id="pb"></i></div>
   <div class="navbtns"><button class="tgl" onclick="tt()">lumina / intuneric</button><button id="resetAll" type="button">sterge toate bifele</button></div>
  </div>
 </nav>
 <main>
-<section id="e0" data-ch="e0">
-<header class="ch"><div class="cn-big">E0</div><h2>Scandura care lipseste</h2><p class="chsub">Golul de la cele doua colturi din spate. Patru locuri identice.</p>
-<div class="chmeta"><span class="zi">2–3 ore</span><span class="scule"><b>Scule:</b> GSR — gaura pilot 6 mm + suruburile scurte (ambreiaj) · GDR — cele 8×140 in grinda si stalp · fierastrau sabie pentru blocaj</span></div></header>
-
-<div class="chbody">
-
-
-
-<p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea.</p>
-
-<div class="gate">
-<b>De ce e primul lucru:</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa se prinda. Dupa ce peretele e ridicat, la coltul ala nu mai ajungi niciodata.
-</div>
-
-<div class="gate">
-<b>Desenele pas cu pas sunt intr-un document separat:</b> <a href="GHID-E0-golul-din-spate.html">GHID-E0 · golul din spate</a> — planul coltului, sectiunea prin gol, drumul greutatii prin vinclu si cele patru piese la scara. Deschide-l inainte sa tai blocajul.
-</div>
-
-<div class="need">
-<h4>Ai nevoie — pentru <em>o latura</em></h4>
-<ul>
-<li><b>2</b> × vinclu 90×65</li>
-<li><b>1</b> × blocaj de lemn, taiat pe loc</li>
-<li><b>8</b> × surub scurt 5×40 (pentru vincluri)</li>
-<li><b>5</b> × surub dulgherie 8×140</li>
-<li><b>1</b> × scandura de calcat</li>
-</ul>
-<p class="small">Golul e in forma de L in jurul stalpului: latura A si latura B. Se face identic pe amandoua, apoi identic la celalalt colt — <b>de patru ori in total</b>. Deci 8 vincluri, 20 de suruburi 8×140, 32 de suruburi 5×40.</p>
-</div>
-
-<div class="stop">
-<b>STOP inainte sa incepi:</b> ai 8 vincluri 90×65? Verifica intai ce a ramas din faza 1 — receptia n-a fost niciodata numarata. Daca nu ai, capitolul asta se face <b>dupa</b> drumul la Leroy (E2), nu inainte.
-</div>
-
-<ol class="steps">
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Doua vincluri pe grinda</h4><p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Blocajul se lasa pe vincluri</h4><p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Suruburi oblice, de sus</h4><p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Scandura de calcat</h4><p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>.</p></div></li>
-</ol>
-
-<div class="warn">
-<p><b>Nu pune doar o scandura peste gol.</b> Se sprijina pe marginile ei si pe nimic altceva. Tine cateva luni, apoi se lasa, scartaie si iese din plan — mai ales cand se umfla si se usuca de la ploaie. Vinclurile costa cativa lei si rezolva definitiv.</p>
-</div>
-
-<div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei.</div>
-
-<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
-</div>
-</section>
 <section id="e1" data-ch="e1">
-<header class="ch"><div class="cn-big">E1</div><h2>Restantele podelei si cioata</h2><p class="chsub">Lucruri mici ramase in urma. Toate se inchid intr-o dimineata.</p>
-<div class="chmeta"><span class="zi">2–3 ore</span><span class="scule"><b>Scule:</b> GSR — suruburile inox 5×60 (ambreiaj 8–12, T25, NU impact) · fierastrau sabie JR3070CT — cioata</span></div></header>
-
-<div class="chbody">
-
-
-
-<p class="lead">Trei restante de pe podea, plus decizia cu cioata. Niciuna nu e grea, dar toate blocheaza ceva mai departe.</p>
-
-<ol class="steps">
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Suruburile lipsa de pe scandurile late</h4><p>Pe scandurile late sunt multe gauri pregatite, fara surub. Se completeaza cu <b>surub inox 5×60</b>.</p><p class="tool">Masina: <b>GSR</b>, treapta de ambreiaj <b>8–12</b>, varf <b>T25</b>. <b class="bad">Niciodata cu masina de impact</b> — inoxul e moale, rupe capul si nu-l mai scoti din larice.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Numaratoarea cumparaturilor vechi</h4><p>O data pentru totdeauna: cate <b>coltare C2</b>, suruburi <b>inox 5×60</b>, <b>6×80</b> si <b>6×100</b> au mai ramas. Ce ai deja scade din lista de la E2 — si tot aici afli daca ai cele 8 vincluri pentru E0.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Cioata de 1,5 m → masuta</h4><p>Se retează la <b>600–750</b> si primeste un blat. 10 minute cu fierastraul electric (JR3070CT).</p><p>Motivul e in desen: la 1500, varful ei ajunge la <b>138 mm sub muchia viitoare a acoperisului</b>. Ca butuc te catari greu pe el. Ca masuta devine o treapta plata, la fix — si de acolo se urca pe Onduline, care nu tine greutate. Cadere ~1,9 m pe terasa, iar terasa n-are inca balustrada.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-88.78999999999999 -338.15 483.69 392.59999999999997" style="width:100%;height:auto;display:block"><rect x="-18.6" y="0.0" width="387.5" height="4.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
-<text x="-17.1" y="23.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="start" font-weight="400">puntea</text>
-<rect x="46.5" y="-248.0" width="13.9" height="248.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
-<rect x="45.7" y="-257.3" width="15.5" height="9.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
-<rect x="305.4" y="-263.5" width="15.5" height="263.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
-<rect x="305.4" y="-294.5" width="7.8" height="31.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
-<polygon points="38.0,-256.1 328.6,-297.9 328.6,-304.7 38.0,-262.9" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6" stroke-linejoin="round"/>
-<text x="178.2" y="-299.1" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">acoperisul</text>
-<line x1="38.0" y1="-255.1" x2="21.7" y2="-239.9" stroke="#8a3016" stroke-width="1.4" stroke-linecap="round"/>
-<text x="20.1" y="-236.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="end" font-weight="400">muchia 1646</text>
-<rect x="108.5" y="-232.5" width="23.2" height="232.5" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
-<line x1="107.0" y1="-232.5" x2="167.4" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-dasharray="4,4" stroke-linecap="round"/>
-<line x1="107.0" y1="-255.1" x2="167.4" y2="-255.1" stroke="#8a3016" stroke-width="1" stroke-dasharray="4,4" stroke-linecap="round"/>
-<line x1="168.9" y1="-255.1" x2="168.9" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<line x1="162.9" y1="-255.1" x2="174.9" y2="-255.1" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<line x1="162.9" y1="-232.5" x2="174.9" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<text x="157.9" y="-243.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400" transform="rotate(-90 157.9 -243.8)">138</text>
-<text x="178.2" y="-248.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="start" font-weight="400">= treapta directa</text>
-<text x="178.2" y="-229.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="start" font-weight="400">pe acoperis</text>
-<line x1="102.3" y1="-232.5" x2="102.3" y2="0.0" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<line x1="96.3" y1="-232.5" x2="108.3" y2="-232.5" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<line x1="96.3" y1="0.0" x2="108.3" y2="0.0" stroke="#8a3016" stroke-width="1" stroke-linecap="round"/>
-<text x="91.3" y="-116.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400" transform="rotate(-90 91.3 -116.2)">1500 acum</text>
-<rect x="217.0" y="-108.5" width="23.2" height="108.5" fill="#cdbf9c" stroke="#1c1b18" stroke-width="1.6"/>
-<rect x="206.9" y="-115.0" width="43.4" height="6.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
-<line x1="257.3" y1="-115.0" x2="257.3" y2="0.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
-<line x1="251.3" y1="-115.0" x2="263.3" y2="-115.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
-<line x1="251.3" y1="0.0" x2="263.3" y2="0.0" stroke="#14532d" stroke-width="1" stroke-linecap="round"/>
-<text x="270.3" y="-57.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 270.3 -57.5)">700 dupa</text>
-<text x="228.6" y="-128.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">masuta</text>
-<text x="228.6" y="23.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">taiat la 600–750</text></svg></div></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Scara mobila jos</h4><p>Culcata, intre orice doua zile de lucru. Cat timp sta rezemata, puntea e accesibila copiilor si n-are balustrada.</p></div></li>
-</ol>
-
-<div class="ok"><b>E bine daca:</b> nicio gaura fara surub pe scandurile late · stiu cate piese am pe stoc · cioata e la 600–750 · scara e jos.</div>
-
-<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
-</div>
-</section>
-<section id="e2" data-ch="e2">
-<header class="ch"><div class="cn-big">E2</div><h2>Drumul la Leroy</h2><p class="chsub">Un singur magazin, un singur drum. Colosseum.</p>
+<header class="ch"><div class="cn-big">E1</div><h2>Drumul la Leroy</h2><p class="chsub">Un singur magazin, un singur drum. Colosseum.</p>
 <div class="chmeta"><span class="zi">o jumatate de zi</span></div></header>
 
 <div class="chbody">
@@ -320,7 +206,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="need">
 <h4>Tot ce cumperi</h4>
 <p class="small">Cantitatile vin din bonurile de taiere ale celor cinci etape, adunate.</p>
-<table class="t cump"><tr><th>Articol</th><th class="q">Cat</th><th class="q">~Lei</th><th>De ce atat</th></tr><tr><td>Rigla 48×48×4000</td><td class="q mono">13</td><td class="q mono">~389 lei</td><td class="small">rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile.</td></tr><tr><td>Lambriu 12,5×96, pachet 2,88 m²</td><td class="q mono">6</td><td class="q mono">758 lei</td><td class="small">net 12,3 m²; sase pachete dau 17,3 m². Restul e suprapunere si taiere.</td></tr><tr><td>Scandura 22×100×4000</td><td class="q mono">7</td><td class="q mono">~139 lei</td><td class="small">5 capriori laminati (5 bare, 2 straturi pe caprior) plus inchiderile de 454 (a 6-a); a 7-a rezerva.</td></tr><tr><td>Rigla 46×46×3000</td><td class="q mono">2</td><td class="q mono">~50 lei</td><td class="small">tocurile celor doua geamuri laterale, ~4 m. 24,91 lei/buc.</td></tr><tr><td>Placa OSB3 12 mm</td><td class="q mono">2</td><td class="q mono">~150 lei</td><td class="small">astereala acoperisului.</td></tr><tr><td>Onduline 2000×860 maro</td><td class="q mono">3</td><td class="q mono">~124 lei</td><td class="small">maro e cu ~6 lei mai ieftin decat rosu, si e stoc.</td></tr><tr><td>Cuie Onduline, set 400</td><td class="q mono">1</td><td class="q mono">97 lei</td><td class="small">primul in cos — stocul e mic.</td></tr><tr><td>Placa plexiglas 500×1000×4</td><td class="q mono">1</td><td class="q mono">72 lei</td><td class="small">amandoua geamurile ies dintr-una.</td></tr><tr><td>Fereastra PVC 56×56</td><td class="q mono">1</td><td class="q mono">127 lei</td><td class="small">peretele din fata.</td></tr><tr><td>Sipca 18×28</td><td class="q mono">6 m</td><td class="q mono">~17 lei</td><td class="small">strange geamurile pe ambele fete. 8,29 lei/3 m, verificat 06.08.</td></tr><tr><td>Silicon de exterior</td><td class="q mono">2 tuburi</td><td class="q mono">~30 lei</td><td class="small">rosturile geamurilor laterale si ale ferestrei din fata.</td></tr><tr><td>Vinclu 90×65</td><td class="q mono">56</td><td class="q mono">~200 lei</td><td class="small">spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele E0 8.</td></tr><tr><td>Conector lemn 90×200×2,5</td><td class="q mono">4</td><td class="q mono">~36 lei</td><td class="small">placile de deasupra fiecarui stalp, sub reazem.</td></tr><tr><td>Surub dulgherie 8×140</td><td class="q mono">36</td><td class="q mono">~72 lei</td><td class="small">spate in stalpi 8 · stalpii din fata 8 · blocajele E0 20.</td></tr><tr><td>Surub dulgherie 6×140</td><td class="q mono">~30</td><td class="q mono">~48 lei</td><td class="small">talpile prin podea, in grinzi, la 400.</td></tr><tr><td>Surub dulgherie 6×100</td><td class="q mono">~60</td><td class="q mono">~30 lei</td><td class="small">contrafisele si proptelele, 2 la fiecare capat. Ai 20 Heco 6×100 in stoc.</td></tr><tr><td>Surub de lambriu, inox A2</td><td class="q mono">~450</td><td class="q mono">~160 lei</td><td class="small">nu ai niciunul — stocul din faza 1 s-a dus tot in podea.</td></tr><tr><td>Surub 4×45 · 4×40 · 4×50</td><td class="q mono">cutii</td><td class="q mono">~90 lei</td><td class="small">OSB, laminarea capriorilor, sipcile de geam.</td></tr></table>
+<table class="t cump"><tr><th>Articol</th><th class="q">Cat</th><th class="q">~Lei</th><th>De ce atat</th></tr><tr><td>Rigla 48×48×4000</td><td class="q mono">13</td><td class="q mono">~389 lei</td><td class="small">rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile.</td></tr><tr><td>Lambriu 12,5×96, pachet 2,88 m²</td><td class="q mono">6</td><td class="q mono">758 lei</td><td class="small">net 12,3 m²; sase pachete dau 17,3 m². Restul e suprapunere si taiere.</td></tr><tr><td>Scandura 22×100×4000</td><td class="q mono">7</td><td class="q mono">~139 lei</td><td class="small">5 capriori laminati (5 bare, 2 straturi pe caprior) plus inchiderile de 454 (a 6-a); a 7-a rezerva.</td></tr><tr><td>Rigla 46×46×3000</td><td class="q mono">2</td><td class="q mono">~50 lei</td><td class="small">tocurile celor doua geamuri laterale, ~4 m. 24,91 lei/buc.</td></tr><tr><td>Placa OSB3 12 mm</td><td class="q mono">2</td><td class="q mono">~150 lei</td><td class="small">astereala acoperisului.</td></tr><tr><td>Onduline 2000×860 maro</td><td class="q mono">3</td><td class="q mono">~124 lei</td><td class="small">maro e cu ~6 lei mai ieftin decat rosu, si e stoc.</td></tr><tr><td>Cuie Onduline, set 400</td><td class="q mono">1</td><td class="q mono">97 lei</td><td class="small">primul in cos — stocul e mic.</td></tr><tr><td>Placa plexiglas 500×1000×4</td><td class="q mono">1</td><td class="q mono">72 lei</td><td class="small">amandoua geamurile ies dintr-una.</td></tr><tr><td>Fereastra PVC 56×56</td><td class="q mono">1</td><td class="q mono">127 lei</td><td class="small">peretele din fata.</td></tr><tr><td>Sipca 18×28</td><td class="q mono">6 m</td><td class="q mono">~17 lei</td><td class="small">strange geamurile pe ambele fete. 8,29 lei/3 m, verificat 06.08.</td></tr><tr><td>Silicon de exterior</td><td class="q mono">2 tuburi</td><td class="q mono">~30 lei</td><td class="small">rosturile geamurilor laterale si ale ferestrei din fata.</td></tr><tr><td>Vinclu 90×65</td><td class="q mono">56</td><td class="q mono">~200 lei</td><td class="small">spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele de colt 8.</td></tr><tr><td>Conector lemn 90×200×2,5</td><td class="q mono">4</td><td class="q mono">~36 lei</td><td class="small">placile de deasupra fiecarui stalp, sub reazem.</td></tr><tr><td>Surub dulgherie 8×140</td><td class="q mono">36</td><td class="q mono">~72 lei</td><td class="small">spate in stalpi 8 · stalpii din fata 8 · blocajele de colt 20.</td></tr><tr><td>Surub dulgherie 6×140</td><td class="q mono">~30</td><td class="q mono">~48 lei</td><td class="small">talpile prin podea, in grinzi, la 400.</td></tr><tr><td>Surub dulgherie 6×100</td><td class="q mono">~60</td><td class="q mono">~30 lei</td><td class="small">contrafisele si proptelele, 2 la fiecare capat. Ai 20 Heco 6×100 in stoc.</td></tr><tr><td>Surub de lambriu, inox A2</td><td class="q mono">~450</td><td class="q mono">~160 lei</td><td class="small">nu ai niciunul — stocul din faza 1 s-a dus tot in podea.</td></tr><tr><td>Surub 4×45 · 4×40 · 4×50</td><td class="q mono">cutii</td><td class="q mono">~90 lei</td><td class="small">OSB, laminarea capriorilor, sipcile de geam.</td></tr></table>
 </div>
 
 
@@ -340,10 +226,10 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
 </div>
 </section>
-<section id="e3" data-ch="e3">
-<header class="ch"><div class="cn-big">E3</div><h2>Peretele din spate</h2><p class="chsub">Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.</p>
+<section id="e2" data-ch="e2">
+<header class="ch"><div class="cn-big">E2</div><h2>Peretele din spate</h2><p class="chsub">Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.</p>
 <div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla si dulapul la lungime · GSR — gauri pilot 4 mm + suruburile · GDR — cele 8×140 in stalpi · doi oameni la ridicare</span></div></header>
-<div class="gatebar" data-gate="e0"><div class="gb-txt"><b>Blocat de E0.</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa intre. Dupa ce peretele e ridicat, la coltul ala nu se mai ajunge niciodata. Deci golul din colt (E0) se inchide inainte. <a href="GHID-E0-golul-din-spate.html">Desenele E0 →</a></div><button class="gb-skip" type="button">sar peste</button></div><div class="skipwarn" style="display:none"><b>Ai sarit peste blocajul E0.</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa intre. Dupa ce peretele e ridicat, la coltul ala nu se mai ajunge niciodata. Deci golul din colt (E0) se inchide inainte.</div>
+
 <div class="chbody">
 <details class="bon"><summary>Bon de taiere — 5 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Talpa + cununa</td><td>rigla 48×48</td><td class="mono">1990</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Verticale</td><td>rigla 48×48</td><td class="mono">1604</td><td class="q">5</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Contrafise colturi</td><td>rigla 48×48 (rest)</td><td class="mono">2× 424 jos · 2× 212 sus</td><td class="q">4</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Reazemul din spate</td><td>dulap 200×50 (il ai)</td><td class="mono">2200</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Lambriu</td><td>12,5×96</td><td class="mono">randuri de ~1990</td><td class="q">~4,3 m²</td></tr></table></details>
 <div class="mat"><div class="mhead">Materiale pentru etapa asta</div><div class="mgrid"><div class="mcol buy"><h4>Cumperi</h4><ul><li class="b"><span class="mq">3,3 bare</span><span class="mn">Rigla 48×48×4000<div class="mnote">talpa+cununa 2×1990, verticale 5×1604, contrafise 2×424+2×212</div></span></li>
@@ -480,7 +366,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <text x="112.8" y="-228.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">calca pe cununa peretelui (1700) SI pe capetele stalpilor (1700)</text>
 <text x="8.5" y="51.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">REAZEMUL DIN SPATE — dulapul de 200×50, cum se aseaza</text>
 <text x="8.5" y="62.9" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">o singura bara, taiata la 2200, pe muchie · nimic altceva nu se face din ea</text></svg></div></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Talpa in grinzi</h4><p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p><p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. La colturile din spate, talpa se prinde in <b>blocajele facute la E0</b>. De aia E0 e obligatoriu inainte.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Talpa in grinzi</h4><p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p><p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. La colturile din spate, talpa se prinde in <b>blocajele montate</b>.</p></div></li>
 </ol>
 
 <div class="ok"><b>E bine daca:</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · reazemul de 200×50 calca si pe cununa si pe stalpi · talpa prinsa in grinzi pe toata lungimea, inclusiv la colturi · scandurile complete si vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
@@ -515,8 +401,8 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
 </div>
 </section>
-<section id="e4" data-ch="e4">
-<header class="ch"><div class="cn-big">E4</div><h2>Peretii laterali</h2><p class="chsub">Doi pereti, fiecare pe cota lui. Se asambleaza pe punte — sunt prea lungi ca sa fie urcati gata.</p>
+<section id="e3" data-ch="e3">
+<header class="ch"><div class="cn-big">E3</div><h2>Peretii laterali</h2><p class="chsub">Doi pereti, fiecare pe cota lui. Se asambleaza pe punte — sunt prea lungi ca sa fie urcati gata.</p>
 <div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla la lungime · GSR — gauri pilot + suruburi + tocul geamului · fierastrau vertical PST 700 E — golul de geam</span></div></header>
 
 <div class="chbody">
@@ -753,7 +639,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <text x="32.0" y="-134.2" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#8a3016" text-anchor="end" font-weight="400">taiere 45°</text>
 <text x="151.2" y="31.1" font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#6b675e" text-anchor="end" font-weight="400">rigla 48×48 (din rest)</text></svg><figcaption>Coltul — contrafisa 212 pe diagonala, brat 150</figcaption></figure></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea si lambriu</h4><p>Vopsea pe toate fetele, apoi lambriul — la fel ca la spate. Golul de geam ramane liber.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Tocul geamului</h4><p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E7, din exterior.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Tocul geamului</h4><p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E6, din exterior.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Prinderea peretelui</h4><p>Talpa in grinzile de dedesubt: <b>6×140 la fiecare 40 cm</b>. La colturi, unde se intalneste cu peretele din spate si cu cel din fata: cate <b>2 vincluri 90×65 pe colt</b>.</p></div></li>
 </ol>
 
@@ -824,8 +710,8 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
 </div>
 </section>
-<section id="e5" data-ch="e5">
-<header class="ch"><div class="cn-big">E5</div><h2>Peretele din fata</h2><p class="chsub">Peretele cu usa si fereastra. Doua lucruri se fac altfel: bara de sus e solida, iar usa se taie la final.</p>
+<section id="e4" data-ch="e4">
+<header class="ch"><div class="cn-big">E4</div><h2>Peretele din fata</h2><p class="chsub">Peretele cu usa si fereastra. Doua lucruri se fac altfel: bara de sus e solida, iar usa se taie la final.</p>
 <div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla si bara de sus 100×60 · GSR — gauri pilot + suruburile oblice · fierastrau sabie — taierea talpii la usa, la final</span></div></header>
 
 <div class="chbody">
@@ -900,7 +786,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 
 <ol class="steps">
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Rama — cu talpa INTREAGA</h4><p>Talpa (rigla 48×48) taiata la <b>1970</b>, <b>necrestata inca pentru usa</b>. Cinci verticale de <b>1552</b> (= 1600 − o singura talpa de 48; sus nu e cununa, e bara solida). Masurate de la fata interioara a stalpului stang: <span class="mono">115 · fereastra 161→731 · usa 938→1488 · montant de camp 1650→1696</span>, plus coltul de <b>274</b> pentru propteaua de jos.</p></div></li>
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Fereastra</h4><p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E7.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Fereastra</h4><p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E6.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Bara de sus</h4><p>Nu rama, nu laminat: <b>bara solida 100×60</b> (o ai), cu latura de <b>60 in sus</b>, taiata la <b>2155</b>. Trebuie sa calce pe rama SI pe amandoi stalpii — de aia e mai lunga decat peretele. Nu se inlocuieste cu rigla.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Contrafisele</h4><p>Sus: <b>2× 212</b> (brat 150). Jos-dreapta: una lunga, <b>~350</b> (brat 250). Jos-stanga <b>se sare</b> — acolo coltul e chiar stalpul de 90×90, deja rigid.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea, lambriu, ridicare</h4><p>Vopsea pe toate fetele, lambriu peste tot mai putin zona usii. Apoi se ridica pe punte, ca la spate: doi oameni, culcat pe muchie, legat de stalpi provizoriu.</p></div></li>
@@ -940,8 +826,8 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
 </div>
 </section>
-<section id="e6" data-ch="e6">
-<header class="ch"><div class="cn-big">E6</div><h2>Acoperisul</h2><p class="chsub">Cinci lemne inclinate, doua placi de OSB, trei placi de Onduline. Sub 10° nu merg sipci.</p>
+<section id="e5" data-ch="e5">
+<header class="ch"><div class="cn-big">E5</div><h2>Acoperisul</h2><p class="chsub">Cinci lemne inclinate, doua placi de OSB, trei placi de Onduline. Sub 10° nu merg sipci.</p>
 <div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — capriorii si placile OSB · GDR/GSR — laminarea (4×40) + OSB (4×45) · suruburi de acoperis cu saiba (GSR) sau cuie cu capac pentru Onduline</span></div></header>
 
 <div class="chbody">
@@ -1041,8 +927,8 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
 </div>
 </section>
-<section id="e7" data-ch="e7">
-<header class="ch"><div class="cn-big">E7</div><h2>Geamurile si verificarea finala</h2><p class="chsub">Ultimele piese, apoi lista care spune daca s-a terminat cu adevarat.</p>
+<section id="e6" data-ch="e6">
+<header class="ch"><div class="cn-big">E6</div><h2>Geamurile si verificarea finala</h2><p class="chsub">Ultimele piese, apoi lista care spune daca s-a terminat cu adevarat.</p>
 <div class="chmeta"><span class="zi">o jumatate de zi</span><span class="scule"><b>Scule:</b> GSR — sipcile geamurilor (ambreiaj, delicat) · silicon de exterior la rosturi · fereastra PVC se prinde in jambe</span></div></header>
 
 <div class="chbody">
@@ -1054,7 +940,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 <p class="lead">Doua geamuri fixe pe laterale, o fereastra care se deschide pe fata, si checklist-ul final.</p>
 
 <ol class="steps">
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Geamurile laterale</h4><p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E4. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Geamurile laterale</h4><p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E3. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Fereastra din fata</h4><p>Fereastra PVC de <b>56×56</b> in golul de 570×570, prinsa in jambe, siliconata pe contur. Se deschide spre terasa — singura care se deschide.</p></div></li>
 </ol>
 
@@ -1065,7 +951,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 </div>
 
 <ol class="steps">
-<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Colturile din spate au blocaj</h4><p>Toate 4, facute la E0. Talpa peretelui din spate se prinde in ele.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Colturile din spate au blocaj</h4><p>Toate 4 montate — podeaua inchisa integral. Talpa peretelui din spate se prinde in ele.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretele din spate — prins si rezemat</h4><p>8 suruburi in stalpi, talpa in grinzi pe toata lungimea, reazemul de 200×50 pe cununa si pe stalpi.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretii laterali — la echer, prinsi</h4><p>Colturile in vincluri, talpa in grinzi, contrafise in toate colturile.</p></div></li>
 <li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretele din fata — usa taiata la final</h4><p>Stalpii prinsi cu 4 suruburi oblice + coltar fiecare (fara tije), golul de usa 550/1600 taiat dupa ridicare.</p></div></li>
@@ -1080,7 +966,7 @@ footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
 </div>
 </section>
 <footer class="doc">
-GHID-CONSTRUCTIE-casa · 21.08.2026 · E0–E7 · documentul de executie al casei.<br>
+GHID-CONSTRUCTIE-casa · 21.08.2026 · E1–E6 · documentul de executie al casei.<br>
 Cotele vin din masuratorile de santier (<code>MASURATORI-CONFIRMARE-2026-08-20</code>).<br>
 Desene la scara: <code>SCHEME-2D-casa.html</code> · cumparaturi: <code>LISTA-LEROY-2026-08-17</code>.<br>
 Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul „sterge toate bifele" le sterge.
@@ -1120,27 +1006,11 @@ Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul �
    });
  }
 
- function updGates(){
-   secs.forEach(function(sec){
-     var bar=sec.querySelector('.gatebar'); if(!bar) return;
-     var skipped=get('skip.'+sec.dataset.ch)==='1';
-     var locked=!chComplete(bar.dataset.gate) && !skipped;
-     sec.classList.toggle('locked', locked);
-     bar.style.display=locked?'':'none';
-     var sw=sec.querySelector('.skipwarn'); if(sw) sw.style.display=skipped?'':'none';
-     [].slice.call(sec.querySelectorAll('.chbody input.bx')).forEach(function(i){ i.disabled=locked; });
-   });
- }
-
  allBoxes.forEach(function(inp){
    inp.addEventListener('change',function(){
      if(inp.checked) set(inp.dataset.key,'1'); else del(inp.dataset.key);
-     updProgress(); updGates();
+     updProgress();
    });
- });
-
- [].slice.call(document.querySelectorAll('.gb-skip')).forEach(function(btn){
-   btn.addEventListener('click',function(){ set('skip.'+btn.closest('section').dataset.ch,'1'); updGates(); });
  });
 
  function confirmInline(host, onYes){
@@ -1164,8 +1034,7 @@ Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul �
  if(ra) ra.addEventListener('click',function(){
    confirmInline(ra.parentNode,function(){
      allBoxes.forEach(function(i){ i.checked=false; del(i.dataset.key); });
-     secs.forEach(function(sec){ del('skip.'+sec.dataset.ch); });
-     updProgress(); updGates();
+     updProgress();
    });
  });
 
@@ -1181,7 +1050,7 @@ Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul �
  },{rootMargin:'-10% 0px -75% 0px'});
  secs.forEach(function(s){obs.observe(s);});
 
- updProgress(); updGates();
+ updProgress();
 })();
 function tt(){var h=document.documentElement;h.dataset.t=h.dataset.t==='dark'?'':'dark';}
 </script>
