@@ -19,7 +19,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6
 img,svg{max-width:100%}
 
 .wrap{display:grid;grid-template-columns:264px 1fr;gap:0;max-width:1280px;margin:0 auto}
-nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 22px 60px;border-right:1px solid var(--line)}
+nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 22px 60px;border-right:1px solid var(--line);background:var(--bg)}
 nav .brand{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
 nav h1{font:600 21px/1.25 var(--sans);letter-spacing:-.01em;margin:0 0 4px}
 nav .meta{font:11px/1.5 var(--mono);color:var(--dim);margin-bottom:24px}
@@ -29,27 +29,49 @@ nav li a:hover{background:var(--acc-s)}
 nav li a.on{background:var(--acc-s);box-shadow:inset 3px 0 0 var(--acc)}
 nav .cn{display:block;font:600 10px/1 var(--mono);letter-spacing:.14em;color:var(--acc);margin-bottom:3px}
 nav li a em{display:block;font:italic 12px/1.4 var(--serif);color:var(--dim);margin-top:2px}
+nav .chprog{float:right;font:10px/1.4 var(--mono);color:var(--dim)}
+nav li a.done .cn{color:var(--acc)}
+nav li a.done .chprog{color:var(--acc)}
+nav li a.done .chprog::after{content:" ✓"}
 .prog{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font:11px/1.6 var(--mono);color:var(--dim)}
 .bar{height:5px;border-radius:3px;background:var(--line);margin-top:7px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .25s}
-.tgl{margin-top:16px;font:11px var(--mono);color:var(--dim);background:none;border:1px solid var(--line);
- border-radius:7px;padding:6px 10px;cursor:pointer}
+.navbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tgl,#resetAll{font:11px var(--mono);color:var(--dim);background:none;border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer}
+.phone-jump{display:none}
+.phone-jump select{width:100%;font:13px var(--mono);padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);margin-top:8px}
 
 main{padding:34px 46px 140px;min-width:0}
-@media(max-width:900px){
- .wrap{grid-template-columns:1fr}
- nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:22px}
- main{padding:22px 18px 90px}
-}
 
 section{scroll-margin-top:14px;padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--line)}
 section:last-child{border-bottom:none}
-header.ch{margin-bottom:22px}
+header.ch{margin-bottom:16px}
 .cn-big{font:600 12px/1 var(--mono);letter-spacing:.2em;color:var(--acc)}
 header.ch h2{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:8px 0 8px}
 .chsub{font:italic 17px/1.5 var(--serif);color:var(--mut);margin:0;max-width:60ch}
-.zi{display:inline-block;margin-top:12px;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+.chmeta{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;margin-top:12px}
+.zi{display:inline-block;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;
  color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+.scule{font:12px/1.5 var(--mono);color:var(--mut);max-width:70ch}
+.scule b{color:var(--ink)}
+
+section.locked .chbody{opacity:.4}
+.gatebar{display:flex;gap:14px;align-items:center;justify-content:space-between;background:var(--acc2-s);
+ border:1px solid var(--acc2);border-left:3px solid var(--acc2);border-radius:12px;padding:14px 16px;margin:16px 0}
+.gatebar .gb-txt{font-size:14.5px}
+.gb-skip{flex:none;font:12px var(--mono);color:var(--acc2);background:none;border:1px solid var(--acc2);
+ border-radius:7px;padding:8px 13px;cursor:pointer}
+.skipwarn{background:var(--warn-s);border:1px solid var(--warn);border-left:3px solid var(--warn);
+ border-radius:10px;padding:12px 15px;margin:14px 0;font-size:14px}
+
+details.bon{margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+details.bon>summary{cursor:pointer;padding:14px 16px;font:600 12px/1.3 var(--sans);letter-spacing:.06em;
+ text-transform:uppercase;color:var(--acc);list-style:none}
+details.bon>summary::-webkit-details-marker{display:none}
+details.bon>summary::before{content:"▸ ";color:var(--dim)}
+details.bon[open]>summary::before{content:"▾ "}
+table.bontab{margin:0 16px 14px}
+table.bontab td.bc{width:34px}
 
 h3{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:36px 0 12px}
 h4{font:600 17px/1.35 var(--sans);margin:0 0 8px}
@@ -73,13 +95,15 @@ ol.steps>li:last-child{border-bottom:1px solid var(--line)}
 .stepfig svg{max-height:400px;display:block;margin:0 auto}
 .tick{flex:none;cursor:pointer;padding-top:2px}
 .tick input{position:absolute;opacity:0;width:0;height:0}
-.tick span{display:block;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;transition:.15s}
+.tick span{display:block;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;transition:.15s;background:var(--card)}
 .tick input:checked+span{background:var(--acc);border-color:var(--acc);
  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
  background-size:18px;background-position:center;background-repeat:no-repeat}
-li.done .stepbody{opacity:.45}
+.tick input:disabled+span{opacity:.4}
+.tick.sm span{width:22px;height:22px}
+li.done .stepbody{opacity:.5}
 
-.gate,.stop,.ok,.need,.warn,.why{border-radius:12px;padding:16px 18px;margin:20px 0;font-size:15px}
+.gate,.stop,.ok,.need,.warn,.why,.balustrada{border-radius:12px;padding:16px 18px;margin:20px 0;font-size:15px}
 .gate{background:var(--acc-s);border-left:3px solid var(--acc)}
 .stop{background:var(--acc2-s);border-left:3px solid var(--acc2)}
 .ok{background:var(--acc-s);border:1px solid var(--line);border-left:3px solid var(--acc)}
@@ -87,6 +111,7 @@ li.done .stepbody{opacity:.45}
 .need h4{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
 .need ul{margin:0;padding-left:20px} .need li{margin:4px 0}
 .warn{background:var(--acc2-s);border:1px solid var(--line)}
+.balustrada{background:var(--acc2-s);border:1px solid var(--acc2);border-left:4px solid var(--acc2);font-size:15px}
 .why{background:var(--card);border:1px solid var(--line)}
 .why-inline{font:italic 15px/1.6 var(--serif);color:var(--mut);border-left:2px solid var(--line);padding-left:14px;margin:12px 0}
 .tool{font-size:14.5px;background:var(--warn-s);border-radius:9px;padding:11px 14px}
@@ -97,24 +122,52 @@ table.t th{text-align:left;font:600 10.5px/1 var(--sans);letter-spacing:.13em;te
 table.t td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:baseline}
 table.t .q{font-family:var(--mono);text-align:right;white-space:nowrap}
 table.t td.mono{font-family:var(--mono)}
+
+.chreset{margin-top:30px;padding-top:16px;border-top:1px dashed var(--line)}
+.reset-ch{font:11px var(--mono);color:var(--dim);background:none;border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer}
+.cfm{margin-left:8px;font:12px var(--mono);color:var(--acc2)}
+.cfm button{font:11px var(--mono);border:1px solid var(--line);border-radius:6px;padding:3px 9px;margin-left:4px;cursor:pointer;background:var(--card);color:var(--ink)}
 footer.doc{margin-top:50px;font:12px/1.7 var(--mono);color:var(--dim)}
+
+@media(max-width:720px){
+ .wrap{grid-template-columns:1fr}
+ nav{position:sticky;top:0;z-index:20;height:auto;overflow:visible;border-right:none;border-bottom:1px solid var(--line);padding:12px 16px}
+ nav h1,nav .meta,nav ol,nav .prog{display:none}
+ nav .brand{margin:0}
+ .phone-jump{display:block}
+ main{padding:20px 16px 90px}
+ header.ch h2{font-size:27px}
+ .tick{padding:9px;margin:-9px 0}
+ .tick span{width:26px;height:26px}
+ ol.steps>li{gap:10px}
+ table.bontab{margin:0 8px 12px;font-size:13px}
+}
 </style></head><body>
 <div class="wrap">
 <nav>
  <div class="brand">Casuta din copac</div>
  <h1>Ghid de constructie<br>casa de sus</h1>
  <div class="meta">20 august 2026 · cote in mm<br>geometrie masurata pe santier</div>
- <ol><li><a href="#e0"><span class="cn">E0</span>Scandura care lipseste<em>2–3 ore</em></a></li>
-<li><a href="#e1"><span class="cn">E1</span>Restantele podelei si cioata<em>2–3 ore</em></a></li>
-<li><a href="#e2"><span class="cn">E2</span>Drumul la Leroy<em>o jumatate de zi</em></a></li>
-<li><a href="#e3"><span class="cn">E3</span>Fasiile<em>o dupa-amiaza</em></a></li>
-<li><a href="#e4"><span class="cn">E4</span>Peretele din spate<em>o zi</em></a></li></ol>
- <div class="prog">progres <span id="pt">0 / 0</span><div class="bar"><i id="pb"></i></div></div>
- <button class="tgl" onclick="tt()">lumina / intuneric</button>
+ <label class="phone-jump"><select id="jump"><option value="e0">E0 — Scandura care lipseste</option><option value="e1">E1 — Restantele podelei si cioata</option><option value="e2">E2 — Drumul la Leroy</option><option value="e3">E3 — Peretele din spate</option><option value="e4">E4 — Peretii laterali</option><option value="e5">E5 — Peretele din fata</option><option value="e6">E6 — Acoperisul</option><option value="e7">E7 — Geamurile si verificarea finala</option></select></label>
+ <ol><li><a href="#e0" data-ch="e0"><span class="cn">E0</span>Scandura care lipseste<em>2–3 ore</em><span class="chprog"></span></a></li>
+<li><a href="#e1" data-ch="e1"><span class="cn">E1</span>Restantele podelei si cioata<em>2–3 ore</em><span class="chprog"></span></a></li>
+<li><a href="#e2" data-ch="e2"><span class="cn">E2</span>Drumul la Leroy<em>o jumatate de zi</em><span class="chprog"></span></a></li>
+<li><a href="#e3" data-ch="e3"><span class="cn">E3</span>Peretele din spate<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e4" data-ch="e4"><span class="cn">E4</span>Peretii laterali<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e5" data-ch="e5"><span class="cn">E5</span>Peretele din fata<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e6" data-ch="e6"><span class="cn">E6</span>Acoperisul<em>o zi</em><span class="chprog"></span></a></li>
+<li><a href="#e7" data-ch="e7"><span class="cn">E7</span>Geamurile si verificarea finala<em>o jumatate de zi</em><span class="chprog"></span></a></li></ol>
+ <div class="prog">progres global <span id="pt">0 / 0</span><div class="bar"><i id="pb"></i></div>
+  <div class="navbtns"><button class="tgl" onclick="tt()">lumina / intuneric</button><button id="resetAll" type="button">sterge toate bifele</button></div>
+ </div>
 </nav>
 <main>
-<section id="e0">
-<header class="ch"><div class="cn-big">E0</div><h2>Scandura care lipseste</h2><p class="chsub">Golul de la cele doua colturi din spate. Patru locuri identice.</p><span class="zi">2–3 ore</span></header>
+<section id="e0" data-ch="e0">
+<header class="ch"><div class="cn-big">E0</div><h2>Scandura care lipseste</h2><p class="chsub">Golul de la cele doua colturi din spate. Patru locuri identice.</p>
+<div class="chmeta"><span class="zi">2–3 ore</span><span class="scule"><b>Scule:</b> GSR — gaura pilot 6 mm + suruburile scurte (ambreiaj) · GDR — cele 8×140 in grinda si stalp · fierastrau sabie pentru blocaj</span></div></header>
+
+<div class="chbody">
+
 
 <p class="lead">La ambele colturi din spate, podeaua nu ajunge pana la stalp — ramane un gol de aproximativ <b>100 mm</b>, si sub el nu e nimic. Stalpul e infipt in pamant <em>langa</em> marginea podelei, nu pe ea.</p>
 
@@ -145,10 +198,10 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 </div>
 
 <ol class="steps">
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Doua vincluri pe grinda</h4><p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Blocajul se lasa pe vincluri</h4><p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Suruburi oblice, de sus</h4><p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Scandura de calcat</h4><p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Doua vincluri pe grinda</h4><p>Se prind cu suruburi scurte in <b>grinda groasa de la marginea podelei</b> — aia care tine deja toata puntea. Latura scurta a vinclului iese in gol, orizontala, ca o polita de raft.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Blocajul se lasa pe vincluri</h4><p>Asta e toata ideea: blocajul <b>nu pluteste si nu sta pe nimic de dedesubt</b> — se aseaza pe cele doua polite de metal. Ca o polita de biblioteca pe consolele ei. Se taie pe loc, la masura golului.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Suruburi oblice, de sus</h4><p>Trei suruburi 8×140 oblic in grinda groasa, doua in stalp. Se dau <b>de sus, stand pe punte</b> — nu trebuie sa cobori dedesubt.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Scandura de calcat</h4><p>Ultima piesa, la nivel cu restul podelei. E doar suprafata pe care calci — <b>nu duce nicio greutate</b>.</p></div></li>
 </ol>
 
 <div class="warn">
@@ -157,16 +210,22 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 
 <div class="ok"><b>E bine daca:</b> calci pe el cu toata greutatea si nu se misca, nu scartaie si nu suna a gol. Scandura e la acelasi nivel cu restul podelei.</div>
 
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
 </section>
-<section id="e1">
-<header class="ch"><div class="cn-big">E1</div><h2>Restantele podelei si cioata</h2><p class="chsub">Lucruri mici ramase in urma. Toate se inchid intr-o dimineata.</p><span class="zi">2–3 ore</span></header>
+<section id="e1" data-ch="e1">
+<header class="ch"><div class="cn-big">E1</div><h2>Restantele podelei si cioata</h2><p class="chsub">Lucruri mici ramase in urma. Toate se inchid intr-o dimineata.</p>
+<div class="chmeta"><span class="zi">2–3 ore</span><span class="scule"><b>Scule:</b> GSR — suruburile inox 5×60 (ambreiaj 8–12, T25, NU impact) · fierastrau sabie JR3070CT — cioata</span></div></header>
+
+<div class="chbody">
+
 
 <p class="lead">Trei restante de pe podea, plus decizia cu cioata. Niciuna nu e grea, dar toate blocheaza ceva mai departe.</p>
 
 <ol class="steps">
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Suruburile lipsa de pe scandurile late</h4><p>Pe scandurile late sunt multe gauri pregatite, fara surub. Se completeaza cu <b>surub inox 5×60</b>.</p><p class="tool">Masina: <b>GSR</b>, treapta de ambreiaj <b>8–12</b>, varf <b>T25</b>. <b class="bad">Niciodata cu masina de impact</b> — inoxul e moale, rupe capul si nu-l mai scoti din larice.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Numaratoarea cumparaturilor vechi</h4><p>O data pentru totdeauna: cate <b>coltare C2</b>, suruburi <b>inox 5×60</b>, <b>6×80</b> si <b>6×100</b> au mai ramas. Ce ai deja scade din lista de la E2 — si tot aici afli daca ai cele 8 vincluri pentru E0.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Cioata de 1,5 m → masuta</h4><p>Se retează la <b>600–750</b> si primeste un blat. 10 minute cu fierastraul electric (JR3070CT).</p><p>Motivul e in desen: la 1500, varful ei ajunge la <b>138 mm sub muchia viitoare a acoperisului</b>. Ca butuc te catari greu pe el. Ca masuta devine o treapta plata, la fix — si de acolo se urca pe Onduline, care nu tine greutate. Cadere ~1,9 m pe terasa, iar terasa n-are inca balustrada.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-88.78999999999999 -338.15 483.69 392.59999999999997" style="width:100%;height:auto;display:block"><rect x="-18.6" y="0.0" width="387.5" height="4.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Suruburile lipsa de pe scandurile late</h4><p>Pe scandurile late sunt multe gauri pregatite, fara surub. Se completeaza cu <b>surub inox 5×60</b>.</p><p class="tool">Masina: <b>GSR</b>, treapta de ambreiaj <b>8–12</b>, varf <b>T25</b>. <b class="bad">Niciodata cu masina de impact</b> — inoxul e moale, rupe capul si nu-l mai scoti din larice.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Numaratoarea cumparaturilor vechi</h4><p>O data pentru totdeauna: cate <b>coltare C2</b>, suruburi <b>inox 5×60</b>, <b>6×80</b> si <b>6×100</b> au mai ramas. Ce ai deja scade din lista de la E2 — si tot aici afli daca ai cele 8 vincluri pentru E0.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Cioata de 1,5 m → masuta</h4><p>Se retează la <b>600–750</b> si primeste un blat. 10 minute cu fierastraul electric (JR3070CT).</p><p>Motivul e in desen: la 1500, varful ei ajunge la <b>138 mm sub muchia viitoare a acoperisului</b>. Ca butuc te catari greu pe el. Ca masuta devine o treapta plata, la fix — si de acolo se urca pe Onduline, care nu tine greutate. Cadere ~1,9 m pe terasa, iar terasa n-are inca balustrada.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-88.78999999999999 -338.15 483.69 392.59999999999997" style="width:100%;height:auto;display:block"><rect x="-18.6" y="0.0" width="387.5" height="4.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
 <text x="-17.1" y="23.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="start" font-weight="400">puntea</text>
 <rect x="46.5" y="-248.0" width="13.9" height="248.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
 <rect x="45.7" y="-257.3" width="15.5" height="9.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6"/>
@@ -197,109 +256,76 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 <text x="270.3" y="-57.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 270.3 -57.5)">700 dupa</text>
 <text x="228.6" y="-128.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">masuta</text>
 <text x="228.6" y="23.2" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">taiat la 600–750</text></svg></div></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Scara mobila jos</h4><p>Culcata, intre orice doua zile de lucru. Cat timp sta rezemata, puntea e accesibila copiilor si n-are balustrada.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Scara mobila jos</h4><p>Culcata, intre orice doua zile de lucru. Cat timp sta rezemata, puntea e accesibila copiilor si n-are balustrada.</p></div></li>
 </ol>
 
 <div class="ok"><b>E bine daca:</b> nicio gaura fara surub pe scandurile late · stiu cate piese am pe stoc · cioata e la 600–750 · scara e jos.</div>
 
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
 </section>
-<section id="e2">
-<header class="ch"><div class="cn-big">E2</div><h2>Drumul la Leroy</h2><p class="chsub">Un singur magazin, un singur drum. Colosseum.</p><span class="zi">o jumatate de zi</span></header>
+<section id="e2" data-ch="e2">
+<header class="ch"><div class="cn-big">E2</div><h2>Drumul la Leroy</h2><p class="chsub">Un singur magazin, un singur drum. Colosseum.</p>
+<div class="chmeta"><span class="zi">o jumatate de zi</span></div></header>
+
+<div class="chbody">
+
 
 <p class="lead">Lista completa, cu linkuri si casute de bifat, e in <code>LISTA-LEROY-2026-08-17</code>. Aici e doar ce s-a schimbat si ce trebuie intrebat la fata locului.</p>
 
-<div class="stop">
-<b>Intrebarea care schimba tot:</b> la raionul de lemn — <b>taiati pe lungime?</b> (nu la capat, in lung). Daca da, ceri fasii de 100 mm din dulapii de 46×250 si scapi complet de E3. Daca nu, tai tu acasa, cu ghidaj.
+<div class="gate">
+<b>Decizia de material (20.08):</b> rama tuturor peretilor se face din <b>rigla 48×48×4000, cumparata gata — 13 bucati</b>. Nu se mai taie niciun dulap in lung, nu se mai lamineaza nimic pentru pereti. Panoul din spate scade de la ~50 la <b>~32-41 kg</b> — se ridica mai usor in doi, pe punte fara balustrada.
 </div>
 
 <div class="need">
 <h4>Ce s-a schimbat fata de lista veche</h4>
 <table class="t">
 <tr><th>Articol</th><th>Cat</th><th>De ce</th></tr>
-<tr><td>Dulap nerindeluit 46×250×4000</td><td class="q">5</td><td>inlocuieste cele 20 de scanduri de 22×100 — se taie in lung in fasii de 100, fara laminare</td></tr>
+<tr><td>Rigla 48×48×4000 <b>(nou)</b></td><td class="q">13</td><td>rama tuturor peretilor: talpi, cununi, verticale, contrafise. 29,90 lei/buc = <b>388,70 lei</b></td></tr>
+<tr><td>Scandura 22×100×4000</td><td class="q">6</td><td>era 20; acum <b>doar pentru capriori</b> (raman laminati 44×100). 5 capriori × 1889, doi pe bara → 3 bare = 6 scanduri</td></tr>
 <tr><td>Placa OSB3 12 mm, 2500×1250</td><td class="q">2</td><td>astereala acoperisului; sub 10° Onduline nu accepta sipci</td></tr>
-<tr><td>Lambriu 12,5×96, pachet 2,88 m²</td><td class="q">6</td><td>era 5; peretii laterali sunt mult mai lungi decat in planul vechi</td></tr>
-<tr><td>Rigla 46×46×3000</td><td class="q">10</td><td>era 20; fasiile de rest din dulapi acopera jumatate din verticale</td></tr>
-<tr><td>Vinclu 90×65</td><td class="q">64</td><td>era 52; +8 pentru colturile din spate, +4 la stalpii din fata</td></tr>
-<tr><td>Surub dulgherie 8×140</td><td class="q">36</td><td>era 16; +20 la blocajele de colt</td></tr>
+<tr><td>Lambriu 12,5×96, pachet 2,88 m²</td><td class="q">6</td><td>imbraca toti peretii</td></tr>
+<tr><td>Vinclu 90×65</td><td class="q">64</td><td>colturi, capriori, blocajele din spate, stalpii din fata</td></tr>
+<tr><td>Surub dulgherie 8×140</td><td class="q">36</td><td>peretele din spate in stalpi + blocajele de colt + stalpii din fata</td></tr>
 </table>
+<p class="small">Rigla de <b>46×46×3000</b> ramane pe lista doar pentru <b>tocurile geamurilor si pragurile</b> — verticalele si proptelele au trecut pe rigla de 48×48, deci cantitatea de 46×46 e acum probabil prea mare. Vezi nota din <code>LISTA-LEROY</code>.</p>
 </div>
 
 <div class="gate">
 <b>Ordinea in magazin:</b> intai <b>cuiele de Onduline</b> — la ultima verificare mai era <b>un singur set</b>. Daca s-a dus, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion. Apoi placile: rosu erau 15, maro 153 si mai ieftin cu ~6 lei bucata.
 </div>
 
-<div class="ok"><b>E bine daca:</b> tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj · stii daca taie in lung sau nu.</div>
-
-</section>
-<section id="e3">
-<header class="ch"><div class="cn-big">E3</div><h2>Fasiile</h2><p class="chsub">Din dulapi de 250 ies barele de rama. Se sare peste, daca a taiat magazinul.</p><span class="zi">o dupa-amiaza</span></header>
-
-<p class="lead">Rama peretilor si lemnele acoperisului cer o sectiune de aproximativ <b>46×100</b>. Leroy nu are asa ceva — gama sare de la 46×46 direct la 46×250. Deci o faci din dulapul de 250, taiat in lung.</p>
-
-<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-147 -318 618 490" style="width:100%;height:auto;display:block"><rect x="0.0" y="-287.5" width="52.9" height="287.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<line x1="-16.1" y1="-115.0" x2="69.0" y2="-115.0" stroke="#8a3016" stroke-width="2" stroke-dasharray="7,5" stroke-linecap="round"/>
-<line x1="-16.1" y1="-234.6" x2="69.0" y2="-234.6" stroke="#8a3016" stroke-width="2" stroke-dasharray="7,5" stroke-linecap="round"/>
-<text x="26.4" y="-57.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 26.4 -57.5)">100</text>
-<text x="26.4" y="-174.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 26.4 -174.8)">100</text>
-<text x="26.4" y="-261.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" text-anchor="middle" font-weight="400" transform="rotate(-90 26.4 -261.0)">~42</text>
-<line x1="-26.0" y1="0.0" x2="-26.0" y2="-287.5" stroke="#8a857a" stroke-width="1"/>
-<line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
-<line x1="-31.0" y1="-287.5" x2="-21.0" y2="-287.5" stroke="#8a857a" stroke-width="1"/>
-<text x="-32.0" y="-143.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -143.8)">250</text>
-<line x1="0.0" y1="28.0" x2="52.9" y2="28.0" stroke="#8a857a" stroke-width="1"/>
-<line x1="0.0" y1="23.0" x2="0.0" y2="33.0" stroke="#8a857a" stroke-width="1"/>
-<line x1="52.9" y1="23.0" x2="52.9" y2="33.0" stroke="#8a857a" stroke-width="1"/>
-<text x="26.4" y="21.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">46</text>
-<line x1="69.0" y1="-234.6" x2="109.0" y2="-264.6" stroke="#8a3016" stroke-width="1"/>
-<circle cx="69.0" cy="-234.6" r="2.6" fill="#8a3016"/>
-<text x="114.0" y="-267.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="start" font-weight="400">doua taieturi in lung, cu rigla prinsa cu cleme</text>
-<line x1="69.0" y1="-57.5" x2="109.0" y2="-27.5" stroke="#6b675e" stroke-width="1"/>
-<circle cx="69.0" cy="-57.5" r="2.6" fill="#6b675e"/>
-<text x="114.0" y="-30.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">fasiile de 100 → rama peretilor si capriorii</text>
-<line x1="69.0" y1="-261.0" x2="109.0" y2="-191.0" stroke="#6b675e" stroke-width="1"/>
-<circle cx="69.0" cy="-261.0" r="2.6" fill="#6b675e"/>
-<text x="114.0" y="-194.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">fasia de ~42 → verticale, in loc de rigla 46×46</text>
-<text x="26.4" y="80.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">DULAP 46×250 — sectiune, cum se taie</text>
-<text x="26.4" y="138.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">adancime de taiere 46 mm · circularul taie 65</text></svg><figcaption>Sectiune prin dulap. Doua fasii de 100 pentru rama si capriori, una de ~42 care inlocuieste rigla la verticale.</figcaption></figure>
-
 <ol class="steps">
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Pregatesti ghidajul</h4><p>O rigla dreapta prinsa cu cleme pe dulap, paralela cu marginea, la distanta corecta fata de talpa circularului. <b class="bad">Nu taia din ochi.</b> Patru metri de taietura care fuge cu 3 mm inseamna o fasie de aruncat.</p><p class="tool">Masina: <b>HS7611K</b>, adancime de taiere reglata la ~50 mm.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Doua taieturi per dulap</h4><p>Prima la 100 de la margine, a doua la inca 100. Ce ramane — o fasie de ~42 — nu e rest, e material: are aproape aceeasi sectiune ca rigla de 46×46 si intra la verticale.</p><p><b>5 dulapi × 2 taieturi = 10 taieturi de 4 m.</b> Rezultat: 10 fasii de 100 (9 necesare + 1 rezerva) si 5 fasii de ~42.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Stivuiesti plat si astepti</h4><p>Lemnul masiv taiat in lung <b>elibereaza tensiuni interne</b> si se poate arcui. O fasie de 4 m se misca vizibil in cateva zile.</p><p>Le stivuiesti <b>plat, cu distantieri intre ele</b>, la umbra, si le lasi cateva zile inainte sa le folosesti. Cele care se arcuiesc mai tare le tai in piese scurte — inchideri, praguri — unde arcuirea nu conteaza.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Cei doi dulapi de rezerva ai tai</h4><p>Tot acum, cat ai ghidajul prins: cele doua bare de <b>200×50×4000</b> ramase se taie in lung in <b>3 fasii de ~65×50</b> fiecare. Ies 6 fasii, ~24 m — inca material pentru verticale.</p><p class="small">Sugestie: taie <b>una singura</b> intai si vezi cum se comporta. A doua o lasi intreaga — e singura ta rezerva de sectiune mare daca se rupe ceva.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Cele 13 rigle de 48×48</h4><p>Rama tuturor peretilor. Le numeri inainte sa pleci — sunt piesa noua, e usor sa le uiti.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Cuiele de Onduline, primele</h4><p>Mai era un singur set. Daca s-a dus, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Restul listei, bifat la casa</h4><p>Tot ce e in <code>LISTA-LEROY-2026-08-17</code>, cu masuratorile M2–M5 facute inainte (lambriul se ia pe masuratori reale).</p></div></li>
 </ol>
 
-<div class="ok"><b>E bine daca:</b> ai 10 fasii de 100 drepte si de aceeasi latime · sunt stivuite plat, la umbra · fasiile de rest sunt puse deoparte, nu aruncate.</div>
+<div class="ok"><b>E bine daca:</b> cele 13 rigle de 48×48 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
 
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
 </section>
-<section id="e4">
-<header class="ch"><div class="cn-big">E4</div><h2>Peretele din spate</h2><p class="chsub">Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.</p><span class="zi">o zi</span></header>
+<section id="e3" data-ch="e3">
+<header class="ch"><div class="cn-big">E3</div><h2>Peretele din spate</h2><p class="chsub">Singurul perete care se face complet jos, pe iarba. Dupa ridicare nu mai ajungi la el.</p>
+<div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla si dulapul la lungime · GSR — gauri pilot 4 mm + suruburile · GDR — cele 8×140 in stalpi · doi oameni la ridicare</span></div></header>
+<div class="gatebar" data-gate="e0"><div class="gb-txt"><b>Blocat de E0.</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa intre. Dupa ce peretele e ridicat, la coltul ala nu se mai ajunge niciodata. Deci golul din colt (E0) se inchide inainte.</div><button class="gb-skip" type="button">sar peste</button></div><div class="skipwarn" style="display:none"><b>Ai sarit peste blocajul E0.</b> talpa peretelui din spate se prinde prin podea, in grinzile de dedesubt, la fiecare 40 cm. Exact la colturi nu are in ce sa intre. Dupa ce peretele e ridicat, la coltul ala nu se mai ajunge niciodata. Deci golul din colt (E0) se inchide inainte.</div>
+<div class="chbody">
+<details class="bon"><summary>Bon de taiere — 5 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Talpa + cununa</td><td>rigla 48×48</td><td class="mono">1990</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Verticale</td><td>rigla 48×48</td><td class="mono">1604</td><td class="q">5</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Contrafise colturi</td><td>rigla 48×48 (rest)</td><td class="mono">2× 424 jos · 2× 212 sus</td><td class="q">4</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Reazemul din spate</td><td>dulap 200×50 (il ai)</td><td class="mono">2200</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Lambriu</td><td>12,5×96</td><td class="mono">randuri de ~1990</td><td class="q">~4,3 m²</td></tr></table></details>
 
-<p class="lead">Intre peretele din spate si gard raman <b>30 cm</b>. Ce nu e gata cand il ridici — scanduri, vopsea, suruburi — ramane asa pentru totdeauna. De asta se face complet jos.</p>
+<p class="lead">Intre peretele din spate si gard raman <b>30 cm</b>. Ce nu e gata cand il ridici — scanduri, vopsea, suruburi — ramane asa pentru totdeauna. De asta se face complet jos, pe iarba, si abia apoi se urca pe punte.</p>
 
-<h3>Ce tai</h3>
-<table class="t">
-<tr><th>Piesa</th><th>Din ce</th><th>Taiat la</th><th class="q">Buc</th></tr>
-<tr><td>Talpa + cununa</td><td>fasie 46×100</td><td class="mono">1990</td><td class="q">2</td></tr>
-<tr><td>Lemnele verticale</td><td>rigla 46×46 sau fasie de rest</td><td class="mono">1608</td><td class="q">5</td></tr>
-<tr><td>Proptelele din colturi</td><td>rigla 46×46</td><td class="mono">2× 424 (jos) + 2× 212 (sus)</td><td class="q">4</td></tr>
-<tr><td>Scandurile (lambriul)</td><td>12,5×96</td><td class="mono">randuri de ~1990</td><td class="q">~4,3 m²</td></tr>
-</table>
-<p class="why-inline"><b>1990</b> = distanta libera masurata intre stalpii de 4 m (1995) minus 5 mm joc de montaj. Peretele se strecoara <em>intre</em> stalpi — la cota exacta nu intra.<br>
-<b>1608</b> = 1700 minus cele doua talpi de 46. Peretele trebuie sa iasa exact 1700, ca scandura groasa de deasupra sa calce si pe el, si pe capetele stalpilor.</p>
-
-<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-76 -368 454 458" style="width:100%;height:auto;display:block"><rect x="0.0" y="-6.2" width="268.7" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="0.0" y="-229.5" width="268.7" height="6.2" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="0.0" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="64.1" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="131.2" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="198.3" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="262.4" y="-223.3" width="6.2" height="217.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<line x1="46.7" y1="-6.2" x2="6.2" y2="-46.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
-<line x1="221.9" y1="-6.2" x2="262.4" y2="-46.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
-<line x1="26.5" y1="-223.3" x2="6.2" y2="-203.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
-<line x1="242.2" y1="-223.3" x2="262.4" y2="-203.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-76 -368 454 458" style="width:100%;height:auto;display:block"><rect x="0.0" y="-6.5" width="268.7" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-229.5" width="268.7" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-223.0" width="6.2" height="216.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="64.1" y="-223.0" width="6.2" height="216.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="131.2" y="-223.0" width="6.2" height="216.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="198.3" y="-223.0" width="6.2" height="216.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="262.4" y="-223.0" width="6.2" height="216.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="46.7" y1="-6.5" x2="6.2" y2="-47.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="221.9" y1="-6.5" x2="262.4" y2="-47.0" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="26.5" y1="-223.0" x2="6.2" y2="-202.8" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="242.2" y1="-223.0" x2="262.4" y2="-202.8" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
 <line x1="0.0" y1="26.0" x2="67.2" y2="26.0" stroke="#8a857a" stroke-width="1"/>
 <line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
 <line x1="67.2" y1="21.0" x2="67.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
@@ -324,30 +350,30 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 <line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
 <line x1="-31.0" y1="-229.5" x2="-21.0" y2="-229.5" stroke="#8a857a" stroke-width="1"/>
 <text x="-32.0" y="-114.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -114.8)">1700</text>
-<line x1="294.7" y1="-6.2" x2="294.7" y2="-223.3" stroke="#14532d" stroke-width="1"/>
-<line x1="289.7" y1="-6.2" x2="299.7" y2="-6.2" stroke="#14532d" stroke-width="1"/>
-<line x1="289.7" y1="-223.3" x2="299.7" y2="-223.3" stroke="#14532d" stroke-width="1"/>
-<text x="288.7" y="-114.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 288.7 -114.8)">verticale 1608 ×5</text>
+<line x1="294.7" y1="-6.5" x2="294.7" y2="-223.0" stroke="#14532d" stroke-width="1"/>
+<line x1="289.7" y1="-6.5" x2="299.7" y2="-6.5" stroke="#14532d" stroke-width="1"/>
+<line x1="289.7" y1="-223.0" x2="299.7" y2="-223.0" stroke="#14532d" stroke-width="1"/>
+<text x="288.7" y="-114.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 288.7 -114.8)">verticale 1604 ×5</text>
 <text x="134.3" y="-324.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE SPATE — vazut din exterior</text>
-<line x1="26.5" y1="-26.5" x2="86.5" y2="-56.5" stroke="#14532d" stroke-width="1"/>
-<circle cx="26.5" cy="-26.5" r="2.6" fill="#14532d"/>
-<text x="91.5" y="-59.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">proptea jos: brate 300 (424)</text>
-<line x1="252.3" y1="-213.2" x2="192.3" y2="-253.2" stroke="#14532d" stroke-width="1"/>
-<circle cx="252.3" cy="-213.2" r="2.6" fill="#14532d"/>
-<text x="187.3" y="-256.2" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="end" font-weight="400">proptea sus: brate 150 (212)</text></svg><figcaption>Elevatie la scara, din exterior. Verticalele la ~498, proptele lungi jos si scurte sus.</figcaption></figure>
+<line x1="26.5" y1="-26.7" x2="86.5" y2="-56.7" stroke="#14532d" stroke-width="1"/>
+<circle cx="26.5" cy="-26.7" r="2.6" fill="#14532d"/>
+<text x="91.5" y="-59.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">proptea jos: brate 300 (424)</text>
+<line x1="252.3" y1="-212.9" x2="192.3" y2="-252.9" stroke="#14532d" stroke-width="1"/>
+<circle cx="252.3" cy="-212.9" r="2.6" fill="#14532d"/>
+<text x="187.3" y="-255.9" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="end" font-weight="400">proptea sus: brate 150 (212)</text></svg><figcaption>Elevatie la scara, din exterior. Cinci verticale de 1604, talpa si cununa de 1990, proptele in colturi.</figcaption></figure>
 
 <ol class="steps">
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Rama pe iarba</h4><p>Talpa si cununa paralele. Insemnezi pe <b>amandoua</b> unde vin verticalele: <span class="mono">0 · 498 · 995 · 1493 · 1990</span>.</p><p>Prinzi cele 5 verticale cu cate 2 suruburi prin talpa si 2 prin cununa, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Diagonalele — inainte de orice altceva</h4><p>Masori ambele diagonale ale ramei. Trebuie sa fie egale, <b>voie 3 mm</b>. Corectezi acum, impingand de colturi.</p><p class="why-inline">Proptelele ingheata forma exact cum o gasesc. Daca rama e stramba cand le pui, ramane stramba, si se vede la lambriu.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Proptelele</h4><p>Jos cele de 424, sus cele de 212. Cate 2 suruburi 6×120 la fiecare capat.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Vopsea, apoi scandurile</h4><p>Vopsea de protectie pe <b>toate fetele</b> scandurilor, inclusiv cele care nu se mai vad niciodata. Apoi lambriul, cat peretele e culcat: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</p></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Ridicarea — pasul periculos</h4><p>Panoul are <b>2,0 × 1,7 m</b> si cantareste <b>~50 kg</b> cu lambriu si vopsea. Trebuie sa ajunga de pe iarba pe punte, la <b>2,2 m</b>. Puntea nu are inca balustrada.</p><ul><li><b>Zi fara vant.</b> Panoul e o suprafata de vela de 3,4 m².</li><li><b>Doi adulti.</b> Unul jos impinge, unul sus trage. Nu se face singur.</li><li><b>Doua scanduri ca rampa</b>, sprijinite de marginea puntii. Panoul urca pe cant, alunecand, nu ridicat pe brate.</li><li><b>O franghie</b> legata de stalpul de 4 m si de rama. Daca scapa, nu pleaca peste margine.</li><li><b>Copiii nu sunt pe punte</b> si nu sunt sub panou.</li></ul><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-254.29999999999998 -334.464 803.16 422.624" style="width:100%;height:auto;display:block"><rect x="-120.9" y="0.0" width="479.7" height="4.7" fill="#b9b2a3" stroke="none" stroke-width="1.6"/>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Rama pe iarba</h4><p>Talpa si cununa (rigla 48×48, taiate la <b>1990</b>) paralele. Insemnezi pe amandoua unde vin cele 5 verticale: <span class="mono">0 · 498 · 995 · 1493 · 1990</span>.</p><p>Verticalele sunt rigla 48×48 taiata la <b>1604</b> (= 1700 − doua talpi de 48). Le prinzi cu cate 2 suruburi prin talpa si 2 prin cununa, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Diagonalele — inainte de orice altceva</h4><p>Masori ambele diagonale ale ramei. Trebuie egale, <b>voie 3 mm</b>. Corectezi acum, impingand de colturi.</p><p class="why-inline">Proptelele ingheata forma exact cum o gasesc. Daca rama e stramba cand le pui, ramane stramba, si se vede la lambriu.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Proptelele din colturi</h4><p>Din restul de rigla 48×48: jos brate de 300 (taiate la <b>424</b> pe diagonala), sus brate de 150 (taiate la <b>212</b>). Cate 2 suruburi 6×120 la fiecare capat.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea, apoi lambriul</h4><p>Vopsea de protectie pe <b>toate fetele</b> scandurilor, inclusiv cele care nu se mai vad niciodata. Apoi lambriul, cat peretele e culcat: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Ridicarea — pasul periculos</h4><p>Panoul cantareste <b>~32-41 kg</b> cu lambriu si vopsea. Trebuie sa ajunga de pe iarba pe punte, la <b>2,2 m</b>. Puntea <b>nu are balustrada</b> — margine libera pe toate laturile, tot capitolul.</p><ul><li><b>Zi fara vant.</b> Panoul e o suprafata de vela de 3,4 m².</li><li><b>Doi adulti,</b> nu unul.</li><li>Panoul urca <b>culcat, pe muchia lunga</b>, sprijinit pe marginea puntii, apoi se roteste in picioare pe punte.</li><li>Se <b>leaga provizoriu de stalpi</b> inainte sa i se dea drumul din maini.</li><li><b>Copiii nu sunt pe punte</b> si nu sunt sub panou.</li></ul><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-254.29999999999998 -334.464 803.16 422.624" style="width:100%;height:auto;display:block"><rect x="-120.9" y="0.0" width="479.7" height="4.7" fill="#b9b2a3" stroke="none" stroke-width="1.6"/>
 <rect x="175.5" y="-173.8" width="7.8" height="173.8" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
 <rect x="319.8" y="-173.8" width="7.8" height="173.8" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
 <rect x="167.7" y="-173.8" width="167.7" height="5.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.6"/>
 <rect x="175.5" y="-306.4" width="7.8" height="132.6" fill="#c4b696" stroke="#1c1b18" stroke-width="1.6"/>
 <polygon points="-97.5,-4.7 167.7,-173.8 167.7,-164.4 -97.5,4.7" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.6" stroke-linejoin="round"/>
-<g transform="translate(35.1 -102.5) rotate(-32.5)"><rect x="-92" y="-17" width="184" height="34" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.8"/><text x="0" y="5.5" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#1c1b18" text-anchor="middle">panoul ~50 kg</text></g>
+<g transform="translate(35.1 -102.5) rotate(-32.5)"><rect x="-92" y="-17" width="184" height="34" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.8"/><text x="0" y="5.5" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#1c1b18" text-anchor="middle">panoul ~32-41 kg</text></g>
 <path d="M 179.4 -275.2 Q 132.6 -193.3 35.1 -102.5" fill="none" stroke="#8a3016" stroke-width="2.2" stroke-dasharray="8,6" stroke-linecap="round"/>
 <circle cx="-70.2" cy="-36.7" r="10" fill="#6f7683"/>
 <line x1="-70.2" y1="-26.7" x2="-70.2" y2="-7.7" stroke="#6f7683" stroke-width="3.4" stroke-linecap="round"/>
@@ -360,12 +386,12 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 <text x="191.1" y="-295.5" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="start" font-weight="400">franghie legata de stalpul de 4 m si de rama</text>
 <text x="191.1" y="-283.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">daca scapa, nu pleaca peste margine</text>
 <text x="93.6" y="56.2" font-family="ui-monospace,Menlo,monospace" font-size="15" fill="#8a3016" text-anchor="middle" font-weight="700">zi fara vant  ·  2 adulti  ·  copiii nu sunt pe punte si nu sunt sub panou</text></svg></div></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Prinderea de stalpi</h4><p><b>4 suruburi de dulgherie 8×140</b> pe fiecare capat, in stalpii de 4 m: unul jos, doua pe mijloc, unul sus. <b>Gaura de 6 mm data inainte in stalp.</b></p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-426 -576 731 713" style="width:100%;height:auto;display:block"><rect x="0.0" y="-510.0" width="30.0" height="510.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Prinderea de stalpi</h4><p><b>4 suruburi de dulgherie 8×140</b> pe fiecare capat, in stalpii de 4 m: unul jos, doua pe mijloc, unul sus. <b>Gaura de 6 mm data inainte in stalp.</b></p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-426 -576 731 713" style="width:100%;height:auto;display:block"><rect x="0.0" y="-510.0" width="30.0" height="510.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
 <text x="15.0" y="-534.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">stalp de 4 m</text>
-<rect x="30.0" y="-496.2" width="13.8" height="482.4" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
-<text x="36.9" y="-270.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" text-anchor="middle" font-weight="400" transform="rotate(-90 36.9 -270.0)">verticala de capat</text>
-<rect x="30.0" y="-13.8" width="126.0" height="13.8" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
-<rect x="30.0" y="-510.0" width="126.0" height="13.8" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="30.0" y="-495.6" width="14.4" height="481.2" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="37.2" y="-270.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" text-anchor="middle" font-weight="400" transform="rotate(-90 37.2 -270.0)">verticala de capat · rigla 48</text>
+<rect x="30.0" y="-14.4" width="126.0" height="14.4" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="30.0" y="-510.0" width="126.0" height="14.4" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
 <line x1="43.8" y1="-45.0" x2="6.0" y2="-45.0" stroke="#6f7683" stroke-width="2.6" stroke-linecap="round"/>
 <line x1="12.0" y1="-40.8" x2="6.0" y2="-45.0" stroke="#6f7683" stroke-width="2.6" stroke-linecap="round"/>
 <line x1="12.0" y1="-49.2" x2="6.0" y2="-45.0" stroke="#6f7683" stroke-width="2.6" stroke-linecap="round"/>
@@ -384,51 +410,430 @@ Nicio poza din proiect nu arata stalpul, marginea podelei si golul dintre ele in
 <line x1="15.0" y1="-45.0" x2="-25.0" y2="105.0" stroke="#8a3016" stroke-width="1"/>
 <circle cx="15.0" cy="-45.0" r="2.6" fill="#8a3016"/>
 <text x="-30.0" y="102.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="end" font-weight="400">gaura de 6 mm data inainte in stalp — altfel crapa</text>
-<line x1="192.0" y1="-13.8" x2="192.0" y2="-496.2" stroke="#8a857a" stroke-width="1"/>
-<line x1="187.0" y1="-13.8" x2="197.0" y2="-13.8" stroke="#8a857a" stroke-width="1"/>
-<line x1="187.0" y1="-496.2" x2="197.0" y2="-496.2" stroke="#8a857a" stroke-width="1"/>
-<text x="186.0" y="-255.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 186.0 -255.0)">1608</text>
+<line x1="192.0" y1="-14.4" x2="192.0" y2="-495.6" stroke="#8a857a" stroke-width="1"/>
+<line x1="187.0" y1="-14.4" x2="197.0" y2="-14.4" stroke="#8a857a" stroke-width="1"/>
+<line x1="187.0" y1="-495.6" x2="197.0" y2="-495.6" stroke="#8a857a" stroke-width="1"/>
+<text x="186.0" y="-255.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 186.0 -255.0)">1604</text>
 <text x="90.0" y="96.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">PRINDEREA PERETELUI DIN SPATE IN STALP — elevatie</text></svg></div></div></li>
-<li><label class="tick"><input type="checkbox"><span></span></label><div class="stepbody"><h4>Talpa in grinzi</h4><p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p><p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. Tot ce se prinde de podea trebuie sa intre in grinda de dedesubt. La colturile din spate, in blocajele facute la E0.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Reazemul din spate</h4><p>Dulapul de <b>200×50</b> (il ai deja), taiat la <b>2200</b>, se aseaza <b>pe muchie, cu 200 in sus</b>, peste cununa peretelui SI peste capetele stalpilor — ambele la 1700 — ca sa faca un reazem continuu la <b>1900</b>. Fixat cu <b>vinclu 90×65 pe ambele fete, la ~500 mm</b> + o placa metalica pe fiecare stalp.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-261 -414 849 511" style="width:100%;height:auto;display:block"><rect x="0.0" y="-289.0" width="17.0" height="289.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="8.5" y="-144.5" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#6b675e" text-anchor="middle" font-weight="400" transform="rotate(-90 8.5 -144.5)">stalp spate · 1700</text>
+<rect x="4.2" y="-323.0" width="8.5" height="34.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="8.5" y="-306.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" text-anchor="middle" font-weight="400" transform="rotate(-90 8.5 -306.0)">200</text>
+<line x1="4.2" y1="-337.0" x2="12.8" y2="-337.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="4.2" y1="-342.0" x2="4.2" y2="-332.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="12.8" y1="-342.0" x2="12.8" y2="-332.0" stroke="#8a857a" stroke-width="1"/>
+<text x="8.5" y="-344.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">50</text>
+<line x1="-26.0" y1="0.0" x2="-26.0" y2="-289.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="-289.0" x2="-21.0" y2="-289.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-32.0" y="-144.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -144.5)">1700</text>
+<line x1="43.0" y1="0.0" x2="43.0" y2="-323.0" stroke="#14532d" stroke-width="1"/>
+<line x1="38.0" y1="0.0" x2="48.0" y2="0.0" stroke="#14532d" stroke-width="1"/>
+<line x1="38.0" y1="-323.0" x2="48.0" y2="-323.0" stroke="#14532d" stroke-width="1"/>
+<text x="37.0" y="-161.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 37.0 -161.5)">1900  reazem</text>
+<line x1="12.8" y1="-323.0" x2="92.8" y2="-369.0" stroke="#14532d" stroke-width="1"/>
+<circle cx="12.8" cy="-323.0" r="2.6" fill="#14532d"/>
+<text x="97.8" y="-372.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">dulap 200×50 · pe muchie, 200 in sus · taiat la 2200</text>
+<line x1="12.8" y1="-295.8" x2="107.8" y2="-225.8" stroke="#6b675e" stroke-width="1"/>
+<circle cx="12.8" cy="-295.8" r="2.6" fill="#6b675e"/>
+<text x="112.8" y="-228.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="start" font-weight="400">calca pe cununa peretelui (1700) SI pe capetele stalpilor (1700)</text>
+<text x="8.5" y="51.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">REAZEMUL DIN SPATE — dulapul de 200×50, cum se aseaza</text>
+<text x="8.5" y="62.9" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">o singura bara, taiata la 2200, pe muchie · nimic altceva nu se face din ea</text></svg></div></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Talpa in grinzi</h4><p>Prin podea, in grinzile de dedesubt: <b>surub 6×140 la fiecare 40 cm</b>, pe liniile trase cu creta. Plus coltare metalice pe interior.</p><p class="why-inline">Scandurile podelei au doar 28 mm — nu tin nimic singure. La colturile din spate, talpa se prinde in <b>blocajele facute la E0</b>. De aia E0 e obligatoriu inainte.</p></div></li>
 </ol>
 
-<div class="ok"><b>E bine daca:</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · talpa prinsa in grinzi pe toata lungimea, inclusiv la colturi · scandurile complete si vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
+<div class="ok"><b>E bine daca:</b> diagonalele au fost egale la asamblare · 8 suruburi groase in stalpi · reazemul de 200×50 calca si pe cununa si pe stalpi · talpa prinsa in grinzi pe toata lungimea, inclusiv la colturi · scandurile complete si vopsite pe toate fetele · peretele nu atinge gardul nicaieri.</div>
 
-<div class="gate"><b>Urmeaza:</b> peretii laterali, tot pe punte. Dar aia e alt capitol — ghidul asta se opreste aici, ca sa vedem intai daca formatul e bun.</div>
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
+</section>
+<section id="e4" data-ch="e4">
+<header class="ch"><div class="cn-big">E4</div><h2>Peretii laterali</h2><p class="chsub">Doi pereti, fiecare pe cota lui. Se asambleaza pe punte — sunt prea lungi ca sa fie urcati gata.</p>
+<div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla la lungime · GSR — gauri pilot + suruburi + tocul geamului · fierastrau vertical PST 700 E — golul de geam</span></div></header>
 
+<div class="chbody">
+<details class="bon"><summary>Bon de taiere — 8 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Talpa</td><td>rigla 48×48</td><td class="mono">1580 stanga · 1570 dreapta</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Cununa inclinata</td><td>rigla 48×48</td><td class="mono">1596 stanga · 1586 dreapta</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Verticale</td><td>rigla 48×48</td><td class="mono">1573 · 1645 · 1722 · 1794</td><td class="q">4 / perete</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Prag + buiandrug geam</td><td>rigla 48×48 (rest)</td><td class="mono">intre verticalele golului</td><td class="q">2 / perete</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Contrafise</td><td>rigla 48×48 (rest)</td><td class="mono">4× 212 (brat 150)</td><td class="q">4 / perete</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Toc geam</td><td>rigla 46×46</td><td class="mono">gol 490 · geam 440×440</td><td class="q">1 / perete</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Geam fix</td><td>plexi 4 mm</td><td class="mono">440×440</td><td class="q">2 total</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Lambriu</td><td>12,5×96</td><td class="mono">randuri</td><td class="q">~m²</td></tr></table></details>
+
+<p class="lead">Cununa e inclinata — acoperisul urca spre spate — deci fiecare din cele 4 verticale are alta lungime. Cele doua laterale difera intre ele cu 10 mm: nu le taia dupa acelasi tipar.</p>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-165 -393 543 539" style="width:100%;height:auto;display:block"><rect x="0.0" y="-6.5" width="213.3" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<polygon points="0.0,-218.5 213.3,-249.0 213.3,-255.5 0.0,-225.0" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5" stroke-linejoin="round"/>
+<rect x="0.0" y="-219.0" width="6.5" height="212.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.3" y="-229.5" width="6.5" height="223.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="139.5" y="-238.9" width="6.5" height="232.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="206.8" y="-248.6" width="6.5" height="242.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-128.2" width="66.2" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-200.9" width="66.2" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="73.6" y="-194.4" width="66.2" height="66.2" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<text x="106.7" y="-161.3" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="600">GOL 490×490</text>
+<line x1="26.5" y1="-6.5" x2="6.2" y2="-26.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="186.8" y1="-6.5" x2="207.1" y2="-26.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="26.5" y1="-220.8" x2="6.2" y2="-200.6" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="186.8" y1="-246.7" x2="207.1" y2="-226.5" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="0.0" y1="26.0" x2="73.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="73.6" y1="21.0" x2="73.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="36.8" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">545</text>
+<line x1="73.6" y1="26.0" x2="139.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="73.6" y1="21.0" x2="73.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="139.7" y1="21.0" x2="139.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="106.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">490</text>
+<line x1="139.7" y1="26.0" x2="213.3" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="139.7" y1="21.0" x2="139.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="213.3" y1="21.0" x2="213.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="176.5" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">545</text>
+<line x1="0.0" y1="54.0" x2="213.3" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="49.0" x2="0.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="213.3" y1="49.0" x2="213.3" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="106.7" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">talpa 1580  —  cealalta laterala e 1570</text>
+<line x1="-26.0" y1="0.0" x2="-26.0" y2="-225.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="0.0" x2="-21.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-31.0" y1="-225.0" x2="-21.0" y2="-225.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-32.0" y="-112.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -32.0 -112.5)">1666 in fata</text>
+<line x1="239.3" y1="0.0" x2="239.3" y2="-255.5" stroke="#8a857a" stroke-width="1"/>
+<line x1="234.3" y1="0.0" x2="244.3" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="234.3" y1="-255.5" x2="244.3" y2="-255.5" stroke="#8a857a" stroke-width="1"/>
+<text x="233.3" y="-127.8" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 233.3 -127.8)">1893 in spate</text>
+<line x1="47.6" y1="0.0" x2="47.6" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<line x1="42.6" y1="0.0" x2="52.6" y2="0.0" stroke="#14532d" stroke-width="1"/>
+<line x1="42.6" y1="-128.2" x2="52.6" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<text x="41.6" y="-64.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 41.6 -64.1)">prag 950</text>
+<text x="106.7" y="-350.0" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE LATERAL — din exterior · FATA in stanga, SPATE in dreapta</text>
+<text x="106.7" y="110.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="400">verticale, de la fata spre spate:  1573 · 1645 · 1722 · 1794</text></svg><figcaption>Elevatie la scara. Fata in stanga (mai jos), spate in dreapta (mai sus). Golul de geam centrat, 490×490, prag la 950.</figcaption></figure>
+
+<div class="gate"><b>Dreptunghiul casei nu e la echer</b> — e in afara cu ~20 mm. De aceea peretii sunt trapeze usoare, iar <b>fiecare talpa se taie la fata locului</b>, dupa masura reala dintre stalpi, nu din tabel.</div>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Rama, pe punte</h4><p>Talpa (rigla 48×48): <b>1580</b> pe latura din stanga (S1–S3), <b>1570</b> pe dreapta (S2–S4). Cununa inclinata: <b>1596</b> stanga, <b>1586</b> dreapta.</p><p>Cele 4 verticale, dinspre fata spre spate: <b>1573 · 1645 · 1722 · 1794</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · 543 · 1033 · pana la capat</span>.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Golul de geam</h4><p>Centrat: <b>543 camp · 490 gol · 542 camp</b> (campurile se ajusteaza la talpa reala; golul ramane 490). Intre verticalele de la 543 si 1033 pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Echerul si contrafisele</h4><p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×120 la capat.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea si lambriu</h4><p>Vopsea pe toate fetele, apoi lambriul — la fel ca la spate. Golul de geam ramane liber.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Tocul geamului</h4><p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E7, din exterior.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Prinderea peretelui</h4><p>Talpa in grinzile de dedesubt: <b>6×140 la fiecare 40 cm</b>. La colturi, unde se intalneste cu peretele din spate si cu cel din fata: cate <b>2 vincluri 100×90 pe colt</b>.</p></div></li>
+</ol>
+
+<div class="ok"><b>E bine daca:</b> ambele laterale stau la echer pe podea · golul de geam e 490 curat, cu prag la 950 · contrafise in toate colturile · talpa prinsa in grinzi si colturile in vincluri.</div>
+
+<div class="warn"><p>Al doilea perete lateral are <b>alte cote</b> (talpa 1570, cununa 1586). Nu-l taia dupa primul — masoara-l separat pe latura lui.</p></div>
+
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
+</section>
+<section id="e5" data-ch="e5">
+<header class="ch"><div class="cn-big">E5</div><h2>Peretele din fata</h2><p class="chsub">Peretele cu usa si fereastra. Doua lucruri se fac altfel: bara de sus e solida, iar usa se taie la final.</p>
+<div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — rigla si bara de sus 100×60 · GSR — gauri pilot + suruburile oblice · fierastrau sabie — taierea talpii la usa, la final</span></div></header>
+
+<div class="chbody">
+<details class="bon"><summary>Bon de taiere — 8 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Talpa (intreaga)</td><td>rigla 48×48</td><td class="mono">1970</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Verticale (jambe + montanti)</td><td>rigla 48×48</td><td class="mono">1552</td><td class="q">5</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Prag + buiandrug fereastra</td><td>rigla 48×48 (rest)</td><td class="mono">570, intre jambe</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Bara de sus</td><td>bara solida 100×60 (o ai)</td><td class="mono">2155</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Contrafise sus</td><td>rigla 48×48 (rest)</td><td class="mono">2× 212 (brat 150)</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Contrafisa jos-dreapta</td><td>rigla 48×48 (rest)</td><td class="mono">~350 (brat 250)</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Fereastra</td><td>PVC 56×56 (cumparata)</td><td class="mono">—</td><td class="q">1</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Lambriu</td><td>12,5×96</td><td class="mono">randuri, fara zona usii</td><td class="q">~m²</td></tr></table></details>
+
+<p class="lead">Are doua lucruri care nu mai apar nicaieri: lemnul de sus e o <b>bara solida</b>, nu o rama, iar golul de usa se taie <b>la final</b>, dupa ce peretele e ridicat si legat — altfel isi pierde rigiditatea la transport.</p>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-109 -415 464 561" style="width:100%;height:auto;display:block"><rect x="-12.2" y="-216.0" width="12.2" height="216.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="266.0" y="-216.0" width="12.2" height="216.0" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="-12.2" y="-224.1" width="290.9" height="8.1" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="0.0" y="-6.5" width="266.0" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="15.5" y="-216.0" width="6.2" height="209.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="98.7" y="-216.0" width="6.2" height="209.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="120.4" y="-216.0" width="6.2" height="209.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="200.9" y="-216.0" width="6.2" height="209.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="222.8" y="-216.0" width="6.2" height="209.5" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-128.2" width="77.0" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-211.7" width="77.0" height="6.5" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="21.7" y="-205.2" width="77.0" height="77.0" fill="#d7e6e8" stroke="#14532d" stroke-width="1.5"/>
+<text x="60.2" y="-166.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#14532d" text-anchor="middle" font-weight="600">GOL 570</text>
+<rect x="126.6" y="-216.0" width="74.2" height="216.0" fill="#f7f3ea" stroke="#8a3016" stroke-width="1.5"/>
+<text x="163.8" y="-108.0" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#8a3016" text-anchor="middle" font-weight="600">USA 550</text>
+<text x="163.8" y="-86.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="middle" font-weight="400">liber 1600</text>
+<line x1="232.2" y1="-6.5" x2="266.0" y2="-40.2" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="20.2" y1="-6.5" x2="0.0" y2="-26.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="245.7" y1="-6.5" x2="266.0" y2="-26.7" stroke="#14532d" stroke-width="4" stroke-linecap="round"/>
+<line x1="0.0" y1="26.0" x2="21.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="21.0" x2="0.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="21.7" y1="21.0" x2="21.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="10.9" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">161</text>
+<line x1="21.7" y1="26.0" x2="98.7" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="21.7" y1="21.0" x2="21.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="98.7" y1="21.0" x2="98.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="60.2" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">570</text>
+<line x1="98.7" y1="26.0" x2="126.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="98.7" y1="21.0" x2="98.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.6" y1="21.0" x2="126.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="112.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">207</text>
+<line x1="126.6" y1="26.0" x2="200.9" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.6" y1="21.0" x2="126.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="200.9" y1="21.0" x2="200.9" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="163.8" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">550</text>
+<line x1="200.9" y1="26.0" x2="266.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="200.9" y1="21.0" x2="200.9" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="266.0" y1="21.0" x2="266.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="233.4" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a857a" text-anchor="middle" font-weight="400">482</text>
+<line x1="0.0" y1="54.0" x2="266.0" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="49.0" x2="0.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="266.0" y1="49.0" x2="266.0" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="133.0" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">rama 1970  =  lumina masurata 1975 − 5</text>
+<line x1="-12.2" y1="-254.1" x2="278.1" y2="-254.1" stroke="#14532d" stroke-width="1"/>
+<line x1="-12.2" y1="-259.1" x2="-12.2" y2="-249.1" stroke="#14532d" stroke-width="1"/>
+<line x1="278.1" y1="-259.1" x2="278.1" y2="-249.1" stroke="#14532d" stroke-width="1"/>
+<text x="133.0" y="-261.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400">bara de sus 100×60  ×  2155  — calca pe amandoi stalpii</text>
+<line x1="-38.1" y1="0.0" x2="-38.1" y2="-216.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-43.1" y1="0.0" x2="-33.1" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-43.1" y1="-216.0" x2="-33.1" y2="-216.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-44.1" y="-108.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -44.1 -108.0)">1600 stalp</text>
+<line x1="-4.3" y1="0.0" x2="-4.3" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<line x1="-9.3" y1="0.0" x2="0.7" y2="0.0" stroke="#14532d" stroke-width="1"/>
+<line x1="-9.3" y1="-128.2" x2="0.7" y2="-128.2" stroke="#14532d" stroke-width="1"/>
+<text x="-10.3" y="-64.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400" transform="rotate(-90 -10.3 -64.1)">prag 950</text>
+<text x="133.0" y="110.7" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#8a3016" text-anchor="middle" font-weight="400">verticale 1552 ×5  ·  talpa se taie la usa LA FINAL</text>
+<text x="133.0" y="-371.2" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#6b675e" text-anchor="middle" font-weight="400">PERETE FATA — din exterior</text></svg><figcaption>Elevatie la scara. Cinci verticale de 1552, bara de sus 100×60 peste amandoi stalpii, fereastra la stanga, usa la mijloc.</figcaption></figure>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Rama — cu talpa INTREAGA</h4><p>Talpa (rigla 48×48) taiata la <b>1970</b>, <b>necrestata inca pentru usa</b>. Cinci verticale de <b>1552</b> (= 1600 − o singura talpa de 48; sus nu e cununa, e bara solida). Masurate de la fata interioara a stalpului stang: <span class="mono">115 · fereastra 161→731 · usa 938→1488 · montant de camp 1650→1696</span>, plus coltul de <b>274</b> pentru propteaua de jos.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Fereastra</h4><p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E7.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Bara de sus</h4><p>Nu rama, nu laminat: <b>bara solida 100×60</b> (o ai), cu latura de <b>60 in sus</b>, taiata la <b>2155</b>. Trebuie sa calce pe rama SI pe amandoi stalpii — de aia e mai lunga decat peretele. Nu se inlocuieste cu rigla.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Contrafisele</h4><p>Sus: <b>2× 212</b> (brat 150). Jos-dreapta: una lunga, <b>~350</b> (brat 250). Jos-stanga <b>se sare</b> — acolo coltul e chiar stalpul de 90×90, deja rigid.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea, lambriu, ridicare</h4><p>Vopsea pe toate fetele, lambriu peste tot mai putin zona usii. Apoi se ridica pe punte, ca la spate: doi oameni, culcat pe muchie, legat de stalpi provizoriu.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Prinderea finala a stalpilor</h4><p>La fiecare stalp din fata: <b>4 suruburi de dulgherie 8×140</b> infiletate <b>oblic, la ~15-20°</b>, in grinda de dedesubt (2 de-o parte, 2 de cealalta) + <b>un coltar 90×65 pe fiecare fata</b> a stalpului. Tot de sus, <b>fara piulite</b>.</p><p class="why-inline">Nu exista tije M12 in podea si nu au existat niciodata. Nu cauta gauri de bulon — nu sunt.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Usa — abia acum</h4><p>Dupa ce peretele e ridicat, legat si <b>verificat la echer</b>: tai talpa pentru usa. Gol de <b>550</b> latime, care lasa <b>1600 liber</b>.</p><p class="why-inline">Daca tai talpa mai devreme, peretele se indoaie la transport si la ridicare. Talpa intreaga il tine drept pana sus.</p></div></li>
+</ol>
+
+<div class="ok"><b>E bine daca:</b> talpa a stat intreaga pana dupa ridicare · bara de sus calca pe amandoi stalpii · stalpii prinsi cu 4 suruburi oblice + coltar fiecare, fara tije · golul de usa taiat la final, 550 latime, 1600 liber.</div>
+
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
+</section>
+<section id="e6" data-ch="e6">
+<header class="ch"><div class="cn-big">E6</div><h2>Acoperisul</h2><p class="chsub">Cinci lemne inclinate, doua placi de OSB, trei placi de Onduline. Sub 10° nu merg sipci.</p>
+<div class="chmeta"><span class="zi">o zi</span><span class="scule"><b>Scule:</b> HS7611K — capriorii si placile OSB · GDR/GSR — laminarea (4×40) + OSB (4×45) · suruburi de acoperis cu saiba (GSR) sau cuie cu capac pentru Onduline</span></div></header>
+
+<div class="chbody">
+<details class="bon"><summary>Bon de taiere — 4 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Capriori (laminati)</td><td>2× scandura 22×100</td><td class="mono">1889</td><td class="q">5</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Inchideri intre capriori</td><td>scandura (rest)</td><td class="mono">454</td><td class="q">4</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Astereala</td><td>OSB3 12 mm</td><td class="mono">2200×1250 + 2200×639</td><td class="q">2 placi</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Invelitoare</td><td>Onduline 2000×860</td><td class="mono">intregi, nu se taie</td><td class="q">3</td></tr></table></details>
+
+<p class="lead">Panta reala e <b>8,2°</b> — sub 10°, deci acoperisul merge pe <b>astereala continua de OSB</b>, nu pe sipci. Placa de OSB tine si bracajul, singura.</p>
+
+<figure class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="-92 -296 436 386" style="width:100%;height:auto;display:block"><rect x="0.0" y="-217.3" width="252.4" height="217.3" fill="#efeadf" stroke="#d6d0c4" stroke-width="1.5"/>
+<rect x="0.0" y="-217.3" width="252.4" height="6.9" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="9.2" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="66.5" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="123.6" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="180.8" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="238.1" y="-217.3" width="5.1" height="217.3" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="14.3" y="-192.0" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="14.3" y="-29.9" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="71.5" y="-192.0" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="71.5" y="-29.9" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="128.7" y="-192.0" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="128.7" y="-29.9" width="52.1" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="185.8" y="-192.0" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<rect x="185.8" y="-29.9" width="52.2" height="12.7" fill="#d9cdb2" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="0.0" y1="-143.8" x2="252.4" y2="-143.8" stroke="#14532d" stroke-width="2.5" stroke-dasharray="14,9" stroke-linecap="round"/>
+<text x="126.2" y="-154.1" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="middle" font-weight="400">imbinarea placilor de OSB   ·   2200×1250  +  2200×639</text>
+<line x1="11.7" y1="26.0" x2="69.0" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="11.7" y1="21.0" x2="11.7" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="69.0" y1="21.0" x2="69.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="40.4" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="69.0" y1="26.0" x2="126.2" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="69.0" y1="21.0" x2="69.0" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.2" y1="21.0" x2="126.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="97.6" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="126.2" y1="26.0" x2="183.3" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="126.2" y1="21.0" x2="126.2" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="183.3" y1="21.0" x2="183.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="154.7" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">497</text>
+<line x1="183.3" y1="26.0" x2="240.6" y2="26.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="183.3" y1="21.0" x2="183.3" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="240.6" y1="21.0" x2="240.6" y2="31.0" stroke="#8a857a" stroke-width="1"/>
+<text x="211.9" y="19.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">498</text>
+<line x1="11.7" y1="54.0" x2="240.6" y2="54.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="11.7" y1="49.0" x2="11.7" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="240.6" y1="49.0" x2="240.6" y2="59.0" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="47.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">capriorii, in dreptul verticalelor din pereti</text>
+<line x1="278.4" y1="0.0" x2="278.4" y2="-217.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="273.4" y1="0.0" x2="283.4" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="273.4" y1="-217.3" x2="283.4" y2="-217.3" stroke="#8a857a" stroke-width="1"/>
+<text x="272.4" y="-108.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 272.4 -108.6)">caprior 1889</text>
+<line x1="0.0" y1="-247.3" x2="252.4" y2="-247.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="0.0" y1="-252.3" x2="0.0" y2="-242.3" stroke="#8a857a" stroke-width="1"/>
+<line x1="252.4" y1="-252.3" x2="252.4" y2="-242.3" stroke="#8a857a" stroke-width="1"/>
+<text x="126.2" y="-254.3" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400">2195  =  dulapul de 2200, taiat</text>
+<text x="126.2" y="-242.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">SPATE / GARD</text>
+<text x="126.2" y="26.5" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">TERASA</text>
+<text x="40.4" y="-164.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="middle" font-weight="400">inchideri 454</text></svg><figcaption>Plan acoperis. Cinci capriori in dreptul verticalelor, doua placi de OSB, inchideri de 454 intre capriori.</figcaption></figure>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Lamineaza capriorii — singurul lemn laminat</h4><p>Capriorii sunt <b>44×100</b>, facuti din <b>2 scanduri de 22×100</b> insurubate una peste alta cu <b>4×40 in zigzag la 300 mm</b>. 5 capriori de <b>1889</b> lungime → din cele 6 scanduri (3 bare laminate).</p><p class="why-inline">Capriorii NU trec pe rigla 48×48 — sectiunea patrata s-ar indoi la spanul de 1670. Aici, si numai aici, se lamineaza.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Aseaza capriorii</h4><p>Pas <b>498</b> intre ei, in dreptul verticalelor din pereti. <b>Orientarea conteaza: 100 pe verticala, 44 pe orizontala.</b> Pus invers, capriorul lucreaza pe axa slaba. Fiecare capat: <b>2 vincluri 90×65</b>.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Inchiderile</h4><p>Intre capriori, la capete, pui inchideri scurte de <b>454</b> (= 498 − 44). Tin capriorii la distanta si inchid streasina.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Astereala de OSB</h4><p><b>2 placi OSB3 de 12 mm</b>, taiate la <b>2200×1250</b> si <b>2200×639</b>. Insurubate in capriori cu <b>4×45 la ~250 mm</b>. Placa asta e si bracajul acoperisului — de aia nu mai exista nicio sipca in diagonala.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Onduline</h4><p><b>3 placi, una langa alta, intregi.</b> Panta masoara 1889, placa are 2000 — nu se taie nimic pe lungime. Streasina <b>100</b> in fata si <b>100</b> in spate. Prinderea: cuie cu capac SAU suruburi de acoperis cu saiba de cauciuc, <b>numai pe varful valului</b> — in adancitura curge apa, fiecare gaura de acolo e o infiltratie.</p><div class="stepfig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-324 -177 745 268" style="width:100%;height:auto;display:block"><rect x="0.0" y="-62.0" width="322.4" height="62.0" fill="#e8dfcc" stroke="#1c1b18" stroke-width="1.5"/>
+<text x="161.2" y="-31.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#1c1b18" text-anchor="middle" font-weight="400">caprior 44×100</text>
+<rect x="0.0" y="-69.4" width="322.4" height="7.4" fill="#c4b696" stroke="#1c1b18" stroke-width="1.5"/>
+<line x1="266.6" y1="-65.7" x2="316.6" y2="-89.7" stroke="#14532d" stroke-width="1"/>
+<circle cx="266.6" cy="-65.7" r="2.6" fill="#14532d"/>
+<text x="321.6" y="-92.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#14532d" text-anchor="start" font-weight="400">OSB3 12 mm</text>
+<polygon points="0.0,-69.4 0.0,-69.4 7.4,-85.6 14.9,-85.6 21.7,-69.4 29.1,-69.4 36.6,-85.6 44.0,-85.6 50.8,-69.4 58.3,-69.4 65.7,-85.6 73.2,-85.6 80.0,-69.4 87.4,-69.4 94.9,-85.6 102.3,-85.6 109.1,-69.4 116.6,-69.4 124.0,-85.6 131.4,-85.6 138.3,-69.4 145.7,-69.4 153.1,-85.6 160.6,-85.6 167.4,-69.4 174.8,-69.4 182.3,-85.6 189.7,-85.6 196.5,-69.4 204.0,-69.4 211.4,-85.6 218.9,-85.6 225.7,-69.4 233.1,-69.4 240.6,-85.6 248.0,-85.6 254.8,-69.4 262.3,-69.4 269.7,-85.6 277.1,-85.6 284.0,-69.4 291.4,-69.4 298.8,-85.6 306.3,-85.6 313.1,-69.4 322.4,-69.4" fill="#8a3016" stroke="#8a3016" stroke-width="1" stroke-linejoin="round"/>
+<line x1="86.8" y1="-85.6" x2="126.8" y2="-131.6" stroke="#8a3016" stroke-width="1"/>
+<circle cx="86.8" cy="-85.6" r="2.6" fill="#8a3016"/>
+<text x="131.8" y="-134.6" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a3016" text-anchor="start" font-weight="400">Onduline — cuiele NUMAI pe varf</text>
+<line x1="124.0" y1="-69.4" x2="94.0" y2="-5.4" stroke="#6b675e" stroke-width="1"/>
+<circle cx="124.0" cy="-69.4" r="2.6" fill="#6b675e"/>
+<text x="89.0" y="-8.4" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#6b675e" text-anchor="end" font-weight="400">in adancitura curge apa: fiecare cui de acolo e o gaura</text>
+<line x1="-22.0" y1="0.0" x2="-22.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="0.0" x2="-17.0" y2="0.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-62.0" x2="-17.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<text x="-28.0" y="-31.0" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -28.0 -31.0)">100</text>
+<line x1="-22.0" y1="-62.0" x2="-22.0" y2="-69.4" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-62.0" x2="-17.0" y2="-62.0" stroke="#8a857a" stroke-width="1"/>
+<line x1="-27.0" y1="-69.4" x2="-17.0" y2="-69.4" stroke="#8a857a" stroke-width="1"/>
+<text x="-28.0" y="-65.7" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#8a857a" text-anchor="middle" font-weight="400" transform="rotate(-90 -28.0 -65.7)">12</text>
+<text x="161.2" y="55.8" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6b675e" text-anchor="middle" font-weight="400">DETALIU ACOPERIS — sectiune prin straturi (scara 1:1,6)</text></svg></div></div></li>
+</ol>
+
+<div class="stop"><b>De ce OSB si nu sipci:</b> verificat pe uk.onduline.com — intre 5° si 10° producatorul cere astereala continua (<em>„must be installed on full deck"</em>). Sipcile sunt permise abia peste 10°. Suntem la 8,2°.</div>
+
+<div class="ok"><b>E bine daca:</b> capriorii sunt cu 100 pe verticala · OSB acopera tot, insurubat des · Onduline intreg, cuiele pe varf, streasina egala fata-spate.</div>
+
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
+</section>
+<section id="e7" data-ch="e7">
+<header class="ch"><div class="cn-big">E7</div><h2>Geamurile si verificarea finala</h2><p class="chsub">Ultimele piese, apoi lista care spune daca s-a terminat cu adevarat.</p>
+<div class="chmeta"><span class="zi">o jumatate de zi</span><span class="scule"><b>Scule:</b> GSR — sipcile geamurilor (ambreiaj, delicat) · silicon de exterior la rosturi · fereastra PVC se prinde in jambe</span></div></header>
+
+<div class="chbody">
+<details class="bon"><summary>Bon de taiere — 3 piese · se taie tot inainte de asamblat</summary><table class="t bontab"><tr><th></th><th>Piesa</th><th>Din ce</th><th>Cota (mm)</th><th class="q">Buc</th></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Geam fix lateral</td><td>plexi 4 mm</td><td class="mono">440×440</td><td class="q">2</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Sipci de geam</td><td>sipca 18×28</td><td class="mono">pe ambele fete</td><td class="q">—</td></tr><tr><td class="bc"><label class="tick sm"><input type="checkbox" class="bx bon"><span></span></label></td><td>Fereastra fata</td><td>PVC 56×56</td><td class="mono">in gol 570×570</td><td class="q">1</td></tr></table></details>
+
+<p class="lead">Doua geamuri fixe pe laterale, o fereastra care se deschide pe fata, si checklist-ul final.</p>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Geamurile laterale</h4><p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E4. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Fereastra din fata</h4><p>Fereastra PVC de <b>56×56</b> in golul de 570×570, prinsa in jambe, siliconata pe contur. Se deschide spre terasa — singura care se deschide.</p></div></li>
+</ol>
+
+<h3>Checklist final</h3>
+
+<div class="balustrada">
+<b>Balustrada nu exista.</b> Terasa are margine libera la 2,2 m. Casa poate fi terminata integral, cu toate bifele verzi, si copiii tot nu au voie sus. Balustrada e faza urmatoare (F2). Pana atunci, scara se ia de langa punte intre sesiunile de lucru.
+</div>
+
+<ol class="steps">
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Colturile din spate au blocaj</h4><p>Toate 4 (E0). Talpa peretelui din spate se prinde in ele.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretele din spate — prins si rezemat</h4><p>8 suruburi in stalpi, talpa in grinzi pe toata lungimea, reazemul de 200×50 pe cununa si pe stalpi.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretii laterali — la echer, prinsi</h4><p>Colturile in vincluri, talpa in grinzi, contrafise in toate colturile.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Peretele din fata — usa taiata la final</h4><p>Stalpii prinsi cu 4 suruburi oblice + coltar fiecare (fara tije), golul de usa 550/1600 taiat dupa ridicare.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Acoperisul</h4><p>Capriori cu 100 pe verticala, OSB peste tot, Onduline intreg, streasina 100/100, cuiele pe varf.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Geamurile</h4><p>Doua laterale fixe + fereastra PVC, toate siliconate.</p></div></li>
+<li><label class="tick"><input type="checkbox" class="bx step"><span></span></label><div class="stepbody"><h4>Vopsea si scara</h4><p>Vopsea pe toate fetele, inclusiv capetele taiate. Scara luata de langa punte.</p></div></li>
+</ol>
+
+<div class="ok"><b>Gata cand:</b> toate bifele de mai sus sunt verzi — <b>mai putin eticheta de balustrada</b>, care nu se bifeaza niciodata. Casa e terminata; puntea inca nu e sigura pentru copii.</div>
+
+<div class="chreset"><button class="reset-ch" type="button">sterge bifele din capitolul asta</button></div>
+</div>
 </section>
 <footer class="doc">
-GHID-CONSTRUCTIE-casa · 20.08.2026 · E0–E4<br>
+GHID-CONSTRUCTIE-casa · 20.08.2026 · E0–E7 · documentul de executie al casei.<br>
 Cotele vin din masuratorile de santier confirmate pe 20.08 (<code>MASURATORI-CONFIRMARE-2026-08-20</code>).<br>
-Referinta completa: <code>PROIECT-CASA-2026-08-17</code> · desene la scara: <code>SCHEME-CASA-2026-08-17</code> · cumparaturi: <code>LISTA-LEROY-2026-08-17</code>.<br>
-Bifele se pierd la reincarcarea paginii — sunt pentru o sesiune de lucru, nu pentru evidenta.
+Desene la scara: <code>SCHEME-2D-casa.html</code> · cumparaturi: <code>LISTA-LEROY-2026-08-17</code>.<br>
+Bifele se tin minte in browser (localStorage) — raman dupa refresh. Butonul „sterge toate bifele" le sterge.
 </footer>
 </main>
 </div>
 <script>
-function tt(){const h=document.documentElement;h.dataset.t = h.dataset.t==='dark'?'':'dark';}
-const boxes=[...document.querySelectorAll('.tick input')];
-function upd(){
- const n=boxes.filter(b=>b.checked).length;
- document.getElementById('pt').textContent=n+' / '+boxes.length;
- document.getElementById('pb').style.width=(boxes.length?100*n/boxes.length:0)+'%';
-}
-boxes.forEach(b=>b.addEventListener('change',()=>{b.closest('li').classList.toggle('done',b.checked);upd();}));
-upd();
-const links=[...document.querySelectorAll('nav a')];
-const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-new IntersectionObserver(es=>{
- es.forEach(e=>{ if(e.isIntersecting){
-   links.forEach(l=>l.classList.remove('on'));
-   const i=secs.indexOf(e.target); if(i>=0) links[i].classList.add('on');
- }});
-},{rootMargin:'-10% 0px -75% 0px'}).observe.length;
-const obs=new IntersectionObserver(es=>{
- es.forEach(e=>{ if(e.isIntersecting){
-   links.forEach(l=>l.classList.remove('on'));
-   const i=secs.indexOf(e.target); if(i>=0) links[i].classList.add('on');
- }});
-},{rootMargin:'-10% 0px -75% 0px'});
-secs.forEach(s=>s&&obs.observe(s));
+(function(){
+ var LS='ghid.';
+ function get(k){try{return localStorage.getItem(LS+k);}catch(e){return null;}}
+ function set(k,v){try{localStorage.setItem(LS+k,v);}catch(e){}}
+ function del(k){try{localStorage.removeItem(LS+k);}catch(e){}}
+
+ var secs=[].slice.call(document.querySelectorAll('section[data-ch]'));
+ secs.forEach(function(sec){
+   var ch=sec.dataset.ch;
+   [].slice.call(sec.querySelectorAll('input.step')).forEach(function(inp,i){ inp.dataset.key=ch+'.s'+i; });
+   [].slice.call(sec.querySelectorAll('input.bon')).forEach(function(inp,i){ inp.dataset.key=ch+'.b'+i; });
+ });
+ var allBoxes=[].slice.call(document.querySelectorAll('input.bx'));
+ allBoxes.forEach(function(inp){ if(get(inp.dataset.key)==='1'){ inp.checked=true; } });
+
+ function chSteps(ch){ return [].slice.call(document.querySelectorAll('section[data-ch="'+ch+'"] input.step')); }
+ function chComplete(ch){ var s=chSteps(ch); return s.length>0 && s.every(function(i){return i.checked;}); }
+
+ function updProgress(){
+   var all=[].slice.call(document.querySelectorAll('input.step'));
+   var n=all.filter(function(i){return i.checked;}).length;
+   document.getElementById('pt').textContent=n+' / '+all.length;
+   document.getElementById('pb').style.width=(all.length?100*n/all.length:0)+'%';
+   secs.forEach(function(sec){
+     var ch=sec.dataset.ch, s=chSteps(ch), c=s.filter(function(i){return i.checked;}).length;
+     var link=document.querySelector('nav a[data-ch="'+ch+'"]');
+     if(link){ var cp=link.querySelector('.chprog'); if(cp) cp.textContent=c+'/'+s.length;
+       link.classList.toggle('done', s.length>0 && c===s.length); }
+     s.forEach(function(i){ var li=i.closest('li'); if(li) li.classList.toggle('done', i.checked); });
+   });
+ }
+
+ function updGates(){
+   secs.forEach(function(sec){
+     var bar=sec.querySelector('.gatebar'); if(!bar) return;
+     var skipped=get('skip.'+sec.dataset.ch)==='1';
+     var locked=!chComplete(bar.dataset.gate) && !skipped;
+     sec.classList.toggle('locked', locked);
+     bar.style.display=locked?'':'none';
+     var sw=sec.querySelector('.skipwarn'); if(sw) sw.style.display=skipped?'':'none';
+     [].slice.call(sec.querySelectorAll('.chbody input.bx')).forEach(function(i){ i.disabled=locked; });
+   });
+ }
+
+ allBoxes.forEach(function(inp){
+   inp.addEventListener('change',function(){
+     if(inp.checked) set(inp.dataset.key,'1'); else del(inp.dataset.key);
+     updProgress(); updGates();
+   });
+ });
+
+ [].slice.call(document.querySelectorAll('.gb-skip')).forEach(function(btn){
+   btn.addEventListener('click',function(){ set('skip.'+btn.closest('section').dataset.ch,'1'); updGates(); });
+ });
+
+ function confirmInline(host, onYes){
+   if(host.querySelector('.cfm')) return;
+   var w=document.createElement('span'); w.className='cfm';
+   w.innerHTML='sigur? <button type="button" class="cy">da</button><button type="button" class="cnn">nu</button>';
+   host.appendChild(w);
+   w.querySelector('.cy').onclick=function(){ onYes(); w.parentNode.removeChild(w); };
+   w.querySelector('.cnn').onclick=function(){ w.parentNode.removeChild(w); };
+ }
+ [].slice.call(document.querySelectorAll('.reset-ch')).forEach(function(btn){
+   btn.addEventListener('click',function(){
+     confirmInline(btn.parentNode,function(){
+       var sec=btn.closest('section');
+       [].slice.call(sec.querySelectorAll('input.bx')).forEach(function(i){ i.checked=false; del(i.dataset.key); });
+       updProgress(); updGates();
+     });
+   });
+ });
+ var ra=document.getElementById('resetAll');
+ if(ra) ra.addEventListener('click',function(){
+   confirmInline(ra.parentNode,function(){
+     allBoxes.forEach(function(i){ i.checked=false; del(i.dataset.key); });
+     secs.forEach(function(sec){ del('skip.'+sec.dataset.ch); });
+     updProgress(); updGates();
+   });
+ });
+
+ var jump=document.getElementById('jump');
+ if(jump) jump.addEventListener('change',function(){ var el=document.getElementById(jump.value); if(el) el.scrollIntoView(); });
+ var links=[].slice.call(document.querySelectorAll('nav ol a'));
+ var obs=new IntersectionObserver(function(es){
+   es.forEach(function(e){ if(e.isIntersecting){
+     links.forEach(function(l){l.classList.remove('on');});
+     var l=document.querySelector('nav a[data-ch="'+e.target.dataset.ch+'"]'); if(l) l.classList.add('on');
+     if(jump) jump.value=e.target.id;
+   }});
+ },{rootMargin:'-10% 0px -75% 0px'});
+ secs.forEach(function(s){obs.observe(s);});
+
+ updProgress(); updGates();
+})();
+function tt(){var h=document.documentElement;h.dataset.t=h.dataset.t==='dark'?'':'dark';}
 </script>
 </body></html>

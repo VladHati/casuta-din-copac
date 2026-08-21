@@ -9,11 +9,11 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 
 | Domeniu | Fisier canonic | Stare |
 |---|---|---|
-| **Casa de sus — executie, pasi, cumparaturi** | `PROIECT-CASA-2026-08-17.html` / `.pdf` (v3) | **canonic, 20.08** |
-| **Casa de sus — desene la scara** | `SCHEME-CASA-2026-08-17.html` / `.pdf` (v4) | **canonic, 20.08** |
+| **Casa de sus — executie (pasi, bife, bon de taiere, scule)** | `GHID-CONSTRUCTIE-casa.html` (din `gen_ghid.py` + `gen_2d.py` + `build_ghid.py`) | **canonic, 20.08 — documentul UNIC de executie a casei** |
+| **Casa de sus — desene la scara** | `SCHEME-2D-casa.html` (din `gen_2d.py` + `build_2d.py`) | **canonic, 20.08** — anexa de desene a ghidului |
 | **Casa de sus — lista de cumparaturi** | `LISTA-LEROY-2026-08-17.html` / `.pdf` | **canonic, 20.08** |
 | **Casa de sus — masuratorile de santier** | `MASURATORI-CONFIRMARE-2026-08-20.html` | **canonic, 20.08** — cotele brute + verificarea geometrica |
-| Casa de sus — detalii de perete (geam bucata cu bucata, straturi) | `GHID-SIMPLU-casa.html` | canonic **doar pe detaliile de perete**; geometria lui e istorica |
+| Casa de sus — plan / desene / detalii vechi | `PROIECT-CASA-2026-08-17` · `SCHEME-CASA-2026-08-17` · `GHID-SIMPLU-casa` · `PLAN-pereti-lambriu` | **DEPASIT** — poarta bara, inlocuite de GHID-CONSTRUCTIE + SCHEME-2D |
 | Golul de podea de la colturile din spate | `BLOCAJ-COLT-2026-08-20.html` / `.pdf` | canonic — inlocuieste Detaliul 7 din SCHEME |
 | Geometrie / cote — restul proiectului (structura, podea, stalpi) | `CASUTA-DIN-COPAC.md` | actual |
 | Cantitati / buget / comanda | `Tracker_materiale_casuta.xlsx` | actual (vezi gol receptie) |
@@ -25,7 +25,7 @@ Regula: daca doua fisiere se contrazic, castiga fisierul canonic din tabelul de 
 | Stadiu santier | `STATUS.md` + `timeline.html` | actual |
 | Audit tehnic | `AUDIT-2026-08-20.md` (curent) · 08-17, 08-11, 08-06, 07-24, 07-23, 06-18 (istorice) | actual |
 
-**Pe casa de sus, PROIECT-CASA bate orice alt fisier**, inclusiv MANUAL-FAZA-2 si GHID-SIMPLU. Singura exceptie: detaliile fine de perete raman in GHID (montajul geamului, straturile), pentru ca acolo GHID e mai detaliat si nu contrazice geometria noua.
+**Pe casa de sus, `GHID-CONSTRUCTIE-casa.html` bate orice alt fisier.** Executia, cotele, cumparaturile si detaliile de perete sunt acolo, iar `SCHEME-2D-casa.html` tine desenele la scara. `PROIECT-CASA`, `SCHEME-CASA`, `GHID-SIMPLU` si `PLAN-pereti-lambriu` sunt depasite (poarta bara „DEPASIT"). `MANUAL-FAZA-2` ramane canonic doar pe balustrada si scara (Faza 2), nu pe casa.
 
 Documentele absorbite sunt in `_archive/`.
 
@@ -54,10 +54,11 @@ Cotele sunt **lumina intre fetele stalpilor**. Sursa: `MASURATORI-CONFIRMARE-202
 
 - Stalpi: **100×100 spate, 90×90 fata** — verificate cu ruleta. Peste podea: 1700 spate, **1600 fata (M5 confirmat 20.08)**.
 - Adancime de proiectare **1575**. Span intre reazeme **1670**.
-- Reazeme: spate **1900** (perete 1700 + dulap real 200×50 pe muchie), fata **1660** (stalp 1600 + bara solida 100×60).
-- Cadere 240 → **panta 8,2°**. Caprior **1889**. Streasina 100 fata + 100 spate. FARA jgheab. Muchia la **1646** peste podea.
+- Reazeme: spate **1900** (perete 1700 + dulap real 200×50 pe muchie, taiat la 2200), fata **1660** (stalp 1600 + bara solida 100×60, taiata la 2155).
+- Cadere 240 → **panta 8,2°**. Caprior **1889** (laminat 44×100, NU pe rigla 48×48). Pas capriori 498, inchideri 454. Streasina 100 fata + 100 spate. FARA jgheab. Muchia la **1646** peste podea.
 - **Acoperis pe astereala continua de OSB3 12 mm, NU pe sipci.** Sub 10° producatorul Onduline cere suport continuu (verificat pe uk.onduline.com). Sipcile si sipca diagonala au iesit din plan.
-- Verticale: spate **1612** ×5 · fata **1556** ×5 · laterale **1581 · 1653 · 1730 · 1802**, cate 4 pe perete.
+- **Rama tuturor peretilor = rigla 48×48×4000 cumparata gata** (decizie Vlad 20.08, 13 buc). Nu laminat, nu dulap taiat in lung. Talpa si cununa 48, deci verticalele scad cu 8 (fata doar cu 4 — sus e bara solida, nu cununa).
+- Verticale: spate **1604** ×5 (= 1700 − 2×48) · fata **1552** ×5 (= 1600 − 48) · laterale **1573 · 1645 · 1722 · 1794**, cate 4 pe perete.
 - Goluri (neschimbate, sunt cote de siguranta): usa **550** cu **1600** liber · geam lateral **490×490**, prag 950 · fereastra fata gol **570×570**.
 - Pereti: lambriu 12,5×96 **direct pe rama** — fara folie, fara sipci de aerisire, fara OSB pe pereti. Contrafise in colturi. Interior liber.
 - Dreptunghiul stalpilor e in afara echerului cu ~20 mm: **peretii sunt trapeze usoare, fiecare talpa se taie la fata locului**.
@@ -78,13 +79,17 @@ Cotele sunt **lumina intre fetele stalpilor**. Sursa: `MASURATORI-CONFIRMARE-202
 
 Daca le gasesti scrise ca active intr-un document vechi, documentul e depasit, nu planul:
 
-reazem 1950 · fata 1642 · panta 15,6° sau 10,2° · caprior 1342 sau 1331 · dulap 46×250 (real e 200×50) · adancime casa 1100 · latime 2000 peste tot · verticale laterale 1556/1709/1862 sau 1712 · sipci de acoperis si sipca diagonala · streasina 200 · jgheab si burlan · OSB sau folie **pe pereti** (pe acoperis OSB e obligatoriu) · sipci de aerisire · diagonale in X pe pereti · acrilic 500×250 · contrafise cu brate de 300 uniform · **doua tije M12 in podea la stalpii casei — nu au existat niciodata** · tirfoane M10 si ancore anti-vant · lemn de 42×90 (nu exista la Leroy) · lemn de scara din barele 200×50.
+**Material si metoda moarta:** rama peretilor din bara laminata 44×100 sau din dulap taiat in lung in fasii de 100 (real: **rigla 48×48 cumparata gata**) · grosime rama T=46 (real 48) · verticale spate 1612 sau 1608, fata 1556, laterale 1581/1653/1730/1802 (real **1604 / 1552 / 1573·1645·1722·1794**) · capriorii pe rigla 48×48 (raman laminati 44×100).
+
+**Geometria moarta:** sipci de acoperis si sipca diagonala (real: astereala OSB) · streasina 200 · jgheab si burlan · OSB sau folie **pe pereti** (pe acoperis OSB e obligatoriu) · sipci de aerisire · diagonale in X pe pereti · acrilic 500×250 · contrafise cu brate de 300 uniform · adancime casa 1100.
+
+**Noduri false care revin des:** **doua tije M12 in podea la stalpii casei — nu au existat niciodata** · tirfoane M10 si ancore anti-vant · lemn de 42×90 (nu exista la Leroy) · lemn de scara din barele 200×50.
 
 ## Reguli de propagare
 
-- Cotele **casei de sus** se schimba INTAI in `PROIECT-CASA`, apoi in SCHEME (prin `gen_scheme.py`), apoi in LISTA.
+- Cotele **casei de sus** se schimba INTAI in generatoare (`gen_ghid.py` = grosimea ramei T + izometrii · `gen_2d.py` = modelul numeric + desene, cu auto-verificare), apoi se ruleaza `build_ghid.py` + `build_2d.py`, apoi se aliniaza `LISTA-LEROY`.
 - Cotele **restului proiectului** se schimba INTAI in `CASUTA-DIN-COPAC.md`, apoi in site / fise / 3D.
 - Cantitatile se schimba INTAI in `Tracker`, apoi in `materiale.html`.
 - Instructiunile de montaj Faza 1 se schimba in `tools-fise/` (generatorul), NU direct in `fisa-*.html` — se suprascriu la regenerare.
-- Desenele casei se schimba in `gen_scheme.py`, NU direct in HTML — SVG-urile se suprascriu la regenerare. Textul din jurul lor (captions, legende) e intretinut manual.
+- Desenele casei se schimba in `gen_2d.py` (model unic, auto-verificare la rulare), NU direct in HTML — SVG-urile se suprascriu la `build_ghid.py` / `build_2d.py`. Textul din jur e in `build_2d.py` (lista SECS) si in capitolele din `build_ghid.py`. (`gen_scheme.py` alimenta documentele vechi, acum depasite.)
 - Orice contradictie se rezolva in favoarea fisierului canonic de mai sus.

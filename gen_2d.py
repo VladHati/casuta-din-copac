@@ -20,8 +20,8 @@ M['H_B']      = 1700          # stalpi spate peste podea
 M['H_F']      = 1600          # stalpi fata peste podea
 M['DULAP']    = 200           # scandura groasa pe muchie
 M['BARA_F']   = 60            # bara 100x60, latura in sus
-M['T']        = 46            # grosimea talpii / cununii
-M['D']        = 100           # adancimea ramei
+M['T']        = 48            # grosimea talpii / cununii (rigla 48x48)
+M['D']        = 48            # adancimea ramei (rigla 48x48, nu mai e fasie de 100)
 M['STREASINA']= 100
 
 d = M
@@ -37,7 +37,7 @@ d['SLdeg']  = math.degrees(d['SL'])
 d['RAFT']   = (d['SPAN']+2*d['STREASINA'])/math.cos(d['SL'])
 d['EDGE']   = d['REZ_F']-d['STREASINA']*math.tan(d['SL'])
 d['PAS']    = d['WALL_B']/4
-d['BLOC']   = d['PAS']-d['T']
+d['BLOC']   = d['PAS']-44          # inchideri intre capriori (44 lati), nu grosimea ramei
 d['VB']     = d['H_B']-2*d['T']
 d['VF']     = d['H_F']-d['T']
 d['LATF']   = d['REZ_F']+(d['FP']/2)*math.tan(d['SL'])
@@ -46,6 +46,11 @@ d['TOPBAR'] = d['WF_clear']+2*d['FP']
 d['GOL_USA'],d['USA_LIBER'] = 550,1600
 d['GOL_GEAM'],d['PRAG'] = 490,950
 d['GOL_FER'] = 570
+# verticalele laterale sunt cote VERBATIM, blocate 20.08: vechile (laminat 44)
+# 1581/1653/1730/1802 minus 8 (rama trece pe rigla 48: -4 jos -4 sus). Nu se recalculeaza.
+d['VLAT_OLD'] = [1581, 1653, 1730, 1802]
+d['VLAT']     = [v-8 for v in d['VLAT_OLD']]        # 1573 · 1645 · 1722 · 1794
+assert d['VLAT'] == [1573,1645,1722,1794], d['VLAT']
 
 def vlat(x, L):
     """inaltimea peretelui lateral la distanta x de capatul din fata"""
@@ -150,7 +155,7 @@ g.dimh(fx0+FPx,fx0+FPx+d['WF_clear'],yF1,f"{d['WF_clear']}  lumina fata (masurat
 g.dimv(yB1,yF0,0,f"{round(d['DEP'])}  adancime",off=-30)
 g.tx(W_out/2,yB0-980,'SPATE  ·  spre gard',size=13,fill=MUT)
 g.tx(W_out/2,yF1+620,'FATA  ·  spre terasa',size=13,fill=MUT)
-g.note(BPx+d['D']/2,yB1+420,'perete lateral · 100 adancime',dx=-70,dy=6,anchor='end')
+g.note(BPx+d['D']/2,yB1+420,'perete lateral · rigla 48 adancime',dx=-70,dy=6,anchor='end')
 g.note(W_out-BPx-d['D']/2,yB1+900,'geam fix 490×490, la mijloc',dx=70,dy=6)
 g.note(BPx+500,yB0+d['D']/2,'perete spate, in banda stalpilor',dx=-30,dy=190,anchor='end')
 g.tx(W_out/2,yF1+1150,'PLAN — casa vazuta de sus',size=14,fill=MUT)
@@ -217,10 +222,10 @@ L=d['DEP_L']; T=d['T']
 hf,hb=d['LATF'],d['LATB']
 g.bar(0,0,L,T,fill=W2)
 g.poly([(0,hf-T),(L,hb-T),(L,hb),(0,hf)],fill=W2)
-VX=[0,497,1033,L-46]
+VX=[0,543,1033,L-48]                 # capete + verticalele care marginesc golul de geam (543 / 1033)
 for x in VX:
-    top=vlat(x+23,L)-T
-    g.bar(x,T,46,top-T,fill=W1)
+    top=vlat(x+24,L)-T
+    g.bar(x,T,48,top-T,fill=W1)
 gx0=(L-d['GOL_GEAM'])/2; gx1=gx0+d['GOL_GEAM']
 g.bar(gx0,d['PRAG']-T,d['GOL_GEAM'],T,fill=W2)
 g.bar(gx0,d['PRAG']+d['GOL_GEAM'],d['GOL_GEAM'],T,fill=W2)
@@ -236,7 +241,7 @@ g.dimv(0,hf,0,f"{round(hf)} in fata",off=-26)
 g.dimv(0,hb,L,f"{round(hb)} in spate",off=26)
 g.dimv(0,d['PRAG'],gx0,f"prag {d['PRAG']}",off=-26,fill=ACC)
 g.tx(L/2,hb+700,'PERETE LATERAL — din exterior · FATA in stanga, SPATE in dreapta',size=13,fill=MUT)
-vs=' · '.join(str(round(vlat(x+23,L)-2*T)) for x in VX)
+vs=' · '.join(str(v) for v in d['VLAT'])
 g.tx(L/2,-820,f'verticale, de la fata spre spate:  {vs}',size=13,fill=ACC)
 F['lateral']=g.svg()
 
@@ -347,31 +352,33 @@ F['colt_sect']=g.svg()
 
 # ═══════════ 10. PRINDEREA PERETELUI IN STALP ═══════════
 g=D(0.30)
-g.bar(0,0,100,1700,fill=W3); g.tx(50,1780,'stalp de 4 m',size=12,fill=MUT)
-g.bar(100,46,46,1608,fill=W1); g.tx(123,900,'verticala de capat',size=11,fill=MUT,rot=-90)
-g.bar(100,0,420,46,fill=W2); g.bar(100,1654,420,46,fill=W2)
+g.bar(0,0,100,d['H_B'],fill=W3); g.tx(50,d['H_B']+80,'stalp de 4 m',size=12,fill=MUT)
+g.bar(100,d['T'],48,d['VB'],fill=W1); g.tx(124,900,'verticala de capat · rigla 48',size=11,fill=MUT,rot=-90)
+g.bar(100,0,420,d['T'],fill=W2); g.bar(100,d['H_B']-d['T'],420,d['T'],fill=W2)
 for zz in (150,700,900,1560):
     g.ln(146,zz,20,zz,stroke=METAL2,sw=2.6)
     g.ln(40,zz-14,20,zz,stroke=METAL2,sw=2.6); g.ln(40,zz+14,20,zz,stroke=METAL2,sw=2.6)
 g.note(60,900,'4× surub 8×140  ·  unul jos, doua la mijloc, unul sus',dx=-40,dy=-90,anchor='end',fill=METAL2)
 g.note(50,150,'gaura de 6 mm data inainte in stalp — altfel crapa',dx=-40,dy=150,anchor='end',fill=ACC2)
-g.dimv(46,1654,560,'1608',off=24)
+g.dimv(d['T'],d['H_B']-d['T'],560,f"{d['VB']}",off=24)
 g.tx(300,-320,'PRINDEREA PERETELUI DIN SPATE IN STALP — elevatie',size=13,fill=MUT)
 F['prindere']=g.svg()
 
-# ═══════════ 11. TAIEREA DULAPULUI IN LUNG ═══════════
-g=D(1.15)
-g.bar(0,0,46,250,fill=W1)
-g.ln(-14,100,60,100,stroke=ACC2,sw=2,dash='7,5'); g.ln(-14,204,60,204,stroke=ACC2,sw=2,dash='7,5')
-g.tx(23,50,'100',size=13,fill=ACC,rot=-90); g.tx(23,152,'100',size=13,fill=ACC,rot=-90)
-g.tx(23,227,'~42',size=11,fill=MUT,rot=-90)
-g.dimv(0,250,0,'250',off=-26); g.dimh(0,46,0,'46',off=28)
-g.note(60,204,'doua taieturi in lung, cu rigla prinsa cu cleme',dx=40,dy=-30,fill=ACC2)
-g.note(60,50,'fasiile de 100 → rama peretilor si capriorii',dx=40,dy=30)
-g.note(60,227,'fasia de ~42 → verticale, in loc de rigla 46×46',dx=40,dy=70)
-g.tx(23,-70,'DULAP 46×250 — sectiune, cum se taie',size=13,fill=MUT)
-g.tx(23,-120,'adancime de taiere 46 mm · circularul taie 65',size=11,fill=DIM)
-F['taiere']=g.svg()
+# ═══════════ 11. REAZEMUL DIN SPATE — dulapul de 200×50 pe muchie ═══════════
+g=D(0.17)
+POST=100
+g.bar(0,0,POST,d['H_B'],fill=W3)                              # stalpul spate, pana la 1700
+g.tx(POST/2,d['H_B']/2,'stalp spate · 1700',size=11,fill=MUT,rot=-90)
+g.bar(25,d['H_B'],50,d['DULAP'],fill=W1)                      # dulapul 200x50, pe muchie
+g.tx(50,d['H_B']+d['DULAP']/2,'200',size=12,fill=INK,rot=-90)
+g.dimh(25,75,d['H_B']+d['DULAP'],'50',off=-14,size=11)
+g.dimv(0,d['H_B'],0,f"{d['H_B']}",off=-26)
+g.dimv(0,d['REZ_B'],POST,f"{d['REZ_B']}  reazem",off=26,fill=ACC)
+g.note(75,d['REZ_B'],'dulap 200×50 · pe muchie, 200 in sus · taiat la 2200',dx=80,dy=-46,fill=ACC)
+g.note(75,d['H_B']+40,'calca pe cununa peretelui (1700) SI pe capetele stalpilor (1700)',dx=95,dy=70,anchor='start')
+g.tx(POST/2,-300,'REAZEMUL DIN SPATE — dulapul de 200×50, cum se aseaza',size=13,fill=MUT)
+g.tx(POST/2,-370,'o singura bara, taiata la 2200, pe muchie · nimic altceva nu se face din ea',size=11,fill=DIM)
+F['reazem']=g.svg()
 
 json.dump(F,open('figs_2d.json','w'))
 
@@ -383,14 +390,14 @@ chk=[('lumina spate (masurat)',d['WB_clear'],1995),('lumina fata (masurat)',d['W
      ('reazem spate',d['REZ_B'],1900),('reazem fata',d['REZ_F'],1660),
      ('panta grade',round(d['SLdeg'],2),8.18),('caprior',round(d['RAFT']),1889),
      ('muchie',round(d['EDGE']),1646),('pas capriori',d['PAS'],497.5),
-     ('inchideri',round(d['BLOC']),452),('verticale spate',d['VB'],1608),
-     ('verticale fata',d['VF'],1554),('bara de sus fata',round(d['TOPBAR']),2155),
+     ('inchideri',round(d['BLOC']),454),('verticale spate',d['VB'],1604),
+     ('verticale fata',d['VF'],1552),('bara de sus fata',round(d['TOPBAR']),2155),
      ('lateral: inaltime fata',round(d['LATF']),1666),('lateral: inaltime spate',round(d['LATB']),1893)]
 bad=0
 for n,got,exp in chk:
     ok = abs(got-exp)<=1
     if not ok: bad+=1
     print(f"  {'OK ' if ok else 'X  '} {n:28s} {got}")
-print(f"  verticale laterale: " + ' · '.join(str(round(vlat(x+23,d['DEP_L'])-2*d['T'])) for x in [0,497,1033,d['DEP_L']-46]))
+print(f"  verticale laterale (verbatim): " + ' · '.join(str(v) for v in d['VLAT']))
 print(f"\n  {len(F)} desene · {bad} nepotriviri")
 print('  ', {k:len(v) for k,v in F.items()})

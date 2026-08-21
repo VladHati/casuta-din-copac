@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Desene pentru GHID-CONSTRUCTIE-casa: izometrii pentru pasi + sectiuni la scara pentru cote.
-Geometrie masurata 20.08.2026. Rama din dulap 46x250 taiat in lung (fasii de 100)."""
+Geometrie masurata 20.08.2026. Rama tuturor peretilor = rigla 48x48x4000 cumparata gata
+(13 buc, decizie Vlad 20.08). NU se mai taie niciun dulap in lung. Dulapul de 200x50 are o
+singura treaba: reazemul din spate, taiat la 2200, asezat pe muchie cu 200 in sus."""
 import math, json, re
 
 INK="#1c1b18"; ACC="#14532d"; ACC2="#8a3016"; MUT="#6b675e"; LN="#cfc9bc"
@@ -18,8 +20,9 @@ SL   = math.atan2(REZ_B-REZ_F, SPAN)
 RAFT = 1889
 EDGE = 1646
 PAS  = WALL_B/4
-T    = 46                      # grosimea talpii/cununii
-VB   = 1700-2*T                # 1608
+T    = 48                      # grosimea talpii/cununii (rigla 48x48)
+VB   = 1700-2*T                # 1604
+assert VB == 1604, VB          # rigla 48: 1700 - 2*48 = 1604
 PITCH_TXT = '8,2°'
 
 def esc(s): return s.replace('&','&amp;').replace('<','&lt;')
@@ -172,27 +175,7 @@ f.text(X(1475),Y(830),'masuta',size=13,fill=ACC)
 f.text(X(1475),Y(-150),'taiat la 600–750',size=13,fill=ACC)
 figs['e1_cioata']=f.svg()
 
-# ============ E3 · taierea dulapului in lung ============
-f=Fig()
-box(f,0,0,0, 1300,250,46, top=W1,left=W2,right=W3)
-for yy in (100,204):
-    a=iso(0,yy,46); b=iso(1300,yy,46)
-    f.line(a[0],a[1],b[0],b[1],stroke=ACC2,sw=2.2,dash='9,6')
-x,y=iso(650,50,46);  f.text(x,y-6,'fasia 1 — 100',size=14,fill=ACC)
-x,y=iso(650,152,46); f.text(x,y-6,'fasia 2 — 100',size=14,fill=ACC)
-x,y=iso(650,228,46); f.text(x,y-4,'rest ~42',size=12,fill=MUT)
-x,y=iso(-60,125,23); f.text(x-12,y,'46',size=14,fill=MUT,anchor='end')
-x,y=iso(1360,125,23); f.text(x+14,y,'250',size=14,fill=MUT,anchor='start')
-x,y=iso(200,100,46)
-f.rect(x-46,y-96,92,60,fill=METAL,stroke=METAL2,rx=6)
-f.text(x,y-60,'circular',size=11,fill='#fff')
-f.line(x-70,y-30,x+180,y-30,stroke=METAL2,sw=5)
-f.text(x+200,y-34,'rigla dreapta, prinsa cu cleme',size=13,fill=METAL2,anchor='start')
-f.text(-260,250,'un dulap 46×250×4000 → 2 fasii de 100 (rama) + 1 fasie de ~42×46 (verticale)',size=15,fill=INK,anchor='start',mono=False)
-f.text(-260,274,'adancime de taiere 46 mm — circularul taie 65, merge lejer',size=13,fill=MUT,anchor='start',mono=False)
-figs['e3_taiere']=f.svg()
-
-# ============ E4 · peretele din spate, elevatie ============
+# ============ E3 · peretele din spate, elevatie ============
 S=0.172; X=lambda mm: mm*S; Y=lambda mm: -mm*S
 f=Fig()
 H=1700; W=WALL_B
@@ -211,7 +194,7 @@ for i in range(4): f.dim(X(XS[i]),Y(-330),X(XS[i+1]),Y(-330),str(XS[i+1]-XS[i]))
 f.dim(X(0),Y(-640),X(W),Y(-640),f'{W}   —   M3 real 1995, minus 5 mm joc',size=14)
 f.dim(X(-150),Y(0),X(-150),Y(H),'1700',vertical=True,off=-12)
 f.dim(X(W+150),Y(T),X(W+150),Y(H-T),f'verticale {VB} ×5',vertical=True,off=-12,fill=ACC)
-f.text(X(W/2),Y(H+260),'talpa si cununa: fasie de 46×100',size=13,fill=MUT)
+f.text(X(W/2),Y(H+260),'talpa si cununa: rigla 48×48',size=13,fill=MUT)
 figs['e4_perete']=f.svg()
 
 # ============ E4 · ridicarea pe rampa ============
@@ -230,7 +213,7 @@ ang=math.degrees(math.atan2((DZ-RZ0)*S,(DECK_X0-RX0)*S))
 cx,cy=X((RX0+DECK_X0)/2), Y((RZ0+DZ)/2+170)
 f.raw(f'<g transform="translate({cx:.1f} {cy:.1f}) rotate({-ang:.1f})">'
       f'<rect x="-92" y="-17" width="184" height="34" fill="{W1}" stroke="{INK}" stroke-width="1.8"/>'
-      f'<text x="0" y="5.5" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="{INK}" text-anchor="middle">panoul ~50 kg</text></g>')
+      f'<text x="0" y="5.5" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="{INK}" text-anchor="middle">panoul ~32-41 kg</text></g>')
 # franghia
 f.path(f'M {X(2300):.1f} {Y(DZ+1300):.1f} Q {X(1700):.1f} {Y(DZ+250):.1f} {cx:.1f} {cy:.1f}',stroke=ACC2,sw=2.2,dash='8,6')
 # oameni
