@@ -67,8 +67,8 @@ Cotele sunt **lumina intre fetele stalpilor**. Sursa: `MASURATORI-CONFIRMARE-202
 ## Goluri deschise (de inchis)
 
 - **[P0 SIGURANTA — DESCHIS 20.08] Balustrada nu e in checklist-ul final al casei.** `PROIECT-CASA` §9 a fost corectat, dar regula generala ramane: **casa terminata nu inseamna punte sigura**. Copiii nu urca pana la balustrada F2.
-- **[GATE — DESCHIS] Golul de podea la colturile din spate.** Se rezolva cu blocaj + 2 vincluri ca polite, per `BLOCAJ-COLT-2026-08-20`. **Obligatoriu inainte de S2** — talpa peretelui din spate nu are in ce se prinde acolo. De facut de 4 ori (2 laturi × 2 colturi).
-- **[DESCHIS] Poze la colturile din spate** — nefacute; de confirmat ca solutia se potriveste cu terenul.
+- **[INCHIS 21.08] Golul de podea la colturile din spate.** Blocajele montate la toate 4 colturile — podeaua inchisa integral.
+- **[INCHIS 21.08] Poze la colturile din spate** — confirmat de Vlad 21.08: lucrarea e facuta.
 - **[INCHIS 20.08] Cioata de 1,5 m de pe terasa.** Se retează la ~600-750 si devine masuta. La 1500 varful ar fi stat la ~138 mm sub muchia acoperisului = treapta directa pe Onduline.
 - **[P2 COMANDA] Receptie C2 / inox — DESCHIS.** Cantitatile "platite" nu-s inca reconciliate.
 - **[INCHIS 24.07] Talpic sub polita spate.** Fizic confirmat: talpic pe fata stalpului, 3× Heco 8×200 + 2 tije M12 + contrafisa 45°. *(Tijele astea sunt reale si sunt la nodul grinda-stalp — a nu se confunda cu presupusele tije M12 din podea, la stalpii casei, care nu au existat niciodata.)*
