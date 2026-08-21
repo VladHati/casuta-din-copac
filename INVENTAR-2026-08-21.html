@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ro"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inventar — ce mai avem</title>
+<style>
+:root{
+ --paper:#f7f4ed; --card:#fffdf8; --ink:#1c1b18; --dim:#6b675e; --line:#e2dccd;
+ --acc:#14532d; --acc-s:#eaf1eb; --acc2:#8a3016; --acc2-s:#fbeee8;
+ --mono:ui-monospace,'SF Mono',Menlo,monospace;
+ --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+ --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;
+}
+html[data-t="dark"]{
+ --paper:#16171a; --card:#1d1f23; --ink:#e8e4da; --dim:#96918a; --line:#2e3238;
+ --acc:#7fb894; --acc-s:#1c2a22; --acc2:#e08a63; --acc2-s:#2c1f1a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);
+ -webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 90px}
+header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:8px}
+.kicker{font:600 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+h1{font:600 27px/1.15 var(--sans);letter-spacing:-.02em;margin:9px 0 6px}
+.sub{color:var(--dim);font:italic 15px/1.5 var(--serif);margin:0}
+.meta{color:var(--dim);font:11.5px/1.6 var(--mono);margin-top:11px}
+
+h2{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);
+ margin:38px 0 4px;padding-top:16px;border-top:1px solid var(--line)}
+h2 .n{color:var(--dim);font-weight:400;margin-left:8px;letter-spacing:.06em}
+.gnote{color:var(--dim);font:italic 14.5px/1.5 var(--serif);margin:0 0 14px}
+
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;
+ padding:14px 15px;margin-bottom:9px;transition:border-color .15s,background .15s}
+.row.filled{border-color:var(--acc);background:var(--acc-s)}
+.rt{display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.rl{flex:1;min-width:0}
+.nm{font-weight:600;font-size:15.5px;line-height:1.35}
+.nm .key{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc2);
+ margin-right:7px;vertical-align:middle}
+.exp{color:var(--dim);font-size:13.5px;line-height:1.5;margin-top:4px}
+.exp b{color:var(--ink);font-weight:600}
+.inp{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.inp label{font:10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+input[type=number]{width:96px;min-height:44px;padding:8px 10px;text-align:right;
+ font:600 18px var(--mono);color:var(--ink);background:var(--paper);
+ border:1.5px solid var(--line);border-radius:9px;-moz-appearance:textfield}
+input[type=number]:focus{outline:none;border-color:var(--acc)}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.um{font:11px var(--mono);color:var(--dim)}
+.hit{margin-top:11px;padding:10px 12px;border-radius:9px;font-size:14px;line-height:1.5;display:none}
+.hit.on{display:block}
+.hit.good{background:var(--acc-s);border-left:3px solid var(--acc)}
+.hit.bad{background:var(--acc2-s);border-left:3px solid var(--acc2)}
+.hit b{font-weight:600}
+
+.warnbox{background:var(--acc2-s);border-left:3px solid var(--acc2);border-radius:11px;
+ padding:15px 17px;margin:16px 0;font-size:14.5px;line-height:1.55}
+.warnbox b{font-weight:600}
+
+.sum{position:sticky;bottom:0;margin-top:34px;background:var(--card);
+ border:1px solid var(--line);border-radius:14px;padding:17px 18px;
+ box-shadow:0 -6px 26px rgba(0,0,0,.09)}
+.sum h3{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+ color:var(--acc);margin:0 0 12px}
+.big{display:flex;gap:26px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px}
+.big div{display:flex;flex-direction:column}
+.big .v{font:600 25px/1.1 var(--mono);letter-spacing:-.02em}
+.big .l{font:10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:3px}
+.big .v.save{color:var(--acc)}
+#drops{font-size:14px;line-height:1.65;color:var(--dim);margin:0;padding-left:18px}
+#drops li b{color:var(--ink);font-weight:600}
+#drops:empty::after{content:'Completeaza cifrele de mai sus — aici apare ce pica din lista.';
+ color:var(--dim);font-style:italic;font-family:var(--serif);font-size:14.5px}
+
+.bar{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+button{font:12px var(--mono);letter-spacing:.05em;padding:11px 15px;min-height:44px;
+ background:var(--paper);color:var(--ink);border:1px solid var(--line);
+ border-radius:9px;cursor:pointer}
+button:hover{border-color:var(--acc)}
+button.pri{background:var(--acc);color:var(--card);border-color:var(--acc)}
+.conf{display:none;font-size:13.5px;color:var(--acc2);align-self:center}
+.conf.on{display:inline}
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+ color:var(--dim);font:12.5px/1.7 var(--mono)}
+@media(max-width:640px){
+ .wrap{padding:20px 14px 80px}
+ h1{font-size:23px}
+ .rt{flex-direction:column;gap:11px}
+ .inp{flex-direction:row;align-items:center;gap:9px;align-self:flex-start}
+ input[type=number]{width:110px}
+ .big{gap:18px}
+ .sum{padding:13px 14px;max-height:56vh;overflow-y:auto}
+ .big .v{font-size:22px}
+ .sum h3{margin-bottom:9px}
+}
+</style></head><body>
+<div class="wrap">
+
+<header>
+ <div class="kicker">Casuta din copac · receptia care n-a fost facuta</div>
+ <h1>Inventar — ce mai avem pe punte</h1>
+ <p class="sub">Numara pe teren, scrie cifra reala. Ce pica din lista de Leroy se calculeaza singur, jos.</p>
+ <div class="meta">21 august 2026 · cifrele „ar trebui" vin din comanda Hornbach 09.06 + tracker + deciziile de pe santier<br>cifrele se tin minte in telefon · <span style="color:var(--acc2)">●</span> = randul schimba direct lista de cumparaturi</div>
+</header>
+
+<div class="warnbox">
+<b>Doua discrepante din receptia de la 18.06, nerezolvate nici azi:</b> coltarele C2 au venit <b>14 bucati, dar s-au platit 12</b>, iar suruburile inox au venit <b>3 pachete, platite 2</b>. Nimeni nu le-a numarat vreodata. Daca la numaratoare iese altceva decat scrie mai jos, cifra ta castiga.
+</div>
+
+<h2>Lemn <span class="n">5 randuri</span></h2>
+<p class="gnote">Barele mari sunt cele care pot inlocui cumparaturi. Offcut-urile de 100×100 conteaza doar daca sunt mai lungi de 300 mm.</p>
+<div id="lemn"></div>
+
+<h2>Feronerie <span class="n">8 randuri</span></h2>
+<p class="gnote">Aici e gaura reala. Heco-urile ramase pot sterge doua randuri intregi de suruburi din lista.</p>
+<div id="fero"></div>
+
+<h2>Finisaj <span class="n">2 randuri</span></h2>
+<p class="gnote">Vopseaua se pune pe toate fetele inainte de montaj. Daca mai e destula, Sadolinul de 150 lei pica.</p>
+<div id="fin"></div>
+
+<div class="warnbox">
+<b>Capcana de numarat:</b> coltarul <b>C2 90×90×65</b> nu e acelasi lucru cu <b>vinclul 90×65</b> din lista noua. Primul e coltar in L rigidizat, cu nervura; al doilea e vinclu simplu indoit. Arata asemanator in cutie. Nu le pune la gramada.
+</div>
+
+<div class="warnbox">
+<b>Gasit in timp ce faceam lista asta — surubul de 6×120 e prea lung acum.</b><br>
+Randul de <b>6×120, 100 bucati, 135 lei</b> a fost dimensionat pentru rama laminata de 44×100. Colturile se fac acum din rigla 48×48: doua piese lipite = <b>96 mm</b> grosime totala. Un surub de 120 iese <b>24 mm prin partea cealalta</b>, la inaltimea capului unui copil.<br>
+Corect ar fi <b>6×100</b>. Iar daca ai peste 100 de Heco 6×100 ramase din faza 1, randul asta pica de tot.
+</div>
+
+<div class="sum">
+ <h3>Ce pica din lista</h3>
+ <div class="big">
+  <div><span class="v" id="tot">~3.540</span><span class="l">lei lista acum</span></div>
+  <div><span class="v save" id="sav">0</span><span class="l">lei economisiti</span></div>
+  <div><span class="v" id="nou">~3.540</span><span class="l">lei ramas de dat</span></div>
+ </div>
+ <ul id="drops"></ul>
+ <div class="bar">
+  <button class="pri" onclick="cop()">copiaza rezumatul</button>
+  <button onclick="tt()">lumina / intuneric</button>
+  <button onclick="rst()">sterge tot</button>
+  <span class="conf" id="cf"></span>
+ </div>
+</div>
+
+<footer>
+INVENTAR-2026-08-21 · anexa la LISTA-LEROY-2026-08-17 (recalculata 20.08, rama pe rigla 48×48)<br>
+Baza de calcul: 3.540 lei, media intervalului 3.470–3.610.<br>
+Cifrele se salveaza in telefonul tau, nu pleaca nicaieri.
+</footer>
+</div>
+
+<script>
+var BAZA = 3540;
+
+var D = {
+lemn:[
+ {id:'b200', key:1, nm:'Bara 200×50×4000', ar:'2 + offcut 1800',
+  exp:'Din 3 cumparate, una s-a taiat la <b>2200</b> pentru reazemul din spate. Celelalte doua n-au primit inca nicio treaba.', um:'buc intregi'},
+ {id:'b100', key:1, nm:'Offcut bara 100×60×3000', ar:'~845 mm',
+  exp:'Lemnul de sus al peretelui din fata se taie la <b>2155</b>. Restul e offcut bun de praguri.', um:'mm'},
+ {id:'b90', key:1, nm:'Bara 90×90×4000', ar:'1 intreaga',
+  exp:'Rezerva de stalp, cumparata 19.08. Ar trebui sa fie neatinsa.', um:'buc'},
+ {id:'larice', key:0, nm:'Dusumea larice 28×145×3000', ar:'? din 17',
+  exp:'Podeaua e inchisa. Ce a ramas merge la <b>blat de masuta</b> pe cioata de 600.', um:'buc'},
+ {id:'off100', key:0, nm:'Offcut-uri 100×100', ar:'necunoscut',
+  exp:'Din stalpii din fata (~2100 fiecare), minus politele si talpicurile. Numara doar bucatile <b>peste 300 mm</b>.', um:'buc'}
+],
+fero:[
+ {id:'h8', key:1, nm:'Heco Topix 8×200', ar:'? din 100',
+  exp:'<b>Nu inlocuieste 8×140.</b> Prin talpa de 48 + dusumea 28 + grinda, 200 iese pe partea cealalta. Numara-l oricum — e cel mai scump lot din proiect.', um:'buc'},
+ {id:'h6100', key:1, nm:'Heco Topix 6×100', ar:'? din 100',
+  exp:'Daca ai <b>100 sau mai multe</b>, randul de 6×120 din lista pica — si e si lungimea corecta pentru colturile de 48+48.', um:'buc', drop:{n:100, lei:135, txt:'randul de <b>6×120 (100 buc)</b>'}},
+ {id:'h680', key:1, nm:'Heco Topix 6×80', ar:'? din 100',
+  exp:'Daca ai <b>peste 100</b>, ia locul surubului de 5×80 la prinderea verticalelor in rame.', um:'buc', drop:{n:100, lei:40, txt:'randul de <b>5×80 (200 buc)</b>'}},
+ {id:'inox', key:1, nm:'Surub inox A2 5×60', ar:'~96 din 300',
+  exp:'Podeaua a cerut ~204. <b>Dar in pozele din 16.08 erau multe pregauri fara surub</b> — s-ar putea sa fie mai putine decat pare. Peste 450 ar acoperi si lambriul.', um:'buc', drop:{n:450, lei:160, txt:'seturile <b>inox pentru lambriu</b>'}},
+ {id:'c2', key:0, nm:'Coltar C2 90×90×65', ar:'0',
+  exp:'Nervurat, in L. <b>Nu e vinclul 90×65</b> din lista noua. Daca gasesti bucati libere, spune — schimba socoteala.', um:'buc'},
+ {id:'m12', key:0, nm:'Surub M12×120 inox', ar:'~17 din 25',
+  exp:'8 s-au dus in papucii din beton. Restul stau.', um:'buc'},
+ {id:'p12', key:0, nm:'Piulite + saibe M12', ar:'~88',
+  exp:'Cate 100 cumparate, ~12 folosite. Scrie numarul de piulite.', um:'buc'},
+ {id:'tija', key:0, nm:'Tija filetata M12', ar:'~120 mm',
+  exp:'Bara de 1 m s-a taiat in 4 bucati de ~220 pentru polite. In plus, <b>doua tije M12 din podea n-au fost niciodata folosite</b> — documentele vechi sustineau ca sunt montate, nu sunt.', um:'mm'}
+],
+fin:[
+ {id:'ulei', key:1, nm:'Ulei tec Hornbach 2,5 L', ar:'? din 2 bidoane (5 L)',
+  exp:'Scrie cati <b>litri</b> mai sunt in total. Peste 1,5 litri acopera peretii si scapi de Sadolin.', um:'litri', drop:{n:1.5, lei:150, txt:'<b>Sadolin Extra 2,5 L</b>'}},
+ {id:'grund', key:0, nm:'Grund Köber 4 L', ar:'? din 4 litri',
+  exp:'Strat de baza pe lemnul nou, inainte de vopsea.', um:'litri'}
+]};
+
+function esc(s){return s}
+function build(key, host){
+ var h='';
+ D[key].forEach(function(r){
+  h+='<div class="row" id="row-'+r.id+'"><div class="rt"><div class="rl">'+
+   '<div class="nm">'+(r.key?'<span class="key"></span>':'')+r.nm+'</div>'+
+   '<div class="exp">'+r.exp+'</div></div>'+
+   '<div class="inp"><label>ar trebui: '+r.ar+'</label>'+
+   '<input type="number" inputmode="decimal" step="any" min="0" id="in-'+r.id+'" placeholder="—">'+
+   '<span class="um">'+r.um+'</span></div></div>'+
+   '<div class="hit" id="hit-'+r.id+'"></div></div>';
+ });
+ document.getElementById(host).innerHTML=h;
+}
+build('lemn','lemn'); build('fero','fero'); build('fin','fin');
+
+var ALL=[].concat(D.lemn,D.fero,D.fin);
+
+function load(){
+ try{
+  ALL.forEach(function(r){
+   var v=localStorage.getItem('inv.'+r.id);
+   if(v!==null&&v!=='') document.getElementById('in-'+r.id).value=v;
+  });
+ }catch(e){}
+}
+function save(id,v){ try{ localStorage.setItem('inv.'+id,v); }catch(e){} }
+
+function calc(){
+ var saved=0, drops=[];
+ ALL.forEach(function(r){
+  var el=document.getElementById('in-'+r.id);
+  var raw=el.value.trim();
+  var has=raw!=='';
+  document.getElementById('row-'+r.id).classList.toggle('filled',has);
+  var hit=document.getElementById('hit-'+r.id);
+  hit.className='hit';
+  if(!has||!r.drop){ if(!r.drop) hit.innerHTML=''; return; }
+  var n=parseFloat(raw);
+  if(isNaN(n)) return;
+  if(n>=r.drop.n){
+   saved+=r.drop.lei;
+   drops.push('<li>'+r.drop.txt+' — <b>−'+r.drop.lei+' lei</b></li>');
+   hit.className='hit on good';
+   hit.innerHTML='<b>Acopera.</b> '+r.drop.txt.replace(/<\/?b>/g,'')+' iese din lista. −'+r.drop.lei+' lei.';
+  } else {
+   hit.className='hit on bad';
+   hit.innerHTML='Nu ajunge — ar trebui <b>'+r.drop.n+'</b>. '+r.drop.txt.replace(/<\/?b>/g,'')+' ramane in lista.';
+  }
+ });
+ document.getElementById('sav').textContent=saved?('−'+saved):'0';
+ document.getElementById('nou').textContent='~'+(BAZA-saved).toLocaleString('ro-RO');
+ document.getElementById('drops').innerHTML=drops.join('');
+}
+
+ALL.forEach(function(r){
+ var el=document.getElementById('in-'+r.id);
+ el.addEventListener('input',function(){ save(r.id,el.value); calc(); });
+});
+
+function cop(){
+ var t='INVENTAR '+new Date().toLocaleDateString('ro-RO')+'\n\n';
+ ALL.forEach(function(r){
+  var v=document.getElementById('in-'+r.id).value.trim();
+  t+=r.nm+': '+(v===''?'necompletat':(v+' '+r.um))+'\n';
+ });
+ var s=document.getElementById('sav').textContent;
+ t+='\nEconomisit: '+s+' lei · Ramas de dat: '+document.getElementById('nou').textContent+' lei';
+ var done=function(){ var c=document.getElementById('cf'); c.textContent='copiat'; c.className='conf on';
+  setTimeout(function(){c.className='conf';},1800); };
+ try{ navigator.clipboard.writeText(t).then(done,function(){fb(t,done)}); }catch(e){ fb(t,done); }
+}
+function fb(t,done){
+ var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a);
+ a.select(); try{document.execCommand('copy');done();}catch(e){} document.body.removeChild(a);
+}
+
+var armed=false;
+function rst(){
+ var c=document.getElementById('cf');
+ if(!armed){ armed=true; c.textContent='sigur? mai apasa o data'; c.className='conf on';
+  setTimeout(function(){armed=false;c.className='conf';},4000); return; }
+ armed=false; c.className='conf';
+ ALL.forEach(function(r){ document.getElementById('in-'+r.id).value='';
+  try{localStorage.removeItem('inv.'+r.id);}catch(e){} });
+ calc();
+}
+function tt(){ var h=document.documentElement;
+ h.dataset.t = h.dataset.t==='dark'?'':'dark';
+ try{localStorage.setItem('inv.tema',h.dataset.t);}catch(e){}
+}
+try{ var th=localStorage.getItem('inv.tema'); if(th) document.documentElement.dataset.t=th; }catch(e){}
+
+document.getElementById('tot').textContent='~'+BAZA.toLocaleString('ro-RO');
+load(); calc();
+</script>
+</body></html>

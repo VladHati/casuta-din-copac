@@ -242,9 +242,9 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
 {steps([
  ('Rama, pe punte',
   '<p>Talpa (rigla 48×48): <b>1580</b> pe latura din stanga (S1–S3), <b>1570</b> pe dreapta (S2–S4). Cununa inclinata: <b>1596</b> stanga, <b>1586</b> dreapta.</p>'
-  '<p>Cele 4 verticale, dinspre fata spre spate: <b>1573 · 1645 · 1722 · 1794</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · 543 · 1033 · pana la capat</span>.</p>', None),
+  '<p>Cele 4 verticale, dinspre fata spre spate: <b>1573 · 1645 · 1722 · 1794</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · camp · camp+490 · capat</span>. Campul e <b>545</b> pe stanga (talpa 1580), <b>540</b> pe dreapta (1570).</p>', None),
  ('Golul de geam',
-  '<p>Centrat: <b>543 camp · 490 gol · 542 camp</b> (campurile se ajusteaza la talpa reala; golul ramane 490). Intre verticalele de la 543 si 1033 pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p>'
+  '<p>Golul de <b>490</b> se centreaza pe talpa: campul = (talpa − 490) / 2. Pe stanga (1580) iese <b>545 · 490 · 545</b>, pe dreapta (1570) <b>540 · 490 · 540</b>. Golul ramane 490 pe amandoua; doar campul difera. Intre verticalele care margineau golul pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p>'
   + fig(GH['lat_geam'], 'Golul de geam — acrilic 440 in gol 490, 25 mm joc de jur imprejur'),
   None),
  ('Echerul si contrafisele',

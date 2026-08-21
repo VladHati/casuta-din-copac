@@ -222,11 +222,11 @@ L=d['DEP_L']; T=d['T']
 hf,hb=d['LATF'],d['LATB']
 g.bar(0,0,L,T,fill=W2)
 g.poly([(0,hf-T),(L,hb-T),(L,hb),(0,hf)],fill=W2)
-VX=[0,543,1033,L-48]                 # capete + verticalele care marginesc golul de geam (543 / 1033)
+gx0=(L-d['GOL_GEAM'])/2; gx1=gx0+d['GOL_GEAM']    # golul centrat pe talpa (545..1035 pe 1580)
+VX=[0,gx0-48,gx1,L-48]               # capete + verticalele care marginesc golul (din gx0/gx1, nu scrise de mana)
 for x in VX:
     top=vlat(x+24,L)-T
     g.bar(x,T,48,top-T,fill=W1)
-gx0=(L-d['GOL_GEAM'])/2; gx1=gx0+d['GOL_GEAM']
 g.bar(gx0,d['PRAG']-T,d['GOL_GEAM'],T,fill=W2)
 g.bar(gx0,d['PRAG']+d['GOL_GEAM'],d['GOL_GEAM'],T,fill=W2)
 g.bar(gx0,d['PRAG'],d['GOL_GEAM'],d['GOL_GEAM'],fill=GLASS,stroke=ACC)
@@ -235,8 +235,9 @@ for (bx,sx,by,sy) in ((46,1,T,1),(L-46,-1,T,1)):
     g.ln(bx+sx*150,by,bx,by+sy*150,stroke=ACC,sw=4)
 g.ln(46+150,vlat(120,L)-T,46,vlat(120,L)-T-150,stroke=ACC,sw=4)
 g.ln(L-46-150,vlat(L-120,L)-T,L-46,vlat(L-120,L)-T-150,stroke=ACC,sw=4)
+cL=round((L-d['GOL_GEAM'])/2); cR=round((d['DEP_R']-d['GOL_GEAM'])/2)   # 545 stanga · 540 dreapta
 g.dimh(0,gx0,0,off=26,size=11); g.dimh(gx0,gx1,0,off=26); g.dimh(gx1,L,0,off=26,size=11)
-g.dimh(0,L,0,f"talpa {L}  —  cealalta laterala e {d['DEP_R']}",off=54)
+g.dimh(0,L,0,f"talpa {L} ({cL}/{d['GOL_GEAM']}/{cL})  ·  cealalta laterala {d['DEP_R']} ({cR}/{d['GOL_GEAM']}/{cR})",off=54)
 g.dimv(0,hf,0,f"{round(hf)} in fata",off=-26)
 g.dimv(0,hb,L,f"{round(hb)} in spate",off=26)
 g.dimv(0,d['PRAG'],gx0,f"prag {d['PRAG']}",off=-26,fill=ACC)

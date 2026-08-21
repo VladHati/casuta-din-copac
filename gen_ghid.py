@@ -24,6 +24,52 @@ T    = 48                      # grosimea talpii/cununii (rigla 48x48)
 VB   = 1700-2*T                # 1604
 assert VB == 1604, VB          # rigla 48: 1700 - 2*48 = 1604
 PITCH_TXT = '8,2°'
+SLdeg = math.degrees(SL)       # 8,18°
+
+# ── cote pentru desenele de capitol (brief desene-etape-casa) ──
+# Toate derivate din constante: schimba T si verticalele se muta singure.
+VF     = 1600 - T                        # verticala perete fata = 1552
+assert VF == 1552, VF
+VL     = [1573, 1645, 1722, 1794]        # verticale laterale, fata->spate (verbatim 20.08)
+GEAM   = 490                             # golul de geam lateral
+# Campul (talpa − gol)/2 se calculeaza din talpa fiecarui perete — nu se scrie ca sir,
+# altfel diverge cand geometria se muta: stanga 1580 -> 545, dreapta 1570 -> 540.
+def CAMP(dep): return (dep - GEAM)//2    # camp de fiecare parte a golului, centrat pe talpa
+assert CAMP(DEP_L)*2 + GEAM == DEP_L == 1580, (CAMP(DEP_L), DEP_L)   # 545 + 490 + 545
+assert CAMP(DEP_R)*2 + GEAM == DEP_R == 1570, (CAMP(DEP_R), DEP_R)   # 540 + 490 + 540
+PRAG   = 950                             # inaltimea pragului de geam lateral
+STICLA = 440                             # acrilicul, in gol de 490
+JOC    = (GEAM - STICLA)//2              # 25 mm joc pe fiecare latura
+assert JOC == 25, JOC
+BARA_F = WF + 2*FP                       # bara solida 100x60 a peretelui fata = 2155
+assert BARA_F == 2155, BARA_F
+FER_F  = 570                             # prag+buiandrug fereastra fata, intre jambe
+CUN_L  = round(DEP_L/math.cos(SL))       # cununa inclinata lateral stanga = 1596
+CUN_R  = round(DEP_R/math.cos(SL))       # cununa inclinata lateral dreapta = 1586
+assert (CUN_L, CUN_R) == (1596, 1586), (CUN_L, CUN_R)
+BRAT   = 150                             # bratul contrafisei pe fiecare latura
+DIAG   = round(BRAT*math.sqrt(2))        # contrafisa pe diagonala = 212
+assert DIAG == 212, DIAG
+GOL_USA, USA_LIBER = 550, 1600           # golul de usa: 550 latime, 1600 liber vertical
+# perete fata — layout masurat de la fata interioara a stalpului stang (brief D6)
+FL_CAMP = 115                            # camp pana la prima jamba
+FL_FER  = (161, 731)                     # golul ferestrei (latime 570)
+FL_USA  = (938, 1488)                    # golul usii (latime 550)
+FL_MONT = (1650, 1696)                   # montant de camp (latime 46)
+FL_COLT = 274                            # coltul unde sta propteaua de 250
+assert FL_FER[1]-FL_FER[0] == FER_F
+assert FL_USA[1]-FL_USA[0] == GOL_USA
+assert FL_MONT[1]+FL_COLT == WALL_F, (FL_MONT[1], FL_COLT, WALL_F)
+# acoperis
+DROP    = REZ_B - REZ_F                   # cadere = 240
+assert DROP == 240, DROP
+BLOC    = round(PAS) - 44                 # inchideri intre capriori = 454 (498 - 44)
+assert BLOC == 454, BLOC
+RW, RH  = 44, 100                         # sectiunea capriorului: 44 orizontal, 100 vertical
+STREASINA = 100
+OSB_LEN = 2200                            # latimea acoperisului (dulapul de 2200 taiat)
+OSB_W1, OSB_W2 = 1250, round(RAFT-1250)   # placile OSB: 2200x1250 + 2200x639
+assert OSB_W2 == 639, OSB_W2
 
 def esc(s): return s.replace('&','&amp;').replace('<','&lt;')
 
@@ -77,6 +123,17 @@ class Fig:
         self.el.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="13" fill="{c}" stroke="#fff" stroke-width="2.5"/>')
         self.t_(x-14,y-14); self.t_(x+14,y+14)
         self.text(x,y+4.6,str(n),size=13,fill='#fff',weight='700')
+    def dot(self,x,y,r=2.6,fill=MUT):
+        self.el.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r}" fill="{fill}"/>')
+        self.t_(x-r,y-r); self.t_(x+r,y+r)
+    def note(self,x,y,s,dx,dy,anchor='start',fill=MUT,size=12):
+        self.line(x,y,x+dx,y+dy,stroke=fill,sw=1); self.dot(x,y,fill=fill)
+        self.text(x+dx+(5 if anchor=='start' else -5),y+dy-3,s,size=size,fill=fill,anchor=anchor)
+    def arrow(self,x1,y1,x2,y2,stroke=ACC,sw=2.2):
+        self.line(x1,y1,x2,y2,stroke=stroke,sw=sw)
+        a=math.atan2(y2-y1,x2-x1); L=8
+        self.line(x2,y2,x2-L*math.cos(a-0.42),y2-L*math.sin(a-0.42),stroke=stroke,sw=sw)
+        self.line(x2,y2,x2-L*math.cos(a+0.42),y2-L*math.sin(a+0.42),stroke=stroke,sw=sw)
     def svg(self,pad=26):
         x0,y0,x1,y1=self.bb
         x,y,w,h = x0-pad, y0-pad, (x1-x0)+2*pad, (y1-y0)+2*pad
@@ -243,6 +300,117 @@ x,y=iso(50,50,-60);  f.text(x,y+44,'stalpul de 4 m',size=13,fill=MUT)
 x,y=iso(500,50,700); f.text(x+26,y-30,'capatul peretelui',size=13,fill=MUT,anchor='start')
 f.text(-260,250,'gaura de 6 mm data inainte in stalp — altfel crapa',size=14,fill=ACC2,anchor='start',mono=False)
 figs['e4_prindere']=f.svg()
+
+# ══════════════════════ E4 · peretii laterali ══════════════════════
+
+# ── D1/D2 · elevatie perete lateral (parametric) ──
+def lateral_elev(dep, cun):
+    S=0.175; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+    f=Fig()
+    camp=CAMP(dep)                                    # 545 stanga · 540 dreapta
+    tops=[T+v for v in VL]
+    xs=[0, camp-T, camp+GEAM, dep-T]                  # 0 · camp-48 · camp+490 · dep-48
+    f.rect(X(0),Y(T),X(dep),X(T),fill=W2)                              # talpa
+    f.poly([(X(0),Y(tops[0])),(X(dep),Y(tops[3])),
+            (X(dep),Y(tops[3]+T)),(X(0),Y(tops[0]+T))],fill=W2)        # cununa inclinata
+    for xi,v in zip(xs,VL):                                            # verticale
+        f.rect(X(xi),Y(T+v),X(T),X(v),fill=W1)
+        f.text(X(xi+T/2),Y(T+v/2),str(v),size=11,fill=MUT,rot=-90)
+    gx0,gx1=camp,camp+GEAM                                            # golul de geam, centrat pe talpa
+    f.rect(X(gx0),Y(PRAG),X(GEAM),X(T),fill=W2)                        # pragul
+    f.rect(X(gx0),Y(PRAG+GEAM+T),X(GEAM),X(T),fill=W2)                 # buiandrugul
+    f.rect(X(gx0),Y(PRAG+GEAM),X(GEAM),X(GEAM),fill=GLASS,stroke=ACC)
+    f.text(X((gx0+gx1)/2),Y(PRAG+GEAM/2),f'GOL {GEAM}',size=12,fill=ACC,weight='600')
+    yd=Y(-70)
+    f.dim(X(0),yd,X(gx0),yd,str(camp),size=11)
+    f.dim(X(gx0),yd,X(gx1),yd,str(GEAM))
+    f.dim(X(gx1),yd,X(dep),yd,str(camp),size=11)
+    f.dim(X(0),Y(-260),X(dep),Y(-260),f'talpa {dep}',size=13)
+    px=X(gx0)-26
+    f.dim(px,Y(0),px,Y(PRAG),f'prag {PRAG}',vertical=True,off=-10,fill=ACC)
+    mx=dep/2; my=(tops[0]+tops[3])/2+T/2
+    f.text(X(mx),Y(my)+30,f'cununa {cun}',size=12,fill=ACC,rot=-SLdeg)
+    f.text(X(0),Y(-370),'FATA',size=11,fill=MUT,anchor='start')
+    f.text(X(dep),Y(-370),'SPATE  (mai inalt)',size=11,fill=MUT,anchor='end')
+    return f.svg()
+
+figs['lat_stanga']=lateral_elev(DEP_L,CUN_L)
+figs['lat_dreapta']=lateral_elev(DEP_R,CUN_R)
+
+# ── D3 · detaliu gol de geam, sectiune orizontala ──
+# x = de-a lungul peretelui (golul 490, lat); y = prin grosime (exagerat): interior jos, exterior sus.
+f=Fig()
+S=0.5; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+DEPz=200; c=DEPz/2                                                    # grosimea desenata (exagerat)
+f.rect(X(-150),Y(DEPz),X(150),X(DEPz),fill=W3,stroke=INK)            # toc stanga (rama golului)
+f.rect(X(GEAM),Y(DEPz),X(150),X(DEPz),fill=W3,stroke=INK)           # toc dreapta
+f.text(X(-75),Y(c),'toc',size=11,fill=MUT,rot=-90)
+f.text(X(GEAM+75),Y(c),'toc',size=11,fill=MUT,rot=-90)
+f.rect(X(JOC),Y(c+14),X(STICLA),X(28),fill=GLASS,stroke=ACC)         # acrilic 440, centrat
+f.text(X(GEAM/2),Y(c),'acrilic',size=11,fill=ACC,weight='600')
+for sx0 in (0,GEAM-70):                                              # sipci pe ambele fete, la marginile golului
+    f.rect(X(sx0),Y(c-16),X(70),X(28),fill=W1,stroke=INK)            # sipca interioara (jos)
+    f.rect(X(sx0),Y(c+72),X(70),X(28),fill=W1,stroke=INK)           # sipca exterioara (sus)
+f.text(X(35),Y(c-30),'1 · sipca interioara',size=9.5,fill=MUT,anchor='start')
+f.text(X(35),Y(c+50),'3 · sipca exterioara',size=9.5,fill=MUT,anchor='start')
+f.text(X(GEAM/2),Y(c+34),'2 · acrilic (din exterior)',size=9.5,fill=ACC,anchor='middle')
+f.text(X(GEAM+165),Y(c-4),'interior',size=10,fill=MUT,anchor='start')
+f.text(X(GEAM+165),Y(c+84),'exterior',size=10,fill=MUT,anchor='start')
+# cote de-a lungul golului
+f.dim(X(0),Y(DEPz+52),X(GEAM),Y(DEPz+52),f'gol {GEAM}',size=12)
+f.dim(X(JOC),Y(DEPz+18),X(GEAM-JOC),Y(DEPz+18),f'acrilic {STICLA}',size=11,fill=ACC)
+f.dim(X(0),Y(-46),X(JOC),Y(-46),str(JOC),size=10,fill=ACC2)
+f.dim(X(GEAM-JOC),Y(-46),X(GEAM),Y(-46),str(JOC),size=10,fill=ACC2)
+f.text(X(GEAM/2),Y(-84),'joc 25 pe fiecare latura (490 − 440)',size=10.5,fill=ACC2)
+# surub prin acrilic + gaura +1 mm
+scx=GEAM-95
+f.line(X(scx),Y(c+86),X(scx),Y(c-2),stroke=METAL2,sw=3)
+f.text(X(scx),Y(c+100),'+1 mm',size=11,fill=ACC2,weight='600')
+figs['lat_geam']=f.svg()
+
+# ── D4 · detaliu colt cu contrafisa ──
+f=Fig()
+S=0.42; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+L4=360
+f.rect(X(0),Y(T),X(L4),X(T),fill=W2,stroke=INK)              # talpa
+f.rect(X(0),Y(L4),X(T),X(L4-T),fill=W1,stroke=INK)           # verticala de colt
+f.text(X(T/2),Y(L4*0.68),'verticala',size=10,fill=MUT,rot=-90)
+f.text(X(L4*0.66),Y(T/2),'talpa',size=10,fill=MUT)
+A=(T+BRAT,T+T); B=(T+T,T+BRAT)                               # capetele contrafisei (pe fata interioara)
+f.line(X(A[0]),Y(A[1]),X(B[0]),Y(B[1]),stroke=INK,sw=20)     # contur contrafisa
+f.line(X(A[0]),Y(A[1]),X(B[0]),Y(B[1]),stroke=W3,sw=16)      # corpul (rigla 48 pe diagonala)
+f.text(X((A[0]+B[0])/2+46),Y((A[1]+B[1])/2+46),f'contrafisa {DIAG}',size=11,fill=INK,rot=45,anchor='middle')
+f.dim(X(T),Y(-44),X(T+BRAT),Y(-44),f'brat {BRAT}',size=11)   # brat pe talpa
+f.dim(X(-44),Y(T),X(-44),Y(T+BRAT),f'brat {BRAT}',vertical=True,off=-10,size=11)  # brat pe verticala
+f.note(X(A[0]),Y(A[1]),'taiere 45°',dx=X(44),dy=-16,anchor='start',fill=ACC2,size=10)
+f.note(X(B[0]),Y(B[1]),'taiere 45°',dx=X(-8),dy=-48,anchor='end',fill=ACC2,size=10)
+f.text(X(L4),Y(-74),'rigla 48×48 (din rest)',size=10.5,fill=MUT,anchor='end')
+figs['lat_colt']=f.svg()
+
+# ── D5 · perete lateral in sectiune verticala, cu lambriul (detaliu marit) ──
+f=Fig()
+S=1.5; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+LT=12.5; LW=96; OV=18                                        # lambriu 12,5×96, falt ~18
+RH5=2*(LW-OV)+LW                                             # inaltimea ramei = cat acopera 3 lamele
+f.rect(X(0),Y(T+RH5),X(T),X(RH5),fill=W2,stroke=INK)       # rama 48×48 (in sectiune, verticala)
+f.text(X(T/2),Y(T+RH5*0.5),'rama 48×48',size=10,fill=MUT,rot=-90)
+for i in range(3):
+    yb=T + i*(LW-OV)
+    f.rect(X(T),Y(yb+LW),X(LT),X(LW),fill=W1,stroke=INK)     # lamela pe fata ramei
+    f.rect(X(T),Y(yb+LW),X(LT),X(OV),fill=W2,stroke=INK)     # zona de suprapunere (falt) cu lamela de deasupra
+    sy=yb+LW-LW/2                                            # surubul intra in rama
+    f.line(X(T+LT),Y(sy),X(2),Y(sy),stroke=METAL2,sw=3)
+    f.line(X(4),Y(sy-6),X(2),Y(sy),stroke=METAL2,sw=3); f.line(X(4),Y(sy+6),X(2),Y(sy),stroke=METAL2,sw=3)
+ytop=T+RH5
+f.dim(X(0),Y(ytop+24),X(T),Y(ytop+24),'48',size=10)
+f.dim(X(T),Y(ytop+24),X(T+LT),Y(ytop+24),'12,5',size=10)
+f.note(X(T+LT),Y(T+RH5-LW*0.5),'lambriu 12,5×96',dx=X(30),dy=-18,anchor='start',size=11)
+f.note(X(T+LT),Y(T+(LW-OV)+LW-OV/2),'falt: calca peste',dx=X(30),dy=6,anchor='start',size=10)
+f.note(X(T+LT),Y(T+(LW-OV)+LW-OV/2-18),'lamela de sub ea',dx=X(30),dy=24,anchor='start',size=10)
+f.note(X(T+2),Y(T+LW*0.5),'surub in fiecare verticala',dx=X(30),dy=34,anchor='start',fill=METAL2,size=10)
+f.text(X(0),Y(T-30),'direct pe rama:',size=10.5,fill=ACC2,anchor='start')
+f.text(X(0),Y(T-50),'fara folie, fara sipci, fara OSB',size=10.5,fill=ACC2,anchor='start')
+figs['lat_sect']=f.svg()
 
 json.dump(figs,open('figs_ghid.json','w'))
 print('ok',{k:len(v) for k,v in figs.items()})
