@@ -41,7 +41,7 @@ MAT = {
     ('Surub dulgherie 6×140', 6,   'buc',   'talpa prin podea, in grinzi, la 400'),
     ('Vinclu 90×65',          14,  'buc',   '4 pe talpa, pe interior · 10 pe reazemul de sus, pe ambele fete'),
     ('Conector lemn 90×200',  4,   'buc',   'placi metalice deasupra fiecarui stalp, sub reazem'),
-    ('Surub de lambriu',      110, 'buc',   '2 pe fiecare intersectie lamela-verticala'),
+    ('Surub de lambriu',      110, 'buc',   'un surub pe fiecare intersectie lamela-verticala'),
  ], have=[
     ('Dulap 200×50×4000', 1, 'bara', 'reazemul acoperisului — se taie la 2200, pe muchie, 200 in sus'),
  ]),
@@ -83,20 +83,22 @@ MAT = {
 
 # Ce cumperi de fapt vs ce cere suma etapelor. Diferenta e explicata, nu ascunsa.
 CUMPERI = [
- ('Rigla 48×48×4000',           '14',  '~419 lei', 'rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile, a 14-a e rezerva.'),
+ ('Rigla 48×48×4000',           '13',  '~389 lei', 'rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile.'),
  ('Lambriu 12,5×96, pachet 2,88 m²','6', '758 lei', 'net 12,3 m²; sase pachete dau 17,3 m². Restul e suprapunere si taiere.'),
- ('Scandura 22×100×4000',       '8',   '~159 lei', 'capriorii laminati (3 bare) plus inchiderile dintre ei (una).'),
- ('Rigla 46×46×3000',           '2',   'de verificat', 'tocurile celor doua geamuri laterale, ~4 m.'),
+ ('Scandura 22×100×4000',       '7',   '~139 lei', '5 capriori laminati (5 bare, 2 straturi pe caprior) plus inchiderile de 454 (a 6-a); a 7-a rezerva.'),
+ ('Rigla 46×46×3000',           '2',   '~50 lei',  'tocurile celor doua geamuri laterale, ~4 m. 24,91 lei/buc.'),
  ('Placa OSB3 12 mm',           '2',   '~150 lei', 'astereala acoperisului.'),
  ('Onduline 2000×860 maro',     '3',   '~124 lei', 'maro e cu ~6 lei mai ieftin decat rosu, si e stoc.'),
  ('Cuie Onduline, set 400',     '1',   '97 lei',   'primul in cos — stocul e mic.'),
  ('Placa plexiglas 500×1000×4', '1',   '72 lei',   'amandoua geamurile ies dintr-una.'),
  ('Fereastra PVC 56×56',        '1',   '127 lei',  'peretele din fata.'),
- ('Sipca 18×28',                '6 m', 'de verificat', 'strange geamurile pe ambele fete.'),
- ('Vinclu 90×65',               '50',  '~180 lei', 'colturi, reazem, capriori, stalpii din fata.'),
+ ('Sipca 18×28',                '6 m', '~17 lei',  'strange geamurile pe ambele fete. 8,29 lei/3 m, verificat 06.08.'),
+ ('Silicon de exterior',        '2 tuburi', '~30 lei', 'rosturile geamurilor laterale si ale ferestrei din fata.'),
+ ('Vinclu 90×65',               '56',  '~200 lei', 'spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele E0 8.'),
  ('Conector lemn 90×200×2,5',   '4',   '~36 lei',  'placile de deasupra fiecarui stalp, sub reazem.'),
- ('Surub dulgherie 8×140',      '20',  '~40 lei',  'peretele din spate in stalpi, stalpii din fata.'),
+ ('Surub dulgherie 8×140',      '36',  '~72 lei',  'spate in stalpi 8 · stalpii din fata 8 · blocajele E0 20.'),
  ('Surub dulgherie 6×140',      '~30', '~48 lei',  'talpile prin podea, in grinzi, la 400.'),
+ ('Surub dulgherie 6×100',      '~60', '~30 lei',  'contrafisele si proptelele, 2 la fiecare capat. Ai 20 Heco 6×100 in stoc.'),
  ('Surub de lambriu, inox A2',  '~450','~160 lei', 'nu ai niciunul — stocul din faza 1 s-a dus tot in podea.'),
  ('Surub 4×45 · 4×40 · 4×50',   'cutii','~90 lei', 'OSB, laminarea capriorilor, sipcile de geam.'),
 ]
@@ -232,15 +234,15 @@ CH.append(dict(id='e2', n='E2', titlu='Drumul la Leroy',
 </div>
 
 {steps([
- ('Cele 14 rigle de 48×48',
-  '<p>Rama tuturor peretilor. Taierile cer 12,1 bare — restul e pierdere si rezerva. Le numeri inainte sa pleci.</p>', None),
+ ('Cele 13 rigle de 48×48',
+  '<p>Rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile. Le numeri inainte sa pleci.</p>', None),
  ('Cuiele de Onduline, primele',
   '<p>Stocul e mic. Daca s-au terminat, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion.</p>', None),
  ('Restul listei, bifat la casa',
   '<p>Tot ce e in <code>LISTA-LEROY-2026-08-17</code>, cu masuratorile M2–M5 facute inainte (lambriul se ia pe masuratori reale).</p>', None),
 ])}
 
-<div class="ok"><b>E bine daca:</b> cele 14 rigle de 48×48 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
+<div class="ok"><b>E bine daca:</b> cele 13 rigle de 48×48 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
 '''))
 
 # ══════════════════════════════ E3 · peretele din spate ══════════════════════════════
@@ -270,7 +272,8 @@ CH.append(dict(id='e3', n='E3', titlu='Peretele din spate',
   '<p>Masori ambele diagonale ale ramei. Trebuie egale, <b>voie 3 mm</b>. Corectezi acum, impingand de colturi.</p>'
   '<p class="why-inline">Proptelele ingheata forma exact cum o gasesc. Daca rama e stramba cand le pui, ramane stramba, si se vede la lambriu.</p>', None),
  ('Proptelele din colturi',
-  '<p>Din restul de rigla 48×48: jos brate de 300 (taiate la <b>424</b> pe diagonala), sus brate de 150 (taiate la <b>212</b>). Cate 2 suruburi 6×120 la fiecare capat.</p>', None),
+  '<p>Din restul de rigla 48×48: jos brate de 300 (taiate la <b>424</b> pe diagonala), sus brate de 150 (taiate la <b>212</b>). Cate 2 suruburi 6×100 la fiecare capat.</p>'
+  '<p class="why-inline">Surub de <b>6×100</b>, nu de 120 mm: coltul de rigla 48+48 are doar 96 mm grosime; unul de 120 iese 24 mm pe partea cealalta, la inaltimea capului de copil.</p>', None),
  ('Vopsea, apoi lambriul',
   '<p>Vopsea de protectie pe <b>toate fetele</b> scandurilor, inclusiv cele care nu se mai vad niciodata. Apoi lambriul, cat peretele e culcat: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</p>', None),
  ('Ridicarea — pasul periculos',
@@ -336,7 +339,7 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
   + fig(GH['lat_geam'], 'Golul de geam — acrilic 440 in gol 490, 25 mm joc de jur imprejur'),
   None),
  ('Echerul si contrafisele',
-  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×120 la capat.</p>'
+  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×100 la capat.</p>'
   + fig(GH['lat_colt'], 'Coltul — contrafisa 212 pe diagonala, brat 150'),
   None),
  ('Vopsea si lambriu',
@@ -344,7 +347,7 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
  ('Tocul geamului',
   '<p>In golul de 490 intra un <b>toc separat</b> din rigla 46×46, iar geamul fix de <b>440×440</b> (plexi de 4 mm) se prinde cu <b>sipci pe ambele fete</b>. Gaurile in plexi se dau cu <b>+1 mm</b> fata de surub — altfel plexiul crapa la strans. Geamul propriu-zis se monteaza la E7, din exterior.</p>', None),
  ('Prinderea peretelui',
-  '<p>Talpa in grinzile de dedesubt: <b>6×140 la fiecare 40 cm</b>. La colturi, unde se intalneste cu peretele din spate si cu cel din fata: cate <b>2 vincluri 100×90 pe colt</b>.</p>', None),
+  '<p>Talpa in grinzile de dedesubt: <b>6×140 la fiecare 40 cm</b>. La colturi, unde se intalneste cu peretele din spate si cu cel din fata: cate <b>2 vincluri 90×65 pe colt</b>.</p>', None),
 ])}
 
 <div class="ok"><b>E bine daca:</b> ambele laterale stau la echer pe podea · golul de geam e 490 curat, cu prag la 950 · contrafise in toate colturile · talpa prinsa in grinzi si colturile in vincluri.</div>
@@ -417,7 +420,7 @@ CH.append(dict(id='e6', n='E6', titlu='Acoperisul',
 
 {steps([
  ('Lamineaza capriorii — singurul lemn laminat',
-  '<p>Capriorii sunt <b>44×100</b>, facuti din <b>2 scanduri de 22×100</b> insurubate una peste alta cu <b>4×40 in zigzag la 300 mm</b>. 5 capriori de <b>1889</b> lungime → din cele 6 scanduri (3 bare laminate).</p>'
+  '<p>Capriorii sunt <b>44×100</b>, facuti din <b>2 scanduri de 22×100</b> insurubate una peste alta cu <b>4×40 in zigzag la 300 mm</b>. 5 capriori de <b>1889</b> → <b>5 bare, doua straturi pe caprior</b> (o bara de 4000 da doua straturi de 1889). A 6-a bara da cele 4 inchideri de 454; a 7-a e rezerva.</p>'
   '<p class="why-inline">Capriorii NU trec pe rigla 48×48 — sectiunea patrata s-ar indoi la spanul de 1670. Aici, si numai aici, se lamineaza.</p>', None),
  ('Aseaza capriorii',
   '<p>Pas <b>498</b> intre ei, in dreptul verticalelor din pereti. <b>Orientarea conteaza: 100 pe verticala, 44 pe orizontala.</b> Pus invers, capriorul lucreaza pe axa slaba. Fiecare capat: <b>2 vincluri 90×65</b>.</p>', None),
