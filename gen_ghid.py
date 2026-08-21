@@ -412,5 +412,99 @@ f.text(X(0),Y(T-30),'direct pe rama:',size=10.5,fill=ACC2,anchor='start')
 f.text(X(0),Y(T-50),'fara folie, fara sipci, fara OSB',size=10.5,fill=ACC2,anchor='start')
 figs['lat_sect']=f.svg()
 
+
+# ══════════════════ NODURI · cum se intalnesc peretii ══════════════════
+LT = 12.5                       # grosimea lambriului
+BAG = T                         # bagheta de colt = rigla 48x48 din rest
+
+def colt_plan(post, et_a, et_b, note_post):
+    """Plan de sus la un colt. Stalpul e imbinarea: peretii nu se ating.
+       Exteriorul spate = sus (y<0), exteriorul lateral = stanga (x<0)."""
+    f=Fig(); S=1.9; X=lambda mm: mm*S; Y=lambda mm: mm*S
+    # stalpul, in plan
+    f.rect(X(0),Y(0),X(post),X(post),fill=W3,stroke=INK,sw=2)
+    f.text(X(post/2),Y(post/2)+5,f'{post}×{post}',size=11,fill=INK)
+    # rama peretelui A (spate/fata): pleaca din stalp spre dreapta, grosime T pe y
+    f.rect(X(post),Y(0),X(210),X(T),fill=W2,stroke=INK)
+    f.text(X(post+118),Y(T/2)+4,f'rama {T}',size=10,fill=MUT)
+    # rama peretelui B (lateral): pleaca din stalp in jos, grosime T pe x
+    f.rect(X(0),Y(post),X(T),X(210),fill=W2,stroke=INK)
+    f.text(X(T/2),Y(post+118),f'rama {T}',size=10,fill=MUT,rot=-90)
+    # lambriu pe peretele A — trece peste stalp, pana la fata exterioara a lateralei
+    f.rect(X(-LT),Y(-LT),X(post+210+LT),X(LT),fill=W1,stroke=INK)
+    # lambriu pe peretele B — se opreste in muchia celui de sus
+    f.rect(X(-LT),Y(0),X(LT),X(post+210),fill=W1,stroke=INK)
+    # bagheta de colt, peste imbinare, pe fata peretelui A
+    f.rect(X(-LT),Y(-LT-BAG),X(BAG),X(BAG),fill=W4,stroke=ACC2,sw=2)
+    f.note(X(-LT+BAG),Y(-LT-BAG/2),f'bagheta de colt {BAG}×{BAG}, din rest',dx=X(34),dy=-16,anchor='start',fill=ACC2,size=11)
+    f.note(X(-LT/2),Y(post+96),'lambriu 12,5',dx=X(-14),dy=X(52),anchor='end',size=10)
+    # suruburi: fiecare perete in stalp, oblic
+    for k in range(2):
+        yy=post*0.3+k*post*0.4
+        f.line(X(post+34),Y(yy),X(post-30),Y(yy+16),stroke=METAL2,sw=3)
+    for k in range(2):
+        xx=post*0.3+k*post*0.4
+        f.line(X(xx),Y(post+34),X(xx+16),Y(post-30),stroke=METAL2,sw=3)
+    f.note(X(post+30),Y(post*0.62),'8×140 oblic in stalp',dx=X(46),dy=X(40),anchor='start',fill=METAL2,size=10.5)
+    f.text(X(post+210),Y(-LT-BAG-26),et_a,size=11,fill=ACC,anchor='end')
+    f.text(X(-LT-BAG-14),Y(post+210),et_b,size=11,fill=ACC,anchor='end',rot=-90)
+    f.text(X(post+40),Y(post+250),note_post,size=10.5,fill=ACC2,anchor='start')
+    f.text(X(post+30),Y(-LT-BAG-52),'PLAN — vazut de sus',size=11,fill=MUT,anchor='start')
+    return f
+
+f = colt_plan(BP,'perete SPATE','perete LATERAL','peretii nu se ating: stalpul e imbinarea')
+figs['nod_colt_spate']=f.svg()
+
+f = colt_plan(FP,'perete FATA','perete LATERAL','acelasi nod, stalp mai subtire')
+figs['nod_colt_fata']=f.svg()
+
+# ── N3 · sus la spate: laterala trece peste cununa spatelui ──
+f=Fig(); S=1.05; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+B0=1180                                                              # de aici in jos, stalpul e rupt
+f.rect(X(0),Y(1700),X(BP),X(1700-B0),fill=W3,stroke=INK,sw=2)        # stalpul spate, partea de sus
+f.text(X(BP/2),Y(1420),'stalp 100',size=11,fill=MUT,rot=-90)
+for _a,_b in [(-6,BP*0.3),(BP*0.3,BP*0.62),(BP*0.62,BP+6)]:
+    f.line(X(_a),Y(B0+(9 if _a<BP*0.4 else -9)),X(_b),Y(B0+(-9 if _a<BP*0.4 else 9)),stroke=INK,sw=1.4)
+f.rect(X(BP),Y(1700),X(520),X(T),fill=W2,stroke=INK)                 # cununa peretelui din spate
+f.text(X(BP+260),Y(1700-T/2)+4,'cununa perete spate',size=10.5,fill=MUT)
+f.rect(X(0),Y(1900),X(BP+520),X(200),fill=W4,stroke=ACC2,sw=2)       # dulapul de reazem, pe muchie
+f.text(X((BP+520)/2),Y(1800)+5,'dulap 200×50 pe muchie',size=11,fill=ACC2)
+f.dim(X(BP+520+40),Y(1700),X(BP+520+40),Y(1900),'200',vertical=True,size=11)
+# capriorul, peste dulap
+f.poly([(X(-140),Y(1900)),(X(BP+520),Y(1900)),(X(BP+520),Y(2000)),(X(-140),Y(2000))],fill=W1,stroke=INK)
+f.text(X(200),Y(1950)+4,'caprior 44×100',size=10.5,fill=MUT)
+# peretele lateral, vazut din capat (grosimea T), oprit la 1893
+f.rect(X(-140-T),Y(1893),X(T),X(1893-B0),fill=W2,stroke=INK,dash='5 4')
+f.text(X(-140-T/2),Y(1500),'perete lateral (capat)',size=10,fill=MUT,rot=-90)
+f.dim(X(-140-T-34),Y(B0),X(-140-T-34),Y(1893),'1893 peste podea',vertical=True,size=11)
+f.dim(X(BP+520+110),Y(B0),X(BP+520+110),Y(1700),'1700',vertical=True,size=11)
+f.line(X(-140-T),Y(1893),X(0),Y(1893),stroke=ACC2,sw=1.4,dash='4 4')
+f.note(X(-140-T),Y(1893),'cununa se scrie pe caprior, la fata locului',dx=X(20),dy=X(150),anchor='start',fill=ACC2,size=10.5)
+f.text(X(200),Y(B0-90),'SECTIUNE — coltul din spate, sus',size=11,fill=MUT)
+figs['nod_sus_spate']=f.svg()
+
+# ── N4 · sus la fata: bara 100×60 peste stalpi ──
+f=Fig(); S=1.05; X=lambda mm: mm*S; Y=lambda mm: -mm*S
+B0=1120
+f.rect(X(0),Y(1600),X(FP),X(1600-B0),fill=W3,stroke=INK,sw=2)        # stalp fata
+f.text(X(FP/2),Y(1360),'stalp 90',size=11,fill=MUT,rot=-90)
+for _a,_b in [(-6,FP*0.3),(FP*0.3,FP*0.62),(FP*0.62,FP+6)]:
+    f.line(X(_a),Y(B0+(9 if _a<FP*0.4 else -9)),X(_b),Y(B0+(-9 if _a<FP*0.4 else 9)),stroke=INK,sw=1.4)
+f.rect(X(FP),Y(1600),X(520),X(T),fill=W2,stroke=INK)                 # ultima vertical + rama fata
+f.text(X(FP+260),Y(1600-T/2)+4,'rama perete fata',size=10.5,fill=MUT)
+f.rect(X(-60),Y(1660),X(FP+560),X(60),fill=W4,stroke=ACC2,sw=2)      # bara 100x60, 60 in sus
+f.text(X((FP+500)/2),Y(1630)+5,'bara 100×60 — 60 in sus',size=11,fill=ACC2)
+f.dim(X(FP+520+40),Y(1600),X(FP+520+40),Y(1660),'60',vertical=True,size=11)
+f.poly([(X(-200),Y(1660)),(X(FP+520),Y(1660)),(X(FP+520),Y(1760)),(X(-200),Y(1760))],fill=W1,stroke=INK)
+f.text(X(120),Y(1710)+4,'caprior 44×100',size=10.5,fill=MUT)
+f.rect(X(-200-T),Y(1666),X(T),X(1666-B0),fill=W2,stroke=INK,dash='5 4')
+f.text(X(-200-T/2),Y(1400),'perete lateral (capat)',size=10,fill=MUT,rot=-90)
+f.dim(X(-200-T-34),Y(B0),X(-200-T-34),Y(1666),'1666 peste podea',vertical=True,size=11)
+f.dim(X(FP+520+110),Y(B0),X(FP+520+110),Y(1600),'1600',vertical=True,size=11)
+f.note(X(-200-T),Y(1666),'aceeasi scriere pe caprior ca la spate',dx=X(20),dy=X(150),anchor='start',fill=ACC2,size=10.5)
+f.text(X(160),Y(B0-90),'SECTIUNE — coltul din fata, sus',size=11,fill=MUT)
+figs['nod_sus_fata']=f.svg()
+
+
 json.dump(figs,open('figs_ghid.json','w'))
 print('ok',{k:len(v) for k,v in figs.items()})
