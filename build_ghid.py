@@ -233,14 +233,24 @@ CH.append(dict(id='e4', n='E4', titlu='Peretii laterali',
 
 <div class="gate"><b>Dreptunghiul casei nu e la echer</b> — e in afara cu ~20 mm. De aceea peretii sunt trapeze usoare, iar <b>fiecare talpa se taie la fata locului</b>, dupa masura reala dintre stalpi, nu din tabel.</div>
 
+{fig(GH['lat_stanga'], 'Perete lateral stanga — talpa 1580, cununa 1596', wide=True)}
+
+{fig(GH['lat_dreapta'], 'Perete lateral dreapta — talpa 1570, cununa 1586', wide=True)}
+
+{fig(GH['lat_sect'], 'Sectiune prin perete — rama 48x48, lambriu 12,5x96 in falt')}
+
 {steps([
  ('Rama, pe punte',
   '<p>Talpa (rigla 48×48): <b>1580</b> pe latura din stanga (S1–S3), <b>1570</b> pe dreapta (S2–S4). Cununa inclinata: <b>1596</b> stanga, <b>1586</b> dreapta.</p>'
   '<p>Cele 4 verticale, dinspre fata spre spate: <b>1573 · 1645 · 1722 · 1794</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · 543 · 1033 · pana la capat</span>.</p>', None),
  ('Golul de geam',
-  '<p>Centrat: <b>543 camp · 490 gol · 542 camp</b> (campurile se ajusteaza la talpa reala; golul ramane 490). Intre verticalele de la 543 si 1033 pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p>', None),
+  '<p>Centrat: <b>543 camp · 490 gol · 542 camp</b> (campurile se ajusteaza la talpa reala; golul ramane 490). Intre verticalele de la 543 si 1033 pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p>'
+  + fig(GH['lat_geam'], 'Golul de geam — acrilic 440 in gol 490, 25 mm joc de jur imprejur'),
+  None),
  ('Echerul si contrafisele',
-  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×120 la capat.</p>', None),
+  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×120 la capat.</p>'
+  + fig(GH['lat_colt'], 'Coltul — contrafisa 212 pe diagonala, brat 150'),
+  None),
  ('Vopsea si lambriu',
   '<p>Vopsea pe toate fetele, apoi lambriul — la fel ca la spate. Golul de geam ramane liber.</p>', None),
  ('Tocul geamului',
