@@ -648,7 +648,7 @@ for sgn in (-1,1):
     f.piece(X(xv),Y(DECK+150),X(14),X(150-DECK),'met',stroke=METAL2,sw=1.1,dash='4 3',label=False)
     xh = xv-62 if sgn<0 else FP
     f.piece(X(xh),Y(DECK+14),X(76),X(14),'met',stroke=METAL2,sw=1.1,dash='4 3',label=False)
-f.note(X(-76),Y(DECK+90),'coltar 90×65, pe fata dinspre tine',dx=X(-110),dy=X(170),anchor='end',fill=METAL2,size=11)
+f.note(X(-76),Y(DECK+90),'vinclu 90×60, pe fata dinspre tine',dx=X(-110),dy=X(170),anchor='end',fill=METAL2,size=11)
 # suruburile, in planul taieturii: intra pe fata stalpului si coboara in grinda
 for face,zs in ((0,(60,105)),(FP,(60,105))):
     sgn = 1 if face==0 else -1                                              # oblic spre INTERIORUL stalpului
