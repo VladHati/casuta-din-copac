@@ -6,7 +6,11 @@ strat interactiv (localStorage, progres pe capitol, reset)."""
 import json
 
 GH = json.load(open('figs_ghid.json'))
+MATS = json.load(open('mats.json'))
 D2 = json.load(open('figs_2d.json'))
+C  = json.load(open('cote.json'))   # cotele derivate din gen_ghid: nimic scris de mana mai jos
+VB,VF,VL,TT = C['VB'],C['VF'],C['VL'],C['T']
+VLs = ' · '.join(str(v) for v in VL)
 
 def fig(svg, cap='', wide=False):
     c = f'<figcaption>{cap}</figcaption>' if cap else ''
@@ -35,35 +39,39 @@ def bon(rows):
 # (nume, cantitate, unitate, nota).  Cantitatile sunt NETE, calculate din bonul de taiere.
 MAT = {
  'e2': dict(buy=[
-    ('Rigla 48×48×4000',      3.3, 'bare',  'talpa+cununa 2×1990, verticale 5×1604, contrafise 2×424+2×212'),
-    ('Lambriu 12,5×96',       4.3, 'm²',    'randuri de 1990, toata inaltimea'),
+    ('Rigla 46×46×3000',      7,   'bare',  'talpa+cununa 2×1990, verticale 5×1608, contrafise 2×424+2×212. Pe bara de 3 m intra o singura piesa lunga — de aceea 7, nu 4,4.'),
+    ('Lambriu 19×116×4000',   9,   'scanduri','17 randuri de 1990, toata inaltimea. Dintr-o scandura de 4 m ies DOUA randuri (1990+1990). PASTREAZA capetele — acopera tot peretele din fata.'),
     ('Surub dulgherie 8×140', 8,   'buc',   'cate 4 la fiecare capat, in stalpii de 4 m'),
     ('Surub dulgherie 6×140', 6,   'buc',   'talpa prin podea, in grinzi, la 400'),
     ('Vinclu 90×65',          14,  'buc',   '4 pe talpa, pe interior · 10 pe reazemul de sus, pe ambele fete'),
     ('Conector lemn 90×200',  4,   'buc',   'placi metalice deasupra fiecarui stalp, sub reazem'),
-    ('Surub de lambriu',      110, 'buc',   'un surub pe fiecare intersectie lamela-verticala'),
+    ('Surub inox 4×50',       85,  'buc',   'un surub pe fiecare intersectie lamela-verticala: 17 randuri × 5 verticale. La 19 mm grosime, 4×40 e prea scurt.'),
  ], have=[
     ('Dulap 200×50×4000', 1, 'bara', 'reazemul acoperisului — se taie la 2200, pe muchie, 200 in sus'),
+    ('Stalpi spate 100×100', 2, 'buc', 'montati pe santier, 1700 peste podea. Nu se cumpara, nu se taie — peretele se prinde IN ei.'),
  ]),
  'e3': dict(buy=[
-    ('Rigla 48×48×4000',      5.9, 'bare',  'ambii pereti: talpi 1580+1570, cununi 1596+1586, 8 verticale, praguri, 8 contrafise'),
-    ('Lambriu 12,5×96',       5.6, 'm²',    'ambii pereti, minus golurile de geam'),
-    ('Rigla 46×46×3000',      2,   'bare',  'tocurile celor doua geamuri — gol 490, 4×490 pe toc'),
+    ('Rigla 46×46×3000',      12,  'bare',  'ambii pereti: talpi 1580+1570, cununi 1596+1586, 8 verticale, 4 praguri de 490, 8 contrafise. Verticalele si talpile iau cate o bara fiecare.'),
+    ('Lambriu 19×116×4000',   14,  'scanduri','7 pe fiecare perete. Dintr-o scandura de 4 m ies doua randuri de 1580. Randurile de sus se scurteaza pe panta.'),
+    ('Rigla 46×46×3000',      2,   'bare',  'tocurile celor doua geamuri — gol 490, 4×490 pe toc. Acelasi material ca rama: resturile lungi de mai sus pot acoperi tocurile.'),
     ('Placa plexiglas 500×1000×4', 1, 'placa', 'amandoua geamurile de 440×440 ies dintr-una'),
     ('Vinclu 90×65',          8,   'buc',   'cate 4 colturi pe perete'),
     ('Surub dulgherie 6×140', 10,  'buc',   'talpile prin podea, la 400'),
-    ('Surub de lambriu',      145, 'buc',   ''),
- ], have=[]),
+    ('Surub inox 4×50',       144, 'buc',   '18 randuri × 4 verticale × 2 pereti'),
+ ], have=[
+    ('Stalpi 100×100 si 90×90', 4, 'buc', 'toti patru sunt montati. Fiecare perete lateral se prinde intre un stalp de spate si unul de fata.'),
+ ]),
  'e4': dict(buy=[
-    ('Rigla 48×48×4000',      2.9, 'bare',  'talpa 1970, 5 verticale 1552, prag+buiandrug 570, 3 contrafise'),
-    ('Lambriu 12,5×96',       2.4, 'm²',    'fara zona usii'),
+    ('Rigla 46×46×3000',      6,   'bare',  'talpa 1970, 5 verticale 1554, prag+buiandrug 570, 3 contrafise'),
+    ('Lambriu 19×116×4000',   6,   'scanduri','sau aproape zero scanduri noi: bucatile de aici sunt toate sub 940 mm (938 · 482 · 207 · 161), deci ies din capetele pastrate la E2 si E3.'),
     ('Fereastra PVC 56×56',   1,   'buc',   'singura care se deschide'),
     ('Surub dulgherie 8×140', 8,   'buc',   'prinderea finala a stalpilor: 4 oblice pe stalp'),
     ('Surub dulgherie 6×140', 6,   'buc',   'talpa prin podea, la 400'),
     ('Vinclu 90×65',          6,   'buc',   '4 pe stalpi + 2 colturi'),
-    ('Surub de lambriu',      65,  'buc',   ''),
+    ('Surub inox 4×50',       80,  'buc',   '16 randuri × 5 verticale'),
  ], have=[
     ('Bara 100×60×3000', 1, 'bara', 'lemnul de sus — se taie la 2155, latura de 60 in sus'),
+    ('Stalpi fata 90×90', 2, 'buc', 'montati pe santier la 1600 peste podea. Nu se cumpara — aici doar se face prinderea finala.'),
  ]),
  'e5': dict(buy=[
     ('Scandura 22×100×4000',  7,   'bare',  '5 capriori laminati de 1889 (5 bare, 2 straturi pe caprior) + 4 inchideri de 454 (a 6-a); a 7-a rezerva'),
@@ -83,24 +91,23 @@ MAT = {
 
 # Ce cumperi de fapt vs ce cere suma etapelor. Diferenta e explicata, nu ascunsa.
 CUMPERI = [
- ('Rigla 48×48×4000',           '13',  '~389 lei', 'rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile.'),
- ('Lambriu 12,5×96, pachet 2,88 m²','6', '758 lei', 'net 12,3 m²; sase pachete dau 17,3 m². Restul e suprapunere si taiere.'),
- ('Scandura 22×100×4000',       '7',   '~139 lei', '5 capriori laminati (5 bare, 2 straturi pe caprior) plus inchiderile de 454 (a 6-a); a 7-a rezerva.'),
- ('Rigla 46×46×3000',           '2',   '~50 lei',  'tocurile celor doua geamuri laterale, ~4 m. 24,91 lei/buc.'),
- ('Placa OSB3 12 mm',           '2',   '~150 lei', 'astereala acoperisului.'),
- ('Onduline 2000×860 maro',     '3',   '~124 lei', 'maro e cu ~6 lei mai ieftin decat rosu, si e stoc.'),
- ('Cuie Onduline, set 400',     '1',   '97 lei',   'primul in cos — stocul e mic.'),
- ('Placa plexiglas 500×1000×4', '1',   '72 lei',   'amandoua geamurile ies dintr-una.'),
- ('Fereastra PVC 56×56',        '1',   '127 lei',  'peretele din fata.'),
- ('Sipca 18×28',                '6 m', '~17 lei',  'strange geamurile pe ambele fete. 8,29 lei/3 m, verificat 06.08.'),
- ('Silicon de exterior',        '2 tuburi', '~30 lei', 'rosturile geamurilor laterale si ale ferestrei din fata.'),
- ('Vinclu 90×65',               '56',  '~200 lei', 'spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele de colt 8.'),
- ('Conector lemn 90×200×2,5',   '4',   '~36 lei',  'placile de deasupra fiecarui stalp, sub reazem.'),
- ('Surub dulgherie 8×140',      '36',  '~72 lei',  'spate in stalpi 8 · stalpii din fata 8 · blocajele de colt 20.'),
- ('Surub dulgherie 6×140',      '~30', '~48 lei',  'talpile prin podea, in grinzi, la 400.'),
- ('Surub dulgherie 6×100',      '~60', '~30 lei',  'contrafisele si proptelele, 2 la fiecare capat. Ai 20 Heco 6×100 in stoc.'),
- ('Surub de lambriu, inox A2',  '~450','~160 lei', 'nu ai niciunul — stocul din faza 1 s-a dus tot in podea.'),
- ('Surub 4×45 · 4×40 · 4×50',   'cutii','~90 lei', 'OSB, laminarea capriorilor, sipcile de geam.'),
+ ('Rigla 46×46×3000',           '27',  '~673 lei', 'rama TUTUROR peretilor <b>si</b> tocurile de geam — un singur material. Planul de taiere cere <b>25</b> de bare (E2 7 · E3 12 · E4 6); tocurile incap in resturile lungi de la laterale, nu cer bare in plus. <b>Ultimele 2 sunt rezerva</b> — 54 de taieri in lemn brut, cu noduri si capete crapate. Net 52,4 m din 75 cumparati: pierderea de 30% vine din faptul ca pe o bara de 3 m nu intra doua piese de 1550–1990. 24,91 lei/buc, stoc 188 la Colosseum.', ('e2','e3','e4','e6')),
+ ('Lambriu 19×116×4000, pachet 2,78 m²','5', '1.015 lei', '<b>29 de scanduri</b> de 4 m: spate 9 · laterale 14 · fata 6. Cinci pachete dau 30 — <b>rezerva e o singura scandura</b>. Sunt 133 in stoc la Colosseum, deci o completare e usoara. Din 4 m ies doua randuri de 1990 sau doua de 1580; asta injumatateste numarul fata de scandurile de 3 m.', ('e2','e3','e4')),
+ ('Scandura 22×100×4000',       '7',   '~139 lei', '5 capriori laminati (5 bare, 2 straturi pe caprior) plus inchiderile de 454 (a 6-a); a 7-a rezerva.', ('e5',)),
+ ('Placa OSB3 12 mm',           '2',   '~150 lei', 'astereala acoperisului.', ('e5',)),
+ ('Onduline 2000×860 maro',     '3',   '~124 lei', 'maro e cu ~6 lei mai ieftin decat rosu, si e stoc.', ('e5',)),
+ ('Cuie Onduline, set 400',     '1',   '97 lei',   'primul in cos — stocul e mic.', ('e5',)),
+ ('Placa plexiglas 500×1000×4', '1',   '72 lei',   'amandoua geamurile ies dintr-una.', ('e3','e6')),
+ ('Fereastra PVC 56×56',        '1',   '127 lei',  'peretele din fata.', ('e4','e6')),
+ ('Sipca 18×28×3000',           '3 bare', '~25 lei', 'baghetele geamurilor laterale. Doua geamuri × doua fete × 4 laturi de 490 = <b>7,84 m</b>; doua bare (6 m) NU ajung. 8,29 lei/bara, verificat 06.08.', ('e6',)),
+ ('Silicon de exterior',        '2 tuburi', '~30 lei', 'rosturile geamurilor laterale si ale ferestrei din fata.', ('e6',)),
+ ('Vinclu 90×65',               '56',  '~200 lei', 'spate colturi+reazem 14 · laterali 8 · fata 6 · capriori 20 · blocajele de colt 8.', ('e2','e3','e4','e5')),
+ ('Conector lemn 90×200×2,5',   '4',   '~36 lei',  'placile de deasupra fiecarui stalp, sub reazem.', ('e2',)),
+ ('Surub dulgherie 8×140',      '36',  '~72 lei',  'spate in stalpi 8 · stalpii din fata 8 · blocajele de colt 20.', ('e2','e4')),
+ ('Surub dulgherie 6×140',      '~30', '~48 lei',  'talpile prin podea, in grinzi, la 400.', ('e2','e3','e4')),
+ ('Surub dulgherie 6×80',       '~60', '~26 lei',  'contrafisele si proptelele, 2 la fiecare capat. Coltul din rigla 46+46 are 92 mm: unul de 100 ar iesi 8 mm pe partea cealalta. Ai 20 Heco 6×80 in stoc.', ('e2','e3','e4')),
+ ('Surub inox A2 4×50',        '~320','~130 lei', 'un surub pe fiecare intersectie lamela-verticala: spate 85 · laterale 144 · fata 80. <b>4×50, nu 4×40</b>: lamela are 19 mm, ii trebuie macar 25 mm in rigla. Nu ai niciunul — stocul din faza 1 s-a dus tot in podea.', ('e2','e3','e4')),
+ ('Surub 4×45 · 4×40 · 4×50',   'cutii','~90 lei', 'OSB, laminarea capriorilor, sipcile de geam.', ('e5','e6')),
 ]
 
 def mat(mid):
@@ -116,14 +123,46 @@ def mat(mid):
         return '\n'.join(out)
     b = f'<div class="mcol buy"><h4>Cumperi</h4><ul>{rows(m["buy"],"b")}</ul></div>' if m['buy'] else ''
     h = f'<div class="mcol have"><h4>Ai deja pe punte</h4><ul>{rows(m["have"],"h")}</ul></div>' if m['have'] else ''
-    return f'<div class="mat"><div class="mhead">Materiale pentru etapa asta</div><div class="mgrid">{b}{h}</div></div>'
+    return (f'<div class="mat" id="mat-{mid}"><div class="mhead">Materiale pentru etapa asta'
+            f'<a class="matback" href="#e1">toate cumparaturile →</a></div>'
+            f'<div class="mgrid">{b}{h}</div></div>')
+
+NUME_CH = {'e2':'E2','e3':'E3','e4':'E4','e5':'E5','e6':'E6'}
+
+# unde apare fiecare material, ca sa se poata sari direct din legenda in capitol
+MAT_CH = {
+ 'ram':('e2','e3','e4','e6'), 'cap':('e5',), 'scn':('e5',),
+ 'lam':('e2','e3','e4'), 'osb':('e5',), 'ond':('e5',), 'sip':('e6',),
+ 'plx':('e3','e6'), 'pvc':('e4','e6'), 'st10':('e2','e3'), 'st9':('e3','e4'),
+ 'dul':('e2','e5'), 'bara':('e4',), 'dus':('e2','e3','e4'), 'gri':('e2','e3','e4'),
+}
+ORD = ['ram','cap','scn','lam','osb','ond','sip','plx','pvc',
+       'st10','st9','dul','bara','dus','gri','met']
+
+def cheia_materialelor():
+    def rand(k):
+        fill,short,lung,exist = MATS[k]
+        hx = ('<span class="sw-hx"></span>' if exist else '')
+        chips = ' '.join(f'<a class="chip" href="#{i}">{NUME_CH[i]}</a>' for i in MAT_CH.get(k,()))
+        marca = '<b>pe santier</b>' if exist else 'se cumpara'
+        return (f'<tr><td class="swc"><span class="sw" style="background:{fill}">{hx}</span></td>'
+                f'<td>{lung}</td><td class="small">{marca}</td><td class="q">{chips}</td></tr>')
+    return ('<table class="t mtab"><tr><th></th><th>Material si sectiune</th>'
+            '<th>De unde vine</th><th class="q">Capitole</th></tr>'
+            + ''.join(rand(k) for k in ORD if k in MATS) + '</table>')
+
+def chip_links(ids):
+    if not ids: return ''
+    lk = ' '.join(f'<a class="chip" href="#{i}">{NUME_CH[i]}</a>' for i in ids)
+    return f'<div class="uses">se foloseste la {lk}</div>'
 
 def cumperi_tabel():
     trs=''.join(
-      f'<tr><td>{a}</td><td class="q mono">{b}</td><td class="q mono">{c}</td><td class="small">{d}</td></tr>'
-      for (a,b,c,d) in CUMPERI)
+      f'<tr><td>{a}</td><td class="q mono">{b}</td><td class="q mono">{c}</td>'
+      f'<td class="small">{d}{chip_links(e)}</td></tr>'
+      for (a,b,c,d,e) in CUMPERI)
     return ('<table class="t cump"><tr><th>Articol</th><th class="q">Cat</th><th class="q">~Lei</th>'
-            '<th>De ce atat</th></tr>'+trs+'</table>')
+            '<th>De ce atat · unde intra</th></tr>'+trs+'</table>')
 
 
 CH = []
@@ -136,7 +175,7 @@ CH.append(dict(id='e1', n='E1', titlu='Drumul la Leroy',
 <p class="lead">Un singur drum. Tot ce urmeaza in ghid presupune ca te intorci cu lista de mai jos completa.</p>
 
 <div class="gate">
-<b>Rama tuturor peretilor e din rigla 48×48×4000, cumparata gata.</b> Nu se lamineaza si nu se taie nimic in lung. Panoul din spate iese la <b>~32-41 kg</b> — se ridica in doi, pe o punte care nu are balustrada.
+<b>Rama tuturor peretilor e din rigla 46×46×3000, cumparata gata.</b> Nu se lamineaza si nu se taie nimic in lung. Cu lambriul de <b>19 mm</b> ales pe 21.08, panoul din spate iese la <b>~42-51 kg</b> — se ridica in doi, pe o punte care nu are balustrada.
 </div>
 
 <div class="need">
@@ -147,20 +186,35 @@ CH.append(dict(id='e1', n='E1', titlu='Drumul la Leroy',
 
 
 
+<div class="exist">
+<b>Ce e deja pe santier si NU se cumpara:</b> cei patru stalpi ai casei — <b>100×100 in spate</b> (intregi, 4 m, ies 1700 peste podea) si <b>90×90 in fata</b> (taiati, 1600 peste podea) — plus podeaua, dulapul de 200×50 pentru reazem si bara de 100×60 pentru peretele din fata. Peretii se prind <b>in</b> stalpi. Rigla de 46×46 pe care o cumperi e rama dintre ei, nu un al doilea rand de stalpi.
+</div>
+
+<div class="need">
+<h4>Cheia lemnului — ce e fiecare piesa din desene</h4>
+<p class="small">Fiecare desen din ghid isi poarta legenda lui. Aceasta e cheia completa: culoarea din desen, materialul si sectiunea lui. Piesele hasurate sunt cele care exista deja pe santier.</p>
+{cheia_materialelor()}
+</div>
+
 <div class="gate">
 <b>Ordinea in magazin:</b> intai <b>cuiele de Onduline</b> — stocul e mic. Daca s-au terminat, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion. Apoi placile: ia maro, e mai ieftin si e stoc.
 </div>
 
 {steps([
- ('Cele 13 rigle de 48×48',
-  '<p>Rama tuturor peretilor. Taierile cer 12,1 bare; a 13-a acopera pierderile. Le numeri inainte sa pleci.</p>', None),
+ ('Cele 27 de rigle de 46×46',
+  '<p>Rama tuturor peretilor <b>si</b> tocurile de geam — un singur material pe tot santierul. Planul de taiere cere <b>25</b> de bare: <b>7</b> la spate, <b>12</b> la laterali, <b>6</b> la fata. Tocurile de geam ies din resturile lungi de la laterali, nu cer bare in plus. <b>Ultimele doua sunt rezerva.</b> Le numeri inainte sa pleci.</p>'
+  '<p class="why-inline">De ce 25 si nu 17: pe o bara de 3 m nu intra doua piese de 1550–1990, iar 26 din cele 54 de piese sunt exact atat. Fiecare consuma o bara intreaga. Pierderea de 30% e in plan, nu e risipa — nu o "optimiza" la magazin.</p>'
+  '<p class="why-inline">De ce nu rigla de 48×48 la 4 m, cum scria planul pana pe 21.08: are <b>stoc zero</b> la Colosseum si nu se livreaza — e produs doar de ridicat din magazin. La 46×46 pierzi 2 mm de sectiune (88% din rezistenta la incovoiere) si castigi materialul pe raft azi.</p>', None),
+ ('Masoara o rigla inainte sa pleci din magazin',
+  '<p>Rigla e <b>bruta, nerindeluita</b>: 46×46 e cota nominala, nu garantata. Pune ruleta pe doua-trei bare din stiva si notezi cat ies cu adevarat.</p>'
+  '<p class="why-inline">Toate verticalele sunt calculate ca <b>lumina minus doua grosimi de rigla</b>: 1608 la spate, 1554 la fata, 1577·1649·1726·1798 la laterale. Daca rigla iese 44 in loc de 46, fiecare verticala e cu 4 mm prea scurta si peretele are joc; daca iese 48, e cu 4 mm prea lunga si nu intra. <b>Corectia e simpla: verticala = lumina − 2 × grosimea masurata.</b> Lumina e 1700 la spate, 1600 la fata, 1669·1741·1818·1890 la laterale.</p>', None),
  ('Cuiele de Onduline, primele',
   '<p>Stocul e mic. Daca s-au terminat, iei suruburi de acoperis cu saiba de cauciuc din acelasi raion.</p>', None),
  ('Restul listei, bifat la casa',
   '<p>Tot ce e in <code>LISTA-LEROY-2026-08-17</code>, cu masuratorile M2–M5 facute inainte (lambriul se ia pe masuratori reale).</p>', None),
 ])}
 
-<div class="ok"><b>E bine daca:</b> cele 13 rigle de 48×48 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
+<div class="ok"><b>E bine daca:</b> cele 27 de rigle de 46×46 sunt in masina · tot ce e pe lista e bifat la casa · cuiele de Onduline sunt in portbagaj.</div>
 '''))
 
 # ══════════════════════════════ E2 · peretele din spate ══════════════════════════════
@@ -169,31 +223,31 @@ CH.append(dict(id='e2', n='E2', titlu='Peretele din spate',
     zi='o zi',
     scule='HS7611K — rigla si dulapul la lungime · GSR — gauri pilot 4 mm + suruburile · GDR — cele 8×140 in stalpi · doi oameni la ridicare',
     bon=[
-     ('Talpa + cununa','rigla 48×48','1990','2'),
-     ('Verticale','rigla 48×48','1604','5'),
-     ('Contrafise colturi','rigla 48×48 (rest)','2× 424 jos · 2× 212 sus','4'),
+     ('Talpa + cununa','rigla 46×46','1990','2'),
+     ('Verticale','rigla 46×46',str(VB),'5'),
+     ('Contrafise colturi','rigla 46×46 (rest)','2× 424 jos · 2× 212 sus','4'),
      ('Reazemul din spate','dulap 200×50 (il ai)','2200','1'),
-     ('Lambriu','12,5×96','randuri de ~1990','~4,3 m²'),
+     ('Lambriu','19×116×4000','17 randuri de 1990, cate doua pe scandura','9'),
     ],
     body=f'''
 <p class="lead">Intre peretele din spate si gard raman <b>30 cm</b>. Ce nu e gata cand il ridici — scanduri, vopsea, suruburi — ramane asa pentru totdeauna. De asta se face complet jos, pe iarba, si abia apoi se urca pe punte.</p>
 
-{fig(D2['spate'], 'Elevatie la scara, din exterior. Cinci verticale de 1604, talpa si cununa de 1990, proptele in colturi.')}
+{fig(D2['spate'], f'Elevatie la scara, din exterior. Cinci verticale de {VB}, talpa si cununa de 1990, proptele in colturi. <a class="dwg" href="SCHEME-2D-casa.html#spate">desenul la scara →</a>')}
 
 {steps([
  ('Rama pe iarba',
-  '<p>Talpa si cununa (rigla 48×48, taiate la <b>1990</b>) paralele. Insemnezi pe amandoua unde vin cele 5 verticale: <span class="mono">0 · 498 · 995 · 1493 · 1990</span>.</p>'
-  '<p>Verticalele sunt rigla 48×48 taiata la <b>1604</b> (= 1700 − doua talpi de 48). Le prinzi cu cate 2 suruburi prin talpa si 2 prin cununa, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</p>', None),
+  '<p>Talpa si cununa (rigla 46×46, taiate la <b>1990</b>) paralele. Insemnezi pe amandoua unde vin cele 5 verticale: <span class="mono">0 · 498 · 995 · 1493 · 1990</span>.</p>'
+  f'<p>Verticalele sunt rigla 46×46 taiata la <b>{VB}</b> (= 1700 − doua talpi de {TT}). Le prinzi cu cate 2 suruburi prin talpa si 2 prin cununa, <b>cu gaura de 4 mm data inainte</b> — capetele de rigla crapa altfel.</p>', None),
  ('Diagonalele — inainte de orice altceva',
   '<p>Masori ambele diagonale ale ramei. Trebuie egale, <b>voie 3 mm</b>. Corectezi acum, impingand de colturi.</p>'
   '<p class="why-inline">Proptelele ingheata forma exact cum o gasesc. Daca rama e stramba cand le pui, ramane stramba, si se vede la lambriu.</p>', None),
  ('Proptelele din colturi',
-  '<p>Din restul de rigla 48×48: jos brate de 300 (taiate la <b>424</b> pe diagonala), sus brate de 150 (taiate la <b>212</b>). Cate 2 suruburi 6×100 la fiecare capat.</p>'
-  '<p class="why-inline">Surub de <b>6×100</b>, nu de 120 mm: coltul de rigla 48+48 are doar 96 mm grosime; unul de 120 iese 24 mm pe partea cealalta, la inaltimea capului de copil.</p>', None),
+  '<p>Din restul de rigla 46×46: jos brate de 300 (taiate la <b>424</b> pe diagonala), sus brate de 150 (taiate la <b>212</b>). Cate 2 suruburi <b>6×80</b> la fiecare capat.</p>'
+  '<p class="why-inline">Surub de <b>6×80</b>, nu de 100: coltul din rigla 46+46 are 92 mm grosime; unul de 100 iese 8 mm pe partea cealalta, la inaltimea capului de copil. Ai 20 de Heco 6×80 in stoc.</p>', None),
  ('Vopsea, apoi lambriul',
   '<p>Vopsea de protectie pe <b>toate fetele</b> scandurilor, inclusiv cele care nu se mai vad niciodata. Apoi lambriul, cat peretele e culcat: primul rand jos, fiecare rand calca 2 cm peste cel de sub el, un surub in fiecare verticala.</p>', None),
  ('Ridicarea — pasul periculos',
-  '<p>Panoul cantareste <b>~32-41 kg</b> cu lambriu si vopsea. Trebuie sa ajunga de pe iarba pe punte, la <b>2,2 m</b>. Puntea <b>nu are balustrada</b> — margine libera pe toate laturile, tot capitolul.</p>'
+  '<p>Panoul cantareste <b>~42-51 kg</b> cu lambriu si vopsea. Trebuie sa ajunga de pe iarba pe punte, la <b>2,2 m</b>. Puntea <b>nu are balustrada</b> — margine libera pe toate laturile, tot capitolul.</p>'  '<p class="why-inline">E cu <b>10 kg mai greu</b> decat scria planul pana pe 21.08, fiindca lambriul a trecut de la 12,5 la 19 mm. Grosimea aia e buna pe perete — nu se cupeaza in soare — dar se plateste exact aici. <b>Peretele asta e singurul care trebuie imbracat inainte de ridicare</b> (dupa aceea raman 30 cm pana la gard). La laterale si la fata poti pune lambriul dupa ce stau in picioare, deci acolo greutatea nu conteaza.</p>'
   '<ul>'
   '<li><b>Zi fara vant.</b> Panoul e o suprafata de vela de 3,4 m².</li>'
   '<li><b>Doi adulti,</b> nu unul.</li>'
@@ -224,14 +278,14 @@ CH.append(dict(id='e3', n='E3', titlu='Peretii laterali',
     zi='o zi',
     scule='HS7611K — rigla la lungime · GSR — gauri pilot + suruburi + tocul geamului · fierastrau vertical PST 700 E — golul de geam',
     bon=[
-     ('Talpa','rigla 48×48','1580 stanga · 1570 dreapta','2'),
-     ('Cununa inclinata','rigla 48×48','1596 stanga · 1586 dreapta','2'),
-     ('Verticale','rigla 48×48','1573 · 1645 · 1722 · 1794','4 / perete'),
-     ('Prag + buiandrug geam','rigla 48×48 (rest)','intre verticalele golului','2 / perete'),
-     ('Contrafise','rigla 48×48 (rest)','4× 212 (brat 150)','4 / perete'),
+     ('Talpa','rigla 46×46','1580 stanga · 1570 dreapta','2'),
+     ('Cununa inclinata','rigla 46×46','1596 stanga · 1586 dreapta','2'),
+     ('Verticale','rigla 46×46',VLs,'4 / perete'),
+     ('Prag + buiandrug geam','rigla 46×46 (rest)','intre verticalele golului','2 / perete'),
+     ('Contrafise','rigla 46×46 (rest)','4× 212 (brat 150)','4 / perete'),
      ('Toc geam','rigla 46×46','gol 490 · geam 440×440','1 / perete'),
      ('Geam fix','plexi 4 mm','440×440','2 total'),
-     ('Lambriu','12,5×96','randuri','~m²'),
+     ('Lambriu','19×116×4000','randuri de 1580 / 1570, cate doua pe scandura','7 / perete'),
     ],
     body=f'''
 <p class="lead">Cununa e inclinata — acoperisul urca spre spate — deci fiecare din cele 4 verticale are alta lungime. Cele doua laterale difera intre ele cu 10 mm: nu le taia dupa acelasi tipar.</p>
@@ -242,20 +296,20 @@ CH.append(dict(id='e3', n='E3', titlu='Peretii laterali',
 
 {fig(GH['lat_stanga'], 'Perete lateral stanga — talpa 1580, cununa 1596', wide=True)}
 
-{fig(GH['lat_dreapta'], 'Perete lateral dreapta — talpa 1570, cununa 1586', wide=True)}
+{fig(GH['lat_dreapta'], 'Perete lateral dreapta — talpa 1570, cununa 1586. <a class="dwg" href="SCHEME-2D-casa.html#lateral">desenul la scara →</a>', wide=True)}
 
-{fig(GH['lat_sect'], 'Sectiune prin perete — rama 48x48, lambriu 12,5x96 in falt')}
+{fig(GH['lat_sect'], 'Sectiune prin perete — rama 46x46, lambriu 12,5x96 in falt')}
 
 {steps([
  ('Rama, pe punte',
-  '<p>Talpa (rigla 48×48): <b>1580</b> pe latura din stanga (S1–S3), <b>1570</b> pe dreapta (S2–S4). Cununa inclinata: <b>1596</b> stanga, <b>1586</b> dreapta.</p>'
-  '<p>Cele 4 verticale, dinspre fata spre spate: <b>1573 · 1645 · 1722 · 1794</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · camp · camp+490 · capat</span>. Campul e <b>545</b> pe stanga (talpa 1580), <b>540</b> pe dreapta (1570).</p>', None),
+  '<p>Talpa (rigla 46×46): <b>1580</b> pe latura din stanga (S1–S3), <b>1570</b> pe dreapta (S2–S4). Cununa inclinata: <b>1596</b> stanga, <b>1586</b> dreapta.</p>'
+  f'<p>Cele 4 verticale, dinspre fata spre spate: <b>{VLs}</b>. Sunt diferite intentionat — nu le incurca intre ele. Marcaje pe talpa, de la fata: <span class="mono">0 · camp · camp+490 · capat</span>. Campul e <b>545</b> pe stanga (talpa 1580), <b>540</b> pe dreapta (1570).</p>', None),
  ('Golul de geam',
   '<p>Golul de <b>490</b> se centreaza pe talpa: campul = (talpa − 490) / 2. Pe stanga (1580) iese <b>545 · 490 · 545</b>, pe dreapta (1570) <b>540 · 490 · 540</b>. Golul ramane 490 pe amandoua; doar campul difera. Intre verticalele care margineau golul pui un <b>prag la 950</b> si un buiandrug deasupra, la 950+490. Aceeasi metoda ca la orice fereastra.</p>'
   + fig(GH['lat_geam'], 'Golul de geam — acrilic 440 in gol 490, 25 mm joc de jur imprejur'),
   None),
  ('Echerul si contrafisele',
-  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 48×48 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi 6×100 la capat.</p>'
+  '<p>Verticalele perpendiculare pe talpa, cununa la panta ei. Cand forma e buna, pui contrafise in <b>toate cele 4 colturi</b>: rigla 46×46 taiata la <b>212</b> pe diagonala (brat de 150). Cate 2 suruburi <b>6×80</b> la capat.</p>'
   + fig(GH['lat_colt'], 'Coltul — contrafisa 212 pe diagonala, brat 150'),
   None),
  ('Vopsea si lambriu',
@@ -280,37 +334,38 @@ CH.append(dict(id='e4', n='E4', titlu='Peretele din fata',
     zi='o zi',
     scule='HS7611K — rigla si bara de sus 100×60 · GSR — gauri pilot + suruburile oblice · fierastrau sabie — taierea talpii la usa, la final',
     bon=[
-     ('Talpa (intreaga)','rigla 48×48','1970','1'),
-     ('Verticale (jambe + montanti)','rigla 48×48','1552','5'),
-     ('Prag + buiandrug fereastra','rigla 48×48 (rest)','570, intre jambe','2'),
+     ('Talpa (intreaga)','rigla 46×46','1970','1'),
+     ('Verticale (jambe + montanti)','rigla 46×46',str(VF),'5'),
+     ('Prag + buiandrug fereastra','rigla 46×46 (rest)','570, intre jambe','2'),
      ('Bara de sus','bara solida 100×60 (o ai)','2155','1'),
-     ('Contrafise sus','rigla 48×48 (rest)','2× 212 (brat 150)','2'),
-     ('Contrafisa jos-dreapta','rigla 48×48 (rest)','~350 (brat 250)','1'),
+     ('Contrafise sus','rigla 46×46 (rest)','2× 212 (brat 150)','2'),
+     ('Contrafisa jos-dreapta','rigla 46×46 (rest)','~350 (brat 250)','1'),
      ('Fereastra','PVC 56×56 (cumparata)','—','1'),
-     ('Lambriu','12,5×96','randuri, fara zona usii','~m²'),
+     ('Lambriu','19×116×4000','bucati sub 940 — ies din capetele pastrate','6 sau 0'),
     ],
     body=f'''
 <p class="lead">Are doua lucruri care nu mai apar nicaieri: lemnul de sus e o <b>bara solida</b>, nu o rama, iar golul de usa se taie <b>la final</b>, dupa ce peretele e ridicat si legat — altfel isi pierde rigiditatea la transport.</p>
 
-{fig(D2['fata'], 'Elevatie la scara. Cinci verticale de 1552, bara de sus 100×60 peste amandoi stalpii, fereastra la stanga, usa la mijloc.')}
+{fig(D2['fata'], f'Elevatie la scara. Cinci verticale de {VF}, bara de sus 100×60 peste amandoi stalpii, fereastra la stanga, usa la mijloc. <a class="dwg" href="SCHEME-2D-casa.html#fata">desenul la scara →</a>')}
 
 {steps([
  ('Rama — cu talpa INTREAGA',
-  '<p>Talpa (rigla 48×48) taiata la <b>1970</b>, <b>necrestata inca pentru usa</b>. Cinci verticale de <b>1552</b> (= 1600 − o singura talpa de 48; sus nu e cununa, e bara solida). Masurate de la fata interioara a stalpului stang: <span class="mono">115 · fereastra 161→731 · usa 938→1488 · montant de camp 1650→1696</span>, plus coltul de <b>274</b> pentru propteaua de jos.</p>', None),
+  '<p>Talpa (rigla 46×46) taiata la <b>1970</b>, <b>necrestata inca pentru usa</b>. Cinci verticale de <b>{VF}</b> (= 1600 − o singura talpa de {TT}; sus nu e cununa, e bara solida). Masurate de la fata interioara a stalpului stang: <span class="mono">115 · fereastra 161→731 · usa 938→1488 · montant de camp 1650→1696</span>, plus coltul de <b>274</b> pentru propteaua de jos.</p>', None),
  ('Fereastra',
-  '<p>Intre jambe (161→731), gol <b>570×570</b>, cu prag + buiandrug ca la geamurile laterale (inaltimea pragului o vezi pe <code>SCHEME-2D</code>, elevatie fata). Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E6.</p>', None),
+  '<p>Intre jambe (161→731), gol <b>570×570</b>, prag la <b>950</b> de la podea, exact ca la geamurile laterale. Aici intra <b>fereastra PVC de 56×56</b> — singura care se deschide, spre terasa. Se monteaza la E6.</p>', GH['fata_fereastra']),
  ('Bara de sus',
-  '<p>Nu rama, nu laminat: <b>bara solida 100×60</b> (o ai), cu latura de <b>60 in sus</b>, taiata la <b>2155</b>. Trebuie sa calce pe rama SI pe amandoi stalpii — de aia e mai lunga decat peretele. Nu se inlocuieste cu rigla.</p>', None),
+  '<p>Nu rama, nu laminat: <b>bara solida 100×60</b> (o ai), cu latura de <b>60 in sus</b>, taiata la <b>2155</b>. Trebuie sa calce pe rama SI pe amandoi stalpii — de aia e mai lunga decat peretele. Nu se inlocuieste cu rigla.</p>', GH['fata_bara']),
  ('Contrafisele',
   '<p>Sus: <b>2× 212</b> (brat 150). Jos-dreapta: una lunga, <b>~350</b> (brat 250). Jos-stanga <b>se sare</b> — acolo coltul e chiar stalpul de 90×90, deja rigid.</p>', None),
  ('Vopsea, lambriu, ridicare',
   '<p>Vopsea pe toate fetele, lambriu peste tot mai putin zona usii. Apoi se ridica pe punte, ca la spate: doi oameni, culcat pe muchie, legat de stalpi provizoriu.</p>', None),
  ('Prinderea finala a stalpilor',
-  '<p>La fiecare stalp din fata: <b>4 suruburi de dulgherie 8×140</b> infiletate <b>oblic, la ~15-20°</b>, in grinda de dedesubt (2 de-o parte, 2 de cealalta) + <b>un coltar 90×65 pe fiecare fata</b> a stalpului. Tot de sus, <b>fara piulite</b>.</p>'
-  '<p class="why-inline">Nu exista tije M12 in podea si nu au existat niciodata. Nu cauta gauri de bulon — nu sunt.</p>', None),
+  '<p><b>Stalpii sunt deja pe santier</b> — 90×90, montati la 1600 peste podea. Aici nu se ridica niciun stalp; se face doar legatura definitiva.</p>'
+  '<p>La fiecare stalp: <b>4 suruburi de dulgherie 8×140</b> infiletate <b>oblic, la ~15-20°</b>, in grinda de dedesubt (2 de-o parte, 2 de cealalta) + <b>un coltar 90×65 pe fiecare fata</b> a stalpului. Tot de sus, <b>fara piulite</b>.</p>'
+  '<p class="why-inline">Nu exista tije M12 in podea si nu au existat niciodata. Nu cauta gauri de bulon — nu sunt.</p>', GH['fata_stalp']),
  ('Usa — abia acum',
   '<p>Dupa ce peretele e ridicat, legat si <b>verificat la echer</b>: tai talpa pentru usa. Gol de <b>550</b> latime, care lasa <b>1600 liber</b>.</p>'
-  '<p class="why-inline">Daca tai talpa mai devreme, peretele se indoaie la transport si la ridicare. Talpa intreaga il tine drept pana sus.</p>', None),
+  '<p class="why-inline">Daca tai talpa mai devreme, peretele se indoaie la transport si la ridicare. Talpa intreaga il tine drept pana sus.</p>', GH['fata_usa']),
 ])}
 
 <div class="ok"><b>E bine daca:</b> talpa a stat intreaga pana dupa ridicare · bara de sus calca pe amandoi stalpii · stalpii prinsi cu 4 suruburi oblice + coltar fiecare, fara tije · golul de usa taiat la final, 550 latime, 1600 liber.</div>
@@ -332,12 +387,12 @@ CH.append(dict(id='e5', n='E5', titlu='Acoperisul',
     body=f'''
 <p class="lead">Panta reala e <b>8,2°</b> — sub 10°, deci acoperisul merge pe <b>astereala continua de OSB</b>, nu pe sipci. Placa de OSB tine si bracajul, singura.</p>
 
-{fig(D2['acoperis'], 'Plan acoperis. Cinci capriori in dreptul verticalelor, doua placi de OSB, inchideri de 454 intre capriori.')}
+{fig(D2['acoperis'], 'Plan acoperis. Cinci capriori in dreptul verticalelor, doua placi de OSB, inchideri de 454 intre capriori. <a class="dwg" href="SCHEME-2D-casa.html#acoperis">desenul la scara →</a>')}
 
 {steps([
  ('Lamineaza capriorii — singurul lemn laminat',
   '<p>Capriorii sunt <b>44×100</b>, facuti din <b>2 scanduri de 22×100</b> insurubate una peste alta cu <b>4×40 in zigzag la 300 mm</b>. 5 capriori de <b>1889</b> → <b>5 bare, doua straturi pe caprior</b> (o bara de 4000 da doua straturi de 1889). A 6-a bara da cele 4 inchideri de 454; a 7-a e rezerva.</p>'
-  '<p class="why-inline">Capriorii NU trec pe rigla 48×48 — sectiunea patrata s-ar indoi la spanul de 1670. Aici, si numai aici, se lamineaza.</p>', None),
+  '<p class="why-inline">Capriorii NU trec pe rigla 46×46 — sectiunea patrata s-ar indoi la spanul de 1670. Aici, si numai aici, se lamineaza.</p>', None),
  ('Aseaza capriorii',
   '<p>Pas <b>498</b> intre ei, in dreptul verticalelor din pereti. <b>Orientarea conteaza: 100 pe verticala, 44 pe orizontala.</b> Pus invers, capriorul lucreaza pe axa slaba. Fiecare capat: <b>2 vincluri 90×65</b>.</p>', None),
  ('Inchiderile',
@@ -369,9 +424,9 @@ CH.append(dict(id='e6', n='E6', titlu='Geamurile si verificarea finala',
 
 {steps([
  ('Geamurile laterale',
-  '<p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E3. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p>', None),
+  '<p>Doua geamuri fixe de <b>440×440</b> (plexi de 4 mm, amandoua dintr-o placa de 500×1000), in tocul pregatit la E3. Sipci pe <b>ambele fete</b>, gaurile in plexi cu <b>+1 mm</b> fata de surub. Montate <b>din exterior</b>, cu un rost de silicon pe contur.</p>', GH['lat_geam']),
  ('Fereastra din fata',
-  '<p>Fereastra PVC de <b>56×56</b> in golul de 570×570, prinsa in jambe, siliconata pe contur. Se deschide spre terasa — singura care se deschide.</p>', None),
+  '<p>Fereastra PVC de <b>56×56</b> in golul de 570×570, prinsa in jambe, siliconata pe contur. Se deschide spre terasa — singura care se deschide.</p>', GH['fata_fereastra']),
 ])}
 
 <h3>Checklist final</h3>
@@ -475,6 +530,21 @@ header.ch h2{font:600 34px/1.15 var(--sans);letter-spacing:-.02em;margin:8px 0 8
 table.cump{table-layout:fixed;width:100%}
 table.cump td.q{white-space:nowrap}
 table.cump td:last-child,table.cump th:last-child{width:42%}
+.uses{margin-top:5px;font:11px var(--mono);color:var(--dim)}
+.mtab td.swc{width:34px}
+.sw{display:inline-block;width:26px;height:14px;border:1px solid var(--ink);border-radius:2px;position:relative;overflow:hidden;vertical-align:-2px}
+.sw-hx{position:absolute;inset:0;background:repeating-linear-gradient(45deg,#00000026 0 2.6px,transparent 2.6px 8px)}
+.mtab td .chip{margin-left:3px}
+.uses .chip{display:inline-block;text-decoration:none;color:var(--acc);border:1px solid var(--line);
+ border-radius:6px;padding:1px 7px;margin-right:4px}
+.uses .chip:hover{background:var(--acc-s)}
+.matback{float:right;font:11px var(--mono);color:var(--dim);text-decoration:none;text-transform:none;letter-spacing:0}
+.matback:hover{color:var(--acc)}
+.exist{background:var(--acc-s);border:1px solid var(--line);border-left:3px solid var(--acc);
+ border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14.5px}
+.dwg{display:inline-block;margin-top:8px;font:11px var(--mono);color:var(--acc);text-decoration:none;
+ border:1px solid var(--line);border-radius:6px;padding:3px 9px}
+.dwg:hover{background:var(--acc-s)}
 @media(max-width:720px){
  table.cump,table.cump tbody,table.cump tr,table.cump td{display:block;width:auto}
  table.cump tr:first-child{display:none}

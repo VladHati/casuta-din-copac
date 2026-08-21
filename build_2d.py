@@ -14,7 +14,7 @@ SECS = [
  ('sectiune','Sectiune longitudinala — fata in stanga, spate in dreapta',
   'De unde vine panta: 240 mm cadere pe 1670 intre reazeme.','sectiune'),
  ('spate','Elevatie — peretele din SPATE, din exterior',
-  'Se face complet jos, pe iarba. Dupa ridicare, intre el si gard raman 30 cm. Rama e din rigla 48×48.','spate'),
+  'Se face complet jos, pe iarba. Dupa ridicare, intre el si gard raman 30 cm. Rama e din rigla 46×46.','spate'),
  ('lateral','Elevatie — peretele LATERAL, din exterior',
   'Cununa e inclinata, deci fiecare verticala are alta lungime. Cele doua laterale difera intre ele cu 10 mm.','lateral'),
  ('fata','Elevatie — peretele din FATA, din exterior',
@@ -24,7 +24,7 @@ SECS = [
  ('strat','Detaliu — straturile acoperisului',
   'De ce cuiele stau pe varful valului si nu in adancitura.','strat'),
  ('prindere','Detaliu — peretele din spate, prins in stalp',
-  'Patru suruburi pe fiecare capat, cu gaura data inainte. Verticala de capat e rigla 48×48.','prindere'),
+  'Patru suruburi pe fiecare capat, cu gaura data inainte. Verticala de capat e rigla 46×46.','prindere'),
  ('reazem','Detaliu — reazemul din spate (dulapul de 200×50)',
   'O singura bara, taiata la 2200, asezata pe muchie cu 200 in sus peste cununa peretelui si peste '
   'capetele stalpilor (ambele la 1700) → reazem continuu la 1900. Nimic altceva nu se face din ea.','reazem'),
@@ -71,7 +71,7 @@ HTML = f'''<!DOCTYPE html><html lang="ro"><head><meta charset="utf-8">
 <div class="kick">Casuta din copac · casa de sus · anexa la <a href="GHID-CONSTRUCTIE-casa.html">GHID-CONSTRUCTIE-casa</a></div>
 <h1>Scheme 2D</h1>
 <p class="sub">Zece vederi ortogonale, fiecare derivata din acelasi model numeric. Nicio cota nu e scrisa de mana — toate se calculeaza din masuratorile de santier si se verifica automat la generare.</p>
-<div class="meta">20 august 2026 · cote in mm · geometrie masurata 20.08 · rama = rigla 48×48 · generate din <code>gen_2d.py</code> + <code>build_2d.py</code></div>
+<div class="meta">20 august 2026, rama actualizata 21.08 · cote in mm · geometrie masurata 20.08 · rama = rigla 46×46×3000 · generate din <code>gen_2d.py</code> + <code>build_2d.py</code></div>
 <ul class="n">{nav}</ul>
 {chr(10).join(secs)}
 <footer>SCHEME-2D-casa · desenele care insotesc <a href="GHID-CONSTRUCTIE-casa.html">GHID-CONSTRUCTIE-casa.html</a> (documentul de executie). Inlocuiesc izometriile vechi si Detaliul 7 din SCHEME-CASA.<br>

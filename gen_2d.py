@@ -20,8 +20,8 @@ M['H_B']      = 1700          # stalpi spate peste podea
 M['H_F']      = 1600          # stalpi fata peste podea
 M['DULAP']    = 200           # scandura groasa pe muchie
 M['BARA_F']   = 60            # bara 100x60, latura in sus
-M['T']        = 48            # grosimea talpii / cununii (rigla 48x48)
-M['D']        = 48            # adancimea ramei (rigla 48x48, nu mai e fasie de 100)
+M['T']        = 46            # grosimea talpii / cununii (rigla 46x46)
+M['D']        = 46            # adancimea ramei (rigla 46x46, nu mai e fasie de 100)
 M['STREASINA']= 100
 
 d = M
@@ -46,11 +46,12 @@ d['TOPBAR'] = d['WF_clear']+2*d['FP']
 d['GOL_USA'],d['USA_LIBER'] = 550,1600
 d['GOL_GEAM'],d['PRAG'] = 490,950
 d['GOL_FER'] = 570
-# verticalele laterale sunt cote VERBATIM, blocate 20.08: vechile (laminat 44)
-# 1581/1653/1730/1802 minus 8 (rama trece pe rigla 48: -4 jos -4 sus). Nu se recalculeaza.
-d['VLAT_OLD'] = [1581, 1653, 1730, 1802]
-d['VLAT']     = [v-8 for v in d['VLAT_OLD']]        # 1573 · 1645 · 1722 · 1794
-assert d['VLAT'] == [1573,1645,1722,1794], d['VLAT']
+# Lumina intre talpa si cununa pe peretele lateral, masurata 20.08. Cotele brute de atunci
+# (1581/1653/1730/1802) au fost scrise pentru o rama de 44; lumina e aceea plus 2x44.
+# Verticala se scade din lumina, deci urmeaza grosimea ramei: T=48 -> 1573, T=46 -> 1577.
+d['VLAT_CLEAR'] = [1669, 1741, 1818, 1890]
+d['VLAT']       = [c-2*d['T'] for c in d['VLAT_CLEAR']]
+assert d['VLAT'] == [c-2*d['T'] for c in d['VLAT_CLEAR']]
 
 def vlat(x, L):
     """inaltimea peretelui lateral la distanta x de capatul din fata"""
@@ -58,10 +59,34 @@ def vlat(x, L):
 
 def esc(s): return s.replace('&','&amp;').replace('<','&lt;')
 
+# ─────────────────────────── MATERIALE ───────────────────────────
+# Aceeasi cheie ca in gen_ghid.py: fill, eticheta pe piesa, eticheta din legenda, existent
+MATS = {
+ 'ram' : ('#ece2c8', 'rigla 46×46',     'rigla 46×46×3000 — rama peretilor si tocurile', 0),
+ 'cap' : ('#d8c49a', 'caprior 44×100',  'caprior 44×100 = 2× scandura 22×100 laminate', 0),
+ 'scn' : ('#e3d5b3', 'scandura 22×100', 'scandura 22×100×4000',                   0),
+ 'lam' : ('#f7f2e8', 'lambriu 19×116',  'lambriu 19×116×4000',                     0),
+ 'osb' : ('#c9bd9a', 'OSB3 12',         'placa OSB3 12 mm',                       0),
+ 'ond' : ('#b07f57', 'Onduline',        'Onduline 2000×860',                      0),
+ 'sip' : ('#efe7d4', 'sipca 18×28',     'sipca 18×28 — bagheta de geam',          0),
+ 'plx' : (GLASS,     'plexi 4',         'plexiglas 4 mm',                         0),
+ 'pvc' : (GLASS,     'PVC 56×56',       'fereastra PVC 56×56',                    0),
+ 'st10': ('#b9ab8c', 'stalp 100×100',   'stalp spate 100×100 — pe santier',       1),
+ 'st9' : ('#b9ab8c', 'stalp 90×90',     'stalp fata 90×90 — pe santier',          1),
+ 'dul' : ('#c6b693', 'dulap 200×50',    'dulap 200×50×4000 — il ai',              1),
+ 'bara': ('#c6b693', 'bara 100×60',     'bara 100×60×3000 — o ai',                1),
+ 'dus' : ('#ded3b8', 'dusumea 28',      'dusumea larice 28×145 — pe santier',     1),
+ 'gri' : ('#ada085', 'grinda',          'grinda podelei — pe santier',            1),
+ 'met' : (METAL,     '',                'vinclu · coltar · placa metalica',       0),
+}
+_HX=[0]
+
+
 # ─────────────────────────── DESEN ───────────────────────────
 class D:
     def __init__(self, scale, fs=13):
         self.s=scale; self.el=[]; self.fs=fs; self.bb=[1e9,1e9,-1e9,-1e9]
+        _HX[0]+=1; self.hid=_HX[0]; self.mats=[]
     def X(self,mm): return mm*self.s
     def Y(self,mm): return -mm*self.s
     def _t(self,x,y):
@@ -72,6 +97,42 @@ class D:
         da=f' stroke-dasharray="{dash}"' if dash else ''
         self.el.append(f'<rect x="{X:.1f}" y="{Y:.1f}" width="{W:.1f}" height="{H:.1f}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"{da}/>')
         self._t(X,Y); self._t(X+W,Y+H)
+    def piece(self,x,y,w,h,mat,label=True,stroke=INK,sw=1.5,dash=None):
+        """Piesa de lemn cotata: fill dupa material, hasura daca e existenta,
+           eticheta in piesa daca incape. Materialul intra in legenda desenului."""
+        fill,short,_l,exist = MATS[mat]
+        self.bar(x,y,w,h,fill=fill,stroke=stroke,sw=sw,dash=dash)
+        if mat not in self.mats: self.mats.append(mat)
+        X,Y=self.X(x),self.Y(y+h); W,H=self.X(w),self.X(h)
+        if exist:
+            self.el.append(f'<rect x="{X:.1f}" y="{Y:.1f}" width="{W:.1f}" height="{H:.1f}" '
+                           f'fill="url(#hx{self.hid})" stroke="none"/>')
+        if label and short:
+            fs=9.5; need=len(short)*fs*0.56
+            if W>=need+8 and H>=fs+7:   self.tx(x+w/2,y+h/2,short,size=fs,fill=MUT)
+            elif H>=need+8 and W>=fs+7: self.tx(x+w/2,y+h/2,short,size=fs,fill=MUT,rot=-90)
+        return self
+
+    def key(self,cols=2,size=10):
+        """Legenda desenului: doar materialele care apar in el."""
+        if not self.mats: return self
+        x0,y0,x1,y1=self.bb
+        top=y1+30; sw_,gap,rowh=20,9,19
+        colw=max(len(MATS[m][2]) for m in self.mats)*size*0.58+sw_+gap+30
+        for i,m in enumerate(self.mats):
+            cx=x0+(i%cols)*colw; cy=top+(i//cols)*rowh
+            fill,_s,lng,exist=MATS[m]
+            self.el.append(f'<rect x="{cx:.1f}" y="{cy:.1f}" width="{sw_}" height="11" '
+                           f'fill="{fill}" stroke="{INK}" stroke-width="1"/>')
+            self._t(cx,cy); self._t(cx+sw_,cy+11)
+            if exist:
+                self.el.append(f'<rect x="{cx:.1f}" y="{cy:.1f}" width="{sw_}" height="11" '
+                               f'fill="url(#hx{self.hid})" stroke="none"/>')
+            self.el.append(f'<text x="{cx+sw_+gap:.1f}" y="{cy+9:.1f}" font-family="ui-monospace,Menlo,monospace" '
+                           f'font-size="{size}" fill="{MUT}" text-anchor="start">{esc(lng)}</text>')
+            self._t(cx+sw_+gap+len(lng)*size*0.58, cy+11)
+        return self
+
     def ln(self,x1,y1,x2,y2,stroke=INK,sw=1.3,dash=None):
         X1,Y1,X2,Y2=self.X(x1),self.Y(y1),self.X(x2),self.Y(y2)
         da=f' stroke-dasharray="{dash}"' if dash else ''
@@ -114,8 +175,11 @@ class D:
         self.tx(X+dx+(5 if anchor=='start' else -5),Y+dy-3,s,fill=fill,anchor=anchor,size=size or self.fs-1,px=True)
     def svg(self,pad=30):
         x0,y0,x1,y1=self.bb
+        dfs=(f'<defs><pattern id="hx{self.hid}" width="8" height="8" patternUnits="userSpaceOnUse" '
+             f'patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" '
+             f'stroke="#00000026" stroke-width="2.6"/></pattern></defs>')
         return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x0-pad:.0f} {y0-pad:.0f} {x1-x0+2*pad:.0f} {y1-y0+2*pad:.0f}" '
-                f'style="width:100%;height:auto;display:block">'+'\n'.join(self.el)+'</svg>')
+                f'style="width:100%;height:auto;display:block">'+dfs+'\n'.join(self.el)+'</svg>')
 
 F={}
 
@@ -155,7 +219,7 @@ g.dimh(fx0+FPx,fx0+FPx+d['WF_clear'],yF1,f"{d['WF_clear']}  lumina fata (masurat
 g.dimv(yB1,yF0,0,f"{round(d['DEP'])}  adancime",off=-30)
 g.tx(W_out/2,yB0-980,'SPATE  ·  spre gard',size=13,fill=MUT)
 g.tx(W_out/2,yF1+620,'FATA  ·  spre terasa',size=13,fill=MUT)
-g.note(BPx+d['D']/2,yB1+420,'perete lateral · rigla 48 adancime',dx=-70,dy=6,anchor='end')
+g.note(BPx+d['D']/2,yB1+420,'perete lateral · rigla 46 adancime',dx=-70,dy=6,anchor='end')
 g.note(W_out-BPx-d['D']/2,yB1+900,'geam fix 490×490, la mijloc',dx=70,dy=6)
 g.note(BPx+500,yB0+d['D']/2,'perete spate, in banda stalpilor',dx=-30,dy=190,anchor='end')
 g.tx(W_out/2,yF1+1150,'PLAN — casa vazuta de sus',size=14,fill=MUT)
@@ -201,10 +265,10 @@ F['sectiune']=g.svg()
 # ═══════════ 3. ELEVATIE SPATE ═══════════
 g=D(0.135)
 W,H,T = d['WALL_B'],d['H_B'],d['T']
-g.bar(0,0,W,T,fill=W2); g.bar(0,H-T,W,T,fill=W2)
+g.piece(0,0,W,T,'ram'); g.piece(0,H-T,W,T,'ram')
 XS=[round(i*d['PAS']) for i in range(5)]
 for x in XS:
-    g.bar(min(max(x-23,0),W-46),T,46,H-2*T,fill=W1)
+    g.piece(min(max(x-T//2,0),W-T),T,T,H-2*T,'ram',label=False)
 for (bx,sx,by,sy,arm) in ((46,1,T,1,300),(W-46,-1,T,1,300),(46,1,H-T,-1,150),(W-46,-1,H-T,-1,150)):
     g.ln(bx+sx*arm,by,bx,by+sy*arm,stroke=ACC,sw=4)
 for i in range(4): g.dimh(XS[i],XS[i+1],0,off=26)
@@ -214,22 +278,22 @@ g.dimv(T,H-T,W,f"verticale {d['VB']} ×5",off=26,fill=ACC)
 g.tx(W/2,H+700,'PERETE SPATE — vazut din exterior',size=14,fill=MUT)
 g.note(46+150,T+150,'proptea jos: brate 300 (424)',dx=60,dy=-30,fill=ACC)
 g.note(W-46-75,H-T-75,'proptea sus: brate 150 (212)',dx=-60,dy=-40,anchor='end',fill=ACC)
-F['spate']=g.svg()
+F['spate']=g.key().svg()
 
 # ═══════════ 4. ELEVATIE LATERAL ═══════════
 g=D(0.135)
 L=d['DEP_L']; T=d['T']
 hf,hb=d['LATF'],d['LATB']
-g.bar(0,0,L,T,fill=W2)
-g.poly([(0,hf-T),(L,hb-T),(L,hb),(0,hf)],fill=W2)
+g.piece(0,0,L,T,'ram')
+g.poly([(0,hf-T),(L,hb-T),(L,hb),(0,hf)],fill=MATS['ram'][0])
 gx0=(L-d['GOL_GEAM'])/2; gx1=gx0+d['GOL_GEAM']    # golul centrat pe talpa (545..1035 pe 1580)
-VX=[0,gx0-48,gx1,L-48]               # capete + verticalele care marginesc golul (din gx0/gx1, nu scrise de mana)
+VX=[0,gx0-T,gx1,L-T]               # capete + verticalele care marginesc golul (din gx0/gx1, nu scrise de mana)
 for x in VX:
     top=vlat(x+24,L)-T
-    g.bar(x,T,48,top-T,fill=W1)
-g.bar(gx0,d['PRAG']-T,d['GOL_GEAM'],T,fill=W2)
-g.bar(gx0,d['PRAG']+d['GOL_GEAM'],d['GOL_GEAM'],T,fill=W2)
-g.bar(gx0,d['PRAG'],d['GOL_GEAM'],d['GOL_GEAM'],fill=GLASS,stroke=ACC)
+    g.piece(x,T,T,top-T,'ram',label=False)
+g.piece(gx0,d['PRAG']-T,d['GOL_GEAM'],T,'ram')
+g.piece(gx0,d['PRAG']+d['GOL_GEAM'],d['GOL_GEAM'],T,'ram')
+g.piece(gx0,d['PRAG'],d['GOL_GEAM'],d['GOL_GEAM'],'plx',stroke=ACC,label=False)
 g.tx(gx0+d['GOL_GEAM']/2,d['PRAG']+d['GOL_GEAM']/2,'GOL 490×490',size=13,fill=ACC,weight='600')
 for (bx,sx,by,sy) in ((46,1,T,1),(L-46,-1,T,1)):
     g.ln(bx+sx*150,by,bx,by+sy*150,stroke=ACC,sw=4)
@@ -244,18 +308,18 @@ g.dimv(0,d['PRAG'],gx0,f"prag {d['PRAG']}",off=-26,fill=ACC)
 g.tx(L/2,hb+700,'PERETE LATERAL — din exterior · FATA in stanga, SPATE in dreapta',size=13,fill=MUT)
 vs=' · '.join(str(v) for v in d['VLAT'])
 g.tx(L/2,-820,f'verticale, de la fata spre spate:  {vs}',size=13,fill=ACC)
-F['lateral']=g.svg()
+F['lateral']=g.key().svg()
 
 # ═══════════ 5. ELEVATIE FATA ═══════════
 g=D(0.135)
 W,H,T,FP2 = d['WALL_F'],d['H_F'],d['T'],d['FP']
-g.bar(-FP2,0,FP2,H,fill=W3); g.bar(W,0,FP2,H,fill=W3)
-g.bar(-FP2,H,d['TOPBAR'],d['BARA_F'],fill=W1)
-g.bar(0,0,W,T,fill=W2)
-for x0 in (115,731,892,1488,1650): g.bar(x0,T,46,H-T,fill=W1)
-g.bar(161,d['PRAG']-T,d['GOL_FER'],T,fill=W2)
-g.bar(161,d['PRAG']+d['GOL_FER'],d['GOL_FER'],T,fill=W2)
-g.bar(161,d['PRAG'],d['GOL_FER'],d['GOL_FER'],fill=GLASS,stroke=ACC)
+g.piece(-FP2,0,FP2,H,'st9',label=False); g.piece(W,0,FP2,H,'st9',label=False)
+g.piece(-FP2,H,d['TOPBAR'],d['BARA_F'],'bara')
+g.piece(0,0,W,T,'ram')
+for x0 in (115,731,892,1488,1650): g.piece(x0,T,T,H-T,'ram',label=False)
+g.piece(161,d['PRAG']-T,d['GOL_FER'],T,'ram')
+g.piece(161,d['PRAG']+d['GOL_FER'],d['GOL_FER'],T,'ram')
+g.piece(161,d['PRAG'],d['GOL_FER'],d['GOL_FER'],'pvc',stroke=ACC,label=False)
 g.tx(161+d['GOL_FER']/2,d['PRAG']+d['GOL_FER']/2,'GOL 570',size=13,fill=ACC,weight='600')
 g.bar(938,0,d['GOL_USA'],H,fill='#f7f3ea',stroke=ACC2)
 g.tx(938+d['GOL_USA']/2,H/2,'USA 550',size=14,fill=ACC2,weight='600')
@@ -269,42 +333,43 @@ g.dimv(0,H,-FP2,f"{H} stalp",off=-26)
 g.dimv(0,d['PRAG'],161,f"prag {d['PRAG']}",off=-26,fill=ACC)
 g.tx(W/2,-820,f"verticale {d['VF']} ×5  ·  talpa se taie la usa LA FINAL",size=13,fill=ACC2)
 g.tx(W/2,H+1150,'PERETE FATA — din exterior',size=14,fill=MUT)
-F['fata']=g.svg()
+F['fata']=g.key().svg()
 
 # ═══════════ 6. PLAN ACOPERIS ═══════════
 g=D(0.115)
 W5=d['WB_clear']+2*d['BP']; D5=d['RAFT']
-g.bar(0,0,W5,D5,fill=HATCH,stroke=LN)
-g.bar(0,D5-60,W5,60,fill=W2)
+g.piece(0,0,W5,D5,'osb',stroke=LN,label=False)
+g.piece(0,D5-60,W5,60,'dul',label=False)
 CX=[round(102+i*d['PAS']) for i in range(5)]
-for cx in CX: g.bar(cx-22,0,44,D5,fill=W1)
+for cx in CX: g.piece(cx-22,0,44,D5,'cap',label=False)
 for a,b in zip(CX,CX[1:]):
-    g.bar(a+22,D5-330,b-a-44,110,fill=W2); g.bar(a+22,150,b-a-44,110,fill=W2)
+    g.piece(a+22,D5-330,b-a-44,110,'scn',label=False); g.piece(a+22,150,b-a-44,110,'scn',label=False)
 g.ln(0,1250,W5,1250,stroke=ACC,sw=2.5,dash='14,9')
-g.tx(W5/2,1250+90,f"imbinarea placilor de OSB   ·   2200×1250  +  2200×{round(D5-1250)}",size=12,fill=ACC)
+g.tx(W5/2,1250+230,'imbinarea placilor de OSB',size=12,fill=ACC)
+g.tx(W5/2,1250+90,f"2200×1250  +  2200×{round(D5-1250)}",size=12,fill=ACC)
 for i in range(4): g.dimh(CX[i],CX[i+1],0,off=26)
 g.dimh(CX[0],CX[-1],0,'capriorii, in dreptul verticalelor din pereti',off=54)
 g.dimv(0,D5,W5,f"caprior {round(D5)}",off=26)
 g.dimh(0,W5,D5,f"{round(W5)}  =  dulapul de 2200, taiat",off=-30)
-g.tx(W5/2,D5+220,'SPATE / GARD',size=12,fill=MUT)
-g.tx(W5/2,-230,'TERASA',size=12,fill=MUT)
-g.tx((CX[0]+CX[1])/2,D5-460,f"inchideri {round(d['BLOC'])}",size=12,fill=MUT)
-F['acoperis']=g.svg()
+g.tx(W5/2,D5+560,'SPATE / GARD',size=12,fill=MUT)
+g.tx(W5/2,-1000,'TERASA',size=12,fill=MUT)
+g.note(CX[0]+22,D5-275,f"inchideri {round(d['BLOC'])} intre capriori",dx=-150,dy=-30,anchor='end',size=11)
+F['acoperis']=g.key().svg()
 
 # ═══════════ 7. DETALIU ACOPERIS — straturi ═══════════
 g=D(0.62)
-g.bar(0,0,520,100,fill=W1); g.tx(260,50,'caprior 44×100',size=12)
-g.bar(0,100,520,12,fill=W3); g.note(430,106,'OSB3 12 mm',dx=50,dy=-24,fill=ACC)
+g.piece(0,0,520,100,'cap',label=False); g.tx(260,50,'caprior 44×100 (2× scandura 22×100)',size=12)
+g.piece(0,100,520,12,'osb',label=False); g.note(430,106,'astereala OSB3 12 mm',dx=50,dy=-24,fill=ACC)
 zz=[]
 for i in range(11):
     x=i*47
     zz += [(x,112),(x+12,138),(x+24,138),(x+35,112)]
-g.poly([(0,112)]+zz+[(520,112)],fill=ACC2,stroke=ACC2,sw=1)
+g.poly([(0,112)]+zz+[(520,112)],fill=MATS['ond'][0],stroke=ACC2,sw=1); g.mats.append('ond')
 g.note(140,138,'Onduline — cuiele NUMAI pe varf',dx=40,dy=-46,fill=ACC2)
 g.note(200,112,'in adancitura curge apa: fiecare cui de acolo e o gaura',dx=-30,dy=64,anchor='end')
 g.dimv(0,100,0,'100',off=-22); g.dimv(100,112,0,'12',off=-22)
 g.tx(260,-90,'DETALIU ACOPERIS — sectiune prin straturi (scara 1:1,6)',size=13,fill=MUT)
-F['strat']=g.svg()
+F['strat']=g.key().svg()
 
 
 # ═══════════ 8. COLT SPATE — plan (principiu) ═══════════
@@ -353,9 +418,9 @@ F['colt_sect']=g.svg()
 
 # ═══════════ 10. PRINDEREA PERETELUI IN STALP ═══════════
 g=D(0.30)
-g.bar(0,0,100,d['H_B'],fill=W3); g.tx(50,d['H_B']+80,'stalp de 4 m',size=12,fill=MUT)
-g.bar(100,d['T'],48,d['VB'],fill=W1); g.tx(124,900,'verticala de capat · rigla 48',size=11,fill=MUT,rot=-90)
-g.bar(100,0,420,d['T'],fill=W2); g.bar(100,d['H_B']-d['T'],420,d['T'],fill=W2)
+g.piece(0,0,100,d['H_B'],'st10',label=False); g.tx(50,d['H_B']+80,'stalp 100×100 de 4 m — pe santier',size=12,fill=MUT)
+g.piece(100,d['T'],d['T'],d['VB'],'ram',label=False); g.tx(124,900,'verticala de capat · rigla 46×46',size=11,fill=MUT,rot=-90)
+g.piece(100,0,420,d['T'],'ram'); g.piece(100,d['H_B']-d['T'],420,d['T'],'ram')
 for zz in (150,700,900,1560):
     g.ln(146,zz,20,zz,stroke=METAL2,sw=2.6)
     g.ln(40,zz-14,20,zz,stroke=METAL2,sw=2.6); g.ln(40,zz+14,20,zz,stroke=METAL2,sw=2.6)
@@ -363,14 +428,14 @@ g.note(60,900,'4× surub 8×140  ·  unul jos, doua la mijloc, unul sus',dx=-40,
 g.note(50,150,'gaura de 6 mm data inainte in stalp — altfel crapa',dx=-40,dy=150,anchor='end',fill=ACC2)
 g.dimv(d['T'],d['H_B']-d['T'],560,f"{d['VB']}",off=24)
 g.tx(300,-320,'PRINDEREA PERETELUI DIN SPATE IN STALP — elevatie',size=13,fill=MUT)
-F['prindere']=g.svg()
+F['prindere']=g.key().svg()
 
 # ═══════════ 11. REAZEMUL DIN SPATE — dulapul de 200×50 pe muchie ═══════════
 g=D(0.17)
 POST=100
-g.bar(0,0,POST,d['H_B'],fill=W3)                              # stalpul spate, pana la 1700
+g.piece(0,0,POST,d['H_B'],'st10',label=False)                 # stalpul spate, pana la 1700
 g.tx(POST/2,d['H_B']/2,'stalp spate · 1700',size=11,fill=MUT,rot=-90)
-g.bar(25,d['H_B'],50,d['DULAP'],fill=W1)                      # dulapul 200x50, pe muchie
+g.piece(25,d['H_B'],50,d['DULAP'],'dul',label=False)          # dulapul 200x50, pe muchie
 g.tx(50,d['H_B']+d['DULAP']/2,'200',size=12,fill=INK,rot=-90)
 g.dimh(25,75,d['H_B']+d['DULAP'],'50',off=-14,size=11)
 g.dimv(0,d['H_B'],0,f"{d['H_B']}",off=-26)
@@ -379,7 +444,7 @@ g.note(75,d['REZ_B'],'dulap 200×50 · pe muchie, 200 in sus · taiat la 2200',d
 g.note(75,d['H_B']+40,'calca pe cununa peretelui (1700) SI pe capetele stalpilor (1700)',dx=95,dy=70,anchor='start')
 g.tx(POST/2,-300,'REAZEMUL DIN SPATE — dulapul de 200×50, cum se aseaza',size=13,fill=MUT)
 g.tx(POST/2,-370,'o singura bara, taiata la 2200, pe muchie · nimic altceva nu se face din ea',size=11,fill=DIM)
-F['reazem']=g.svg()
+F['reazem']=g.key().svg()
 
 json.dump(F,open('figs_2d.json','w'))
 
@@ -391,14 +456,14 @@ chk=[('lumina spate (masurat)',d['WB_clear'],1995),('lumina fata (masurat)',d['W
      ('reazem spate',d['REZ_B'],1900),('reazem fata',d['REZ_F'],1660),
      ('panta grade',round(d['SLdeg'],2),8.18),('caprior',round(d['RAFT']),1889),
      ('muchie',round(d['EDGE']),1646),('pas capriori',d['PAS'],497.5),
-     ('inchideri',round(d['BLOC']),454),('verticale spate',d['VB'],1604),
-     ('verticale fata',d['VF'],1552),('bara de sus fata',round(d['TOPBAR']),2155),
+     ('inchideri',round(d['BLOC']),454),('verticale spate',d['VB'],1700-2*d['T']),
+     ('verticale fata',d['VF'],1600-d['T']),('bara de sus fata',round(d['TOPBAR']),2155),
      ('lateral: inaltime fata',round(d['LATF']),1666),('lateral: inaltime spate',round(d['LATB']),1893)]
 bad=0
 for n,got,exp in chk:
     ok = abs(got-exp)<=1
     if not ok: bad+=1
     print(f"  {'OK ' if ok else 'X  '} {n:28s} {got}")
-print(f"  verticale laterale (verbatim): " + ' · '.join(str(v) for v in d['VLAT']))
+print(f"  verticale laterale (lumina − 2×T): " + ' · '.join(str(v) for v in d['VLAT']))
 print(f"\n  {len(F)} desene · {bad} nepotriviri")
 print('  ', {k:len(v) for k,v in F.items()})
